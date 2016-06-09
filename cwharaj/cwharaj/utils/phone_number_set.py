@@ -19,9 +19,11 @@ class PhoneNumberSet(object):
         if model_id:
             row = self.dict[model_id]
             if row:
+                logging.debug("  2. row in the dict: {}".format(row["url"]))
                 row["phone_number_base64"] = _phone_number_base64
                 return row["url"]
 
+        logging.debug("  3. not found row failure from ajax: {}".format(_ajax_url))
         return None
 
     def get_phone_number_base64(self, model_id):
