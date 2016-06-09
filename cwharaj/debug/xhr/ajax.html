@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+
+//                var e = b.attr("data-id"),
+//                        c = b.attr("data-type");
+//                0 < b.find(".popupPhone").length &&
+
+//curl 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=42946557&model_type=post'
+                var e = "42946557";
+                var c = "post";
+                $.ajax({
+                            url: "https://sa.opensooq.com/ar/post/get-phone-number",
+                            type: "get",
+                            dataType: "html",
+                            data: {
+                                model_id: e,
+                                model_type: c
+                            },
+                            success: function (a) {
+// a is "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"
+                                var d = document.createElement("img");
+                                d.src = "data:image/jpeg;base64," + a;
+                                b.find(".sellerPhone").html(d);
+                                window.phoneDrown = !0;
+                                postCallEvent(e, c)
+                            }
+                        }
+                );
+
+
+                $.ajax({
+                    url: "demo_test.txt", success: function (result) {
+                        $("#div1").html(result);
+                    }
+                });
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div>
+
+<button>Get External Content</button>
+
+</body>
+</html>

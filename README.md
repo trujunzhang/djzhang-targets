@@ -1,1 +1,1 @@
-# djzhang-targets
+# scrapy-targets
