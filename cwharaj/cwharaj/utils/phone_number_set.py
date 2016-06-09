@@ -40,7 +40,6 @@ class PhoneNumberSet(object):
 
         if row:
             logging.debug("  2. row exist in the dict: {}".format(row["url"]))
-
             return row["phone_number_base64"]
 
         logging.debug("  3. not found row from model_id: {}".format(model_id))
