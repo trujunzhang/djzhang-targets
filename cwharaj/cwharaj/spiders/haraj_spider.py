@@ -35,7 +35,7 @@ class HarajsSpider(scrapy.Spider):
                                                      mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                      )
 
-    # This methond is entry point
+    # This is entry point
     def parse(self, response):
         # step 1: request the last row on the cache database
         _ajax_url = self.get_valid_url("")
