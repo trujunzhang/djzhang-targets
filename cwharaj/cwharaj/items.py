@@ -47,8 +47,6 @@ class CacheItem(scrapy.Item):
     guid = scrapy.Field()
     created_at = scrapy.Field()
 
-    milliseconds = scrapy.Field()
-
     # unique row id
     model_id = scrapy.Field()
     # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)

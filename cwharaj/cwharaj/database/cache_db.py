@@ -18,11 +18,10 @@ class CacheDatabase(BaseDatabase):
         item["url"] = url
         item["guid"] = guid
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
-        item["milliseconds"] = datetime.now().strftime("%s")
 
         if not self.check_exist(url):
             self.db[self.collection_name].insert(dict(item))
-            logging.debug("HarajCache added to MongoDB database!")
+            logging.debug("cache for {} added to MongoDB database!".format(item["url_from"]))
 
     def get_oldest_row(self, _last=""):
         logging.debug("Get oldest row:")
