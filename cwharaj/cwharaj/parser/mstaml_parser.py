@@ -34,7 +34,7 @@ class MstamlParse(BaseParser):
 
             item = CacheItem(
                 model_id=model_id,
-                url_from=WebsiteTypes.opensooq.value,
+                url_from=WebsiteTypes.mstaml.value,
             )
 
             cache_db.process_item(href, item)
