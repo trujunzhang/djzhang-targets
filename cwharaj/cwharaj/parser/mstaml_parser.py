@@ -15,10 +15,10 @@ class MstamlParse(BaseParser):
         count = 1
         for link in links:
             Li_selector = '//*[@class="center mb10"]/div[' + str(count) + ']'
-
             div_class_selector = '//*[@class="center mb10"]/div[' + str(count) + ']/@class'
 
             count += 1
+
             class_name = self.get_value_from_response(hxs, div_class_selector)
             # This div is empty line, such as "<div id="item2072286" class="none"></div>"
             if class_name == "none":

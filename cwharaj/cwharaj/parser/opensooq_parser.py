@@ -15,6 +15,7 @@ class OpensooqParse(BaseParser):
         count = 1
         for link in links:
             Li_selector = '//*[@id="gridPostListing"]/li[' + str(count) + ']'
+
             count += 1
 
             href = self.get_value_from_response_with_urljoin(hxs,
