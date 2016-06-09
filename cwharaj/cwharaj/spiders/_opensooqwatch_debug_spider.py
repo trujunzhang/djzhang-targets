@@ -5,10 +5,9 @@ import scrapy
 
 
 class HarajsDebugWatchSpider(scrapy.Spider):
-    name = "harajwatch_debug"
+    name = "opensooqwatch_debug"
     allowed_domains = [
         "https://sa.opensooq.com/",
-        'http://www.mstaml.com'
     ]
     start_urls = [
         # ================
@@ -25,11 +24,6 @@ class HarajsDebugWatchSpider(scrapy.Spider):
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=42552861&model_type=post',
         # 'https://sa.opensooq.com/ar/search/42552861/%D9%85%D9%86%D8%B8%D9%88%D9%85%D8%A9-%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA-%D9%84%D9%84%D8%A7%D8%B3%D9%88%D8%A7%D9%82-%D9%88%D8%A7%D9%84%D9%85%D8%AD%D9%84%D8%A7%D8%AA'
 
-        # ================
-        # ** mstaml **
-        # ================
-        # paginate
-        'http://www.mstaml.com/market/?t=0&l=0&d=0&x=&u=&o=3',
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -53,13 +47,7 @@ class HarajsDebugWatchSpider(scrapy.Spider):
                                                                mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                                )
 
-    def parse(self, response):
-        self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._mstaml_Parse.parse(response.url, response)
-        # yield item
-        # _row = self._cache_db.get_last_row("")
-
-    def parse_xxx(self, response):
+    def parse_(self, response):
         # self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
         item = self._opensooq_parser.parse(response.url, response)
         # yield item

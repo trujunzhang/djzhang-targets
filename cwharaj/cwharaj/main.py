@@ -11,12 +11,18 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    utils.execute("haraj")
+    # utils.execute("haraj")
     # utils.execute('harajwatch')
 
+    # ===============
+    # test
+    # ===============
     # utils.execute("opensooq_debug")
-    # utils.execute("opensooq_debug")
-    # utils.execute('harajwatch_debug')
+    # ===============
+    # watch
+    # ===============
+    # utils.execute('opensooqwatch_debug')
+    utils.execute("mstamlwatch_debug")
 
 
 if __name__ == '__main__':
