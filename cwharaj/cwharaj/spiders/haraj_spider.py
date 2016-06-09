@@ -54,7 +54,7 @@ class HarajsSpider(scrapy.Spider):
         _row = self._cache_db.get_oldest_row(_last)
         if _row:
             model_id = self._cache_db.get_row_model_id(_row)
-            if not self.phone_dict.check_exist(model_id):
+            if model_id:
                 self.phone_dict.add_row(model_id, _row)
 
                 # First of all, get the phone number base64 of the page.
