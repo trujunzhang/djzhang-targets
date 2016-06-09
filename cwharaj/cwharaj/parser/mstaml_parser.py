@@ -24,7 +24,8 @@ class MstamlParse(BaseParser):
             if class_name == "none":
                 continue
 
-            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href', url)
+            # hxs.xpath('//*[@class="center mb10 "]/div[1]/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
+            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist(href):
