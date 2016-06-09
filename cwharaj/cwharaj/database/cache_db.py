@@ -29,19 +29,25 @@ class CacheDatabase(BaseDatabase):
         logging.debug("  1. the last url: {}".format(_last))
 
         if _last:
-            count = self.db[self.collection_name].count({'url': _last})
-            logging.debug("  2. found the deleted item count: {}".format(count))
+            model_id = CrawlUtils.get_model_id_from_page_url(_last)
+            logging.debug("  2. get the last url's model_id: {}".format(model_id))
+
+            deleted_dict = {'model_id': model_id}
+
+            count = self.db[self.collection_name].count(deleted_dict)
+            logging.debug("  3. found the deleted item count: {}".format(count))
             if count:
-                result = self.db[self.collection_name].delete_one({'url': _last})
-                logging.debug("  3. deleted cache row url: {}, deleted count: {}".format(_last, result.deleted_count))
+                result = self.db[self.collection_name].delete_one(deleted_dict)
+                logging.debug(
+                    "  4. deleted cache row, model_id: {}, deleted count: {}".format(model_id, result.deleted_count))
 
         cursor = self.db[self.collection_name].find().sort([("created_at", pymongo.ASCENDING)])
-        logging.debug("  4. current Cache items count: {}".format(cursor.count()))
+        logging.debug("  5. current Cache items count: {}".format(cursor.count()))
 
         row = None
         if cursor.count():
             row = cursor.next()
-            logging.debug("  5. found the oldest row sucessfully: {}".format(row['url']))
+            logging.debug("  6. found the oldest row sucessfully: {}".format(row['url']))
 
         cursor.close()
 
