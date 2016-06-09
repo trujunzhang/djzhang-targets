@@ -4,7 +4,7 @@ from random import Random
 import scrapy
 
 
-class HarajsDebugWatchSpider(scrapy.Spider):
+class OpensooqDebugWatchSpider(scrapy.Spider):
     name = "opensooqwatch_debug"
     allowed_domains = [
         "https://sa.opensooq.com/",
@@ -35,14 +35,11 @@ class HarajsDebugWatchSpider(scrapy.Spider):
         from cwharaj.parser.opensooq_parser import OpensooqParse
         self._opensooq_parser = OpensooqParse()
 
-        from cwharaj.parser.mstaml_parser import MstamlParse
-        self._mstaml_Parse = MstamlParse()
-
-        super(HarajsDebugWatchSpider, self).__init__(name, **kwargs)
+        super(OpensooqDebugWatchSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(HarajsDebugWatchSpider, cls).from_crawler(crawler,
+        return super(OpensooqDebugWatchSpider, cls).from_crawler(crawler,
                                                                args,
                                                                mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                                )

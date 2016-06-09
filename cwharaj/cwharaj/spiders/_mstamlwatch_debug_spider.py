@@ -4,7 +4,7 @@ from random import Random
 import scrapy
 
 
-class HarajsDebugWatchSpider(scrapy.Spider):
+class MstamlDebugWatchSpider(scrapy.Spider):
     name = "mstamlwatch_debug"
     allowed_domains = [
         "https://sa.opensooq.com/",
@@ -26,17 +26,14 @@ class HarajsDebugWatchSpider(scrapy.Spider):
         self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['mongo_uri'])
         self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['mongo_uri'])
 
-        from cwharaj.parser.opensooq_parser import OpensooqParse
-        self._opensooq_parser = OpensooqParse()
-
         from cwharaj.parser.mstaml_parser import MstamlParse
         self._mstaml_Parse = MstamlParse()
 
-        super(HarajsDebugWatchSpider, self).__init__(name, **kwargs)
+        super(MstamlDebugWatchSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(HarajsDebugWatchSpider, cls).from_crawler(crawler,
+        return super(MstamlDebugWatchSpider, cls).from_crawler(crawler,
                                                                args,
                                                                mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                                )
@@ -46,4 +43,3 @@ class HarajsDebugWatchSpider(scrapy.Spider):
         # item = self._mstaml_Parse.parse(response.url, response)
         # yield item
         # _row = self._cache_db.get_last_row("")
-
