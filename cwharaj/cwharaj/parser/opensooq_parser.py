@@ -21,7 +21,7 @@ class OpensooqParse(BaseParser):
                                                              Li_selector + '/div/div[@class="rectLiDetails"]/h3/a/@href',
                                                              url)
 
-            # If the link already exist on the histroy database,ignore it.
+            # If the link already exist on the history database,ignore it.
             if history_db.check_exist(href):
                 continue
 

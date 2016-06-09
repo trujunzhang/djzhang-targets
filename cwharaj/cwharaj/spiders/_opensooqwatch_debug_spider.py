@@ -14,7 +14,7 @@ class HarajsDebugWatchSpider(scrapy.Spider):
         # ** opensooq **
         # ================
         # paginate
-        # 'https://sa.opensooq.com/ar/find?term=&cat_id=&scid=&city=&allposts_cb=true&allposts=no&price_from=&price_to=&page=1',
+        'https://sa.opensooq.com/ar/find?term=&cat_id=&scid=&city=&allposts_cb=true&allposts=no&price_from=&price_to=&page=1',
         # ajax
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=42946557&model_type=post'
         # detail
@@ -48,7 +48,7 @@ class HarajsDebugWatchSpider(scrapy.Spider):
                                                                )
 
     def parse_(self, response):
-        # self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._opensooq_parser.parse(response.url, response)
+        self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._opensooq_parser.parse(response.url, response)
         # yield item
         # _row = self._cache_db.get_last_row("")
