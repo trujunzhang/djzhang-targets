@@ -14,12 +14,15 @@ class PhoneNumberSet(object):
 
     def get_page_url_from_ajax_url(self, _ajax_url, _phone_number_base64):
         logging.debug("Get page url from ajax url:")
+
         model_id = CrawlUtils.get_model_id_from_phone_number_url(_ajax_url)
         logging.debug("  1. model_id: {}".format(model_id))
+
         if model_id:
             row = self.dict[model_id]
             if row:
                 logging.debug("  2. row in the dict: {}".format(row["url"]))
+
                 row["phone_number_base64"] = _phone_number_base64
                 return row["url"]
 
