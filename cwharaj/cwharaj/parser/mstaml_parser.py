@@ -1,66 +1,83 @@
-from cwharaj.items import Haraj
+from cwharaj.items import Haraj, CacheItem, WebsiteTypes
 from cwharaj.parser.base_parser import BaseParser
 
-import urlparse
+import time
 
 
 class MstamlParse(BaseParser):
     def __init__(self):
         super(MstamlParse, self).__init__()
 
-    def parse(self, url, hxs):
-
-        cluster = self.get_value_from_response(hxs, '// a[ @class = "document-subtitle primary"]/@href', 0)
-        cluster = urlparse.urljoin(url, cluster.strip())
-
-        category = self.get_value_from_response(hxs, '// a[ @class = "document-subtitle category"]/@href', 0)
-        category = urlparse.urljoin(url, category.strip())
-
-        price = self.get_value_from_response(hxs,
-                                             '//div[@class="details-actions"]/span/span/button[@data-uitype="200"]/span[2]/text()',
-                                             0)
-
-        _thumbnail_url = self.get_value_from_response(hxs, '//div[@class="cover-container"]/img/@src', 0)
-        _scheme = urlparse.urlparse(_thumbnail_url).scheme
-        thumbnail = _thumbnail_url
-        if not _scheme:
-            thumbnail = "https:" + _thumbnail_url
-
-        title = self.get_value_from_response(hxs,
-                                             '//div[@class="info-container"]/div[@class="document-title"]/div[@class="id-app-title"]/text()',
-                                             0)
-        reviewsNum = self.get_value_from_response(hxs, '//span[@class="reviews-num"]/text()', 0)
-
-        datePublished = self.get_value_from_response(hxs, '//div[@itemprop="datePublished"]/text()', 0)
-
-        website = ""
-        email = ""
-        linksSelect = '//a[@class ="dev-link"]'
-        links = hxs.xpath(linksSelect)
-        count = 0
+    # Here,we store items from newest to oldest.
+    # then fetch the first item from the databse become the oldest.
+    def parse_paginate(self, url, hxs, cache_db, history_db):
+        links = hxs.xpath('//*[@id="gridPostListing"]/li')
+        count = 1
         for link in links:
-            _href = link.xpath(linksSelect + '/@href')[count].extract()
-            if "mailto" in _href:
-                email = self.get_value_from_response(hxs, linksSelect + '/@href', count).replace("mailto:", "")
-            elif "https://www.google.com" in _href:
-                website = self.get_value_from_response(hxs, linksSelect + '/@href', count)
+            Li_selector = '//*[@id="gridPostListing"]/li[' + str(count) + ']'
             count += 1
 
-        address = self.get_value_from_response(hxs, '//div[@class="content physical-address"]/text()', 0).replace("\n",
-                                                                                                                  "")
+            href = self.get_value_from_response_with_urljoin(hxs,
+                                                             Li_selector + '/div/div[@class="rectLiDetails"]/h3/a/@href',
+                                                             url)
+
+            # If the link already exist on the history database,ignore it.
+            if history_db.check_exist(href):
+                continue
+
+            model_id = hxs.xpath(Li_selector + '/div[@class="searchItem"]/@id')[0].extract()
+            # u'postList-42229013'
+            model_id = model_id.replace("postList-", "")
+
+            item = CacheItem(
+                model_id=model_id,
+                url_from=WebsiteTypes.opensooq.value,
+            )
+
+            cache_db.process_item(href, item)
+            # here, must sleep a second.
+            time.sleep(1)
+
+    def parse(self, url, hxs):
+
+        _id = ""
+        _city = self.get_value_from_response(hxs,
+                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()', 0)
+        _time = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()', 0)
+        _title = self.get_value_from_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()', 0)
+        _pictures = hxs.xpath('//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src').extract()
+        _subject = ""
+        _contact = ""
+        _number = ""
+        _address = self.get_value_from_response(hxs,
+                                                '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/span/text()',
+                                                0)
+        _memberName = self.get_value_from_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()', 0)
+        _description = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
+        _section = self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]/li[2]/span/a/text()', 0)
+
+        # Replace "\n","\r"
+        _city = _city.strip()
+        _time = _time.replace("\n", "").replace("\r", "").strip()
+        _title = _title.replace("\n", "").replace("\r", "").strip()
+        _address = _address.replace("\n", "").replace("\r", "").strip()
+        _memberName = _memberName.strip()
 
         item = Haraj(
             url=url,
-            cluster=cluster,
-            category=category,
-            price=price,
-            thumbnail=thumbnail,
-            title=title,
-            reviewsNum=reviewsNum,
-            datePublished=datePublished,
-            website=website,
-            email=email,
-            address=address,
+            ID=_id,
+            city=_city,
+            time=_time,
+            title=_title,
+            pictures=_pictures,
+            subject=_subject,
+            contact=_contact,
+            number=_number,
+
+            address=_address,
+            memberName=_memberName,
+            description=_description,
+            section=_section
         )
 
         return item
