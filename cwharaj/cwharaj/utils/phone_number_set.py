@@ -50,5 +50,11 @@ class PhoneNumberSet(object):
         return False
 
     def remove_row(self, model_id):
+        logging.debug("Remove row from dict:")
+
+        logging.debug("  1. model_id: {}".format(model_id))
+
         if self.check_exist(model_id):
+            logging.debug("  2. row exist in the dict.")
             del self.dict[model_id]
+            logging.debug("  3. deleted the row sucessfully: {}".format(model_id))
