@@ -30,3 +30,12 @@ class BaseParser(object):
             value += line.extract()
 
         return value
+
+    @classmethod
+    def get_images_from_noscript(self, hxs, index=0, ):
+        noscript_images = self.get_value_from_response(hxs, '//noscript', index=index)
+
+        from BeautifulSoup import BeautifulSoup
+        soup = BeautifulSoup(noscript_images)
+
+        images = soup.findAll('img')

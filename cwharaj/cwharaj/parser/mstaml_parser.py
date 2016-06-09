@@ -53,17 +53,7 @@ class MstamlParse(BaseParser):
                                              '//*[@class="boxItem"]/table[3]/tbody/tr/td[@class="xLeft w35p "]/*[@class="dateSwitch arDTI-js arDTWZT-js"]/@title')
         _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
-        noscript_images = hxs.xpath('//noscript')[0].extract()
-
-        from BeautifulSoup import BeautifulSoup
-        soup = BeautifulSoup(noscript_images)
-
-        images = soup.findAll('img')
-
-        matches = re.search('src="([^"]+)"', noscript_images)
-        print(matches[0])
-
-        _pictures = matches
+        _pictures = self.get_images_from_noscript(hxs)
         _subject = ""
         _contact = ""
         _number = ""
