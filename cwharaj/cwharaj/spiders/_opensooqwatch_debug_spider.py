@@ -22,8 +22,8 @@ class OpensooqDebugWatchSpider(scrapy.Spider):
         self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['mongo_uri'])
         self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['mongo_uri'])
 
-        from cwharaj.parser.mstaml_parser import MstamlParse
-        self._mstaml_Parse = MstamlParse()
+        from cwharaj.parser.opensooq_parser import OpensooqParse
+        self.opensooq_parse = OpensooqParse()
 
         super(OpensooqDebugWatchSpider, self).__init__(name, **kwargs)
 
@@ -35,7 +35,7 @@ class OpensooqDebugWatchSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._mstaml_Parse.parse(response.url, response)
+        self.opensooq_parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self.opensooq_parse.parse(response.url, response)
         # yield item
         # _row = self._cache_db.get_last_row("")
