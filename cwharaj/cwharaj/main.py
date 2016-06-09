@@ -17,11 +17,11 @@ def main():
     # ===============
     # test
     # ===============
-    utils.execute("opensooq_debug")
+    # utils.execute("opensooq_debug")
     # ===============
     # watch
     # ===============
-    # utils.execute('opensooqwatch_debug')
+    utils.execute('opensooqwatch_debug')
     # utils.execute("mstamlwatch_debug")
 
 
