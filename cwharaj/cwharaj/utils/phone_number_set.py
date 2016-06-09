@@ -21,19 +21,26 @@ class PhoneNumberSet(object):
         if model_id:
             row = self.dict[model_id]
             if row:
-                logging.debug("  2. row in the dict: {}".format(row["url"]))
+                logging.debug("  2. row exist in the dict: {}".format(row["url"]))
 
                 row["phone_number_base64"] = _phone_number_base64
                 return row["url"]
 
-        logging.debug("  3. not found row failure from ajax: {}".format(_ajax_url))
+        logging.debug("  3. not found row  from ajax: {}".format(_ajax_url))
         return None
 
     def get_phone_number_base64(self, model_id):
+        logging.debug("Get phone number base64 from dict:")
+
         row = self.dict[model_id]
+        logging.debug("  1. model_id: {}".format(model_id))
+
         if row:
+            logging.debug("  2. row exist in the dict: {}".format(row["url"]))
+
             return row["phone_number_base64"]
 
+        logging.debug("  3. not found row from model_id: {}".format(model_id))
         return None
 
     def check_exist(self, model_id):
