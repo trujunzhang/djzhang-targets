@@ -64,6 +64,9 @@ class HarajsSpider(scrapy.Spider):
 
         return None
 
+    # ====================================================================================
+    # opensooq
+    # ====================================================================================
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
         _page_url = self.phone_dict.get_page_url_from_ajax_url(response.url, _phone_number_base64)
