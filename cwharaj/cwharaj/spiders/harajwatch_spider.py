@@ -36,7 +36,7 @@ class HarajsSpiderWatch(scrapy.Spider):
                                                      mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                      )
 
-    # This methond is entry point
+        # This methond is entry point
     def parse(self, response):
         # Here, 3 website need to fetch again and again(Through 24X7, full-time)
         yield scrapy.Request(self.url_from_opensooq, callback=self.parse_pagination_from_opensooq, dont_filter=True)
