@@ -37,7 +37,7 @@ class HarajsSpider(scrapy.Spider):
 
     # This methond is entry point
     def parse(self, response):
-        # step 3: request the last row on the cache database
+        # step 1: request the last row on the cache database
         _ajax_url = self.get_valid_url("")
         if _ajax_url:
             yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
