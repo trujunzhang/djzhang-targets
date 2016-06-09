@@ -42,7 +42,7 @@ class CacheDatabase(BaseDatabase):
                     "  4. deleted cache row, model_id: {}, deleted count: {}".format(model_id, result.deleted_count))
 
         cursor = self.db[self.collection_name].find().sort([("created_at", pymongo.ASCENDING)])
-        logging.debug("  5. current Cache items count: {}".format(cursor.count()))
+        logging.debug("  5. current cache items count: {}".format(cursor.count()))
 
         row = None
         if cursor.count():
