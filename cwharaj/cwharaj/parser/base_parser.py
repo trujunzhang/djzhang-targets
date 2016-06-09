@@ -16,7 +16,7 @@ class BaseParser(object):
         href = urlparse.urljoin(base, href.strip())
         return href
 
-    def get_value_from_response(self, hxs, query, index, default=""):
+    def get_value_from_response(self, hxs, query, index=0, default=""):
         _list = hxs.xpath(query)
         if len(_list) > index:
             value = _list[index].extract()

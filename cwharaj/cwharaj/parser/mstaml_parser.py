@@ -11,23 +11,26 @@ class MstamlParse(BaseParser):
     # Here,we store items from newest to oldest.
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        links = hxs.xpath('//*[@id="gridPostListing"]/li')
+        links = hxs.xpath('//*[@class="center mb10"]/div')
         count = 1
         for link in links:
-            Li_selector = '//*[@id="gridPostListing"]/li[' + str(count) + ']'
-            count += 1
+            Li_selector = '//*[@class="center mb10"]/div[' + str(count) + ']'
 
-            href = self.get_value_from_response_with_urljoin(hxs,
-                                                             Li_selector + '/div/div[@class="rectLiDetails"]/h3/a/@href',
-                                                             url)
+            div_class_selector = '//*[@class="center mb10"]/div[' + str(count) + ']/@class'
+
+            count += 1
+            class_name = self.get_value_from_response(hxs, div_class_selector)
+            # This div is empty line, such as "<div id="item2072286" class="none"></div>"
+            if class_name == "none":
+                continue
+
+            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href', url)
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist(href):
                 continue
 
-            model_id = hxs.xpath(Li_selector + '/div[@class="searchItem"]/@id')[0].extract()
-            # u'postList-42229013'
-            model_id = model_id.replace("postList-", "")
+            model_id = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
 
             item = CacheItem(
                 model_id=model_id,
