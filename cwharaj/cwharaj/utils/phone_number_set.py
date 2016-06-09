@@ -1,5 +1,7 @@
-import urlparse
 import logging
+
+from cwharaj.utils.crawl_utils import CrawlUtils
+
 
 class PhoneNumberSet(object):
     def __init__(self):
@@ -11,7 +13,9 @@ class PhoneNumberSet(object):
         logging.debug("Get ajax url and added to dict for {}".format(model_id))
 
     def get_page_url_from_ajax_url(self, _ajax_url, _phone_number_base64):
-        model_id = urlparse.parse_qs(urlparse.urlparse(_ajax_url).query)['model_id'][0]
+        logging.debug("Get page url from ajax url:")
+        model_id = CrawlUtils.get_model_id_from_phone_number_url(_ajax_url)
+        logging.debug("  1. model_id: {}".format(model_id))
         if model_id:
             row = self.dict[model_id]
             if row:
