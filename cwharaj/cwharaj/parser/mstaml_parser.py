@@ -50,6 +50,8 @@ class MstamlParse(BaseParser):
         _time = self.get_value_from_response(hxs,
                                              '//*[@class="boxItem"]/table[3]/tbody/tr/td[@class="xLeft w35p "]/*[@class="dateSwitch arDTI-js arDTWZT-js"]/@title')
         _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
+
+        _pictures = hxs.xpath('//noscript')[0].extract()
         _pictures = hxs.xpath('//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src').extract()
         _subject = ""
         _contact = ""
