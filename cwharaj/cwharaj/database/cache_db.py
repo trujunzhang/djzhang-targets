@@ -26,9 +26,11 @@ class CacheDatabase(BaseDatabase):
 
     def get_last_row(self, _last=""):
         if _last:
-            self.db[self.collection_name].delete_one({'url': _last})
+            deleted_count = self.db[self.collection_name].delete_one({'url': _last})
+            logging.debug("Deleted cache: {}, the result: {}".format(_last, deleted_count))
 
         cursor = self.db[self.collection_name].find().sort([("created_at", pymongo.ASCENDING)])
+        logging.debug("Current Cache items count: {}".format(cursor.count()))
 
         row = None
         if cursor.count():
