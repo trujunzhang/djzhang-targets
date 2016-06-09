@@ -51,7 +51,7 @@ class HarajsSpider(scrapy.Spider):
             _ajax_url = self._get_ajax_url(_last)
             if _ajax_url:
 
-                if self.step % 1000 == 0:
+                if self.step % 100 == 0:
                     return _ajax_url
 
             time.sleep(4)
