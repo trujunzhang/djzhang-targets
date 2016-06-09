@@ -21,7 +21,7 @@ class CacheDatabase(BaseDatabase):
 
         if not self.check_exist(url):
             self.db[self.collection_name].insert(dict(item))
-            logging.debug("cache for {} added to MongoDB database!".format(item["url_from"]))
+            logging.debug("cache for {}, added to MongoDB database!".format(item["url_from"]))
 
     def get_oldest_row(self, _last=""):
         logging.debug("Get oldest row:")
