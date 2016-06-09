@@ -14,8 +14,6 @@ class HarajsSpider(scrapy.Spider):
         'https://sa.opensooq.com',
     ]
 
-    step = 0
-
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, DatabaseTypes
 
@@ -45,14 +43,10 @@ class HarajsSpider(scrapy.Spider):
             yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
 
     def get_valid_url(self, _last):
-        self.step += 1
-
         while True:
             _ajax_url = self._get_ajax_url(_last)
             if _ajax_url:
-
-                if self.step % 100 == 0:
-                    return _ajax_url
+                return _ajax_url
 
             time.sleep(4)
 
