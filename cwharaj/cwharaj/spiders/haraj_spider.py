@@ -3,6 +3,8 @@ import scrapy
 import logging
 import time
 
+from cwharaj.utils.crawl_utils import CrawlUtils
+
 
 class HarajsSpider(scrapy.Spider):
     name = "haraj"
@@ -69,8 +71,7 @@ class HarajsSpider(scrapy.Spider):
         yield scrapy.Request(_page_url, callback=self.parse_page_from_opensooq, dont_filter=True)
 
     def parse_page_from_opensooq(self, response):
-        from urlparse import urlparse
-        model_id = urlparse(response.url).path.split('/')[3]
+        model_id = CrawlUtils.get_model_id_from_page_url(response.url)
 
         item = self._opensooq_parser.parse(response.url, response)
         item["ID"] = model_id
