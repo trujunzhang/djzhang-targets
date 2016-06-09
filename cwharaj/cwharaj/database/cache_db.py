@@ -24,10 +24,10 @@ class CacheDatabase(BaseDatabase):
             self.db[self.collection_name].insert(dict(item))
             logging.debug("HarajCache added to MongoDB database!")
 
-    def get_last_row(self, _last=""):
+    def get_oldest_row(self, _last=""):
         if _last:
-            deleted_count = self.db[self.collection_name].delete_one({'url': _last})
-            logging.debug("Deleted cache: {}, the result: {}".format(_last, deleted_count))
+            result = self.db[self.collection_name].delete_one({'url': _last})
+            logging.debug("Deleted cache row url: {}, deleted count: {}".format(_last, result.deleted_count))
 
         cursor = self.db[self.collection_name].find().sort([("created_at", pymongo.ASCENDING)])
         logging.debug("Current Cache items count: {}".format(cursor.count()))

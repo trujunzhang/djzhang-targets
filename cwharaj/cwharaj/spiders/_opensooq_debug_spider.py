@@ -59,7 +59,7 @@ class OpensooqDebugSpider(scrapy.Spider):
         #     yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
 
     def get_ajax_url(self, _last):
-        _row = self._cache_db.get_last_row(_last)
+        _row = self._cache_db.get_oldest_row(_last)
         if _row:
             model_id = self._cache_db.get_row_model_id(_row)
             if not self.phone_dict.check_exist(model_id):
