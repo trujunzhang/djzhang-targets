@@ -1,14 +1,5 @@
 # -*- coding: utf-8 -*-
-from random import Random
-
 import scrapy
-from scrapy.selector import Selector, HtmlXPathSelector
-from scrapy_webdriver.http import WebdriverRequest
-from cwharaj.items import Haraj
-import urlparse
-
-from cwharaj.utils.crawl_utils import CrawlUtils
-
 
 class OpensooqDebugSpider(scrapy.Spider):
     name = "opensooq_debug"
