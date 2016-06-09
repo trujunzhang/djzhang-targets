@@ -1,5 +1,5 @@
 import urlparse
-
+import logging
 
 class PhoneNumberSet(object):
     def __init__(self):
@@ -8,6 +8,7 @@ class PhoneNumberSet(object):
 
     def add_row(self, model_id, row):
         self.dict[model_id] = row
+        logging.debug("Get ajax url and added to dict for {}".format(model_id))
 
     def get_page_url_from_ajax_url(self, _ajax_url, _phone_number_base64):
         model_id = urlparse.parse_qs(urlparse.urlparse(_ajax_url).query)['model_id'][0]
