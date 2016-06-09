@@ -1,14 +1,6 @@
 # -*- coding: utf-8 -*-
-from random import Random
-
 import scrapy
-from scrapy.selector import Selector, HtmlXPathSelector
-from scrapy_webdriver.http import WebdriverRequest
-# yield WebdriverRequest(_url, callback=self.parse_category_full_page)
-from cwharaj.items import Haraj
-import urlparse
-
-from cwharaj.utils.crawl_utils import CrawlUtils
+import logging
 import time
 
 
@@ -62,7 +54,7 @@ class HarajsSpider(scrapy.Spider):
             model_id = self._cache_db.get_row_model_id(_row)
             if not self.phone_dict.check_exist(model_id):
                 self.phone_dict.add_row(model_id, _row)
-
+                logging.debug("Get ajax url and added to dict for {}".format(model_id))
                 # First of all, get the phone number base64 of the page.
                 _ajax_url = "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(
                     model_id)

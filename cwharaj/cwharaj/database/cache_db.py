@@ -3,7 +3,7 @@ import pymongo
 from cwharaj.database.base_db import BaseDatabase
 
 import logging
-from datetime import datetime, time
+from datetime import datetime
 
 from cwharaj.utils.crawl_utils import CrawlUtils
 
