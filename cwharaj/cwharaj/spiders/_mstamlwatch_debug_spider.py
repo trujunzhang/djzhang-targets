@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from random import Random
-
 import scrapy
 
 
@@ -12,10 +10,6 @@ class MstamlDebugWatchSpider(scrapy.Spider):
     ]
 
     start_urls = [
-
-        # ================
-        # ** mstaml **
-        # ================
         # paginate
         'http://www.mstaml.com/market/?t=0&l=0&d=0&x=&u=&o=3',
     ]
