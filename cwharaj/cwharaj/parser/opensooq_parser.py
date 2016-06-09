@@ -40,7 +40,6 @@ class OpensooqParse(BaseParser):
             time.sleep(1)
 
     def parse(self, url, hxs):
-        _id = ""
         _city = self.get_value_from_response(hxs,
                                              '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
         _time = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
@@ -64,7 +63,6 @@ class OpensooqParse(BaseParser):
 
         item = Haraj(
             url=url,
-            ID=_id,
             city=_city,
             time=_time,
             title=_title,

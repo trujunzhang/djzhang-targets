@@ -46,9 +46,10 @@ class MstamlParse(BaseParser):
 
         _id = ""
         _city = self.get_value_from_response(hxs,
-                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
-        _time = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
-        _title = self.get_value_from_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
+                                             '//*[@class="boxItem"]/table[3]/tbody/tr/td[@class="xRight w35p"]/a/text()')
+        _time = self.get_value_from_response(hxs,
+                                             '//*[@class="boxItem"]/table[3]/tbody/tr/td[@class="xLeft w35p "]/*[@class="dateSwitch arDTI-js arDTWZT-js"]/@title')
+        _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
         _pictures = hxs.xpath('//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src').extract()
         _subject = ""
         _contact = ""
