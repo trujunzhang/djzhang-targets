@@ -45,7 +45,7 @@ class OpensooqDebugWatchSpider(scrapy.Spider):
                                                                )
 
     def parse_(self, response):
-        self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
         # item = self._opensooq_parser.parse(response.url, response)
         # yield item
-        # _row = self._cache_db.get_last_row("")
+        _row = self._cache_db.get_last_row("")
