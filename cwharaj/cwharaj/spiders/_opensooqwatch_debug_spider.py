@@ -14,7 +14,7 @@ class OpensooqDebugWatchSpider(scrapy.Spider):
         # ** opensooq **
         # ================
         # paginate
-        'https://sa.opensooq.com/ar/find?term=&cat_id=&scid=&city=&allposts_cb=true&allposts=no&price_from=&price_to=&page=1',
+        'https://sa.opensooq.com/ar/find?term=&cat_id=&scid=&city=&allposts_cb=true&allposts=no&price_from=&price_to=&page=1'
         # ajax
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=42946557&model_type=post'
         # detail
