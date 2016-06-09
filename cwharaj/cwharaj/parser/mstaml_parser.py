@@ -1,3 +1,5 @@
+import re
+
 from cwharaj.items import Haraj, CacheItem, WebsiteTypes
 from cwharaj.parser.base_parser import BaseParser
 
@@ -51,8 +53,17 @@ class MstamlParse(BaseParser):
                                              '//*[@class="boxItem"]/table[3]/tbody/tr/td[@class="xLeft w35p "]/*[@class="dateSwitch arDTI-js arDTWZT-js"]/@title')
         _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
-        _pictures = hxs.xpath('//noscript')[0].extract()
-        _pictures = hxs.xpath('//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src').extract()
+        noscript_images = hxs.xpath('//noscript')[0].extract()
+
+        from BeautifulSoup import BeautifulSoup
+        soup = BeautifulSoup(noscript_images)
+
+        images = soup.findAll('img')
+
+        matches = re.search('src="([^"]+)"', noscript_images)
+        print(matches[0])
+
+        _pictures = matches
         _subject = ""
         _contact = ""
         _number = ""
