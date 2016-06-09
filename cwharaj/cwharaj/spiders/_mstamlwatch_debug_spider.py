@@ -11,7 +11,9 @@ class MstamlDebugWatchSpider(scrapy.Spider):
 
     start_urls = [
         # paginate
-        'http://www.mstaml.com/market/?t=0&l=0&d=0&x=&u=&o=3',
+        # 'http://www.mstaml.com/market/?t=0&l=0&d=0&x=&u=&o=3',
+        # Details
+        'http://www.mstaml.com/2072283/%D8%B9%D8%B1%D9%88%D8%B6_%D8%AE%D8%A7%D8%B5%D8%A9_%D8%AC%D8%AF%D8%A7_%D9%85%D9%86_%D9%82%D9%85%D8%B1%D8%A9_%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%85_%D8%A7%D9%84%D8%A5%D8%AD%D8%AA%D9%81%D8%A7%D9%84%D8%A7%D8%AA_%D8%A8%D8%AC%D8%AF%D8%A9/'
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -33,7 +35,7 @@ class MstamlDebugWatchSpider(scrapy.Spider):
                                                                )
 
     def parse(self, response):
-        self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._mstaml_Parse.parse(response.url, response)
+        # self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        item = self._mstaml_Parse.parse(response.url, response)
         # yield item
         # _row = self._cache_db.get_last_row("")
