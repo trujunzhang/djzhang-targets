@@ -11,11 +11,11 @@ class MstamlParse(BaseParser):
     # Here,we store items from newest to oldest.
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        links = hxs.xpath('//*[@class="center mb10"]/div')
+        links = hxs.xpath('//*[@class="center mb10 "]/div')
         count = 1
         for link in links:
-            Li_selector = '//*[@class="center mb10"]/div[' + str(count) + ']'
-            div_class_selector = '//*[@class="center mb10"]/div[' + str(count) + ']/@class'
+            Li_selector = '//*[@class="center mb10 "]/div[' + str(count) + ']'
+            div_class_selector = '//*[@class="center mb10 "]/div[' + str(count) + ']/@class'
 
             count += 1
 
