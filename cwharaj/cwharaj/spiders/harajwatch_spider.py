@@ -65,5 +65,5 @@ class HarajsSpiderWatch(scrapy.Spider):
         # Step 1: parse all list items to the cache database.
         self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         # step 2: fetching the same pagination again.
-        logging.debug("Fetching the pagination from the mstaml again")
+        logging.debug("Fetching the pagination from the harajsa again")
         yield scrapy.Request(self.url_from_harajsa, callback=self.parse_pagination_from_harajsa, dont_filter=True)
