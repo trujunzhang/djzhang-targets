@@ -13,7 +13,7 @@ class CacheDatabase(BaseDatabase):
         super(CacheDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
 
     def process_item(self, url, item=None, index=0):
-        logging.debug("  process cache item at position: {}!".format(index - 1))
+        logging.debug("  process cache item at position: {}".format(index - 1))
 
         guid = CrawlUtils.get_guid(url)
 
@@ -21,9 +21,11 @@ class CacheDatabase(BaseDatabase):
         item["guid"] = guid
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
-        if not self.check_exist(url):
+        if self.check_exist(url):
+            logging.debug("  cache exist {} on the cache database".format(url))
+        else:
             self.db[self.collection_name].insert(dict(item))
-            logging.debug("  cache for {}, added to MongoDB database!".format(item["url_from"]))
+            logging.debug("  cache for {}, added to database".format(item["url_from"]))
 
     def get_oldest_row(self, _last=""):
         logging.debug("Get oldest row:")

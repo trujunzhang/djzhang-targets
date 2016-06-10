@@ -35,7 +35,7 @@ class ItemDatabase(BaseDatabase):
 
         if valid:
             self.db[self.collection_name].insert(dict(item))
-            logging.debug("Haraj added to MongoDB database!")
+            logging.debug("Haraj added to database.")
 
     @staticmethod
     def check_data_valid(item):

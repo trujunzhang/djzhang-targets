@@ -19,4 +19,4 @@ class HistoryDatabase(BaseDatabase):
         }
 
         self.db[self.collection_name].update_one({'guid': guid}, {'$set': dict(item)}, True)
-        logging.debug("HarajHistory added to MongoDB database!")
+        logging.debug("HarajHistory added to database!")
