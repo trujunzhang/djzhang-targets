@@ -25,7 +25,7 @@ class MstamlParse(BaseParser):
             class_name = self.get_value_from_response(hxs, div_class_selector)
             # This div is empty line, such as "<div id="item2072286" class="none"></div>"
             # This div is empty line, such as "<div id="item2072286" class="clear"></div>"
-            # Normal div is "class="boxDarkBody dw1 gWhite ui-corner-all mb20 mt20""
+            # valid div is "class="boxDarkBody dw1 gWhite ui-corner-all mb20 mt20""
             if len(class_name) <= 10:
                 continue
 
