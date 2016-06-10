@@ -88,7 +88,7 @@ class OpensooqParse(BaseParser):
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(section_panel)
 
-        _As = soup.findAll('a', {'itemprop': 'url'})
+        _As = soup.findAll('a', {'property': 'v:title'})
         sections = []
         for a in _As:
             sections.append(a.text)
