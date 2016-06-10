@@ -48,9 +48,9 @@ class MstamlParse(BaseParser):
 
         _id = ""
         _city = self.get_value_from_response(hxs,
-                                             '//*[@class="boxItem"]/table[3]/tr/td[@class="xRight w35p"]/a/text()')
+                                             '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
         _time = self.get_value_from_response(hxs,
-                                             '//*[@class="boxItem"]/table[1]/tr/td[@class="xLeft"]/span/text()')
+                                             '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
         _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
         _pictures = self.get_images_from_noscript(hxs)
@@ -58,11 +58,11 @@ class MstamlParse(BaseParser):
         _contact = ""
         _number = ""
         _address = self.get_value_from_response(hxs,
-                                                '//*[@class="boxItem"]/table[2]/tr/td[@class="xRight w35p"]/a/text()')
+                                                '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()') # ???
         _memberName = self.get_value_from_response(hxs,
-                                                   '//*[@class="boxItem"]/table[1]/tr/td[@class="xRight"]/b/text()')
-        _description = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
-        _section = self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]/li[2]/span/a/text()')
+                                                   '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
+        _description = self.get_all_value_from_response(hxs, '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
+        _section = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')
 
         # Replace "\n","\r"
         _city = _city.strip()
