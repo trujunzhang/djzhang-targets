@@ -50,8 +50,6 @@ class HarajSaParse(BaseParser):
 
         _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()')
 
-
-
         comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/font')
 
         from BeautifulSoup import BeautifulSoup
@@ -61,17 +59,16 @@ class HarajSaParse(BaseParser):
         _time = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
         _city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
 
-        _pictures = self.get_images_from_noscript(hxs)
+        _pictures = self.get_images_from_noscript(hxs, '//*[@itemprop="description"]')
         _subject = ""
         _contact = ""
-        _number = self.get_value_from_response(hxs,
-                                               '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
+        _number = self.get_value_from_response(hxs,'//*[@class="contact"]/strong/a/text()')
+
         _address = self.get_value_from_response(hxs,
                                                 '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
 
+        _description = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
 
-        _description = self.get_all_value_from_response(hxs,
-                                                        '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
         _section = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')
 
         item = Haraj(

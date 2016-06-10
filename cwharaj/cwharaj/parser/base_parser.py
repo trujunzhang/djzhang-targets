@@ -31,8 +31,8 @@ class BaseParser(object):
 
         return value
 
-    def get_images_from_noscript(self, hxs, index=0):
-        noscript_images = self.get_value_from_response(hxs, '//noscript', index=index)
+    def get_images_from_noscript(self, hxs, selector, index=0):
+        noscript_images = self.get_value_from_response(hxs, selector, index=index)
 
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(noscript_images)

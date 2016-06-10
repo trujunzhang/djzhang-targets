@@ -54,7 +54,7 @@ class MstamlParse(BaseParser):
                                              '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
         _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
-        _pictures = self.get_images_from_noscript(hxs)
+        _pictures = self.get_images_from_noscript(hxs,'//noscript')
         _subject = ""
         _contact = ""
         _number = self.get_value_from_response(hxs,
