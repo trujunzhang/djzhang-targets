@@ -65,11 +65,11 @@ class CacheDatabase(BaseDatabase):
         logging.debug("  2. the row is none?")
         return None
 
-    def get_row_model_id(self, row):
+    def get_row_id(self, row):
         logging.debug("Get model_id from the oldest row:")
         if row:
-            logging.debug("  1. the model_id: {}".format(row['model_id']))
-            return row['model_id']
+            logging.debug("  1. the model_id: {}".format(row['ID']))
+            return row['ID']
 
         logging.debug("  2. the row is none?")
         return None
