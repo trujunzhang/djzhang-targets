@@ -12,8 +12,6 @@ class HistoryDatabase(BaseDatabase):
         super(HistoryDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
 
     def process_item(self, url, item=None, index=0, id=-1):
-        guid = CrawlUtils.get_guid(url)
-
         item = HistoryItem(
             url=url,
             guid=CrawlUtils.get_guid(url),
