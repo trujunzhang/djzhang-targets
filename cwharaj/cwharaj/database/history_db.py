@@ -21,11 +21,5 @@ class HistoryDatabase(BaseDatabase):
             ID=id
         )
 
-        item = {
-            'url': url,
-            'guid': CrawlUtils.get_guid(url),
-            'created_at': datetime.utcnow().replace(microsecond=0).isoformat(' '),
-        }
-
-        self.db[self.collection_name].update_one({'guid': guid}, {'$set': dict(item)}, True)
+        self.db[self.collection_name].update_one({'ID': id}, {'$set': dict(item)}, True)
         logging.debug("HarajHistory added to database!")
