@@ -45,7 +45,7 @@ class MstamlParse(BaseParser):
 
             cache_db.process_item(href, item, count)
             # here, must sleep a second.
-            time.sleep(1)
+            # time.sleep(1)
 
     def parse(self, url, hxs):
         from cwharaj.utils.crawl_utils import CrawlUtils
