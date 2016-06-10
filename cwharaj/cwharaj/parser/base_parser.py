@@ -53,26 +53,24 @@ class BaseParser(object):
 
         # step 1: remove class called "comment_header"
         comment_header_string = comment_header_string.replace('<div class=" comment_header">', '')
+        comment_header_string = comment_header_string.replace("\n", "").replace("\r", "")
 
         # step 2: split it by "<br>", so we can get the first block.
         blocks = comment_header_string.split('<br>')
 
         # Basically, the length of blocks must be 3.
-        if not len(blocks) == 3:
-            return published_date
+        if len(blocks) == 3:
+            first_block = blocks[0]
 
-        first_block = blocks[0]
+            # Finally, remove all <a> blocks, that the result is the published date string.
+            from BeautifulSoup import BeautifulSoup
+            soup = BeautifulSoup(first_block)
 
-        # Finally, remove all <a> blocks, that the result is the published date string.
-        from BeautifulSoup import BeautifulSoup
-        soup = BeautifulSoup(first_block)
+            _As = soup.findAll('a')
 
-        _As = soup.findAll('a')
+            for a in _As:
+                a.replaceWith('')
 
-        for a in _As:
-            html_content = a.prettify()
-            first_block.replace(html_content, '')
-
-        published_date = first_block
+            published_date = soup.prettify()
 
         return published_date
