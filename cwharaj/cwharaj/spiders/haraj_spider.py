@@ -15,7 +15,6 @@ class HarajsSpider(scrapy.Spider):
         'https://haraj.com.sa',
     ]
     start_urls = [
-        # paginate
         'https://sa.opensooq.com',
     ]
 
