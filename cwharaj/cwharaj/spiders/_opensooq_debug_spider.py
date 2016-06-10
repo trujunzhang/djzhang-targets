@@ -41,7 +41,7 @@ class OpensooqDebugSpider(scrapy.Spider):
     def parse(self, response):
         # self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
         item = self._opensooq_parser.parse(response.url, response)
-        # yield item
+        yield item
         # _row = self._cache_db.get_last_row("")
 
         # step 3: request the last row on the cache database
