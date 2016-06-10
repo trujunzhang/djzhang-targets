@@ -48,4 +48,6 @@ class BaseParser(object):
     def get_published_date(self, comment_header_string):
         published_date = ""
 
+        blocks = comment_header_string.split('<br>')
+
         return published_date
