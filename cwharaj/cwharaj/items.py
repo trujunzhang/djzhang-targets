@@ -48,6 +48,16 @@ class CacheItem(scrapy.Item):
     created_at = scrapy.Field()
 
     # unique row id
-    model_id = scrapy.Field()
+    ID = scrapy.Field()
+    # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
+    url_from = scrapy.Field()
+
+class HistoryItem(scrapy.Item):
+    url = scrapy.Field()
+    guid = scrapy.Field()
+    created_at = scrapy.Field()
+
+    # unique row id
+    ID = scrapy.Field()
     # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
     url_from = scrapy.Field()
