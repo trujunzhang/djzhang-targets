@@ -21,6 +21,9 @@ class CacheDatabase(BaseDatabase):
         item["guid"] = guid
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
+        if item["ID"] == "":
+            _href = item["url"]
+
         if self.check_exist_by_id(item["ID"]):
             logging.debug("  item exist {} from {} on the cache database".format(item["ID"], item["url_from"]))
         else:
