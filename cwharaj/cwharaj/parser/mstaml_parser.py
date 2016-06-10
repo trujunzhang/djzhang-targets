@@ -24,7 +24,7 @@ class MstamlParse(BaseParser):
 
             class_name = self.get_value_from_response(hxs, div_class_selector)
             # This div is empty line, such as "<div id="item2072286" class="none"></div>"
-            if class_name == "none":
+            if len(class_name) <= 10:
                 continue
 
             _ID = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
