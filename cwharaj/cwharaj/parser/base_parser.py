@@ -48,6 +48,22 @@ class BaseParser(object):
     def get_published_date(self, comment_header_string):
         published_date = ""
 
+        # step 1: remove class called "comment_header"
+        comment_header_string = comment_header_string.replace('<div class=" comment_header">', '')
+
+        # step 2: split it by "<br>", so we can get the first block.
         blocks = comment_header_string.split('<br>')
+
+        # Basically, the length of blocks must be 3.
+        if not len(blocks) == 3:
+            return published_date
+
+        from BeautifulSoup import BeautifulSoup
+        soup = BeautifulSoup(blocks[0])
+
+        _As = soup.findAll('a')
+
+        for a in _As:
+            html_content = a.prettify()
 
         return published_date
