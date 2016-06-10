@@ -26,8 +26,8 @@ class BaseDatabase(object):
 
         return False
 
-    def check_exist_by_id(self, model_id):
-        cursor = self.db[self.collection_name].find({'ID': model_id})
+    def check_exist_by_id(self, _id):
+        cursor = self.db[self.collection_name].find({'ID': _id})
         if cursor.count():
             return True
 
