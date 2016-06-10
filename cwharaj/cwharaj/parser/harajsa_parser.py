@@ -11,27 +11,20 @@ class HarajSaParse(BaseParser):
     # Here,we store items from newest to oldest.
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        links = hxs.xpath('//*[@class="center mb10 "]/div')
-        count = 1
+        links = hxs.xpath('//*[@id="adswrapper"]/table/tr')
+        count = 1 + 1  # ignore the table title row
         for link in links:
-            Li_selector = '//*[@class="center mb10 "]/div[' + str(count) + ']'
-            div_class_selector = '//*[@class="center mb10 "]/div[' + str(count) + ']/@class'
-
+            Li_selector = '//*[@id="adswrapper"]/table/tr[' + str(count) + ']'
             count += 1
 
-            class_name = self.get_value_from_response(hxs, div_class_selector)
-            # This div is empty line, such as "<div id="item2072286" class="none"></div>"
-            if class_name == "none":
-                continue
-
             # hxs.xpath('//*[@class="center mb10 "]/div[1]/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
-            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
+            href = self.get_value_from_response(hxs, Li_selector + '/td[2]/a/@href')
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist(href):
                 continue
 
-            model_id = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
+            model_id = self.get_value_from_response(hxs, Li_selector + '/*[@class="ads_id"]/@id')
 
             item = CacheItem(
                 model_id=model_id,
