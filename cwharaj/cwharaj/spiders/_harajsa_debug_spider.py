@@ -14,6 +14,7 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
         # paginate
         'https://haraj.com.sa',
         # Details
+        # 'https://haraj.com.sa/1113887548/غسالة_باناسونيك/'
     ]
 
     def __init__(self, name=None, **kwargs):

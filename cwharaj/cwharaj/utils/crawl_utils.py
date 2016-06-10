@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from hashlib import md5
 import logging
-
 
 class CrawlUtils(object):
     def __init__(self):
@@ -11,8 +12,9 @@ class CrawlUtils(object):
     def get_guid(self, _url):
         """Generates an unique identifier for a given item."""
         # hash based solely in the url field
+        _url = _url.encode('utf-8')
         return md5(_url).hexdigest()
-        
+
     @classmethod
     def get_model_id_from_phone_number_url(self, _ajax_url):
         import urlparse
