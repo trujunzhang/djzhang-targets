@@ -21,8 +21,8 @@ class CacheDatabase(BaseDatabase):
         item["guid"] = guid
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
-        if self.check_exist_by_model_id(item["model_id"]):
-            logging.debug("  item exist {} on the cache database".format(item["model_id"]))
+        if self.check_exist_by_id(item["ID"]):
+            logging.debug("  item exist {} on the cache database".format(item["ID"]))
         else:
             self.db[self.collection_name].insert(dict(item))
             logging.debug("  cache for {}, added to database".format(item["url_from"]))
@@ -32,17 +32,17 @@ class CacheDatabase(BaseDatabase):
         logging.debug("  1. the last url: {}".format(_last))
 
         if _last:
-            model_id = CrawlUtils.get_id_from_page_url(_last, -1)
-            logging.debug("  2. get the last url's model_id: {}".format(model_id))
+            _id = CrawlUtils.get_id_from_page_url(_last, -1)
+            logging.debug("  2. get the last url's id: {}".format(_id))
 
-            deleted_dict = {'model_id': model_id}
+            deleted_dict = {'id': _id}
 
             count = self.db[self.collection_name].count(deleted_dict)
             logging.debug("  3. found the deleted item count: {}".format(count))
             if count:
                 result = self.db[self.collection_name].delete_one(deleted_dict)
                 logging.debug(
-                    "  4. deleted cache row, model_id: {}, deleted count: {}".format(model_id, result.deleted_count))
+                    "  4. deleted cache row, id: {}, deleted count: {}".format(_id, result.deleted_count))
 
         cursor = self.db[self.collection_name].find().sort([("created_at", pymongo.ASCENDING)])
         logging.debug("  5. current cache items count: {}".format(cursor.count()))
