@@ -74,12 +74,10 @@ class HarajsSpider(scrapy.Spider):
         yield scrapy.Request(_page_url, callback=self.parse_page_from_opensooq, dont_filter=True)
 
     def parse_page_from_opensooq(self, response):
-        model_id = CrawlUtils.get_model_id_from_page_url(response.url, 3)
-
         item = self._opensooq_parser.parse(response.url, response)
-        item["ID"] = model_id
-        item["number"] = self.phone_dict.get_phone_number_base64(model_id)
 
+        model_id = item["ID"]
+        item["number"] = self.phone_dict.get_phone_number_base64(model_id)
         self.phone_dict.remove_row(model_id)
 
         yield item

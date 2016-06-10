@@ -44,6 +44,9 @@ class OpensooqParse(BaseParser):
             time.sleep(1)
 
     def parse(self, url, hxs):
+        from cwharaj.utils.crawl_utils import CrawlUtils
+        _model_id = CrawlUtils.get_model_id_from_page_url(url, 3)
+
         _city = self.get_value_from_response(hxs,
                                              '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
         _time = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
@@ -66,6 +69,7 @@ class OpensooqParse(BaseParser):
         _memberName = _memberName.strip()
 
         item = Haraj(
+            ID=_model_id,
             url=url,
             city=_city,
             time=_time,
