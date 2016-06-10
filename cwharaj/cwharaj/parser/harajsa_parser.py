@@ -52,6 +52,8 @@ class HarajSaParse(BaseParser):
 
         comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
 
+        blocks = comment_header_string.split('<br>')
+
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(comment_header_string)
 

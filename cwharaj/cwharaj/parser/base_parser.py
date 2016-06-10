@@ -44,3 +44,8 @@ class BaseParser(object):
             list.append(image['src'])
 
         return list
+
+    def get_published_date(self, comment_header_string):
+        published_date = ""
+
+        return published_date
