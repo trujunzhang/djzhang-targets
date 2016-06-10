@@ -6,7 +6,11 @@ import logging
 
 class HarajsSpiderWatch(scrapy.Spider):
     name = "harajwatch"
-    allowed_domains = ["https://sa.opensooq.com/"]
+    allowed_domains = [
+        "https://sa.opensooq.com/",
+        'http://www.mstaml.com',
+        'https://haraj.com.sa',
+    ]
     start_urls = [
         # paginate
         'https://sa.opensooq.com',
