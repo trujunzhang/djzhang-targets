@@ -37,8 +37,8 @@ class CacheDatabase(BaseDatabase):
         if _last:
             # Parse the url and get the unique id.
             from cwharaj.items import WebsiteTypes
-            position = WebsiteTypes.get_id_index(url_from)
-            _id = CrawlUtils.url_parse_id_from_page_url(_last, position)
+            _position = WebsiteTypes.get_id_index(url_from)
+            _id = CrawlUtils.url_parse_id_from_page_url(_last, _position)
             logging.debug("  2. get the last url's id: {}".format(_id))
 
             # Generate a query dictionary.
@@ -50,7 +50,8 @@ class CacheDatabase(BaseDatabase):
             if count:
                 result = self.db[self.collection_name].delete_one(deleted_dict)
                 logging.debug(
-                    "  4. deleted cache row, id: {}, deleted count: {}, from {}".format(_id, result.deleted_count,url_from))
+                    "  4. deleted cache row, id: {}, deleted count: {}, from {}".format(_id, result.deleted_count,
+                                                                                        url_from))
 
         # Query the oldest cache item.
         cursor = self.db[self.collection_name].find().sort([("created_at", pymongo.ASCENDING)])
