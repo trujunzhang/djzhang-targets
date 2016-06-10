@@ -74,7 +74,7 @@ class HarajsSpider(scrapy.Spider):
         yield scrapy.Request(_page_url, callback=self.parse_page_from_opensooq, dont_filter=True)
 
     def parse_page_from_opensooq(self, response):
-        model_id = CrawlUtils.get_model_id_from_page_url(response.url)
+        model_id = CrawlUtils.get_model_id_from_page_url(response.url, 3)
 
         item = self._opensooq_parser.parse(response.url, response)
         item["ID"] = model_id

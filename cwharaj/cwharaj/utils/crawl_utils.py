@@ -3,6 +3,7 @@
 from hashlib import md5
 import logging
 
+
 class CrawlUtils(object):
     def __init__(self):
         super(CrawlUtils, self).__init__()
@@ -22,16 +23,16 @@ class CrawlUtils(object):
         return model_id
 
     @classmethod
-    def get_model_id_from_page_url(self, _page_url):
+    def get_model_id_from_page_url(self, _page_url, position):
         logging.debug("Get model_id from page url:")
 
         from urlparse import urlparse
         array = urlparse(_page_url).path.split('/')
 
         logging.debug("  1. array: {}".format(len(array)))
-        if len(array) >= 3:
-            model_id = array[3]
-            logging.debug("  2. model_id: {}".format(model_id))
+        if len(array) >= position:
+            model_id = array[position]
+            logging.debug("  2. model_id: {} at position: {}".format(model_id, position))
             return model_id
 
         logging.debug("  3. split the page url failure: {}".format(_page_url))
