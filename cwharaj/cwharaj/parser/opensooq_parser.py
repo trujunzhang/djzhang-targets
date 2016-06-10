@@ -69,8 +69,8 @@ class OpensooqParse(BaseParser):
         _memberName = _memberName.strip()
 
         item = Haraj(
-            ID=_model_id,
             url=url,
+            ID=_model_id,
             city=_city,
             time=_time,
             title=_title,

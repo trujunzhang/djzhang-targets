@@ -46,7 +46,8 @@ class HarajSaParse(BaseParser):
             time.sleep(1)
 
     def parse(self, url, hxs):
-        _id = ""
+        from cwharaj.utils.crawl_utils import CrawlUtils
+        _model_id = CrawlUtils.get_model_id_from_page_url(url, 3)
 
         _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()')
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
@@ -72,7 +73,7 @@ class HarajSaParse(BaseParser):
 
         item = Haraj(
             url=url,
-            ID=_id,
+            ID=_model_id,
             city=_city,
             time=_time,
             title=_title,

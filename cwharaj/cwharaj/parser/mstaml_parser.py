@@ -47,8 +47,9 @@ class MstamlParse(BaseParser):
             time.sleep(1)
 
     def parse(self, url, hxs):
+        from cwharaj.utils.crawl_utils import CrawlUtils
+        _model_id = CrawlUtils.get_model_id_from_page_url(url, 3)
 
-        _id = ""
         _city = ""  # not found
         _time = self.get_value_from_response(hxs,
                                              '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
@@ -69,7 +70,7 @@ class MstamlParse(BaseParser):
 
         item = Haraj(
             url=url,
-            ID=_id,
+            ID=_model_id,
             city=_city,
             time=_time,
             title=_title,
