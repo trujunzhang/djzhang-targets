@@ -19,6 +19,7 @@ class CrawlUtils(object):
     @classmethod
     def get_id_from_phone_number_url(self, _ajax_url):
         import urlparse
+        # Here ajax_url like 'https://sa.opensooq.com/ar/post/get-phone-number?model_id={123}&model_type=post'
         model_id = urlparse.parse_qs(urlparse.urlparse(_ajax_url).query)['model_id'][0]
         return model_id
 
