@@ -50,8 +50,9 @@ class CacheDatabase(BaseDatabase):
             if count:
                 result = self.db[self.collection_name].delete_one(deleted_dict)
                 logging.debug(
-                    "  4. deleted cache row, id: {}, deleted count: {}".format(_id, result.deleted_count))
+                    "  4. deleted cache row, id: {}, deleted count: {}, from {}".format(_id, result.deleted_count,url_from))
 
+        # Query the oldest cache item.
         cursor = self.db[self.collection_name].find().sort([("created_at", pymongo.ASCENDING)])
         logging.debug("  5. current cache items count: {}".format(cursor.count()))
 
