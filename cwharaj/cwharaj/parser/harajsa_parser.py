@@ -63,7 +63,7 @@ class HarajSaParse(BaseParser):
         _time = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
         _city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
 
-        _pictures = self.get_images_from_noscript(hxs, '//*[@itemprop="description"]')
+        _pictures = self.get_images_in_selector(hxs, '//*[@itemprop="description"]')
         _subject = ""
         _contact = ""
         _number = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')

@@ -31,7 +31,7 @@ class BaseParser(object):
 
         return value
 
-    def get_images_from_noscript(self, hxs, selector, index=0):
+    def get_images_in_selector(self, hxs, selector, index=0):
         noscript_images = self.get_value_from_response(hxs, selector, index=index)
 
         from BeautifulSoup import BeautifulSoup
@@ -46,6 +46,9 @@ class BaseParser(object):
         return list
 
     def get_published_date(self, comment_header_string):
+        """Because the published date is not contained by any tag.
+        So we can't use xpath to select it."""
+
         published_date = ""
 
         # step 1: remove class called "comment_header"
@@ -58,6 +61,7 @@ class BaseParser(object):
         if not len(blocks) == 3:
             return published_date
 
+        # Finally, remove all <a> blocks, that the result is the published date string.
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(blocks[0])
 
