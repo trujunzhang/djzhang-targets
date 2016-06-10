@@ -12,4 +12,5 @@ class BaseParseTest(unittest.TestCase):
 
     def test_regex_get_model_id(self):
         _base_parser = BaseParser()
-        _base_parser.get_published_date(self.comment_header_string)
+        published_date = _base_parser.get_published_date(self.comment_header_string)
+        self.assertEqual(published_date, 'قبل شهر و 2 أسبوع في', "The same published date")
