@@ -1,9 +1,8 @@
-
 from cwharaj.items import Haraj, CacheItem, WebsiteTypes
 from cwharaj.parser.base_parser import BaseParser
 
 import time
-
+import logging
 
 class MstamlParse(BaseParser):
     def __init__(self):
@@ -13,6 +12,8 @@ class MstamlParse(BaseParser):
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
         links = hxs.xpath('//*[@class="center mb10 "]/div')
+        logging.debug("Get rows count from the mstaml: {}".format(len(links)))
+
         count = 1
         for link in links:
             Li_selector = '//*[@class="center mb10 "]/div[' + str(count) + ']'
@@ -63,7 +64,6 @@ class MstamlParse(BaseParser):
         _description = self.get_all_value_from_response(hxs,
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
         _section = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')
-
 
         item = Haraj(
             url=url,
