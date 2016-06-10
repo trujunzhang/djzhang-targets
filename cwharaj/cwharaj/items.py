@@ -31,7 +31,7 @@ class Haraj(scrapy.Item):
     pictures = scrapy.Field()
     subject = scrapy.Field()
     contact = scrapy.Field()
-    number = scrapy.Field()
+    number = scrapy.Field()  # number is mobile("الجوال")
 
     # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
     url_from = scrapy.Field()

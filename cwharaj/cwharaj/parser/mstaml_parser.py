@@ -55,7 +55,8 @@ class MstamlParse(BaseParser):
         _pictures = self.get_images_from_noscript(hxs)
         _subject = ""
         _contact = ""
-        _number = ""
+        _number = self.get_value_from_response(hxs,
+                                               '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
         _address = self.get_value_from_response(hxs,
                                                 '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
         _memberName = self.get_value_from_response(hxs,
