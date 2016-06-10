@@ -32,9 +32,6 @@ class HarajSaParse(BaseParser):
 
             model_id = self.get_value_from_response(hxs, Li_selector + '/*[@class="ads_id"]/@id')
 
-            if not model_id:
-                _len = len(href)
-
             item = CacheItem(
                 model_id=model_id,
                 url_from=WebsiteTypes.harajsa.value,
