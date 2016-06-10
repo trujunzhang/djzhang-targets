@@ -23,7 +23,7 @@ class PhoneNumberSet(object):
         if _id:
             row = self.dict[_id]
             if row:
-                logging.debug("  2. row exist in the dict: {}".format(row["url"]))
+                logging.debug("  2. row exist in the dict: {}".format(row["url"].encode('utf-8')))
 
                 row["phone_number_base64"] = _phone_number_base64
                 return row["url"]
@@ -39,7 +39,7 @@ class PhoneNumberSet(object):
         logging.debug("  1. id: {}".format(_id))
 
         if row:
-            logging.debug("  2. row exist in the dict: {}".format(row["url"]))
+            logging.debug("  2. row exist in the dict: {}".format(row["url"].encode('utf-8')))
             return row["phone_number_base64"]
 
         logging.debug("  3. not found row from id: {}".format(_id))

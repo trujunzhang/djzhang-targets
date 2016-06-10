@@ -36,5 +36,5 @@ class CrawlUtils(object):
             logging.debug("  2. id: {} at position: {}".format(_id, position))
             return _id
 
-        logging.debug("  3. split the page url failure: {}".format(_page_url))
+        logging.debug("  3. split the page url failure: {}".format(_page_url.encode('utf-8')))
         return None
