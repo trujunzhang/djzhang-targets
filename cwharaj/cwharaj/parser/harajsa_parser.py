@@ -1,13 +1,12 @@
-
 from cwharaj.items import Haraj, CacheItem, WebsiteTypes
 from cwharaj.parser.base_parser import BaseParser
 
 import time
 
 
-class MstamlParse(BaseParser):
+class HarajSaParse(BaseParser):
     def __init__(self):
-        super(MstamlParse, self).__init__()
+        super(HarajSaParse, self).__init__()
 
     # Here,we store items from newest to oldest.
     # then fetch the first item from the databse become the oldest.
@@ -44,7 +43,6 @@ class MstamlParse(BaseParser):
             time.sleep(1)
 
     def parse(self, url, hxs):
-
         _id = ""
         _city = ""  # not found
         _time = self.get_value_from_response(hxs,
@@ -63,7 +61,6 @@ class MstamlParse(BaseParser):
         _description = self.get_all_value_from_response(hxs,
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
         _section = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')
-
 
         item = Haraj(
             url=url,
