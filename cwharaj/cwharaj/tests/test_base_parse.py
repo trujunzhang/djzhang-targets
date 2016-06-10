@@ -15,5 +15,7 @@ class BaseParseTest(unittest.TestCase):
 
         published_date = _base_parser.get_published_date(self.comment_header_string)
 
-        expect = '   قبل شهر و 2 أسبوع في'
+        expect  = '   قبل شهر و 2 أسبوع في'
         self.assertEqual(published_date, expect, "The same published date")
+
+

@@ -71,6 +71,6 @@ class BaseParser(object):
             for a in _As:
                 a.replaceWith('')
 
-            published_date = soup.prettify().replace("\n", "").replace("\r", "").strip()
+            published_date = soup.prettify().replace("\n", "").replace("\r", "")
 
         return published_date
