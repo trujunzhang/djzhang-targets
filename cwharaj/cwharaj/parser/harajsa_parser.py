@@ -65,7 +65,6 @@ class HarajSaParse(BaseParser):
         _description = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
 
         _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
-        # self.get_value_from_response(hxs, '//*[@class="ad_low"]/div/a[@class="tag fromad"]/span/text()')
 
         # Replace "\n","\r"
         _description = _description.replace("\r", "").strip()
