@@ -21,18 +21,17 @@ class OpensooqParse(BaseParser):
 
             count += 1
 
+            # u'postList-42229013'
+            _ID = hxs.xpath(Li_selector + '/div[@class="searchItem"]/@id')[0].extract().replace("postList-", "")
+
+            # If the link already exist on the history database,ignore it.
+            if history_db.check_exist_by_id(_ID):
+                logging.debug("  item exist {} on the history database".format(_ID))
+                continue
+
             href = self.get_value_from_response_with_urljoin(hxs,
                                                              Li_selector + '/div/div[@class="rectLiDetails"]/h3/a/@href',
                                                              url)
-
-            # If the link already exist on the history database,ignore it.
-            if history_db.check_exist(href):
-                logging.debug("  item exist {} on the history database".format(href))
-                continue
-
-            _ID = hxs.xpath(Li_selector + '/div[@class="searchItem"]/@id')[0].extract()
-            # u'postList-42229013'
-            _ID = _ID.replace("postList-", "")
 
             item = CacheItem(
                 ID=_ID,

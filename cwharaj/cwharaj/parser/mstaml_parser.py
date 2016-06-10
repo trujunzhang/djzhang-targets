@@ -27,15 +27,14 @@ class MstamlParse(BaseParser):
             if class_name == "none":
                 continue
 
-            # hxs.xpath('//*[@class="center mb10 "]/div[1]/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
-            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
+            _ID = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
 
             # If the link already exist on the history database,ignore it.
-            if history_db.check_exist(href):
-                logging.debug("  item exist {} on the history database".format(href))
+            if history_db.check_exist_by_id(_ID):
+                logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
-            _ID = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
+            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
 
             item = CacheItem(
                 ID=_ID,
