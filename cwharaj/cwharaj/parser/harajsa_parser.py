@@ -47,10 +47,19 @@ class HarajSaParse(BaseParser):
 
     def parse(self, url, hxs):
         _id = ""
+
+        _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()')
+
         _city = ""  # not found
-        _time = self.get_value_from_response(hxs,
-                                             '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
-        _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/font')
+
+        comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
+
+        from BeautifulSoup import BeautifulSoup
+        soup = BeautifulSoup(comment_header_string)
+
+        
+
+        _time = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
 
         _pictures = self.get_images_from_noscript(hxs)
         _subject = ""
