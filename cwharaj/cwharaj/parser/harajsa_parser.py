@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from cwharaj.items import Haraj, CacheItem, WebsiteTypes
 from cwharaj.parser.base_parser import BaseParser
 

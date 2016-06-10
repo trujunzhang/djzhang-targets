@@ -19,6 +19,7 @@ class BaseDatabase(object):
     def process_item(self, url, item=None):
         pass
 
+    # u'https://haraj.com.sa/1113887548/غسالة_باناسونيك/'
     def check_exist(self, _url):
         cursor = self.db[self.collection_name].find({'guid': CrawlUtils.get_guid(_url)})
         if cursor.count():

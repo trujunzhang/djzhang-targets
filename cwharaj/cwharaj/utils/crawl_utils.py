@@ -7,11 +7,12 @@ class CrawlUtils(object):
         super(CrawlUtils, self).__init__()
 
     @classmethod
+    # Exception: # ascii codec can't encode charaters
     def get_guid(self, _url):
         """Generates an unique identifier for a given item."""
         # hash based solely in the url field
         return md5(_url).hexdigest()
-
+        
     @classmethod
     def get_model_id_from_phone_number_url(self, _ajax_url):
         import urlparse
