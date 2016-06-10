@@ -18,10 +18,11 @@ class HarajSaParse(BaseParser):
         for link in links:
             Li_selector = '//*[@id="adswrapper"]/table/tr[' + str(count) + ']'
 
-            if count == 1:  # ignore the table title row
-                continue
-
             count += 1
+
+            td_count = len(hxs.xpath(Li_selector + "/td"))
+            if td_count == 0:  # ignore the table title row(only have <th>s)
+                continue
 
             href = self.get_value_from_response(hxs, Li_selector + '/td[2]/a/@href')
 
