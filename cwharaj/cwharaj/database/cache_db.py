@@ -46,7 +46,14 @@ class CacheDatabase(BaseDatabase):
 
             # Query the deleted item count, must be equal to 1.
             count = self.db[self.collection_name].count(deleted_dict)
-            logging.debug("  3. found the deleted item count: {}".format(count))
+            logging.debug("  3. found the deleted item count: {} by ID".format(count, deleted_dict))
+
+            # Sometime,the ID get from the pagination is not the same as from the detail page.
+            # So if query is invalid, query it by url again.
+            if count == 0:
+                deleted_dict = {'url': _last}
+                count = self.db[self.collection_name].count(deleted_dict)
+                logging.debug("  3. found the deleted item count: {} by url".format(count, deleted_dict))
             if count:
                 result = self.db[self.collection_name].delete_one(deleted_dict)
                 logging.debug(
