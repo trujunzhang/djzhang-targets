@@ -15,6 +15,7 @@ class OpensooqDebugSpider(scrapy.Spider):
         'https://sa.opensooq.com/ar/search/43012611/فيلا-شمال-التخصصي-غرب-ابوبكر-حي-الياسمين'
         # detail without phone number
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=42552861&model_type=post',
+        # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=39509897&model_type=post'
         # 'https://sa.opensooq.com/ar/search/42552861/%D9%85%D9%86%D8%B8%D9%88%D9%85%D8%A9-%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA-%D9%84%D9%84%D8%A7%D8%B3%D9%88%D8%A7%D9%82-%D9%88%D8%A7%D9%84%D9%85%D8%AD%D9%84%D8%A7%D8%AA'
     ]
 

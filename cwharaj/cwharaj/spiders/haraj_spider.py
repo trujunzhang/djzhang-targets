@@ -52,6 +52,7 @@ class HarajsSpider(scrapy.Spider):
         _row = self.get_row_from_cache(_last, _url_from)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
+            self.phone_dict.add_row(_row['ID'], _row)
             _ajax_url = \
                 "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
             yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
@@ -95,6 +96,7 @@ class HarajsSpider(scrapy.Spider):
         _row = self.get_row_from_cache(_last, _url_from)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
+            self.phone_dict.add_row(_row['ID'], _row)
             _ajax_url = \
                 "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
             yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
@@ -116,6 +118,7 @@ class HarajsSpider(scrapy.Spider):
         _row = self.get_row_from_cache(_last, _url_from)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
+            self.phone_dict.add_row(_row['ID'], _row)
             _ajax_url = \
                 "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
             yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
@@ -137,6 +140,7 @@ class HarajsSpider(scrapy.Spider):
         _row = self.get_row_from_cache(_last, _url_from)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
+            self.phone_dict.add_row(_row['ID'], _row)
             _ajax_url = \
                 "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
             yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
