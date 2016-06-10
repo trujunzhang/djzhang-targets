@@ -14,9 +14,13 @@ class HarajSaParse(BaseParser):
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
         links = hxs.xpath('//*[@id="adswrapper"]/table/tr')
-        count = 1 + 1  # ignore the table title row
+        count = 1
         for link in links:
             Li_selector = '//*[@id="adswrapper"]/table/tr[' + str(count) + ']'
+
+            if count == 1:  # ignore the table title row
+                continue
+
             count += 1
 
             href = self.get_value_from_response(hxs, Li_selector + '/td[2]/a/@href')
