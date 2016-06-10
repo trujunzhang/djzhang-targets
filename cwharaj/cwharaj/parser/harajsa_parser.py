@@ -50,7 +50,7 @@ class HarajSaParse(BaseParser):
 
         _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()')
 
-        comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/font')
+        comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
 
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(comment_header_string)
@@ -62,7 +62,7 @@ class HarajSaParse(BaseParser):
         _pictures = self.get_images_from_noscript(hxs, '//*[@itemprop="description"]')
         _subject = ""
         _contact = ""
-        _number = self.get_value_from_response(hxs,'//*[@class="contact"]/strong/a/text()')
+        _number = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')
 
         _address = self.get_value_from_response(hxs,
                                                 '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
@@ -70,6 +70,10 @@ class HarajSaParse(BaseParser):
         _description = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
 
         _section = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')
+
+        # Replace "\n","\r"
+        _description = _description.replace("\r", "").strip()
+        _memberName = _memberName.strip()
 
         item = Haraj(
             url=url,
