@@ -16,7 +16,7 @@ class BaseDatabase(object):
     def close_spider(self):
         self.client.close()
 
-    def process_item(self, url, item=None):
+    def process_item(self, url, item=None, index=0):
         pass
 
     def check_exist(self, _url):

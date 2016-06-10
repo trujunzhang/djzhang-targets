@@ -4,6 +4,7 @@ from cwharaj.parser.base_parser import BaseParser
 import time
 import logging
 
+
 class MstamlParse(BaseParser):
     def __init__(self):
         super(MstamlParse, self).__init__()
@@ -40,7 +41,7 @@ class MstamlParse(BaseParser):
                 url_from=WebsiteTypes.mstaml.value,
             )
 
-            cache_db.process_item(href, item)
+            cache_db.process_item(href, item, count)
             # here, must sleep a second.
             time.sleep(1)
 

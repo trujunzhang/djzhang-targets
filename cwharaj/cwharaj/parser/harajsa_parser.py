@@ -40,7 +40,7 @@ class HarajSaParse(BaseParser):
                 url_from=WebsiteTypes.harajsa.value,
             )
 
-            cache_db.process_item(href, item)
+            cache_db.process_item(href, item, count)
             # here, must sleep a second.
             time.sleep(1)
 
