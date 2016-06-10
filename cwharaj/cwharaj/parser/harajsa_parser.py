@@ -19,7 +19,6 @@ class HarajSaParse(BaseParser):
             Li_selector = '//*[@id="adswrapper"]/table/tr[' + str(count) + ']'
             count += 1
 
-            # hxs.xpath('//*[@class="center mb10 "]/div[1]/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
             href = self.get_value_from_response(hxs, Li_selector + '/td[2]/a/@href')
 
             # If the link already exist on the history database,ignore it.
@@ -27,6 +26,9 @@ class HarajSaParse(BaseParser):
                 continue
 
             model_id = self.get_value_from_response(hxs, Li_selector + '/*[@class="ads_id"]/@id')
+
+            if not model_id:
+                _len = len(href)
 
             item = CacheItem(
                 model_id=model_id,
