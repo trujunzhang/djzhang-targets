@@ -27,14 +27,14 @@ class HarajSaParse(BaseParser):
             if td_count == 0:  # ignore the table title row(only have <th>s)
                 continue
 
-            href = self.get_value_from_response(hxs, Li_selector + '/td[2]/a/@href')
+            _ID = self.get_value_from_response(hxs, Li_selector + '/*[@class="ads_id"]/@id')
 
             # If the link already exist on the history database,ignore it.
-            if history_db.check_exist(href):
-                logging.debug("  item exist {} on the history database".format(href))
+            if history_db.check_exist_by_id(_ID):
+                logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
-            _ID = self.get_value_from_response(hxs, Li_selector + '/*[@class="ads_id"]/@id')
+            href = self.get_value_from_response(hxs, Li_selector + '/td[2]/a/@href')
 
             item = CacheItem(
                 ID=_ID,
