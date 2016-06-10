@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+
 class OpensooqDebugSpider(scrapy.Spider):
     name = "opensooq_debug"
     allowed_domains = ["https://sa.opensooq.com/"]
@@ -34,9 +35,9 @@ class OpensooqDebugSpider(scrapy.Spider):
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(OpensooqDebugSpider, cls).from_crawler(crawler,
-                                                          args,
-                                                          mongo_uri=crawler.settings.get('MONGODB_SERVER')
-                                                          )
+                                                            args,
+                                                            mongo_uri=crawler.settings.get('MONGODB_SERVER')
+                                                            )
 
     def parse(self, response):
         # self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
@@ -52,14 +53,12 @@ class OpensooqDebugSpider(scrapy.Spider):
     def _get_ajax_url(self, _last):
         _row = self._cache_db.get_oldest_row(_last)
         if _row:
-            model_id = self._cache_db.get_row_id(_row)
-            if model_id:
-                self.phone_dict.add_row(model_id, _row)
+            _id = self._cache_db.get_row_id(_row)
+            if _id:
+                self.phone_dict.add_row(_id, _row)
 
                 # First of all, get the phone number base64 of the page.
-                _ajax_url = "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(
-                    model_id)
-                return _ajax_url
+                return "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_id)
 
         return None
 
