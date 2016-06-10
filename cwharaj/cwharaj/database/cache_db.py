@@ -35,7 +35,9 @@ class CacheDatabase(BaseDatabase):
         logging.debug("  1. the last url: {}".format(_last))
 
         if _last:
-            _id = CrawlUtils.url_parse_id_from_page_url(_last, -1)
+            from cwharaj.items import WebsiteTypes
+            position = WebsiteTypes.get_id_index(url_from)
+            _id = CrawlUtils.url_parse_id_from_page_url(_last, position)
             logging.debug("  2. get the last url's id: {}".format(_id))
 
             deleted_dict = {'id': _id}

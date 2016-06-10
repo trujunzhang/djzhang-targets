@@ -1,10 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
-import logging
 import time
 
 from cwharaj.items import WebsiteTypes
-from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class HarajsSpider(scrapy.Spider):

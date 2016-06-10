@@ -13,6 +13,17 @@ class WebsiteTypes(Enum):
     def __str__(self):
         return str(self.value)
 
+    @classmethod
+    def get_id_index(self, _url_from):
+        if _url_from == WebsiteTypes.opensooq.value:
+            return 3
+        elif _url_from == WebsiteTypes.mstaml.value:
+            return 1
+        elif _url_from == WebsiteTypes.harajsa.value:
+            return 1
+
+        return -1
+
     opensooq = "opensooq"
     mstaml = "mstaml"
     harajsa = "harajsa"
@@ -51,6 +62,7 @@ class CacheItem(scrapy.Item):
     ID = scrapy.Field()
     # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
     url_from = scrapy.Field()
+
 
 class HistoryItem(scrapy.Item):
     url = scrapy.Field()
