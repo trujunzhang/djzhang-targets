@@ -8,20 +8,20 @@ class PhoneNumberSet(object):
         self.dict = {}
         super(PhoneNumberSet, self).__init__()
 
-    def add_row(self, model_id, row):
-        self.dict[model_id] = row
-        logging.debug("Added to dict for {}".format(model_id))
+    def add_row(self, _id, row):
+        self.dict[_id] = row
+        logging.debug("Added to dict for {}".format(_id))
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
     def get_page_url_from_ajax_url(self, _ajax_url, _phone_number_base64):
         logging.debug("Get page url from ajax url:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
-        model_id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
-        logging.debug("  1. model_id: {}".format(model_id))
+        _id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
+        logging.debug("  1. _id: {}".format(_id))
 
-        if model_id:
-            row = self.dict[model_id]
+        if _id:
+            row = self.dict[_id]
             if row:
                 logging.debug("  2. row exist in the dict: {}".format(row["url"]))
 
