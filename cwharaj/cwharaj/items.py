@@ -15,7 +15,7 @@ class WebsiteTypes(Enum):
 
     opensooq = "opensooq"
     mstaml = "mstaml"
-    haraj = "haraj"
+    harajsa = "harajsa"
 
 
 class Haraj(scrapy.Item):
