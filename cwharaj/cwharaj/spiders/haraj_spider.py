@@ -79,7 +79,7 @@ class HarajsSpider(scrapy.Spider):
 
         yield item
 
-        self._history_db.process_item(response.url)
+        self._history_db.process_item(response.url, id=_id)
 
         # step 2: request the last row on the cache database
         _ajax_url = self.get_valid_url(response.url)
