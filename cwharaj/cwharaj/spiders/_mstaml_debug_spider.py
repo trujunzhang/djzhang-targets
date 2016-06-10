@@ -3,7 +3,7 @@ import scrapy
 
 
 class MstamlDebugWatchSpider(scrapy.Spider):
-    name = "mstamlwatch_debug"
+    name = "mstaml_debug"
     allowed_domains = [
         "https://sa.opensooq.com/",
         'http://www.mstaml.com'

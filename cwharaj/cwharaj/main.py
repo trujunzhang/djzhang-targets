@@ -22,7 +22,8 @@ def main():
     # watch
     # ===============
     # utils.execute('opensooqwatch_debug')
-    utils.execute("mstamlwatch_debug")
+    # utils.execute("mstaml_debug")
+    utils.execute("mstaml_debug")
 
 
 if __name__ == '__main__':
