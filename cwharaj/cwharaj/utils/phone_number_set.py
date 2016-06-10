@@ -52,7 +52,7 @@ class PhoneNumberSet(object):
         logging.debug("  1. id: {}".format(_id))
 
         if _id in self.dict:
-            logging.debug("  2. row exist in the dict.")
+            logging.debug("  2. row exist in the dict")
             del self.dict[_id]
             logging.debug("  3. deleted the row sucessfully: {}".format(_id))
             logging.debug("  4. dict keys: {}".format(self.dict.keys()))
