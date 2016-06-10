@@ -11,6 +11,9 @@ class BaseParser(object):
     def parse_relative(self, url, hxs):
         pass
 
+    def get_section(self, section_panel):
+        pass
+
     def get_value_from_response_with_urljoin(self, hxs, query, base, index=0):
         href = self.get_value_from_response(hxs, query, index)
         href = urlparse.urljoin(base, href.strip())
