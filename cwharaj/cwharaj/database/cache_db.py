@@ -12,7 +12,7 @@ class CacheDatabase(BaseDatabase):
     def __init__(self, mongo_uri, mongo_db, collection_name):
         super(CacheDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
 
-    def process_item(self, url, item=None, index=0):
+    def process_item(self, url, item=None, index=0, id=-1):
         logging.debug("  process cache item at position: {}".format(index - 1))
 
         guid = CrawlUtils.get_guid(url)

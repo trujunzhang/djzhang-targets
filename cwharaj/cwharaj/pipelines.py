@@ -1,4 +1,3 @@
-
 # -*- coding: utf-8 -*-
 
 # Define your item pipelines here
@@ -7,6 +6,7 @@
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 
 import logging
+
 
 class MongoPipeline(object):
     def __init__(self, mongo_uri):
@@ -33,4 +33,3 @@ class MongoPipeline(object):
         """Handle occurred on db interaction."""
         # do nothing, just log
         logging.error(failure)
-

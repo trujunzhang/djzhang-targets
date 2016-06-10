@@ -11,7 +11,7 @@ class ItemDatabase(BaseDatabase):
     def __init__(self, mongo_uri, mongo_db, collection_name):
         super(ItemDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
 
-    def process_item(self, url, item=None, index=0):
+    def process_item(self, url, item=None, index=0, id=-1):
         global data
 
         item["guid"] = CrawlUtils.get_guid(url)

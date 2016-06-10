@@ -59,5 +59,3 @@ class HistoryItem(scrapy.Item):
 
     # unique row id
     ID = scrapy.Field()
-    # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
-    url_from = scrapy.Field()
