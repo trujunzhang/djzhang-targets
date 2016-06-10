@@ -67,6 +67,10 @@ class HarajsSpider(scrapy.Spider):
             if _row:
                 return _row
 
+            # Return None when the cache table is empty,
+            # So we set the _last to zero.
+            _last = ""
+
             time.sleep(4)
 
     # ====================================================================================
