@@ -53,7 +53,7 @@ class CacheDatabase(BaseDatabase):
         row = None
         if cursor.count():
             row = cursor.next()
-            logging.debug("  6. found the oldest row sucessfully: {}".format(row['url']))
+            logging.debug("  6. found the oldest row sucessfully, url: {}".format(row['url']))
 
         cursor.close()
 

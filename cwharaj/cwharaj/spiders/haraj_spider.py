@@ -47,17 +47,8 @@ class HarajsSpider(scrapy.Spider):
 
     # This is entry point
     def parse(self, response):
-        self.fetching_next_row("")
+        _last = ""
 
-    def get_row_from_cache(self, _last):
-        while True:
-            _row = self._cache_db.get_oldest_row(_last)
-            if _row:
-                return _row
-
-            time.sleep(4)
-
-    def fetching_next_row(self, _last):
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(_last)
         _id = _row['ID']
@@ -72,13 +63,13 @@ class HarajsSpider(scrapy.Spider):
         elif _url_from == WebsiteTypes.harajsa.value:
             yield scrapy.Request(_url, callback=self.parse_page_from_harajsa, dont_filter=True)
 
-    # def get_valid_url(self, _last):
-    #     while True:
-    #         _ajax_url = self._get_ajax_url(_last)
-    #         if _ajax_url:
-    #             return _ajax_url
-    #
-    #         time.sleep(4)
+    def get_row_from_cache(self, _last):
+        while True:
+            _row = self._cache_db.get_oldest_row(_last)
+            if _row:
+                return _row
+
+            time.sleep(4)
 
     def _get_ajax_url(self, _last):
         _row = self._cache_db.get_oldest_row(_last)
@@ -112,7 +103,7 @@ class HarajsSpider(scrapy.Spider):
         self._history_db.process_item(response.url, id=_id)
 
         # step 2: request the last row on the cache database
-        self.fetching_next_row(response.url)
+        # self.fetching_next_row(response.url)
         # _ajax_url = self.get_valid_url(response.url)
         # if _ajax_url:
         #     yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
@@ -124,7 +115,7 @@ class HarajsSpider(scrapy.Spider):
         self._history_db.process_item(response.url, id=item["ID"])
 
         # step 2: request the last row on the cache database
-        self.fetching_next_row(response.url)
+        # self.fetching_next_row(response.url)
         # _ajax_url = self.get_valid_url(response.url)
         # if _ajax_url:
         #     yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
@@ -137,7 +128,7 @@ class HarajsSpider(scrapy.Spider):
         self._history_db.process_item(response.url, id=item["ID"])
 
         # step 2: request the last row on the cache database
-        self.fetching_next_row(response.url)
+        # self.fetching_next_row(response.url)
         # _ajax_url = self.get_valid_url(response.url)
         # if _ajax_url:
         #     yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
