@@ -49,18 +49,11 @@ class HarajSaParse(BaseParser):
         _id = ""
 
         _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()')
+        _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
 
         comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
+        _time = self.get_published_date(comment_header_string)
 
-        blocks = comment_header_string.split('<br>')
-
-        from BeautifulSoup import BeautifulSoup
-        soup = BeautifulSoup(comment_header_string)
-
-        fonts = soup.findAll('font')
-
-        _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
-        _time = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
         _city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
 
         _pictures = self.get_images_in_selector(hxs, '//*[@itemprop="description"]')
