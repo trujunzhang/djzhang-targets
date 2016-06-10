@@ -51,22 +51,19 @@ class MstamlParse(BaseParser):
         _model_id = CrawlUtils.get_model_id_from_page_url(url, 1)
 
         _city = ""  # not found
-        _time = self.get_value_from_response(hxs,
-                                             '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
+        _time = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
         _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
         _pictures = self.get_images_in_selector(hxs, '//noscript')
         _subject = ""
         _contact = ""
-        _number = self.get_value_from_response(hxs,
-                                               '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
-        _address = self.get_value_from_response(hxs,
-                                                '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
-        _memberName = self.get_value_from_response(hxs,
-                                                   '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
+        _number = self.get_value_from_response(hxs, '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
+        _address = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
+        _memberName = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
         _description = self.get_all_value_from_response(hxs,
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
-        _section = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')
+        # _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="boxItem"]'))
+        _section = [self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')]
 
         item = Haraj(
             url=url,
@@ -86,3 +83,18 @@ class MstamlParse(BaseParser):
         )
 
         return item
+
+    def get_section(self, section_panel):
+        """
+        ????
+        """
+
+        from BeautifulSoup import BeautifulSoup
+        soup = BeautifulSoup(section_panel)
+
+        _As = soup.findAll('a', {'property': 'v:title'})
+        sections = []
+        for a in _As:
+            sections.append(a.text)
+
+        return sections
