@@ -15,7 +15,7 @@ class HarajSaParse(BaseParser):
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
         links = hxs.xpath('//*[@id="adswrapper"]/table/tr')
-        logging.debug("Get rows count from the harajsa: {}".format(len(links)))
+        logging.debug("Get rows count from the harajsa: {} + 1".format(len(links) - 1))
 
         count = 1
         for link in links:
