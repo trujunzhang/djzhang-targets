@@ -21,8 +21,8 @@ class CacheDatabase(BaseDatabase):
         item["guid"] = guid
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
-        if self.check_exist(url):
-            logging.debug("  item exist {} on the cache database".format(url))
+        if self.check_exist_by_model_id(item["model_id"]):
+            logging.debug("  item exist {} on the cache database".format(item["model_id"]))
         else:
             self.db[self.collection_name].insert(dict(item))
             logging.debug("  cache for {}, added to database".format(item["url_from"]))
@@ -32,7 +32,7 @@ class CacheDatabase(BaseDatabase):
         logging.debug("  1. the last url: {}".format(_last))
 
         if _last:
-            model_id = CrawlUtils.get_model_id_from_page_url(_last)
+            model_id = CrawlUtils.get_model_id_from_page_url(_last, -1)
             logging.debug("  2. get the last url's model_id: {}".format(model_id))
 
             deleted_dict = {'model_id': model_id}

@@ -25,3 +25,10 @@ class BaseDatabase(object):
             return True
 
         return False
+
+    def check_exist_by_model_id(self, model_id):
+        cursor = self.db[self.collection_name].find({'model_id': model_id})
+        if cursor.count():
+            return True
+
+        return False
