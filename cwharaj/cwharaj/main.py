@@ -17,9 +17,9 @@ def main():
     # ===============
     # test
     # ===============
-    utils.execute("opensooq_debug")
+    # utils.execute("opensooq_debug")
     # utils.execute('opensooqwatch_debug')
-    # utils.execute("mstaml_debug")
+    utils.execute("mstaml_debug")
     # utils.execute("harajsa_debug")
 
 

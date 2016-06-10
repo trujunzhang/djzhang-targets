@@ -48,7 +48,7 @@ class MstamlParse(BaseParser):
 
     def parse(self, url, hxs):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _model_id = CrawlUtils.get_model_id_from_page_url(url, 3)
+        _model_id = CrawlUtils.get_model_id_from_page_url(url, 1)
 
         _city = ""  # not found
         _time = self.get_value_from_response(hxs,
