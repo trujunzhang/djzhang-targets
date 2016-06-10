@@ -61,13 +61,18 @@ class BaseParser(object):
         if not len(blocks) == 3:
             return published_date
 
+        first_block = blocks[0]
+
         # Finally, remove all <a> blocks, that the result is the published date string.
         from BeautifulSoup import BeautifulSoup
-        soup = BeautifulSoup(blocks[0])
+        soup = BeautifulSoup(first_block)
 
         _As = soup.findAll('a')
 
         for a in _As:
             html_content = a.prettify()
+            first_block.replace(html_content, '')
+
+        published_date = first_block
 
         return published_date
