@@ -50,16 +50,16 @@ class HarajSaParse(BaseParser):
 
         _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()')
 
-        _city = ""  # not found
 
-        comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
+
+        comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/font')
 
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(comment_header_string)
 
-        
-
+        _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
         _time = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
+        _city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
 
         _pictures = self.get_images_from_noscript(hxs)
         _subject = ""
@@ -68,8 +68,8 @@ class HarajSaParse(BaseParser):
                                                '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
         _address = self.get_value_from_response(hxs,
                                                 '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
-        _memberName = self.get_value_from_response(hxs,
-                                                   '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
+
+
         _description = self.get_all_value_from_response(hxs,
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
         _section = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')
