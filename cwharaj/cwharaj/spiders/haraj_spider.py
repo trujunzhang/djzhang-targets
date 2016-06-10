@@ -53,14 +53,11 @@ class HarajsSpider(scrapy.Spider):
     def _get_ajax_url(self, _last):
         _row = self._cache_db.get_oldest_row(_last)
         if _row:
-            model_id = self._cache_db.get_row_id(_row)
-            if model_id:
-                self.phone_dict.add_row(model_id, _row)
-
+            _id = self._cache_db.get_row_id(_row)
+            if _id:
+                self.phone_dict.add_row(_id, _row)
                 # First of all, get the phone number base64 of the page.
-                _ajax_url = "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(
-                    model_id)
-                return _ajax_url
+                return "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_id)
 
         return None
 
