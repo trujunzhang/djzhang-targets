@@ -42,7 +42,7 @@ class CacheDatabase(BaseDatabase):
             logging.debug("  2. get the last url's id: {}".format(_id))
 
             # Generate a query dictionary.
-            deleted_dict = {'id': _id}
+            deleted_dict = {'ID': _id}
 
             # Query the deleted item count, must be equal to 1.
             count = self.db[self.collection_name].count(deleted_dict)
