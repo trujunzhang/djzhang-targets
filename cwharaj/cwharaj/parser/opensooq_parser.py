@@ -21,17 +21,17 @@ class OpensooqParse(BaseParser):
 
             count += 1
 
-            # u'postList-42229013'
-            _ID = hxs.xpath(Li_selector + '/div[@class="searchItem"]/@id')[0].extract().replace("postList-", "")
+            href = self.get_value_from_response_with_urljoin(hxs,
+                                                             Li_selector + '/div/div[@class="rectLiDetails"]/h3/a/@href',
+                                                             url)
+
+            from cwharaj.utils.crawl_utils import CrawlUtils
+            _ID = CrawlUtils.url_parse_id_from_page_url(href, 3)
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist_by_id(_ID):
                 logging.debug("  item exist {} on the history database".format(_ID))
                 continue
-
-            href = self.get_value_from_response_with_urljoin(hxs,
-                                                             Li_selector + '/div/div[@class="rectLiDetails"]/h3/a/@href',
-                                                             url)
 
             item = CacheItem(
                 ID=_ID,

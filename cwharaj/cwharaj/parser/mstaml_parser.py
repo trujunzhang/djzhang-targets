@@ -29,14 +29,15 @@ class MstamlParse(BaseParser):
             if len(class_name) <= 10:
                 continue
 
-            _ID = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
+            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
+
+            from cwharaj.utils.crawl_utils import CrawlUtils
+            _ID = CrawlUtils.url_parse_id_from_page_url(href, 1)
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist_by_id(_ID):
                 logging.debug("  item exist {} on the history database".format(_ID))
                 continue
-
-            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
 
             item = CacheItem(
                 ID=_ID,
