@@ -3,6 +3,7 @@ from cwharaj.database.base_db import BaseDatabase
 import logging
 from datetime import datetime
 
+from cwharaj.items import HistoryItem
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
@@ -12,6 +13,13 @@ class HistoryDatabase(BaseDatabase):
 
     def process_item(self, url, item=None, index=0):
         guid = CrawlUtils.get_guid(url)
+
+        item = HistoryItem(
+            url=url,
+            guid=CrawlUtils.get_guid(url),
+            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' ')
+        )
+
         item = {
             'url': url,
             'guid': CrawlUtils.get_guid(url),
