@@ -18,7 +18,7 @@ class PhoneNumberSet(object):
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
         _id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
-        logging.debug("  1. _id: {}".format(_id))
+        logging.debug("  1. id: {}".format(_id))
 
         if _id:
             row = self.dict[_id]
@@ -31,34 +31,34 @@ class PhoneNumberSet(object):
         logging.debug("  3. not found row  from ajax: {}".format(_ajax_url))
         return None
 
-    def get_phone_number_base64(self, model_id):
+    def get_phone_number_base64(self, _id):
         logging.debug("Get phone number base64 from dict:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
-        row = self.dict[model_id]
-        logging.debug("  1. model_id: {}".format(model_id))
+        row = self.dict[_id]
+        logging.debug("  1. id: {}".format(_id))
 
         if row:
             logging.debug("  2. row exist in the dict: {}".format(row["url"]))
             return row["phone_number_base64"]
 
-        logging.debug("  3. not found row from model_id: {}".format(model_id))
+        logging.debug("  3. not found row from id: {}".format(_id))
         return None
 
-    def check_exist(self, model_id):
-        if model_id in self.dict:
+    def check_exist(self, _id):
+        if _id in self.dict:
             return True
 
         return False
 
-    def remove_row(self, model_id):
+    def remove_row(self, _id):
         logging.debug("Remove row from dict:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
-        logging.debug("  1. model_id: {}".format(model_id))
+        logging.debug("  1. id: {}".format(_id))
 
-        if self.check_exist(model_id):
+        if self.check_exist(_id):
             logging.debug("  2. row exist in the dict.")
-            del self.dict[model_id]
-            logging.debug("  3. deleted the row sucessfully: {}".format(model_id))
+            del self.dict[_id]
+            logging.debug("  3. deleted the row sucessfully: {}".format(_id))
             logging.debug("  4. dict keys: {}".format(self.dict.keys()))
