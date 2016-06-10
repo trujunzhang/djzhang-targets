@@ -13,7 +13,7 @@ class OpensooqParse(BaseParser):
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
         links = hxs.xpath('//*[@id="gridPostListing"]/li')
-        logging.debug("Get rows count from the opensooq: {}".format(len(links)))
+        logging.debug("Get rows count from the opensooq: {}.".format(len(links)))
 
         count = 1
         for link in links:
