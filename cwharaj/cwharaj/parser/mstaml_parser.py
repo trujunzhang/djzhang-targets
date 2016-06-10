@@ -31,9 +31,6 @@ class MstamlParse(BaseParser):
 
             _ID = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
 
-            if _ID == "":
-                _class_len = len(class_name)
-
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist_by_id(_ID):
                 logging.debug("  item exist {} on the history database".format(_ID))
