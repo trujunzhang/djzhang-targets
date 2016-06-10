@@ -56,7 +56,8 @@ class OpensooqParse(BaseParser):
                                                 '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/span/text()')
         _memberName = self.get_value_from_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
         _description = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
-        _section = self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]/li[2]/span/a/text()')
+        _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]'))
+        # self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]/li[2]/span/a/text()')
 
         # Replace "\n","\r"
         _city = _city.strip()
@@ -82,3 +83,14 @@ class OpensooqParse(BaseParser):
         )
 
         return item
+
+    def get_section(self, section_panel):
+        from BeautifulSoup import BeautifulSoup
+        soup = BeautifulSoup(section_panel)
+
+        _As = soup.findAll('a', {'itemprop': 'url'})
+        sections = []
+        for a in _As:
+            sections.append(a.text)
+
+        return sections
