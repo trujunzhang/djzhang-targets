@@ -55,6 +55,8 @@ class HarajSaParse(BaseParser):
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(comment_header_string)
 
+        fonts = soup.findAll('font')
+
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
         _time = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
         _city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
