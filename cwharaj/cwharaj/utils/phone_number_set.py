@@ -45,19 +45,13 @@ class PhoneNumberSet(object):
         logging.debug("  3. not found row from id: {}".format(_id))
         return None
 
-    def check_exist(self, _id):
-        if _id in self.dict:
-            return True
-
-        return False
-
     def remove_row(self, _id):
         logging.debug("Remove row from dict:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
         logging.debug("  1. id: {}".format(_id))
 
-        if self.check_exist(_id):
+        if _id in self.dict:
             logging.debug("  2. row exist in the dict.")
             del self.dict[_id]
             logging.debug("  3. deleted the row sucessfully: {}".format(_id))

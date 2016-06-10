@@ -19,13 +19,6 @@ class BaseDatabase(object):
     def process_item(self, url, item=None, index=0, id=-1):
         pass
 
-    def check_exist(self, _url):
-        cursor = self.db[self.collection_name].find({'guid': CrawlUtils.get_guid(_url)})
-        if cursor.count():
-            return True
-
-        return False
-
     def check_exist_by_id(self, _id):
         cursor = self.db[self.collection_name].find({'ID': _id})
         if cursor.count():
