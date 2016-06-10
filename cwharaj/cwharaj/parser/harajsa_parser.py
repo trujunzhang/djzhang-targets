@@ -50,7 +50,7 @@ class HarajSaParse(BaseParser):
         _city = ""  # not found
         _time = self.get_value_from_response(hxs,
                                              '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
-        _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
+        _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/font')
 
         _pictures = self.get_images_from_noscript(hxs)
         _subject = ""
