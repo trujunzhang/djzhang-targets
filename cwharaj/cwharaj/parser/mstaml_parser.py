@@ -65,12 +65,6 @@ class MstamlParse(BaseParser):
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
         _section = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')
 
-        # Replace "\n","\r"
-        _city = _city.strip()
-        _time = _time.replace("\n", "").replace("\r", "").strip()
-        _title = _title.replace("\n", "").replace("\r", "").strip()
-        _address = _address.replace("\n", "").replace("\r", "").strip()
-        _memberName = _memberName.strip()
 
         item = Haraj(
             url=url,
