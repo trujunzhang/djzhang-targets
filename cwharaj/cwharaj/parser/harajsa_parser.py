@@ -94,7 +94,9 @@ class HarajSaParse(BaseParser):
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(section_panel)
 
-        _As = soup.findAll('a')
-
+        _As = soup.findAll('a', {'itemprop': 'url'})
+        sections = []
         for a in _As:
-            a.prettify()
+            sections.append(a.text)
+
+        return sections
