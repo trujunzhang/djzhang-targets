@@ -54,7 +54,7 @@ class OpensooqDebugSpider(scrapy.Spider):
     def _get_ajax_url(self, _last):
         _row = self._cache_db.get_oldest_row(_last)
         if _row:
-            _id = self._cache_db.get_row_id(_row)
+            _id = _row['ID']
             if _id:
                 self.phone_dict.add_row(_id, _row)
 

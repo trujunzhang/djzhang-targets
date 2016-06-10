@@ -65,21 +65,3 @@ class CacheDatabase(BaseDatabase):
         cursor.close()
 
         return row
-
-    def get_row_url(self, row):
-        logging.debug("Get url from the oldest row:")
-        if row:
-            logging.debug("  1. the url: {}".format(row['url']))
-            return row['url']
-
-        logging.debug("  2. the row is none?")
-        return None
-
-    def get_row_id(self, row):
-        logging.debug("Get the id from the oldest row:")
-        if row:
-            logging.debug("  1. the id: {}".format(row['ID']))
-            return row['ID']
-
-        logging.debug("  2. the row is none?")
-        return None
