@@ -22,10 +22,10 @@ class CacheDatabase(BaseDatabase):
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
         if self.check_exist_by_id(item["ID"]):
-            logging.debug("  item exist {} on the cache database".format(item["ID"]))
+            logging.debug("  item exist {} from {} on the cache database".format(item["ID"], item["url_from"]))
         else:
             self.db[self.collection_name].insert(dict(item))
-            logging.debug("  cache for {}, added to database".format(item["url_from"]))
+            logging.debug("  cache from {}, added {} to database".format(item["url_from"], item["ID"]))
 
     def get_oldest_row(self, _last=""):
         logging.debug("Get oldest row:")
