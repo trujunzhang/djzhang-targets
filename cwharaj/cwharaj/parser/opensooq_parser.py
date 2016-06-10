@@ -45,7 +45,7 @@ class OpensooqParse(BaseParser):
 
     def parse(self, url, hxs):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _ID = CrawlUtils.get_id_from_page_url(url, 3)
+        _ID = CrawlUtils.url_parse_id_from_page_url(url, 3)
 
         _city = self.get_value_from_response(hxs,
                                              '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')

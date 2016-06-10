@@ -32,7 +32,7 @@ class CacheDatabase(BaseDatabase):
         logging.debug("  1. the last url: {}".format(_last))
 
         if _last:
-            _id = CrawlUtils.get_id_from_page_url(_last, -1)
+            _id = CrawlUtils.url_parse_id_from_page_url(_last, -1)
             logging.debug("  2. get the last url's id: {}".format(_id))
 
             deleted_dict = {'id': _id}

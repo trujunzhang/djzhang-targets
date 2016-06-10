@@ -48,7 +48,7 @@ class MstamlParse(BaseParser):
 
     def parse(self, url, hxs):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _ID = CrawlUtils.get_id_from_page_url(url, 1)
+        _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 
         _city = ""  # not found
         _time = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
