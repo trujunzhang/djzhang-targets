@@ -30,7 +30,7 @@ class CacheDatabase(BaseDatabase):
             self.db[self.collection_name].insert(dict(item))
             logging.debug("  cache from {}, added {} to database".format(item["url_from"], item["ID"]))
 
-    def get_oldest_row(self, _last=""):
+    def get_oldest_row(self, _last, url_from):
         logging.debug("Get oldest row:")
         logging.debug("  1. the last url: {}".format(_last))
 

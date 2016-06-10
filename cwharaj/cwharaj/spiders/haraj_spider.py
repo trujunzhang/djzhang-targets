@@ -48,9 +48,10 @@ class HarajsSpider(scrapy.Spider):
     # This is entry point
     def parse(self, response):
         _last = ""
+        _url_from = ""
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(_last)
+        _row = self.get_row_from_cache(_last, _url_from)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             _ajax_url = \
@@ -61,24 +62,13 @@ class HarajsSpider(scrapy.Spider):
         elif _row['url_from'] == WebsiteTypes.harajsa.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
 
-    def get_row_from_cache(self, _last):
+    def get_row_from_cache(self, _last, url_from):
         while True:
-            _row = self._cache_db.get_oldest_row(_last)
+            _row = self._cache_db.get_oldest_row(_last, url_from)
             if _row:
                 return _row
 
             time.sleep(4)
-
-    def _get_ajax_url(self, _last):
-        _row = self._cache_db.get_oldest_row(_last)
-        if _row:
-            _id = self._cache_db.get_row_id(_row)
-            if _id:
-                self.phone_dict.add_row(_id, _row)
-                # First of all, get the phone number base64 of the page.
-                return "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_id)
-
-        return None
 
     # ====================================================================================
     # opensooq
@@ -101,9 +91,10 @@ class HarajsSpider(scrapy.Spider):
         self._history_db.process_item(response.url, id=_id)
 
         _last = response.url
+        _url_from = WebsiteTypes.opensooq.value
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(_last)
+        _row = self.get_row_from_cache(_last, _url_from)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             _ajax_url = \
@@ -121,9 +112,10 @@ class HarajsSpider(scrapy.Spider):
         self._history_db.process_item(response.url, id=item["ID"])
 
         _last = response.url
+        _url_from = WebsiteTypes.mstaml.value
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(_last)
+        _row = self.get_row_from_cache(_last, _url_from)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             _ajax_url = \
@@ -141,9 +133,10 @@ class HarajsSpider(scrapy.Spider):
         self._history_db.process_item(response.url, id=item["ID"])
 
         _last = response.url
+        _url_from = WebsiteTypes.harajsa.value
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(_last)
+        _row = self.get_row_from_cache(_last, _url_from)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             _ajax_url = \
