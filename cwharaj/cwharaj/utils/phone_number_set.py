@@ -17,7 +17,7 @@ class PhoneNumberSet(object):
         logging.debug("Get page url from ajax url:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
-        model_id = CrawlUtils.get_model_id_from_phone_number_url(_ajax_url)
+        model_id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
         logging.debug("  1. model_id: {}".format(model_id))
 
         if model_id:

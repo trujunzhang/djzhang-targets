@@ -30,12 +30,12 @@ class OpensooqParse(BaseParser):
                 logging.debug("  item exist {} on the history database".format(href))
                 continue
 
-            model_id = hxs.xpath(Li_selector + '/div[@class="searchItem"]/@id')[0].extract()
+            _ID = hxs.xpath(Li_selector + '/div[@class="searchItem"]/@id')[0].extract()
             # u'postList-42229013'
-            model_id = model_id.replace("postList-", "")
+            _ID = _ID.replace("postList-", "")
 
             item = CacheItem(
-                model_id=model_id,
+                ID=_ID,
                 url_from=WebsiteTypes.opensooq.value,
             )
 
@@ -45,7 +45,7 @@ class OpensooqParse(BaseParser):
 
     def parse(self, url, hxs):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _model_id = CrawlUtils.get_model_id_from_page_url(url, 3)
+        _ID = CrawlUtils.get_id_from_page_url(url, 3)
 
         _city = self.get_value_from_response(hxs,
                                              '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
@@ -70,7 +70,7 @@ class OpensooqParse(BaseParser):
 
         item = Haraj(
             url=url,
-            ID=_model_id,
+            ID=_ID,
             city=_city,
             time=_time,
             title=_title,

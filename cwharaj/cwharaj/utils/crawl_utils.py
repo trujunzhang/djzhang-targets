@@ -17,13 +17,13 @@ class CrawlUtils(object):
         return md5(_url).hexdigest()
 
     @classmethod
-    def get_model_id_from_phone_number_url(self, _ajax_url):
+    def get_id_from_phone_number_url(self, _ajax_url):
         import urlparse
         model_id = urlparse.parse_qs(urlparse.urlparse(_ajax_url).query)['model_id'][0]
         return model_id
 
     @classmethod
-    def get_model_id_from_page_url(self, _page_url, position):
+    def get_id_from_page_url(self, _page_url, position):
         logging.debug("Get model_id from page url:")
 
         from urlparse import urlparse

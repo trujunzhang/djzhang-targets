@@ -35,10 +35,10 @@ class MstamlParse(BaseParser):
                 logging.debug("  item exist {} on the history database".format(href))
                 continue
 
-            model_id = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
+            _ID = self.get_value_from_response(hxs, Li_selector + '/span[@class="anchor"]/@id')
 
             item = CacheItem(
-                model_id=model_id,
+                ID=_ID,
                 url_from=WebsiteTypes.mstaml.value,
             )
 
@@ -48,7 +48,7 @@ class MstamlParse(BaseParser):
 
     def parse(self, url, hxs):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _model_id = CrawlUtils.get_model_id_from_page_url(url, 1)
+        _ID = CrawlUtils.get_id_from_page_url(url, 1)
 
         _city = ""  # not found
         _time = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
@@ -67,7 +67,7 @@ class MstamlParse(BaseParser):
 
         item = Haraj(
             url=url,
-            ID=_model_id,
+            ID=_ID,
             city=_city,
             time=_time,
             title=_title,

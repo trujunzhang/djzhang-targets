@@ -34,10 +34,10 @@ class HarajSaParse(BaseParser):
                 logging.debug("  item exist {} on the history database".format(href))
                 continue
 
-            model_id = self.get_value_from_response(hxs, Li_selector + '/*[@class="ads_id"]/@id')
+            _ID = self.get_value_from_response(hxs, Li_selector + '/*[@class="ads_id"]/@id')
 
             item = CacheItem(
-                model_id=model_id,
+                ID=_ID,
                 url_from=WebsiteTypes.harajsa.value,
             )
 
@@ -47,7 +47,7 @@ class HarajSaParse(BaseParser):
 
     def parse(self, url, hxs):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _model_id = CrawlUtils.get_model_id_from_page_url(url, 3)
+        _ID = CrawlUtils.get_id_from_page_url(url, 3)
 
         _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()')
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
@@ -73,7 +73,7 @@ class HarajSaParse(BaseParser):
 
         item = Haraj(
             url=url,
-            ID=_model_id,
+            ID=_ID,
             city=_city,
             time=_time,
             title=_title,

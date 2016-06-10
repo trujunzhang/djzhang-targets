@@ -29,7 +29,7 @@ class ItemDatabase(BaseDatabase):
             raise DropItem("invalid {0}!".format(data))
 
         if valid:
-            if self.check_exist_by_model_id({'ID': item["ID"]}):
+            if self.check_exist_by_model_id(item["ID"]):
                 valid = False
                 raise DropItem("Duplicate item found: {0}!".format(data))
 
