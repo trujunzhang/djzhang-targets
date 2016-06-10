@@ -31,6 +31,7 @@ class HarajSaParse(BaseParser):
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist(href):
+                logging.debug("  item exist {} on the history database".format(href))
                 continue
 
             model_id = self.get_value_from_response(hxs, Li_selector + '/*[@class="ads_id"]/@id')

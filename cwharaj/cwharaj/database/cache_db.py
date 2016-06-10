@@ -22,7 +22,7 @@ class CacheDatabase(BaseDatabase):
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
         if self.check_exist(url):
-            logging.debug("  cache exist {} on the cache database".format(url))
+            logging.debug("  item exist {} on the cache database".format(url))
         else:
             self.db[self.collection_name].insert(dict(item))
             logging.debug("  cache for {}, added to database".format(item["url_from"]))

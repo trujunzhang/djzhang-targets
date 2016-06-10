@@ -27,6 +27,7 @@ class OpensooqParse(BaseParser):
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist(href):
+                logging.debug("  item exist {} on the history database".format(href))
                 continue
 
             model_id = hxs.xpath(Li_selector + '/div[@class="searchItem"]/@id')[0].extract()
