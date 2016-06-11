@@ -68,7 +68,7 @@ class OpensooqDebugSpider(scrapy.Spider):
     # opensooq
     # ====================================================================================
     def parse_page_from_opensooq(self, response):
-        item = self._opensooq_parser.parse(response.url, response)
+        item = self._opensooq_parser.parse(response.url, response, self.phone_dict)
 
         _id = item["ID"]
         item["number"] = self.phone_dict.get_phone_number_base64(_id)
@@ -78,10 +78,8 @@ class OpensooqDebugSpider(scrapy.Spider):
 
         self._history_db.process_item(response.url, id=_id)
 
-
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
         _page_url = self.phone_dict.get_page_url_from_ajax_url(response.url, _phone_number_base64)
 
         yield scrapy.Request(_page_url, callback=self.parse_page_from_opensooq, dont_filter=True)
-
