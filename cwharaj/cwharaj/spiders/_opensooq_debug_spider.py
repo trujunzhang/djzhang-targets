@@ -60,22 +60,19 @@ class OpensooqDebugSpider(scrapy.Spider):
         self.phone_dict.add_row(_row['ID'], _row)
         yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
 
-        # _ajax_url = \
-        #     "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
-        # yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
-
     # ====================================================================================
     # opensooq
     # ====================================================================================
     def parse_page_from_opensooq(self, response):
-        phone_Number_Item = self._opensooq_parser.parse(response.url, response, self.phone_dict)
+        phone_number_item = self._opensooq_parser.parse(response.url, response, self.phone_dict)
 
-        _ajax_url = phone_Number_Item.get_ajax_url()
+        _ajax_url = phone_number_item.get_ajax_url()
         yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
 
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
 
         item = self.phone_dict.get_item_from_ajax_url_and_remove_dict(response.url)
-        item["number"] = _phone_number_base64
-        yield item
+        if item:
+            item["number"] = _phone_number_base64
+            yield item
