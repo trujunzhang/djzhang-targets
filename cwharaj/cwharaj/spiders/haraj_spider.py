@@ -53,9 +53,7 @@ class HarajsSpider(scrapy.Spider):
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             self.phone_dict.add_row(_row['ID'], _row)
-            _ajax_url = \
-                "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
-            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
         elif _row['url_from'] == WebsiteTypes.mstaml.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
         elif _row['url_from'] == WebsiteTypes.harajsa.value:
@@ -76,22 +74,22 @@ class HarajsSpider(scrapy.Spider):
     # ====================================================================================
     # opensooq
     # ====================================================================================
+    def parse_page_from_opensooq(self, response):
+        phone_number_item = self._opensooq_parser.parse(response.url, response, self.phone_dict)
+
+        _ajax_url = phone_number_item.get_ajax_url()
+        yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
-        _page_url = self.phone_dict.get_page_url_from_ajax_url(response.url, _phone_number_base64)
 
-        yield scrapy.Request(_page_url, callback=self.parse_page_from_opensooq, dont_filter=True)
+        item = self.phone_dict.get_item_from_ajax_url_and_remove_dict(response.url)
+        if item:
+            _id = item["ID"]
+            item["number"] = _phone_number_base64
+            yield item
 
-    def parse_page_from_opensooq(self, response):
-        item = self._opensooq_parser.parse(response.url, response)
-
-        _id = item["ID"]
-        item["number"] = self.phone_dict.get_phone_number_base64(_id)
-        self.phone_dict.remove_row(_id)
-
-        yield item
-
-        self._history_db.process_item(response.url, id=_id)
+            self._history_db.process_item(response.url, id=_id)
 
         _last = response.url
         _url_from = WebsiteTypes.opensooq.value
@@ -101,9 +99,7 @@ class HarajsSpider(scrapy.Spider):
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             self.phone_dict.add_row(_row['ID'], _row)
-            _ajax_url = \
-                "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
-            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
         elif _row['url_from'] == WebsiteTypes.mstaml.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
         elif _row['url_from'] == WebsiteTypes.harajsa.value:
@@ -126,9 +122,7 @@ class HarajsSpider(scrapy.Spider):
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             self.phone_dict.add_row(_row['ID'], _row)
-            _ajax_url = \
-                "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
-            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
         elif _row['url_from'] == WebsiteTypes.mstaml.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
         elif _row['url_from'] == WebsiteTypes.harajsa.value:
@@ -151,9 +145,7 @@ class HarajsSpider(scrapy.Spider):
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             self.phone_dict.add_row(_row['ID'], _row)
-            _ajax_url = \
-                "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
-            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
         elif _row['url_from'] == WebsiteTypes.mstaml.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
         elif _row['url_from'] == WebsiteTypes.harajsa.value:
