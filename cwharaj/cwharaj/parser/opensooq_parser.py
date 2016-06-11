@@ -50,7 +50,8 @@ class OpensooqParse(BaseParser):
                                              '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
         _time = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
         _title = self.get_value_from_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
-        _pictures = hxs.xpath('//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src').extract()
+        _pictures = self.get_pictures(hxs, '//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src')
+        # hxs.xpath('//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src').extract()
         _subject = ""
         _contact = ""
         _number = ""
@@ -87,6 +88,14 @@ class OpensooqParse(BaseParser):
         )
 
         return item
+
+    def get_pictures(self, hxs, selector):
+        _pictures = hxs.xpath(selector).extract()
+        list = []
+        for picture in _pictures:
+            list.append(picture.replace('75x75', '563x400'))
+
+        return list
 
     def get_section(self, section_panel):
         from BeautifulSoup import BeautifulSoup
