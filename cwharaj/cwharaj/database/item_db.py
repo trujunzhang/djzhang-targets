@@ -19,14 +19,6 @@ class ItemDatabase(BaseDatabase):
         item["updated_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
         valid = True
-        for data in item:
-            if not data:
-                valid = False
-                raise DropItem("Missing {0}!".format(data))
-
-        if not self.check_data_valid(item):
-            valid = False
-            raise DropItem("invalid {0}!".format(data))
 
         if valid:
             if self.check_exist_by_id(item["ID"]):
@@ -36,11 +28,3 @@ class ItemDatabase(BaseDatabase):
         if valid:
             self.db[self.collection_name].insert(dict(item))
             logging.debug("Haraj added to database.")
-
-    @staticmethod
-    def check_data_valid(item):
-        title = item['title']
-        if not title:
-            return False
-
-        return True
