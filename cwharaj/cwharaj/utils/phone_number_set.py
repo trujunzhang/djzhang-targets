@@ -18,6 +18,7 @@ class PhoneNumberItem(object):
         return "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type={}".format(self.phone_data_id,
                                                                                                    self.phone_data_type)
 
+
 class PhoneNumberSet(object):
     def __init__(self):
         self.dict = {}
@@ -44,7 +45,7 @@ class PhoneNumberSet(object):
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
         _phone_id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
-        logging.debug("  1. phone_id: {}".format(_phone_id))
+        logging.debug("  1. parse phone_id from the ajax url: {}".format(_phone_id))
 
         _id = None
         _item = None
