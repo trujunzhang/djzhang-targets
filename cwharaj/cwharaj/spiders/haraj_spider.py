@@ -78,7 +78,22 @@ class HarajsSpider(scrapy.Spider):
         phone_number_item = self._opensooq_parser.parse(response.url, response, self.phone_dict)
 
         _ajax_url = phone_number_item.get_ajax_url()
-        yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+        if _ajax_url:
+            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+        else:  # No phone number found, fetch the oldest from the cache database.
+            _last = response.url
+            _url_from = WebsiteTypes.opensooq.value
+
+            # step 1: request the last row on the cache database
+            _row = self.get_row_from_cache(_last, _url_from)
+
+            if _row['url_from'] == WebsiteTypes.opensooq.value:
+                self.phone_dict.add_row(_row['ID'], _row)
+                yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+            elif _row['url_from'] == WebsiteTypes.mstaml.value:
+                yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
+            elif _row['url_from'] == WebsiteTypes.harajsa.value:
+                yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
 
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
