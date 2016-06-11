@@ -81,7 +81,9 @@ class OpensooqParse(BaseParser):
             address=_address,
             memberName=_memberName,
             description=_description,
-            section=_section
+            section=_section,
+
+            url_from=WebsiteTypes.opensooq.value
         )
 
         return item
