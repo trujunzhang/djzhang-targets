@@ -58,9 +58,11 @@ class OpensooqDebugSpider(scrapy.Spider):
         }
 
         self.phone_dict.add_row(_row['ID'], _row)
-        _ajax_url = \
-            "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
-        yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+        yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+
+        # _ajax_url = \
+        #     "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
+        # yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
 
     # ====================================================================================
     # opensooq
