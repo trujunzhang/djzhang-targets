@@ -15,7 +15,3 @@ class PhoneNumberSetTest(unittest.TestCase):
             guid=CrawlUtils.get_guid(self.page_url)
         )
         self.phoneNumber.add_row(dict(row), self._ajax_url)
-
-    def test_get_page_url_from_ajax_url(self):
-        _url = self.phoneNumber.get_page_url_from_ajax_url(self._ajax_url, "img_base64")
-        self.assertEqual(_url, self.page_url, "The same url")

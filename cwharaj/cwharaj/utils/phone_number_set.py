@@ -6,7 +6,6 @@ from cwharaj.utils.crawl_utils import CrawlUtils
 
 class PhoneNumberItem(object):
     page_url = ''
-    phone_number_base64 = ''
     phone_data_id = ''
     phone_data_type = ''
     scrapy_item = Haraj()
@@ -18,7 +17,6 @@ class PhoneNumberItem(object):
     def get_ajax_url(self):
         return "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type={}".format(self.phone_data_id,
                                                                                                    self.phone_data_type)
-
 
 class PhoneNumberSet(object):
     def __init__(self):
@@ -39,25 +37,6 @@ class PhoneNumberSet(object):
             return item
 
         logging.debug("  3. not found : {}".format(_id))
-        return None
-
-    def get_page_url_from_ajax_url(self, _ajax_url, _phone_number_base64):
-        logging.debug("Get page url from ajax url:")
-        logging.debug("  *. dict keys: {}".format(self.dict.keys()))
-
-        _phone_id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
-        logging.debug("  1. phone_id: {}".format(_phone_id))
-
-        if _phone_id:
-            row = self.dict[_phone_id]  # ???
-            if row:
-                # opensooq support utf-8, no need encode.
-                logging.debug("  2. row exist in the dict: {}".format(row["url"]))
-
-                row["phone_number_base64"] = _phone_number_base64
-                return row["url"]
-
-        logging.debug("  3. not found row  from ajax url: {}".format(_ajax_url))
         return None
 
     def get_item_from_ajax_url_and_remove_dict(self, _ajax_url):
@@ -82,21 +61,6 @@ class PhoneNumberSet(object):
             return _item.scrapy_item
 
         logging.debug("  3. not found item from ajax url: {}".format(_ajax_url))
-        return None
-
-    def get_phone_number_base64(self, _id):
-        logging.debug("Get phone number base64 from dict:")
-        logging.debug("  *. dict keys: {}".format(self.dict.keys()))
-
-        row = self.dict[_id]
-        logging.debug("  1. id: {}".format(_id))
-
-        if row:
-            # opensooq support utf-8, no need encode.
-            logging.debug("  2. row exist in the dict: {}".format(row["url"]))
-            return row["phone_number_base64"]
-
-        logging.debug("  3. not found row from id: {}".format(_id))
         return None
 
     def remove_row(self, _id):
