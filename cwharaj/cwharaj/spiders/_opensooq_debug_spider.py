@@ -70,13 +70,13 @@ class OpensooqDebugSpider(scrapy.Spider):
     def parse_page_from_opensooq(self, response):
         item = self._opensooq_parser.parse(response.url, response, self.phone_dict)
 
-        _id = item["ID"]
-        item["number"] = self.phone_dict.get_phone_number_base64(_id)
-        self.phone_dict.remove_row(_id)
+        # _id = item["ID"]
+        # item["number"] = self.phone_dict.get_phone_number_base64(_id)
+        # self.phone_dict.remove_row(_id)
 
         yield item
 
-        self._history_db.process_item(response.url, id=_id)
+        # self._history_db.process_item(response.url, id=_id)
 
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body

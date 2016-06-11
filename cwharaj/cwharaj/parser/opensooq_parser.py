@@ -65,11 +65,6 @@ class OpensooqParse(BaseParser):
         _phone_data_type = self.get_value_from_response(hxs,
                                                         '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
 
-        phone_Number_Item = phoneNumberSet.get_phone_number_item(_ID)
-        if phone_Number_Item:
-            phone_Number_Item.phone_data_id = _phone_data_id
-            phone_Number_Item.phone_data_type = _phone_data_type
-
         # Replace "\n","\r"
         _city = _city.strip()
         _time = _time.replace("\n", "").replace("\r", "").strip()
@@ -95,6 +90,12 @@ class OpensooqParse(BaseParser):
 
             url_from=WebsiteTypes.opensooq.value
         )
+
+        phone_Number_Item = phoneNumberSet.get_phone_number_item(_ID)
+        if phone_Number_Item:
+            phone_Number_Item.phone_data_id = _phone_data_id
+            phone_Number_Item.phone_data_type = _phone_data_type
+            phone_Number_Item.scrapy_item = item
 
         return item
 
