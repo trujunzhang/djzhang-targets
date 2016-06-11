@@ -12,11 +12,13 @@ class OpensooqDebugSpider(scrapy.Spider):
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=42946557&model_type=post'
         # detail
         # 'https://sa.opensooq.com/ar/search/42054599/شقة-للإيجار-حي-النعيم-5-غرف',
-        'https://sa.opensooq.com/ar/search/43012611/فيلا-شمال-التخصصي-غرب-ابوبكر-حي-الياسمين'
+        # 'https://sa.opensooq.com/ar/search/43012611/فيلا-شمال-التخصصي-غرب-ابوبكر-حي-الياسمين'
         # detail without phone number
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=42552861&model_type=post',
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=39509897&model_type=post'
         # 'https://sa.opensooq.com/ar/search/42552861/%D9%85%D9%86%D8%B8%D9%88%D9%85%D8%A9-%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA-%D9%84%D9%84%D8%A7%D8%B3%D9%88%D8%A7%D9%82-%D9%88%D8%A7%D9%84%D9%85%D8%AD%D9%84%D8%A7%D8%AA'
+        # Fix phone number
+        'https://sa.opensooq.com/ar/search/43152549/إفطار-صائم-بمكه-المكرمه'
     ]
 
     def __init__(self, name=None, **kwargs):
