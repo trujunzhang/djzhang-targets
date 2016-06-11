@@ -62,8 +62,7 @@ class HarajSaParse(BaseParser):
         _subject = ""
         _contact = ""
         _number = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')
-        _address = self.get_value_from_response(hxs,
-                                                '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')  # ??
+        _address = ""  # not found
         _description = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
 
         _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
