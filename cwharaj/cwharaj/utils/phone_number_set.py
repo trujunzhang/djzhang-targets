@@ -15,6 +15,10 @@ class PhoneNumberItem(object):
         super(PhoneNumberItem, self).__init__()
 
     def get_ajax_url(self):
+        # No phone number found on the page.
+        if not self.phone_data_id:
+            return None
+
         return "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type={}".format(self.phone_data_id,
                                                                                                    self.phone_data_type)
 
