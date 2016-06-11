@@ -5,7 +5,7 @@ class BaseParser(object):
     def __init__(self):
         pass
 
-    def parse(self, url, hxs):
+    def parse(self, url, hxs, model=None):
         return None
 
     def parse_relative(self, url, hxs):
