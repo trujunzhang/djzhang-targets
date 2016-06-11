@@ -74,5 +74,8 @@ class OpensooqDebugSpider(scrapy.Spider):
 
         item = self.phone_dict.get_item_from_ajax_url_and_remove_dict(response.url)
         if item:
+            _id = item["ID"]
             item["number"] = _phone_number_base64
             yield item
+
+            self._history_db.process_item(response.url, id=_id)
