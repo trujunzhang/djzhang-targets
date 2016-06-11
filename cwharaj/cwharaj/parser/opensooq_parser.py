@@ -51,7 +51,6 @@ class OpensooqParse(BaseParser):
         _time = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
         _title = self.get_value_from_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
         _pictures = self.get_pictures(hxs, '//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src')
-        # hxs.xpath('//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src').extract()
         _subject = ""
         _contact = ""
         _number = ""

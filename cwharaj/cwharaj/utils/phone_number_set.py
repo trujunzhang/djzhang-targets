@@ -1,5 +1,6 @@
 import logging
 
+from cwharaj.items import Haraj
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
@@ -8,6 +9,7 @@ class PhoneNumberItem(object):
     phone_number_base64 = ''
     phone_data_id = ''
     phone_data_type = ''
+    scrapy_item = Haraj()
 
     def __init__(self, page_url):
         self.page_url = page_url
