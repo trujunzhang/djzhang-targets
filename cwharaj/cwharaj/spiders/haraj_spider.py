@@ -109,6 +109,9 @@ class HarajsSpider(scrapy.Spider):
         elif _row['url_from'] == WebsiteTypes.harajsa.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
 
+    # ====================================================================================
+    # mstaml
+    # ====================================================================================
     def parse_page_from_mstaml(self, response):
         item = self._mstaml_Parse.parse(response.url, response)
         yield item
@@ -131,6 +134,9 @@ class HarajsSpider(scrapy.Spider):
         elif _row['url_from'] == WebsiteTypes.harajsa.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
 
+    # ====================================================================================
+    # harajsa
+    # ====================================================================================
     def parse_page_from_harajsa(self, response):
         item = self._harajsa_Parse.parse(response.url, response)
         yield item

@@ -44,27 +44,27 @@ class OpensooqDebugSpider(scrapy.Spider):
 
     def parse(self, response):
         # self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._opensooq_parser.parse(response.url, response)
-        yield item
+        # item = self._opensooq_parser.parse(response.url, response)
+        # yield item
         # _row = self._cache_db.get_last_row("")
 
-        # step 3: request the last row on the cache database
-        # _ajax_url = self.get_ajax_url("")
-        # if _ajax_url:
-        #     yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+        _last = ""
+        _url_from = ""
 
-    def _get_ajax_url(self, _last):
-        _row = self._cache_db.get_oldest_row(_last)
-        if _row:
-            _id = _row['ID']
-            if _id:
-                self.phone_dict.add_row(_id, _row)
+        # step 1: request the last row on the cache database
+        _row = {
+            'ID': '43152549',
+            'url': 'https://sa.opensooq.com/ar/search/43152549/إفطار-صائم-بمكه-المكرمه'
+        }
 
-                # First of all, get the phone number base64 of the page.
-                return "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_id)
+        self.phone_dict.add_row(_row['ID'], _row)
+        _ajax_url = \
+            "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type=post".format(_row['ID'])
+        yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
 
-        return None
-
+    # ====================================================================================
+    # opensooq
+    # ====================================================================================
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
         _page_url = self.phone_dict.get_page_url_from_ajax_url(response.url, _phone_number_base64)
@@ -72,18 +72,12 @@ class OpensooqDebugSpider(scrapy.Spider):
         yield scrapy.Request(_page_url, callback=self.parse_page_from_opensooq, dont_filter=True)
 
     def parse_page_from_opensooq(self, response):
-        from urlparse import urlparse
-        _id = urlparse(response.url).path.split('/')[3]
-
         item = self._opensooq_parser.parse(response.url, response)
-        item["ID"] = _id
-        item["number"] = self.phone_dict.get_phone_number_base64(_id)
 
+        _id = item["ID"]
+        item["number"] = self.phone_dict.get_phone_number_base64(_id)
         self.phone_dict.remove_row(_id)
 
         yield item
 
-        # step 2: request the last row on the cache database
-        _ajax_url = self._get_ajax_url(response.url)
-        if _ajax_url:
-            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+        self._history_db.process_item(response.url, id=_id)
