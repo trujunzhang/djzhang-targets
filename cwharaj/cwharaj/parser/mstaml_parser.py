@@ -99,6 +99,6 @@ class MstamlParse(BaseParser):
         _As = soup.findAll('a', {'property': 'v:title'})
         sections = []
         for a in _As:
-            sections.append(a.text)
+            sections.append(a.text.replace("\n", "").replace("\r", "").strip())
 
         return sections

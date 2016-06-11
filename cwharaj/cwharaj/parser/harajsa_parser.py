@@ -100,6 +100,6 @@ class HarajSaParse(BaseParser):
         _As = soup.findAll('a', {'itemprop': 'url'})
         sections = []
         for a in _As:
-            sections.append(a.text)
+            sections.append(a.text.replace("\n", "").replace("\r", "").strip())
 
         return sections
