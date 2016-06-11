@@ -88,8 +88,8 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 
-MONGODB_SERVER = "localhost"
-# MONGODB_SERVER = "104.236.77.182"
+# MONGODB_SERVER = "localhost"
+MONGODB_SERVER = "104.236.77.182"
 MONGODB_PORT = 27017
 MONGODB_DB = "vps_scrapy_rails"
 MONGODB_COLLECTION = "harajs"
