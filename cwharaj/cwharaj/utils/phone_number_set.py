@@ -15,6 +15,10 @@ class PhoneNumberItem(object):
         self.page_url = page_url
         super(PhoneNumberItem, self).__init__()
 
+    def get_ajax_url(self):
+        return "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type={}".format(self.phone_data_id,
+                                                                                                   self.phone_data_type)
+
 
 class PhoneNumberSet(object):
     def __init__(self):
@@ -41,11 +45,11 @@ class PhoneNumberSet(object):
         logging.debug("Get page url from ajax url:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
-        _id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
-        logging.debug("  1. id: {}".format(_id))
+        _phone_id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
+        logging.debug("  1. phone_id: {}".format(_phone_id))
 
-        if _id:
-            row = self.dict[_id]
+        if _phone_id:
+            row = self.dict[_phone_id]  # ???
             if row:
                 # opensooq support utf-8, no need encode.
                 logging.debug("  2. row exist in the dict: {}".format(row["url"]))
@@ -53,7 +57,31 @@ class PhoneNumberSet(object):
                 row["phone_number_base64"] = _phone_number_base64
                 return row["url"]
 
-        logging.debug("  3. not found row  from ajax: {}".format(_ajax_url))
+        logging.debug("  3. not found row  from ajax url: {}".format(_ajax_url))
+        return None
+
+    def get_item_from_ajax_url_and_remove_dict(self, _ajax_url):
+        logging.debug("Get item from ajax url and remove dict:")
+        logging.debug("  *. dict keys: {}".format(self.dict.keys()))
+
+        _phone_id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
+        logging.debug("  1. phone_id: {}".format(_phone_id))
+
+        _id = None
+        _item = None
+        if _phone_id:
+            for key, value in self.dict.iteritems():
+                if value.phone_data_id == _phone_id:
+                    _id = key
+                    _item = value
+                    logging.debug("  2. found id from ajax url: {}".format(_id))
+                    break
+
+        if _id:
+            self.remove_row(_id)
+            return _item.scrapy_item
+
+        logging.debug("  3. not found item from ajax url: {}".format(_ajax_url))
         return None
 
     def get_phone_number_base64(self, _id):
