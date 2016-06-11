@@ -46,7 +46,7 @@ class HarajSaParse(BaseParser):
             # here, must sleep a second.
             # time.sleep(1)
 
-    def parse(self, url, hxs, dict=None):
+    def parse(self, url, hxs, phoneNumberSet=None):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 

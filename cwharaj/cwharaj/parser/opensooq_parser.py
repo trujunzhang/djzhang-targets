@@ -42,7 +42,7 @@ class OpensooqParse(BaseParser):
             # here, must sleep a second.
             # time.sleep(1)
 
-    def parse(self, url, hxs, dict=None):
+    def parse(self, url, hxs, phoneNumberSet=None):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 3)
 
@@ -66,6 +66,10 @@ class OpensooqParse(BaseParser):
         _phone_data_type = self.get_value_from_response(hxs,
                                                         '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
 
+        phone_Number_Item = phoneNumberSet.get_phone_number_item(_ID)
+        if phone_Number_Item:
+            phone_Number_Item.phone_data_id = _phone_data_id
+            phone_Number_Item.phone_data_type = _phone_data_type
 
         # Replace "\n","\r"
         _city = _city.strip()

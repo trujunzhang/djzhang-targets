@@ -20,9 +20,20 @@ class PhoneNumberSet(object):
         super(PhoneNumberSet, self).__init__()
 
     def add_row(self, _id, row):
-        self.dict[_id] = item = PhoneNumberItem(row['url'])
+        self.dict[_id] = PhoneNumberItem(row['url'])
         logging.debug("Added to dict for {}".format(_id))
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
+
+    def get_phone_number_item(self, _id):
+        logging.debug("Get phone number item:")
+        logging.debug("  *. dict keys: {}".format(self.dict.keys()))
+        item = self.dict[_id]
+        if item:
+            logging.debug("  1. found by ID {}".format(_id))
+            return item
+
+        logging.debug("  3. not found : {}".format(_id))
+        return None
 
     def get_page_url_from_ajax_url(self, _ajax_url, _phone_number_base64):
         logging.debug("Get page url from ajax url:")
