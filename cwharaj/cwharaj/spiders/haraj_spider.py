@@ -81,6 +81,15 @@ class HarajsSpider(scrapy.Spider):
         if _ajax_url:
             yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
         else:  # No phone number found, fetch the oldest from the cache database.
+            item = phone_number_item.scrapy_item
+            if item:
+                _id = item["ID"]
+                item["number"] = ""
+                yield item
+
+                self.phone_dict.remove_row(_id)
+                self._history_db.process_item(response.url, id=_id)
+
             _last = response.url
             _url_from = WebsiteTypes.opensooq.value
 
