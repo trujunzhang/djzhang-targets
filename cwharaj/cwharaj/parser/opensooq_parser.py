@@ -61,6 +61,11 @@ class OpensooqParse(BaseParser):
         _description = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
         _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]'))
 
+        # Specially, parse phone_number only for opensooq
+        _phone_data_id = self.get_value_from_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-id')
+        _phone_data_type = self.get_value_from_response(hxs,
+                                                        '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
+
         # Replace "\n","\r"
         _city = _city.strip()
         _time = _time.replace("\n", "").replace("\r", "").strip()
