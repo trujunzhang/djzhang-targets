@@ -27,7 +27,7 @@ class MysqlDatabase(BaseDatabase):
     def insert_for_item(self, item):
         pass
 
-    def update_for_history(self, item):
+    def update_for_history(self, id, item):
         pass
 
     def get_count(self, dict):

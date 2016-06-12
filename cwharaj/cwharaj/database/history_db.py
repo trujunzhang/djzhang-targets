@@ -18,5 +18,5 @@ class HistoryDatabase(DispatchDatabase):
             ID=id
         )
 
-        self.update_for_history(item)
+        self.update_for_history(id, item)
         logging.debug("HarajHistory added to database!")

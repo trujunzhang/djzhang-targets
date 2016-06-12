@@ -28,7 +28,7 @@ class MongoDatabase(BaseDatabase):
     def insert_for_item(self, item):
         self.collection.insert(dict(item))
 
-    def update_for_history(self, item):
+    def update_for_history(self, id, item):
         self.collection.update_one({'ID': id}, {'$set': dict(item)}, True)
 
     def get_count(self, dict):

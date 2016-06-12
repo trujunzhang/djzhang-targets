@@ -34,8 +34,8 @@ class DispatchDatabase(object):
     def insert_for_item(self, item):
         self.database.insert_for_item(item)
 
-    def update_for_history(self, item):
-        self.database.update_for_history(item)
+    def update_for_history(self, id, item):
+        self.database.update_for_history(id, item)
 
     def get_count(self, dict):
         return self.database.get_count(dict)
