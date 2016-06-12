@@ -84,6 +84,6 @@ class MysqlDBTest(unittest.TestCase):
             address='address',
             memberName='member name',
             description='description',
-            section='section',
+            section=['section'],
         )
         self.mysql_database.insert_for_item(item)
