@@ -43,10 +43,10 @@ class MysqlDatabase(BaseDatabase):
         pass
 
     def insert_for_cache(self, item):
-        query = self.dbpool.runInteraction(self._insert_cache, item)
+        query = self.dbpool.runInteraction(self._asyn_insert_cache, item)
         query.addErrback(self._handle_error)
 
-    def _insert_cache(self, tx, item):
+    def _asyn_insert_cache(self, tx, item):
         result = tx.execute(
             " INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ({},{},{},{},{})"
                 .format(self.collection_name,
