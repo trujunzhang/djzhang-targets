@@ -8,7 +8,7 @@
 import logging
 
 
-class MongoPipeline(object):
+class HarajPipeline(object):
     def __init__(self, host, port, user, passwd, db, collection_name):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
 
