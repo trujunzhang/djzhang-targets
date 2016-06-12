@@ -1,10 +1,6 @@
 import MySQLdb
-import MySQLdb.cursors
 from cwharaj.database.base.base_db import BaseDatabase
 import logging
-from twisted.enterprise import adbapi
-from scrapy.xlib.pydispatch import dispatcher
-from scrapy import signals
 
 
 class MysqlDatabase(BaseDatabase):
@@ -17,44 +13,41 @@ class MysqlDatabase(BaseDatabase):
         self.db = db
         self.collection_name = collection_name
 
-        # Instantiate DB
-        self.dbpool = adbapi.ConnectionPool('MySQLdb',
-                                            host=self.host,
-                                            user=self.user,
-                                            passwd=self.passwd,
-                                            port=self.port,
-                                            db=self.db,
-                                            charset='utf8',
-                                            use_unicode=True,
-                                            cursorclass=MySQLdb.cursors.DictCursor
-                                            )
-        dispatcher.connect(self.spider_closed, signals.spider_closed)
-
-    def spider_closed(self, spider):
-        """ Cleanup function, called after crawing has finished to close open objects.
-            Close ConnectionPool. """
-
-        self.dbpool.close()
+    def connect(self):
+        try:
+            self.client = MySQLdb.connect(
+                host=self.host,
+                user=self.user,
+                passwd=self.passwd,
+                db=self.db,
+                port=self.port
+            )
+        except (AttributeError, MySQLdb.OperationalError), e:
+            raise e
 
     def open_spider(self):
-        pass
+        self.connect()
+        # prepare a cursor object using cursor() method
+        self.cursor = self.client.cursor()
 
     def close_spider(self):
-        pass
+        # disconnect from server
+        self.client.close()
 
     def insert_for_cache(self, item):
-        query = self.dbpool.runInteraction(self._asyn_insert_cache, item)
-        query.addErrback(self._handle_error)
+        sql = " INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ({},{},{},{},{})".format(
+            self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'], )
 
-    def _asyn_insert_cache(self, tx, item):
-        result = tx.execute(
-            " INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ({},{},{},{},{})"
-                .format(self.collection_name,
-                        item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'],
-                        )
-        )
-        if result > 0:
-            logging.debug("  mysql: insert the cache item successfully")
+        try:
+            # Execute the SQL command
+            self.cursor.execute(sql)
+            # Commit your changes in the database
+            self.db.commit()
+        except:
+            # Rollback in case there is any error
+            self.db.rollback()
+
+        logging.debug("  mysql: insert the cache item successfully")
 
     def insert_for_history(self, item):
         self.collection.insert(dict(item))
