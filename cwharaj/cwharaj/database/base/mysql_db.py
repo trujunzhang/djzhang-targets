@@ -49,6 +49,8 @@ class MysqlDatabase(BaseDatabase):
             logging.debug("  mysql: insert the cache item failure, {}".format(e.message))
             # Rollback in case there is any error
             self.client.rollback()
+        finally:
+            cursor.close()
 
         logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
@@ -73,6 +75,8 @@ class MysqlDatabase(BaseDatabase):
             logging.debug("  mysql: insert the cache item failure, {}".format(e.message))
             # Rollback in case there is any error
             self.client.rollback()
+        finally:
+            cursor.close()
 
         logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
@@ -91,6 +95,8 @@ class MysqlDatabase(BaseDatabase):
             logging.debug("  mysql: insert the cache item failure, {}".format(e.message))
             # Rollback in case there is any error
             self.client.rollback()
+        finally:
+            cursor.close()
 
         logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
@@ -134,50 +140,59 @@ class MysqlDatabase(BaseDatabase):
             try:
                 # Execute the SQL command
                 cursor.execute(sql)
+                # Commit your changes in the database
+                self.client.commit()
             except Exception, e:
+                # Rollback in case there is any error
+                self.client.rollback()
                 logging.debug(
                     "  mysql: delete the last row from {} failure, {}".format(self.collection_name, e.message))
+            finally:
+                cursor.close()
 
                 count = cursor.rowcount
                 logging.debug("  3. found the deleted item count: {} by ID".format(count))
 
-
     def find_oldest_for_cache(self):
         """Query the oldest cache item."""
-
+        row = None
         cursor = self.client.cursor()
 
         sql = 'SELECT * FROM  {} ORDER BY {} ASC LIMIT 1'.format(self.collection_name, 'created_at')
         try:
             # Execute the SQL command
             cursor.execute(sql)
+            # Get the row data
+            data = cursor.fetchone()
+            row = CacheItem(
+                guid=data[0],
+                ID=data[1],
+                url=data[2],
+                url_from=data[3],
+                created_at=data[4]
+            )
         except Exception, e:
             logging.debug("  mysql: find the oldest row from {} failure, {}".format(self.collection_name, e.message))
-            return 0
-
-        data = cursor.fetchone()
-        row = CacheItem(
-            guid=data[0],
-            ID=data[1],
-            url=data[2],
-            url_from=data[3],
-            created_at=data[4]
-        )
+        finally:
+            cursor.close()
 
         return row
 
     def check_exist_by_id(self, _id):
+        ret = 0
         cursor = self.client.cursor()
 
         sql = """ SELECT 1 FROM {} WHERE ID = {}""".format(self.collection_name, _id)
         try:
             # Execute the SQL command
             cursor.execute(sql)
+            # Get the count of rows
+            ret = cursor.rowcount
         except Exception, e:
             logging.debug("  mysql: check {} exist from {} failure, {}".format(_id, self.collection_name, e.message))
-            return False
+        finally:
+            cursor.close()
 
-        ret = cursor.rowcount
         if ret:
             return True
 
