@@ -1,5 +1,3 @@
-import pymongo
-
 
 class BaseDatabase(object):
     def __init__(self, host, port, user, passwd, db, collection_name):
