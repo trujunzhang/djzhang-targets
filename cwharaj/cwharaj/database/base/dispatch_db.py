@@ -10,9 +10,11 @@ class DispatchDatabase(object):
         #                               user=user, passwd=passwd,
         #                               db=db, collection_name=collection_name)
 
-        self.database = MongoDatabase(host=host, port=port,
-                                      user=user, passwd=passwd,
-                                      db=db, collection_name=collection_name)
+        self.database = MongoDatabase(
+            host='localhost', port='27017',
+            # host='104.236.77.182', port='27017',
+            user='', passwd='',
+            db=db, collection_name=collection_name)
 
     def open_spider(self):
         self.database.open_spider()
