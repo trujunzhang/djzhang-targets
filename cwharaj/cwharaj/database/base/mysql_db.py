@@ -1,4 +1,5 @@
 import MySQLdb
+import MySQLdb.cursors
 from cwharaj.database.base.base_db import BaseDatabase
 import logging
 from twisted.enterprise import adbapi
