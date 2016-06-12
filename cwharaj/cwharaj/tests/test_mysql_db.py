@@ -41,14 +41,12 @@ class MysqlDBTest(unittest.TestCase):
         #     self.mysql_database.insert_for_cache(item)
 
     def test_oldest_cache(self):
-        _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
-        _guid = "1234321"
-        # _id = CrawlUtils.url_parse_id_from_page_url(_url, 3)
-        _id = "123"
-
         self.mysql_database.open_spider()
         # deleted_dict = {'ID': _id}
-        self.mysql_database.find_oldest_for_cache()
+        row = self.mysql_database.find_oldest_for_cache()
+
+        _id = row['ID']
+
 
 
 
