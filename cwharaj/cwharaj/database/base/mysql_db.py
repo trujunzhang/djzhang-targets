@@ -102,7 +102,7 @@ class MysqlDatabase(BaseDatabase):
         _count = 0
         cursor = self.client.cursor()
 
-        sql = """ SELECT 1 FROM {} WHERE {} = {}""".format(self.collection_name, key, value)
+        sql = """ SELECT 1 FROM {} WHERE {} = '{}'""".format(self.collection_name, key, value)
         try:
             # Execute the SQL command
             cursor.execute(sql)
@@ -130,7 +130,7 @@ class MysqlDatabase(BaseDatabase):
         if count:
 
             cursor = self.client.cursor()
-            sql = """ DELETE FROM {} WHERE {} = {}""".format(self.collection_name, 'ID', _id)
+            sql = """ DELETE FROM {} WHERE {} = '{}'""".format(self.collection_name, 'ID', _id)
             try:
                 # Execute the SQL command
                 cursor.execute(sql)
@@ -141,10 +141,6 @@ class MysqlDatabase(BaseDatabase):
                 count = cursor.rowcount
                 logging.debug("  3. found the deleted item count: {} by ID".format(count))
 
-                # result = self.collection.delete_one(deleted_dict)
-                # logging.debug(
-                #     "  4. deleted cache row, id: {}, deleted count: {}, from {}"
-                #         .format(_id, result.deleted_count, url_from))
 
     def find_oldest_for_cache(self):
         """Query the oldest cache item."""
