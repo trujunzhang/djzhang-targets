@@ -147,7 +147,7 @@ class MysqlDatabase(BaseDatabase):
             logging.debug("  mysql: check {} exist from {} failure, {}".format(_id, self.collection_name, e.message))
             return False
 
-        ret = self.cursor.rowcount
+        ret = cursor.rowcount
         if ret:
             return True
 
