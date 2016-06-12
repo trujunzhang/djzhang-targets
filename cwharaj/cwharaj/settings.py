@@ -93,7 +93,7 @@ class APP_DB_TYPE(Enum):
     mysql = 2
 
 
-default_database = APP_DB_TYPE.mongo
+DEFAULT_DB_TYPE = APP_DB_TYPE.mongo
 
 # mongo DATABASE SETTING
 MONGODB_SERVER = "localhost"
