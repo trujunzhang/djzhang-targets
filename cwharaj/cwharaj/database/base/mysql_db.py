@@ -47,7 +47,7 @@ class MysqlDatabase(BaseDatabase):
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
-            logging.debug("  mysql: insert the cache item failure, {}".format(e.message))
+            logging.debug("  mysql: insert the cache row failure, {}".format(e.message))
             # Rollback in case there is any error
             self.client.rollback()
         finally:
@@ -73,7 +73,7 @@ class MysqlDatabase(BaseDatabase):
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
-            logging.debug("  mysql: insert the cache item failure, {}".format(e.message))
+            logging.debug("  mysql: insert the item row failure, {}".format(e.message))
             # Rollback in case there is any error
             self.client.rollback()
         finally:
@@ -93,7 +93,7 @@ class MysqlDatabase(BaseDatabase):
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
-            logging.debug("  mysql: insert the cache item failure, {}".format(e.message))
+            logging.debug("  mysql: insert the history row failure, {}".format(e.message))
             # Rollback in case there is any error
             self.client.rollback()
         finally:
