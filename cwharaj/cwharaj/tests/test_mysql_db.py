@@ -27,8 +27,8 @@ class MysqlDBTest(unittest.TestCase):
 
         self.cache_database.open_spider()
         item = CacheItem(
-            url=_url,
-            guid=_guid,
+            url='url',
+            guid='321',
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
             ID=_id,
             url_from="opensooq"
