@@ -87,9 +87,16 @@ ITEM_PIPELINES = {
 #HTTPCACHE_IGNORE_HTTP_CODES=[]
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-
+# mongo DATABASE SETTING
 MONGODB_SERVER = "localhost"
 # MONGODB_SERVER = "104.236.77.182"
 MONGODB_PORT = 27017
 MONGODB_DB = "vps_scrapy_rails"
 MONGODB_COLLECTION = "harajs"
+
+# SQL DATABASE SETTING
+SQL_DB = 'scrapy'
+SQL_TABLE = 'bhinneka'
+SQL_HOST = 'localhost'
+SQL_USER = 'root'
+SQL_PASSWD = '54321'
