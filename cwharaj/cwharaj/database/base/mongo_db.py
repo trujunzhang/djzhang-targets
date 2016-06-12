@@ -18,8 +18,6 @@ class MongoDatabase(BaseDatabase):
     def close_spider(self):
         self.client.close()
 
-    def process_item(self, url, item=None, index=0, id=-1):
-        pass
 
     def insert_for_cache(self, item):
         self.collection.insert(dict(item))
@@ -31,7 +29,7 @@ class MongoDatabase(BaseDatabase):
         self.collection.insert(dict(item))
 
     def update_for_history(self, item):
-        pass
+        self.collection.update_one({'ID': id}, {'$set': dict(item)}, True)
 
     def get_count(self, dict):
         count = self.collection.count(dict)

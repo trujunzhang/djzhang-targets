@@ -11,8 +11,6 @@ class BaseDatabase(object):
     def close_spider(self):
         pass
 
-    def process_item(self, url, item=None, index=0, id=-1):
-        pass
 
     def insert_for_cache(self, item):
         pass

@@ -16,14 +16,14 @@ class DispatchDatabase(object):
             user='', passwd='',
             db=db, collection_name=collection_name)
 
+    def process_item(self, url, item=None, index=0, id=-1):
+        pass
+
     def open_spider(self):
         self.database.open_spider()
 
     def close_spider(self):
         self.database.close_spider()
-
-    def process_item(self, url, item=None, index=0, id=-1):
-        self.database.process_item(url, item, index=index, id=id)
 
     def insert_for_cache(self, item):
         self.database.insert_for_cache(item)
