@@ -45,10 +45,9 @@ class MysqlDBTest(unittest.TestCase):
         # deleted_dict = {'ID': _id}
         row = self.mysql_database.find_oldest_for_cache()
 
+        self.mysql_database.delete_row('__12345','')
+
         _id = row['ID']
-
-
-
 
         # def test_insert_history_row(self):
         #     _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"

@@ -122,13 +122,24 @@ class MysqlDatabase(BaseDatabase):
         logging.debug("  2. get the last url's id: {}".format(_id))
 
         # Generate a query dictionary.
-        deleted_dict = {'ID': _id}
+        deleted_dict = {}
 
         # Query the deleted item count, must be equal to 1.
         # count = self.collection.count(deleted_dict)
-        count = self.get_count(deleted_dict)
+        count = self.get_count('ID', _id)
         logging.debug("  3. found the deleted item count: {} by ID".format(count, deleted_dict))
         if count:
+
+            cursor = self.client.cursor()
+            sql = """ DELETE FROM {} WHERE {} = {}""".format(self.collection_name, 'ID', _id)
+            try:
+                # Execute the SQL command
+                cursor.execute(sql)
+            except Exception, e:
+                logging.debug(
+                    "  mysql: delete the last row from {} failure, {}".format(self.collection_name, e.message))
+                return 0
+
             result = self.collection.delete_one(deleted_dict)
             logging.debug(
                 "  4. deleted cache row, id: {}, deleted count: {}, from {}"
