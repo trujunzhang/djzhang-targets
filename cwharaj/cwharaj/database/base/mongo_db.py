@@ -48,7 +48,7 @@ class MongoDatabase(BaseDatabase):
         row = None
         if cursor.count():
             row = cursor.next()
-            logging.debug("  6. found the oldest row sucessfully, url: {}".format(row['url'].encode('utf-8')))
+            logging.debug("  6. found the oldest row sucessfully, ID: {}".format(row['ID']))
 
         cursor.close()
 
