@@ -38,7 +38,7 @@ class DispatchDatabase(object):
         self.database.update_for_history(item)
 
     def get_count(self, dict):
-        self.database.get_count(dict)
+        return self.database.get_count(dict)
 
     def delete_row(self, _last, url_from):
         self.database.delete_row(_last, url_from)
