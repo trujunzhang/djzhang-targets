@@ -1,8 +1,5 @@
 import pymongo
 
-from cwharaj.utils.crawl_utils import CrawlUtils
-
-
 class BaseDatabase(object):
     def __init__(self, mongo_uri, mongo_db, collection_name):
         self.mongo_uri = mongo_uri

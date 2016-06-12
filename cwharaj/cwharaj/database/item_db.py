@@ -3,11 +3,11 @@ from datetime import datetime
 
 from scrapy.exceptions import DropItem
 
-from cwharaj.database.base.base_db import BaseDatabase
+from cwharaj.database.base.dispatch_db import DispatchDatabase
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
-class ItemDatabase(BaseDatabase):
+class ItemDatabase(DispatchDatabase):
     def __init__(self, mongo_uri, mongo_db, collection_name):
         super(ItemDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
 

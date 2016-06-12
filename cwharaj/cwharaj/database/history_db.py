@@ -1,12 +1,12 @@
 import logging
 from datetime import datetime
 
-from cwharaj.database.base.base_db import BaseDatabase
+from cwharaj.database.base.dispatch_db import DispatchDatabase
 from cwharaj.items import HistoryItem
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
-class HistoryDatabase(BaseDatabase):
+class HistoryDatabase(DispatchDatabase):
     def __init__(self, mongo_uri, mongo_db, collection_name):
         super(HistoryDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
 
