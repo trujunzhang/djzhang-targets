@@ -69,6 +69,9 @@ class MysqlDBTest(unittest.TestCase):
         # _id = CrawlUtils.url_parse_id_from_page_url(_url, 3)
         _id = "123"
 
+        # _section = ['section']
+        _section = []
+
         self.mysql_database.open_spider()
         item = Haraj(
             url=_url,
@@ -91,6 +94,6 @@ class MysqlDBTest(unittest.TestCase):
             address='address',
             memberName='member name',
             description='description',
-            section=['section'],
+            section=_section,
         )
         self.mysql_database.insert_for_item(item)
