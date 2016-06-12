@@ -150,8 +150,9 @@ class MysqlDatabase(BaseDatabase):
             finally:
                 cursor.close()
 
-                count = cursor.rowcount
-                logging.debug("  3. found the deleted item count: {} by ID".format(count))
+                logging.debug(
+                    "  4. deleted cache row, id: {}, deleted count: {}, from {}"
+                        .format(_id, cursor.rowcount, url_from))
 
     def find_oldest_for_cache(self):
         """Query the oldest cache item."""
