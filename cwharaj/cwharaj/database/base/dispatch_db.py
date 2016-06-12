@@ -25,5 +25,26 @@ class DispatchDatabase(object):
     def process_item(self, url, item=None, index=0, id=-1):
         self.database.process_item(url, item, index=index, id=id)
 
+    def insert_for_cache(self, item):
+        self.database.insert_for_cache(item)
+
+    def insert_for_history(self, item):
+        self.database.insert_for_history(item)
+
+    def insert_for_item(self, item):
+        self.database.insert_for_item(item)
+
+    def update_for_history(self, item):
+        self.database.update_for_history(item)
+
+    def get_count(self, dict):
+        self.database.get_count(dict)
+
+    def delete_row(self, dict):
+        self.database.delete_row(dict)
+
+    def find_for_cache(self):
+        self.database.find_for_cache()
+
     def check_exist_by_id(self, _id):
         return self.database.check_exist_by_id(_id)

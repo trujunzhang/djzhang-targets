@@ -22,25 +22,28 @@ class MongoDatabase(BaseDatabase):
         pass
 
     def insert_for_cache(self, item):
-        pass
+        self.collection.insert(dict(item))
 
     def insert_for_history(self, item):
-        pass
+        self.collection.insert(dict(item))
 
     def insert_for_item(self, item):
-        pass
+        self.collection.insert(dict(item))
 
     def update_for_history(self, item):
         pass
 
     def get_count(self, dict):
-        pass
+        count = self.collection.count(dict)
+        return count
 
     def delete_row(self, dict):
-        pass
+        result = self.collection.delete_one(dict)
+        return result
 
     def find_for_cache(self):
-        pass
+        cursor = self.collection.find().sort([("created_at", pymongo.ASCENDING)])
+        return cursor
 
     def check_exist_by_id(self, _id):
         cursor = self.collection.find({'ID': _id})
