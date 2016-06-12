@@ -24,8 +24,6 @@ class CacheDatabase(DispatchDatabase):
             logging.debug("  item exist {} from {} on the cache database".format(item["ID"], item["url_from"]))
         else:
             self.insert_for_cache(item)
-            # self.collection.insert(dict(item))
-            logging.debug("  cache from {}, added {} to database".format(item["url_from"], item["ID"]))
 
     def get_oldest_row(self, _last, url_from):
         logging.debug("Get oldest row:")
