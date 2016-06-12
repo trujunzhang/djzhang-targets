@@ -33,4 +33,4 @@ create database vps_scrapy_rails;
 
 grant all on vps_scrapy_rails.* to 'haraj' identified by 'haraj720';
 
-[mysql -u haraj -p 'haraj720' vps_scrapy_rails]
+mysql -u haraj -p 'haraj720' vps_scrapy_rails
