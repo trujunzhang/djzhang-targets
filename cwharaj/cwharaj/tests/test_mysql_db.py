@@ -86,4 +86,4 @@ class MysqlDBTest(unittest.TestCase):
             description='description',
             section='section',
         )
-        self.mysql_database.insert_for_history(item)
+        self.mysql_database.insert_for_item(item)

@@ -15,3 +15,27 @@ CREATE TABLE haraj_history (
   created_at DATETIME
 )
   DEFAULT CHARSET = utf8;
+
+
+CREATE TABLE haraj (
+  guid        CHAR(32) PRIMARY KEY,
+  url         TEXT,
+  created_at  DATETIME,
+  updated_at  DATETIME,
+
+  ID          TEXT,
+  city        TEXT,
+  time        TEXT,
+  title       TEXT,
+  pictures    TEXT,
+  subject     TEXT,
+  contact     TEXT,
+  number      TEXT,
+  url_from    TEXT,
+
+  address     TEXT,
+  memberName  TEXT,
+  description TEXT,
+  section     TEXT
+)
+  DEFAULT CHARSET = utf8;
