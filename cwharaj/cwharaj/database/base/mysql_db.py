@@ -49,7 +49,7 @@ class MysqlDatabase(BaseDatabase):
             # Rollback in case there is any error
             self.client.rollback()
 
-        logging.debug("  mysql: insert the cache item successfully")
+        logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
     def insert_for_item(self, item):
         self.collection.insert(dict(item))
@@ -68,10 +68,11 @@ class MysqlDatabase(BaseDatabase):
             # Rollback in case there is any error
             self.client.rollback()
 
-        logging.debug("  mysql: insert the history item successfully")
+        logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
     def update_for_history(self, id, item):
-        self.collection.update_one({'ID': id}, {'$set': dict(item)}, True)
+        if not self.check_exist_by_id(id):
+            self.insert_for_history(item)
 
     def get_count(self, dict):
         count = self.collection.count(dict)
