@@ -2,6 +2,8 @@ import MySQLdb
 from cwharaj.database.base.base_db import BaseDatabase
 import logging
 
+from cwharaj.items import CacheItem
+
 
 class MysqlDatabase(BaseDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
@@ -99,7 +101,7 @@ class MysqlDatabase(BaseDatabase):
     def get_count(self, key, value):
         cursor = self.client.cursor()
 
-        sql = """ SELECT * FROM {} WHERE {} = {}""".format(self.collection_name, key, value)
+        sql = """ SELECT 1 FROM {} WHERE {} = {}""".format(self.collection_name, key, value)
         try:
             # Execute the SQL command
             cursor.execute(sql)
@@ -146,24 +148,15 @@ class MysqlDatabase(BaseDatabase):
             return 0
 
         data = cursor.fetchone()
+        row = CacheItem(
+            guid=data[0],
+            ID=data[1],
+            url=data[2],
+            url_from=data[3],
+            created_at=data[4]
+        )
 
-        _guid = data['guid']
-        _url = data['url']
-
-        count = cursor.rowcount
-        return count
-
-        # cursor = self.collection.find().sort([("created_at", pymongo.ASCENDING)])
-        # logging.debug("  5. current cache items count: {}".format(cursor.count()))
-        #
-        # row = None
-        # if cursor.count():
-        #     row = cursor.next()
-        #     logging.debug("  6. found the oldest row sucessfully, ID: {}".format(row['ID']))
-        #
-        # cursor.close()
-        #
-        # return row
+        return row
 
     def check_exist_by_id(self, _id):
         cursor = self.client.cursor()
