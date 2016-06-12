@@ -27,21 +27,20 @@ class MysqlDatabase(BaseDatabase):
 
     def open_spider(self):
         self.connect()
-        # prepare a cursor object using cursor() method
-        self.cursor = self.client.cursor()
 
     def close_spider(self):
         # disconnect from server
         self.client.close()
 
     def insert_for_cache(self, item):
+        cursor = self.client.cursor()
 
         sql = """ INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ('{}','{}','{}','{}','{}')""".format(
             self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'])
 
         try:
             # Execute the SQL command
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
@@ -52,6 +51,7 @@ class MysqlDatabase(BaseDatabase):
         logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
     def insert_for_item(self, item):
+        cursor = self.client.cursor()
 
         sql = """ INSERT INTO {} (url,guid,created_at,updated_at,ID,city,time,title,pictures,subject,contact,number,url_from,address,memberName,description,section) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')""".format(
             self.collection_name, item['url'], item['guid'], item['created_at'], item['updated_at'], item['ID'],
@@ -64,7 +64,7 @@ class MysqlDatabase(BaseDatabase):
 
         try:
             # Execute the SQL command
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
@@ -75,12 +75,14 @@ class MysqlDatabase(BaseDatabase):
         logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
     def insert_for_history(self, item):
+        cursor = self.client.cursor()
+
         sql = """ INSERT INTO {} (url, guid, created_at, ID) VALUES ('{}','{}','{}','{}')""".format(
             self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'])
 
         try:
             # Execute the SQL command
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
@@ -136,15 +138,16 @@ class MysqlDatabase(BaseDatabase):
         return row
 
     def check_exist_by_id(self, _id):
+        cursor = self.client.cursor()
         sql = """ SELECT 1 FROM {} WHERE ID = {}""".format(self.collection_name, _id)
         try:
             # Execute the SQL command
-            self.cursor.execute(sql)
+            cursor.execute(sql)
         except Exception, e:
             logging.debug("  mysql: check {} exist from {} failure, {}".format(_id, self.collection_name, e.message))
             return False
 
-        ret = self.client.fetchone()[0]
+        ret = self.cursor.rowcount
         if ret:
             return True
 
