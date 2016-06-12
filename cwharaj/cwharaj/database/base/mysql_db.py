@@ -30,9 +30,9 @@ class MysqlDatabase(BaseDatabase):
         dispatcher.connect(self.spider_closed, signals.spider_closed)
 
     def spider_closed(self, spider):
-        """ Cleanup function, called after crawing has finished to close open
-            objects.
+        """ Cleanup function, called after crawing has finished to close open objects.
             Close ConnectionPool. """
+
         self.dbpool.close()
 
     def open_spider(self):
@@ -42,7 +42,18 @@ class MysqlDatabase(BaseDatabase):
         pass
 
     def insert_for_cache(self, item):
-        self.collection.insert(dict(item))
+        query = self.dbpool.runInteraction(self._insert_cache, item)
+        query.addErrback(self._handle_error)
+
+    def _insert_cache(self, tx, item):
+        result = tx.execute(
+            " INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ({},{},{},{},{})"
+                .format(self.collection_name,
+                        item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'],
+                        )
+        )
+        if result > 0:
+            logging.debug("  mysql: insert the cache item successfully")
 
     def insert_for_history(self, item):
         self.collection.insert(dict(item))
