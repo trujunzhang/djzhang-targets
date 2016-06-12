@@ -99,19 +99,20 @@ class MysqlDatabase(BaseDatabase):
             self.insert_for_history(item)
 
     def get_count(self, key, value):
+        _count = 0
         cursor = self.client.cursor()
 
         sql = """ SELECT 1 FROM {} WHERE {} = {}""".format(self.collection_name, key, value)
         try:
             # Execute the SQL command
             cursor.execute(sql)
+            _count = cursor.rowcount
         except Exception, e:
             logging.debug("  mysql: get count for {} from {} failure, {}".format(key, self.collection_name, e.message))
         finally:
             cursor.close()
 
-        count = cursor.rowcount
-        return count
+        return _count
 
     def delete_row(self, _last, url_from):
         # 1. Parse the url and get the unique id.
