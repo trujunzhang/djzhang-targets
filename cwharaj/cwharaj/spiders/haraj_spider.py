@@ -17,10 +17,10 @@ class HarajsSpider(scrapy.Spider):
     ]
 
     def __init__(self, name=None, **kwargs):
-        from cwharaj.database_factory import DatabaseFactory, DatabaseTypes
+        from cwharaj.database_factory import DatabaseFactory, CollectionTypes
 
-        self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['default_db_type'])
-        self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['default_db_type'])
+        self._cache_db = DatabaseFactory.get_database(CollectionTypes.cache, kwargs['default_db_type'])
+        self._history_db = DatabaseFactory.get_database(CollectionTypes.history, kwargs['default_db_type'])
 
         from cwharaj.parser.opensooq_parser import OpensooqParse
         self._opensooq_parser = OpensooqParse()

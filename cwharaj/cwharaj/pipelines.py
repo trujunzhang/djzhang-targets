@@ -10,8 +10,8 @@ import logging
 
 class MongoPipeline(object):
     def __init__(self, default_db_type):
-        from cwharaj.database_factory import DatabaseFactory, DatabaseTypes
-        self._item_db = DatabaseFactory.get_database(DatabaseTypes.item, default_db_type)
+        from cwharaj.database_factory import DatabaseFactory, CollectionTypes
+        self._item_db = DatabaseFactory.get_database(CollectionTypes.item, default_db_type)
 
     @classmethod
     def from_crawler(cls, crawler):
