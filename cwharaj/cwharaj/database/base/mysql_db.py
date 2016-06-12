@@ -144,7 +144,7 @@ class MysqlDatabase(BaseDatabase):
             # Execute the SQL command
             cursor.execute(sql)
         except Exception, e:
-            logging.debug("  mysql: get count for {} from {} failure, {}".format(key, self.collection_name, e.message))
+            logging.debug("  mysql: find the oldest row from {} failure, {}".format(self.collection_name, e.message))
             return 0
 
         data = cursor.fetchone()
