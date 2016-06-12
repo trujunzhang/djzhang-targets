@@ -44,7 +44,7 @@ class DispatchDatabase(object):
         self.database.delete_row(_last, url_from)
 
     def find_oldest_for_cache(self):
-        self.database.find_oldest_for_cache()
+        return self.database.find_oldest_for_cache()
 
     def check_exist_by_id(self, _id):
         return self.database.check_exist_by_id(_id)
