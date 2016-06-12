@@ -55,7 +55,20 @@ class MysqlDatabase(BaseDatabase):
         self.collection.insert(dict(item))
 
     def insert_for_history(self, item):
-        self.collection.insert(dict(item))
+        sql = """ INSERT INTO {} (url, guid, created_at, ID) VALUES ('{}','{}','{}','{}')""".format(
+            self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'])
+
+        try:
+            # Execute the SQL command
+            self.cursor.execute(sql)
+            # Commit your changes in the database
+            self.client.commit()
+        except Exception, e:
+            logging.debug("  mysql: insert the cache item failure, {}".format(e.message))
+            # Rollback in case there is any error
+            self.client.rollback()
+
+        logging.debug("  mysql: insert the history item successfully")
 
     def update_for_history(self, id, item):
         self.collection.update_one({'ID': id}, {'$set': dict(item)}, True)
