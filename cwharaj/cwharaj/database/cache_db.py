@@ -32,25 +32,7 @@ class CacheDatabase(DispatchDatabase):
         logging.debug("  1. the last url: {}".format(_last))
 
         if _last:
-            # Parse the url and get the unique id.
-            from cwharaj.items import WebsiteTypes
-            _position = WebsiteTypes.get_id_index(url_from)
-            _id = CrawlUtils.url_parse_id_from_page_url(_last, _position)
-            logging.debug("  2. get the last url's id: {}".format(_id))
-
-            # Generate a query dictionary.
-            deleted_dict = {'ID': _id}
-
-            # Query the deleted item count, must be equal to 1.
-            # count = self.collection.count(deleted_dict)
-            count = self.get_count(deleted_dict)
-            logging.debug("  3. found the deleted item count: {} by ID".format(count, deleted_dict))
-            if count:
-                # result = self.collection.delete_one(deleted_dict)
-                result = self.delete_row(deleted_dict)
-                logging.debug(
-                    "  4. deleted cache row, id: {}, deleted count: {}, from {}"
-                        .format(_id, result.deleted_count, url_from))
+            self.delete_row(_last, url_from)
 
         # Query the oldest cache item.
         return self.find_oldest_for_cache()

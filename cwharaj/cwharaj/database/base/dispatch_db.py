@@ -40,8 +40,8 @@ class DispatchDatabase(object):
     def get_count(self, dict):
         self.database.get_count(dict)
 
-    def delete_row(self, dict):
-        self.database.delete_row(dict)
+    def delete_row(self, _last, url_from):
+        self.database.delete_row(_last, url_from)
 
     def find_oldest_for_cache(self):
         self.database.find_oldest_for_cache()

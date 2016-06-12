@@ -2,6 +2,7 @@ import pymongo
 
 from cwharaj.database.base.base_db import BaseDatabase
 
+
 class MysqlDatabase(BaseDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(MysqlDatabase, self).__init__(host, port, user, passwd, db, collection_name)
@@ -32,7 +33,7 @@ class MysqlDatabase(BaseDatabase):
     def get_count(self, dict):
         pass
 
-    def delete_row(self, dict):
+    def delete_row(self, _last, url_from):
         pass
 
     def find_oldest_for_cache(self):

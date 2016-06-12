@@ -11,7 +11,6 @@ class BaseDatabase(object):
     def close_spider(self):
         pass
 
-
     def insert_for_cache(self, item):
         pass
 
@@ -27,7 +26,7 @@ class BaseDatabase(object):
     def get_count(self, dict):
         pass
 
-    def delete_row(self, dict):
+    def delete_row(self, _last, url_from):
         pass
 
     def find_oldest_for_cache(self):
