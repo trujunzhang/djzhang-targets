@@ -10,7 +10,7 @@ class MysqlDBTest(unittest.TestCase):
         from cwharaj.database.base.mysql_db import MysqlDatabase
         self.cache_database = MysqlDatabase(
             host='localhost',
-            port='3306',
+            port=3306,
             user='haraj', passwd='haraj720',
             db="vps_scrapy_rails",
             collection_name="haraj_cache")
