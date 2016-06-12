@@ -24,8 +24,8 @@ class DatabaseFactory:
         elif CollectionTypes.history == collection_type:
             from cwharaj.database.history_db import HistoryDatabase
             history_database = HistoryDatabase(host=host, port=port,
-                                             user=user, passwd=passwd,
-                                             db=db, collection=collection + "_history_")
+                                               user=user, passwd=passwd,
+                                               db=db, collection=collection + "_history_")
             history_database.open_spider()
             return history_database
         elif CollectionTypes.item == collection_type:
