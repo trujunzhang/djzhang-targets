@@ -105,7 +105,7 @@ class OpensooqParse(BaseParser):
         for picture in _pictures:
             list.append(picture.replace('75x75', '563x400'))
 
-        return list
+        return ",".join(list)
 
     def get_section(self, section_panel):
         from BeautifulSoup import BeautifulSoup
@@ -114,6 +114,6 @@ class OpensooqParse(BaseParser):
         _As = soup.findAll('a', {'property': 'v:title'})
         sections = []
         for a in _As:
-            sections.append(a.text.replace("\n", "").replace("\r", "").strip())
+            sections.append(a.text.replace("\n", "").replace("\r", "").strip().encode('utf-8'))
 
-        return sections
+        return ",".join(sections)

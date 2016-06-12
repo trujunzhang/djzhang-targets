@@ -23,7 +23,7 @@ class BaseParser(object):
         _list = hxs.xpath(query)
         if len(_list) > index:
             value = _list[index].extract()
-            return value
+            return value.encode('utf-8')
         return default
 
     def get_all_value_from_response(self, hxs, query):
@@ -32,7 +32,7 @@ class BaseParser(object):
         for line in _list:
             value += line.extract()
 
-        return value
+        return value.encode('utf-8')
 
     def get_images_in_selector(self, hxs, selector, index=0):
         noscript_images = self.get_value_from_response(hxs, selector, index=index)
@@ -46,7 +46,7 @@ class BaseParser(object):
         for image in images:
             list.append(image['src'])
 
-        return list
+        return ",".join(list)
 
     def get_published_date(self, comment_header_string):
         """Because the published date is not contained by any tag.
@@ -76,4 +76,4 @@ class BaseParser(object):
 
             published_date = soup.prettify().replace("\n", "").replace("\r", "")
 
-        return published_date
+        return published_date.encode('utf-8')

@@ -58,16 +58,13 @@ class MysqlDatabase(BaseDatabase):
     def insert_for_item(self, item):
         cursor = self.client.cursor()
 
-        _pictures_str = ', '.join(str(x) for x in item['pictures'])
-        _section_str = ', '.join(str(x).encode('utf-8') for x in item['section'])
-
         sql = """ INSERT INTO {} (url,guid,created_at,updated_at,ID,city,time,title,pictures,subject,contact,number,url_from,address,memberName,description,section) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')""".format(
             self.collection_name, item['url'], item['guid'], item['created_at'], item['updated_at'], item['ID'],
             item['city'], item['time'], item['title'],
-            _pictures_str,
+            item['pictures'],
             item['subject'], item['contact'],
             item['number'], item['url_from'], item['address'], item['memberName'], item['description'],
-            _section_str,
+            item['section'],
         )
 
         try:
@@ -168,13 +165,14 @@ class MysqlDatabase(BaseDatabase):
             cursor.execute(sql)
             # Get the row data
             data = cursor.fetchone()
-            row = CacheItem(
-                guid=data[0],
-                ID=data[1],
-                url=data[2],
-                url_from=data[3],
-                created_at=data[4]
-            )
+            if data:
+                row = CacheItem(
+                    guid=data[0],
+                    ID=data[1],
+                    url=data[2],
+                    url_from=data[3],
+                    created_at=data[4]
+                )
         except Exception, e:
             logging.debug("  mysql: find the oldest row from {} failure, {}".format(self.collection_name, e.message))
         finally:
