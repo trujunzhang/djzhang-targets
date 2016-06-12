@@ -21,7 +21,7 @@ class MysqlDBTest(unittest.TestCase):
 
     def test_insert_cache_item(self):
         _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
-        _guid = "1234"
+        _guid = "1234321"
         # _id = CrawlUtils.url_parse_id_from_page_url(_url, 3)
         _id = "123"
 

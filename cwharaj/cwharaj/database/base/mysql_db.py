@@ -28,19 +28,20 @@ class MysqlDatabase(BaseDatabase):
     def open_spider(self):
         self.connect()
         # prepare a cursor object using cursor() method
+        self.cursor = self.client.cursor()
 
     def close_spider(self):
         # disconnect from server
         self.client.close()
 
     def insert_for_cache(self, item):
-        cursor = self.client.cursor()
+
         sql = """ INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ('{}','{}','{}','{}','{}')""".format(
             self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'])
 
         try:
             # Execute the SQL command
-            cursor.execute(sql)
+            self.cursor.execute(sql)
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
