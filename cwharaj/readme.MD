@@ -34,3 +34,8 @@ create database vps_scrapy_rails;
 grant all on vps_scrapy_rails.* to 'haraj' identified by 'haraj720';
 
 mysql -u haraj -p 'haraj720' vps_scrapy_rails
+
+
+# mysql issues
+
+'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \\'://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-ا\\' at line 1'

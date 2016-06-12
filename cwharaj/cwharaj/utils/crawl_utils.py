@@ -13,7 +13,7 @@ class CrawlUtils(object):
     def get_guid(self, _url):
         """Generates an unique identifier for a given item."""
         # hash based solely in the url field
-        _url = _url.encode('utf-8')
+        # _url = _url.encode('utf-8')
         return md5(_url).hexdigest()
 
     @classmethod

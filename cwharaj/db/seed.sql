@@ -1,4 +1,4 @@
-CREATE TABLE hiraj_cache (
+CREATE TABLE haraj_cache (
   guid       CHAR(20)  NOT NULL,
   ID         INT       NOT NULL,
   url        CHAR(200) NOT NULL,
