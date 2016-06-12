@@ -14,20 +14,22 @@ class DatabaseFactory:
     # This is the factory method
     @staticmethod
     def get_database(collection_type, host, port, user, passwd, db, collection):
-
-        from cwharaj.database.cache_db import CacheDatabase
-        from cwharaj.database.history_db import HistoryDatabase
-        from cwharaj.database.item_db import ItemDatabase
-
         if CollectionTypes.cache == collection_type:
-            database = CacheDatabase(uri, db + "_cache", "_cache_" + collection)
+            from cwharaj.database.cache_db import CacheDatabase
+            database = CacheDatabase(host=host, port=port,
+                                     user=user, passwd=passwd,
+                                     db=db, collection=collection + '_cache_')
             database.open_spider()
             return database
         elif CollectionTypes.history == collection_type:
-            history_database = HistoryDatabase(uri, db + "_history", "_history_" + collection)
+            from cwharaj.database.history_db import HistoryDatabase
+            history_database = HistoryDatabase(host=host, port=port,
+                                             user=user, passwd=passwd,
+                                             db=db, collection=collection + "_history_")
             history_database.open_spider()
             return history_database
         elif CollectionTypes.item == collection_type:
-            return ItemDatabase(uri, db, collection)
+            from cwharaj.database.item_db import ItemDatabase
+            return ItemDatabase(host=host, port=port, user=user, passwd=passwd, db=db, collection=collection)
         else:
             return None
