@@ -27,6 +27,8 @@ item exist  on the cache database
 
 found the deleted item count: 0
 
+failure, 
+
 # Create mysql database
 
 create database vps_scrapy_rails;
