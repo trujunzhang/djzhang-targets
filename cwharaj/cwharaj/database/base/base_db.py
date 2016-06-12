@@ -18,9 +18,6 @@ class BaseDatabase(object):
     def update_for_history(self, id, item):
         pass
 
-    def get_count(self, dict):
-        pass
-
     def delete_row(self, _last, url_from):
         pass
 

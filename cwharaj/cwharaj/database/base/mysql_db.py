@@ -96,8 +96,17 @@ class MysqlDatabase(BaseDatabase):
         if not self.check_exist_by_id(id):
             self.insert_for_history(item)
 
-    def get_count(self, dict):
-        count = self.collection.count(dict)
+    def get_count(self, key, value):
+        cursor = self.client.cursor()
+        sql = """ SELECT 1 FROM {} WHERE {} = {}""".format(self.collection_name, )
+        try:
+            # Execute the SQL command
+            cursor.execute(sql)
+        except Exception, e:
+            logging.debug("  mysql: get count for {} from {} failure, {}".format(key, self.collection_name, e.message))
+            return 0
+
+        count = cursor.rowcount
         return count
 
     def delete_row(self, _last, url_from):
