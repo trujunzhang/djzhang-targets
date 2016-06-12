@@ -1,6 +1,6 @@
 import pymongo
 
-class BaseDatabase(object):
+class MongoDatabase(object):
     def __init__(self, mongo_uri, mongo_db, collection_name):
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
