@@ -27,7 +27,7 @@ class CacheDatabase(BaseDatabase):
         if self.check_exist_by_id(item["ID"]):
             logging.debug("  item exist {} from {} on the cache database".format(item["ID"], item["url_from"]))
         else:
-            self.db[self.collection_name].insert(dict(item))
+            self.collection.insert(dict(item))
             logging.debug("  cache from {}, added {} to database".format(item["url_from"], item["ID"]))
 
     def get_oldest_row(self, _last, url_from):
@@ -45,16 +45,16 @@ class CacheDatabase(BaseDatabase):
             deleted_dict = {'ID': _id}
 
             # Query the deleted item count, must be equal to 1.
-            count = self.db[self.collection_name].count(deleted_dict)
+            count = self.collection.count(deleted_dict)
             logging.debug("  3. found the deleted item count: {} by ID".format(count, deleted_dict))
             if count:
-                result = self.db[self.collection_name].delete_one(deleted_dict)
+                result = self.collection.delete_one(deleted_dict)
                 logging.debug(
                     "  4. deleted cache row, id: {}, deleted count: {}, from {}"
                         .format(_id, result.deleted_count, url_from))
 
         # Query the oldest cache item.
-        cursor = self.db[self.collection_name].find().sort([("created_at", pymongo.ASCENDING)])
+        cursor = self.collection.find().sort([("created_at", pymongo.ASCENDING)])
         logging.debug("  5. current cache items count: {}".format(cursor.count()))
 
         row = None

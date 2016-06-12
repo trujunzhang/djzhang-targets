@@ -12,6 +12,7 @@ class BaseDatabase(object):
     def open_spider(self):
         self.client = pymongo.MongoClient(self.mongo_uri)
         self.db = self.client[self.mongo_db]
+        self.collection = self.db[self.collection_name]
 
     def close_spider(self):
         self.client.close()
@@ -20,7 +21,7 @@ class BaseDatabase(object):
         pass
 
     def check_exist_by_id(self, _id):
-        cursor = self.db[self.collection_name].find({'ID': _id})
+        cursor = self.collection.find({'ID': _id})
         if cursor.count():
             return True
 

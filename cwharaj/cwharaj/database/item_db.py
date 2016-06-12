@@ -26,5 +26,5 @@ class ItemDatabase(BaseDatabase):
                 raise DropItem("Duplicate item found: {0}!".format(data))
 
         if valid:
-            self.db[self.collection_name].insert(dict(item))
+            self.collection.insert(dict(item))
             logging.debug("Haraj added to database.")

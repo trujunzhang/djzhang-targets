@@ -19,5 +19,5 @@ class HistoryDatabase(BaseDatabase):
             ID=id
         )
 
-        self.db[self.collection_name].update_one({'ID': id}, {'$set': dict(item)}, True)
+        self.collection.update_one({'ID': id}, {'$set': dict(item)}, True)
         logging.debug("HarajHistory added to database!")
