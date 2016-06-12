@@ -1,8 +1,7 @@
-from cwharaj.database.base_db import BaseDatabase
-
 import logging
 from datetime import datetime
 
+from cwharaj.database.base.base_db import BaseDatabase
 from cwharaj.items import HistoryItem
 from cwharaj.utils.crawl_utils import CrawlUtils
 

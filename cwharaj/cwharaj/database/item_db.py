@@ -1,9 +1,9 @@
-from cwharaj.database.base_db import BaseDatabase
-
 import logging
-from scrapy.exceptions import DropItem
 from datetime import datetime
 
+from scrapy.exceptions import DropItem
+
+from cwharaj.database.base.base_db import BaseDatabase
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
