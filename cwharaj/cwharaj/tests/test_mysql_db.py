@@ -20,15 +20,17 @@ class MysqlDBTest(unittest.TestCase):
             collection_name="haraj_cache")
 
     def test_insert_cache_item(self):
-        _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
+        _url = "https://sa.opensooq.com/ar"
         _guid = CrawlUtils.get_guid(_url)
+        # _id = CrawlUtils.url_parse_id_from_page_url(_url, 3)
+        _id = "123"
 
         self.cache_database.open_spider()
         item = CacheItem(
             url=_url,
             guid=_guid,
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-            ID=CrawlUtils.url_parse_id_from_page_url(_url, 3),
+            ID=_id,
             url_from="opensooq"
         )
         self.cache_database.insert_for_cache(item)
