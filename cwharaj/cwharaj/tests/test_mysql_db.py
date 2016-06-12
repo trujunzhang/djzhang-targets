@@ -48,7 +48,7 @@ class MysqlDBTest(unittest.TestCase):
 
         self.mysql_database.open_spider()
         # deleted_dict = {'ID': _id}
-        self.mysql_database.get_count('ID', _id)
+        self.mysql_database.find_oldest_for_cache()
 
 
 

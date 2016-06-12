@@ -135,17 +135,32 @@ class MysqlDatabase(BaseDatabase):
     def find_oldest_for_cache(self):
         """Query the oldest cache item."""
 
-        cursor = self.collection.find().sort([("created_at", pymongo.ASCENDING)])
-        logging.debug("  5. current cache items count: {}".format(cursor.count()))
+        cursor = self.client.cursor()
 
-        row = None
-        if cursor.count():
-            row = cursor.next()
-            logging.debug("  6. found the oldest row sucessfully, ID: {}".format(row['ID']))
+        sql = 'SELECT * FROM  {} ORDER BY {} ASC LIMIT 1'.format(self.collection_name, 'created_at')
+        try:
+            # Execute the SQL command
+            cursor.execute(sql)
+        except Exception, e:
+            logging.debug("  mysql: get count for {} from {} failure, {}".format(key, self.collection_name, e.message))
+            return 0
 
-        cursor.close()
+        data = cursor.fetchone()
 
-        return row
+        count = cursor.rowcount
+        return count
+
+        # cursor = self.collection.find().sort([("created_at", pymongo.ASCENDING)])
+        # logging.debug("  5. current cache items count: {}".format(cursor.count()))
+        #
+        # row = None
+        # if cursor.count():
+        #     row = cursor.next()
+        #     logging.debug("  6. found the oldest row sucessfully, ID: {}".format(row['ID']))
+        #
+        # cursor.close()
+        #
+        # return row
 
     def check_exist_by_id(self, _id):
         cursor = self.client.cursor()
