@@ -41,20 +41,20 @@ class MysqlDBTest(unittest.TestCase):
     #     self.mysql_database.insert_for_cache(item)
 
 
-    def test_insert_history_row(self):
-        _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
-        _guid = "1234321"
-        # _id = CrawlUtils.url_parse_id_from_page_url(_url, 3)
-        _id = "123"
-
-        self.mysql_database.open_spider()
-        item = HistoryItem(
-            url=_url,
-            guid=_guid,
-            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-            ID=_id
-        )
-        self.mysql_database.update_for_history(item)
+    # def test_insert_history_row(self):
+    #     _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
+    #     _guid = "1234321"
+    #     # _id = CrawlUtils.url_parse_id_from_page_url(_url, 3)
+    #     _id = "123"
+    #
+    #     self.mysql_database.open_spider()
+    #     item = HistoryItem(
+    #         url=_url,
+    #         guid=_guid,
+    #         created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
+    #         ID=_id
+    #     )
+    #     self.mysql_database.update_for_history(item)
 
     def test_insert_item_row(self):
         _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
