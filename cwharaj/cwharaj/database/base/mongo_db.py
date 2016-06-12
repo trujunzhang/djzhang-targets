@@ -7,13 +7,16 @@ import logging
 class MongoDatabase(BaseDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(MongoDatabase, self).__init__(host, port, user, passwd, db, collection_name)
-        self.mongo_uri = host
-        self.mongo_db = db
+        self.host = host
+        self.port = port
+        self.user = user
+        self.passwd = passwd
+        self.db = db
         self.collection_name = collection_name
 
     def open_spider(self):
-        self.client = pymongo.MongoClient(self.mongo_uri)
-        self.db = self.client[self.mongo_db]
+        self.client = pymongo.MongoClient(self.host)
+        self.db = self.client[self.db]
         self.collection = self.db[self.collection_name]
 
     def close_spider(self):

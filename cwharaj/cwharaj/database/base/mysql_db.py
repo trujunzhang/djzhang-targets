@@ -1,23 +1,45 @@
-import pymongo
-
+import MySQLdb
 from cwharaj.database.base.base_db import BaseDatabase
 import logging
+from twisted.enterprise import adbapi
+from scrapy.xlib.pydispatch import dispatcher
+from scrapy import signals
 
 
 class MysqlDatabase(BaseDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(MysqlDatabase, self).__init__(host, port, user, passwd, db, collection_name)
-        self.mongo_uri = host
-        self.mongo_db = db
+        self.host = host
+        self.port = port
+        self.user = user
+        self.passwd = passwd
+        self.db = db
         self.collection_name = collection_name
 
+        # Instantiate DB
+        self.dbpool = adbapi.ConnectionPool('MySQLdb',
+                                            host=self.host,
+                                            user=self.user,
+                                            passwd=self.passwd,
+                                            port=self.port,
+                                            db=self.db,
+                                            charset='utf8',
+                                            use_unicode=True,
+                                            cursorclass=MySQLdb.cursors.DictCursor
+                                            )
+        dispatcher.connect(self.spider_closed, signals.spider_closed)
+
+    def spider_closed(self, spider):
+        """ Cleanup function, called after crawing has finished to close open
+            objects.
+            Close ConnectionPool. """
+        self.dbpool.close()
+
     def open_spider(self):
-        self.client = pymongo.MongoClient(self.mongo_uri)
-        self.db = self.client[self.mongo_db]
-        self.collection = self.db[self.collection_name]
+        pass
 
     def close_spider(self):
-        self.client.close()
+        pass
 
     def insert_for_cache(self, item):
         self.collection.insert(dict(item))
@@ -78,3 +100,18 @@ class MysqlDatabase(BaseDatabase):
             return True
 
         return False
+
+    def process_item(self, item, spider):
+        query = self.dbpool.runInteraction(self._insert_record, item)
+        query.addErrback(self._handle_error)
+        return item
+
+    def _insert_record(self, tx, item):
+        result = tx.execute(
+            """ INSERT INTO table VALUES (1,2,3)"""
+        )
+        if result > 0:
+            self.stats.inc_value('database/items_added')
+
+    def _handle_error(self, e):
+        logging.error(e)
