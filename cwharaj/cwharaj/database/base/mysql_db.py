@@ -42,8 +42,8 @@ class MysqlDatabase(BaseDatabase):
             # Execute the SQL command
             self.cursor.execute(sql)
             # Commit your changes in the database
-            # self.db.commit()
-        except (Exception), e:
+            self.db.commit()
+        except MySQLdb.Error, e:
             # Rollback in case there is any error
             self.db.rollback()
 
