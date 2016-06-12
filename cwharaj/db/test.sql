@@ -1,1 +1,1 @@
-INSERT INTO haraj_cache (url, guid, created_at, ID, url_from) VALUES (https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض,f07113977d3d20b9256247f38e5300ad,2016-06-12 10:45:11,30002057,opensooq)
+INSERT INTO haraj_cache (url, guid, created_at, ID, url_from) VALUES ('url','321','2016-06-12 11:15:50','123','opensooq')
