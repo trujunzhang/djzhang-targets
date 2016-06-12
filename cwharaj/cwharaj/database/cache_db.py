@@ -26,7 +26,7 @@ class CacheDatabase(DispatchDatabase):
             self.insert_for_cache(item)
 
     def get_oldest_row(self, _last, url_from):
-        logging.debug("Get oldest row:")
+        logging.debug("Get oldest row")
         logging.debug("  1. the last url: {}".format(_last))
 
         if _last:
