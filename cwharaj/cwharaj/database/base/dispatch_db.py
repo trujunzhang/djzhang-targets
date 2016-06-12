@@ -43,8 +43,8 @@ class DispatchDatabase(object):
     def delete_row(self, dict):
         self.database.delete_row(dict)
 
-    def find_for_cache(self):
-        self.database.find_for_cache()
+    def find_oldest_for_cache(self):
+        self.database.find_oldest_for_cache()
 
     def check_exist_by_id(self, _id):
         return self.database.check_exist_by_id(_id)

@@ -35,7 +35,7 @@ class MysqlDatabase(BaseDatabase):
     def delete_row(self, dict):
         pass
 
-    def find_for_cache(self):
+    def find_oldest_for_cache(self):
         pass
 
     def check_exist_by_id(self, _id):

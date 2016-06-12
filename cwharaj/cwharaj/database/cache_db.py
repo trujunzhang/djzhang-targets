@@ -1,8 +1,5 @@
 import logging
 from datetime import datetime
-
-import pymongo
-
 from cwharaj.database.base.dispatch_db import DispatchDatabase
 from cwharaj.utils.crawl_utils import CrawlUtils
 
@@ -57,7 +54,7 @@ class CacheDatabase(DispatchDatabase):
 
         # Query the oldest cache item.
         # cursor = self.collection.find().sort([("created_at", pymongo.ASCENDING)])
-        cursor = self.find_for_cache()
+        cursor = self.find_oldest_for_cache()
         logging.debug("  5. current cache items count: {}".format(cursor.count()))
 
         row = None
