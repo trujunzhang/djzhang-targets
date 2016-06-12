@@ -27,7 +27,7 @@ item exist  on the cache database
 
 found the deleted item count: 0
 
-failure, 
+failure,
 
 # Create mysql database
 
