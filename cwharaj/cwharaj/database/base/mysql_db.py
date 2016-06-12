@@ -130,7 +130,6 @@ class MysqlDatabase(BaseDatabase):
         logging.debug("  2. get the last url's id: {}".format(_id))
 
         # Query the deleted item count, must be equal to 1.
-        # count = self.collection.count(deleted_dict)
         count = self.get_count('ID', _id)
         logging.debug("  3. found the deleted item count: {} by ID".format(count))
         if count:
