@@ -25,9 +25,6 @@ class MongoDatabase(BaseDatabase):
     def insert_for_cache(self, item):
         self.collection.insert(dict(item))
 
-    def insert_for_history(self, item):
-        self.collection.insert(dict(item))
-
     def insert_for_item(self, item):
         self.collection.insert(dict(item))
 

@@ -28,9 +28,6 @@ class DispatchDatabase(object):
     def insert_for_cache(self, item):
         self.database.insert_for_cache(item)
 
-    def insert_for_history(self, item):
-        self.database.insert_for_history(item)
-
     def insert_for_item(self, item):
         self.database.insert_for_item(item)
 

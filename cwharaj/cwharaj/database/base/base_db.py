@@ -14,9 +14,6 @@ class BaseDatabase(object):
     def insert_for_cache(self, item):
         pass
 
-    def insert_for_history(self, item):
-        pass
-
     def insert_for_item(self, item):
         pass
 

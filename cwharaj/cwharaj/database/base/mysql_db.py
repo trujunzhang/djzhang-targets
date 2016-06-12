@@ -51,10 +51,10 @@ class MysqlDatabase(BaseDatabase):
 
         logging.debug("  mysql: insert the cache item successfully")
 
-    def insert_for_history(self, item):
+    def insert_for_item(self, item):
         self.collection.insert(dict(item))
 
-    def insert_for_item(self, item):
+    def insert_for_history(self, item):
         self.collection.insert(dict(item))
 
     def update_for_history(self, id, item):
