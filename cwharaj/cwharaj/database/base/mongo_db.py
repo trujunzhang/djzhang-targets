@@ -5,6 +5,7 @@ from cwharaj.database.base.base_db import BaseDatabase
 
 class MongoDatabase(BaseDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
+        super(MongoDatabase, self).__init__(host, port, user, passwd, db, collection_name)
         self.mongo_uri = host
         self.mongo_db = db
         self.collection_name = collection_name

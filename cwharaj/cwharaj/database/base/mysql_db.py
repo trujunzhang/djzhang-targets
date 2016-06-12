@@ -4,8 +4,9 @@ from cwharaj.database.base.base_db import BaseDatabase
 
 class MysqlDatabase(BaseDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
-        self.mongo_uri = mongo_uri
-        self.mongo_db = mongo_db
+        super(MysqlDatabase, self).__init__(host, port, user, passwd, db, collection_name)
+        # self.mongo_uri = mongo_uri
+        # self.mongo_db = mongo_db
         self.collection_name = collection_name
 
     def open_spider(self):
