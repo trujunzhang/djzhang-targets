@@ -115,23 +115,16 @@ class MysqlDatabase(BaseDatabase):
         return row
 
     def check_exist_by_id(self, _id):
-        cursor = self.collection.find({'ID': _id})
-        if cursor.count():
+        sql = """ SELECT 1 FROM {} WHERE ID = {}""".format(self.collection_name, _id)
+        try:
+            # Execute the SQL command
+            self.cursor.execute(sql)
+        except Exception, e:
+            logging.debug("  mysql: check {} exist from {} failure, {}".format(_id, self.collection_name, e.message))
+            return False
+
+        ret = self.client.fetchone()[0]
+        if ret:
             return True
 
         return False
-
-    def process_item(self, item, spider):
-        query = self.dbpool.runInteraction(self._insert_record, item)
-        query.addErrback(self._handle_error)
-        return item
-
-    def _insert_record(self, tx, item):
-        result = tx.execute(
-            """ INSERT INTO table VALUES (1,2,3)"""
-        )
-        if result > 0:
-            self.stats.inc_value('database/items_added')
-
-    def _handle_error(self, e):
-        logging.error(e)
