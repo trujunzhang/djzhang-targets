@@ -18,9 +18,14 @@ class MstamlDebugWatchSpider(scrapy.Spider):
 
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
-
-        self._cache_db = DatabaseFactory.get_database(CollectionTypes.cache, kwargs['default_db_type'])
-        self._history_db = DatabaseFactory.get_database(CollectionTypes.history, kwargs['default_db_type'])
+        self._cache_db = DatabaseFactory.get_database(CollectionTypes.cache,
+                                                      kwargs['host'], kwargs['port'],
+                                                      kwargs['user'], kwargs['passwd'],
+                                                      kwargs['db'], kwargs['collection'])
+        self._history_db = DatabaseFactory.get_database(CollectionTypes.history,
+                                                        kwargs['host'], kwargs['port'],
+                                                        kwargs['user'], kwargs['passwd'],
+                                                        kwargs['db'], kwargs['collection'])
 
         from cwharaj.parser.mstaml_parser import MstamlParse
         self._mstaml_Parse = MstamlParse()
@@ -31,7 +36,12 @@ class MstamlDebugWatchSpider(scrapy.Spider):
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(MstamlDebugWatchSpider, cls).from_crawler(crawler,
                                                                args,
-                                                               default_db_type=crawler.settings.get('DEFAULT_DB_TYPE')
+                                                               host=crawler.settings.get('SQL_HOST'),
+                                                               port=crawler.settings.get('SQL_PORT'),
+                                                               user=crawler.settings.get('SQL_USER'),
+                                                               passwd=crawler.settings.get('SQL_PASSWD'),
+                                                               db=crawler.settings.get('SQL_DB'),
+                                                               collection=crawler.settings.get('SQL_COLLECTION')
                                                                )
 
     def parse(self, response):

@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-from enum import Enum
-
 # Scrapy settings for cwharaj project
 #
 # For simplicity, this file contains only settings considered important or
@@ -68,7 +66,6 @@ ITEM_PIPELINES = {
     'cwharaj.pipelines.MongoPipeline': 300,
 }
 
-
 # # Enable and configure the AutoThrottle extension (disabled by default)
 # # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # # NOTE: AutoThrottle will honour the standard settings for concurrency and delay
@@ -88,18 +85,16 @@ ITEM_PIPELINES = {
 # HTTPCACHE_IGNORE_HTTP_CODES=[]
 # HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-class APP_DB_TYPE(Enum):
-    mongo = 1
-    mysql = 2
-
-DEFAULT_DB_TYPE = APP_DB_TYPE.mongo
 
 # mongo DATABASE SETTING
-MONGODB_SERVER = "localhost"
+# MONGODB_SERVER = "localhost"
 # MONGODB_SERVER = "104.236.77.182"
-MONGODB_PORT = 27017
+# MONGODB_PORT = 27017
 
 # SQL DATABASE SETTING
 SQL_HOST = 'localhost'
+SQL_PORT = '54321'
 SQL_USER = 'root'
 SQL_PASSWD = '54321'
+SQL_DB = 'vps_scrapy_rails'
+SQL_COLLECTION = 'harajs'

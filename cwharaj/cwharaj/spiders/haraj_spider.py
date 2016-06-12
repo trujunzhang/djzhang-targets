@@ -18,9 +18,14 @@ class HarajsSpider(scrapy.Spider):
 
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
-
-        self._cache_db = DatabaseFactory.get_database(CollectionTypes.cache, kwargs['default_db_type'])
-        self._history_db = DatabaseFactory.get_database(CollectionTypes.history, kwargs['default_db_type'])
+        self._cache_db = DatabaseFactory.get_database(CollectionTypes.cache,
+                                                      kwargs['host'], kwargs['port'],
+                                                      kwargs['user'], kwargs['passwd'],
+                                                      kwargs['db'], kwargs['collection'])
+        self._history_db = DatabaseFactory.get_database(CollectionTypes.history,
+                                                        kwargs['host'], kwargs['port'],
+                                                        kwargs['user'], kwargs['passwd'],
+                                                        kwargs['db'], kwargs['collection'])
 
         from cwharaj.parser.opensooq_parser import OpensooqParse
         self._opensooq_parser = OpensooqParse()
@@ -40,7 +45,12 @@ class HarajsSpider(scrapy.Spider):
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(HarajsSpider, cls).from_crawler(crawler,
                                                      args,
-                                                     default_db_type=crawler.settings.get('DEFAULT_DB_TYPE')
+                                                     host=crawler.settings.get('SQL_HOST'),
+                                                     port=crawler.settings.get('SQL_PORT'),
+                                                     user=crawler.settings.get('SQL_USER'),
+                                                     passwd=crawler.settings.get('SQL_PASSWD'),
+                                                     db=crawler.settings.get('SQL_DB'),
+                                                     collection=crawler.settings.get('SQL_COLLECTION')
                                                      )
 
     # This is entry point

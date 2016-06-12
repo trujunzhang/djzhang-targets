@@ -4,6 +4,7 @@ from cwharaj.database.base.base_db import BaseDatabase
 
 class MysqlDatabase(BaseDatabase):
     def __init__(self, mongo_uri, mongo_db, collection_name):
+        super(MysqlDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
         self.mongo_uri = mongo_uri
         self.mongo_db = mongo_db
         self.collection_name = collection_name

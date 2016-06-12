@@ -2,11 +2,9 @@ import pymongo
 
 from cwharaj.database.base.mongo_db import MongoDatabase
 from cwharaj.database.base.mysql_db import MysqlDatabase
-from cwharaj.settings import APP_DB_TYPE
-
 
 class DispatchDatabase(object):
-    def __init__(self, default_db_type, collection_name):
+    def __init__(self, host, port, user, passwd, db, collection):
         self.default_db_type = default_db_type
 
         self.database = None

@@ -13,14 +13,7 @@ class DatabaseFactory:
 
     # This is the factory method
     @staticmethod
-    def get_database(collection_type, default_db_type, db="vps_scrapy_rails", collection="harajs"):
-        mongo_db_server = "localhost"
-        # mongo_db_server = "104.236.77.182"
-
-        from cwharaj.settings import APP_DB_TYPE
-        uri = mongo_db_server
-        if default_db_type == APP_DB_TYPE.mongo:
-            uri = mongo_db_server
+    def get_database(collection_type, host, port, user, passwd, db, collection):
 
         from cwharaj.database.cache_db import CacheDatabase
         from cwharaj.database.history_db import HistoryDatabase
