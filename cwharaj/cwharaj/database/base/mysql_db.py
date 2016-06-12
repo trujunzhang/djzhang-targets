@@ -43,7 +43,7 @@ class MysqlDatabase(BaseDatabase):
             self.cursor.execute(sql)
             # Commit your changes in the database
             self.db.commit()
-        except:
+        except (Exception), e:
             # Rollback in case there is any error
             self.db.rollback()
 
