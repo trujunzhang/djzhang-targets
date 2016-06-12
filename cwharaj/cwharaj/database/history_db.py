@@ -7,8 +7,8 @@ from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class HistoryDatabase(DispatchDatabase):
-    def __init__(self, mongo_uri, mongo_db, collection_name):
-        super(HistoryDatabase, self).__init__(mongo_uri, mongo_db, collection_name)
+    def __init__(self, default_db_type, collection_name):
+        super(HistoryDatabase, self).__init__(default_db_type, collection_name)
 
     def process_item(self, url, item=None, index=0, id=-1):
         item = HistoryItem(
