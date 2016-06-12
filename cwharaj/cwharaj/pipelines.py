@@ -9,7 +9,7 @@ import logging
 
 
 class MongoPipeline(object):
-    def __init__(self, host, port, user, passwd, db, collection):
+    def __init__(self, host, port, user, passwd, db, collection_name):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
 
         self._item_db = DatabaseFactory.get_database(CollectionTypes.item,
@@ -18,7 +18,7 @@ class MongoPipeline(object):
                                                      user=user,
                                                      passwd=passwd,
                                                      db=db,
-                                                     collection=collection
+                                                     collection_name=collection_name
                                                      )
 
     @classmethod
@@ -29,7 +29,7 @@ class MongoPipeline(object):
             user=crawler.settings.get('SQL_USER'),
             passwd=crawler.settings.get('SQL_PASSWD'),
             db=crawler.settings.get('SQL_DB'),
-            collection=crawler.settings.get('SQL_COLLECTION')
+            collection_name=crawler.settings.get('SQL_COLLECTION_NAME')
         )
 
     def open_spider(self, spider):

@@ -3,16 +3,16 @@ import pymongo
 from cwharaj.database.base.mongo_db import MongoDatabase
 from cwharaj.database.base.mysql_db import MysqlDatabase
 
-class DispatchDatabase(object):
-    def __init__(self, host, port, user, passwd, db, collection):
-        self.default_db_type = default_db_type
 
-        self.database = None
-        if default_db_type == APP_DB_TYPE.mongo:
-            self.database = MongoDatabase()
-        elif default_db_type == APP_DB_TYPE.mysql:
-            self.database = MysqlDatabase()
-        self.collection_name = collection_name
+class DispatchDatabase(object):
+    def __init__(self, host, port, user, passwd, db, collection_name):
+        # self.database = MysqlDatabase(host=host, port=port,
+        #                               user=user, passwd=passwd,
+        #                               db=db, collection_name=collection_name)
+
+        self.database = MongoDatabase(host=host, port=port,
+                                      user=user, passwd=passwd,
+                                      db=db, collection_name=collection_name)
 
     def open_spider(self):
         self.database.open_spider()

@@ -8,8 +8,8 @@ from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class ItemDatabase(DispatchDatabase):
-    def __init__(self, host, port, user, passwd, db, collection):
-        super(ItemDatabase, self).__init__(host, port, user, passwd, db, collection)
+    def __init__(self, host, port, user, passwd, db, collection_name):
+        super(ItemDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
     def process_item(self, url, item=None, index=0, id=-1):
         global data

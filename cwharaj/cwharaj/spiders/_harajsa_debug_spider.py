@@ -23,11 +23,11 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
         self._cache_db = DatabaseFactory.get_database(CollectionTypes.cache,
                                                       kwargs['host'], kwargs['port'],
                                                       kwargs['user'], kwargs['passwd'],
-                                                      kwargs['db'], kwargs['collection'])
+                                                      kwargs['db'], kwargs['collection_name'])
         self._history_db = DatabaseFactory.get_database(CollectionTypes.history,
                                                         kwargs['host'], kwargs['port'],
                                                         kwargs['user'], kwargs['passwd'],
-                                                        kwargs['db'], kwargs['collection'])
+                                                        kwargs['db'], kwargs['collection_name'])
 
         from cwharaj.parser.harajsa_parser import HarajSaParse
         self._harajsa_Parse = HarajSaParse()
@@ -43,7 +43,7 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
                                                                 user=crawler.settings.get('SQL_USER'),
                                                                 passwd=crawler.settings.get('SQL_PASSWD'),
                                                                 db=crawler.settings.get('SQL_DB'),
-                                                                collection=crawler.settings.get('SQL_COLLECTION')
+                                                                collection_name=crawler.settings.get('SQL_COLLECTION_NAME')
                                                                 )
 
     def parse(self, response):

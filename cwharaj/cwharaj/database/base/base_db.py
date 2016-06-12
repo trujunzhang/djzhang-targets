@@ -2,7 +2,8 @@ import pymongo
 
 
 class BaseDatabase(object):
-    def __init__(self, mongo_db, collection_name):
+    def __init__(self, host, port, user, passwd, db, collection_name):
+        pass
 
     def open_spider(self):
         pass
