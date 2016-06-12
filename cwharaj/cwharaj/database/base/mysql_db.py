@@ -147,6 +147,9 @@ class MysqlDatabase(BaseDatabase):
 
         data = cursor.fetchone()
 
+        _guid = data['guid']
+        _url = data['url']
+
         count = cursor.rowcount
         return count
 
