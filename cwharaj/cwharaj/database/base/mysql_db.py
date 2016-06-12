@@ -99,7 +99,7 @@ class MysqlDatabase(BaseDatabase):
     def get_count(self, key, value):
         cursor = self.client.cursor()
 
-        sql = """ SELECT 1 FROM {} WHERE {} = {}""".format(self.collection_name, )
+        sql = """ SELECT * FROM {} WHERE {} = {}""".format(self.collection_name, key, value)
         try:
             # Execute the SQL command
             cursor.execute(sql)
