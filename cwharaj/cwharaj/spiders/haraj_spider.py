@@ -19,8 +19,8 @@ class HarajsSpider(scrapy.Spider):
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, DatabaseTypes
 
-        self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['mongo_uri'])
-        self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['mongo_uri'])
+        self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['default_db_type'])
+        self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['default_db_type'])
 
         from cwharaj.parser.opensooq_parser import OpensooqParse
         self._opensooq_parser = OpensooqParse()
@@ -40,7 +40,7 @@ class HarajsSpider(scrapy.Spider):
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(HarajsSpider, cls).from_crawler(crawler,
                                                      args,
-                                                     mongo_uri=crawler.settings.get('MONGODB_SERVER')
+                                                     default_db_type=crawler.settings.get('DEFAULT_DB_TYPE')
                                                      )
 
     # This is entry point

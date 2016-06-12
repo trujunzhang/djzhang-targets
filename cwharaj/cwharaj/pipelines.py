@@ -9,14 +9,14 @@ import logging
 
 
 class MongoPipeline(object):
-    def __init__(self, mongo_uri):
+    def __init__(self, default_db_type):
         from cwharaj.database_factory import DatabaseFactory, DatabaseTypes
-        self._item_db = DatabaseFactory.get_database(DatabaseTypes.item, mongo_uri)
+        self._item_db = DatabaseFactory.get_database(DatabaseTypes.item, default_db_type)
 
     @classmethod
     def from_crawler(cls, crawler):
         return cls(
-            mongo_uri=crawler.settings.get('MONGODB_SERVER'),
+            default_db_type=crawler.settings.get('DEFAULT_DB_TYPE'),
         )
 
     def open_spider(self, spider):

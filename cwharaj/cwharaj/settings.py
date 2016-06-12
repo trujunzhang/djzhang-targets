@@ -92,19 +92,14 @@ class APP_DB_TYPE(Enum):
     mongo = 1
     mysql = 2
 
-
 DEFAULT_DB_TYPE = APP_DB_TYPE.mongo
 
 # mongo DATABASE SETTING
 MONGODB_SERVER = "localhost"
 # MONGODB_SERVER = "104.236.77.182"
 MONGODB_PORT = 27017
-MONGODB_DB = "vps_scrapy_rails"
-MONGODB_COLLECTION = "harajs"
 
 # SQL DATABASE SETTING
-SQL_DB = 'scrapy'
-SQL_TABLE = 'bhinneka'
 SQL_HOST = 'localhost'
 SQL_USER = 'root'
 SQL_PASSWD = '54321'

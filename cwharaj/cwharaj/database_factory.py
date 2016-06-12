@@ -13,7 +13,7 @@ class DatabaseFactory:
 
     # This is the factory method
     @staticmethod
-    def get_database(dbType, uri, db="vps_scrapy_rails", collection="harajs"):
+    def get_database(dbType, default_db_type, db="vps_scrapy_rails", collection="harajs"):
 
         from cwharaj.database.cache_db import CacheDatabase
         from cwharaj.database.history_db import HistoryDatabase
