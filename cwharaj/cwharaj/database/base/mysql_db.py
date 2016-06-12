@@ -35,14 +35,14 @@ class MysqlDatabase(BaseDatabase):
         self.client.close()
 
     def insert_for_cache(self, item):
-        sql = " INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ({},{},{},{},{})".format(
+        sql = " INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ('{}','{}','{}','{}','{}')".format(
             self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'], )
 
         try:
             # Execute the SQL command
             self.cursor.execute(sql)
             # Commit your changes in the database
-            self.db.commit()
+            # self.db.commit()
         except (Exception), e:
             # Rollback in case there is any error
             self.db.rollback()

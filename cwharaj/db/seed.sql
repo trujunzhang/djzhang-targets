@@ -1,7 +1,9 @@
+DROP TABLE IF EXISTS haraj_cache;
 CREATE TABLE haraj_cache (
-  guid       CHAR(20)  NOT NULL,
-  ID         INT       NOT NULL,
-  url        CHAR(200) NOT NULL,
-  url_from   CHAR(50) NOT NULL,
-  created_at CHAR(20)  NOT NULL
+  guid       CHAR(32) PRIMARY KEY,
+  ID         TEXT,
+  url        TEXT,
+  url_from   TEXT,
+  created_at DATETIME
 )
+  DEFAULT CHARSET = utf8;
