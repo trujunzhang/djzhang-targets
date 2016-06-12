@@ -54,7 +54,7 @@ class MysqlDatabase(BaseDatabase):
     def insert_for_item(self, item):
 
         sql = """ INSERT INTO {} (url,guid,created_at,updated_at,ID,city,time,title,pictures,subject,contact,number,url_from,address,memberName,description,section) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')""".format(
-            self.collection_name, ['url'], item['guid'], item['created_at'], item['updated_at'], item['ID'],
+            self.collection_name, item['url'], item['guid'], item['created_at'], item['updated_at'], item['ID'],
             item['city'], item['time'], item['title'], item['pictures'], item['subject'], item['contact'],
             item['number'], item['url_from'], item['address'], item['memberName'], item['description'], item['section'])
 
