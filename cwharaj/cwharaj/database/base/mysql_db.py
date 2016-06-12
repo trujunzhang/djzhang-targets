@@ -15,7 +15,7 @@ class MysqlDatabase(BaseDatabase):
 
     def connect(self):
         try:
-            self.client = MySQLdb.connect(
+            self.client = MySQLdb.Connection(
                 host=self.host,
                 user=self.user,
                 passwd=self.passwd,
@@ -28,24 +28,24 @@ class MysqlDatabase(BaseDatabase):
     def open_spider(self):
         self.connect()
         # prepare a cursor object using cursor() method
-        self.cursor = self.client.cursor()
 
     def close_spider(self):
         # disconnect from server
         self.client.close()
 
     def insert_for_cache(self, item):
-        sql = " INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ('{}','{}','{}','{}','{}')".format(
-            self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'], )
+        cursor = self.client.cursor()
+        sql = """ INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ('{}','{}','{}','{}','{}')""".format(
+            self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'])
 
         try:
             # Execute the SQL command
-            self.cursor.execute(sql)
+            cursor.execute(sql)
             # Commit your changes in the database
-            self.db.commit()
-        except MySQLdb.Error, e:
+            self.client.commit()
+        except Exception, e:
             # Rollback in case there is any error
-            self.db.rollback()
+            self.client.rollback()
 
         logging.debug("  mysql: insert the cache item successfully")
 
