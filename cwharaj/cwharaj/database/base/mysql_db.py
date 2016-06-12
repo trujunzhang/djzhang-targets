@@ -14,6 +14,7 @@ class MysqlDatabase(BaseDatabase):
         self.passwd = passwd
         self.db = db
         self.collection_name = collection_name
+        self.client = None
 
     def connect(self):
         try:
