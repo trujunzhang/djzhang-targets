@@ -53,15 +53,4 @@ class CacheDatabase(DispatchDatabase):
                         .format(_id, result.deleted_count, url_from))
 
         # Query the oldest cache item.
-        # cursor = self.collection.find().sort([("created_at", pymongo.ASCENDING)])
-        cursor = self.find_oldest_for_cache()
-        logging.debug("  5. current cache items count: {}".format(cursor.count()))
-
-        row = None
-        if cursor.count():
-            row = cursor.next()
-            logging.debug("  6. found the oldest row sucessfully, url: {}".format(row['url'].encode('utf-8')))
-
-        cursor.close()
-
-        return row
+        return self.find_oldest_for_cache()
