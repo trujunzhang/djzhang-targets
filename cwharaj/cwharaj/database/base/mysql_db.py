@@ -107,7 +107,8 @@ class MysqlDatabase(BaseDatabase):
             cursor.execute(sql)
         except Exception, e:
             logging.debug("  mysql: get count for {} from {} failure, {}".format(key, self.collection_name, e.message))
-            return 0
+        finally:
+            cursor.close()
 
         count = cursor.rowcount
         return count
@@ -121,13 +122,10 @@ class MysqlDatabase(BaseDatabase):
         _id = CrawlUtils.url_parse_id_from_page_url(_last, _position)
         logging.debug("  2. get the last url's id: {}".format(_id))
 
-        # Generate a query dictionary.
-        deleted_dict = {}
-
         # Query the deleted item count, must be equal to 1.
         # count = self.collection.count(deleted_dict)
         count = self.get_count('ID', _id)
-        logging.debug("  3. found the deleted item count: {} by ID".format(count, deleted_dict))
+        logging.debug("  3. found the deleted item count: {} by ID".format(count))
         if count:
 
             cursor = self.client.cursor()
@@ -138,12 +136,14 @@ class MysqlDatabase(BaseDatabase):
             except Exception, e:
                 logging.debug(
                     "  mysql: delete the last row from {} failure, {}".format(self.collection_name, e.message))
-                return 0
 
-            result = self.collection.delete_one(deleted_dict)
-            logging.debug(
-                "  4. deleted cache row, id: {}, deleted count: {}, from {}"
-                    .format(_id, result.deleted_count, url_from))
+                count = cursor.rowcount
+                logging.debug("  3. found the deleted item count: {} by ID".format(count))
+
+                # result = self.collection.delete_one(deleted_dict)
+                # logging.debug(
+                #     "  4. deleted cache row, id: {}, deleted count: {}, from {}"
+                #         .format(_id, result.deleted_count, url_from))
 
     def find_oldest_for_cache(self):
         """Query the oldest cache item."""

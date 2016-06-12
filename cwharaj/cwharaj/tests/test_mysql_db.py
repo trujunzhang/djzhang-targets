@@ -26,29 +26,27 @@ class MysqlDBTest(unittest.TestCase):
             db="vps_scrapy_rails",
             collection_name="haraj{}".format(db_type))
 
-    def test_insert_cache_row(self):
-        _guid = "1234321"
-        # _id = CrawlUtils.url_parse_id_from_page_url(_url, 3)
-        _id = "30002057"
+    # def test_insert_cache_row(self):
+    #     _guid = "1234321"
+    #     _id = CrawlUtils.url_parse_id_from_page_url(self._cache_url, 3)
+    #
+    #     self.mysql_database.open_spider()
+    #     item = CacheItem(
+    #         url=self._cache_url,
+    #         guid=_guid,
+    #         created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
+    #         ID=_id,
+    #         url_from=self._cache_from
+    #     )
+    #     self.mysql_database.insert_for_cache(item)
 
+    def test_oldest_cache(self):
         self.mysql_database.open_spider()
-        item = CacheItem(
-            url=self._cache_url,
-            guid=_guid,
-            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-            ID=_id,
-            url_from=self._cache_from
-        )
-        self.mysql_database.insert_for_cache(item)
 
-        # def test_oldest_cache(self):
-        #     self.mysql_database.open_spider()
-        #     # deleted_dict = {'ID': _id}
-        #     row = self.mysql_database.find_oldest_for_cache()
-        #
-        #     self.mysql_database.delete_row(self._cache_url,self._cache_from)
-        #
-        #     _id = row['ID']
+        # row = self.mysql_database.find_oldest_for_cache()
+
+        self.mysql_database.delete_row(self._cache_url, self._cache_from)
+
 
         # def test_insert_history_row(self):
         #     _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
