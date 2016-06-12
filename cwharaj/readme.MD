@@ -40,8 +40,6 @@ mysql -u haraj -p 'haraj720' vps_scrapy_rails
 
 'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \\'://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-ا\\' at line 1'
 
-
-            url,guid,created_at,updated_at,ID,city,time,title,pictures,subject,contact,number,url_from,address,memberName,description,section,
             
             
             
