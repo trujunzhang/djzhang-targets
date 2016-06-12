@@ -34,4 +34,3 @@ class MysqlDBTest(unittest.TestCase):
             url_from="opensooq"
         )
         self.cache_database.insert_for_cache(item)
-        # time.sleep(100)
