@@ -12,12 +12,17 @@ from datetime import datetime
 class MysqlDBTest(unittest.TestCase):
     def setUp(self):
         from cwharaj.database.base.mysql_db import MysqlDatabase
+
+        # db_type = ''
+        db_type = '_history'
+        # db_type = '_cache'
+
         self.mysql_database = MysqlDatabase(
             host='localhost',
             port=3306,
             user='haraj', passwd='haraj720',
             db="vps_scrapy_rails",
-            collection_name="haraj_cache")
+            collection_name="haraj{}".format(db_type))
 
     # def test_insert_cache_item(self):
     #     _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
