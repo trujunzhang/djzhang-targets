@@ -6,15 +6,15 @@ from cwharaj.database.base.mysql_db import MysqlDatabase
 
 class DispatchDatabase(object):
     def __init__(self, host, port, user, passwd, db, collection_name):
-        # self.database = MysqlDatabase(host=host, port=port,
-        #                               user=user, passwd=passwd,
-        #                               db=db, collection_name=collection_name)
+        self.database = MysqlDatabase(host=host, port=port,
+                                      user=user, passwd=passwd,
+                                      db=db, collection_name=collection_name)
 
-        self.database = MongoDatabase(
-            host='localhost', port='27017',
-            # host='104.236.77.182', port='27017',
-            user='', passwd='',
-            db=db, collection_name=collection_name)
+        # self.database = MongoDatabase(
+        #     host='localhost', port='27017',
+        #     # host='104.236.77.182', port='27017',
+        #     user='', passwd='',
+        #     db=db, collection_name=collection_name)
 
     def process_item(self, url, item=None, index=0, id=-1):
         pass
