@@ -98,6 +98,7 @@ class MysqlDatabase(BaseDatabase):
 
     def get_count(self, key, value):
         cursor = self.client.cursor()
+
         sql = """ SELECT 1 FROM {} WHERE {} = {}""".format(self.collection_name, )
         try:
             # Execute the SQL command
@@ -148,6 +149,7 @@ class MysqlDatabase(BaseDatabase):
 
     def check_exist_by_id(self, _id):
         cursor = self.client.cursor()
+
         sql = """ SELECT 1 FROM {} WHERE ID = {}""".format(self.collection_name, _id)
         try:
             # Execute the SQL command
