@@ -93,8 +93,8 @@ ITEM_PIPELINES = {
 
 # SQL DATABASE SETTING
 SQL_HOST = 'localhost'
-SQL_PORT = '54321'
-SQL_USER = 'root'
-SQL_PASSWD = '54321'
+SQL_PORT = '3306'
+SQL_USER = 'haraj'
+SQL_PASSWD = 'haraj720'
 SQL_DB = 'vps_scrapy_rails'
 SQL_COLLECTION_NAME = 'harajs'
