@@ -96,6 +96,9 @@ class MstamlParse(BaseParser):
     def get_section(self, hxs, selector):
         _As = self.get_value_from_response(hxs, selector)
 
+        _As = self.get_value_from_response(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
+
+
         sections = []
         for a in _As:
             text = a.text
