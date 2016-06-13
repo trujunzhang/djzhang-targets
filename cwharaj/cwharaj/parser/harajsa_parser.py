@@ -101,4 +101,4 @@ class HarajSaParse(BaseParser):
         for a in _As:
             sections.append(a.text.replace("\n", "").replace("\r", "").strip().encode('utf-8'))
 
-        return sections
+        return ",".join(sections)

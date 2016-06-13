@@ -98,6 +98,6 @@ class MstamlParse(BaseParser):
 
         sections = []
         for a in _As:
-            sections.append(a.text.encode('utf-8'))
+            sections.append(a.encode('utf-8'))
 
-        return sections
+        return ",".join(sections)
