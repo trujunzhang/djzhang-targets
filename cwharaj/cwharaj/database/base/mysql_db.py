@@ -36,6 +36,7 @@ class MysqlDatabase(BaseDatabase):
         self.client.close()
 
     def insert_for_cache(self, item):
+        _excep = None
         cursor = self.client.cursor()
 
         sql = """ INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ('{}','{}','{}','{}','{}')""".format(
@@ -47,18 +48,22 @@ class MysqlDatabase(BaseDatabase):
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
-            logging.debug("  mysql: insert the cache row failure, {}".format(e))
+            _excep = e
             # Rollback in case there is any error
             self.client.rollback()
         finally:
             cursor.close()
 
-        logging.debug("  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
-                                                                                       item['url_from']))
+        if _excep:
+            logging.debug("  mysql: insert the cache row failure, {}".format(e))
+        else:
+            logging.debug(
+                "  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
+                                                                                 item['url_from']))
 
     def insert_for_item(self, item):
+        _excep = None
         cursor = self.client.cursor()
-
 
         sql = """ INSERT INTO {} (url,guid,created_at,updated_at,ID,city,time,title,pictures,subject,contact,number,url_from,address,memberName,description,section) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')""".format(
             self.collection_name, item['url'], item['guid'], item['created_at'], item['updated_at'], item['ID'],
@@ -75,15 +80,19 @@ class MysqlDatabase(BaseDatabase):
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
-            logging.debug(
-                "  mysql: insert the item row, id {}, from {}, failure, {}".format(e, item['id'], item['url_from']))
+            _excep = e
             # Rollback in case there is any error
             self.client.rollback()
         finally:
             cursor.close()
 
-        logging.debug("  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
-                                                                                       item['url_from']))
+        if _excep:
+            logging.debug(
+                "  mysql: insert the item row, id {}, from {}, failure, {}".format(e, item['id'], item['url_from']))
+        else:
+            logging.debug(
+                "  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
+                                                                                 item['url_from']))
 
     def insert_for_history(self, item):
         cursor = self.client.cursor()
