@@ -159,12 +159,15 @@ class MysqlDatabase(BaseDatabase):
         row = None
         cursor = self.client.cursor()
 
+        found_count = 0
+
         sql = 'SELECT * FROM  {} ORDER BY {} ASC LIMIT 1'.format(self.collection_name, 'created_at')
         try:
             # Execute the SQL command
             cursor.execute(sql)
             # Get the row data
             data = cursor.fetchone()
+            found_count = cursor.rowcount
             if data:
                 row = CacheItem(
                     guid=data[0],
@@ -177,6 +180,8 @@ class MysqlDatabase(BaseDatabase):
             logging.debug("  mysql: find the oldest row from {} failure, {}".format(self.collection_name, e.message))
         finally:
             cursor.close()
+
+        logging.debug("  mysql: find the count {} fo the oldest row from {}".format(found_count, self.collection_name))
 
         return row
 
