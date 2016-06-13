@@ -70,6 +70,9 @@ class MstamlParse(BaseParser):
         # _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="boxItem"]'))
         _section = [self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')]
 
+        # Replace "\n","\r"
+        _city = _city.replace("\n", "").replace("\r", "").strip()
+
         item = Haraj(
             url=url,
             ID=_ID,
