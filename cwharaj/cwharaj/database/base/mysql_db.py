@@ -59,6 +59,7 @@ class MysqlDatabase(BaseDatabase):
     def insert_for_item(self, item):
         cursor = self.client.cursor()
 
+
         sql = """ INSERT INTO {} (url,guid,created_at,updated_at,ID,city,time,title,pictures,subject,contact,number,url_from,address,memberName,description,section) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')""".format(
             self.collection_name, item['url'], item['guid'], item['created_at'], item['updated_at'], item['ID'],
             item['city'], item['time'], item['title'],
@@ -74,7 +75,8 @@ class MysqlDatabase(BaseDatabase):
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
-            logging.debug("  mysql: insert the item row failure, {}".format(e))
+            logging.debug(
+                "  mysql: insert the item row, id {}, from {}, failure, {}".format(e, item['id'], item['url_from']))
             # Rollback in case there is any error
             self.client.rollback()
         finally:
@@ -154,7 +156,7 @@ class MysqlDatabase(BaseDatabase):
                 cursor.close()
 
                 logging.debug(
-                    "  4. deleted cache row, id: {}, deleted count: {}, from {}"
+                    "  4. deleted cache row, id: {}, deleted count: {}, from the {}"
                         .format(_id, cursor.rowcount, url_from))
 
     def find_oldest_for_cache(self):
