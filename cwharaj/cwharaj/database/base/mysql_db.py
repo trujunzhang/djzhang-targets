@@ -39,13 +39,13 @@ class MysqlDatabase(BaseDatabase):
     def insert_for_cache(self, item):
         _excep = None
         _connection = self.get_client()
-        cursor = _connection.cursor()
+        _cursor = _connection.cursor()
 
         sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, ID, url_from) VALUES (%s,%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID'], item['url_from']))
+            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID'], item['url_from']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
@@ -53,7 +53,7 @@ class MysqlDatabase(BaseDatabase):
             # Rollback in case there is any error
             _connection.rollback()
         finally:
-            cursor.close()
+            _cursor.close()
             _connection.close()
 
         if _excep:
@@ -66,16 +66,16 @@ class MysqlDatabase(BaseDatabase):
     def insert_for_item(self, item):
         _excep = None
         _connection = self.get_client()
-        cursor = _connection.cursor()
+        _cursor = _connection.cursor()
 
         sql = " INSERT INTO " + self.collection_name + " (url,guid,created_at,updated_at,ID,city,TIME,title,pictures,SUBJECT,contact,NUMBER,url_from,address,memberName,description,section) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         try:
-            cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
-            cursor.execute("SET CHARACTER SET utf8mb4;")  # same as above
-            cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
+            _cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
+            _cursor.execute("SET CHARACTER SET utf8mb4;")  # same as above
+            _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
             # Execute the SQL command
-            cursor.execute(sql, (
+            _cursor.execute(sql, (
                 item['url'], item['guid'], item['created_at'], item['updated_at'], item['ID'],
                 item['city'], item['time'], item['title'],
                 item['pictures'],
@@ -90,7 +90,7 @@ class MysqlDatabase(BaseDatabase):
             # Rollback in case there is any error
             _connection.rollback()
         finally:
-            cursor.close()
+            _cursor.close()
             _connection.close()
 
         if _excep:
@@ -105,13 +105,13 @@ class MysqlDatabase(BaseDatabase):
     def insert_for_history(self, item):
         _excep = None
         _connection = self.get_client()
-        cursor = _connection.cursor()
+        _cursor = _connection.cursor()
 
         sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, ID) VALUES (%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID']))
+            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
@@ -119,7 +119,7 @@ class MysqlDatabase(BaseDatabase):
             # Rollback in case there is any error
             _connection.rollback()
         finally:
-            cursor.close()
+            _cursor.close()
             _connection.close()
 
         if _excep:
@@ -134,18 +134,18 @@ class MysqlDatabase(BaseDatabase):
     def get_count(self, key, value):
         _count = 0
         _connection = self.get_client()
-        cursor = _connection.cursor()
+        _cursor = _connection.cursor()
 
         sql = """ SELECT 1 FROM {} WHERE {} = '{}'""".format(self.collection_name, key, value)
         try:
             # Execute the SQL command
-            cursor.execute(sql)
-            _count = cursor.rowcount
+            _cursor.execute(sql)
+            _count = _cursor.rowcount
         except Exception, e:
             logging.debug(
                 "  mysql: get count for {} on the {} failure, {}".format(key, self.collection_name, e))
         finally:
-            cursor.close()
+            _cursor.close()
             _connection.close()
 
         return _count
@@ -165,11 +165,11 @@ class MysqlDatabase(BaseDatabase):
         if count:
 
             _connection = self.get_client()
-            cursor = _connection.cursor()
+            _cursor = _connection.cursor()
             sql = """ DELETE FROM {} WHERE {} = '{}'""".format(self.collection_name, 'ID', _id)
             try:
                 # Execute the SQL command
-                cursor.execute(sql)
+                _cursor.execute(sql)
                 # Commit your changes in the database
                 _connection.commit()
             except Exception, e:
@@ -178,28 +178,28 @@ class MysqlDatabase(BaseDatabase):
                 logging.debug(
                     "  mysql: delete the last row on the {} failure, {}".format(self.collection_name, e))
             finally:
-                cursor.close()
+                _cursor.close()
                 _connection.close()
 
                 logging.debug(
                     "  4. deleted cache row, id: {}, deleted count: {}, from the {}"
-                        .format(_id, cursor.rowcount, url_from))
+                        .format(_id, _cursor.rowcount, url_from))
 
     def get_cache_total_count(self):
         _count = 0
         _connection = self.get_client()
-        cursor = _connection.cursor()
+        _cursor = _connection.cursor()
 
         sql = """ SELECT * FROM {} """.format(self.collection_name)
         try:
             # Execute the SQL command
-            cursor.execute(sql)
-            _count = cursor.rowcount
+            _cursor.execute(sql)
+            _count = _cursor.rowcount
         except Exception, e:
             logging.debug(
                 "  mysql: get count for {} on the {} failure, {}".format(key, self.collection_name, e))
         finally:
-            cursor.close()
+            _cursor.close()
             _connection.close()
 
         return _count
@@ -214,17 +214,17 @@ class MysqlDatabase(BaseDatabase):
         """Query the oldest cache item."""
         row = None
         _connection = self.get_client()
-        cursor = _connection.cursor()
+        _cursor = _connection.cursor()
 
         found_count = 0
 
         sql = 'SELECT * FROM  {} ORDER BY {} ASC LIMIT 1'.format(self.collection_name, 'created_at')
         try:
             # Execute the SQL command
-            cursor.execute(sql)
+            _cursor.execute(sql)
             # Get the row data
-            data = cursor.fetchone()
-            found_count = cursor.rowcount
+            data = _cursor.fetchone()
+            found_count = _cursor.rowcount
             if data:
                 row = CacheItem(
                     guid=data[0],
@@ -236,7 +236,7 @@ class MysqlDatabase(BaseDatabase):
         except Exception, e:
             _excep = e
         finally:
-            cursor.close()
+            _cursor.close()
             _connection.close()
 
         if _excep:
@@ -250,18 +250,18 @@ class MysqlDatabase(BaseDatabase):
     def check_exist_by_id(self, _id):
         ret = 0
         _connection = self.get_client()
-        cursor = _connection.cursor()
+        _cursor = _connection.cursor()
 
         sql = """ SELECT 1 FROM {} WHERE ID = {}""".format(self.collection_name, _id)
         try:
             # Execute the SQL command
-            cursor.execute(sql)
+            _cursor.execute(sql)
             # Get the count of rows
-            ret = cursor.rowcount
+            ret = _cursor.rowcount
         except Exception, e:
             logging.debug("  mysql: check {} exist on the {} failure, {}".format(_id, self.collection_name, e))
         finally:
-            cursor.close()
+            _cursor.close()
             _connection.close()
 
         if ret:
