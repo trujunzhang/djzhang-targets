@@ -67,7 +67,7 @@ class MstamlParse(BaseParser):
         _memberName = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
         _description = self.get_all_value_from_response(hxs,
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
-        _section = self.get_section(hxs, '//*[@class="titlePage"]/a/text()')
+        _section = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
 
         # Replace "\n","\r"
         _city = _city.replace("\n", "").replace("\r", "").strip()
@@ -94,16 +94,10 @@ class MstamlParse(BaseParser):
         return item
 
     def get_section(self, hxs, selector):
-        _As = self.get_value_from_response(hxs, selector)
-
-        _As = self.get_value_from_response(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
-
+        _As = hxs.xpath(selector).extract()
 
         sections = []
         for a in _As:
-            text = a.text
-            text = text.replace("\n", "").replace("\r", "").strip()
-            text = text.encode('utf-8')
-            sections.append(text)
+            sections.append(a.text.encode('utf-8'))
 
         return sections
