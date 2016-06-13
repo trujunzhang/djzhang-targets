@@ -67,8 +67,7 @@ class MstamlParse(BaseParser):
         _memberName = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
         _description = self.get_all_value_from_response(hxs,
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
-        # _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="boxItem"]'))
-        _section = [self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[1]/a/text()')]
+        _section = self.get_section(hxs, '//*[@class="titlePage"]/a/text()')
 
         # Replace "\n","\r"
         _city = _city.replace("\n", "").replace("\r", "").strip()
@@ -94,15 +93,9 @@ class MstamlParse(BaseParser):
 
         return item
 
-    def get_section(self, section_panel):
-        """
-        ????
-        """
+    def get_section(self, hxs, selector):
+        _As = self.get_value_from_response(hxs, selector)
 
-        from BeautifulSoup import BeautifulSoup
-        soup = BeautifulSoup(section_panel)
-
-        _As = soup.findAll('a', {'property': 'v:title'})
         sections = []
         for a in _As:
             text = a.text
