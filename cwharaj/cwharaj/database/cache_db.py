@@ -9,7 +9,7 @@ class CacheDatabase(DispatchDatabase):
         super(CacheDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
     def process_item(self, url, item=None, index=0, id=-1):
-        logging.debug("  process cache item at position: {}".format(index - 1))
+        logging.debug("process the cache item at position: {}".format(index - 1))
 
         guid = CrawlUtils.get_guid(url)
 
