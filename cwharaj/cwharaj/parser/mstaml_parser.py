@@ -52,7 +52,6 @@ class MstamlParse(BaseParser):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 
-        _city = ""  # not found
         _time = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
         _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
@@ -60,7 +59,10 @@ class MstamlParse(BaseParser):
         _subject = ""
         _contact = ""
         _number = self.get_value_from_response(hxs, '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
+
+        _city = ""  # not found
         _address = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
+
         _memberName = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
         _description = self.get_all_value_from_response(hxs,
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
