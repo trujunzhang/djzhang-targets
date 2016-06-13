@@ -73,7 +73,7 @@ class MysqlDatabase(BaseDatabase):
             item['pictures'],
             item['subject'], item['contact'],
             item['number'], item['url_from'], item['address'], item['memberName'], item['description'],
-            item['section'],
+            item['section']
         )
 
         try:
