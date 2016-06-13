@@ -46,14 +46,15 @@ class OpensooqParse(BaseParser):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 3)
 
-        _city = self.get_value_from_response(hxs,
-                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
         _time = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
         _title = self.get_value_from_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
         _pictures = self.get_pictures(hxs, '//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src')
         _subject = ""
         _contact = ""
         _number = ""
+
+        _city = self.get_value_from_response(hxs,
+                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
         _address = self.get_value_from_response(hxs,
                                                 '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/span/text()')
         _memberName = self.get_value_from_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
