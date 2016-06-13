@@ -55,7 +55,7 @@ class MysqlDatabase(BaseDatabase):
             cursor.close()
 
         if _excep:
-            logging.debug("  mysql: insert the cache row failure, {}".format(e))
+            logging.debug("  mysql: insert the cache row failure, {}".format(_excep))
         else:
             logging.debug(
                 "  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
@@ -88,13 +88,15 @@ class MysqlDatabase(BaseDatabase):
 
         if _excep:
             logging.debug(
-                "  mysql: insert the item row, id {}, from {}, failure, {}".format(e, item['id'], item['url_from']))
+                "  mysql: insert the item row, id {}, from {}, failure, {}".format(_excep, item['id'],
+                                                                                   item['url_from']))
         else:
             logging.debug(
                 "  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
                                                                                  item['url_from']))
 
     def insert_for_history(self, item):
+        _excep = None
         cursor = self.client.cursor()
 
         sql = """ INSERT INTO {} (url, guid, created_at, ID) VALUES ('{}','{}','{}','{}')""".format(
@@ -106,13 +108,16 @@ class MysqlDatabase(BaseDatabase):
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
-            logging.debug("  mysql: insert the history row failure, {}".format(e))
+            _excep = e
             # Rollback in case there is any error
             self.client.rollback()
         finally:
             cursor.close()
 
-        logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
+        if _excep:
+            logging.debug("  mysql: insert the history row failure, {}".format(_excep))
+        else:
+            logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
     def update_for_history(self, id, item):
         if not self.check_exist_by_id(id):
@@ -169,6 +174,7 @@ class MysqlDatabase(BaseDatabase):
                         .format(_id, cursor.rowcount, url_from))
 
     def find_oldest_for_cache(self):
+        _excep = None
         """Query the oldest cache item."""
         row = None
         cursor = self.client.cursor()
@@ -191,12 +197,15 @@ class MysqlDatabase(BaseDatabase):
                     created_at=data[4]
                 )
         except Exception, e:
-            logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, e))
+            _excep = e
         finally:
             cursor.close()
 
-        logging.debug(
-            "  mysql: find the count {} for the oldest row on the {}".format(found_count, self.collection_name))
+        if _excep:
+            logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, _excep))
+        else:
+            logging.debug(
+                "  mysql: find the count {} for the oldest row on the {}".format(found_count, self.collection_name))
 
         return row
 
