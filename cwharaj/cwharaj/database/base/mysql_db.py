@@ -88,7 +88,7 @@ class MysqlDatabase(BaseDatabase):
 
         if _excep:
             logging.debug(
-                "  mysql: insert the item row, id {}, from {}, failure, {}".format(_excep, item['id'],
+                "  mysql: insert the item row, id {}, from {}, failure, {}".format(_excep, item['ID'],
                                                                                    item['url_from']))
         else:
             logging.debug(
@@ -115,7 +115,7 @@ class MysqlDatabase(BaseDatabase):
             cursor.close()
 
         if _excep:
-            logging.debug("  mysql: insert the history row failure, {}".format(_excep))
+            logging.debug("  mysql: insert the history row {} failure, {}".format(item['ID'], _excep))
         else:
             logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
 
