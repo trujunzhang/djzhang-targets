@@ -16,7 +16,7 @@ class CrawlUtils(object):
         try:
             _url = _url.encode('utf-8')
         except Exception, e:
-            logging.debug("  convert to utf-8 exception: {}".format(e.message))
+            logging.debug("  converting to utf-8 exception: {}".format(e.message))
         return md5(_url).hexdigest()
 
     @classmethod
