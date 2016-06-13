@@ -41,12 +41,11 @@ class MysqlDatabase(BaseDatabase):
         _excep = None
         cursor = self.client.cursor()
 
-        sql = """ INSERT INTO {} (url, guid, created_at, ID, url_from) VALUES ('{}','{}','{}','{}','{}')""".format(
-            self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'], item['url_from'])
+        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, ID, url_from) VALUES (%s,%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            cursor.execute(sql)
+            cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID'], item['url_from']))
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
@@ -104,12 +103,11 @@ class MysqlDatabase(BaseDatabase):
         _excep = None
         cursor = self.client.cursor()
 
-        sql = """ INSERT INTO {} (url, guid, created_at, ID) VALUES ('{}','{}','{}','{}')""".format(
-            self.collection_name, item['url'], item['guid'], item['created_at'], item['ID'])
+        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, ID) VALUES (%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            cursor.execute(sql)
+            cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID']))
             # Commit your changes in the database
             self.client.commit()
         except Exception, e:
