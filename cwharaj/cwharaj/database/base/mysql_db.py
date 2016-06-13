@@ -181,7 +181,7 @@ class MysqlDatabase(BaseDatabase):
         finally:
             cursor.close()
 
-        logging.debug("  mysql: find the count {} fo the oldest row from {}".format(found_count, self.collection_name))
+        logging.debug("  mysql: find the count {} for the oldest row from {}".format(found_count, self.collection_name))
 
         return row
 
