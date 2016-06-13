@@ -25,6 +25,7 @@ class HarajSaParse(BaseParser):
 
             td_count = len(hxs.xpath(Li_selector + "/td"))
             if td_count == 0:  # ignore the table title row(only have <th>s)
+                logging.debug("ignore the table title,  at {}".format(count - 1))
                 continue
 
             href = self.get_value_from_response(hxs, Li_selector + '/td[2]/a/@href')
