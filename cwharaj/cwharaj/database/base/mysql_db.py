@@ -77,6 +77,9 @@ class MysqlDatabase(BaseDatabase):
         )
 
         try:
+            cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
+            cursor.execute("SET CHARACTER SET utf8mb4;")  # same as above
+            cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
             # Execute the SQL command
             cursor.execute(sql)
             # Commit your changes in the database
