@@ -60,7 +60,8 @@ class MstamlParse(BaseParser):
         _contact = ""
         _number = self.get_value_from_response(hxs, '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
 
-        _city = ""  # not found
+        _city = self.get_value_from_response(hxs,
+                                             '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
         _address = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
 
         _memberName = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
