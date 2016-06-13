@@ -14,7 +14,7 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
         # paginate
         # 'https://haraj.com.sa',
         # Details
-        'https://haraj.com.sa/1112880409/%D8%B9%D8%B1%D8%A8%D8%A9_%D8%AE%D9%8A%D9%88%D9%84_%D9%82%D9%84%D8%B5_%D8%AE%D9%8A%D9%88%D9%84_%D8%A7%D8%B3%D8%B7%D8%A8%D9%84_%D9%85%D9%82%D8%B7%D9%88%D8%B1%D9%87_%D8%AE%D9%8A%D9%84%D9%8A%D9%86/'
+        'https://haraj.com.sa/1113951569/ساعات_واطقم_واساور_ومحافظ_ماركات_وصل_حديثا/'
     ]
 
     def __init__(self, name=None, **kwargs):
