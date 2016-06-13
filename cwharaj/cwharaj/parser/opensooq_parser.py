@@ -57,6 +57,7 @@ class OpensooqParse(BaseParser):
                                              '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
         _address = self.get_value_from_response(hxs,
                                                 '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/span/text()')
+
         _memberName = self.get_value_from_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
         _description = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
         _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]'))
