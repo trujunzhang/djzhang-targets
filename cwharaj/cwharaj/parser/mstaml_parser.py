@@ -27,7 +27,7 @@ class MstamlParse(BaseParser):
             # This div is empty line, such as "<div id="item2072286" class="clear"></div>"
             # valid div is "class="boxDarkBody dw1 gWhite ui-corner-all mb20 mt20""
             if len(class_name) <= 10:
-                logging.debug("  ignore the empty line, class name: {}".format(class_name))
+                logging.debug("ignore the empty line, class name: {}, at {}".format(class_name, count - 1))
                 continue
 
             href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
