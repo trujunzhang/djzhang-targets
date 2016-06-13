@@ -5,7 +5,7 @@ CREATE TABLE harajs_cache (
   url_from   TEXT,
   created_at DATETIME
 )
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 CREATE TABLE harajs_history (
@@ -14,7 +14,7 @@ CREATE TABLE harajs_history (
   url        TEXT,
   created_at DATETIME
 )
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
 
 
 CREATE TABLE harajs (
@@ -38,4 +38,4 @@ CREATE TABLE harajs (
   description TEXT,
   section     TEXT
 )
-  DEFAULT CHARSET = utf8;
+  DEFAULT CHARSET = utf8mb4;
