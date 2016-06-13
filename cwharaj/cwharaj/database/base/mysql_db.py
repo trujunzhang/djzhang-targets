@@ -53,7 +53,8 @@ class MysqlDatabase(BaseDatabase):
         finally:
             cursor.close()
 
-        logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
+        logging.debug("  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
+                                                                                       item['url_from']))
 
     def insert_for_item(self, item):
         cursor = self.client.cursor()
@@ -79,7 +80,8 @@ class MysqlDatabase(BaseDatabase):
         finally:
             cursor.close()
 
-        logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
+        logging.debug("  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
+                                                                                       item['url_from']))
 
     def insert_for_history(self, item):
         cursor = self.client.cursor()
@@ -115,7 +117,8 @@ class MysqlDatabase(BaseDatabase):
             cursor.execute(sql)
             _count = cursor.rowcount
         except Exception, e:
-            logging.debug("  mysql: get count for {} from {} failure, {}".format(key, self.collection_name, e.message))
+            logging.debug(
+                "  mysql: get count for {} on the {} failure, {}".format(key, self.collection_name, e.message))
         finally:
             cursor.close()
 
@@ -146,7 +149,7 @@ class MysqlDatabase(BaseDatabase):
                 # Rollback in case there is any error
                 self.client.rollback()
                 logging.debug(
-                    "  mysql: delete the last row from {} failure, {}".format(self.collection_name, e.message))
+                    "  mysql: delete the last row on the {} failure, {}".format(self.collection_name, e.message))
             finally:
                 cursor.close()
 
@@ -177,11 +180,12 @@ class MysqlDatabase(BaseDatabase):
                     created_at=data[4]
                 )
         except Exception, e:
-            logging.debug("  mysql: find the oldest row from {} failure, {}".format(self.collection_name, e.message))
+            logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, e.message))
         finally:
             cursor.close()
 
-        logging.debug("  mysql: find the count {} for the oldest row from {}".format(found_count, self.collection_name))
+        logging.debug(
+            "  mysql: find the count {} for the oldest row on the {}".format(found_count, self.collection_name))
 
         return row
 
@@ -196,7 +200,7 @@ class MysqlDatabase(BaseDatabase):
             # Get the count of rows
             ret = cursor.rowcount
         except Exception, e:
-            logging.debug("  mysql: check {} exist from {} failure, {}".format(_id, self.collection_name, e.message))
+            logging.debug("  mysql: check {} exist on the {} failure, {}".format(_id, self.collection_name, e.message))
         finally:
             cursor.close()
 
