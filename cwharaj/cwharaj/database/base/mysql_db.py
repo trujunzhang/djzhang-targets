@@ -176,7 +176,26 @@ class MysqlDatabase(BaseDatabase):
                     "  4. deleted cache row, id: {}, deleted count: {}, from the {}"
                         .format(_id, cursor.rowcount, url_from))
 
+    def get_cache_total_count(self):
+        _count = 0
+        cursor = self.client.cursor()
+
+        sql = """ SELECT * FROM {} """.format(self.collection_name)
+        try:
+            # Execute the SQL command
+            cursor.execute(sql)
+            _count = cursor.rowcount
+        except Exception, e:
+            logging.debug(
+                "  mysql: get count for {} on the {} failure, {}".format(key, self.collection_name, e))
+        finally:
+            cursor.close()
+
+        return _count
+
     def find_oldest_for_cache(self):
+        total_count = self.get_cache_total_count()
+
         _excep = None
         """Query the oldest cache item."""
         row = None
