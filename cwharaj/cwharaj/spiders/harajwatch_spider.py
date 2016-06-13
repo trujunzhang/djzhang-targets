@@ -66,18 +66,18 @@ class HarajsSpiderWatch(scrapy.Spider):
         self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
         # step 2: fetching the same pagination again.
         logging.debug("Fetching the pagination from the opensooq again")
-        # yield scrapy.Request(self.url_from_opensooq, callback=self.parse_pagination_from_opensooq, dont_filter=True)
+        yield scrapy.Request(self.url_from_opensooq, callback=self.parse_pagination_from_opensooq, dont_filter=True)
 
     def parse_pagination_from_mstaml(self, response):
         # Step 1: parse all list items to the cache database.
         self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         # step 2: fetching the same pagination again.
         logging.debug("Fetching the pagination from the mstaml again")
-        # yield scrapy.Request(self.url_from_mstaml, callback=self.parse_pagination_from_mstaml, dont_filter=True)
+        yield scrapy.Request(self.url_from_mstaml, callback=self.parse_pagination_from_mstaml, dont_filter=True)
 
     def parse_pagination_from_harajsa(self, response):
         # Step 1: parse all list items to the cache database.
         self._harajsa_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         # step 2: fetching the same pagination again.
         logging.debug("Fetching the pagination from the harajsa again")
-        # yield scrapy.Request(self.url_from_harajsa, callback=self.parse_pagination_from_harajsa, dont_filter=True)
+        yield scrapy.Request(self.url_from_harajsa, callback=self.parse_pagination_from_harajsa, dont_filter=True)
