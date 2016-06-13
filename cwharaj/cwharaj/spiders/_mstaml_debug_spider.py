@@ -15,7 +15,8 @@ class MstamlDebugWatchSpider(scrapy.Spider):
         # Details
         # 'http://www.mstaml.com/2072283/%D8%B9%D8%B1%D9%88%D8%B6_%D8%AE%D8%A7%D8%B5%D8%A9_%D8%AC%D8%AF%D8%A7_%D9%85%D9%86_%D9%82%D9%85%D8%B1%D8%A9_%D9%84%D8%AA%D9%86%D8%B8%D9%8A%D9%85_%D8%A7%D9%84%D8%A5%D8%AD%D8%AA%D9%81%D8%A7%D9%84%D8%A7%D8%AA_%D8%A8%D8%AC%D8%AF%D8%A9/'
         # 'http://www.mstaml.com/2073561/%D9%84%D9%84%D8%A8%D9%8A%D8%B9_%D8%AC%D9%85%D8%B3_%D9%8A%D9%88%D9%83%D9%86_1999/'
-        'http://www.mstaml.com/2073595/%D9%84%D9%84%D8%A8%D9%8A%D8%B9_%D9%82%D8%B7%D8%B7_%D8%AA%D8%B1%D9%83%D9%8A%D9%87'
+        # 'http://www.mstaml.com/2073595/%D9%84%D9%84%D8%A8%D9%8A%D8%B9_%D9%82%D8%B7%D8%B7_%D8%AA%D8%B1%D9%83%D9%8A%D9%87'
+        'http://www.mstaml.com/2073595/للبيع_قطط_تركيه/'
     ]
 
     def __init__(self, name=None, **kwargs):
