@@ -23,7 +23,9 @@ class MysqlDatabase(BaseDatabase):
                 user=self.user,
                 passwd=self.passwd,
                 db=self.db,
-                port=self.port
+                port=self.port,
+                charset="utf8",
+                use_unicode=True
             )
         except (AttributeError, MySQLdb.OperationalError), e:
             raise e
