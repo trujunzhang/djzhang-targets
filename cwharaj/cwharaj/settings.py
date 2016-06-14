@@ -86,8 +86,8 @@ ITEM_PIPELINES = {
 # HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 # SQL DATABASE SETTING
-# SQL_HOST = 'localhost'
-SQL_HOST = '104.236.77.182'
+SQL_HOST = 'localhost'
+# SQL_HOST = '104.236.77.182'
 SQL_PORT = 3306
 SQL_USER = 'haraj'
 SQL_PASSWD = 'haraj720'
