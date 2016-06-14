@@ -17,7 +17,9 @@ scrapy crawl harajwatch
 
 scrapyd-deploy digitalocean -p cwharaj
 
-curl http://104.236.77.182/schedule.json -d project=cwharaj -d spider=harajwatch
+curl http://104.236.77.182:6800/schedule.json -d project=cwharaj -d spider=harajwatch
+
+curl http://localhost:6800/schedule.json -d project=myproject -d spider=spider2
 
 
 
