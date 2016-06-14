@@ -59,7 +59,11 @@ class HarajSaParse(BaseParser):
         _city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
 
         def filter_for_image(src):
-            return True
+            if 'haraj.com.sa' in src:
+                return True
+
+            logging.debug("  invalide picture url from the haraj.sa, {}".format(src))
+            return False
 
         _pictures = self.get_images_in_selector(hxs, '//*[@itemprop="description"]', filter_method=filter_for_image)
 
