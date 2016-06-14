@@ -18,14 +18,14 @@ class DatabaseFactory:
             from cwharaj.database.cache_db import CacheDatabase
             database = CacheDatabase(host=host, port=port,
                                      user=user, passwd=passwd,
-                                     db=db, collection_name=collection_name + '_cache')
+                                     db=db, collection_name=collection_name + '_caches')
             database.open_spider()
             return database
         elif CollectionTypes.history == collection_type:
             from cwharaj.database.history_db import HistoryDatabase
             history_database = HistoryDatabase(host=host, port=port,
                                                user=user, passwd=passwd,
-                                               db=db, collection_name=collection_name + "_history")
+                                               db=db, collection_name=collection_name + "_histories")
             history_database.open_spider()
             return history_database
         elif CollectionTypes.item == collection_type:
