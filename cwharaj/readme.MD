@@ -25,6 +25,8 @@ curl http://192.168.1.106:6800/schedule.json -d project=cwharaj -d spider=haraj
 
 item exist  on the cache database
 
+invalide picture url from the haraj.sa
+
 found the deleted item count: 0
 
 failure,
