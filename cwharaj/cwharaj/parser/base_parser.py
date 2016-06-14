@@ -31,7 +31,7 @@ class BaseParser(object):
 
         return value.encode('utf-8')
 
-    def get_images_in_selector(self, hxs, selector, index=0):
+    def get_images_in_selector(self, hxs, selector, index=0, filter_method=None):
         noscript_images = self.get_value_from_response(hxs, selector, index=index)
 
         from BeautifulSoup import BeautifulSoup
@@ -41,8 +41,14 @@ class BaseParser(object):
 
         list = []
         for image in images:
-            list.append(image['src'])
+            src_ = image['src']
+
+            result = True
+
+            if filter_method:
+                result = filter_method(src_)
+
+            if result:
+                list.append(src_)
 
         return ",".join(list)
-
-

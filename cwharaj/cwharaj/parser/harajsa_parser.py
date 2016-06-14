@@ -56,10 +56,13 @@ class HarajSaParse(BaseParser):
 
         comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
         _time = self.get_published_date(comment_header_string)
-
         _city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
 
-        _pictures = self.get_images_in_selector(hxs, '//*[@itemprop="description"]')
+        def filter_for_image(src):
+            return True
+
+        _pictures = self.get_images_in_selector(hxs, '//*[@itemprop="description"]', filter_method=filter_for_image)
+
         _subject = ""
         _contact = ""
         _number = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')
