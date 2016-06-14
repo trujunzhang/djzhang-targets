@@ -1,4 +1,4 @@
-CREATE TABLE harajs_cache (
+CREATE TABLE harajs_caches (
   guid       CHAR(32) PRIMARY KEY,
   ID         TEXT,
   url        TEXT,
@@ -8,7 +8,7 @@ CREATE TABLE harajs_cache (
   DEFAULT CHARSET = utf8mb4;
 
 
-CREATE TABLE harajs_history (
+CREATE TABLE harajs_histories (
   guid       CHAR(32) PRIMARY KEY,
   ID         TEXT,
   url        TEXT,
