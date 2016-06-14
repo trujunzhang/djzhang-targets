@@ -51,7 +51,7 @@ class HarajSaParse(BaseParser):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 
-        _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()')
+        _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
 
         comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
