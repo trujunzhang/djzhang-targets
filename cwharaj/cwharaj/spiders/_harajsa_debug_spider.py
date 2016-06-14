@@ -16,6 +16,8 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
         # Details
         # 'https://haraj.com.sa/1113951569/ساعات_واطقم_واساور_ومحافظ_ماركات_وصل_حديثا/'
         'https://haraj.com.sa/1111841958/%D9%83%D8%A7%D8%B4%D9%81_%D8%A7%D9%84%D8%B5%D8%A8%D8%BA_%D9%88%D8%A7%D9%84%D8%B3%D9%85%D9%83%D8%B1%D8%A9_%D8%A7%D9%84%D8%A7%D9%84%D9%85%D8%A7%D9%86%D9%8A_%D8%A7%D9%84%D9%87%D8%A7%D9%86%D8%AF%D9%8A/'
+        # fix parsing pictures
+        # 'https://haraj.com.sa/1113955610/%D8%A7%D8%B1%D8%B6_%D9%84%D9%84%D8%A8%D9%8A%D8%B9_%D9%81%D9%8A_%D8%AD%D9%8A_%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%AE%D8%A9_%D9%81%D9%8A_%D8%A7%D9%84%D9%85%D8%AF%D9%8A%D9%86%D8%A9/'
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -44,11 +46,12 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
                                                                 user=crawler.settings.get('SQL_USER'),
                                                                 passwd=crawler.settings.get('SQL_PASSWD'),
                                                                 db=crawler.settings.get('SQL_DB'),
-                                                                collection_name=crawler.settings.get('SQL_COLLECTION_NAME')
+                                                                collection_name=crawler.settings.get(
+                                                                    'SQL_COLLECTION_NAME')
                                                                 )
 
     def parse(self, response):
         # self._harajsa_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         item = self._harajsa_Parse.parse(response.url, response)
-        yield item
+        # yield item
         # _row = self._cache_db.get_last_row("")
