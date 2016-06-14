@@ -15,9 +15,9 @@ scrapy crawl harajwatch
 
 # deploy to scrapyd
 
-scrapyd-deploy local -p cwharaj
+scrapyd-deploy digitalocean -p cwharaj
 
-curl http://192.168.1.106:6800/schedule.json -d project=cwharaj -d spider=haraj
+curl http://104.236.77.182/schedule.json -d project=cwharaj -d spider=harajwatch
 
 
 
