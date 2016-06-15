@@ -9,7 +9,7 @@ class ResponseParse(BaseParser):
         super(ResponseParse, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db):
-        links = hxs.select('//a[@class="card-click-target"]/@href').extract()
+        links = hxs.select('//*[@class="srg"]/div').extract()
         count = 0
         for link in links:
             appLink = urlparse.urljoin(url, link.strip())

@@ -30,12 +30,12 @@ class GoogleLinkedInsSpider(scrapy.Spider):
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(GoogleLinkedInsSpider, cls).from_crawler(crawler,
-                                                         args,
-                                                         mongo_uri=crawler.settings.get('MONGODB_SERVER')
-                                                         )
+                                                              args,
+                                                              mongo_uri=crawler.settings.get('MONGODB_SERVER')
+                                                              )
 
     def parse(self, response):
-        self._crawl_parser.parse_paginate(response.url, response)
+        self._crawl_parser.parse_paginate(response.url, response, self._cache_db)
 
     def parse_detail(self, response):
         item = self._crawl_parser.parse(response.url, response)
@@ -51,7 +51,4 @@ class GoogleLinkedInsSpider(scrapy.Spider):
         navs = sel.xpath(select)
 
         if not self._history_db.check_exist(abstractPath):
-           yield scrapy.Request(abstractPath, self.parse_detail, meta={'type': title})
-
-
-
+            yield scrapy.Request(abstractPath, self.parse_detail, meta={'type': title})
