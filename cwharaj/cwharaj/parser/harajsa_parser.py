@@ -58,7 +58,7 @@ class HarajSaParse(BaseParser):
 
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
 
-        _time = self.get_published_date(self.get_value_from_response(hxs, '//*[@class=" comment_header"]'))
+        _published_data = self.get_published_date(self.get_value_from_response(hxs, '//*[@class=" comment_header"]'))
 
         # ad_low
 
@@ -85,13 +85,14 @@ class HarajSaParse(BaseParser):
         _ads_body = _ads_body.replace("\r", "").strip()
         _memberName = _memberName.strip()
 
-        cities = City(
+        city = City(
             text=_ads_city
         )
+        _city_id = item_db.save_city(city)
 
         item = Ad(
             ads_title=_ads_title,
-            ads_city=_ads_city,
+            ads_city=_city_id,
             # ads_tags_R=_ads_tags_R,
             # ads_tags_F=_ads_tags_F,
             # ads_tags_FF=_ads_tags_FF,

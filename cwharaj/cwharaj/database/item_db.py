@@ -28,3 +28,6 @@ class ItemDatabase(DispatchDatabase):
         if valid:
             self.insert_for_item(item)
             logging.debug("Ad added to database.")
+
+    def save_city(self,city):
+        pass
