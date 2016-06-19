@@ -100,12 +100,3 @@ class city(scrapy.Item):
 
     text = scrapy.Field()
 
-
-class comment(scrapy.Item):
-    # unique row id
-    ID = scrapy.Field()
-
-    id_ads = scrapy.Field()
-    id_His_response = scrapy.Field()
-    text = scrapy.Field()
-    Time_added_co = scrapy.Field()
