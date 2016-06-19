@@ -91,5 +91,5 @@ SQL_HOST = 'localhost'
 SQL_PORT = 3306
 SQL_USER = 'mzada'
 SQL_PASSWD = 'mzada720'
-SQL_DB = 'haraj_hobrt1'
+SQL_DB = 'mzadalny'
 SQL_COLLECTION_NAME = 'harajs'
