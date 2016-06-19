@@ -115,3 +115,30 @@ CREATE TABLE IF NOT EXISTS `ads` (
   DEFAULT CHARSET = utf8
   AUTO_INCREMENT = 24;
 
+
+--
+-- Table structure for table `members`
+--
+
+CREATE TABLE IF NOT EXISTS `members` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(35) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `groupnumber` int(2) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `timeregister` int(11) NOT NULL,
+  `member_code` varchar(32) NOT NULL,
+  `documentingmobile` int(11) NOT NULL,
+  `Documentingemail` int(11) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `sendtime` int(1) NOT NULL,
+  `active` varchar(5) NOT NULL,
+  `now` varchar(50) NOT NULL,
+  `Lastactivity` int(50) NOT NULL,
+  `subscribe_1` int(1) NOT NULL,
+  `subscribe_2` int(1) NOT NULL,
+  `subscribe_3` int(1) NOT NULL,
+  `The_pay_commission` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
+
