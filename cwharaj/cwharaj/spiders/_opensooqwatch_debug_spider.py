@@ -18,14 +18,12 @@ class OpensooqDebugWatchSpider(scrapy.Spider):
 
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
-        self._cache_db = DatabaseFactory.get_database(CollectionTypes.cache,
-                                                      kwargs['host'], kwargs['port'],
-                                                      kwargs['user'], kwargs['passwd'],
-                                                      kwargs['db'], kwargs['collection_name'])
-        self._history_db = DatabaseFactory.get_database(CollectionTypes.history,
-                                                        kwargs['host'], kwargs['port'],
-                                                        kwargs['user'], kwargs['passwd'],
-                                                        kwargs['db'], kwargs['collection_name'])
+        database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
+                                           kwargs['user'], kwargs['passwd'],
+                                           kwargs['db'], kwargs['collection_name'])
+
+        self._cache_db = database_factory.get_database(CollectionTypes.cache)
+        self._history_db = database_factory.get_database(CollectionTypes.history)
 
         from cwharaj.parser.opensooq_parser import OpensooqParse
         self.opensooq_parse = OpensooqParse()
