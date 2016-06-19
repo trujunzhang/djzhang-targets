@@ -115,7 +115,7 @@ class City(scrapy.Item):
 
 
 # CREATE TABLE IF NOT EXISTS `members`, not "member"
-class member(scrapy.Item):
+class Member(scrapy.Item):
     username = scrapy.Field()
     password = scrapy.Field()
     groupnumber = scrapy.Field()

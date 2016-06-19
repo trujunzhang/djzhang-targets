@@ -31,3 +31,7 @@ class ItemDatabase(DispatchDatabase):
 
     def save_city(self,city):
         pass
+
+
+    def save_member(self, city):
+        pass

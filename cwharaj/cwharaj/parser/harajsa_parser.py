@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from cwharaj.items import Ad, CacheItem, WebsiteTypes, City
+from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
 from cwharaj.parser.base_parser import BaseParser
 
 import time
@@ -55,10 +55,10 @@ class HarajSaParse(BaseParser):
         # comment ad_div
         _ads_title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
         _ads_city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
-        _time_added = '12345678901'
+        # _published_data = self.get_published_date(self.get_value_from_response(hxs, '//*[@class=" comment_header"]'))
+        # "_published_data' is the same as '_time_added'
+        _time_added = '12345678901'  # ???
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
-
-        _published_data = self.get_published_date(self.get_value_from_response(hxs, '//*[@class=" comment_header"]'))
 
         # ad_low
 
@@ -90,6 +90,27 @@ class HarajSaParse(BaseParser):
         )
         _city_id = item_db.save_city(city)
 
+        member = Member(
+            username=_memberName,
+            password="",
+            groupnumber="",
+            email="",
+            timeregister="",
+            member_code="",
+            documentingmobile="",
+            Documentingemail="",
+            phone="",
+            sendtime="",
+            active="",
+            now="",
+            Lastactivity="",
+            subscribe_1="",
+            subscribe_2="",
+            subscribe_3="",
+            The_pay_commission="",
+        )
+        _His_announcement = item_db.save_member(member)
+
         item = Ad(
             ads_title=_ads_title,
             ads_city=_city_id,
@@ -104,7 +125,7 @@ class HarajSaParse(BaseParser):
             status=1,
             fixing=0,
             Time_added=_time_added,
-            # His_announcement=_His_announcement,
+            His_announcement=_His_announcement,
             # type_ads_or=_type_ads_or,
             # close_ads=_close_ads,
             Last_updated_Ad=_ID,
