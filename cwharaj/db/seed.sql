@@ -93,3 +93,29 @@ CREATE TABLE IF NOT EXISTS `ads` (
   DEFAULT CHARSET = utf8
   AUTO_INCREMENT = 24;
 
+
+ads_title=_ads_title,
+ads_city=_ads_city,
+ads_tags_R=_ads_tags_R,
+ads_tags_F=_ads_tags_F,
+ads_tags_FF=_ads_tags_FF,
+ads_contact=_ads_contact,
+ads_body=_ads_body,
+image_link=_image_link,
+type_ads_other_final=_type_ads_other_final,
+un_model=_un_model,
+status=_status,
+fixing=_fixing,
+Time_added=_Time_added,
+His_announcement=_His_announcement,
+type_ads_or=_type_ads_or,
+close_ads=_close_ads,
+Last_updated_Ad=_Last_updated_Ad,
+closecomment=_closecomment,
+fixed_home=_fixed_home,
+fixed_tub=_fixed_tub,
+fixed_sec=_fixed_sec,
+fixed_sec2=_fixed_sec2,
+fixed_sec3=_fixed_sec3,
+timer_mazad=_timer_mazad,
+

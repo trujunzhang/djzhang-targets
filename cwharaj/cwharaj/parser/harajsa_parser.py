@@ -5,6 +5,7 @@ from cwharaj.parser.base_parser import BaseParser
 
 import time
 import logging
+from datetime import datetime
 
 
 class HarajSaParse(BaseParser):
@@ -51,12 +52,11 @@ class HarajSaParse(BaseParser):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 
-        _title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
+        _ads_title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
 
-        comment_header_string = self.get_value_from_response(hxs, '//*[@class=" comment_header"]')
-        _time = self.get_published_date(comment_header_string)
-        _city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
+        _time = self.get_published_date(self.get_value_from_response(hxs, '//*[@class=" comment_header"]'))
+        _ads_city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
 
         def filter_for_image(src):
             if 'haraj.com.sa' in src:
@@ -65,37 +65,45 @@ class HarajSaParse(BaseParser):
             logging.debug("  invalide picture url from the haraj.sa, {}".format(src))
             return False
 
-        _pictures = self.get_images_in_selector(hxs, '//*[@itemprop="description"]', filter_method=filter_for_image)
+        _image_link = self.get_images_in_selector(hxs, '//*[@itemprop="description"]', filter_method=filter_for_image)
 
         _subject = ""
         _contact = ""
         _number = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')
         _address = ""  # not found
-        _description = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
+        _ads_body = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
 
         _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
 
         # Replace "\n","\r"
-        _description = _description.replace("\r", "").strip()
+        _ads_body = _ads_body.replace("\r", "").strip()
         _memberName = _memberName.strip()
 
         item = Ad(
-            url=url,
-            ID=_ID,
-            city=_city,
-            time=_time,
-            title=_title,
-            pictures=_pictures,
-            subject=_subject,
-            contact=_contact,
-            number=_number,
-
-            address=_address,
-            memberName=_memberName,
-            description=_description,
-            section=_section,
-
-            url_from=WebsiteTypes.harajsa.value
+            ads_title=_ads_title,
+            ads_city=_ads_city,
+            # ads_tags_R=_ads_tags_R,
+            # ads_tags_F=_ads_tags_F,
+            # ads_tags_FF=_ads_tags_FF,
+            # ads_contact=_ads_contact,
+            ads_body=_ads_body,
+            image_link=_image_link,
+            # type_ads_other_final=_type_ads_other_final,
+            # un_model=_un_model,
+            status=1,
+            fixing=0,
+            # Time_added=_Time_added,
+            # His_announcement=_His_announcement,
+            # type_ads_or=_type_ads_or,
+            # close_ads=_close_ads,
+            Last_updated_Ad=datetime.utcnow().replace(microsecond=0).isoformat(' '),
+            closecomment=0,
+            fixed_home=0,
+            fixed_tub=0,
+            fixed_sec=0,
+            fixed_sec2=0,
+            fixed_sec3=0,
+            timer_mazad=0,
         )
 
         return item
