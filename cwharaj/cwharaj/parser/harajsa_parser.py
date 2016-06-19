@@ -52,11 +52,16 @@ class HarajSaParse(BaseParser):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 
+        # comment ad_div
         _ads_title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
 
         _time = self.get_published_date(self.get_value_from_response(hxs, '//*[@class=" comment_header"]'))
         _ads_city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
+
+        # ad_low
+
+        # comment comment_div
 
         def filter_for_image(src):
             if 'haraj.com.sa' in src:
