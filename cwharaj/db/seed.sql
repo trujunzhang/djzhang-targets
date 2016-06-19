@@ -33,17 +33,15 @@ CREATE TABLE IF NOT EXISTS `ads_scrape` (
   AUTO_INCREMENT = 42;
 
 --
--- Table structure for table `city`
+-- Table structure for table `cities`
 --
 
-CREATE TABLE IF NOT EXISTS `city` (
-  `ID`   INT(11) NOT NULL AUTO_INCREMENT,
-  `Name` TEXT    NOT NULL,
-  PRIMARY KEY (`ID`)
-)
-  ENGINE = MyISAM
-  DEFAULT CHARSET = latin1
-  AUTO_INCREMENT = 52;
+CREATE TABLE IF NOT EXISTS `cities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `text` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
+
 
 --
 -- Table structure for table `comment`
