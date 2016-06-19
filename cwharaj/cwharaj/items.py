@@ -49,6 +49,12 @@ class HistoryItem(scrapy.Item):
     ID = scrapy.Field()
 
 
+class AdScrapeItem(scrapy.Item):
+    model_id = scrapy.Field()
+    url_from = scrapy.Field()
+    url = scrapy.Field()
+
+
 class Ad(scrapy.Item):
     ads_title = scrapy.Field()
     ads_city = scrapy.Field()
