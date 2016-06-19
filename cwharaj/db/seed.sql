@@ -16,46 +16,68 @@ CREATE TABLE ads_histories (
 )
   DEFAULT CHARSET = utf8mb4;
 
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE IF NOT EXISTS `ads_scrape` (
+  `ID`         INT(11)    NOT NULL AUTO_INCREMENT,
+  `Model_id`   INT(11)    NOT NULL,
+  `Url`        TEXT       NOT NULL,
+  `Url_from`   INT(11)    NOT NULL,
+  `Created_at` BIGINT(20) NOT NULL,
+  PRIMARY KEY (`ID`)
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 42;
 
 --
 -- Table structure for table `city`
 --
 
 CREATE TABLE IF NOT EXISTS `city` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `Name` text NOT NULL,
+  `ID`   INT(11) NOT NULL AUTO_INCREMENT,
+  `Name` TEXT    NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
-
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = latin1
+  AUTO_INCREMENT = 52;
 
 --
 -- Table structure for table `comment`
 --
 
 CREATE TABLE IF NOT EXISTS `comment` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `MemberID` int(11) NOT NULL,
-  `AdvID` int(11) NOT NULL,
-  `Comment` text NOT NULL,
-  `Date` bigint(20) NOT NULL,
-  `ReportCount` int(11) NOT NULL,
+  `ID`          INT(11)    NOT NULL AUTO_INCREMENT,
+  `MemberID`    INT(11)    NOT NULL,
+  `AdvID`       INT(11)    NOT NULL,
+  `Comment`     TEXT       NOT NULL,
+  `Date`        BIGINT(20) NOT NULL,
+  `ReportCount` INT(11)    NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
-
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = latin1
+  AUTO_INCREMENT = 42;
 
 --
 -- Table structure for table `section`
 --
 
 CREATE TABLE IF NOT EXISTS `section` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `type` varchar(100) NOT NULL,
-  `Documentto` varchar(100) NOT NULL,
-  `Contents` varchar(100) NOT NULL,
-  `linkmodel` varchar(50) NOT NULL,
+  `id`         INT(11)      NOT NULL AUTO_INCREMENT,
+  `name`       VARCHAR(100) NOT NULL,
+  `type`       VARCHAR(100) NOT NULL,
+  `Documentto` VARCHAR(100) NOT NULL,
+  `Contents`   VARCHAR(100) NOT NULL,
+  `linkmodel`  VARCHAR(50)  NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=510 ;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 510;
 
 --
 -- Table structure for table `ads`
@@ -92,30 +114,4 @@ CREATE TABLE IF NOT EXISTS `ads` (
   ENGINE = MyISAM
   DEFAULT CHARSET = utf8
   AUTO_INCREMENT = 24;
-
-
-ads_title=_ads_title,
-ads_city=_ads_city,
-ads_tags_R=_ads_tags_R,
-ads_tags_F=_ads_tags_F,
-ads_tags_FF=_ads_tags_FF,
-ads_contact=_ads_contact,
-ads_body=_ads_body,
-image_link=_image_link,
-type_ads_other_final=_type_ads_other_final,
-un_model=_un_model,
-status=_status,
-fixing=_fixing,
-Time_added=_Time_added,
-His_announcement=_His_announcement,
-type_ads_or=_type_ads_or,
-close_ads=_close_ads,
-Last_updated_Ad=_Last_updated_Ad,
-closecomment=_closecomment,
-fixed_home=_fixed_home,
-fixed_tub=_fixed_tub,
-fixed_sec=_fixed_sec,
-fixed_sec2=_fixed_sec2,
-fixed_sec3=_fixed_sec3,
-timer_mazad=_timer_mazad,
 

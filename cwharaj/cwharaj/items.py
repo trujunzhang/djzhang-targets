@@ -53,6 +53,7 @@ class AdScrapeItem(scrapy.Item):
     model_id = scrapy.Field()
     url_from = scrapy.Field()
     url = scrapy.Field()
+    created_at = scrapy.Field()
 
 
 class Ad(scrapy.Item):
