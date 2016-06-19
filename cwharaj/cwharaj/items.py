@@ -82,6 +82,7 @@ class Ad(scrapy.Item):
     fixed_sec3 = scrapy.Field()
     timer_mazad = scrapy.Field()
 
+
 # CREATE TABLE IF NOT EXISTS `section`, not "sectionoadvertise"
 class section(scrapy.Item):
     # unique row id
@@ -93,6 +94,7 @@ class section(scrapy.Item):
     Contents = scrapy.Field()
     linkmodel = scrapy.Field()
 
+
 # CREATE TABLE IF NOT EXISTS `comments`, not "comment"
 class comment(scrapy.Item):
     # unique row id
@@ -103,6 +105,7 @@ class comment(scrapy.Item):
     text = scrapy.Field()
     Time_added_co = scrapy.Field()
 
+
 # CREATE TABLE IF NOT EXISTS `cities`, not "city"
 class city(scrapy.Item):
     # unique row id
@@ -110,9 +113,23 @@ class city(scrapy.Item):
 
     text = scrapy.Field()
 
+
 # CREATE TABLE IF NOT EXISTS `members`, not "member"
 class member(scrapy.Item):
-    # unique row id
-    ID = scrapy.Field()
-
-    text = scrapy.Field()
+    username = scrapy.Field()
+    password = scrapy.Field()
+    groupnumber = scrapy.Field()
+    email = scrapy.Field()
+    timeregister = scrapy.Field()
+    member_code = scrapy.Field()
+    documentingmobile = scrapy.Field()
+    Documentingemail = scrapy.Field()
+    phone = scrapy.Field()
+    sendtime = scrapy.Field()
+    active = scrapy.Field()
+    now = scrapy.Field()
+    Lastactivity = scrapy.Field()
+    subscribe_1 = scrapy.Field()
+    subscribe_2 = scrapy.Field()
+    subscribe_3 = scrapy.Field()
+    The_pay_commission = scrapy.Field()
