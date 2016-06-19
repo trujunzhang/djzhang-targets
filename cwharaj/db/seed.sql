@@ -16,6 +16,36 @@ CREATE TABLE ads_histories (
 )
   DEFAULT CHARSET = utf8mb4;
 
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE IF NOT EXISTS `comment` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `MemberID` int(11) NOT NULL,
+  `AdvID` int(11) NOT NULL,
+  `Comment` text NOT NULL,
+  `Date` bigint(20) NOT NULL,
+  `ReportCount` int(11) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=42 ;
+
+
+--
+-- Table structure for table `section`
+--
+
+CREATE TABLE IF NOT EXISTS `section` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `type` varchar(100) NOT NULL,
+  `Documentto` varchar(100) NOT NULL,
+  `Contents` varchar(100) NOT NULL,
+  `linkmodel` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=510 ;
+
 --
 -- Table structure for table `ads`
 --
