@@ -1,4 +1,4 @@
-from cwharaj.items import Haraj, CacheItem, WebsiteTypes
+from cwharaj.items import Ad, CacheItem, WebsiteTypes
 from cwharaj.parser.base_parser import BaseParser
 
 import time
@@ -73,7 +73,7 @@ class MstamlParse(BaseParser):
         # Replace "\n","\r"
         _city = _city.replace("\n", "").replace("\r", "").strip()
 
-        item = Haraj(
+        item = Ad(
             url=url,
             ID=_ID,
             city=_city,

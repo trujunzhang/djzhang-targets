@@ -29,7 +29,7 @@ class WebsiteTypes(Enum):
     harajsa = "harajsa"
 
 
-class Haraj(scrapy.Item):
+class Ad(scrapy.Item):
     url = scrapy.Field()
     guid = scrapy.Field()
     created_at = scrapy.Field()

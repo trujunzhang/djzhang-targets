@@ -5,7 +5,7 @@ import unittest
 import time
 
 from cwharaj.utils.crawl_utils import CrawlUtils
-from cwharaj.items import CacheItem, HistoryItem, Haraj, WebsiteTypes
+from cwharaj.items import CacheItem, HistoryItem, Ad, WebsiteTypes
 from datetime import datetime
 
 
@@ -73,7 +73,7 @@ class MysqlDBTest(unittest.TestCase):
         _section = []
 
         self.mysql_database.open_spider()
-        item = Haraj(
+        item = Ad(
             url=_url,
             guid=_guid,
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),

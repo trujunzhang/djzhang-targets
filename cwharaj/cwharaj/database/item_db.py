@@ -27,4 +27,4 @@ class ItemDatabase(DispatchDatabase):
 
         if valid:
             self.insert_for_item(item)
-            logging.debug("Haraj added to database.")
+            logging.debug("Ad added to database.")

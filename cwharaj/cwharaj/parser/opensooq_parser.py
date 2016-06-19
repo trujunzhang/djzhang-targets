@@ -1,4 +1,4 @@
-from cwharaj.items import Haraj, CacheItem, WebsiteTypes
+from cwharaj.items import Ad, CacheItem, WebsiteTypes
 from cwharaj.parser.base_parser import BaseParser
 
 import time
@@ -74,7 +74,7 @@ class OpensooqParse(BaseParser):
         _address = _address.replace("\n", "").replace("\r", "").strip()
         _memberName = _memberName.strip()
 
-        item = Haraj(
+        item = Ad(
             url=url,
             ID=_ID,
             city=_city,
