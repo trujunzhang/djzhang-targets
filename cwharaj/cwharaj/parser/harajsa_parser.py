@@ -59,6 +59,7 @@ class HarajSaParse(BaseParser):
         # "_published_data' is the same as '_time_added'
         _time_added = '12345678901'  # ???
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
+        _last_updated_ad = '23456789012'  # ???
 
         # ad_low
 
@@ -128,7 +129,7 @@ class HarajSaParse(BaseParser):
             His_announcement=_His_announcement,
             # type_ads_or=_type_ads_or,
             # close_ads=_close_ads,
-            Last_updated_Ad=_ID,
+            Last_updated_Ad=_last_updated_ad,
             closecomment=0,
             fixed_home=0,
             fixed_tub=0,
