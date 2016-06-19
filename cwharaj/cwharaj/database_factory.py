@@ -7,12 +7,16 @@ class CollectionTypes(Enum):
     item = 3
 
 
-class DatabaseFactory:
-    def __init__(self):
-        pass
+class DatabaseFactory(object):
+    def __init__(self, host, port, user, passwd, db, collection_name):
+        super(DatabaseFactory, self).__init__()
+        self.host = host
+        self.port = port
+        self.user = user
+        self.passwd = passwd
+        self.db = db
+        self.collection_name = collection_name
 
-    # This is the factory method
-    @staticmethod
     def get_database(collection_type, host, port, user, passwd, db, collection_name):
         if CollectionTypes.cache == collection_type:
             from cwharaj.database.cache_db import CacheDatabase

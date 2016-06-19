@@ -7,3 +7,4 @@ class DatabaseManager(object):
         self.passwd = passwd
         self.db = db
         self.collection_name = collection_name
+
