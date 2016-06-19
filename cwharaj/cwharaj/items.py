@@ -50,27 +50,30 @@ class HistoryItem(scrapy.Item):
 
 
 class Ad(scrapy.Item):
-    url = scrapy.Field()
-    guid = scrapy.Field()
-    created_at = scrapy.Field()
-    updated_at = scrapy.Field()
-
-    ID = scrapy.Field()
-    city = scrapy.Field()
-    time = scrapy.Field()
-    title = scrapy.Field()
-    pictures = scrapy.Field()
-    subject = scrapy.Field()
-    contact = scrapy.Field()
-    number = scrapy.Field()  # number is mobile("الجوال")
-
-    # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
-    url_from = scrapy.Field()
-
-    address = scrapy.Field()
-    memberName = scrapy.Field()
-    description = scrapy.Field()
-    section = scrapy.Field()
+    ads_title = scrapy.Field()
+    ads_city = scrapy.Field()
+    ads_tags_R = scrapy.Field()
+    ads_tags_F = scrapy.Field()
+    ads_tags_FF = scrapy.Field()
+    ads_contact = scrapy.Field()
+    ads_body = scrapy.Field()
+    image_link = scrapy.Field()
+    type_ads_other_final = scrapy.Field()
+    un_model = scrapy.Field()
+    status = scrapy.Field()
+    fixing = scrapy.Field()
+    Time_added = scrapy.Field()
+    His_announcement = scrapy.Field()
+    type_ads_or = scrapy.Field()
+    close_ads = scrapy.Field()
+    Last_updated_Ad = scrapy.Field()
+    closecomment = scrapy.Field()
+    fixed_home = scrapy.Field()
+    fixed_tub = scrapy.Field()
+    fixed_sec = scrapy.Field()
+    fixed_sec2 = scrapy.Field()
+    fixed_sec3 = scrapy.Field()
+    timer_mazad = scrapy.Field()
 
 
 class section(scrapy.Item):
