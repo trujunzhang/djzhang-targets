@@ -92,3 +92,20 @@ class comment(scrapy.Item):
     id_His_ = scrapy.Field()
     text = scrapy.Field()
     Time_added_co = scrapy.Field()
+
+
+class city(scrapy.Item):
+    # unique row id
+    ID = scrapy.Field()
+
+    text = scrapy.Field()
+
+
+class comment(scrapy.Item):
+    # unique row id
+    ID = scrapy.Field()
+
+    id_ads = scrapy.Field()
+    id_His_response = scrapy.Field()
+    text = scrapy.Field()
+    Time_added_co = scrapy.Field()
