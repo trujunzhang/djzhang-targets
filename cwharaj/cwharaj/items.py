@@ -72,7 +72,6 @@ class HistoryItem(scrapy.Item):
     # unique row id
     ID = scrapy.Field()
 
-
 class section(scrapy.Item):
     # unique row id
     ID = scrapy.Field()
