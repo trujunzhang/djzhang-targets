@@ -96,7 +96,7 @@ class HarajSaParse(BaseParser):
             # His_announcement=_His_announcement,
             # type_ads_or=_type_ads_or,
             # close_ads=_close_ads,
-            Last_updated_Ad=datetime.utcnow().replace(microsecond=0).isoformat(' '),
+            Last_updated_Ad=_ID,
             closecomment=0,
             fixed_home=0,
             fixed_tub=0,
