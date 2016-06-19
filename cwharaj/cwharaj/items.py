@@ -107,7 +107,7 @@ class comment(scrapy.Item):
 
 
 # CREATE TABLE IF NOT EXISTS `cities`, not "city"
-class city(scrapy.Item):
+class City(scrapy.Item):
     # unique row id
     ID = scrapy.Field()
 

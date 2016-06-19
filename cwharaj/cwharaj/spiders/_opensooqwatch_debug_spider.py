@@ -40,11 +40,12 @@ class OpensooqDebugWatchSpider(scrapy.Spider):
                                                                  user=crawler.settings.get('SQL_USER'),
                                                                  passwd=crawler.settings.get('SQL_PASSWD'),
                                                                  db=crawler.settings.get('SQL_DB'),
-                                                                 collection_name=crawler.settings.get('SQL_COLLECTION_NAME')
+                                                                 collection_name=crawler.settings.get(
+                                                                     'SQL_COLLECTION_NAME')
                                                                  )
 
     def parse(self, response):
         self.opensooq_parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self.opensooq_parse.parse(response.url, response)
+        item = self.opensooq_parse.parse(response.url, response, self._item_db)
         # yield item
         # _row = self._cache_db.get_last_row("")

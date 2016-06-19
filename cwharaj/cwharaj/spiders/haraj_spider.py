@@ -84,7 +84,7 @@ class HarajsSpider(scrapy.Spider):
     # opensooq
     # ====================================================================================
     def parse_page_from_opensooq(self, response):
-        phone_number_item = self._opensooq_parser.parse(response.url, response, self.phone_dict)
+        phone_number_item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
 
         _ajax_url = phone_number_item.get_ajax_url()
         if _ajax_url:
@@ -144,7 +144,7 @@ class HarajsSpider(scrapy.Spider):
     # mstaml
     # ====================================================================================
     def parse_page_from_mstaml(self, response):
-        item = self._mstaml_Parse.parse(response.url, response)
+        item = self._mstaml_Parse.parse(response.url, response, self._item_db)
         yield item
 
         self._history_db.process_item(response.url, id=item["ID"])
@@ -167,7 +167,7 @@ class HarajsSpider(scrapy.Spider):
     # harajsa
     # ====================================================================================
     def parse_page_from_harajsa(self, response):
-        item = self._harajsa_Parse.parse(response.url, response)
+        item = self._harajsa_Parse.parse(response.url, response, self._item_db)
         yield item
 
         self._history_db.process_item(response.url, id=item["ID"])

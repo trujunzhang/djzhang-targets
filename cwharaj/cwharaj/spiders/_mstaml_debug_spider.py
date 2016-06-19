@@ -49,6 +49,6 @@ class MstamlDebugWatchSpider(scrapy.Spider):
 
     def parse(self, response):
         # self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._mstaml_Parse.parse(response.url, response)
+        item = self._mstaml_Parse.parse(response.url, response,self._item_db)
         # yield item
         # _row = self._cache_db.get_last_row("")

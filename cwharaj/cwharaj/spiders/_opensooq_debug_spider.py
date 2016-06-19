@@ -53,7 +53,7 @@ class OpensooqDebugSpider(scrapy.Spider):
 
     def parse(self, response):
         # self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._opensooq_parser.parse(response.url, response)
+        # item = self._opensooq_parser.parse(response.url, response, self._item_db)
         # yield item
         # _row = self._cache_db.get_last_row("")
 
@@ -73,7 +73,7 @@ class OpensooqDebugSpider(scrapy.Spider):
     # opensooq
     # ====================================================================================
     def parse_page_from_opensooq(self, response):
-        phone_number_item = self._opensooq_parser.parse(response.url, response, self.phone_dict)
+        phone_number_item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
 
         _ajax_url = phone_number_item.get_ajax_url()
         yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
