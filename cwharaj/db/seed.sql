@@ -1,4 +1,4 @@
-CREATE TABLE harajs_caches (
+CREATE TABLE ads_caches (
   guid       CHAR(32) PRIMARY KEY,
   ID         TEXT,
   url        TEXT,
@@ -8,7 +8,7 @@ CREATE TABLE harajs_caches (
   DEFAULT CHARSET = utf8mb4;
 
 
-CREATE TABLE harajs_histories (
+CREATE TABLE ads_histories (
   guid       CHAR(32) PRIMARY KEY,
   ID         TEXT,
   url        TEXT,
@@ -17,7 +17,7 @@ CREATE TABLE harajs_histories (
   DEFAULT CHARSET = utf8mb4;
 
 
-CREATE TABLE harajs (
+CREATE TABLE ads (
   guid        CHAR(32) PRIMARY KEY,
   url         TEXT,
   created_at  DATETIME,
