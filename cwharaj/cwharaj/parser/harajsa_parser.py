@@ -55,7 +55,7 @@ class HarajSaParse(BaseParser):
         # comment ad_div
         _ads_title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
         _ads_city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
-
+        # _Time_added =
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
 
         _published_data = self.get_published_date(self.get_value_from_response(hxs, '//*[@class=" comment_header"]'))
@@ -103,7 +103,7 @@ class HarajSaParse(BaseParser):
             # un_model=_un_model,
             status=1,
             fixing=0,
-            # Time_added=_Time_added,
+            Time_added=_Time_added,
             # His_announcement=_His_announcement,
             # type_ads_or=_type_ads_or,
             # close_ads=_close_ads,

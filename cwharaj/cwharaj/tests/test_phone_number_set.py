@@ -5,6 +5,8 @@ from cwharaj.items import CacheItem
 from cwharaj.utils.crawl_utils import CrawlUtils
 from cwharaj.utils.phone_number_set import PhoneNumberSet
 
+from datetime import datetime
+
 
 class PhoneNumberSetTest(unittest.TestCase):
     def setUp(self):
@@ -18,5 +20,11 @@ class PhoneNumberSetTest(unittest.TestCase):
         )
         self.phoneNumber.add_row(row['ID'], row)
 
-    def test_get_id_from_phone_number_url(self):
-        CrawlUtils.get_id_from_phone_number_url(self._ajax_url)
+    # def test_get_id_from_phone_number_url(self):
+    #     CrawlUtils.get_id_from_phone_number_url(self._ajax_url)
+
+
+    def test_mysql_microsecond(self):
+        dt = datetime.now()
+        value = dt.microsecond
+        x = 0
