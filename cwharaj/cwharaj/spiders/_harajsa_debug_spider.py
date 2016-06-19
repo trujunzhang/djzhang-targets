@@ -24,11 +24,15 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
 
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
+        self.database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
+                                                kwargs['user'], kwargs['passwd'],
+                                                kwargs['db'], kwargs['collection_name'])
 
         self._cache_db = DatabaseFactory.get_database(CollectionTypes.cache,
                                                       kwargs['host'], kwargs['port'],
                                                       kwargs['user'], kwargs['passwd'],
                                                       kwargs['db'], kwargs['collection_name'])
+
         self._history_db = DatabaseFactory.get_database(CollectionTypes.history,
                                                         kwargs['host'], kwargs['port'],
                                                         kwargs['user'], kwargs['passwd'],

@@ -17,23 +17,25 @@ class DatabaseFactory(object):
         self.db = db
         self.collection_name = collection_name
 
-    def get_database(collection_type, host, port, user, passwd, db, collection_name):
+    def get_database(self, collection_type):
         if CollectionTypes.cache == collection_type:
             from cwharaj.database.cache_db import CacheDatabase
-            database = CacheDatabase(host=host, port=port,
-                                     user=user, passwd=passwd,
-                                     db=db, collection_name=collection_name + '_caches')
+            database = CacheDatabase(host=self.host, port=self.port,
+                                     user=self.user, passwd=self.passwd,
+                                     db=self.db, collection_name=self.collection_name + '_caches')
             database.open_spider()
             return database
         elif CollectionTypes.history == collection_type:
             from cwharaj.database.history_db import HistoryDatabase
-            history_database = HistoryDatabase(host=host, port=port,
-                                               user=user, passwd=passwd,
-                                               db=db, collection_name=collection_name + "_histories")
+            history_database = HistoryDatabase(host=self.host, port=self.port,
+                                               user=self.user, passwd=self.passwd,
+                                               db=self.db, collection_name=self.collection_name + "_histories")
             history_database.open_spider()
             return history_database
         elif CollectionTypes.item == collection_type:
             from cwharaj.database.item_db import ItemDatabase
-            return ItemDatabase(host=host, port=port, user=user, passwd=passwd, db=db, collection_name=collection_name)
+            return ItemDatabase(host=self.host, port=self.port,
+                                user=self.user, passwd=self.passwd,
+                                db=self.db, collection_name=self.collection_name)
         else:
             return None
