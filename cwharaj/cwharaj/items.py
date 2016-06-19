@@ -29,6 +29,26 @@ class WebsiteTypes(Enum):
     harajsa = "harajsa"
 
 
+class CacheItem(scrapy.Item):
+    url = scrapy.Field()
+    guid = scrapy.Field()
+    created_at = scrapy.Field()
+
+    # unique row id
+    ID = scrapy.Field()
+    # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
+    url_from = scrapy.Field()
+
+
+class HistoryItem(scrapy.Item):
+    url = scrapy.Field()
+    guid = scrapy.Field()
+    created_at = scrapy.Field()
+
+    # unique row id
+    ID = scrapy.Field()
+
+
 class Ad(scrapy.Item):
     url = scrapy.Field()
     guid = scrapy.Field()
@@ -51,26 +71,6 @@ class Ad(scrapy.Item):
     memberName = scrapy.Field()
     description = scrapy.Field()
     section = scrapy.Field()
-
-
-class CacheItem(scrapy.Item):
-    url = scrapy.Field()
-    guid = scrapy.Field()
-    created_at = scrapy.Field()
-
-    # unique row id
-    ID = scrapy.Field()
-    # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
-    url_from = scrapy.Field()
-
-
-class HistoryItem(scrapy.Item):
-    url = scrapy.Field()
-    guid = scrapy.Field()
-    created_at = scrapy.Field()
-
-    # unique row id
-    ID = scrapy.Field()
 
 
 class section(scrapy.Item):
@@ -99,4 +99,3 @@ class city(scrapy.Item):
     ID = scrapy.Field()
 
     text = scrapy.Field()
-

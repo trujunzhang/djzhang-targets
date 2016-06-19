@@ -18,6 +18,17 @@ CREATE TABLE ads_histories (
 
 
 --
+-- Table structure for table `city`
+--
+
+CREATE TABLE IF NOT EXISTS `city` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` text NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=52 ;
+
+
+--
 -- Table structure for table `comment`
 --
 
