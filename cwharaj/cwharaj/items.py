@@ -71,3 +71,14 @@ class HistoryItem(scrapy.Item):
 
     # unique row id
     ID = scrapy.Field()
+
+
+class section(scrapy.Item):
+    # unique row id
+    ID = scrapy.Field()
+
+    name = scrapy.Field()
+    type = scrapy.Field()
+    Documentto = scrapy.Field()
+    Contents = scrapy.Field()
+    linkmodel = scrapy.Field()
