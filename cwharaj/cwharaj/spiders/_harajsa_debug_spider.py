@@ -30,6 +30,7 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
 
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
+        self._item_db = database_factory.get_database(CollectionTypes.item)
 
         from cwharaj.parser.harajsa_parser import HarajSaParse
         self._harajsa_Parse = HarajSaParse()

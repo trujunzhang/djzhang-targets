@@ -34,3 +34,6 @@ class CacheDatabase(DispatchDatabase):
 
         # Query the oldest cache item.
         return self.find_oldest_for_cache()
+
+    def process_for(self):
+        pass
