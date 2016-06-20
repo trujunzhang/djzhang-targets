@@ -62,9 +62,6 @@ class HarajSaParse(BaseParser):
         _last_updated_ad = '23456789012'  # ???
 
         # ad_low
-
-        # comment comment_div
-
         def filter_for_image(src):
             if 'haraj.com.sa' in src:
                 return True
@@ -73,13 +70,12 @@ class HarajSaParse(BaseParser):
             return False
 
         _image_link = self.get_images_in_selector(hxs, '//*[@itemprop="description"]', filter_method=filter_for_image)
-
-        _subject = ""
-        _contact = ""
-        _number = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')
-        _address = ""  # not found
         _ads_body = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
+        _ads_contact = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')
 
+        # comment comment_div
+        _subject = ""
+        _address = ""  # not found
         _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
 
         # Replace "\n","\r"
@@ -118,7 +114,7 @@ class HarajSaParse(BaseParser):
             # ads_tags_R=_ads_tags_R,
             # ads_tags_F=_ads_tags_F,
             # ads_tags_FF=_ads_tags_FF,
-            # ads_contact=_ads_contact,
+            ads_contact=_ads_contact,
             ads_body=_ads_body,
             image_link=_image_link,
             # type_ads_other_final=_type_ads_other_final,
