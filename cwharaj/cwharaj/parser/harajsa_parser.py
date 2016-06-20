@@ -115,23 +115,26 @@ class HarajSaParse(BaseParser):
         )
         _His_announcement = item_db.save_member(member)
 
+        _close_ads = 0
+        _type_ads_or = 1
+
         item = Ad(
             ads_title=_ads_title,
             ads_city=_city_id,
-            ads_tags_R=_section_item._ads_tags_R,
-            ads_tags_F=_section_item._ads_tags_F,
-            ads_tags_FF=_section_item._ads_tags_FF,
+            ads_tags_R=_section_item.ads_tags_R,
+            ads_tags_F=_section_item.ads_tags_F,
+            ads_tags_FF=_section_item.ads_tags_FF,
             ads_contact=_ads_contact,
             ads_body=_ads_body,
             image_link=_image_link,
-            # type_ads_other_final=_type_ads_other_final,
-            # un_model=_un_model,
+            type_ads_other_final=_section_item.type_ads_other_final,
+            un_model=_section_item.un_model,
             status=1,
             fixing=0,
             Time_added=_time_added,
             His_announcement=_His_announcement,
-            # type_ads_or=_type_ads_or,
-            # close_ads=_close_ads,
+            type_ads_or=_type_ads_or,
+            close_ads=_close_ads,
             Last_updated_Ad=_last_updated_ad,
             closecomment=0,
             fixed_home=0,
