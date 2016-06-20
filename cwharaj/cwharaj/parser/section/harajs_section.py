@@ -17,17 +17,19 @@ class HarajsSection(object):
 
     def get_section_item(self, _sections, item_db):
         _section_item = SectionItem()
-        self.get_tagF(_sections)
+        self.get_tagF(_sections, item_db)
         return _section_item
 
-    def get_tagF(self, _sections):
-        _len = len(_sections)
-        for x in xrange(0, _len):
-            _section = _sections[_len - 1 - x]
+    def get_tagF(self, _sections, item_db):
+        _count = len(_sections)
+        for x in xrange(0, _count):
+            _section = _sections[_count - 1 - x]
             _split = _section.split(' ')
-            __len = len(_split)
+            _len = len(_split)
+            if (_len == 2) and (x != 0):
+                self.parse_tagFF(_sections, _split, x - 1, item_db)
 
-    def exist_tagFF(self, _sections, _split, pre_index):
+    def parse_tagFF(self, _sections, _split, pre_index, item_db):
         _pre_section = _sections[pre_index]
         _pre_split = _pre_section.split(' ')
         if len(_pre_split) != 1:
@@ -38,3 +40,6 @@ class HarajsSection(object):
         _tag_f_name = _split[1]
         if _tag_f_name != _pre_tag_f_name:
             return None
+
+        _tags_FF = item_db.get_year_id(_year)
+        _xxx = len(_pre_split)

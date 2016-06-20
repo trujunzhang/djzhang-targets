@@ -30,9 +30,33 @@ class ItemDatabase(MysqlDatabase):
             self.insert_for_item(item)
             logging.debug("Ad added to database.")
 
-    def save_city(self,city):
+    def save_city(self, city):
         pass
-
 
     def save_member(self, city):
         pass
+
+    def get_year_id(self, _year):
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        _year_id = None
+
+        sql = 'SELECT id FROM  years  WHERE text ={}'.format(_year)
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql)
+            # Get the row data
+            data = _cursor.fetchone()
+            found_count = _cursor.rowcount
+            if data:
+                _year_id = data[0]
+        except Exception, e:
+            _excep = e
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        return _year_id
