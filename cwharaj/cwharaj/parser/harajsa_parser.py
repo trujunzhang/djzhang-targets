@@ -15,8 +15,7 @@ class HarajSaParse(BaseParser):
         super(HarajSaParse, self).__init__()
         self.section_mgr = HarajsSection()
 
-        # Here,we store items from newest to oldest.
-
+    # Here,we store items from newest to oldest.
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
         links = hxs.xpath('//*[@id="adswrapper"]/table/tr')
