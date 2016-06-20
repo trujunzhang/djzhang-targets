@@ -7,3 +7,11 @@ class SectionItem(object):
 
     def __init__(self):
         super(SectionItem, self).__init__()
+
+
+class TagFItem(object):
+    tag_F = ""
+    tag_FF = ""
+
+    def __init__(self):
+        super(TagFItem, self).__init__()
