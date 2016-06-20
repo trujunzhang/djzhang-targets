@@ -155,7 +155,7 @@ class HarajSaParse(BaseParser):
         for a in _As:
             sections.append(a.text.replace("\n", "").replace("\r", "").strip().encode('utf-8'))
 
-        return ",".join(sections)
+        return sections
 
     def get_published_date(self, comment_header_string):
         """Because the published date is not contained by any tag.
