@@ -1,3 +1,4 @@
+# coding=utf-8
 from cwharaj.parser.section.section_item import SectionItem
 
 
@@ -23,15 +24,22 @@ class HarajsSection(object):
         return _section_item
 
     def get_tagF(self, _sections, item_db):
-        _count = len(_sections)
-        for x in xrange(_count - 1, -1, -1):
-            _section = _sections[x]
-            _split = _section.split(' ')
-            _len = len(_split)
-            if (_len == 2) and (x != 0):
-                self.parse_tagFF(_sections, _split, x - 1, item_db)
+        _tag_FFs = []
+        for x in xrange(len(_sections) - 1, -1, -1):
+            _split = _sections[x].split(' ')
+            _pre_x = x - 1
+            if (len(_split) == 2) and (x != 0):
+                _tag_FF = self.parse_tagFF(_sections, _split, _pre_x, item_db)
+                _tag_FFs.append(_tag_FF)
 
     def parse_tagFF(self, _sections, _split, pre_index, item_db):
+        """
+        :param _sections:  section list
+        :param _split:     such as "كامري 2016"
+        :param pre_index:  if split's index is 3, pre_index is 2
+        :param item_db:    database that implements query.
+        :return:
+        """
         _pre_section = _sections[pre_index]
         _pre_split = _pre_section.split(' ')
         if len(_pre_split) != 1:
