@@ -37,11 +37,22 @@ class HarajsSection(object):
         if len(_pre_split) != 1:
             return None
 
+        _year_index = self.get_year_index(_split)
+        _name_index = 0
+        if _year_index == 0:
+            _name_index = 1
+
+        _year = _split[_year_index]
+        _tag_f_name = _split[_name_index]
+
         _pre_tag_f_name = _pre_split[0]
-        _year = _split[0]
-        _tag_f_name = _split[1]
         if _tag_f_name != _pre_tag_f_name:
             return None
 
         _tags_FF = item_db.get_year_id(_year)
         _xxx = len(_pre_split)
+
+    def get_year_index(self, _split):
+        for index, item in enumerate(_split):
+            if len(item) == 4 and item.isdigit():
+                return index
