@@ -30,7 +30,8 @@ class HarajsSection(object):
             _pre_x = x - 1
             if (len(_split) == 2) and (x != 0):
                 _tag_FF = self.parse_tagFF(_sections, _split, _pre_x, item_db)
-                _tag_FFs.append(_tag_FF)
+                if _tag_FF:
+                    _tag_FFs.append(_tag_FF)
 
     def parse_tagFF(self, _sections, _split, pre_index, item_db):
         """
@@ -38,7 +39,7 @@ class HarajsSection(object):
         :param _split:     such as "كامري 2016"
         :param pre_index:  if split's index is 3, pre_index is 2
         :param item_db:    database that implements query.
-        :return:
+        :return:           the table year's id on the databse
         """
         _pre_section = _sections[pre_index]
         _pre_split = _pre_section.split(' ')
@@ -58,7 +59,7 @@ class HarajsSection(object):
             return None
 
         _tags_FF = item_db.get_year_id(_year)
-        _xxx = len(_pre_split)
+        return _tags_FF
 
     def get_year_index(self, _split):
         for index, item in enumerate(_split):
