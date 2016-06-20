@@ -7,12 +7,16 @@ import time
 import logging
 from datetime import datetime
 
+from cwharaj.parser.section.harajs_section import HarajsSection
+
 
 class HarajSaParse(BaseParser):
     def __init__(self):
         super(HarajSaParse, self).__init__()
+        self.section_mgr = HarajsSection()
 
-    # Here,we store items from newest to oldest.
+        # Here,we store items from newest to oldest.
+
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
         links = hxs.xpath('//*[@id="adswrapper"]/table/tr')
@@ -73,10 +77,13 @@ class HarajSaParse(BaseParser):
         _ads_body = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
         _ads_contact = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')
 
+        # sections
+        _sections = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
+        _section_item = self.section_mgr.get_section_item(_sections)
+
         # comment comment_div
         _subject = ""
         _address = ""  # not found
-        _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
 
         # Replace "\n","\r"
         _ads_body = _ads_body.replace("\r", "").strip()
@@ -111,9 +118,9 @@ class HarajSaParse(BaseParser):
         item = Ad(
             ads_title=_ads_title,
             ads_city=_city_id,
-            # ads_tags_R=_ads_tags_R,
-            # ads_tags_F=_ads_tags_F,
-            # ads_tags_FF=_ads_tags_FF,
+            ads_tags_R=_section_item._ads_tags_R,
+            ads_tags_F=_section_item._ads_tags_F,
+            ads_tags_FF=_section_item._ads_tags_FF,
             ads_contact=_ads_contact,
             ads_body=_ads_body,
             image_link=_image_link,

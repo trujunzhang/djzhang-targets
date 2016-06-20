@@ -1,3 +1,6 @@
+from cwharaj.parser.section.section_item import SectionItem
+
+
 class HarajsSection(object):
     """
     types:
@@ -11,3 +14,7 @@ class HarajsSection(object):
 
     def __init__(self):
         super(HarajsSection, self).__init__()
+
+    def get_section_item(self, _sections):
+        _section_item = SectionItem()
+        return _section_item
