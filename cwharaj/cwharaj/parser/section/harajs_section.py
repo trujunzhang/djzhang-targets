@@ -23,10 +23,11 @@ class HarajsSection(object):
     def get_tagF(self, _sections, item_db):
         _count = len(_sections)
         for x in xrange(0, _count):
-            _section = _sections[_count - 1 - x]
+            _index = _count - 1 - x
+            _section = _sections[_index]
             _split = _section.split(' ')
             _len = len(_split)
-            if (_len == 2) and (x != 0):
+            if (_len == 2) and (_index != 0):
                 self.parse_tagFF(_sections, _split, x - 1, item_db)
 
     def parse_tagFF(self, _sections, _split, pre_index, item_db):
