@@ -2,11 +2,12 @@ import logging
 from datetime import datetime
 
 from cwharaj.database.base.dispatch_db import DispatchDatabase
+from cwharaj.database.base.mysql_db import MysqlDatabase
 from cwharaj.items import HistoryItem
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
-class HistoryDatabase(DispatchDatabase):
+class HistoryDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(HistoryDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 

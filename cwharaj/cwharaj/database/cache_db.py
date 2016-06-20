@@ -1,10 +1,11 @@
 import logging
 from datetime import datetime
 from cwharaj.database.base.dispatch_db import DispatchDatabase
+from cwharaj.database.base.mysql_db import MysqlDatabase
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
-class CacheDatabase(DispatchDatabase):
+class CacheDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(CacheDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
