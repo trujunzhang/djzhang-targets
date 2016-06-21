@@ -5,7 +5,7 @@ import unittest
 
 from cwharaj import settings
 from cwharaj.database_factory import DatabaseFactory, CollectionTypes
-from cwharaj.parser.section.harajs_section import HarajsSection
+from cwharaj.parser.utils.harajs_section import HarajsSection
 
 
 class SectionDataxxx:

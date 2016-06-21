@@ -7,7 +7,7 @@ import time
 import logging
 from datetime import datetime
 
-from cwharaj.parser.section.harajs_section import HarajsSection
+from cwharaj.parser.utils.harajs_section import HarajsSection
 
 
 class HarajSaParse(BaseParser):
