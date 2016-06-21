@@ -15,7 +15,11 @@ class HarajsSecionTest(unittest.TestCase):
                                            settings.SQL_DB, settings.SQL_COLLECTION_NAME)
 
         self._item_db = database_factory.get_database(CollectionTypes.item)
-        _sections = ["كامري 2016", "كامري", "تويوتا"]
+        _sections = [
+            "تويوتا"
+            "كامري",
+            "كامري 2016",
+        ]
         self.section_mgr = HarajsSection(_sections, self._item_db)
 
     def test_parse_section(self):
