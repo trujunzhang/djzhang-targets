@@ -44,7 +44,7 @@ class ItemDatabase(MysqlDatabase):
 
         row = None
 
-        sql = 'SELECT id,Documentto,Contents FROM  section  WHERE name ={}'.format(name)
+        sql = "SELECT id,Documentto,Contents FROM  section  WHERE name ='{}'".format(name)
 
         try:
             # Execute the SQL command
