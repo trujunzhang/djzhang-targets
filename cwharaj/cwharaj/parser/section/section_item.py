@@ -11,9 +11,9 @@ class SectionItem(object):
         self.item_db = item_db
 
     def set_item(self, tag_item):
-        self.ads_tags_R = tag_item._ads_tags_R
-        self.ads_tags_F = tag_item._ads_tags_F
-        self.ads_tags_FF = tag_item._ads_tags_FF
+        self.ads_tags_R = tag_item.tag_R
+        self.ads_tags_F = tag_item.tag_F
+        self.ads_tags_FF = tag_item.tag_FF
 
         if self.ads_tags_FF:
             self.un_model = "model"
