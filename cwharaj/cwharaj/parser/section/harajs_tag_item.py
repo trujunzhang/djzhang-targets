@@ -19,6 +19,16 @@ class TagItem(object):
         self.tag_FF = _tag_FF
         self.tag_FF_index = x
 
+    def get_index_tag_f(self):
+        _tag_f_index = -1
+
+        if self.tag_FF_index != -1:
+            _tag_f_index = self.tag_FF_index - 1
+        elif self.sections_count >= 2:
+            _tag_f_index = -1
+
+        return _tag_f_index
+
     def get_index_tag_r(self):
         _tag_r_index = -1
         if (self.tag_FF != "") and (self.sections_count == 3):

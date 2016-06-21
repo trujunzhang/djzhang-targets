@@ -27,9 +27,14 @@ class HarajsSection(object):
         # length is 3 or 2.
         # """
         self.tag_item.parse_common_tag_item()
+
         _tag_r_index = self.tag_item.get_index_tag_r()
         if _tag_r_index != -1:
             self._get_tag_r(self.sections[_tag_r_index])
+
+        _tag_f_index = self.tag_item.get_index_tag_f()
+        if _tag_f_index != -1:
+            self._get_tag_f(self.sections[_tag_f_index])
 
         # """
         # finally,generate section item.
@@ -41,4 +46,8 @@ class HarajsSection(object):
     def _get_tag_r(self, name):
         _item = self.item_db.get_section(name)
         self.tag_item.tag_R = _item['id']
+
+    def _get_tag_f(self, name):
+        _item = self.item_db.get_section(name)
+        self.tag_item.tag_F = _item['id']
         self.section_item.type_ads_other_final = _item['Contents']
