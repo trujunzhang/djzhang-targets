@@ -13,9 +13,9 @@ from cwharaj.parser.section.harajs_section import HarajsSection
 class HarajSaParse(BaseParser):
     def __init__(self):
         super(HarajSaParse, self).__init__()
-        self.section_mgr = HarajsSection()
 
-    # Here,we store items from newest to oldest.
+        # Here,we store items from newest to oldest.
+
     # then fetch the first item from the databse become the oldest.
     def parse_paginate(self, url, hxs, cache_db, history_db):
         links = hxs.xpath('//*[@id="adswrapper"]/table/tr')
@@ -78,7 +78,8 @@ class HarajSaParse(BaseParser):
 
         # sections
         _sections = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
-        _section_item = self.section_mgr.get_section_item(_sections, item_db)
+        section_mgr = HarajsSection(_sections,item_db)
+        _section_item = section_mgr.get_section_item()
 
         # comment comment_div
         _subject = ""

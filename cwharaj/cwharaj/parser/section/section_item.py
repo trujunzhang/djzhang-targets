@@ -19,8 +19,10 @@ class SectionItem(object):
 
 
 class TagFItem(object):
+    tag_R = ""
     tag_F = ""
     tag_FF = ""
+    tag_FF_index = -1
 
     def __init__(self):
         super(TagFItem, self).__init__()

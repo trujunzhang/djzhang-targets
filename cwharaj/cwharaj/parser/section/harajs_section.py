@@ -1,16 +1,22 @@
 # coding=utf-8
-from cwharaj.parser.section.section_item import SectionItem
+from cwharaj.parser.section.section_item import SectionItem, TagFItem
 import logging
 
 
 class HarajsSection(object):
-    def __init__(self):
+    def __init__(self, sections, item_db):
         super(HarajsSection, self).__init__()
+        self.sections = sections
+        self.item_db = item_db
 
-    def get_section_item(self, _sections, item_db):
-        _section_item = SectionItem(item_db)
+    def get_section_item(self):
+        if len(self.sections) >= 4:
+            logging.debug("special sections, count: {}".format(len(self.sections)))
+            return None
 
-        self.get_tagF(_sections, item_db)
+        _section_item = SectionItem(self.item_db)
+
+        self.get_tag_item()
 
         _ads_tags_R = ""
         _ads_tags_F = ""
@@ -20,29 +26,28 @@ class HarajsSection(object):
 
         return _section_item
 
-    def get_tagF(self, _sections, item_db):
-        if len(_sections) >= 4:
-            logging.debug("special sections, count: {}".format(len(_sections)))
+    def get_tag_item(self):
+        _tag_item = TagFItem()
 
-        _tag_FFs = []
         _tag_FF_index = 0
-        for x in xrange(len(_sections) - 1, -1, -1):
-            _split = _sections[x].split(' ')
+        for x in xrange(len(self.sections) - 1, -1, -1):
+            _split = self.sections[x].split(' ')
             _pre_x = x - 1
             if (len(_split) == 2) and (x != 0):
-                _tag_FF = self.parse_tagFF(_sections, _split, _pre_x, item_db)
-                if _tag_FF:
-                    _tag_FFs.append(_tag_FF)
+                _tag_FF = self.parse_tagFF(_split, _pre_x)
+                # if _tag_FF:
 
-    def parse_tagFF(self, _sections, _split, pre_index, item_db):
+    def get_tag_FF(self):
+
+    def parse_tagFF(self, _split, pre_index):
         """
-        :param _sections:  section list
+        :param self.sections:  section list
         :param _split:     such as "كامري 2016"
         :param pre_index:  if split's index is 3, pre_index is 2
         :param item_db:    database that implements query.
         :return:           the table year's id on the databse
         """
-        _pre_section = _sections[pre_index]
+        _pre_section = self.sections[pre_index]
         _pre_split = _pre_section.split(' ')
         if len(_pre_split) != 1:
             return None
@@ -59,7 +64,7 @@ class HarajsSection(object):
         if _tag_f_name != _pre_tag_f_name:
             return None
 
-        _tags_FF = item_db.get_year_id(_year)
+        _tags_FF = self.item_db.get_year_id(_year)
         return _tags_FF
 
     def get_year_index(self, _split):
