@@ -94,25 +94,7 @@ class HarajSaParse(BaseParser):
         )
         _city_id = item_db.save_city(city)
 
-        member = Member(
-            username=_memberName,
-            password="",
-            groupnumber="",
-            email="",
-            timeregister="",
-            member_code="",
-            documentingmobile="",
-            Documentingemail="",
-            phone="",
-            sendtime="",
-            active="",
-            now="",
-            Lastactivity="",
-            subscribe_1="",
-            subscribe_2="",
-            subscribe_3="",
-            The_pay_commission="",
-        )
+        member = Member.get_default(_memberName)
         _His_announcement = item_db.save_member(member)
 
         _close_ads = 0

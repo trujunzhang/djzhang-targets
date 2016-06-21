@@ -134,6 +134,7 @@ class Member(scrapy.Item):
     subscribe_3 = scrapy.Field()
     The_pay_commission = scrapy.Field()
 
+    @classmethod
     def get_default(self, user_name):
         Member(
             username=user_name,
