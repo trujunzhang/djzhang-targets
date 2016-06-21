@@ -7,6 +7,7 @@ import time
 import logging
 from datetime import datetime
 
+from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
 
 
@@ -127,7 +128,11 @@ class HarajSaParse(BaseParser):
             timer_mazad=0,
         )
 
-        return item
+        _item_id = item_db.process_item(url=url, item=item)
+
+        _comments = []
+
+        HarajsComments(_comments, item_db).save_all()
 
     def get_section(self, section_panel):
         from BeautifulSoup import BeautifulSoup
