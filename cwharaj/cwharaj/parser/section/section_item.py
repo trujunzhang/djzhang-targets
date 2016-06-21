@@ -9,12 +9,12 @@ class SectionItem(object):
         super(SectionItem, self).__init__()
         self.item_db = item_db
 
-    def set_item(self, _ads_tags_R, _ads_tags_F, _ads_tags_FF):
-        self.ads_tags_R = _ads_tags_R
-        self.ads_tags_F = _ads_tags_F
-        self.ads_tags_FF = _ads_tags_FF
+    def set_item(self, tag_item):
+        self.ads_tags_R = tag_item._ads_tags_R
+        self.ads_tags_F = tag_item._ads_tags_F
+        self.ads_tags_FF = tag_item._ads_tags_FF
 
-        if _ads_tags_FF:
+        if self.ads_tags_FF:
             self.un_model = "model"
 
 

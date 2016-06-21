@@ -16,13 +16,8 @@ class HarajsSection(object):
 
         _section_item = SectionItem(self.item_db)
 
-        self.get_tag_item()
-
-        _ads_tags_R = ""
-        _ads_tags_F = ""
-        _ads_tags_FF = ""
-
-        _section_item.set_item(_ads_tags_R, _ads_tags_F, _ads_tags_FF)
+        _tag_item = self.get_tag_item()
+        _section_item.set_item(_tag_item)
 
         return _section_item
 
@@ -38,6 +33,7 @@ class HarajsSection(object):
                 # if _tag_FF:
 
     def get_tag_FF(self):
+        pass
 
     def parse_tagFF(self, _split, pre_index):
         """
