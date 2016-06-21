@@ -133,3 +133,24 @@ class Member(scrapy.Item):
     subscribe_2 = scrapy.Field()
     subscribe_3 = scrapy.Field()
     The_pay_commission = scrapy.Field()
+
+    def get_default(self, user_name):
+        Member(
+            username=user_name,
+            password='',
+            groupnumber=0,
+            email='',
+            timeregister=0,
+            member_code=0,
+            documentingmobile=0,
+            Documentingemail=0,
+            phone=0,
+            sendtime=0,
+            active='',
+            now='',
+            Lastactivity=0,
+            subscribe_1=0,
+            subscribe_2=0,
+            subscribe_3=0,
+            The_pay_commission=0,
+        )
