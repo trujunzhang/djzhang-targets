@@ -42,7 +42,7 @@ class HarajsSecionTest(unittest.TestCase):
 
         _tags_f = _section_item.ads_tags_F
         _tags_ff = _section_item.ads_tags_FF
-        _tags_r = _section_item.ads_tags_r
+        _tags_r = _section_item.ads_tags_R
         _other_final = _section_item.type_ads_other_final
 
         self.assertEqual(_tags_f, self.expect["tags_f"])
