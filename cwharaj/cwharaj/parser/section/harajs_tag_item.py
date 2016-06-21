@@ -22,9 +22,11 @@ class TagItem(object):
 
     def parse_tag_r(self):
         if (self.tag_FF != "") and (self.sections_count == 3):
+            # sections: ["2016 xxx","xxx","YYY"]
             if self.tag_FF_index == 2:
                 self.tag_R_index = 0
-            if self.tag_FF_index == 1:
+            # sections: ["YYY","2016 xxx","xxx"]
+            elif self.tag_FF_index == 1:
                 self.tag_R_index = 2
 
         if (self.tag_FF != "") and (self.sections_count == 2):
