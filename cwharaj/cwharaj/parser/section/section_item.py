@@ -5,8 +5,17 @@ class SectionItem(object):
     type_ads_other_final = ""
     un_model = ""
 
-    def __init__(self):
+    def __init__(self, item_db):
         super(SectionItem, self).__init__()
+        self.item_db = item_db
+
+    def set_item(self, _ads_tags_R, _ads_tags_F, _ads_tags_FF):
+        self.ads_tags_R = _ads_tags_R
+        self.ads_tags_F = _ads_tags_F
+        self.ads_tags_FF = _ads_tags_FF
+
+        if _ads_tags_FF:
+            self.un_model = "model"
 
 
 class TagFItem(object):

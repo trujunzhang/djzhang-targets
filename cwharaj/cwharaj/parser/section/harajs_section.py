@@ -3,23 +3,19 @@ from cwharaj.parser.section.section_item import SectionItem
 
 
 class HarajsSection(object):
-    """
-    types:
-    t1:
-       ES-ES2016-(xxx)
-       F-(years)FF-R
-    t2:
-       ES-ES2001-FS-FS2001
-       F-(years)FF-R
-    """
-
     def __init__(self):
         super(HarajsSection, self).__init__()
 
     def get_section_item(self, _sections, item_db):
-        _section_item = SectionItem()
+        _section_item = SectionItem(item_db)
 
         self.get_tagF(_sections, item_db)
+
+        _ads_tags_R = ""
+        _ads_tags_F = ""
+        _ads_tags_FF = ""
+
+        _section_item.set_item(_ads_tags_R, _ads_tags_F, _ads_tags_FF)
 
         return _section_item
 
