@@ -20,15 +20,25 @@ class HarajsSection(object):
         length is only 1, that the section is tag_R.
         """
         if len(self.sections) == 1:
+            self._get_tag_r(self.sections[0])
             pass
 
         """
         length is 3 or 2.
         """
         self.get_common_tag_item()
+
+        """
+        finally,generate section item.
+        """
         self.section_item.set_item(self.tag_item)
 
         return self.section_item
+
+    def _get_tag_r(self, name):
+        _item = self.item_db.get_section(name)
+        self.tag_item.tag_R = _item['id']
+        self.section_item.type_ads_other_final = _item['Contents']
 
     def get_common_tag_item(self):
         self.get_tag_FF()
