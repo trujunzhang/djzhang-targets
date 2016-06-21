@@ -1,5 +1,6 @@
 # coding=utf-8
 from cwharaj.parser.section.section_item import SectionItem
+import logging
 
 
 class HarajsSection(object):
@@ -20,7 +21,11 @@ class HarajsSection(object):
         return _section_item
 
     def get_tagF(self, _sections, item_db):
+        if len(_sections) >= 4:
+            logging.debug("special sections, count: {}".format(len(_sections)))
+
         _tag_FFs = []
+        _tag_FF_index = 0
         for x in xrange(len(_sections) - 1, -1, -1):
             _split = _sections[x].split(' ')
             _pre_x = x - 1

@@ -33,6 +33,8 @@ found the deleted item count: 0
 
 failure,
 
+special sections, count
+
 # Create mysql database
 
 create database vps_scrapy_rails;
