@@ -1,5 +1,6 @@
 # coding=utf-8
-from cwharaj.parser.section.section_item import SectionItem, TagItem
+from cwharaj.parser.section.harajs_tag_item import TagItem
+from cwharaj.parser.section.section_item import SectionItem
 import logging
 
 
