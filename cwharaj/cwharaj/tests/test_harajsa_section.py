@@ -28,7 +28,23 @@ class HarajsSecionTest(unittest.TestCase):
             'كاديلاك'
         ]
 
+        self.expect = {
+            "tags_f": 275,  # tags_f
+            "tags_ff": 58,  # tags_ff
+            "tags_r": 272,  # tags_r
+            "other_final": 'السيارات',  #
+        }
+
         self.section_mgr = HarajsSection(_sections, self._item_db)
 
     def test_parse_section(self):
         _section_item = self.section_mgr.get_section_item()
+        _tags_f = _section_item.ads_tags_F
+        _tags_ff = _section_item.ads_tags_FF
+        _tags_r = _section_item.ads_tags_r
+        _other_final = _section_item.type_ads_other_final
+
+        self.assertEqual(_tags_f, self.expect["tags_f"])
+        self.assertEqual(_tags_ff, self.expect["tags_ff"])
+        self.assertEqual(_tags_r, self.expect["tags_r"])
+        self.assertEqual(_other_final, self.expect["other_final"])
