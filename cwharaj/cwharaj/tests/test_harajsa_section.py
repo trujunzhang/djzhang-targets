@@ -39,6 +39,7 @@ class HarajsSecionTest(unittest.TestCase):
 
     def test_parse_section(self):
         _section_item = self.section_mgr.get_section_item()
+
         _tags_f = _section_item.ads_tags_F
         _tags_ff = _section_item.ads_tags_FF
         _tags_r = _section_item.ads_tags_r
