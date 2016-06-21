@@ -16,6 +16,15 @@ class HarajsSection(object):
             logging.debug("special sections, count: {}".format(len(self.sections)))
             return None
 
+        """
+        length is only 1, that the section is tag_R.
+        """
+        if len(self.sections) == 1:
+            pass
+
+        """
+        length is 3 or 2.
+        """
         self.get_common_tag_item()
         self.section_item.set_item(self.tag_item)
 
@@ -23,6 +32,12 @@ class HarajsSection(object):
 
     def get_common_tag_item(self):
         self.get_tag_FF()
+
+        if self.tag_item.tag_FF:
+            if len(self.sections) == 2:
+                pass
+            elif len(self.sections) == 3:
+                pass
 
         for x in xrange(len(self.sections) - 1, -1, -1):
             _split = self.sections[x].split(' ')

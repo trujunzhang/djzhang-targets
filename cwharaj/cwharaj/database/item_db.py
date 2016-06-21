@@ -5,6 +5,7 @@ from scrapy.exceptions import DropItem
 
 from cwharaj.database.base.dispatch_db import DispatchDatabase
 from cwharaj.database.base.mysql_db import MysqlDatabase
+from cwharaj.items import Section
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
@@ -35,6 +36,38 @@ class ItemDatabase(MysqlDatabase):
 
     def save_member(self, city):
         pass
+
+    def get_section(self, name):
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        row = None
+
+        sql = 'SELECT id,Documentto,Contents FROM  years  WHERE name ={}'.format(name)
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql)
+            # Get the row data
+            data = _cursor.fetchone()
+            found_count = _cursor.rowcount
+            if data:
+                row = Section(
+                    id=data[0],
+                    name='',
+                    type='',
+                    Documentto=data[1],
+                    Contents=data[2],
+                    linkmodel='',
+                )
+        except Exception, e:
+            _excep = e
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        return row
 
     def get_year_id(self, _year):
         _excep = None

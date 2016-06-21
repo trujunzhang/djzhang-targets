@@ -84,9 +84,9 @@ class Ad(scrapy.Item):
 
 
 # CREATE TABLE IF NOT EXISTS `section`, not "sectionoadvertise"
-class section(scrapy.Item):
+class Section(scrapy.Item):
     # unique row id
-    ID = scrapy.Field()
+    id = scrapy.Field()
 
     name = scrapy.Field()
     type = scrapy.Field()
@@ -96,7 +96,7 @@ class section(scrapy.Item):
 
 
 # CREATE TABLE IF NOT EXISTS `comments`, not "comment"
-class comment(scrapy.Item):
+class Comment(scrapy.Item):
     # unique row id
     ID = scrapy.Field()
 
