@@ -35,6 +35,8 @@ failure,
 
 special sections, count
 
+no tag_r in the sections, count
+
 # Create mysql database
 
 create database vps_scrapy_rails;

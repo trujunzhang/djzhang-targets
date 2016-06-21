@@ -78,7 +78,7 @@ class HarajSaParse(BaseParser):
 
         # sections
         _sections = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
-        section_mgr = HarajsSection(_sections,item_db)
+        section_mgr = HarajsSection(_sections, item_db)
         _section_item = section_mgr.get_section_item()
 
         # comment comment_div

@@ -17,20 +17,21 @@ class HarajsSection(object):
             logging.debug("special sections, count: {}".format(len(self.sections)))
             return None
 
-        """
-        length is only 1, that the section is tag_R.
-        """
-        if len(self.sections) == 1:
-            self._get_tag_r(self.sections[0])
+        # """
+        # length is only 1, that the section is tag_R.
+        # """
+        # if len(self.sections) == 1:
+        #     self._get_tag_r(self.sections[0])
+        #
+        # """
+        # length is 3 or 2.
+        # """
+        self.tag_item.parse_common_tag_item()
+        self.tag_item.parse_tag_r()
 
-        """
-        length is 3 or 2.
-        """
-        self.tag_item.get_common_tag_item()
-
-        """
-        finally,generate section item.
-        """
+        # """
+        # finally,generate section item.
+        # """
         self.section_item.set_item(self.tag_item)
 
         return self.section_item

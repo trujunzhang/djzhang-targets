@@ -74,7 +74,7 @@ class ItemDatabase(MysqlDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        _year_id = None
+        _year_id = ""
 
         sql = 'SELECT id FROM  years  WHERE text ={}'.format(_year)
 

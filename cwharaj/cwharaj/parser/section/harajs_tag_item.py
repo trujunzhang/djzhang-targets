@@ -1,4 +1,8 @@
 # coding=utf-8
+
+import logging
+
+
 class TagItem(object):
     tag_R = ""
     tag_F = ""
@@ -10,18 +14,36 @@ class TagItem(object):
         super(TagItem, self).__init__()
         self.sections = sections
         self.item_db = item_db
+        self.sections_count = len(self.sections)
 
     def set_tag_FF(self, _tag_FF, x):
-        pass
+        self.tag_FF = _tag_FF
+        self.tag_FF_index = x
 
-    def get_common_tag_item(self):
-        for x in xrange(len(self.sections) - 1, -1, -1):
+    def parse_tag_r(self):
+        if (self.tag_FF != "") and (self.sections_count == 3):
+            if self.tag_FF_index == 2:
+                self.tag_R_index = 0
+            if self.tag_FF_index == 1:
+                self.tag_R_index = 2
+
+        if (self.tag_FF != "") and (self.sections_count == 2):
+            logging.debug("no tag_r in the sections, count: {}".format(self.sections_count))
+            self.tag_R_index = -1
+
+        if (self.tag_FF == "") and (self.sections_count >= 1):
+            logging.debug("special sections, count: {}".format(self.sections_count))
+            self.tag_R_index = -1
+
+    def parse_common_tag_item(self):
+        for x in xrange(self.sections_count - 1, -1, -1):
             _split = self.sections[x].split(' ')
             _pre_x = x - 1
             if (len(_split) == 2) and (x != 0):
                 _tag_FF = self._parse_tagFF(_split, _pre_x)
-                self.set_tag_FF(_tag_FF, x)
-                break
+                if _tag_FF:
+                    self.set_tag_FF(_tag_FF, x)
+                    break
 
     def _parse_tagFF(self, _split, pre_index):
         """
@@ -46,7 +68,7 @@ class TagItem(object):
 
         _pre_tag_f_name = _pre_split[0]
         if _tag_f_name != _pre_tag_f_name:
-            return None
+            return ""
 
         _tags_FF = self.item_db.get_year_id(_year)
         return _tags_FF
