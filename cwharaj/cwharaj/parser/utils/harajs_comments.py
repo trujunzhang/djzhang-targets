@@ -6,5 +6,5 @@ class HarajsComments(object):
         self.comments = comments
         self.item_db = item_db
 
-    def save_all(self):
+    def save_all(self, id_ads):
         pass

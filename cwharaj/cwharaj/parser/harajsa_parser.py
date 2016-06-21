@@ -90,13 +90,12 @@ class HarajSaParse(BaseParser):
         _ads_body = _ads_body.replace("\r", "").strip()
         _memberName = _memberName.strip()
 
-        city = City(
-            text=_ads_city
-        )
-        _city_id = item_db.save_city(city)
+        # ====
+        # Save to relative database
+        # ====
+        _city_id = item_db.save_city(City.get_default(_ads_city))
 
-        member = Member.get_default(_memberName)
-        _His_announcement = item_db.save_member(member)
+        _His_announcement = item_db.save_member(Member.get_default(_memberName))
 
         _close_ads = 0
         _type_ads_or = 1
@@ -128,11 +127,11 @@ class HarajSaParse(BaseParser):
             timer_mazad=0,
         )
 
-        _item_id = item_db.process_item(url=url, item=item)
+        id_ads = item_db.process_item(url=url, item=item)
 
         _comments = []
 
-        HarajsComments(_comments, item_db).save_all()
+        HarajsComments(_comments, item_db).save_all(id_ads)
 
     def get_section(self, section_panel):
         from BeautifulSoup import BeautifulSoup

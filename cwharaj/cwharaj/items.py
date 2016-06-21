@@ -113,6 +113,12 @@ class City(scrapy.Item):
 
     text = scrapy.Field()
 
+    @classmethod
+    def get_default(self, text):
+        return City(
+            text=text
+        )
+
 
 # CREATE TABLE IF NOT EXISTS `members`, not "member"
 class Member(scrapy.Item):
@@ -136,7 +142,7 @@ class Member(scrapy.Item):
 
     @classmethod
     def get_default(self, user_name):
-        Member(
+        return Member(
             username=user_name,
             password='',
             groupnumber=0,
