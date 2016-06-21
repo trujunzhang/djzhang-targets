@@ -27,7 +27,9 @@ class HarajsSection(object):
         # length is 3 or 2.
         # """
         self.tag_item.parse_common_tag_item()
-        self.tag_item.parse_tag_r()
+        _tag_r_index = self.tag_item.get_index_tag_r()
+        if _tag_r_index != -1:
+            self._get_tag_r(self.sections[_tag_r_index])
 
         # """
         # finally,generate section item.

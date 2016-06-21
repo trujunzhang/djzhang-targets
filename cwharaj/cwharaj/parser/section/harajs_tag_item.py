@@ -20,7 +20,7 @@ class TagItem(object):
         self.tag_FF = _tag_FF
         self.tag_FF_index = x
 
-    def parse_tag_r(self):
+    def get_index_tag_r(self):
         if (self.tag_FF != "") and (self.sections_count == 3):
             # sections: ["2016 xxx","xxx","YYY"]
             if self.tag_FF_index == 2:
@@ -36,6 +36,8 @@ class TagItem(object):
         if (self.tag_FF == "") and (self.sections_count >= 1):
             logging.debug("special sections, count: {}".format(self.sections_count))
             self.tag_R_index = -1
+
+
 
     def parse_common_tag_item(self):
         for x in xrange(self.sections_count - 1, -1, -1):
