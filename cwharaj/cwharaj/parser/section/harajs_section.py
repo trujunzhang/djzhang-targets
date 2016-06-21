@@ -16,12 +16,12 @@ class HarajsSection(object):
             logging.debug("special sections, count: {}".format(len(self.sections)))
             return None
 
-        _tag_item = self.get_tag_item()
-        self.section_item.set_item(_tag_item)
+        self.get_common_tag_item()
+        self.section_item.set_item(self.tag_item)
 
         return self.section_item
 
-    def get_tag_item(self):
+    def get_common_tag_item(self):
         self.get_tag_FF()
 
         for x in xrange(len(self.sections) - 1, -1, -1):
