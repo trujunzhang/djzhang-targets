@@ -1,3 +1,4 @@
+# coding=utf-8
 class SectionItem(object):
     ads_tags_R = ""
     ads_tags_F = ""
@@ -16,13 +17,3 @@ class SectionItem(object):
 
         if self.ads_tags_FF:
             self.un_model = "model"
-
-
-class TagItem(object):
-    tag_R = ""
-    tag_F = ""
-    tag_FF = ""
-    tag_FF_index = -1
-
-    def __init__(self):
-        super(TagItem, self).__init__()
