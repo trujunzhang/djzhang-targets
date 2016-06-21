@@ -17,10 +17,10 @@ class SectionDataxxx:
     ]
 
     expect = {
-        "tags_f": 275,  # tags_f
-        "tags_ff": 58,  # tags_ff
-        "tags_r": 272,  # tags_r
-        "other_final": 'السيارات',  #
+        "tags_f": 275,
+        "tags_ff": 58,
+        "tags_r": 272,
+        "other_final": 'السيارات',
     }
 
 
@@ -33,9 +33,9 @@ class SectionData:
     ]
 
     expect = {
-        "tags_f": 13,  # tags_f
-        "tags_ff": 60,  # tags_ff
-        "tags_r": 1,  # tags_r
+        "tags_f": 13,
+        "tags_ff": 60,
+        "tags_r": 1,
         "other_final": 'السيارات',  #
     }
 
