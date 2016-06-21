@@ -1,5 +1,5 @@
 # coding=utf-8
-from cwharaj.parser.section.section_item import SectionItem, TagFItem
+from cwharaj.parser.section.section_item import SectionItem, TagItem
 import logging
 
 
@@ -8,23 +8,22 @@ class HarajsSection(object):
         super(HarajsSection, self).__init__()
         self.sections = sections
         self.item_db = item_db
+        self.section_item = SectionItem(self.item_db)
+        self.tag_item = TagItem()
 
     def get_section_item(self):
         if len(self.sections) >= 4:
             logging.debug("special sections, count: {}".format(len(self.sections)))
             return None
 
-        _section_item = SectionItem(self.item_db)
-
         _tag_item = self.get_tag_item()
-        _section_item.set_item(_tag_item)
+        self.section_item.set_item(_tag_item)
 
-        return _section_item
+        return self.section_item
 
     def get_tag_item(self):
-        _tag_item = TagFItem()
+        self.get_tag_FF()
 
-        _tag_FF_index = 0
         for x in xrange(len(self.sections) - 1, -1, -1):
             _split = self.sections[x].split(' ')
             _pre_x = x - 1
@@ -33,7 +32,14 @@ class HarajsSection(object):
                 # if _tag_FF:
 
     def get_tag_FF(self):
-        pass
+        for x in xrange(len(self.sections) - 1, -1, -1):
+            _split = self.sections[x].split(' ')
+            _pre_x = x - 1
+            if (len(_split) == 2) and (x != 0):
+                _tag_FF = self.parse_tagFF(_split, _pre_x)
+                self.tag_item.tag_FF_index = x
+                self.tag_item.tag_FF = _tag_FF
+                break
 
     def parse_tagFF(self, _split, pre_index):
         """

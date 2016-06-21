@@ -18,11 +18,11 @@ class SectionItem(object):
             self.un_model = "model"
 
 
-class TagFItem(object):
+class TagItem(object):
     tag_R = ""
     tag_F = ""
     tag_FF = ""
     tag_FF_index = -1
 
     def __init__(self):
-        super(TagFItem, self).__init__()
+        super(TagItem, self).__init__()
