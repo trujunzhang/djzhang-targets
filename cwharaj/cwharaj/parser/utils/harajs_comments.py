@@ -20,6 +20,7 @@ class HarajsComments(object):
         for _comment_div in _comments_div:
             _memberName = self.baseParser.get_value_from_beautifulsoup(_comment_div, "a", {"class": "username"})
             _content = self.baseParser.get_value_from_beautifulsoup(_comment_div, "div", {"class": "comment_body"})
+
             id_His_response = self.item_db.save_member(Member.get_default(_memberName))
             comment = Comment.get_default(self.id_ads, id_His_response, _content)
             self.item_db.save_comment(comment)
