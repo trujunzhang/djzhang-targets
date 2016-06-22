@@ -129,9 +129,7 @@ class HarajSaParse(BaseParser):
 
         id_ads = item_db.process_item(url=url, item=item)
 
-        _comments = []
-
-        HarajsComments(_comments, item_db).save_all(id_ads)
+        HarajsComments(self, item_db, id_ads).save_for_harajs(hxs)
 
     def get_section(self, section_panel):
         from BeautifulSoup import BeautifulSoup
