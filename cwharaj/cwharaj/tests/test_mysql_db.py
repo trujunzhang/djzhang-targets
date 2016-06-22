@@ -61,40 +61,6 @@ class MysqlDBTest(unittest.TestCase):
         )
         self._history_db.update_for_history(_id, item)
 
-    def test_insert_item_row(self):
-        _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
-        _guid = "1234321"
-        # _id = CrawlUtils.url_parse_id_from_page_url(_url, 3)
-        _id = "123"
-
-        # _section = ['section']
-        _section = []
-
-        self._item_db.open_spider()
-        item = Ad(
-            url=_url,
-            guid=_guid,
-            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-            updated_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-
-            ID=_id,
-            city='city',
-            time='time',
-            title='title',
-            pictures=['pic1', 'pic2'],
-            subject='subject',
-            contact='contact',
-            number='number',
-
-            # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
-            url_from='opensooq',
-
-            address='address',
-            memberName='member name',
-            description='description',
-            section=_section,
-        )
-        self._item_db.insert_for_item(item)
 
     def test_get_year_id(self):
         _years_row = {
