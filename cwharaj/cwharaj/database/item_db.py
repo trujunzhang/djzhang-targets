@@ -32,17 +32,14 @@ class ItemDatabase(MysqlDatabase):
             logging.debug("Ad added to database.")
 
     def save_city(self, city):
-        self._check_city_exist(city)
-        pass
+        _cities_id = self._check_city_exist(city)
+        if _cities_id:
+            return _cities_id
 
     def _check_city_exist(self, city):
-        sql = """ SELECT 1 FROM cities WHERE text = '{}'""".format(city['text'])
-        count = self._get_count(sql, "cities")
-
-        if count:
-            return True
-
-        return False
+        sql = """ SELECT id FROM cities WHERE text = '{}'""".format(city['text'])
+        _cities_id = self._get_row_id(sql, "cities")
+        return _cities_id
 
     def save_member(self, city):
         pass
@@ -81,5 +78,5 @@ class ItemDatabase(MysqlDatabase):
 
     def get_year_id(self, _year):
         sql = 'SELECT id FROM  years  WHERE text ={}'.format(_year)
-        _year_id = self._get_row_id(sql, "years")
-        return _year_id
+        _years_id = self._get_row_id(sql, "years")
+        return _years_id

@@ -96,17 +96,20 @@ class MysqlDBTest(unittest.TestCase):
     #     )
     #     self._item_db.insert_for_item(item)
 
-    # def test_insert_exist_city(self):
-    #     _ads_city = "الجوف"
-    #     _city_id = self._item_db.save_city(City.get_default(_ads_city))
-    #     expect = 12
-    #     self.assertEqual(expect, _city_id)
-
-    def test_get_year_id(self):
-        _year_row = {
-            "id": 58,
-            "text": '2014'
+    def test_insert_exist_city(self):
+        _cities_row = {
+            "id": 12,
+            "text": "الجوف"
         }
-        _city_id = self._item_db.get_year_id(_year_row['text'])
-        expect = _year_row['id']
+        _city_id = self._item_db.save_city(City.get_default(_cities_row['text']))
+        expect = _cities_row['id']
         self.assertEqual(expect, _city_id)
+
+        # def test_get_year_id(self):
+        #     _years_row = {
+        #         "id": 58,
+        #         "text": '2014'
+        #     }
+        #     _years_id = self._item_db.get_year_id(_years_row['text'])
+        #     expect = _years_row['id']
+        #     self.assertEqual(expect, _years_id)
