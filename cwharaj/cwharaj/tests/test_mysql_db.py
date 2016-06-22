@@ -189,7 +189,6 @@ class MysqlDBTest(unittest.TestCase):
         #     self.assertEqual(expect, _comment_id)
 
     def test_insert_new_comments(self):
-        expect = 20
         id_ads = 26
         id_His_response = 60
         comment = Comment.get_default(id_ads, id_His_response, "my first comment!")
@@ -197,6 +196,6 @@ class MysqlDBTest(unittest.TestCase):
         sql = " INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES ('{}','{}','{}','{}')".format(
             comment['id_ads'], comment['id_His_response'], comment['text'], comment['Time_added_co']
         )
-
+        expect = 20
         _comment_id = self._item_db.save_comment(comment)
         self.assertEqual(expect, _comment_id)
