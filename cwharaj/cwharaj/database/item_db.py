@@ -1,3 +1,4 @@
+# coding=utf-8
 import logging
 from datetime import datetime
 
@@ -32,14 +33,36 @@ class ItemDatabase(MysqlDatabase):
             logging.debug("Ad added to database.")
 
     def save_city(self, city):
-        _cities_id = self._check_city_exist(city)
+        sql = """ SELECT id FROM cities WHERE text = '{}'""".format(city['text'])
+        _cities_id = self._get_row_id(sql, "cities")
         if _cities_id:
             return _cities_id
 
-    def _check_city_exist(self, city):
-        sql = """ SELECT id FROM cities WHERE text = '{}'""".format(city['text'])
-        _cities_id = self._get_row_id(sql, "cities")
-        return _cities_id
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        sql = """INSERT INTO cities(text) VALUES (%s)"""
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql, (city['text']))
+            # Commit your changes in the database
+            _connection.commit()
+            # get the "id" after INSERT into MySQL database
+            _cities_id = _cursor.lastrowid
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        if _excep:
+            logging.debug("  mysql: insert the cities row {} failure, {}".format(_cities_id, _excep))
+        else:
+            logging.debug("  mysql: insert the cities into the {} successfully".format(_cities_id))
 
     def save_member(self, city):
         pass

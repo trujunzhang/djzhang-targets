@@ -96,14 +96,14 @@ class MysqlDBTest(unittest.TestCase):
     #     )
     #     self._item_db.insert_for_item(item)
 
-    def test_insert_exist_city(self):
-        _cities_row = {
-            "id": 12,
-            "text": "الجوف"
-        }
-        _city_id = self._item_db.save_city(City.get_default(_cities_row['text']))
-        expect = _cities_row['id']
-        self.assertEqual(expect, _city_id)
+    # def test_insert_exist_city(self):
+    #     _cities_row = {
+    #         "id": 12,
+    #         "text": "الجوف"
+    #     }
+    #     _city_id = self._item_db.save_city(City.get_default(_cities_row['text']))
+    #     expect = _cities_row['id']
+    #     self.assertEqual(expect, _city_id)
 
     def test_insert_new_city(self):
         _cities_row = {
