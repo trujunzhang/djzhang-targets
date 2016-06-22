@@ -15,7 +15,12 @@ class ItemDatabase(MysqlDatabase):
         super(ItemDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
     def save_ad(self, url, item):
-        self.insert_for_item(item)
+        sql = """ SELECT id FROM ads WHERE ads_title = '{}'""".format(item['ads_title'])
+        _ads_id = self._get_row_id(sql, "ads")
+        if _ads_id:
+            return _ads_id
+
+        return self.insert_for_item(item)
 
     def save_city(self, city):
         sql = """ SELECT id FROM cities WHERE text = '{}'""".format(city['text'])
@@ -26,6 +31,7 @@ class ItemDatabase(MysqlDatabase):
         _excep = None
         _connection = self.get_client()
         _cursor = _connection.cursor()
+        _cities_id = -1
 
         sql = """INSERT INTO cities (text) VALUES ('{}')""".format(city['text'])
 
@@ -45,7 +51,6 @@ class ItemDatabase(MysqlDatabase):
             _connection.close()
 
         if _excep:
-            _cities_id = -1
             logging.debug("  mysql: insert the cities row {} failure, {}".format(_cities_id, _excep))
         else:
             logging.debug("  mysql: insert the cities into the {} successfully".format(_cities_id))
