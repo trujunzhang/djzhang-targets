@@ -14,7 +14,7 @@ class ItemDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(ItemDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
-    def save_ad(self, url, item):
+    def save_ad(self, item):
         sql = """ SELECT id FROM ads WHERE ads_title = '{}'""".format(item['ads_title'])
         _ads_id = self._get_row_id(sql, "ads")
         if _ads_id:
