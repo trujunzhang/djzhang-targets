@@ -6,7 +6,7 @@ class SectionItem(object):
     type_ads_other_final = ""
     un_model = ""
 
-    def __init__(self, item_db):
+    def __init__(self, item_db=None):
         super(SectionItem, self).__init__()
         self.item_db = item_db
 
@@ -17,3 +17,12 @@ class SectionItem(object):
 
         if self.ads_tags_FF:
             self.un_model = "model"
+
+    @classmethod
+    def get_default(self):
+        item = SectionItem()
+        item.ads_tags_R = 1
+        item.ads_tags_F = 13
+        item.ads_tags_FF = 60
+
+        return item

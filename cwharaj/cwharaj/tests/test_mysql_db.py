@@ -5,6 +5,7 @@ import unittest
 import time
 
 from cwharaj.database_factory import DatabaseFactory, CollectionTypes
+from cwharaj.parser.utils.section_item import SectionItem
 from cwharaj.utils.crawl_utils import CrawlUtils
 from cwharaj.items import CacheItem, HistoryItem, Ad, WebsiteTypes, City, Member
 from datetime import datetime
@@ -153,16 +154,27 @@ class MysqlDBTest(unittest.TestCase):
         self.assertEqual(expect, _member_id)
 
     def test_insert_new_ads(self):
-        _memberName = "djzhang"
-        expect = 60
-        member = Member.get_default(_memberName)
-
-        sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
-            member['username'], member['password'], member['groupnumber'], member['email'], member['timeregister'],
-            member['member_code'], member['documentingmobile'], member['Documentingemail'], member['phone'],
-            member['sendtime'], member['active'], member['now'], member['Lastactivity'], member['subscribe_1'],
-            member['subscribe_2'], member['subscribe_3'], member['The_pay_commission']
+        expect = 24
+        section_item = SectionItem.get_default()
+        member = Ad.get_default(
+            section_item=section_item,
+            _ads_title="اسكاليد موديل 2016 بسعر جي",
+            _city_id=44,
+            _ads_contact="123454321",
+            _ads_body="test mysql db",
+            _image_link="https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1ba3366cd.jpeg,https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1bab49a3b.jpeg,https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1bb0b6ca6.jpeg",
+            _His_announcement_id="60",
+            _type_ads_or=1, _close_ads=0
         )
 
-        _member_id = self._item_db.save_member(member)
-        self.assertEqual(expect, _member_id)
+        sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
+            member['ads_title'], member['ads_city'], member['ads_tags_R'], member['ads_tags_F'], member['ads_tags_FF'],
+            member['ads_contact'], member['ads_body'], member['image_link'], member['type_ads_other_final'],
+            member['un_model'], member['status'], member['fixing'], member['Time_added'], member['His_announcement'],
+            member['type_ads_or'], member['close_ads'], member['Last_updated_Ad'], member['closecomment'],
+            member['fixed_home'], member['fixed_tub'], member['fixed_sec'], member['fixed_sec2'], member['fixed_sec3'],
+            member['timer_mazad']
+        )
+
+        _ads_id = self._item_db.save_ad(member)
+        self.assertEqual(expect, _ads_id)

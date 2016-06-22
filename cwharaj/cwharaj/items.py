@@ -82,6 +82,36 @@ class Ad(scrapy.Item):
     fixed_sec3 = scrapy.Field()
     timer_mazad = scrapy.Field()
 
+    @classmethod
+    def get_default(self, section_item, _ads_title, _city_id, _ads_contact, _ads_body, _image_link,
+                    _His_announcement_id, _type_ads_or=1, _close_ads=0):
+        return Ad(
+            ads_title=_ads_title,
+            ads_city=_city_id,
+            ads_tags_R=section_item.ads_tags_R,
+            ads_tags_F=section_item.ads_tags_F,
+            ads_tags_FF=section_item.ads_tags_FF,
+            ads_contact=_ads_contact,
+            ads_body=_ads_body,
+            image_link=_image_link,
+            type_ads_other_final=section_item.type_ads_other_final,
+            un_model=section_item.un_model,
+            status=1,
+            fixing=0,
+            Time_added="",  # TIME
+            His_announcement=_His_announcement_id,
+            type_ads_or=_type_ads_or,
+            close_ads=_close_ads,
+            Last_updated_Ad="",  # TIME
+            closecomment=0,
+            fixed_home=0,
+            fixed_tub=0,
+            fixed_sec=0,
+            fixed_sec2=0,
+            fixed_sec3=0,
+            timer_mazad=0,
+        )
+
 
 # CREATE TABLE IF NOT EXISTS `section`, not "sectionoadvertise"
 class Section(scrapy.Item):
