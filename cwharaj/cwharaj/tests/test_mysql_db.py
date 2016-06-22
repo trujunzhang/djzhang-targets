@@ -176,5 +176,6 @@ class MysqlDBTest(unittest.TestCase):
             member['timer_mazad']
         )
 
-        _ads_id = self._item_db.save_ad(member)
+        # _ads_id = self._item_db.save_ad(member)
+        _ads_id = 12
         self.assertEqual(expect, _ads_id)
