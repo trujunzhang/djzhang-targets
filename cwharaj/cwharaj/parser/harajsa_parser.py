@@ -95,7 +95,7 @@ class HarajSaParse(BaseParser):
         # ====
         _city_id = item_db.save_city(City.get_default(_ads_city))
 
-        _His_announcement = item_db.save_member(Member.get_default(_memberName))
+        _His_announcement_id = item_db.save_member(Member.get_default(_memberName))
 
         _close_ads = 0
         _type_ads_or = 1
@@ -114,7 +114,7 @@ class HarajSaParse(BaseParser):
             status=1,
             fixing=0,
             Time_added=_time_added,
-            His_announcement=_His_announcement,
+            His_announcement=_His_announcement_id,
             type_ads_or=_type_ads_or,
             close_ads=_close_ads,
             Last_updated_Ad=_last_updated_ad,
