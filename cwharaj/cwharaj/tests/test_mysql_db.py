@@ -105,6 +105,17 @@ class MysqlDBTest(unittest.TestCase):
         expect = _cities_row['id']
         self.assertEqual(expect, _city_id)
 
+    def test_insert_new_city(self):
+        _cities_row = {
+            "id": 22,
+            "text": "دبي"
+        }
+        _city_id = self._item_db.save_city(City.get_default(_cities_row['text']))
+        expect = _cities_row['id']
+        self.assertEqual(expect, _city_id)
+
+
+
         # def test_get_year_id(self):
         #     _years_row = {
         #         "id": 58,
