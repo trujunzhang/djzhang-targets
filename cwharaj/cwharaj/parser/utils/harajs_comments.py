@@ -18,6 +18,8 @@ class HarajsComments(object):
         _comments_div = soup.findAll("div", {"class": "comment comment_div"})
 
         for _comment_div in _comments_div:
+            _memberName = _comment_div.findAll("a", {"class": "username"}).prettify()
+            _content = _comment_div.findAll("div", {"class": "comment_body"}).prettify()
 
             pass
             # _comment_div.find
