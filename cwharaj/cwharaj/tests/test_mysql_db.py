@@ -108,7 +108,8 @@ class MysqlDBTest(unittest.TestCase):
     def test_insert_new_city(self):
         _cities_row = {
             "id": 22,
-            "text": "دبي"
+            "text": "دبي",
+            "sql": "INSERT INTO cities(text) VALUES (دبي)"
         }
         _city_id = self._item_db.save_city(City.get_default(_cities_row['text']))
         expect = _cities_row['id']
