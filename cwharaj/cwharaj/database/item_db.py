@@ -22,6 +22,42 @@ class ItemDatabase(MysqlDatabase):
 
         return self.insert_for_item(item)
 
+    def save_comment(self, comment):
+        sql = """ SELECT id FROM cities WHERE text = '{}'""".format(comment['text'])
+        _comment_id = self._get_row_id(sql, "cities")
+        if _comment_id:
+            return _comment_id
+
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+        _comment_id = -1
+
+        sql = """INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES ('{}')""".format(
+            comment['text'])
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql)
+            # Commit your changes in the database
+            _connection.commit()
+            # get the "id" after INSERT into MySQL database
+            _comment_id = _cursor.lastrowid
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        if _excep:
+            logging.debug("  mysql: insert the cities row failure, {}".format(_excep))
+        else:
+            logging.debug("  mysql: insert the cities into the {} successfully".format(_comment_id))
+
+        return _comment_id
+
     def save_city(self, city):
         sql = """ SELECT id FROM cities WHERE text = '{}'""".format(city['text'])
         _cities_id = self._get_row_id(sql, "cities")

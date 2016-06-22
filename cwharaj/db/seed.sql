@@ -44,21 +44,18 @@ CREATE TABLE IF NOT EXISTS `cities` (
 
 
 --
--- Table structure for table `comment`
+-- Table structure for table `comments`
 --
 
-CREATE TABLE IF NOT EXISTS `comment` (
-  `ID`          INT(11)    NOT NULL AUTO_INCREMENT,
-  `MemberID`    INT(11)    NOT NULL,
-  `AdvID`       INT(11)    NOT NULL,
-  `Comment`     TEXT       NOT NULL,
-  `Date`        BIGINT(20) NOT NULL,
-  `ReportCount` INT(11)    NOT NULL,
-  PRIMARY KEY (`ID`)
-)
-  ENGINE = MyISAM
-  DEFAULT CHARSET = latin1
-  AUTO_INCREMENT = 42;
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_ads` int(11) NOT NULL,
+  `id_His_response` int(11) NOT NULL,
+  `text` longtext NOT NULL,
+  `Time_added_co` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
+
 
 --
 -- Table structure for table `section`

@@ -127,13 +127,19 @@ class Section(scrapy.Item):
 
 # CREATE TABLE IF NOT EXISTS `comments`, not "comment"
 class Comment(scrapy.Item):
-    # unique row id
-    ID = scrapy.Field()
-
     id_ads = scrapy.Field()
-    id_His_ = scrapy.Field()
+    id_His_response = scrapy.Field()
     text = scrapy.Field()
     Time_added_co = scrapy.Field()
+
+    @classmethod
+    def get_default(self, id_ads, id_His_response, text):
+        return City(
+            id_ads=id_ads,
+            id_His_response=id_His_response,
+            text=text,
+            Time_added_co="",
+        )
 
 
 # CREATE TABLE IF NOT EXISTS `cities`, not "city"
