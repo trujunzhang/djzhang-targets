@@ -18,11 +18,10 @@ class HarajsComments(object):
         _comments_div = soup.findAll("div", {"class": "comment comment_div"})
 
         for _comment_div in _comments_div:
-            _memberName = _comment_div.findAll("a", {"class": "username"}).prettify()
-            _content = _comment_div.findAll("div", {"class": "comment_body"}).prettify()
+            _memberName = self.baseParser.get_value_from_beautifulsoup("a", {"class": "username"})
+            _content = self.baseParser.get_value_from_beautifulsoup("div", {"class": "comment_body"})
 
             pass
-            # _comment_div.find
 
         _comments_selector = '//*[@class="comment comment_div"]'
         _comments_div = hxs.xpath(_comments_selector)

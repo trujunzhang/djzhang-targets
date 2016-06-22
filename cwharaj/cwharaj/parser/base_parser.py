@@ -1,4 +1,5 @@
 import urlparse
+from BeautifulSoup import BeautifulSoup
 
 
 class BaseParser(object):
@@ -30,6 +31,13 @@ class BaseParser(object):
             value += line.extract()
 
         return value.encode('utf-8')
+
+    def get_value_from_beautifulsoup(self, container, name=None, attrs={}, index=0, default=""):
+        _list = container.findAll(name, attrs)
+        if len(_list) > index:
+            value = _list[index].text
+            return value.encode('utf-8')
+        return default
 
     def get_images_in_selector(self, hxs, selector, index=0, filter_method=None):
         noscript_images = self.get_value_from_response(hxs, selector, index=index)
