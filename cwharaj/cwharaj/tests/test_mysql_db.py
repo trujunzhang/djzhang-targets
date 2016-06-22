@@ -147,11 +147,11 @@ class MysqlDBTest(unittest.TestCase):
     #     self.assertEqual(expect, _member_id)
 
 
-    def test_insert_exist_ads(self):
-        _memberName = "ابراهيم لطفي"
-        expect = 51
-        _member_id = self._item_db.save_member(Member.get_default(_memberName))
-        self.assertEqual(expect, _member_id)
+    # def test_insert_exist_ads(self):
+    #     _memberName = "ابراهيم لطفي"
+    #     expect = 51
+    #     _member_id = self._item_db.save_member(Member.get_default(_memberName))
+    #     self.assertEqual(expect, _member_id)
 
     def test_insert_new_ads(self):
         expect = 24
@@ -167,7 +167,7 @@ class MysqlDBTest(unittest.TestCase):
             _type_ads_or=1, _close_ads=0
         )
 
-        sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
+        sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
             member['ads_title'], member['ads_city'], member['ads_tags_R'], member['ads_tags_F'], member['ads_tags_FF'],
             member['ads_contact'], member['ads_body'], member['image_link'], member['type_ads_other_final'],
             member['un_model'], member['status'], member['fixing'], member['Time_added'], member['His_announcement'],
