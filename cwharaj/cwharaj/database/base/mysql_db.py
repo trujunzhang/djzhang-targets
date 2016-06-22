@@ -68,7 +68,7 @@ class MysqlDatabase(BaseDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = " INSERT INTO " + self.collection_name + " (url,guid,created_at,updated_at,ID,city,TIME,title,pictures,SUBJECT,contact,NUMBER,url_from,address,memberName,description,section) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         try:
             _cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
@@ -76,12 +76,12 @@ class MysqlDatabase(BaseDatabase):
             _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
             # Execute the SQL command
             _cursor.execute(sql, (
-                item['url'], item['guid'], item['created_at'], item['updated_at'], item['ID'],
-                item['city'], item['time'], item['title'],
-                item['pictures'],
-                item['subject'], item['contact'],
-                item['number'], item['url_from'], item['address'], item['memberName'], item['description'],
-                item['section']
+                item['ads_title'], item['ads_city'], item['ads_tags_R'], item['ads_tags_F'], item['ads_tags_FF'],
+                item['ads_contact'], item['ads_body'], item['image_link'], item['type_ads_other_final'],
+                item['un_model'], item['status'], item['fixing'], item['Time_added'], item['His_announcement'],
+                item['type_ads_or'], item['close_ads'], item['Last_updated_Ad'], item['closecomment'],
+                item['fixed_home'], item['fixed_tub'], item['fixed_sec'], item['fixed_sec2'], item['fixed_sec3'],
+                item['timer_mazad']
             ))
             # Commit your changes in the database
             _connection.commit()
@@ -99,8 +99,7 @@ class MysqlDatabase(BaseDatabase):
                                                                                    item['url_from']))
         else:
             logging.debug(
-                "  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
-                                                                                 item['url_from']))
+                "  mysql: insert {} into the ads from the {} successfully".format(item['ID'], item['url_from']))
 
     def insert_for_history(self, item):
         _excep = None

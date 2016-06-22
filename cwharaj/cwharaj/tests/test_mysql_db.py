@@ -156,7 +156,7 @@ class MysqlDBTest(unittest.TestCase):
     def test_insert_new_ads(self):
         expect = 24
         section_item = SectionItem.get_default()
-        member = Ad.get_default(
+        item = Ad.get_default(
             section_item=section_item,
             _ads_title="اسكاليد موديل 2016 بسعر جي",
             _city_id='44',
@@ -168,14 +168,14 @@ class MysqlDBTest(unittest.TestCase):
         )
 
         sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
-            member['ads_title'], member['ads_city'], member['ads_tags_R'], member['ads_tags_F'], member['ads_tags_FF'],
-            member['ads_contact'], member['ads_body'], member['image_link'], member['type_ads_other_final'],
-            member['un_model'], member['status'], member['fixing'], member['Time_added'], member['His_announcement'],
-            member['type_ads_or'], member['close_ads'], member['Last_updated_Ad'], member['closecomment'],
-            member['fixed_home'], member['fixed_tub'], member['fixed_sec'], member['fixed_sec2'], member['fixed_sec3'],
-            member['timer_mazad']
+            item['ads_title'], item['ads_city'], item['ads_tags_R'], item['ads_tags_F'], item['ads_tags_FF'],
+            item['ads_contact'], item['ads_body'], item['image_link'], item['type_ads_other_final'],
+            item['un_model'], item['status'], item['fixing'], item['Time_added'], item['His_announcement'],
+            item['type_ads_or'], item['close_ads'], item['Last_updated_Ad'], item['closecomment'],
+            item['fixed_home'], item['fixed_tub'], item['fixed_sec'], item['fixed_sec2'], item['fixed_sec3'],
+            item['timer_mazad']
         )
 
-        # _ads_id = self._item_db.save_ad(member)
+        _ads_id = self._item_db.save_ad(item)
         _ads_id = 12
         self.assertEqual(expect, _ads_id)
