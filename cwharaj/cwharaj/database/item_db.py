@@ -60,9 +60,12 @@ class ItemDatabase(MysqlDatabase):
             _connection.close()
 
         if _excep:
+            _cities_id = -1
             logging.debug("  mysql: insert the cities row {} failure, {}".format(_cities_id, _excep))
         else:
             logging.debug("  mysql: insert the cities into the {} successfully".format(_cities_id))
+
+        return _cities_id
 
     def save_member(self, city):
         pass
