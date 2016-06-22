@@ -14,12 +14,12 @@ class HarajsComments(object):
         _comments_div = hxs.xpath(_comments_selector)
         count = 0
         for _comment_div in _comments_div:
-            _memberName = self.baseParser.get_value_from_response(hxs,
-                                                                  _comments_selector + '/div/div/a[@class="username"]/text()',
-                                                                  index=count)
+            _memberName = self.baseParser.get_value_from_response(hxs,_comments_selector + '/div/div/a[@class="username"]/text()',index=count)
 
-            _content = self.baseParser.get_value_from_response(hxs, _comments_selector + '/div[@class="comment_body]',
-                                                               index=count)
+            hxs.xpath('//*[@class="comment comment_div"]/div[@class="comment_body"]/text()')
+
+            _content = self.baseParser.get_value_from_response(hxs, _comments_selector + '/div[@class="comment_body]/text',index=count)
+
 
             id_His_response = self.item_db.save_member(Member.get_default(_memberName))
             comment = Comment.get_default(self.id_ads, id_His_response, _content)
