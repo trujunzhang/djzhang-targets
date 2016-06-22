@@ -82,11 +82,10 @@ class ItemDatabase(MysqlDatabase):
         try:
             # Execute the SQL command
             _cursor.execute(sql, (
-                member['username'], member['password'], member['groupnumber'], member['email'],
-                member['timeregister'], member['member_code'], member['documentingmobile'], member['Documentingemail'],
-                member['phone'], member['active'], member['now'], member['Lastactivity'],
-                member['subscribe_1'], member['sendtime'], member['subscribe_2'], member['subscribe_3'],
-                member['The_pay_commission']
+                member['username'], member['password'], member['groupnumber'], member['email'], member['timeregister'],
+                member['member_code'], member['documentingmobile'], member['Documentingemail'], member['phone'],
+                member['sendtime'], member['active'], member['now'], member['Lastactivity'], member['subscribe_1'],
+                member['subscribe_2'], member['subscribe_3'], member['The_pay_commission']
             ))
             # Commit your changes in the database
             _connection.commit()
