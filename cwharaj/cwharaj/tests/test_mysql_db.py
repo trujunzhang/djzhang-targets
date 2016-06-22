@@ -125,15 +125,13 @@ class MysqlDBTest(unittest.TestCase):
     #     self.assertEqual(expect, _city_id)
 
     def test_insert_exist_member(self):
-        _memberName = ""
-        _members_row = Member.get_default(_memberName)
-        _member_id = self._item_db.save_member(City.get_default(_members_row['text']))
-        expect = _members_row['id']
+        _memberName = "ابراهيم لطفي"
+        expect = 51
+        _member_id = self._item_db.save_member(Member.get_default(_memberName))
         self.assertEqual(expect, _member_id)
 
     def test_insert_new_member(self):
-        _memberName = ""
-        _members_row = Member.get_default(_memberName)
-        _member_id = self._item_db.save_member(City.get_default(_members_row['text']))
-        expect = _members_row['id']
+        _memberName = "djzhang"
+        expect = 55
+        _member_id = self._item_db.save_member(Member.get_default(_memberName))
         self.assertEqual(expect, _member_id)
