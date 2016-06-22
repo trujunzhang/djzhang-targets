@@ -163,7 +163,7 @@ class MysqlDBTest(unittest.TestCase):
             _ads_contact="123454321",
             _ads_body="test mysql db",
             _image_link="https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1ba3366cd.jpeg,https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1bab49a3b.jpeg,https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1bb0b6ca6.jpeg",
-            _His_announcement_id="60",
+            _His_announcement_id=60,
             _type_ads_or=1, _close_ads=0
         )
 

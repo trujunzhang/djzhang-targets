@@ -98,11 +98,11 @@ class Ad(scrapy.Item):
             un_model=section_item.un_model,
             status=1,
             fixing=0,
-            Time_added="",  # TIME
+            Time_added=12345,  # TIME
             His_announcement=_His_announcement_id,
             type_ads_or=_type_ads_or,
             close_ads=_close_ads,
-            Last_updated_Ad="",  # TIME
+            Last_updated_Ad=23456,  # TIME
             closecomment=0,
             fixed_home=0,
             fixed_tub=0,
