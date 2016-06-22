@@ -180,23 +180,23 @@ class MysqlDBTest(unittest.TestCase):
         #     _ads_id = self._item_db.save_ad(item)
         #     self.assertEqual(expect, _ads_id)
 
-    def test_insert_exist_comments(self):
-        id_ads = 1
-        id_His_response = 1
-        comment = Comment.get_default(id_ads, id_His_response, "up")
-        expect = 8
-        _ads_id = self._item_db.save_comment(comment)
-        self.assertEqual(expect, _ads_id)
-
-        # def test_insert_new_comments(self):
-        #     expect = 20
-        #     id_ads = 26
-        #     id_His_response = 60
-        #     comment = Comment.get_default(id_ads, id_His_response, "my comment!")
-        #
-        #     sql = " INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES ('{}','{}','{}','{}')".format(
-        #         comment['id_ads'], comment['id_His_response'], comment['text'], comment['Time_added_co']
-        #     )
-        #
-        #     _ads_id = self._item_db.save_ad(comment)
+        # def test_insert_exist_comments(self):
+        #     id_ads = 1
+        #     id_His_response = 1
+        #     comment = Comment.get_default(id_ads, id_His_response, "up")
+        #     expect = 8
+        #     _ads_id = self._item_db.save_comment(comment)
         #     self.assertEqual(expect, _ads_id)
+
+    def test_insert_new_comments(self):
+        expect = 20
+        id_ads = 26
+        id_His_response = 60
+        comment = Comment.get_default(id_ads, id_His_response, "my comment!")
+
+        sql = " INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES ('{}','{}','{}','{}')".format(
+            comment['id_ads'], comment['id_His_response'], comment['text'], comment['Time_added_co']
+        )
+
+        _ads_id = self._item_db.save_ad(comment)
+        self.assertEqual(expect, _ads_id)

@@ -138,7 +138,7 @@ class Comment(scrapy.Item):
             id_ads=id_ads,
             id_His_response=id_His_response,
             text=text,
-            Time_added_co="",
+            Time_added_co=1234,
         )
 
 
