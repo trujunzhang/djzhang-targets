@@ -269,6 +269,13 @@ class MysqlDatabase(BaseDatabase):
         return row
 
     def check_exist_by_id(self, _id):
+        """
+        This method is so important!
+
+        Checking wheather the row exist before insert to database.
+        :param _id:
+        :return:
+        """
         ret = 0
         _connection = self.get_client()
         _cursor = _connection.cursor()

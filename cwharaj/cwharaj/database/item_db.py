@@ -36,6 +36,8 @@ class ItemDatabase(MysqlDatabase):
         if _cities_id:
             return _cities_id
 
+
+
     def _check_city_exist(self, city):
         sql = """ SELECT id FROM cities WHERE text = '{}'""".format(city['text'])
         _cities_id = self._get_row_id(sql, "cities")
