@@ -148,7 +148,7 @@ class MysqlDBTest(unittest.TestCase):
 
 
     def test_insert_exist_ads(self):
-        expect = 18
+        expect = 21
         item = Ad()
         item['ads_title'] = 'جمس سوبربان  دبل  موديل 2012 اللون فضي للبيع'
         _ads_id = self._item_db.save_ad(item)
