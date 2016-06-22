@@ -145,7 +145,7 @@ class Member(scrapy.Item):
         return Member(
             username=user_name,
             password='',
-            groupnumber=0,
+            groupnumber=6,
             email='',
             timeregister=0,
             member_code=0,
