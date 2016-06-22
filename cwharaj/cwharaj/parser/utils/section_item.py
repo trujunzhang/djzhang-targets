@@ -24,5 +24,7 @@ class SectionItem(object):
         item.ads_tags_R = 1
         item.ads_tags_F = 13
         item.ads_tags_FF = 60
+        item.type_ads_other_final = "السيارات"
+        item.un_model = "model"
 
         return item
