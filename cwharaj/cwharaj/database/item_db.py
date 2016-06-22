@@ -77,14 +77,14 @@ class ItemDatabase(MysqlDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
             _cursor.execute(sql, (
                 member['username'], member['password'], member['groupnumber'], member['email'], member['timeregister'],
                 member['member_code'], member['documentingmobile'], member['Documentingemail'], member['phone'],
-                member['sendtime'], member['active'], member['now'], member['Lastactivity'], member['subscribe_1'],
+                member['active'], member['now'], member['Lastactivity'], member['subscribe_1'], member['sendtime'],
                 member['subscribe_2'], member['subscribe_3'], member['The_pay_commission']
             ))
             # Commit your changes in the database
