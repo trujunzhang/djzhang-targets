@@ -47,7 +47,7 @@ class BaseParser(object):
 
         images = soup.findAll('img')
 
-        list = []
+        list = [""]
         for image in images:
             src_ = image['src']
 
