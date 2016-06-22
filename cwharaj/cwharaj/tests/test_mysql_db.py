@@ -186,7 +186,7 @@ class MysqlDBTest(unittest.TestCase):
             id_His_response = 1
             comment = Comment.get_default(id_ads, id_His_response, "up")
             expect = 8
-            _ads_id = self._item_db.save_ad(comment)
+            _ads_id = self._item_db.save_comment(comment)
             self.assertEqual(expect, _ads_id)
 
         # def test_insert_new_comments(self):

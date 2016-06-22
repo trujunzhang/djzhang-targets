@@ -23,8 +23,9 @@ class ItemDatabase(MysqlDatabase):
         return self.insert_for_item(item)
 
     def save_comment(self, comment):
-        sql = """ SELECT id FROM cities WHERE text = '{}'""".format(comment['text'])
-        _comment_id = self._get_row_id(sql, "cities")
+        sql = """ SELECT id FROM comments WHERE id_ads = '{}' and id_His_response = '{}' and text = '{}'""".format(
+            comment['id_ads'], comment['id_His_response'], comment['text'])
+        _comment_id = self._get_row_id(sql, "comments")
         if _comment_id:
             return _comment_id
 
