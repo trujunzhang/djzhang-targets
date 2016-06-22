@@ -67,8 +67,45 @@ class ItemDatabase(MysqlDatabase):
 
         return _cities_id
 
-    def save_member(self, city):
-        pass
+    def save_member(self, member):
+        sql = """ SELECT id FROM members WHERE username = '{}'""".format(member['username'])
+        _members_id = self._get_row_id(sql, "cities")
+        if _members_id:
+            return _members_id
+
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql, (
+                member['username'], member['password'], member['groupnumber'], member['email'], member['timeregister'],
+                member['member_code'], member['documentingmobile'], member['Documentingemail'], member['phone'],
+                member['sendtime'], member['active'], member['now'], member['Lastactivity'], member['subscribe_1'],
+                member['subscribe_2'], member['subscribe_3'], member['The_pay_commission']
+            ))
+            # Commit your changes in the database
+            _connection.commit()
+            # get the "id" after INSERT into MySQL database
+            _members_id = _cursor.lastrowid
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        if _excep:
+            _members_id = -1
+            logging.debug("  mysql: insert the cities row {} failure, {}".format(_members_id, _excep))
+        else:
+            logging.debug("  mysql: insert the cities into the {} successfully".format(_members_id))
+
+        return _members_id
 
     def get_section(self, name):
         _excep = None
