@@ -107,7 +107,7 @@ class MysqlDBTest(unittest.TestCase):
 
     def test_insert_new_city(self):
         _cities_row = {
-            "id": 22,
+            "id": 24,
             "text": "دبي",
             "sql": "INSERT INTO cities(text) VALUES (دبي)"
         }

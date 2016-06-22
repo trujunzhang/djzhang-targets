@@ -42,11 +42,11 @@ class ItemDatabase(MysqlDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = """INSERT INTO cities(text) VALUES (%s)"""
+        sql = """INSERT INTO cities (text) VALUES ('{}')""".format(city['text'])
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (city['text']))
+            _cursor.execute(sql)
             # Commit your changes in the database
             _connection.commit()
             # get the "id" after INSERT into MySQL database
