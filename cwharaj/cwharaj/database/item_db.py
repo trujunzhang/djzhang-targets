@@ -36,7 +36,7 @@ class ItemDatabase(MysqlDatabase):
         pass
 
     def _check_city_exist(self, city):
-        sql = """ SELECT 1 FROM cities WHERE text = '{}'""".format(city.encode('utf-8'))
+        sql = """ SELECT 1 FROM cities WHERE text = '{}'""".format(city['text'])
         count = self._get_count(sql, "cities")
 
         if count:
@@ -80,26 +80,6 @@ class ItemDatabase(MysqlDatabase):
         return row
 
     def get_year_id(self, _year):
-        _excep = None
-        _connection = self.get_client()
-        _cursor = _connection.cursor()
-
-        _year_id = ""
-
         sql = 'SELECT id FROM  years  WHERE text ={}'.format(_year)
-
-        try:
-            # Execute the SQL command
-            _cursor.execute(sql)
-            # Get the row data
-            data = _cursor.fetchone()
-            found_count = _cursor.rowcount
-            if data:
-                _year_id = data[0]
-        except Exception, e:
-            _excep = e
-        finally:
-            _cursor.close()
-            _connection.close()
-
+        _year_id = self._get_row_id(sql, "years")
         return _year_id

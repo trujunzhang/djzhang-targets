@@ -131,6 +131,28 @@ class MysqlDatabase(BaseDatabase):
         if not self.check_exist_by_id(id):
             self.insert_for_history(item)
 
+    def _get_row_id(self, sql, table_name):
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        _row_id = ""
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql)
+            # Get the row data
+            data = _cursor.fetchone()
+            found_count = _cursor.rowcount
+            if data:
+                _row_id = data[0]
+        except Exception, e:
+            logging.debug("  mysql: get id on the {} failure, {}".format(table_name, e))
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        return _row_id
+
     def _get_count(self, sql, table_name):
         _count = 0
         _connection = self.get_client()
