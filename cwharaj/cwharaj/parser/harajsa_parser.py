@@ -108,7 +108,7 @@ class HarajSaParse(BaseParser):
             _type_ads_or=1, _close_ads=0
         )
 
-        id_ads = item_db.process_item(url=url, item=item)
+        id_ads = item_db.save_ad(item)
 
         HarajsComments(self, item_db, id_ads).save_for_harajs(hxs)
 
