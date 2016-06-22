@@ -14,10 +14,13 @@ class HarajsComments(object):
 
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(row_html)
-        _comments_div = soup.findAll('comment comment_div')
+
+        _comments_div = soup.findAll("div", {"class": "comment comment_div"})
 
         for _comment_div in _comments_div:
+
             pass
+            # _comment_div.find
 
         _comments_selector = '//*[@class="comment comment_div"]'
         _comments_div = hxs.xpath(_comments_selector)
