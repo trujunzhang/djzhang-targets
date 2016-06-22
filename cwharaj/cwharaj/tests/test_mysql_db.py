@@ -124,11 +124,11 @@ class MysqlDBTest(unittest.TestCase):
     #     expect = _cities_row['id']
     #     self.assertEqual(expect, _city_id)
 
-    def test_insert_exist_member(self):
-        _memberName = "ابراهيم لطفي"
-        expect = 51
-        _member_id = self._item_db.save_member(Member.get_default(_memberName))
-        self.assertEqual(expect, _member_id)
+    # def test_insert_exist_member(self):
+    #     _memberName = "ابراهيم لطفي"
+    #     expect = 51
+    #     _member_id = self._item_db.save_member(Member.get_default(_memberName))
+    #     self.assertEqual(expect, _member_id)
 
     def test_insert_new_member(self):
         _memberName = "djzhang"
