@@ -33,6 +33,8 @@ found the deleted item count: 0
 
 failure,
 
+mysql: get count on the
+
 special sections, count
 
 no tag_r in the sections, count

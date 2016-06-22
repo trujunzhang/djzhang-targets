@@ -131,19 +131,17 @@ class MysqlDatabase(BaseDatabase):
         if not self.check_exist_by_id(id):
             self.insert_for_history(item)
 
-    def get_count(self, key, value):
+    def _get_count(self, sql, table_name):
         _count = 0
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = """ SELECT 1 FROM {} WHERE {} = '{}'""".format(self.collection_name, key, value)
         try:
             # Execute the SQL command
             _cursor.execute(sql)
             _count = _cursor.rowcount
         except Exception, e:
-            logging.debug(
-                "  mysql: get count for {} on the {} failure, {}".format(key, self.collection_name, e))
+            logging.debug("  mysql: get count on the {} failure, {}".format(table_name, e))
         finally:
             _cursor.close()
             _connection.close()
@@ -160,7 +158,8 @@ class MysqlDatabase(BaseDatabase):
         logging.debug("  2. get the last url's id: {}".format(_id))
 
         # Query the deleted item count, must be equal to 1.
-        count = self.get_count('ID', _id)
+        sql = """ SELECT 1 FROM {} WHERE ID = '{}'""".format(self.collection_name, _id)
+        count = self._get_count(sql, self.collection_name)
         logging.debug("  3. found the deleted item count: {} by ID".format(count))
         if count:
 

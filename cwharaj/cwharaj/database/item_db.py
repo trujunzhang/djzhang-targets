@@ -32,7 +32,17 @@ class ItemDatabase(MysqlDatabase):
             logging.debug("Ad added to database.")
 
     def save_city(self, city):
+        self._check_city_exist(city)
         pass
+
+    def _check_city_exist(self, city):
+        sql = """ SELECT 1 FROM cities WHERE text = '{}'""".format(city.encode('utf-8'))
+        count = self._get_count(sql, "cities")
+
+        if count:
+            return True
+
+        return False
 
     def save_member(self, city):
         pass
