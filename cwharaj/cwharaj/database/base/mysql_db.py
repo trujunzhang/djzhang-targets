@@ -68,7 +68,7 @@ class MysqlDatabase(BaseDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        _cities_id = -1
+        _ads_id = -1
 
         sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
@@ -87,7 +87,7 @@ class MysqlDatabase(BaseDatabase):
             ))
             # Commit your changes in the database
             _connection.commit()
-            _cities_id = _cursor.lastrowid
+            _ads_id = _cursor.lastrowid
         except Exception, e:
             _excep = e
             # Rollback in case there is any error
@@ -96,7 +96,12 @@ class MysqlDatabase(BaseDatabase):
             _cursor.close()
             _connection.close()
 
-        return _cities_id
+        if _excep:
+            logging.debug("  mysql: insert the ads row failure, {}".format(_excep))
+        else:
+            logging.debug("  mysql: insert the ads {} successfully".format(_ads_id))
+
+        return _ads_id
 
     def insert_for_history(self, item):
         _excep = None

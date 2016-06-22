@@ -51,7 +51,7 @@ class ItemDatabase(MysqlDatabase):
             _connection.close()
 
         if _excep:
-            logging.debug("  mysql: insert the cities row {} failure, {}".format(_cities_id, _excep))
+            logging.debug("  mysql: insert the cities row failure, {}".format(_excep))
         else:
             logging.debug("  mysql: insert the cities into the {} successfully".format(_cities_id))
 
@@ -66,6 +66,7 @@ class ItemDatabase(MysqlDatabase):
         _excep = None
         _connection = self.get_client()
         _cursor = _connection.cursor()
+        _members_id = -1
 
         sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
@@ -90,10 +91,9 @@ class ItemDatabase(MysqlDatabase):
             _connection.close()
 
         if _excep:
-            _members_id = -1
-            logging.debug("  mysql: insert the cities row {} failure, {}".format(_members_id, _excep))
+            logging.debug("  mysql: insert the members row failure, {}".format(_excep))
         else:
-            logging.debug("  mysql: insert the cities into the {} successfully".format(_members_id))
+            logging.debug("  mysql: insert the members into the {} successfully".format(_members_id))
 
         return _members_id
 
