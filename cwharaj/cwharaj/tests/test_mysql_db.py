@@ -155,7 +155,7 @@ class MysqlDBTest(unittest.TestCase):
     #     self.assertEqual(expect, _ads_id)
 
     def test_insert_new_ads(self):
-        expect = 27
+        expect = 26
         section_item = SectionItem.get_default()
         item = Ad.get_default(
             section_item=section_item,
