@@ -147,35 +147,35 @@ class MysqlDBTest(unittest.TestCase):
     #     self.assertEqual(expect, _member_id)
 
 
-    def test_insert_exist_ads(self):
-        expect = 21
-        item = Ad()
-        item['ads_title'] = 'جمس سوبربان  دبل  موديل 2012 اللون فضي للبيع'
-        _ads_id = self._item_db.save_ad(item)
-        self.assertEqual(expect, _ads_id)
-
-    # def test_insert_new_ads(self):
-    #     expect = 27
-    #     section_item = SectionItem.get_default()
-    #     item = Ad.get_default(
-    #         section_item=section_item,
-    #         _ads_title="اسكاليد موديل 2016 بسعر جي",
-    #         _city_id='44',
-    #         _ads_contact="123454321",
-    #         _ads_body="test mysql db",
-    #         _image_link="https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1ba3366cd.jpeg,https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1bab49a3b.jpeg,https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1bb0b6ca6.jpeg",
-    #         _His_announcement_id=60,
-    #         _type_ads_or=1, _close_ads=0
-    #     )
-    #
-    #     sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
-    #         item['ads_title'], item['ads_city'], item['ads_tags_R'], item['ads_tags_F'], item['ads_tags_FF'],
-    #         item['ads_contact'], item['ads_body'], item['image_link'], item['type_ads_other_final'],
-    #         item['un_model'], item['status'], item['fixing'], item['Time_added'], item['His_announcement'],
-    #         item['type_ads_or'], item['close_ads'], item['Last_updated_Ad'], item['closecomment'],
-    #         item['fixed_home'], item['fixed_tub'], item['fixed_sec'], item['fixed_sec2'], item['fixed_sec3'],
-    #         item['timer_mazad']
-    #     )
-    #
+    # def test_insert_exist_ads(self):
+    #     expect = 21
+    #     item = Ad()
+    #     item['ads_title'] = 'جمس سوبربان  دبل  موديل 2012 اللون فضي للبيع'
     #     _ads_id = self._item_db.save_ad(item)
     #     self.assertEqual(expect, _ads_id)
+
+    def test_insert_new_ads(self):
+        expect = 27
+        section_item = SectionItem.get_default()
+        item = Ad.get_default(
+            section_item=section_item,
+            _ads_title="اسكاليد موديل 2016 بسعر جي",
+            _city_id='44',
+            _ads_contact="123454321",
+            _ads_body="test mysql db",
+            _image_link="https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1ba3366cd.jpeg,https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1bab49a3b.jpeg,https://img1cdn.haraj.com.sa/userfiles30/2015-07-18/55aa1bb0b6ca6.jpeg",
+            _His_announcement_id=60,
+            _type_ads_or=1, _close_ads=0
+        )
+
+        sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
+            item['ads_title'], item['ads_city'], item['ads_tags_R'], item['ads_tags_F'], item['ads_tags_FF'],
+            item['ads_contact'], item['ads_body'], item['image_link'], item['type_ads_other_final'],
+            item['un_model'], item['status'], item['fixing'], item['Time_added'], item['His_announcement'],
+            item['type_ads_or'], item['close_ads'], item['Last_updated_Ad'], item['closecomment'],
+            item['fixed_home'], item['fixed_tub'], item['fixed_sec'], item['fixed_sec2'], item['fixed_sec3'],
+            item['timer_mazad']
+        )
+
+        _ads_id = self._item_db.save_ad(item)
+        self.assertEqual(expect, _ads_id)

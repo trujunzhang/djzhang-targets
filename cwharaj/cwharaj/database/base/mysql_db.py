@@ -96,14 +96,6 @@ class MysqlDatabase(BaseDatabase):
             _cursor.close()
             _connection.close()
 
-        if _excep:
-            logging.debug(
-                "  mysql: insert the item row, id {}, from {}, failure, {}".format(_excep, item['ID'],
-                                                                                   item['url_from']))
-        else:
-            logging.debug(
-                "  mysql: insert {} into the ads from the {} successfully".format(item['ID'], item['url_from']))
-
         return _cities_id
 
     def insert_for_history(self, item):
