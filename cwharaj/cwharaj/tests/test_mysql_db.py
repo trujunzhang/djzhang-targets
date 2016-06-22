@@ -133,5 +133,15 @@ class MysqlDBTest(unittest.TestCase):
     def test_insert_new_member(self):
         _memberName = "djzhang"
         expect = 55
-        _member_id = self._item_db.save_member(Member.get_default(_memberName))
+        member = Member.get_default(_memberName)
+
+        sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
+            member['username'], member['password'], member['groupnumber'], member['email'],
+            member['timeregister'], member['member_code'], member['documentingmobile'], member['Documentingemail'],
+            member['phone'], member['active'], member['now'], member['Lastactivity'],
+            member['subscribe_1'], member['sendtime'], member['subscribe_2'], member['subscribe_3'],
+            member['The_pay_commission']
+        )
+
+        _member_id = self._item_db.save_member(member)
         self.assertEqual(expect, _member_id)

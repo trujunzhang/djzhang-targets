@@ -152,7 +152,7 @@ class Member(scrapy.Item):
             documentingmobile=0,
             Documentingemail=0,
             phone='',
-            sendtime=0,
+            sendtime='3',
             active='',
             now='',
             Lastactivity=0,
