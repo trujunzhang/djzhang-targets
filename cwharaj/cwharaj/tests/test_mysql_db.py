@@ -184,19 +184,20 @@ class MysqlDBTest(unittest.TestCase):
         def test_insert_exist_comments(self):
             id_ads = 1
             id_His_response = 1
-            item = Comment.get_default(id_ads, id_His_response, "up")
+            comment = Comment.get_default(id_ads, id_His_response, "up")
             expect = 8
-            _ads_id = self._item_db.save_ad(item)
+            _ads_id = self._item_db.save_ad(comment)
             self.assertEqual(expect, _ads_id)
 
         # def test_insert_new_comments(self):
         #     expect = 20
         #     id_ads = 26
         #     id_His_response = 60
-        #     item = Comment.get_default(id_ads, id_His_response, "my comment!")
+        #     comment = Comment.get_default(id_ads, id_His_response, "my comment!")
         #
-        #     sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
+        #     sql = " INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES ('{}','{}','{}','{}')".format(
+        #         comment['id_ads'], comment['id_His_response'], comment['text'], comment['Time_added_co']
         #     )
         #
-        #     _ads_id = self._item_db.save_ad(item)
+        #     _ads_id = self._item_db.save_ad(comment)
         #     self.assertEqual(expect, _ads_id)

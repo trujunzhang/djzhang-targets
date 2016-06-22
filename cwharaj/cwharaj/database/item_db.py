@@ -33,12 +33,13 @@ class ItemDatabase(MysqlDatabase):
         _cursor = _connection.cursor()
         _comment_id = -1
 
-        sql = """INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES ('{}')""".format(
-            comment['text'])
+        sql = """INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES (%s,%s,%s,%s)"""
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql)
+            _cursor.execute(sql, (
+                comment['id_ads'], comment['id_His_response'], comment['text'], comment['Time_added_co']
+            ))
             # Commit your changes in the database
             _connection.commit()
             # get the "id" after INSERT into MySQL database
