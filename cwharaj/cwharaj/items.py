@@ -134,7 +134,7 @@ class Comment(scrapy.Item):
 
     @classmethod
     def get_default(self, id_ads, id_His_response, text):
-        return City(
+        return Comment(
             id_ads=id_ads,
             id_His_response=id_His_response,
             text=text,

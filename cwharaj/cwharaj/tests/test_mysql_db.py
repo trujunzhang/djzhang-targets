@@ -180,14 +180,13 @@ class MysqlDBTest(unittest.TestCase):
         #     _ads_id = self._item_db.save_ad(item)
         #     self.assertEqual(expect, _ads_id)
 
-
-        def test_insert_exist_comments(self):
-            id_ads = 1
-            id_His_response = 1
-            comment = Comment.get_default(id_ads, id_His_response, "up")
-            expect = 8
-            _ads_id = self._item_db.save_comment(comment)
-            self.assertEqual(expect, _ads_id)
+    def test_insert_exist_comments(self):
+        id_ads = 1
+        id_His_response = 1
+        comment = Comment.get_default(id_ads, id_His_response, "up")
+        expect = 8
+        _ads_id = self._item_db.save_comment(comment)
+        self.assertEqual(expect, _ads_id)
 
         # def test_insert_new_comments(self):
         #     expect = 20

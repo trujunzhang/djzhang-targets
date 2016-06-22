@@ -54,9 +54,9 @@ class ItemDatabase(MysqlDatabase):
             _connection.close()
 
         if _excep:
-            logging.debug("  mysql: insert the cities row failure, {}".format(_excep))
+            logging.debug("  mysql: insert the comments row failure, {}".format(_excep))
         else:
-            logging.debug("  mysql: insert the cities into the {} successfully".format(_comment_id))
+            logging.debug("  mysql: insert the comments into the {} successfully".format(_comment_id))
 
         return _comment_id
 
