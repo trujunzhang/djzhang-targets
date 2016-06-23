@@ -53,7 +53,7 @@ class TagItem(object):
 
         return _tag_r_index
 
-    def parse_common_tag_item(self):
+    def parse_year_tag(self):
         for x in xrange(self.sections_count - 1, -1, -1):
             _split = self.sections[x].split(' ')
             _pre_x = x - 1

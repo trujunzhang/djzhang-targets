@@ -15,22 +15,27 @@ class HarajsSection(object):
         self.tag_item = TagItem(sections, item_db)
 
     def get_section_item(self):
-        if len(self.sections) >= 4:
+        if len(self.sections) == 2:
+            self._get_tag_r(self.sections[0])
+            self._get_tag_f(self.sections[1])
+
+        elif len(self.sections) == 3:
+            self.tag_item.parse_year_tag()
+
+            _tag_r_index = self.tag_item.get_index_tag_r()
+            self._get_tag_r(self.sections[_tag_r_index])
+
+            _tag_f_index = self.tag_item.get_index_tag_f()
+            self._get_tag_f(self.sections[_tag_f_index])
+
+            # """
+            # finally,generate section item.
+            # """
+            self.section_item.set_item(self.tag_item)
+
+        elif len(self.sections) >= 4:
             logging.debug("special sections, count: {}".format(len(self.sections)))
             return None
-
-        self.tag_item.parse_common_tag_item()
-
-        _tag_r_index = self.tag_item.get_index_tag_r()
-        self._get_tag_r(self.sections[_tag_r_index])
-
-        _tag_f_index = self.tag_item.get_index_tag_f()
-        self._get_tag_f(self.sections[_tag_f_index])
-
-        # """
-        # finally,generate section item.
-        # """
-        self.section_item.set_item(self.tag_item)
 
         return self.section_item
 

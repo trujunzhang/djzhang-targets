@@ -12,7 +12,7 @@ class SectionDataxxx:
     sections = [
         'اسكاليدا',
         'اسكاليدا 2014',
-        'كاديلاك' # tags_r
+        'كاديلاك'  # tags_r
     ]
 
     expect = {
@@ -23,7 +23,7 @@ class SectionDataxxx:
     }
 
 
-class SectionDatayyy:
+class SectionData:
     url_from = ''
     sections = [
         "تويوتا",  # tags_r
@@ -33,13 +33,13 @@ class SectionDatayyy:
 
     expect = {
         "tags_f": 13,
-        "tags_ff": 60,
+        "tags_ff": '60',
         "tags_r": 1,
         "other_final": 'السيارات',  #
     }
 
 
-class SectionData:
+class SectionDatazzz:
     url_from = 'https://haraj.com.sa/1114186091/الرياض/'
     sections = [
         "ساعات",
@@ -47,9 +47,9 @@ class SectionData:
     ]
 
     expect = {
-        "tags_f": 13,
-        "tags_ff": 60,
-        "tags_r": 1,
+        "tags_f": 512,
+        "tags_ff": '',
+        "tags_r": 502,
         "other_final": 'السيارات',  #
     }
 
