@@ -17,7 +17,8 @@ class HarajsSection(object):
     def get_section_item(self):
         if len(self.sections) == 2:
             """
-            the left of the browser is tags_r
+            the left of the browser is tags_r,
+            so index 1 is tags_r's name.
             """
             self._get_tag_r(self.sections[1])
             self._get_tag_f(self.sections[0])
