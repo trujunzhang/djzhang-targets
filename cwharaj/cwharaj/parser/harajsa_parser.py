@@ -63,6 +63,7 @@ class HarajSaParse(BaseParser):
         # "_published_data' is the same as '_time_added'
         # _time_added = '12345678901'  # ???
         _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
+
         # _last_updated_ad = '23456789012'  # ???
 
         # ad_low
@@ -111,6 +112,8 @@ class HarajSaParse(BaseParser):
         id_ads = item_db.save_ad(item)
 
         HarajsComments(self, item_db, id_ads).save_for_harajs(hxs)
+
+        return item
 
     def get_section(self, section_panel):
         from BeautifulSoup import BeautifulSoup
