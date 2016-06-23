@@ -39,11 +39,28 @@ class SectionDatayyy:
     }
 
 
-class SectionData:
+class SectionDatazzz:
     url_from = 'https://haraj.com.sa/1114186091/الرياض/'
     sections = [
         "ساعات",
         "مستلزمات شخصية"  # tags_r
+    ]
+
+    expect = {
+        "tags_f": 512,
+        "tags_ff": '',
+        "tags_r": 502,
+        "other_final": 'عام',  #
+    }
+
+
+class SectionData:
+    url_from = 'https://haraj.com.sa/1113412781/مستودعات_ومصانع_للايجار_او_للبيع_/'
+    sections = [
+        "عقار حي المشاعل في الرياض",
+        "محلات للايجار",
+        "محلات للايجار في الرياض",
+        "محلات للايجار في حي المشاعل في الرياض"  # tags_r
     ]
 
     expect = {
