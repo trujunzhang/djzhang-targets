@@ -16,8 +16,8 @@ class HarajsSection(object):
 
     def get_section_item(self):
         if len(self.sections) == 2:
-            self._get_tag_r(self.sections[0])
-            self._get_tag_f(self.sections[1])
+            self._get_tag_r(self.sections[1])
+            self._get_tag_f(self.sections[0])
 
         elif len(self.sections) == 3:
             self.tag_item.parse_year_tag()
