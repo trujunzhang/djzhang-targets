@@ -4,6 +4,10 @@ import logging
 
 
 class TagItem(object):
+    """
+    tag_F belong to tag_R.
+
+    """
     tag_R = ""
     tag_F = ""
     tag_FF = ""
