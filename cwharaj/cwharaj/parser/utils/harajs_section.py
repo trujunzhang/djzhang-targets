@@ -9,8 +9,6 @@ class HarajsSection(object):
     def __init__(self, sections, item_db):
         super(HarajsSection, self).__init__()
         self.sections = sections
-        logging.debug("sections: {}".format(sections))
-
         self.item_db = item_db
         self.section_item = SectionItem(self.item_db)
         self.tag_item = TagItem(sections, item_db)
