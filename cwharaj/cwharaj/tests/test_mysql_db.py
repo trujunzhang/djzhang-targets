@@ -162,17 +162,17 @@ class MysqlDBTest(unittest.TestCase):
     #     _comment_id = self._item_db.save_comment(comment)
     #     self.assertEqual(expect, _comment_id)
 
-    def test_insert_exist_section(self):
-        section = Section.get_default('خدمات اخرى')
-        expect = 500
+    # def test_insert_exist_section(self):
+    #     section = Section.get_default('خدمات اخرى')
+    #     expect = 500
+    #     section_item = self._item_db.save_section(section)
+    #     self.assertEqual(expect, section_item['id'])
+
+    def test_insert_new_section(self):
+        section = Section.get_default('ساعات', 502)
+        sql = " INSERT INTO section (name, type, Documentto, Contents, linkmodel) VALUES ('{}','{}','{}','{}','{}')".format(
+            section['name'], section['type'], section['Documentto'], section['Contents'], section['linkmodel']
+        )
+        expect = 509
         section_item = self._item_db.save_section(section)
         self.assertEqual(expect, section_item['id'])
-
-        # def test_insert_new_section(self):
-        #     section = Section.get_default('خدمات اخرى')
-        #     sql = " INSERT INTO section (name, type, Documentto, Contents, linkmodel) VALUES ('{}','{}','{}','{}','{}')".format(
-        #         section['name'], section['type'], section['Documentto'], section['Contents'], section['linkmodel']
-        #     )
-        #     expect = 509
-        #     _section_id = self._item_db.save_section(section)
-        #     self.assertEqual(expect, _section_id)

@@ -140,7 +140,7 @@ class Section(scrapy.Item):
         return Section(
             name=_name,
             type='فرعي',  # ???
-            Documentto='',  # ???
+            Documentto=_documentto,
             Contents='عام',  # ???
             linkmodel='yes'
         )
