@@ -1,4 +1,4 @@
-from cwharaj.items import Ad, CacheItem, WebsiteTypes
+from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
 from cwharaj.parser.base_parser import BaseParser
 
 import time
@@ -54,14 +54,14 @@ class MstamlParse(BaseParser):
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 
         _time = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
-        _title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
+        _ads_title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
         _pictures = self.get_images_in_selector(hxs, '//noscript')
         _subject = ""
-        _contact = ""
+        _memberName = ""
         _number = self.get_value_from_response(hxs, '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
 
-        _city = self.get_value_from_response(hxs,
+        _ads_city = self.get_value_from_response(hxs,
                                              '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
         _address = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
 
@@ -71,26 +71,29 @@ class MstamlParse(BaseParser):
         _section = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
 
         # Replace "\n","\r"
-        _city = _city.replace("\n", "").replace("\r", "").strip()
+        _ads_city = _ads_city.replace("\n", "").replace("\r", "").strip()
 
-        item = Ad(
-            url=url,
-            ID=_ID,
-            city=_city,
-            time=_time,
-            title=_title,
-            pictures=_pictures,
-            subject=_subject,
-            contact=_contact,
-            number=_number,
+        # ====
+        # Save to relative database
+        # ====
+        _city_id = item_db.save_city(City.get_default(_ads_city))
 
-            address=_address,
-            memberName=_memberName,
-            description=_description,
-            section=_section,
+        _His_announcement_id = item_db.save_member(Member.get_default(_memberName))
 
-            url_from=WebsiteTypes.mstaml.value
+        item = Ad.get_default(
+            section_item=_section_item,
+            _ads_title=_ads_title,
+            _city_id=_city_id,
+            _ads_contact=_ads_contact,
+            _ads_body=_ads_body,
+            _image_link=_image_link,
+            _His_announcement_id=_His_announcement_id,
+            _type_ads_or=1, _close_ads=0
         )
+
+        id_ads = item_db.save_ad(item)
+
+        HarajsComments(self, item_db, id_ads).save_for_harajs(hxs)
 
         return item
 
