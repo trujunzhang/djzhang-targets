@@ -133,7 +133,11 @@ class ItemDatabase(MysqlDatabase):
         return _members_id
 
     def save_section(self, section):
-        pass
+        item = self.get_section(section['name'])
+        if item:
+            return item
+
+
 
     def get_section(self, name):
         _excep = None

@@ -119,6 +119,10 @@ class Ad(scrapy.Item):
 
 # CREATE TABLE IF NOT EXISTS `section`, not "sectionoadvertise"
 class Section(scrapy.Item):
+    # It is so important.
+    # The variable is the section(table).id,
+    id = scrapy.Field()
+
     name = scrapy.Field()
     type = scrapy.Field()
     Documentto = scrapy.Field()
