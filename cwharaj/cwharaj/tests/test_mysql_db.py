@@ -168,11 +168,11 @@ class MysqlDBTest(unittest.TestCase):
         _section_id = self._item_db.save_section(section)
         self.assertEqual(expect, _section_id)
 
-    def test_insert_new_section(self):
-        section = Section.get_default('خدمات اخرى')
-        sql = " INSERT INTO section (name, type, Documentto, Contents, linkmodel) VALUES ('{}','{}','{}','{}','{}')".format(
-            section['name'], section['type'], section['Documentto'], section['Contents'], section['linkmodel']
-        )
-        expect = 509
-        _section_id = self._item_db.save_section(section)
-        self.assertEqual(expect, _section_id)
+        # def test_insert_new_section(self):
+        #     section = Section.get_default('خدمات اخرى')
+        #     sql = " INSERT INTO section (name, type, Documentto, Contents, linkmodel) VALUES ('{}','{}','{}','{}','{}')".format(
+        #         section['name'], section['type'], section['Documentto'], section['Contents'], section['linkmodel']
+        #     )
+        #     expect = 509
+        #     _section_id = self._item_db.save_section(section)
+        #     self.assertEqual(expect, _section_id)
