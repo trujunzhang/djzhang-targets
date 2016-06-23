@@ -7,6 +7,7 @@ class TagItem(object):
     """
     tag_F belong to tag_R.
 
+    Right of the section (Show on the left of the browser) is the top level category.
     """
     tag_R = ""
     tag_F = ""
