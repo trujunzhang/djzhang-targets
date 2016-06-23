@@ -132,6 +132,9 @@ class ItemDatabase(MysqlDatabase):
 
         return _members_id
 
+    def save_section(self, section):
+        pass
+
     def get_section(self, name):
         _excep = None
         _connection = self.get_client()

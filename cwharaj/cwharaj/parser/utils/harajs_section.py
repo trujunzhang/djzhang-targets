@@ -1,6 +1,7 @@
 # coding=utf-8
 import logging
 
+from cwharaj.items import Section
 from cwharaj.parser.utils.harajs_tag_item import TagItem
 from cwharaj.parser.utils.section_item import SectionItem
 
@@ -33,11 +34,11 @@ class HarajsSection(object):
 
         return self.section_item
 
-    def _get_tag_r(self, name):
-        _item = self.item_db.get_section(name)
+    def _get_tag_r(self, _name):
+        _item = self.item_db.save_section(Section.get_default(_name))
         self.tag_item.tag_R = _item['id']
 
-    def _get_tag_f(self, name):
-        _item = self.item_db.get_section(name)
+    def _get_tag_f(self, _name):
+        _item = self.item_db.save_section(Section.get_default(_name, self.tag_item.tag_R))
         self.tag_item.tag_F = _item['id']
         self.section_item.type_ads_other_final = _item['Contents']
