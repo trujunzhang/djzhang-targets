@@ -21,8 +21,9 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
         # fix parsing time
         # 'https://haraj.com.sa/1113956653/LG_G4_/'
         # Section
-        # 'https://haraj.com.sa/1114020535/%D8%A7%D9%84%D9%85%D8%AD%D9%81%D8%B8%D8%A9_%D8%A7%D9%84%D9%85%D8%AB%D8%A7%D9%84%D9%8A%D8%A9/'
-        'https://haraj.com.sa/1113955445/%D9%84%D9%84%D8%A8%D9%8A%D8%B9_%D8%A7%D8%B3%D9%83%D8%A7%D9%84%D9%8A%D8%AF_%D9%85%D9%88%D8%AF%D9%8A%D9%84_2014_%D8%A8%D8%B3%D8%B9%D8%B1_%D8%AC%D9%8A%D8%AF/'
+        # 'https://haraj.com.sa/1114020535/المحفظة_المثالية/'
+        # 'https://haraj.com.sa/1113955445/للبيع_اسكاليد_موديل_2014_بسعر_جيد/'
+        'https://haraj.com.sa/1114186091/الرياض/'
     ]
 
     def __init__(self, name=None, **kwargs):
