@@ -168,7 +168,6 @@ class HarajsSpider(scrapy.Spider):
     # ====================================================================================
     def parse_page_from_harajsa(self, response):
         item = self._harajsa_Parse.parse(response.url, response, self._item_db)
-        yield item
 
         self._history_db.process_item(response.url, id=item["ID"])
 

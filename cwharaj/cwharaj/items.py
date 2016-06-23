@@ -57,6 +57,10 @@ class AdScrapeItem(scrapy.Item):
 
 
 class Ad(scrapy.Item):
+    # The variable is not contained on the ads(table),
+    # Just store the id of the ads(table).
+    id_ads = scrapy.Field()
+
     ads_title = scrapy.Field()
     ads_city = scrapy.Field()
     ads_tags_R = scrapy.Field()
