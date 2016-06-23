@@ -173,6 +173,6 @@ class MysqlDBTest(unittest.TestCase):
         sql = " INSERT INTO section (name, type, Documentto, Contents, linkmodel) VALUES ('{}','{}','{}','{}','{}')".format(
             section['name'], section['type'], section['Documentto'], section['Contents'], section['linkmodel']
         )
-        expect = 509
+        expect = 512
         section_item = self._item_db.save_section(section)
         self.assertEqual(expect, section_item['id'])
