@@ -17,10 +17,12 @@ class ItemDatabase(MysqlDatabase):
     def save_ad(self, item):
         sql = """ SELECT id FROM ads WHERE ads_title = '{}'""".format(item['ads_title'])
         _ads_id = self._get_row_id(sql, "ads")
-        if _ads_id:
-            return _ads_id
+        if _ads_id == "":
+            _ads_id = self.insert_for_item(item)
 
-        return self.insert_for_item(item)
+        item['id_ads'] = _ads_id
+
+        return _ads_id
 
     def save_comment(self, comment):
         sql = """ SELECT id FROM comments WHERE id_ads = '{}' and id_His_response = '{}' and text = '{}'""".format(
