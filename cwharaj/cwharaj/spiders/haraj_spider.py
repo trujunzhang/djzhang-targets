@@ -148,7 +148,7 @@ class HarajsSpider(scrapy.Spider):
         item = self._mstaml_Parse.parse(response.url, response, self._item_db)
         yield item
 
-        self._history_db.process_item(response.url, id=item["ID"])
+        self._history_db.process_item(response.url, id=item["id_ads"])
 
         _last = response.url
         _url_from = WebsiteTypes.mstaml.value
@@ -170,7 +170,7 @@ class HarajsSpider(scrapy.Spider):
     def parse_page_from_harajsa(self, response):
         item = self._harajsa_Parse.parse(response.url, response, self._item_db)
 
-        self._history_db.process_item(response.url, id=item["ID"])
+        self._history_db.process_item(response.url, id=item["id_ads"])
 
         _last = response.url
         _url_from = WebsiteTypes.harajsa.value
