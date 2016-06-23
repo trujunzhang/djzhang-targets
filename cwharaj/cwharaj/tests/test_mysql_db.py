@@ -169,13 +169,10 @@ class MysqlDBTest(unittest.TestCase):
         self.assertEqual(expect, _section_id)
 
     def test_insert_new_section(self):
-        id_ads = 26
-        id_His_response = 60
-        comment = Comment.get_default(id_ads, id_His_response, "my first comment!")
-
-        sql = " INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES ('{}','{}','{}','{}')".format(
-            comment['id_ads'], comment['id_His_response'], comment['text'], comment['Time_added_co']
+        section = Section.get_default('خدمات اخرى')
+        sql = " INSERT INTO section (name, type, Documentto, Contents, linkmodel) VALUES ('{}','{}','{}','{}','{}')".format(
+            section['name'], section['type'], section['Documentto'], section['Contents'], section['linkmodel']
         )
-        expect = 20
-        _comment_id = self._item_db.save_comment(comment)
-        self.assertEqual(expect, _comment_id)
+        expect = 509
+        _section_id = self._item_db.save_section(section)
+        self.assertEqual(expect, _section_id)
