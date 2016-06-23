@@ -1,13 +1,8 @@
 # coding=utf-8
 import logging
-from datetime import datetime
 
-from scrapy.exceptions import DropItem
-
-from cwharaj.database.base.dispatch_db import DispatchDatabase
 from cwharaj.database.base.mysql_db import MysqlDatabase
 from cwharaj.items import Section
-from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class ItemDatabase(MysqlDatabase):

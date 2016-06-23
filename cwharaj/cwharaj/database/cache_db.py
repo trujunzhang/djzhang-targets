@@ -1,6 +1,6 @@
 import logging
 from datetime import datetime
-from cwharaj.database.base.dispatch_db import DispatchDatabase
+
 from cwharaj.database.base.mysql_db import MysqlDatabase
 from cwharaj.utils.crawl_utils import CrawlUtils
 
@@ -9,7 +9,7 @@ class CacheDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(CacheDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
-    def process_item(self, url, item=None, index=0, id=-1):
+    def process_item(self, url, item=None, index=0):
         logging.debug("process the cache item at position: {}".format(index - 1))
 
         guid = CrawlUtils.get_guid(url)

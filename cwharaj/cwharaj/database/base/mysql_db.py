@@ -103,34 +103,6 @@ class MysqlDatabase(BaseDatabase):
 
         return _ads_id
 
-    def insert_for_history(self, item):
-        _excep = None
-        _connection = self.get_client()
-        _cursor = _connection.cursor()
-
-        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, ID) VALUES (%s,%s,%s,%s)"
-
-        try:
-            # Execute the SQL command
-            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID']))
-            # Commit your changes in the database
-            _connection.commit()
-        except Exception, e:
-            _excep = e
-            # Rollback in case there is any error
-            _connection.rollback()
-        finally:
-            _cursor.close()
-            _connection.close()
-
-        if _excep:
-            logging.debug("  mysql: insert the history row {} failure, {}".format(item['ID'], _excep))
-        else:
-            logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
-
-    def update_for_history(self, id, item):
-        if not self.check_exist_by_id(id):
-            self.insert_for_history(item)
 
     def _get_row_id(self, sql, table_name):
         _connection = self.get_client()
