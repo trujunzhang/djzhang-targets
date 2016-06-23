@@ -10,7 +10,7 @@ class HistoryDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(HistoryDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
-    def process_item(self, url, index=0, id=-1):
+    def process_item(self, url, id):
         item = HistoryItem(
             url=url,
             guid=CrawlUtils.get_guid(url),

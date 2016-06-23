@@ -45,10 +45,8 @@ class HistoryItem(scrapy.Item):
     guid = scrapy.Field()
     created_at = scrapy.Field()
 
-    # unique row id
+    # the same as ads(table).id_ads
     ID = scrapy.Field()
-    # unique ads id
-    id_ads = scrapy.Field()
 
 
 class AdScrapeItem(scrapy.Item):
