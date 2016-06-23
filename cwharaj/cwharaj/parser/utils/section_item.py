@@ -20,6 +20,10 @@ class SectionItem(object):
 
     @classmethod
     def get_default(self):
+        """
+        only for unit test.
+        :return:
+        """
         item = SectionItem()
         item.ads_tags_R = 1
         item.ads_tags_F = 13
