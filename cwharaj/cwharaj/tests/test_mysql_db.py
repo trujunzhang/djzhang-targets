@@ -165,8 +165,8 @@ class MysqlDBTest(unittest.TestCase):
     def test_insert_exist_section(self):
         section = Section.get_default('خدمات اخرى')
         expect = 500
-        _section_id = self._item_db.save_section(section)
-        self.assertEqual(expect, _section_id)
+        section_item = self._item_db.save_section(section)
+        self.assertEqual(expect, section_item['id'])
 
         # def test_insert_new_section(self):
         #     section = Section.get_default('خدمات اخرى')
