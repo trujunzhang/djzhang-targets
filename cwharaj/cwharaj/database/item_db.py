@@ -137,7 +137,32 @@ class ItemDatabase(MysqlDatabase):
         if item:
             return item
 
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+        _members_id = -1
 
+        sql = " INSERT INTO " + "section" + " (name, type, Documentto, Contents, linkmodel) VALUES (%s,%s,%s,%s,%s)"
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql, (
+                member['username'], member['password'], member['groupnumber'], member['email'], member['timeregister'],
+                member['member_code'], member['documentingmobile'], member['Documentingemail'], member['phone'],
+                member['sendtime'], member['active'], member['now'], member['Lastactivity'], member['subscribe_1'],
+                member['subscribe_2'], member['subscribe_3'], member['The_pay_commission']
+            ))
+            # Commit your changes in the database
+            _connection.commit()
+            # get the "id" after INSERT into MySQL database
+            _members_id = _cursor.lastrowid
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
 
     def get_section(self, name):
         _excep = None
