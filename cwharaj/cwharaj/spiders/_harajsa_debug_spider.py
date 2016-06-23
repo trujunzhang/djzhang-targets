@@ -58,5 +58,5 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
     def parse(self, response):
         # self._harajsa_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         item = self._harajsa_Parse.parse(response.url, response, self._item_db)
-        # yield item
+        _ids_id = item["id_ads"]
         # _row = self._cache_db.get_last_row("")

@@ -80,6 +80,10 @@ class HarajSaParse(BaseParser):
         section_mgr = HarajsSection(_sections, item_db)
         _section_item = section_mgr.get_section_item()
 
+        # TODO: djzhang
+        if len(_sections) > 3:
+            return {"id_ads": _ID}
+
         # comment comment_div
         _subject = ""
         _address = ""  # not found
