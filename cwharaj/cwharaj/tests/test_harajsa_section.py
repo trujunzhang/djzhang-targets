@@ -23,12 +23,27 @@ class SectionDataxxx:
     }
 
 
-class SectionData:
+class SectionDatayyy:
     url_from = ''
     sections = [
         "تويوتا",
         "كامري",
         "كامري 2016"
+    ]
+
+    expect = {
+        "tags_f": 13,
+        "tags_ff": 60,
+        "tags_r": 1,
+        "other_final": 'السيارات',  #
+    }
+
+
+class SectionData:
+    url_from = 'https://haraj.com.sa/1114186091/الرياض/'
+    sections = [
+        "ساعات",
+        "مستلزمات شخصية"
     ]
 
     expect = {
