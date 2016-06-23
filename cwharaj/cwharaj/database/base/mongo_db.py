@@ -1,7 +1,8 @@
+import logging
+
 import pymongo
 
 from cwharaj.database.base.base_db import BaseDatabase
-import logging
 
 
 class MongoDatabase(BaseDatabase):

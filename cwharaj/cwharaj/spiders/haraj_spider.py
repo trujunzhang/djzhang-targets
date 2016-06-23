@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-import scrapy
 import time
+
+import scrapy
 
 from cwharaj.items import WebsiteTypes
 

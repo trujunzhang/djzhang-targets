@@ -1,7 +1,8 @@
-import MySQLdb
-from cwharaj.database.base.base_db import BaseDatabase
 import logging
 
+import MySQLdb
+
+from cwharaj.database.base.base_db import BaseDatabase
 from cwharaj.items import CacheItem
 
 
@@ -102,7 +103,6 @@ class MysqlDatabase(BaseDatabase):
             logging.debug("  mysql: insert the ads {} successfully".format(_ads_id))
 
         return _ads_id
-
 
     def _get_row_id(self, sql, table_name):
         _connection = self.get_client()

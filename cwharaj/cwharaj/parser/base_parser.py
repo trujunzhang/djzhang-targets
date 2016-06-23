@@ -1,5 +1,4 @@
 import urlparse
-from BeautifulSoup import BeautifulSoup
 
 
 class BaseParser(object):

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from hashlib import md5
 import logging
+from hashlib import md5
 
 
 class CrawlUtils(object):

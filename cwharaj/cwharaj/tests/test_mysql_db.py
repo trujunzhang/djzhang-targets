@@ -1,15 +1,13 @@
 # -*- coding: utf-8 -*-
 
-import warnings
 import unittest
-import time
+from datetime import datetime
 
+from cwharaj import settings
 from cwharaj.database_factory import DatabaseFactory, CollectionTypes
+from cwharaj.items import CacheItem, HistoryItem, Ad, WebsiteTypes, City, Member, Comment
 from cwharaj.parser.utils.section_item import SectionItem
 from cwharaj.utils.crawl_utils import CrawlUtils
-from cwharaj.items import CacheItem, HistoryItem, Ad, WebsiteTypes, City, Member, Comment
-from datetime import datetime
-from cwharaj import settings
 
 
 class MysqlDBTest(unittest.TestCase):

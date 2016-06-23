@@ -1,5 +1,4 @@
 from scrapy import cmdline
-import os
 
 
 class Crawler:

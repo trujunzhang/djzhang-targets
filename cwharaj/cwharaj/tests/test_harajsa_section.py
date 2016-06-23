@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import warnings
 import unittest
 
 from cwharaj import settings

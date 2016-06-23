@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import warnings
 import unittest
-
-from cwharaj.parser.base_parser import BaseParser
-from cwharaj.parser.harajsa_parser import HarajSaParse
 
 
 class BaseParseTest(unittest.TestCase):

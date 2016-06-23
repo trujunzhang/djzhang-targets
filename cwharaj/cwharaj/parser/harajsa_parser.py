@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
+import logging
+
 from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
 from cwharaj.parser.base_parser import BaseParser
-
-import time
-import logging
-from datetime import datetime
-
 from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
 

@@ -1,7 +1,8 @@
 # coding=utf-8
+import logging
+
 from cwharaj.parser.utils.harajs_tag_item import TagItem
 from cwharaj.parser.utils.section_item import SectionItem
-import logging
 
 
 class HarajsSection(object):

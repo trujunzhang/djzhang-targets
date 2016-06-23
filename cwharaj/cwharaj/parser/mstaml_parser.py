@@ -1,8 +1,7 @@
+import logging
+
 from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
 from cwharaj.parser.base_parser import BaseParser
-
-import time
-import logging
 
 
 class MstamlParse(BaseParser):
