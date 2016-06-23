@@ -12,7 +12,7 @@ class SectionDataxxx:
     sections = [
         'اسكاليدا',
         'اسكاليدا 2014',
-        'كاديلاك'
+        'كاديلاك' # tags_r
     ]
 
     expect = {
@@ -26,7 +26,7 @@ class SectionDataxxx:
 class SectionDatayyy:
     url_from = ''
     sections = [
-        "تويوتا",
+        "تويوتا",  # tags_r
         "كامري",
         "كامري 2016"
     ]
@@ -43,7 +43,7 @@ class SectionData:
     url_from = 'https://haraj.com.sa/1114186091/الرياض/'
     sections = [
         "ساعات",
-        "مستلزمات شخصية"
+        "مستلزمات شخصية"  # tags_r
     ]
 
     expect = {
