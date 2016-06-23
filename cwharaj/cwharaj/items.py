@@ -119,14 +119,27 @@ class Ad(scrapy.Item):
 
 # CREATE TABLE IF NOT EXISTS `section`, not "sectionoadvertise"
 class Section(scrapy.Item):
-    # unique row id
-    id = scrapy.Field()
-
     name = scrapy.Field()
     type = scrapy.Field()
     Documentto = scrapy.Field()
     Contents = scrapy.Field()
     linkmodel = scrapy.Field()
+
+    @classmethod
+    def get_default(self, _name, _documentto=""):
+        """
+        Get the default Section instance.
+        :param _name: section's name
+        :param _documentto: beloing to other section
+        :return:
+        """
+        return Section(
+            name=_name,
+            type='فرعي',  # ???
+            Documentto='',  # ???
+            Contents='عام',  # ???
+            linkmodel='yes'
+        )
 
 
 # CREATE TABLE IF NOT EXISTS `comments`, not "comment"

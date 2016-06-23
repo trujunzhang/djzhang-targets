@@ -18,24 +18,13 @@ class HarajsSection(object):
             logging.debug("special sections, count: {}".format(len(self.sections)))
             return None
 
-        # """
-        # length is only 1, that the section is tag_R.
-        # """
-        # if len(self.sections) == 1:
-        #     self._get_tag_r(self.sections[0])
-        #
-        # """
-        # length is 3 or 2.
-        # """
         self.tag_item.parse_common_tag_item()
 
         _tag_r_index = self.tag_item.get_index_tag_r()
-        if _tag_r_index != -1:
-            self._get_tag_r(self.sections[_tag_r_index])
+        self._get_tag_r(self.sections[_tag_r_index])
 
         _tag_f_index = self.tag_item.get_index_tag_f()
-        if _tag_f_index != -1:
-            self._get_tag_f(self.sections[_tag_f_index])
+        self._get_tag_f(self.sections[_tag_f_index])
 
         # """
         # finally,generate section item.
