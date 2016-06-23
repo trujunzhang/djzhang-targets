@@ -50,7 +50,7 @@ class SectionData:
         "tags_f": 512,
         "tags_ff": '',
         "tags_r": 502,
-        "other_final": 'السيارات',  #
+        "other_final": 'عام',  #
     }
 
 

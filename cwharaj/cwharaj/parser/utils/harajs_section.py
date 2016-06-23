@@ -32,14 +32,15 @@ class HarajsSection(object):
             _tag_f_index = self.tag_item.get_index_tag_f()
             self._get_tag_f(self.sections[_tag_f_index])
 
-            # """
-            # finally,generate section item.
-            # """
-            self.section_item.set_item(self.tag_item)
 
         elif len(self.sections) >= 4:
             logging.debug("special sections, count: {}".format(len(self.sections)))
             return None
+
+        # """
+        # finally,generate section item.
+        # """
+        self.section_item.set_item(self.tag_item)
 
         return self.section_item
 
