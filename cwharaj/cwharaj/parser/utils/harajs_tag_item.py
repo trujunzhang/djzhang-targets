@@ -73,6 +73,9 @@ class TagItem(object):
             return None
 
         _year_index = self._get_year_index(_split)
+        if not _year_index:
+            return None
+
         _name_index = 0
         if _year_index == 0:
             _name_index = 1
