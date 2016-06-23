@@ -98,7 +98,7 @@ class HarajsSpider(scrapy.Spider):
                 yield item
 
                 self.phone_dict.remove_row(_id)
-                self._history_db.process_item(response.url, id=_id)
+                self._history_db.save_history(response.url, id=_id)
 
             _last = response.url
             _url_from = WebsiteTypes.opensooq.value
@@ -123,7 +123,7 @@ class HarajsSpider(scrapy.Spider):
             item["number"] = _phone_number_base64
             yield item
 
-            self._history_db.process_item(response.url, id=_id)
+            self._history_db.save_history(response.url, id=_id)
 
         # Specially, the last url is not an ajax url,
         # We must get the url from the item.
@@ -148,7 +148,7 @@ class HarajsSpider(scrapy.Spider):
         item = self._mstaml_Parse.parse(response.url, response, self._item_db)
         yield item
 
-        self._history_db.process_item(response.url, id=item["id_ads"])
+        self._history_db.save_history(url=response.url, id=item["id_ads"])
 
         _last = response.url
         _url_from = WebsiteTypes.mstaml.value
@@ -170,7 +170,7 @@ class HarajsSpider(scrapy.Spider):
     def parse_page_from_harajsa(self, response):
         item = self._harajsa_Parse.parse(response.url, response, self._item_db)
 
-        self._history_db.process_item(response.url, id=item["id_ads"])
+        self._history_db.save_history(url=response.url, id=item["id_ads"])
 
         _last = response.url
         _url_from = WebsiteTypes.harajsa.value

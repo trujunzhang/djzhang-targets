@@ -87,4 +87,4 @@ class OpensooqDebugSpider(scrapy.Spider):
             item["number"] = _phone_number_base64
             yield item
 
-            self._history_db.process_item(response.url, id=_id)
+            # self._history_db.process_item(response.url, id=_id)
