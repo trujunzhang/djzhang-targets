@@ -21,6 +21,10 @@ class HistoryDatabase(MysqlDatabase):
         self.update_for_history(id, item)
         logging.debug("HarajHistory added to database!")
 
+    def update_for_history(self, id, item):
+        if not self.check_exist_by_id(id):
+            self.insert_for_history(item)
+
     def insert_for_history(self, item):
         _excep = None
         _connection = self.get_client()
@@ -45,7 +49,3 @@ class HistoryDatabase(MysqlDatabase):
             logging.debug("  mysql: insert the history row {} failure, {}".format(item['ID'], _excep))
         else:
             logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
-
-    def update_for_history(self, id, item):
-        if not self.check_exist_by_id(id):
-            self.insert_for_history(item)
