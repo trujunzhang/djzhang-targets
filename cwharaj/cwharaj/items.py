@@ -7,6 +7,7 @@
 
 import scrapy
 from enum import Enum
+import time
 
 
 class WebsiteTypes(Enum):
@@ -102,11 +103,11 @@ class Ad(scrapy.Item):
             un_model=section_item.un_model,
             status=1,
             fixing=0,
-            Time_added=12345,  # TIME
+            Time_added=int(time.time()),
             His_announcement=_His_announcement_id,
             type_ads_or=_type_ads_or,
             close_ads=_close_ads,
-            Last_updated_Ad=23456,  # TIME
+            Last_updated_Ad=int(time.time()),
             closecomment=0,
             fixed_home=0,
             fixed_tub=0,
@@ -159,7 +160,7 @@ class Comment(scrapy.Item):
             id_ads=id_ads,
             id_His_response=id_His_response,
             text=text,
-            Time_added_co=1234,
+            Time_added_co=int(time.time())
         )
 
 
