@@ -68,8 +68,6 @@ class OpensooqParse(BaseParser):
         _ads_title = _ads_title.replace("\n", "").replace("\r", "").strip()
         _memberName = _memberName.strip()
 
-        # return phone_number_item
-
         # ====
         # Save to relative database
         # ====
@@ -97,6 +95,7 @@ class OpensooqParse(BaseParser):
 
         HarajsComments(self, item_db, id_ads).save_for_opensooq(hxs)
 
+        # return phone_number_item
         phone_number_item = phoneNumberSet.get_phone_number_item(_ID)
         if phone_number_item:
             # Specially, parse phone_number only for opensooq
@@ -106,6 +105,8 @@ class OpensooqParse(BaseParser):
             phone_number_item.phone_data_id = _phone_data_id
             phone_number_item.phone_data_type = _phone_data_type
             phone_number_item._His_announcement_id = _His_announcement_id
+
+        return phone_number_item
 
     def get_pictures(self, hxs, selector):
         _pictures = hxs.xpath(selector).extract()
