@@ -21,7 +21,7 @@ class MstamlParse(BaseParser):
 
             count += 1
 
-            class_name = self.get_value_from_response(hxs, div_class_selector)
+            class_name = self.get_value_response(hxs, div_class_selector)
             # This div is empty line, such as "<div id="item2072286" class="none"></div>"
             # This div is empty line, such as "<div id="item2072286" class="clear"></div>"
             # valid div is "class="boxDarkBody dw1 gWhite ui-corner-all mb20 mt20""
@@ -29,7 +29,7 @@ class MstamlParse(BaseParser):
                 logging.debug("ignore the empty line, class name: {}, at {}".format(class_name, count - 1))
                 continue
 
-            href = self.get_value_from_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
+            href = self.get_value_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
 
             from cwharaj.utils.crawl_utils import CrawlUtils
             _ID = CrawlUtils.url_parse_id_from_page_url(href, 1)
@@ -52,19 +52,19 @@ class MstamlParse(BaseParser):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 
-        _time = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
-        _ads_title = self.get_value_from_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
+        _time = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
+        _ads_title = self.get_value_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
         _pictures = self.get_images_in_selector(hxs, '//noscript')
         _subject = ""
         _memberName = ""
-        _number = self.get_value_from_response(hxs, '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
+        _number = self.get_value_response(hxs, '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
 
-        _ads_city = self.get_value_from_response(hxs,
+        _ads_city = self.get_value_response(hxs,
                                              '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
-        _address = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
+        _address = self.get_value_response(hxs, '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
 
-        _memberName = self.get_value_from_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
+        _memberName = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
         _description = self.get_all_value_from_response(hxs,
                                                         '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
         _section = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')

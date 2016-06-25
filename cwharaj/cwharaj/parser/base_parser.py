@@ -12,11 +12,11 @@ class BaseParser(object):
         pass
 
     def get_value_from_response_with_urljoin(self, hxs, query, base, index=0):
-        href = self.get_value_from_response(hxs, query, index)
+        href = self.get_value_response(hxs, query, index)
         href = urlparse.urljoin(base, href.strip())
         return href
 
-    def get_value_from_response(self, hxs, query, index=0, default=""):
+    def get_value_response(self, hxs, query, index=0, default=""):
         _list = hxs.xpath(query)
         if len(_list) > index:
             value = _list[index].extract()
@@ -39,7 +39,7 @@ class BaseParser(object):
         return default
 
     def get_images_in_selector(self, hxs, selector, index=0, filter_method=None):
-        noscript_images = self.get_value_from_response(hxs, selector, index=index)
+        noscript_images = self.get_value_response(hxs, selector, index=index)
 
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(noscript_images)

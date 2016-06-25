@@ -30,7 +30,7 @@ class HarajSaParse(BaseParser):
                 logging.debug("ignore the table title, at {}".format(count - 1))
                 continue
 
-            href = self.get_value_from_response(hxs, Li_selector + '/td[2]/a/@href')
+            href = self.get_value_response(hxs, Li_selector + '/td[2]/a/@href')
 
             from cwharaj.utils.crawl_utils import CrawlUtils
             _ID = CrawlUtils.url_parse_id_from_page_url(href, 1)
@@ -54,12 +54,12 @@ class HarajSaParse(BaseParser):
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
 
         # comment ad_div
-        _ads_title = self.get_value_from_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
-        _ads_city = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
-        # _published_data = self.get_published_date(self.get_value_from_response(hxs, '//*[@class=" comment_header"]'))
+        _ads_title = self.get_value_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
+        _ads_city = self.get_value_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
+        # _published_data = self.get_published_date(self.get_value_response(hxs, '//*[@class=" comment_header"]'))
         # "_published_data' is the same as '_time_added'
         # _time_added = '12345678901'  # ???
-        _memberName = self.get_value_from_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
+        _memberName = self.get_value_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
 
         # _last_updated_ad = '23456789012'  # ???
 
@@ -73,10 +73,10 @@ class HarajSaParse(BaseParser):
 
         _image_link = self.get_images_in_selector(hxs, '//*[@itemprop="description"]', filter_method=filter_for_image)
         _ads_body = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
-        _ads_contact = self.get_value_from_response(hxs, '//*[@class="contact"]/strong/a/text()')
+        _ads_contact = self.get_value_response(hxs, '//*[@class="contact"]/strong/a/text()')
 
         # sections
-        _sections = self.get_section(self.get_value_from_response(hxs, '//*[@class="ad_low"]'))
+        _sections = self.get_section(self.get_value_response(hxs, '//*[@class="ad_low"]'))
         section_mgr = HarajsSection(_sections, item_db)
         _section_item = section_mgr.get_section_item()
 

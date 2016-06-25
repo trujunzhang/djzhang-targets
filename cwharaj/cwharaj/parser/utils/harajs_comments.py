@@ -10,7 +10,7 @@ class HarajsComments(object):
         self.id_ads = id_ads
 
     def save_for_harajs(self, hxs):
-        row_html = self.baseParser.get_value_from_response(hxs, '//*[@class="row "]')
+        row_html = self.baseParser.get_value_response(hxs, '//*[@class="row "]')
 
         from BeautifulSoup import BeautifulSoup
         soup = BeautifulSoup(row_html)

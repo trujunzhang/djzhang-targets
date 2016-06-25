@@ -46,20 +46,20 @@ class OpensooqParse(BaseParser):
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 3)
 
         # ADs User
-        _memberName = self.get_value_from_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
-        _member_timeregister = self.get_value_from_response(hxs, '//span[@class="joinDate"]/text()')
-        _ads_city = self.get_value_from_response(hxs,
-                                                 '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
+        _memberName = self.get_value_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
+        _member_timeregister = self.get_value_response(hxs, '//span[@class="joinDate"]/text()')
+        _ads_city = self.get_value_response(hxs,
+                                            '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
 
         _ads_contact = ""
 
         # ADs
-        _title = self.get_value_from_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
+        _title = self.get_value_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
         _pictures = self.get_pictures(hxs, '//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src')
-        _time_added = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
+        _time_added = self.get_value_response(hxs, '//*[@class="postDate fRight"]/text()')
         _ads_body = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
 
-        _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]'))
+        _section = self.get_section(self.get_value_response(hxs, '//*[@class="breadcrumbs"]'))
 
         # Replace "\n","\r"
         _ads_city = _ads_city.strip()
@@ -85,10 +85,8 @@ class OpensooqParse(BaseParser):
         phone_number_item = phoneNumberSet.get_phone_number_item(_ID)
         if phone_number_item:
             # Specially, parse phone_number only for opensooq
-            _phone_data_id = self.get_value_from_response(hxs,
-                                                          '//*[@class="phoneNumber table getPhoneNumber"]/@data-id')
-            _phone_data_type = self.get_value_from_response(hxs,
-                                                            '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
+            _phone_data_id = self.get_value_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-id')
+            _phone_data_type = self.get_value_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
 
             phone_number_item.phone_data_id = _phone_data_id
             phone_number_item.phone_data_type = _phone_data_type
@@ -113,4 +111,4 @@ class OpensooqParse(BaseParser):
         for a in _As:
             sections.append(a.text.replace("\n", "").replace("\r", "").strip().encode('utf-8'))
 
-        return ",".join(sections)
+        return sections
