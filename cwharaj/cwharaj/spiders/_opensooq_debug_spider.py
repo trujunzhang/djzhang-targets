@@ -55,26 +55,27 @@ class OpensooqDebugSpider(scrapy.Spider):
     def parse(self, response):
         phone_number_item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
 
-        _ajax_url = phone_number_item.get_ajax_url()
-        if _ajax_url:
-            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
-        else:  # No phone number found, fetch the oldest from the cache database.
-            item = phone_number_item.scrapy_item
-            if item:
-                _id = item["ID"]
-                item["number"] = ""
-                yield item
+        if phone_number_item:
+            self._history_db.save_history(response.url, id_ads=phone_number_item.id_ads)
 
-                self.phone_dict.remove_row(_id)
-                self._history_db.save_history(response.url, id=_id)
+            _ajax_url = phone_number_item.get_ajax_url()
+            if _ajax_url:
+                yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+            else:  # No phone number found, fetch the oldest from the cache database.
+                item = phone_number_item.scrapy_item
+                if item:
+                    self.phone_dict.remove_row(phone_number_item.model_id)
 
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
 
+        phone_number_item = self.phone_dict.get_item_from_ajax_url_and_remove_dict(response.url)
         item = self.phone_dict.get_item_from_ajax_url_and_remove_dict(response.url)
         if item:
             _id = item["ID"]
             item["number"] = _phone_number_base64
             yield item
+
+            # self._item_db
 
             # self._history_db.process_item(response.url, id=_id)

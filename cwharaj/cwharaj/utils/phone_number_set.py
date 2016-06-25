@@ -5,10 +5,16 @@ from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class PhoneNumberItem(object):
+    model_id = ''
+    # Sometime phone_data_id is the same as model_id.
     phone_data_id = ''
     phone_data_type = ''
     _His_announcement_id = ''
-    scrapy_item = Ad()
+    id_ads = ''
+
+    def __init__(self, model_id):
+        self.model_id = model_id
+        super(PhoneNumberItem, self).__init__()
 
     def get_ajax_url(self):
         # No phone number found on the page.
@@ -25,7 +31,7 @@ class PhoneNumberSet(object):
         super(PhoneNumberSet, self).__init__()
 
     def add_row(self, model_id):
-        self.dict[model_id] = PhoneNumberItem()
+        self.dict[model_id] = PhoneNumberItem(model_id)
         logging.debug("Added to dict for {}".format(model_id))
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 

@@ -10,19 +10,19 @@ class HistoryDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(HistoryDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
-    def save_history(self, url, id):
+    def save_history(self, url, id_ads):
         item = HistoryItem(
             url=url,
             guid=CrawlUtils.get_guid(url),
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-            ID=id
+            ID=id_ads
         )
 
-        self.update_for_history(id, item)
+        self.update_for_history(id_ads, item)
         logging.debug("HarajHistory added to database!")
 
-    def update_for_history(self, id, item):
-        if not self.check_exist_by_id(id):
+    def update_for_history(self, id_ads, item):
+        if not self.check_exist_by_id(id_ads):
             self.insert_for_history(item)
 
     def insert_for_history(self, item):

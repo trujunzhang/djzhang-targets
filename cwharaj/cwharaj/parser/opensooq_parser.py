@@ -105,6 +105,7 @@ class OpensooqParse(BaseParser):
             phone_number_item.phone_data_id = _phone_data_id
             phone_number_item.phone_data_type = _phone_data_type
             phone_number_item._His_announcement_id = _His_announcement_id
+            phone_number_item.id_ads = id_ads
 
         return phone_number_item
 
