@@ -95,7 +95,7 @@ class OpensooqParse(BaseParser):
 
         id_ads = item_db.save_ad(item)
 
-        # HarajsComments(self, item_db, id_ads).save_for_opensooq(hxs)
+        HarajsComments(self, item_db, id_ads).save_for_opensooq(hxs)
 
         phone_number_item = phoneNumberSet.get_phone_number_item(_ID)
         if phone_number_item:

@@ -37,6 +37,6 @@ class HarajsComments(object):
 
             id_His_response = self.item_db.save_member(Member.get_default(_memberName))
             comment = Comment.get_default(self.id_ads, id_His_response, _content)
-            # self.item_db.save_comment(comment)
+            self.item_db.save_comment(comment)
 
             _count += 1
