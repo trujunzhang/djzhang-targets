@@ -105,7 +105,7 @@ class OpensooqParse(BaseParser):
 
             phone_number_item.phone_data_id = _phone_data_id
             phone_number_item.phone_data_type = _phone_data_type
-            phone_number_item.scrapy_item = item
+            phone_number_item._His_announcement_id = _His_announcement_id
 
     def get_pictures(self, hxs, selector):
         _pictures = hxs.xpath(selector).extract()

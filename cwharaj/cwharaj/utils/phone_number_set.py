@@ -7,6 +7,7 @@ from cwharaj.utils.crawl_utils import CrawlUtils
 class PhoneNumberItem(object):
     phone_data_id = ''
     phone_data_type = ''
+    _His_announcement_id = ''
     scrapy_item = Ad()
 
     def get_ajax_url(self):
