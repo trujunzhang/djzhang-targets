@@ -159,7 +159,7 @@ class MysqlDBTest(unittest.TestCase):
         sql = " INSERT INTO comments (id_ads, id_His_response, text, Time_added_co) VALUES ('{}','{}','{}','{}')".format(
             comment['id_ads'], comment['id_His_response'], comment['text'], comment['Time_added_co']
         )
-        expect = 20
+        expect = 140
         _comment_id = self._item_db.save_comment(comment)
         self.assertEqual(expect, _comment_id)
 
