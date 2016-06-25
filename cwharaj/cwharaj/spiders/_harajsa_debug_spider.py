@@ -23,8 +23,8 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
         # Section
         # 'https://haraj.com.sa/1114020535/المحفظة_المثالية/'
         # 'https://haraj.com.sa/1113955445/للبيع_اسكاليد_موديل_2014_بسعر_جيد/'
-        # 'https://haraj.com.sa/1114186091/الرياض/'
-        'https://haraj.com.sa/1113412781/مستودعات_ومصانع_للايجار_او_للبيع_/'
+        'https://haraj.com.sa/1114186091/الرياض/'
+        # 'https://haraj.com.sa/1113412781/مستودعات_ومصانع_للايجار_او_للبيع_/'  # four sections
     ]
 
     def __init__(self, name=None, **kwargs):
