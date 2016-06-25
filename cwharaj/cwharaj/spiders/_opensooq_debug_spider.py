@@ -53,11 +53,6 @@ class OpensooqDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        # _row = {
-        #     "ID": "17978455",
-        #     "url": response.url
-        # }
-        # self.phone_dict.add_row(_row['ID'])
         phone_number_item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
 
         # _ajax_url = phone_number_item.get_ajax_url()
