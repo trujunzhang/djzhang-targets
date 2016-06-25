@@ -31,7 +31,7 @@ class HarajsComments(object):
 
         _count = 1
         for _comment_div in _comments_div:
-            _selector = _comments_selector + '[' + _count + ']'
+            _selector = _comments_selector + '[' + str(_count) + ']'
             _memberName = self.baseParser.get_value_response(hxs, _selector + '/div/a/text()')
             _content = self.baseParser.get_value_response(hxs, _selector + '/div/div[2]/p/text()')
 
