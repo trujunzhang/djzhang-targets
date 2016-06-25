@@ -55,15 +55,15 @@ class OpensooqDebugSpider(scrapy.Spider):
     def parse(self, response):
         phone_number_item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
 
-        _ajax_url = phone_number_item.get_ajax_url()
-        if _ajax_url:
-            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
-        else:  # No phone number found, fetch the oldest from the cache database.
-            item = phone_number_item.scrapy_item
-            if item:
-                _id = item["ID"]
-                item["number"] = ""
-                yield item
+        # _ajax_url = phone_number_item.get_ajax_url()
+        # if _ajax_url:
+        #     yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+        # else:  # No phone number found, fetch the oldest from the cache database.
+        #     item = phone_number_item.scrapy_item
+        #     if item:
+        #         _id = item["ID"]
+        #         item["number"] = ""
+        #         yield item
 
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body

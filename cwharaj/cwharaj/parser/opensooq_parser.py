@@ -53,8 +53,6 @@ class OpensooqParse(BaseParser):
         _ads_city = self.get_value_response(hxs,
                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
 
-        _ads_contact = ""
-
         # ADs
         _ads_title = self.get_value_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
         _image_link = self.get_pictures(hxs, '//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src')
@@ -76,25 +74,27 @@ class OpensooqParse(BaseParser):
         # Save to relative database
         # ====
 
-        HarajsComments(self, item_db, 0).save_for_opensooq(hxs)
+        _city_id = item_db.save_city(City.get_default(_ads_city))
 
-        # _city_id = item_db.save_city(City.get_default(_ads_city))
-        #
-        # _His_announcement_id = item_db.save_member(Member.get_default(_memberName))
-        #
-        # item = Ad.get_default(
-        #     section_item=_section_item,
-        #     _ads_title=_ads_title,
-        #     _city_id=_city_id,
-        #     _ads_contact=_ads_contact,
-        #     _ads_body=_ads_body,
-        #     _image_link=_image_link,
-        #     _His_announcement_id=_His_announcement_id,
-        #     _type_ads_or=1, _close_ads=0
-        # )
-        #
-        # id_ads = item_db.save_ad(item)
-        #
+        _His_announcement_id = item_db.save_member(Member.get_default(_memberName))
+
+        # Because opensooq's contact is image base64 format.
+        # So the ads's contact must be empty.
+        _ads_contact = ""
+
+        item = Ad.get_default(
+            section_item=_section_item,
+            _ads_title=_ads_title,
+            _city_id=_city_id,
+            _ads_contact=_ads_contact,
+            _ads_body=_ads_body,
+            _image_link=_image_link,
+            _His_announcement_id=_His_announcement_id,
+            _type_ads_or=1, _close_ads=0
+        )
+
+        id_ads = item_db.save_ad(item)
+
         # HarajsComments(self, item_db, id_ads).save_for_opensooq(hxs)
 
         phone_number_item = phoneNumberSet.get_phone_number_item(_ID)
