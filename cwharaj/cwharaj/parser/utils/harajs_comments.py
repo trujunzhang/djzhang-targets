@@ -24,3 +24,19 @@ class HarajsComments(object):
             id_His_response = self.item_db.save_member(Member.get_default(_memberName))
             comment = Comment.get_default(self.id_ads, id_His_response, _content)
             self.item_db.save_comment(comment)
+
+    def save_for_opensooq(self, hxs):
+        _comments_selector = '//*[@class="commentItems clear"]/li'
+        _comments_div = hxs.xpath(_comments_selector)
+
+        _count = 1
+        for _comment_div in _comments_div:
+            _selector = _comments_selector + '[' + _count + ']'
+            _memberName = self.baseParser.get_value_response(hxs, _selector + '/div/a/text()')
+            _content = self.baseParser.get_value_response(hxs, _selector + '/div/div[2]/p/text()')
+
+            id_His_response = self.item_db.save_member(Member.get_default(_memberName))
+            comment = Comment.get_default(self.id_ads, id_His_response, _content)
+            # self.item_db.save_comment(comment)
+
+            _count += 1
