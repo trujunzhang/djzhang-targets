@@ -35,7 +35,6 @@ class HarajsSection(object):
 
         elif len(self.sections) >= 4:
             logging.debug("special sections, count: {}".format(len(self.sections)))
-            return None
 
         # """
         # finally,generate section item.
