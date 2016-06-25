@@ -199,13 +199,13 @@ class Member(scrapy.Item):
     The_pay_commission = scrapy.Field()
 
     @classmethod
-    def get_default(self, user_name):
+    def get_default(self, user_name, timeregister=0):
         return Member(
             username=user_name,
             password='',
             groupnumber=6,
             email='',
-            timeregister=0,
+            timeregister=timeregister,
             member_code='',
             documentingmobile=0,
             Documentingemail=0,

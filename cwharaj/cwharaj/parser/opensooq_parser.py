@@ -45,48 +45,38 @@ class OpensooqParse(BaseParser):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 3)
 
-        _time = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
+        # ADs User
+        _memberName = self.get_value_from_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
+        _member_timeregister = self.get_value_from_response(hxs, '//span[@class="joinDate"]/text()')
+        _ads_city = self.get_value_from_response(hxs,
+                                                 '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
+
+        _ads_contact = ""
+
+        # ADs
         _title = self.get_value_from_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
         _pictures = self.get_pictures(hxs, '//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src')
-        _subject = ""
-        _contact = ""
-        _number = ""
+        _time_added = self.get_value_from_response(hxs, '//*[@class="postDate fRight"]/text()')
+        _ads_body = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
 
-        _city = self.get_value_from_response(hxs,
-                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
-        _address = self.get_value_from_response(hxs,
-                                                '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/span/text()')
-
-        _memberName = self.get_value_from_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
-        _description = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
         _section = self.get_section(self.get_value_from_response(hxs, '//*[@class="breadcrumbs"]'))
 
-        # Specially, parse phone_number only for opensooq
-        _phone_data_id = self.get_value_from_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-id')
-        _phone_data_type = self.get_value_from_response(hxs,
-                                                        '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
-
         # Replace "\n","\r"
-        _city = _city.strip()
-        _time = _time.replace("\n", "").replace("\r", "").strip()
+        _ads_city = _ads_city.strip()
+        _time_added = _time_added.replace("\n", "").replace("\r", "").strip()
         _title = _title.replace("\n", "").replace("\r", "").strip()
-        _address = _address.replace("\n", "").replace("\r", "").strip()
         _memberName = _memberName.strip()
 
         item = Ad(
             url=url,
             ID=_ID,
-            city=_city,
-            time=_time,
+            city=_ads_city,
+            time=_time_added,
             title=_title,
             pictures=_pictures,
-            subject=_subject,
-            contact=_contact,
-            number=_number,
 
-            address=_address,
             memberName=_memberName,
-            description=_description,
+            description=_ads_body,
             section=_section,
 
             url_from=WebsiteTypes.opensooq.value
@@ -94,6 +84,12 @@ class OpensooqParse(BaseParser):
 
         phone_number_item = phoneNumberSet.get_phone_number_item(_ID)
         if phone_number_item:
+            # Specially, parse phone_number only for opensooq
+            _phone_data_id = self.get_value_from_response(hxs,
+                                                          '//*[@class="phoneNumber table getPhoneNumber"]/@data-id')
+            _phone_data_type = self.get_value_from_response(hxs,
+                                                            '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
+
             phone_number_item.phone_data_id = _phone_data_id
             phone_number_item.phone_data_type = _phone_data_type
             phone_number_item.scrapy_item = item

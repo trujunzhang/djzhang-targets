@@ -18,7 +18,8 @@ class OpensooqDebugSpider(scrapy.Spider):
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=39509897&model_type=post'
         # 'https://sa.opensooq.com/ar/search/42552861/%D9%85%D9%86%D8%B8%D9%88%D9%85%D8%A9-%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA-%D9%84%D9%84%D8%A7%D8%B3%D9%88%D8%A7%D9%82-%D9%88%D8%A7%D9%84%D9%85%D8%AD%D9%84%D8%A7%D8%AA'
         # Fix phone number
-        'https://sa.opensooq.com/ar/search/43152549/إفطار-صائم-بمكه-المكرمه'
+        # 'https://sa.opensooq.com/ar/search/43152549/إفطار-صائم-بمكه-المكرمه'
+        'https://sa.opensooq.com/ar/search/17978455/دهن-عود-ملكي'
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -52,31 +53,17 @@ class OpensooqDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        # self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._opensooq_parser.parse(response.url, response, self._item_db)
-        # yield item
-        # _row = self._cache_db.get_last_row("")
-
-        _last = ""
-        _url_from = ""
-
-        # step 1: request the last row on the cache database
-        _row = {
-            'ID': '43152549',
-            'url': 'https://sa.opensooq.com/ar/search/43152549/إفطار-صائم-بمكه-المكرمه'
-        }
-
-        self.phone_dict.add_row(_row['ID'], _row)
-        yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
-
-    # ====================================================================================
-    # opensooq
-    # ====================================================================================
-    def parse_page_from_opensooq(self, response):
         phone_number_item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
 
         _ajax_url = phone_number_item.get_ajax_url()
-        yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+        if _ajax_url:
+            yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
+        else:  # No phone number found, fetch the oldest from the cache database.
+            item = phone_number_item.scrapy_item
+            if item:
+                _id = item["ID"]
+                item["number"] = ""
+                yield item
 
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
