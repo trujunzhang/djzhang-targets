@@ -195,4 +195,4 @@ class MysqlDBTest(unittest.TestCase):
         )
 
         _ads_id = self._item_db.save_ad(item)
-        self.assertEqual(_ads_id_expect, _ads_id)
+        self.assertEqual(expect, _ads_id)
