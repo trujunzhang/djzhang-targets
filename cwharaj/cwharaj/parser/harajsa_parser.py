@@ -77,8 +77,7 @@ class HarajSaParse(BaseParser):
 
         # sections
         _sections = self.get_section(self.get_value_response(hxs, '//*[@class="ad_low"]'))
-        section_mgr = HarajsSection(_sections, item_db)
-        _section_item = section_mgr.get_section_item()
+        _section_item = HarajsSection(_sections, item_db).get_section_item()
 
         # TODO: djzhang
         if len(_sections) > 3:
