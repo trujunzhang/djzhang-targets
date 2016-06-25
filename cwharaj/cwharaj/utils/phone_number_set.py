@@ -29,16 +29,18 @@ class PhoneNumberSet(object):
         logging.debug("Added to dict for {}".format(model_id))
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
-    def get_phone_number_item(self, _id):
+    def get_phone_number_item(self, _model_id):
         logging.debug("Get phone number item:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
-        if _id in self.dict.keys():
-            item = self.dict[_id]
-            if item:
-                logging.debug("  1. found by ID {}".format(_id))
-                return item
+        if _model_id not in self.dict.keys():
+            self.add_row(_model_id)
 
-        logging.debug("  3. not found : {}".format(_id))
+        item = self.dict[_model_id]
+        if item:
+            logging.debug("  1. found by ID {}".format(_model_id))
+            return item
+
+        logging.debug("  3. not found : {}".format(_model_id))
         return None
 
     def get_item_from_ajax_url_and_remove_dict(self, _ajax_url):
