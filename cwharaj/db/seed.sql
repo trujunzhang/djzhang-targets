@@ -17,6 +17,20 @@ CREATE TABLE ads_histories (
   DEFAULT CHARSET = utf8mb4;
 
 --
+-- Table structure for table `opensooq_phone`
+--
+
+CREATE TABLE IF NOT EXISTS `opensooq_phone` (
+  `id`        INT(11) NOT NULL AUTO_INCREMENT,
+  `phone`     TEXT    NOT NULL,
+  `member_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 22;
+
+--
 -- Table structure for table `comment`
 --
 
@@ -37,25 +51,29 @@ CREATE TABLE IF NOT EXISTS `ads_scrape` (
 --
 
 CREATE TABLE IF NOT EXISTS `cities` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `text` varchar(100) NOT NULL,
+  `id`   INT(11)      NOT NULL AUTO_INCREMENT,
+  `text` VARCHAR(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
-
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 22;
 
 --
 -- Table structure for table `comments`
 --
 
 CREATE TABLE IF NOT EXISTS `comments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_ads` int(11) NOT NULL,
-  `id_His_response` int(11) NOT NULL,
-  `text` longtext NOT NULL,
-  `Time_added_co` int(11) NOT NULL,
+  `id`              INT(11)  NOT NULL AUTO_INCREMENT,
+  `id_ads`          INT(11)  NOT NULL,
+  `id_His_response` INT(11)  NOT NULL,
+  `text`            LONGTEXT NOT NULL,
+  `Time_added_co`   INT(11)  NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
-
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 18;
 
 --
 -- Table structure for table `section`
@@ -110,30 +128,32 @@ CREATE TABLE IF NOT EXISTS `ads` (
   DEFAULT CHARSET = utf8
   AUTO_INCREMENT = 24;
 
-
 --
 -- Table structure for table `members`
 --
 
 CREATE TABLE IF NOT EXISTS `members` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(35) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `groupnumber` int(2) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `timeregister` int(11) NOT NULL,
-  `member_code` varchar(32) NOT NULL,
-  `documentingmobile` int(11) NOT NULL,
-  `Documentingemail` int(11) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `sendtime` int(1) NOT NULL,
-  `active` varchar(5) NOT NULL,
-  `now` varchar(50) NOT NULL,
-  `Lastactivity` int(50) NOT NULL,
-  `subscribe_1` int(1) NOT NULL,
-  `subscribe_2` int(1) NOT NULL,
-  `subscribe_3` int(1) NOT NULL,
-  `The_pay_commission` int(11) NOT NULL,
+  `id`                 INT(11)     NOT NULL AUTO_INCREMENT,
+  `username`           VARCHAR(35) NOT NULL,
+  `password`           VARCHAR(32) NOT NULL,
+  `groupnumber`        INT(2)      NOT NULL,
+  `email`              VARCHAR(50) NOT NULL,
+  `timeregister`       INT(11)     NOT NULL,
+  `member_code`        VARCHAR(32) NOT NULL,
+  `documentingmobile`  INT(11)     NOT NULL,
+  `Documentingemail`   INT(11)     NOT NULL,
+  `phone`              VARCHAR(20) NOT NULL,
+  `sendtime`           INT(1)      NOT NULL,
+  `active`             VARCHAR(5)  NOT NULL,
+  `now`                VARCHAR(50) NOT NULL,
+  `Lastactivity`       INT(50)     NOT NULL,
+  `subscribe_1`        INT(1)      NOT NULL,
+  `subscribe_2`        INT(1)      NOT NULL,
+  `subscribe_3`        INT(1)      NOT NULL,
+  `The_pay_commission` INT(11)     NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=55 ;
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 55;
 
