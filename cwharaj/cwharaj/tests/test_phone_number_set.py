@@ -10,11 +10,11 @@ class PhoneNumberSetTest(unittest.TestCase):
     def setUp(self):
         self.phoneNumber = PhoneNumberSet()
         self._ajax_url = "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type={}".format("", "")
-        self.page_url = "https://sa.opensooq.com/ar/search/40616083/%D9%81%D9%8A%D9%84%D8%A7-%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF"
+        self.url = "https://sa.opensooq.com/ar/search/40616083/%D9%81%D9%8A%D9%84%D8%A7-%D8%A8%D8%A7%D9%84%D8%A7%D8%B3%D9%83%D8%A7%D9%86-%D8%A7%D9%84%D8%AC%D8%AF%D9%8A%D8%AF"
         row = CacheItem(
             ID="123",
-            url=self.page_url,
-            guid=CrawlUtils.get_guid(self.page_url)
+            url=self.url,
+            guid=CrawlUtils.get_guid(self.url)
         )
         self.phoneNumber.add_row(row['ID'], row)
 
