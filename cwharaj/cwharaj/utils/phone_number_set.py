@@ -5,14 +5,9 @@ from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class PhoneNumberItem(object):
-    page_url = ''
     phone_data_id = ''
     phone_data_type = ''
     scrapy_item = Ad()
-
-    def __init__(self, page_url):
-        self.page_url = page_url
-        super(PhoneNumberItem, self).__init__()
 
     def get_ajax_url(self):
         # No phone number found on the page.
@@ -28,9 +23,9 @@ class PhoneNumberSet(object):
         self.dict = {}
         super(PhoneNumberSet, self).__init__()
 
-    def add_row(self, _id, row):
-        self.dict[_id] = PhoneNumberItem(row['url'])
-        logging.debug("Added to dict for {}".format(_id))
+    def add_row(self, model_id):
+        self.dict[model_id] = PhoneNumberItem()
+        logging.debug("Added to dict for {}".format(model_id))
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
     def get_phone_number_item(self, _id):

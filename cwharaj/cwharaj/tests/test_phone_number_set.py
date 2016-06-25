@@ -16,7 +16,7 @@ class PhoneNumberSetTest(unittest.TestCase):
             url=self.url,
             guid=CrawlUtils.get_guid(self.url)
         )
-        self.phoneNumber.add_row(row['ID'], row)
+        self.phoneNumber.add_row(row['ID'])
 
     # def test_get_id_from_phone_number_url(self):
     #     CrawlUtils.get_id_from_phone_number_url(self._ajax_url)
