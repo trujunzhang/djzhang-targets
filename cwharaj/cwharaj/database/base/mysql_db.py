@@ -104,7 +104,7 @@ class MysqlDatabase(BaseDatabase):
 
         return _ads_id
 
-    def update_contact_for_ads(self, ads_id, ads_contact):
+    def _update_contact_for_ads(self, ads_id, image_phone):
         _excep = None
         _connection = self.get_client()
         _cursor = _connection.cursor()
@@ -117,7 +117,7 @@ class MysqlDatabase(BaseDatabase):
             _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
             # Execute the SQL command
             _cursor.execute(sql, (
-                ads_contact, ads_id
+                image_phone, ads_id
             ))
             # Commit your changes in the database
             _connection.commit()

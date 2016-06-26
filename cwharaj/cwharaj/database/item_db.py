@@ -19,10 +19,10 @@ class ItemDatabase(MysqlDatabase):
 
         return _ads_id
 
-    def update_ads_contact(self, ads_id, ads_contact):
+    def update_ads_contact(self, ads_id, image_phone):
         exist = self.check_exist_by_id(ads_id)
         if exist:
-            self.update_contact_for_ads(ads_id, ads_contact)
+            self._update_contact_for_ads(ads_id, image_phone)
 
     def save_comment(self, comment):
         sql = """ SELECT id FROM comments WHERE id_ads = '{}' and id_His_response = '{}' and text = '{}'""".format(
@@ -136,6 +136,12 @@ class ItemDatabase(MysqlDatabase):
             logging.debug("  mysql: insert the members into the {} successfully".format(_members_id))
 
         return _members_id
+
+    def update_member_phone(self, members_id, image_phone):
+        sql = """ SELECT id FROM members WHERE id = '{}'""".format(members_id)
+        _members_id = self._get_row_id(sql, "cities")
+        if _members_id:
+            self._update_contact_for_ads(members_id, image_phone)
 
     def save_opensooq_phone(self, opensooq_phone):
         sql = """ SELECT id FROM opensooq_phone WHERE phone = '{}'""".format(opensooq_phone['phone'])

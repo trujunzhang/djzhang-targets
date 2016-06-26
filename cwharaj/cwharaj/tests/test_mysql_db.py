@@ -35,6 +35,11 @@ class MysqlDBTest(unittest.TestCase):
             _type_ads_or=1, _close_ads=0
         )
 
+        self._member_id = 60
+        self._memberName = "djzhang"
+
+        self.opensooq_phone_id = 24
+
     # def test_insert_cache_row(self):
     #     _guid = "1234321"
     #     _id = CrawlUtils.url_parse_id_from_page_url(self._cache_url, 3)
@@ -105,20 +110,19 @@ class MysqlDBTest(unittest.TestCase):
     #     _member_id = self._item_db.save_member(Member.get_default(_memberName))
     #     self.assertEqual(expect, _member_id)
     #
-    # def test_insert_new_members(self):
-    #     _memberName = "djzhang"
-    #     expect = 60
-    #     member = Member.get_default(_memberName)
-    #
-    #     sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
-    #         member['username'], member['password'], member['groupnumber'], member['email'], member['timeregister'],
-    #         member['member_code'], member['documentingmobile'], member['Documentingemail'], member['phone'],
-    #         member['sendtime'], member['active'], member['now'], member['Lastactivity'], member['subscribe_1'],
-    #         member['subscribe_2'], member['subscribe_3'], member['The_pay_commission']
-    #     )
-    #
-    #     _member_id = self._item_db.save_member(member)
-    #     self.assertEqual(expect, _member_id)
+    def test_insert_new_members(self):
+        expect = self._member_id
+        member = Member.get_default(self._memberName)
+
+        sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES ('{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}','{}')".format(
+            member['username'], member['password'], member['groupnumber'], member['email'], member['timeregister'],
+            member['member_code'], member['documentingmobile'], member['Documentingemail'], member['phone'],
+            member['sendtime'], member['active'], member['now'], member['Lastactivity'], member['subscribe_1'],
+            member['subscribe_2'], member['subscribe_3'], member['The_pay_commission']
+        )
+
+        _member_id = self._item_db.save_member(member)
+        self.assertEqual(expect, _member_id)
     #
     # def test_insert_exist_ads(self):
     #     expect = 21
@@ -178,15 +182,19 @@ class MysqlDBTest(unittest.TestCase):
     #     section_item = self._item_db.save_section(section)
     #     self.assertEqual(expect, section_item['id'])
 
-    # def test_update_ads_contact(self):
-    #     ads_contact = Ad.get_opensooq_phone(24)
-    #     self._item_db.update_ads_contact(self._ads_id, ads_contact)
+    def test_update_ads_contact(self):
+        image_phone = Ad.get_opensooq_phone(self.opensooq_phone_id)
+        self._item_db.update_ads_contact(self._ads_id, image_phone)
+
+    def test_update_member_phone(self):
+        image_phone = Ad.get_opensooq_phone(self.opensooq_phone_id)
+        self._item_db.update_member_phone(self._member_id, image_phone)
 
     def test_insert_opensooq_phone(self):
         opensooq_phone = OpensooqPhone.get_default(
             'data:image/jpeg;base64,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')
 
         sql = """ INSERT INTO opensooq_phone(phone) VALUES ('{}')""".format(opensooq_phone['phone'])
-        expect = 24
+        expect = self.opensooq_phone_id
         _opensooq_phone_id = self._item_db.save_opensooq_phone(opensooq_phone)
         self.assertEqual(expect, _opensooq_phone_id)

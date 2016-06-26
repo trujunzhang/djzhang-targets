@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+from cwharaj.items import Ad, OpensooqPhone
+
 
 class OpensooqDebugSpider(scrapy.Spider):
     name = "opensooq_debug"
@@ -68,13 +70,15 @@ class OpensooqDebugSpider(scrapy.Spider):
 
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
+        _opensooq_phone_id = self._item_db.save_opensooq_phone(OpensooqPhone.get_default(_phone_number_base64))
 
         phone_number_item = self.phone_dict.get_item_from_ajax_url_and_remove_dict(response.url)
-        item = self.phone_dict.get_item_from_ajax_url_and_remove_dict(response.url)
-        if item:
-            _id = item["ID"]
-            item["number"] = _phone_number_base64
-            yield item
+        if phone_number_item:
+            _His_announcement_id = phone_number_item._His_announcement_id
+            id_ads = phone_number_item.id_ads
+
+            # self._item_db._update_contact_for_ads(id_ads,Ad.get_opensooq_phone(24))
+
 
             # self._item_db
 
