@@ -115,11 +115,12 @@ class HarajsSpider(scrapy.Spider):
         _last = ''
         phone_number_item = self.phone_dict.get_item_from_ajax_url(response.url)
         if phone_number_item:
+            _last = phone_number_item.url
             _His_announcement_id = phone_number_item._His_announcement_id
             id_ads = phone_number_item.id_ads
             self._item_db.update_members_phone(_His_announcement_id, Ad.get_opensooq_phone(_opensooq_phone_id))
             self._item_db.update_ads_contact(id_ads, Ad.get_opensooq_phone(_opensooq_phone_id))
-            _last = phone_number_item.url
+
             self.phone_dict.remove_row(phone_number_item.model_id)
 
         # Specially, the last url is not an ajax url,
