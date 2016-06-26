@@ -112,7 +112,7 @@ class HarajsSpider(scrapy.Spider):
         _phone_number_base64 = response.body
         _opensooq_phone_id = self._item_db.save_opensooq_phone(OpensooqPhone.get_default(_phone_number_base64))
 
-        phone_number_item = self.phone_dict.get_item_from_ajax_url_and_remove_dict(response.url)
+        phone_number_item = self.phone_dict.get_item_from_ajax_url(response.url)
         if phone_number_item:
             _His_announcement_id = phone_number_item._His_announcement_id
             id_ads = phone_number_item.id_ads

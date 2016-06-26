@@ -50,29 +50,21 @@ class PhoneNumberSet(object):
         logging.debug("  3. not found : {}".format(_model_id))
         return None
 
-    def get_item_from_ajax_url_and_remove_dict(self, _ajax_url):
+    def get_item_from_ajax_url(self, _ajax_url):
         logging.debug("Get item from ajax url and remove dict:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
         _phone_id = CrawlUtils.get_id_from_phone_number_url(_ajax_url)
         logging.debug("  1. parse phone_id from the ajax url: {}".format(_phone_id))
 
-        _id = None
-        _item = None
         if _phone_id:
             for key, value in self.dict.iteritems():
                 if value.phone_data_id == _phone_id:
-                    _id = key
                     _item = value
-                    logging.debug("  2. found id from ajax url: {}".format(_id))
-                    break
-
-        if _id:
-            self.remove_row(_id)
-            return _item
+                    logging.debug("  2. found id from ajax url: {}".format(key))
+                    return _item
 
         logging.debug("  3. not found item from ajax url: {}".format(_ajax_url))
-        return None
 
     def remove_row(self, _id):
         logging.debug("Remove row from dict:")
