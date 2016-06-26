@@ -188,7 +188,7 @@ class MysqlDBTest(unittest.TestCase):
 
     def test_update_member_phone(self):
         image_phone = Ad.get_opensooq_phone(self.opensooq_phone_id)
-        self._item_db.update_member_phone(self._member_id, image_phone)
+        self._item_db.update_members_phone(self._member_id, image_phone)
 
     def test_insert_opensooq_phone(self):
         opensooq_phone = OpensooqPhone.get_default(

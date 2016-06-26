@@ -108,7 +108,7 @@ class ItemDatabase(MysqlDatabase):
         _cursor = _connection.cursor()
         _members_id = -1
 
-        sql = " INSERT INTO " + "members" + " (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        sql = " INSERT INTO members (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
@@ -137,11 +137,41 @@ class ItemDatabase(MysqlDatabase):
 
         return _members_id
 
-    def update_member_phone(self, members_id, image_phone):
+    def update_members_phone(self, members_id, image_phone):
         sql = """ SELECT id FROM members WHERE id = '{}'""".format(members_id)
-        _members_id = self._get_row_id(sql, "cities")
+        _members_id = self._get_row_id(sql, "members")
         if _members_id:
-            self._update_contact_for_ads(members_id, image_phone)
+            self._update_phone_for_members(members_id, image_phone)
+
+    def _update_phone_for_members(self, _members_id, image_phone):
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        sql = " UPDATE members SET phone = %s WHERE id = %s"
+
+        try:
+            _cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
+            _cursor.execute("SET CHARACTER SET utf8mb4;")  # same as above
+            _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
+            # Execute the SQL command
+            _cursor.execute(sql, (
+                image_phone, _members_id
+            ))
+            # Commit your changes in the database
+            _connection.commit()
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        if _excep:
+            logging.debug("  mysql: insert the members row failure, {}".format(_excep))
+        else:
+            logging.debug("  mysql: insert the members {} successfully".format(_members_id))
 
     def save_opensooq_phone(self, opensooq_phone):
         sql = """ SELECT id FROM opensooq_phone WHERE phone = '{}'""".format(opensooq_phone['phone'])
