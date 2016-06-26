@@ -14,6 +14,7 @@ class PhoneNumberItem(object):
     id_ads = ''
 
     def __init__(self, url, model_id):
+        self.url = url
         self.model_id = model_id
         super(PhoneNumberItem, self).__init__()
 
