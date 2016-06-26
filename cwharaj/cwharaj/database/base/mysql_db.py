@@ -109,8 +109,6 @@ class MysqlDatabase(BaseDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        _ads_id = -1
-
         sql = " UPDATE ads SET ads_contact = %s WHERE id = %s"
 
         try:
@@ -123,7 +121,6 @@ class MysqlDatabase(BaseDatabase):
             ))
             # Commit your changes in the database
             _connection.commit()
-            _ads_id = _cursor.lastrowid
         except Exception, e:
             _excep = e
             # Rollback in case there is any error
@@ -135,9 +132,7 @@ class MysqlDatabase(BaseDatabase):
         if _excep:
             logging.debug("  mysql: insert the ads row failure, {}".format(_excep))
         else:
-            logging.debug("  mysql: insert the ads {} successfully".format(_ads_id))
-
-        return _ads_id
+            logging.debug("  mysql: insert the ads {} successfully".format(ads_id))
 
     def _get_row_id(self, sql, table_name):
         _connection = self.get_client()
