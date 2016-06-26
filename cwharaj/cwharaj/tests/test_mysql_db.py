@@ -179,5 +179,5 @@ class MysqlDBTest(unittest.TestCase):
     #     self.assertEqual(expect, section_item['id'])
 
     def test_update_ads_contact(self):
-        ads_contact = 'base64'
+        ads_contact = Ad.get_opensooq_phone(24)
         self._item_db.update_ads_contact(self._ads_id, ads_contact)

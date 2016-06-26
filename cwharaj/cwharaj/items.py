@@ -88,6 +88,10 @@ class Ad(scrapy.Item):
     timer_mazad = scrapy.Field()
 
     @classmethod
+    def get_opensooq_phone(cls, opensooq_phone_id):
+        return 'base64,{}'.format(opensooq_phone_id)
+
+    @classmethod
     def get_default(self, section_item, _ads_title, _city_id, _ads_contact, _ads_body, _image_link,
                     _His_announcement_id, _type_ads_or=1, _close_ads=0):
         return Ad(
@@ -218,4 +222,20 @@ class Member(scrapy.Item):
             subscribe_2=0,
             subscribe_3=0,
             The_pay_commission=0,
+        )
+
+
+# CREATE TABLE IF NOT EXISTS `opensooq_phone`
+class OpensooqPhone(scrapy.Item):
+    # unique row id
+    ID = scrapy.Field()
+
+    phone = scrapy.Field()
+    member_id = scrapy.Field()
+
+    @classmethod
+    def get_default(self, phone, member_id):
+        return OpensooqPhone(
+            phone=phone,
+            member_id=member_id
         )
