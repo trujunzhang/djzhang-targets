@@ -124,6 +124,8 @@ class HarajsSpider(scrapy.Spider):
         _last = ''
         if phone_number_item:
             _last = phone_number_item.url
+        else:
+            _len = len(_phone_number_base64)
 
         _url_from = WebsiteTypes.opensooq.value
 
