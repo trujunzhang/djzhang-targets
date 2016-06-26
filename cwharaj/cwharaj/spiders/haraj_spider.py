@@ -121,7 +121,10 @@ class HarajsSpider(scrapy.Spider):
 
         # Specially, the last url is not an ajax url,
         # We must get the url from the item.
-        _last = phone_number_item.url
+        _last = ''
+        if phone_number_item:
+            _last = phone_number_item.url
+
         _url_from = WebsiteTypes.opensooq.value
 
         # step 1: request the last row on the cache database
