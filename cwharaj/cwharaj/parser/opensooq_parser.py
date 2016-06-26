@@ -96,7 +96,7 @@ class OpensooqParse(BaseParser):
         HarajsComments(self, item_db, id_ads).save_for_opensooq(hxs)
 
         # return phone_number_item
-        phone_number_item = phoneNumberSet.get_phone_number_item(_ID)
+        phone_number_item = phoneNumberSet.get_phone_number_item(url, _ID)
         if phone_number_item:
             # Specially, parse phone_number only for opensooq
             _phone_data_id = self.get_value_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-id')

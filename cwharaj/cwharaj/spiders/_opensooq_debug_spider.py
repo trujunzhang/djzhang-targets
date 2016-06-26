@@ -64,9 +64,7 @@ class OpensooqDebugSpider(scrapy.Spider):
             if _ajax_url:
                 yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
             else:  # No phone number found, fetch the oldest from the cache database.
-                item = phone_number_item.scrapy_item
-                if item:
-                    self.phone_dict.remove_row(phone_number_item.model_id)
+                self.phone_dict.remove_row(phone_number_item.model_id)
 
     def ajax_phone_number_for_opensooq(self, response):
         _phone_number_base64 = response.body
@@ -78,4 +76,3 @@ class OpensooqDebugSpider(scrapy.Spider):
             id_ads = phone_number_item.id_ads
             self._item_db.update_members_phone(_His_announcement_id, Ad.get_opensooq_phone(_opensooq_phone_id))
             self._item_db.update_ads_contact(id_ads, Ad.get_opensooq_phone(_opensooq_phone_id))
-            self._history_db.save_history(response.url, id_ads=phone_number_item.id_ads)

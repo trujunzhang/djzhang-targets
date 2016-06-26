@@ -6,13 +6,14 @@ from cwharaj.utils.crawl_utils import CrawlUtils
 
 class PhoneNumberItem(object):
     model_id = ''
+    url = ''
     # Sometime phone_data_id is the same as model_id.
     phone_data_id = ''
     phone_data_type = ''
     _His_announcement_id = ''
     id_ads = ''
 
-    def __init__(self, model_id):
+    def __init__(self, url, model_id):
         self.model_id = model_id
         super(PhoneNumberItem, self).__init__()
 
@@ -30,16 +31,16 @@ class PhoneNumberSet(object):
         self.dict = {}
         super(PhoneNumberSet, self).__init__()
 
-    def add_row(self, model_id):
-        self.dict[model_id] = PhoneNumberItem(model_id)
+    def add_row(self, url, model_id):
+        self.dict[model_id] = PhoneNumberItem(url, model_id)
         logging.debug("Added to dict for {}".format(model_id))
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
-    def get_phone_number_item(self, _model_id):
+    def get_phone_number_item(self, url, _model_id):
         logging.debug("Get phone number item:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
         if _model_id not in self.dict.keys():
-            self.add_row(_model_id)
+            self.add_row(url, _model_id)
 
         item = self.dict[_model_id]
         if item:
