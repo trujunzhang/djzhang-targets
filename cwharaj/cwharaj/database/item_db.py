@@ -147,13 +147,11 @@ class ItemDatabase(MysqlDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = """ INSERT INTO opensooq_phone(phone) VALUES (%s)"""
+        sql = """ INSERT INTO opensooq_phone(phone) VALUES ('{}')""".format(opensooq_phone['phone'])
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (
-                opensooq_phone['phone']
-            ))
+            _cursor.execute(sql)
             # Commit your changes in the database
             _connection.commit()
             # get the "id" after INSERT into MySQL database
