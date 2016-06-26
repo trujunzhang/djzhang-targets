@@ -166,6 +166,11 @@ class ItemDatabase(MysqlDatabase):
             _cursor.close()
             _connection.close()
 
+        if _excep:
+            logging.debug("  mysql: insert the opensooq_phone row failure, {}".format(_excep))
+        else:
+            logging.debug("  mysql: insert the opensooq_phone into the {} successfully".format(_opensooq_phone_id))
+
         return _opensooq_phone_id
 
     def save_section(self, section):
