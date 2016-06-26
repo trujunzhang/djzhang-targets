@@ -21,9 +21,8 @@ CREATE TABLE ads_histories (
 --
 
 CREATE TABLE IF NOT EXISTS `opensooq_phone` (
-  `id`        INT(11) NOT NULL AUTO_INCREMENT,
-  `phone`     TEXT    NOT NULL,
-  `member_id` INT(11) NOT NULL,
+  `id`    INT(11) NOT NULL AUTO_INCREMENT,
+  `phone` TEXT    NOT NULL,
   PRIMARY KEY (`id`)
 )
   ENGINE = MyISAM

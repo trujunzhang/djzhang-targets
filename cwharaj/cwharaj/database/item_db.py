@@ -137,6 +137,37 @@ class ItemDatabase(MysqlDatabase):
 
         return _members_id
 
+    def save_opensooq_phone(self, opensooq_phone):
+        sql = """ SELECT id FROM opensooq_phone WHERE phone = '{}'""".format(opensooq_phone['phone'])
+        _opensooq_phone_id = self._get_row_id(sql, "opensooq_phone")
+        if _opensooq_phone_id:
+            return _opensooq_phone_id
+
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        sql = """ INSERT INTO opensooq_phone(phone) VALUES (%s)"""
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql, (
+                opensooq_phone['phone']
+            ))
+            # Commit your changes in the database
+            _connection.commit()
+            # get the "id" after INSERT into MySQL database
+            _opensooq_phone_id = _cursor.lastrowid
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        return _opensooq_phone_id
+
     def save_section(self, section):
         item = self.get_section(section['name'])
         if item:

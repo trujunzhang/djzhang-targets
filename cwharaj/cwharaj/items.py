@@ -231,11 +231,9 @@ class OpensooqPhone(scrapy.Item):
     ID = scrapy.Field()
 
     phone = scrapy.Field()
-    member_id = scrapy.Field()
 
     @classmethod
-    def get_default(self, phone, member_id):
+    def get_default(self, phone):
         return OpensooqPhone(
-            phone=phone,
-            member_id=member_id
+            phone=phone
         )
