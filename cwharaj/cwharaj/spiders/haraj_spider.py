@@ -112,19 +112,19 @@ class HarajsSpider(scrapy.Spider):
         _phone_number_base64 = response.body
         _opensooq_phone_id = self._item_db.save_opensooq_phone(OpensooqPhone.get_default(_phone_number_base64))
 
+        _last = ''
         phone_number_item = self.phone_dict.get_item_from_ajax_url(response.url)
         if phone_number_item:
             _His_announcement_id = phone_number_item._His_announcement_id
             id_ads = phone_number_item.id_ads
             self._item_db.update_members_phone(_His_announcement_id, Ad.get_opensooq_phone(_opensooq_phone_id))
             self._item_db.update_ads_contact(id_ads, Ad.get_opensooq_phone(_opensooq_phone_id))
+            _last = phone_number_item.url
+            self.phone_dict.remove_row(phone_number_item.model_id)
 
         # Specially, the last url is not an ajax url,
         # We must get the url from the item.
-        _last = ''
-        if phone_number_item:
-            _last = phone_number_item.url
-        else:
+        if _last == '':
             _len = len(_phone_number_base64)
 
         _url_from = WebsiteTypes.opensooq.value
