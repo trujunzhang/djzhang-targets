@@ -19,6 +19,11 @@ class ItemDatabase(MysqlDatabase):
 
         return _ads_id
 
+    def update_ads_contact(self, ads_id, ads_contact):
+        exist = self.check_exist_by_id(ads_id)
+        if exist:
+            pass
+
     def save_comment(self, comment):
         sql = """ SELECT id FROM comments WHERE id_ads = '{}' and id_His_response = '{}' and text = '{}'""".format(
             comment['id_ads'], comment['id_His_response'], comment['text'])
