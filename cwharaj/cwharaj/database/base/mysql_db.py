@@ -119,7 +119,7 @@ class MysqlDatabase(BaseDatabase):
             _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
             # Execute the SQL command
             _cursor.execute(sql, (
-                ads_contact, _ads_id
+                ads_contact, ads_id
             ))
             # Commit your changes in the database
             _connection.commit()
