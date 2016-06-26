@@ -76,10 +76,6 @@ class OpensooqDebugSpider(scrapy.Spider):
         if phone_number_item:
             _His_announcement_id = phone_number_item._His_announcement_id
             id_ads = phone_number_item.id_ads
-
-            # self._item_db._update_contact_for_ads(id_ads,Ad.get_opensooq_phone(24))
-
-
-            # self._item_db
-
+            self._item_db._update_contact_for_ads(_His_announcement_id, Ad.get_opensooq_phone(_opensooq_phone_id))
+            self._item_db._update_contact_for_ads(id_ads, Ad.get_opensooq_phone(_opensooq_phone_id))
             # self._history_db.process_item(response.url, id=_id)
