@@ -68,7 +68,7 @@ class PhoneNumberSet(object):
 
         if _id:
             self.remove_row(_id)
-            return _item.scrapy_item
+            return _item
 
         logging.debug("  3. not found item from ajax url: {}".format(_ajax_url))
         return None
