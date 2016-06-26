@@ -64,7 +64,7 @@ class MysqlDatabase(BaseDatabase):
                 "  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
                                                                                  item['url_from']))
 
-    def insert_for_item(self, item):
+    def insert_for_ads(self, item):
         _excep = None
         _connection = self.get_client()
         _cursor = _connection.cursor()
@@ -85,6 +85,41 @@ class MysqlDatabase(BaseDatabase):
                 item['type_ads_or'], item['close_ads'], item['Last_updated_Ad'], item['closecomment'],
                 item['fixed_home'], item['fixed_tub'], item['fixed_sec'], item['fixed_sec2'], item['fixed_sec3'],
                 item['timer_mazad']
+            ))
+            # Commit your changes in the database
+            _connection.commit()
+            _ads_id = _cursor.lastrowid
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        if _excep:
+            logging.debug("  mysql: insert the ads row failure, {}".format(_excep))
+        else:
+            logging.debug("  mysql: insert the ads {} successfully".format(_ads_id))
+
+        return _ads_id
+
+    def update_contact_for_ads(self, ads_id, ads_contact):
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        _ads_id = -1
+
+        sql = " UPDATE ads SET ads_contact = %s WHERE id = %s"
+
+        try:
+            _cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
+            _cursor.execute("SET CHARACTER SET utf8mb4;")  # same as above
+            _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
+            # Execute the SQL command
+            _cursor.execute(sql, (
+                ads_contact, _ads_id
             ))
             # Commit your changes in the database
             _connection.commit()

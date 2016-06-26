@@ -13,7 +13,7 @@ class ItemDatabase(MysqlDatabase):
         sql = """ SELECT id FROM ads WHERE ads_title = '{}'""".format(item['ads_title'])
         _ads_id = self._get_row_id(sql, "ads")
         if _ads_id == "":
-            _ads_id = self.insert_for_item(item)
+            _ads_id = self.insert_for_ads(item)
 
         item['id_ads'] = _ads_id
 
@@ -22,7 +22,7 @@ class ItemDatabase(MysqlDatabase):
     def update_ads_contact(self, ads_id, ads_contact):
         exist = self.check_exist_by_id(ads_id)
         if exist:
-            pass
+            self.update_contact_for_ads(ads_id, ads_contact)
 
     def save_comment(self, comment):
         sql = """ SELECT id FROM comments WHERE id_ads = '{}' and id_His_response = '{}' and text = '{}'""".format(
