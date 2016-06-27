@@ -8,6 +8,9 @@
 import scrapy
 from enum import Enum
 import time
+from datetime import datetime
+
+from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class WebsiteTypes(Enum):
@@ -48,6 +51,15 @@ class HistoryItem(scrapy.Item):
 
     # the same as ads(table).id_ads
     id = scrapy.Field()
+
+    @classmethod
+    def get_default(self, url, id_ads):
+        return HistoryItem(
+            url=url,
+            guid=CrawlUtils.get_guid(url),
+            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
+            id=id_ads
+        )
 
 
 class AdScrapeItem(scrapy.Item):

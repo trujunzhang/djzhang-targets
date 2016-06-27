@@ -11,21 +11,14 @@ class HistoryDatabase(MysqlDatabase):
         super(HistoryDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
     def save_history(self, url, id_ads):
-        item = HistoryItem(
-            url=url,
-            guid=CrawlUtils.get_guid(url),
-            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-            id=id_ads
-        )
+        item = HistoryItem.get_default(url=url, id_ads=id_ads)
 
-        self.update_for_history(id_ads, item)
-        logging.debug("HarajHistory added to database!")
-
-    def update_for_history(self, id_ads, item):
         sql = """ SELECT id FROM {}} WHERE guid = '{}'""".format(self.collection_name, item['guid'])
         _ads_id = self._get_row_id(sql, self.collection_name)
         if _ads_id == "":
             self.insert_for_history(item)
+
+        logging.debug("HarajHistory added to database!")
 
     def insert_for_history(self, item):
         _excep = None
