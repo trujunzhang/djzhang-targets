@@ -57,7 +57,7 @@ class OpensooqParse(BaseParser):
         _ads_title = self.get_value_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
         _image_link = self.get_pictures(hxs, '//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src')
         _time_added = self.get_value_response(hxs, '//*[@class="postDate fRight"]/text()')
-        _ads_body = self.get_all_value_from_response(hxs, '//*[@class="postDesc"]/p/text()')
+        _ads_body = self.get_all_value_response(hxs, '//*[@class="postDesc"]/p/text()')
 
         _sections = self.get_section(self.get_value_response(hxs, '//*[@class="breadcrumbs"]'))
         _section_item = HarajsSection(_sections, item_db).get_section_item()

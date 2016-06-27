@@ -23,7 +23,7 @@ class BaseParser(object):
             return value.encode('utf-8')
         return default
 
-    def get_all_value_from_response(self, hxs, query):
+    def get_all_value_response(self, hxs, query):
         _list = hxs.xpath(query)
         value = ""
         for line in _list:

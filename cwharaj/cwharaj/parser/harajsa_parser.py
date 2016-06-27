@@ -72,7 +72,7 @@ class HarajSaParse(BaseParser):
             return False
 
         _image_link = self.get_images_in_selector(hxs, '//*[@itemprop="description"]', filter_method=filter_for_image)
-        _ads_body = self.get_all_value_from_response(hxs, '//*[@itemprop="description"]/text()')
+        _ads_body = self.get_all_value_response(hxs, '//*[@itemprop="description"]/text()')
         _ads_contact = self.get_value_response(hxs, '//*[@class="contact"]/strong/a/text()')
 
         # sections

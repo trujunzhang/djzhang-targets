@@ -2,6 +2,8 @@ import logging
 
 from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
 from cwharaj.parser.base_parser import BaseParser
+from cwharaj.parser.utils.harajs_comments import HarajsComments
+from cwharaj.parser.utils.harajs_section import HarajsSection
 
 
 class MstamlParse(BaseParser):
@@ -55,19 +57,17 @@ class MstamlParse(BaseParser):
         _time = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
         _ads_title = self.get_value_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
 
-        _pictures = self.get_images_in_selector(hxs, '//noscript')
-        _subject = ""
+        _image_link = self.get_images_in_selector(hxs, '//noscript')
         _memberName = ""
         _number = self.get_value_response(hxs, '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
 
         _ads_city = self.get_value_response(hxs,
-                                             '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
-        _address = self.get_value_response(hxs, '//*[@class="boxItem"]/table[3]/tr/td[1]/a/text()')
-
+                                            '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
         _memberName = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
-        _description = self.get_all_value_from_response(hxs,
-                                                        '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
-        _section = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
+        _ads_body = self.get_all_value_response(hxs,
+                                                '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
+        _sections = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
+        _section_item = HarajsSection(_sections, item_db).get_section_item()
 
         # Replace "\n","\r"
         _ads_city = _ads_city.replace("\n", "").replace("\r", "").strip()
@@ -91,8 +91,6 @@ class MstamlParse(BaseParser):
         )
 
         id_ads = item_db.save_ad(item)
-
-        HarajsComments(self, item_db, id_ads).save_for_harajs(hxs)
 
         return item
 
