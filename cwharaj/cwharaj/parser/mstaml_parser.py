@@ -65,15 +65,13 @@ class MstamlParse(BaseParser):
                                                 '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
 
         # Member
-        _number = self.get_value_response(hxs, '//table[@class="dcs"]/tbody/tr[9]/td[2]/text()')
-
         _ads_city = self.get_value_response(hxs,
                                             '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
         _memberName = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
 
         # Sections
         _sections = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
-        _section_item = HarajsSection(_sections, item_db).get_section_item()
+        _section_item = HarajsSection(_sections, item_db).get_section_item_for_mstaml()
 
         # Replace "\n","\r"
         _ads_city = _ads_city.replace("\n", "").replace("\r", "").strip()

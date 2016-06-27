@@ -14,6 +14,9 @@ class HarajsSection(object):
         self.section_item = SectionItem(self.item_db)
         self.tag_item = TagItem(sections, item_db)
 
+    def get_section_item_for_mstaml(self):
+        return self.section_item
+
     def get_section_item(self):
         if len(self.sections) == 2:
             """
