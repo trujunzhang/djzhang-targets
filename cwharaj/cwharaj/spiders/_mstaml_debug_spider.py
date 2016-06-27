@@ -15,8 +15,8 @@ class MstamlDebugWatchSpider(scrapy.Spider):
         # Details
         # 'http://www.mstaml.com/2073561/للبيع_جمس_يوكن_1999/'
         # contains emoji unicode
-        'http://www.mstaml.com/2073595/للبيع_قطط_تركيه/'
-        # 'http://www.mstaml.com/2078991/للبيع_اكسبلورر_أبيض_2010_وارد_توكيلات_الجزيرة/'
+        # 'http://www.mstaml.com/2073595/للبيع_قطط_تركيه/'
+        'http://www.mstaml.com/2078991/للبيع_اكسبلورر_أبيض_2010_وارد_توكيلات_الجزيرة/'
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -50,4 +50,3 @@ class MstamlDebugWatchSpider(scrapy.Spider):
     def parse(self, response):
         # self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         item = self._mstaml_Parse.parse(response.url, response, self._item_db)
-

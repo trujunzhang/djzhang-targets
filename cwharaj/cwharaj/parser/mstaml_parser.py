@@ -56,6 +56,7 @@ class MstamlParse(BaseParser):
 
         # boxItem
         _time = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
+        _ads_contact = self.get_value_response(hxs, '//table[@class="dcs"]/tr[9]/td[2]/span/@title')
 
         # AD
         _ads_title = self.get_value_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
