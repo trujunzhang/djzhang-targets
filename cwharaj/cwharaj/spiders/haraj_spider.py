@@ -145,7 +145,6 @@ class HarajsSpider(scrapy.Spider):
     # ====================================================================================
     def parse_page_from_mstaml(self, response):
         item = self._mstaml_Parse.parse(response.url, response, self._item_db)
-        yield item
 
         self._history_db.save_history(url=response.url, id_ads=item["id_ads"])
 
