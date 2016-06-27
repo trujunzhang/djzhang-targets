@@ -15,7 +15,7 @@ class HistoryDatabase(MysqlDatabase):
             url=url,
             guid=CrawlUtils.get_guid(url),
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-            ID=id_ads
+            id=id_ads
         )
 
         self.update_for_history(id_ads, item)

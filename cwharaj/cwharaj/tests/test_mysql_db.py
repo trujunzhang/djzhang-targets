@@ -72,7 +72,7 @@ class MysqlDBTest(unittest.TestCase):
     #         url=_url,
     #         guid=_guid,
     #         created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-    #         ID=_id
+    #         id=_id
     #     )
     #     self._history_db.update_for_history(_id, item)
     #
