@@ -36,7 +36,7 @@ class HistoryDatabase(MysqlDatabase):
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID']))
+            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['id']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
@@ -48,6 +48,6 @@ class HistoryDatabase(MysqlDatabase):
             _connection.close()
 
         if _excep:
-            logging.debug("  mysql: insert the history row {} failure, {}".format(item['ID'], _excep))
+            logging.debug("  mysql: insert the history row {} failure, {}".format(item['id'], _excep))
         else:
-            logging.debug("  mysql: insert {} into the {} successfully".format(item['ID'], self.collection_name))
+            logging.debug("  mysql: insert {} into the {} successfully".format(item['id'], self.collection_name))

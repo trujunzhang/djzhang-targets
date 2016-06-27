@@ -42,11 +42,11 @@ class MysqlDatabase(BaseDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, ID, url_from) VALUES (%s,%s,%s,%s,%s)"
+        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, id, url_from) VALUES (%s,%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['ID'], item['url_from']))
+            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['id'], item['url_from']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
@@ -61,7 +61,7 @@ class MysqlDatabase(BaseDatabase):
             logging.debug("  mysql: insert the cache row failure, {}".format(_excep))
         else:
             logging.debug(
-                "  mysql: insert {} into the {} from the {} successfully".format(item['ID'], self.collection_name,
+                "  mysql: insert {} into the {} from the {} successfully".format(item['id'], self.collection_name,
                                                                                  item['url_from']))
 
     def insert_for_ads(self, item):
@@ -183,14 +183,14 @@ class MysqlDatabase(BaseDatabase):
         logging.debug("  2. get the last url's id: {}".format(_id))
 
         # Query the deleted item count, must be equal to 1.
-        sql = """ SELECT 1 FROM {} WHERE ID = '{}'""".format(self.collection_name, _id)
+        sql = """ SELECT 1 FROM {} WHERE id = '{}'""".format(self.collection_name, _id)
         count = self._get_count(sql, self.collection_name)
-        logging.debug("  3. found the deleted item count: {} by ID".format(count))
+        logging.debug("  3. found the deleted item count: {} by id".format(count))
         if count:
 
             _connection = self.get_client()
             _cursor = _connection.cursor()
-            sql = """ DELETE FROM {} WHERE {} = '{}'""".format(self.collection_name, 'ID', _id)
+            sql = """ DELETE FROM {} WHERE {} = '{}'""".format(self.collection_name, 'id', _id)
             try:
                 # Execute the SQL command
                 _cursor.execute(sql)
@@ -284,7 +284,7 @@ class MysqlDatabase(BaseDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = """ SELECT 1 FROM {} WHERE ID = {}""".format(self.collection_name, _id)
+        sql = """ SELECT 1 FROM {} WHERE id = {}""".format(self.collection_name, _id)
         try:
             # Execute the SQL command
             _cursor.execute(sql)

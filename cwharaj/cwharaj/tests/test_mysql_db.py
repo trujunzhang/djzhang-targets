@@ -49,7 +49,7 @@ class MysqlDBTest(unittest.TestCase):
     #         url=self._cache_url,
     #         guid=_guid,
     #         created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-    #         ID=_id,
+    #         id=_id,
     #         url_from=self._cache_from
     #     )
     #     self._cache_db.insert_for_cache(item)

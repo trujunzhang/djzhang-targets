@@ -45,7 +45,7 @@ class PhoneNumberSet(object):
 
         item = self.dict[_model_id]
         if item:
-            logging.debug("  1. found by ID {}".format(_model_id))
+            logging.debug("  1. found by model_id {}".format(_model_id))
             return item
 
         logging.debug("  3. not found : {}".format(_model_id))

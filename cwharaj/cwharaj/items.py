@@ -170,9 +170,6 @@ class Comment(scrapy.Item):
 
 # CREATE TABLE IF NOT EXISTS `cities`, not "city"
 class City(scrapy.Item):
-    # unique row id
-    ID = scrapy.Field()
-
     text = scrapy.Field()
 
     @classmethod
@@ -228,7 +225,7 @@ class Member(scrapy.Item):
 # CREATE TABLE IF NOT EXISTS `opensooq_phone`
 class OpensooqPhone(scrapy.Item):
     # unique row id
-    ID = scrapy.Field()
+    id = scrapy.Field()
 
     phone = scrapy.Field()
 

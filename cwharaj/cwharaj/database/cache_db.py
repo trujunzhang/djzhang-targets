@@ -18,8 +18,8 @@ class CacheDatabase(MysqlDatabase):
         item["guid"] = guid
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
-        if self.check_exist_by_id(item["ID"]):
-            logging.debug("  item exist {} from {} on the cache database".format(item["ID"], item["url_from"]))
+        if self.check_exist_by_id(item["id"]):
+            logging.debug("  item exist {} from {} on the cache database".format(item["id"], item["url_from"]))
         else:
             self.insert_for_cache(item)
 
