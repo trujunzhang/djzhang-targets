@@ -1,6 +1,6 @@
 CREATE TABLE ads_caches (
   guid       CHAR(32) PRIMARY KEY,
-  ID         TEXT,
+  id         TEXT,
   url        TEXT,
   url_from   TEXT,
   created_at DATETIME
@@ -10,7 +10,7 @@ CREATE TABLE ads_caches (
 
 CREATE TABLE ads_histories (
   guid       CHAR(32) PRIMARY KEY,
-  ID         TEXT,
+  id         TEXT,
   url        TEXT,
   created_at DATETIME
 )
@@ -34,12 +34,12 @@ CREATE TABLE IF NOT EXISTS `opensooq_phone` (
 --
 
 CREATE TABLE IF NOT EXISTS `ads_scrape` (
-  `ID`         INT(11)    NOT NULL AUTO_INCREMENT,
+  `id`         INT(11)    NOT NULL AUTO_INCREMENT,
   `Model_id`   INT(11)    NOT NULL,
   `Url`        TEXT       NOT NULL,
   `Url_from`   INT(11)    NOT NULL,
   `Created_at` BIGINT(20) NOT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`id`)
 )
   ENGINE = MyISAM
   DEFAULT CHARSET = utf8

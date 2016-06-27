@@ -35,7 +35,7 @@ class OpensooqParse(BaseParser):
                 continue
 
             item = CacheItem(
-                ID=_ID,
+                id=_ID,
                 url_from=WebsiteTypes.opensooq.value,
             )
 

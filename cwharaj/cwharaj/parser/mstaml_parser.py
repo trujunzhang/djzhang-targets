@@ -42,7 +42,7 @@ class MstamlParse(BaseParser):
                 continue
 
             item = CacheItem(
-                ID=_ID,
+                id=_ID,
                 url_from=WebsiteTypes.mstaml.value,
             )
 

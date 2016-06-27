@@ -41,7 +41,7 @@ class HarajSaParse(BaseParser):
                 continue
 
             item = CacheItem(
-                ID=_ID,
+                id=_ID,
                 url_from=WebsiteTypes.harajsa.value,
             )
 

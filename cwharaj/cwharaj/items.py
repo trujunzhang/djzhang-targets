@@ -36,7 +36,7 @@ class CacheItem(scrapy.Item):
     created_at = scrapy.Field()
 
     # unique row id
-    ID = scrapy.Field()
+    id = scrapy.Field()
     # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
     url_from = scrapy.Field()
 
@@ -47,7 +47,7 @@ class HistoryItem(scrapy.Item):
     created_at = scrapy.Field()
 
     # the same as ads(table).id_ads
-    ID = scrapy.Field()
+    id = scrapy.Field()
 
 
 class AdScrapeItem(scrapy.Item):

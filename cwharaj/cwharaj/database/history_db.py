@@ -22,7 +22,9 @@ class HistoryDatabase(MysqlDatabase):
         logging.debug("HarajHistory added to database!")
 
     def update_for_history(self, id_ads, item):
-        if not self.check_exist_by_id(id_ads):
+        sql = """ SELECT id FROM {}} WHERE guid = '{}'""".format(self.collection_name, item['guid'])
+        _ads_id = self._get_row_id(sql, self.collection_name)
+        if _ads_id == "":
             self.insert_for_history(item)
 
     def insert_for_history(self, item):
@@ -30,7 +32,7 @@ class HistoryDatabase(MysqlDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, ID) VALUES (%s,%s,%s,%s)"
+        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, id) VALUES (%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
