@@ -13,12 +13,13 @@ class HistoryDatabase(MysqlDatabase):
     def save_history(self, url, id_ads):
         item = HistoryItem.get_default(url=url, id_ads=id_ads)
 
-        sql = """ SELECT id FROM {}} WHERE guid = '{}'""".format(self.collection_name, item['guid'])
+        sql = """ SELECT id FROM {} WHERE guid = '{}'""".format(self.collection_name, item['guid'])
         _ads_id = self._get_row_id(sql, self.collection_name)
         if _ads_id == "":
             self.insert_for_history(item)
-
-        logging.debug("HarajHistory added to database!")
+            logging.debug("HarajHistory added to database successfully!")
+        else:
+            logging.debug("HarajHistory already exist!")
 
     def insert_for_history(self, item):
         _excep = None
