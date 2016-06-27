@@ -242,7 +242,8 @@ class MysqlDatabase(BaseDatabase):
 
         found_count = 0
 
-        sql = 'SELECT * FROM  {} ORDER BY {} ASC LIMIT 1'.format(self.collection_name, 'created_at')
+        sql = 'SELECT guid,id,url,url_from,created_at FROM  {} ORDER BY {} ASC LIMIT 1'.format(self.collection_name,
+                                                                                               'created_at')
         try:
             # Execute the SQL command
             _cursor.execute(sql)
@@ -252,7 +253,7 @@ class MysqlDatabase(BaseDatabase):
             if data:
                 row = CacheItem(
                     guid=data[0],
-                    ID=data[1],
+                    id=data[1],
                     url=data[2],
                     url_from=data[3],
                     created_at=data[4]

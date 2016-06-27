@@ -46,7 +46,7 @@ class MstamlParse(BaseParser):
                 url_from=WebsiteTypes.mstaml.value,
             )
 
-            cache_db.process_item(href, item, count)
+            cache_db.save_cache(href, item, count)
             # here, must sleep a second.
             # time.sleep(1)
 

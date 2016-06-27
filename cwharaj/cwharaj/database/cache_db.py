@@ -9,7 +9,7 @@ class CacheDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(CacheDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
-    def process_item(self, url, item=None, index=0):
+    def save_cache(self, url, item=None, index=0):
         logging.debug("process the cache item at position: {}".format(index - 1))
 
         guid = CrawlUtils.get_guid(url)
@@ -17,9 +17,6 @@ class CacheDatabase(MysqlDatabase):
         item["url"] = url
         item["guid"] = guid
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
-
-        if item["ID"] == "":
-            _href = item["ID"]
 
         if self.check_exist_by_id(item["ID"]):
             logging.debug("  item exist {} from {} on the cache database".format(item["ID"], item["url_from"]))
