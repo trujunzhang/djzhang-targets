@@ -11,7 +11,7 @@ class SectionData:
     url_from = 'https://sa.opensooq.com/ar/search/17978455/دهن-عود-ملكي'
     sections = [
         'سوق السعودية المفتوح',
-        'الدمام',
+        'الدمام',  # Member's city
         'ملابس - موضة', # tag_F
         'عطور' # tag_R
     ]
