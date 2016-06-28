@@ -37,7 +37,8 @@ class HarajsSection(object):
         We just need the last two sections.
         :return:
         """
-        self._get_tag_r(self.sections[self.section_count - 1])
+        if self.section_count > 2:
+            self._get_tag_r(self.sections[self.section_count - 1])
         if self.section_count == 4:
             self._get_tag_f(self.sections[2])
 
