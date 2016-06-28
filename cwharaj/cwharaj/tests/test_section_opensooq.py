@@ -10,10 +10,10 @@ from cwharaj.parser.utils.harajs_section import HarajsSection
 class SectionData:
     url_from = 'https://sa.opensooq.com/ar/search/17978455/دهن-عود-ملكي'
     sections = [
-        "عقار حي المشاعل في الرياض",
-        "محلات للايجار",
-        "محلات للايجار في الرياض",
-        "محلات للايجار في حي المشاعل في الرياض"  # tags_r
+        'سوق السعودية المفتوح',
+        'الدمام',
+        'ملابس - موضة', # tag_F
+        'عطور' # tag_R
     ]
 
     expect = {
