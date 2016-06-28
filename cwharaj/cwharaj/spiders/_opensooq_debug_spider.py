@@ -21,7 +21,9 @@ class OpensooqDebugSpider(scrapy.Spider):
         # 'https://sa.opensooq.com/ar/search/42552861/%D9%85%D9%86%D8%B8%D9%88%D9%85%D8%A9-%D9%85%D8%A8%D9%8A%D8%B9%D8%A7%D8%AA-%D9%84%D9%84%D8%A7%D8%B3%D9%88%D8%A7%D9%82-%D9%88%D8%A7%D9%84%D9%85%D8%AD%D9%84%D8%A7%D8%AA'
         # Fix phone number
         # 'https://sa.opensooq.com/ar/search/43152549/إفطار-صائم-بمكه-المكرمه'
-        'https://sa.opensooq.com/ar/search/17978455/دهن-عود-ملكي'
+        # 'https://sa.opensooq.com/ar/search/17978455/دهن-عود-ملكي'
+        # mysql: insert the members row failure, (1406, "Data too long for column 'username' at row 1")
+        'https://sa.opensooq.com/ar/search/29602021/بيت-شعبي-مع-مجلس-مسلح-للبيع'
     ]
 
     def __init__(self, name=None, **kwargs):
