@@ -17,9 +17,9 @@ class SectionDataxxx:
     ]
 
     expect = {
-        "tags_f": 520,
+        "tags_f": '520',
         "tags_ff": '',
-        "tags_r": 519,
+        "tags_r": '519',
     }
 
 
@@ -34,7 +34,7 @@ class SectionData:
     expect = {
         "tags_f": '',
         "tags_ff": '',
-        "tags_r": 527,
+        "tags_r": '515',
     }
 
 
