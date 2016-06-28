@@ -11,7 +11,7 @@ class PhoneNumberItem(object):
     phone_data_id = ''
     phone_data_type = ''
     _His_announcement_id = ''
-    id_ads = '-1'
+    id_ads = '-1'  # -1 means that no row on the database.
 
     def __init__(self, url, model_id):
         self.url = url
