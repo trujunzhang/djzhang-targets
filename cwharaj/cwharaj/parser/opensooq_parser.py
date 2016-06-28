@@ -60,6 +60,11 @@ class OpensooqParse(BaseParser):
         _ads_body = self.get_all_value_response(hxs, '//*[@class="postDesc"]/p/text()')
 
         _sections = self.get_section(self.get_value_response(hxs, '//*[@class="breadcrumbs"]'))
+
+        if (_ads_title == '') and (len(_sections) == 0):
+            logging.debug("  Empty page on the opensooq")
+            return {'id_ads': -1}
+
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
         # Replace "\n","\r"
