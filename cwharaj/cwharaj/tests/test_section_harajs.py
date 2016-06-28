@@ -67,7 +67,7 @@ class SectionData:
         "tags_f": '',
         "tags_ff": '',
         "tags_r": '',
-        "other_final": 'عام',  #
+        "other_final": '',  #
     }
 
 
