@@ -10,6 +10,7 @@ class HarajsSection(object):
     def __init__(self, sections, item_db):
         super(HarajsSection, self).__init__()
         self.sections = sections
+        self.section_count = len(self.sections)
         self.item_db = item_db
         self.section_item = SectionItem(self.item_db)
         self.tag_item = TagItem(sections, item_db)
@@ -36,8 +37,9 @@ class HarajsSection(object):
         We just need the last two sections.
         :return:
         """
-        self._get_tag_r(self.sections[3])
-        self._get_tag_f(self.sections[2])
+        self._get_tag_r(self.sections[self.section_count - 1])
+        if self.section_count == 4:
+            self._get_tag_f(self.sections[2])
 
         # """
         # finally,generate section item.
