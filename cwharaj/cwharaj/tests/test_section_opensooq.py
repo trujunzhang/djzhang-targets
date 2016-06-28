@@ -20,7 +20,6 @@ class SectionData:
         "tags_f": 520,
         "tags_ff": '',
         "tags_r": 519,
-        "other_final": 'عام',  #
     }
 
 
