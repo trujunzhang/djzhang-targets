@@ -4,6 +4,7 @@ from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
 from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
+from cwharaj.utils.phone_number_set import PhoneNumberItem
 
 
 class OpensooqParse(BaseParser):
@@ -63,7 +64,7 @@ class OpensooqParse(BaseParser):
 
         if (_ads_title == '') and (len(_sections) == 0):
             logging.debug("  Empty page on the opensooq")
-            return {'id_ads': -1}
+            return PhoneNumberItem(url, _ID)
 
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
