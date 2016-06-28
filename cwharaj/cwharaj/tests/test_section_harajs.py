@@ -16,9 +16,9 @@ class SectionDataxxx:
     ]
 
     expect = {
-        "tags_f": 275,
+        "tags_f": '275',
         "tags_ff": '58',
-        "tags_r": 272,
+        "tags_r": '272',
         "other_final": 'السيارات',
     }
 
@@ -32,9 +32,9 @@ class SectionDatayyy:
     ]
 
     expect = {
-        "tags_f": 13,
+        "tags_f": '13',
         "tags_ff": '60',
-        "tags_r": 1,
+        "tags_r": '1',
         "other_final": 'السيارات',  #
     }
 
@@ -47,9 +47,9 @@ class SectionDatazzz:
     ]
 
     expect = {
-        "tags_f": 512,
+        "tags_f": '512',
         "tags_ff": '',
-        "tags_r": 502,
+        "tags_r": '502',
         "other_final": 'عام',  #
     }
 
@@ -64,9 +64,9 @@ class SectionData:
     ]
 
     expect = {
-        "tags_f": 512,
+        "tags_f": '',
         "tags_ff": '',
-        "tags_r": 502,
+        "tags_r": '',
         "other_final": 'عام',  #
     }
 
@@ -86,9 +86,9 @@ class HarajsSecionTest(unittest.TestCase):
     def test_parse_section(self):
         _section_item = self.section_mgr.get_section_item_for_harajsa()
 
-        _tags_f = _section_item.ads_tags_F
+        _tags_f = '{}'.format(_section_item.ads_tags_F)
         _tags_ff = '{}'.format(_section_item.ads_tags_FF)
-        _tags_r = _section_item.ads_tags_R
+        _tags_r = '{}'.format(_section_item.ads_tags_R)
         _other_final = _section_item.type_ads_other_final.encode('utf-8')
 
         self.assertEqual(_tags_f, self.expect["tags_f"])
