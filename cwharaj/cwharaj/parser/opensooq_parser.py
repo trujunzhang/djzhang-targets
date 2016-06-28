@@ -60,7 +60,7 @@ class OpensooqParse(BaseParser):
         _ads_body = self.get_all_value_response(hxs, '//*[@class="postDesc"]/p/text()')
 
         _sections = self.get_section(self.get_value_response(hxs, '//*[@class="breadcrumbs"]'))
-        _section_item = HarajsSection(_sections, item_db).get_section_item()
+        _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
         # Replace "\n","\r"
         _ads_city = _ads_city.strip()

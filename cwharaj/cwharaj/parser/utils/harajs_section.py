@@ -17,7 +17,10 @@ class HarajsSection(object):
     def get_section_item_for_mstaml(self):
         return self.section_item
 
-    def get_section_item(self):
+    def get_section_item_for_opensooq(self):
+        pass
+
+    def get_section_item_for_harajsa(self):
         if len(self.sections) == 2:
             """
             the left of the browser is tags_r,
