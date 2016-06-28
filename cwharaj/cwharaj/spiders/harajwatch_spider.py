@@ -56,8 +56,8 @@ class HarajsSpiderWatch(scrapy.Spider):
     # This methond is entry point
     def parse(self, response):
         # Here, 3 website need to fetch again and again(Through 24X7, full-time)
-        # yield scrapy.Request(self.url_from_opensooq, callback=self.parse_pagination_from_opensooq, dont_filter=True)
-        yield scrapy.Request(self.url_from_mstaml, callback=self.parse_pagination_from_mstaml, dont_filter=True)
+        yield scrapy.Request(self.url_from_opensooq, callback=self.parse_pagination_from_opensooq, dont_filter=True)
+        # yield scrapy.Request(self.url_from_mstaml, callback=self.parse_pagination_from_mstaml, dont_filter=True)
         # yield scrapy.Request(self.url_from_harajsa, callback=self.parse_pagination_from_harajsa, dont_filter=True)
 
     def parse_pagination_from_opensooq(self, response):
