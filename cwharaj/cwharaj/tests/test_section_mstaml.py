@@ -35,7 +35,7 @@ class MstamlSecionTest(unittest.TestCase):
         self.section_mgr = HarajsSection(self.section_data.sections, self._item_db)
 
     def test_parse_section(self):
-        _section_item = self.section_mgr.get_section_item_for_opensooq()
+        _section_item = self.section_mgr.get_section_item_for_mstaml()
 
         _tags_f = _section_item.ads_tags_F
         _tags_ff = '{}'.format(_section_item.ads_tags_FF)
