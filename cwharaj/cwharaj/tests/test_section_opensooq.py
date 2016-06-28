@@ -7,55 +7,8 @@ from cwharaj.database_factory import DatabaseFactory, CollectionTypes
 from cwharaj.parser.utils.harajs_section import HarajsSection
 
 
-class SectionDataxxx:
-    url_from = 'https://haraj.com.sa/1113955445/%D9%84%D9%84%D8%A8%D9%8A%D8%B9_%D8%A7%D8%B3%D9%83%D8%A7%D9%84%D9%8A%D8%AF_%D9%85%D9%88%D8%AF%D9%8A%D9%84_2014_%D8%A8%D8%B3%D8%B9%D8%B1_%D8%AC%D9%8A%D8%AF/'
-    sections = [
-        'اسكاليدا',
-        'اسكاليدا 2014',
-        'كاديلاك'  # tags_r
-    ]
-
-    expect = {
-        "tags_f": 275,
-        "tags_ff": '58',
-        "tags_r": 272,
-        "other_final": 'السيارات',
-    }
-
-
-class SectionDatayyy:
-    url_from = ''
-    sections = [
-        "تويوتا",  # tags_r
-        "كامري",
-        "كامري 2016"
-    ]
-
-    expect = {
-        "tags_f": 13,
-        "tags_ff": '60',
-        "tags_r": 1,
-        "other_final": 'السيارات',  #
-    }
-
-
-class SectionDatazzz:
-    url_from = 'https://haraj.com.sa/1114186091/الرياض/'
-    sections = [
-        "ساعات",
-        "مستلزمات شخصية"  # tags_r
-    ]
-
-    expect = {
-        "tags_f": 512,
-        "tags_ff": '',
-        "tags_r": 502,
-        "other_final": 'عام',  #
-    }
-
-
 class SectionData:
-    url_from = 'https://haraj.com.sa/1113412781/مستودعات_ومصانع_للايجار_او_للبيع_/'
+    url_from = 'https://sa.opensooq.com/ar/search/17978455/دهن-عود-ملكي'
     sections = [
         "عقار حي المشاعل في الرياض",
         "محلات للايجار",
@@ -69,7 +22,6 @@ class SectionData:
         "tags_r": 502,
         "other_final": 'عام',  #
     }
-
 
 class OpensooqSecionTest(unittest.TestCase):
     def setUp(self):
