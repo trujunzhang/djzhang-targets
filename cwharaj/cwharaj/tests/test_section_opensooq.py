@@ -27,14 +27,14 @@ class SectionData:
     url_from = 'https://sa.opensooq.com/ar/search/43370140/محرر-صحفي-سوداني-الجنسية'
     sections = [
         'سوق السعودية المفتوح',
-        'الدمام',  # Member's city
-        'عطور'  # tag_R
+        'الرياض',  # Member's city
+        'الباحثين عن عمل'  # tag_R
     ]
 
     expect = {
         "tags_f": '',
         "tags_ff": '',
-        "tags_r": 519,
+        "tags_r": 527,
     }
 
 
