@@ -47,4 +47,3 @@ class OpensooqSecionTest(unittest.TestCase):
         self.assertEqual(_tags_f, self.expect["tags_f"])
         self.assertEqual(_tags_ff, self.expect["tags_ff"])
         self.assertEqual(_tags_r, self.expect["tags_r"])
-        self.assertEqual(_other_final, self.expect["other_final"])
