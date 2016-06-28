@@ -12,16 +12,17 @@ class SectionData:
     sections = [
         'سوق السعودية المفتوح',
         'الدمام',  # Member's city
-        'ملابس - موضة', # tag_F
-        'عطور' # tag_R
+        'ملابس - موضة',  # tag_F
+        'عطور'  # tag_R
     ]
 
     expect = {
-        "tags_f": 512,
+        "tags_f": 520,
         "tags_ff": '',
-        "tags_r": 502,
+        "tags_r": 519,
         "other_final": 'عام',  #
     }
+
 
 class OpensooqSecionTest(unittest.TestCase):
     def setUp(self):
@@ -41,7 +42,7 @@ class OpensooqSecionTest(unittest.TestCase):
         _tags_f = _section_item.ads_tags_F
         _tags_ff = '{}'.format(_section_item.ads_tags_FF)
         _tags_r = _section_item.ads_tags_R
-        _other_final = _section_item.type_ads_other_final.encode('utf-8')
+        _other_final = _section_item.type_ads_other_final
 
         self.assertEqual(_tags_f, self.expect["tags_f"])
         self.assertEqual(_tags_ff, self.expect["tags_ff"])
