@@ -18,6 +18,10 @@ class HarajsSection(object):
         return self.section_item
 
     def get_section_item_for_opensooq(self):
+        """
+        The length of sections is always
+        :return:
+        """
         pass
 
     def get_section_item_for_harajsa(self):
