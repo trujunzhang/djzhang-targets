@@ -19,10 +19,19 @@ class HarajsSection(object):
 
     def get_section_item_for_opensooq(self):
         """
-        The length of sections is always
+        The length of sections is always 4.
+        We just need the last two sections.
         :return:
         """
-        pass
+        self._get_tag_r(self.sections[3])
+        self._get_tag_f(self.sections[2])
+
+        # """
+        # finally,generate section item.
+        # """
+        self.section_item.set_item(self.tag_item)
+
+        return self.section_item
 
     def get_section_item_for_harajsa(self):
         if len(self.sections) == 2:
