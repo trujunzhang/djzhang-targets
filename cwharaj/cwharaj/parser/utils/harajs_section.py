@@ -15,6 +15,19 @@ class HarajsSection(object):
         self.tag_item = TagItem(sections, item_db)
 
     def get_section_item_for_mstaml(self):
+        """
+        The length of sections is always 3.
+        We just need the last two sections.
+        :return:
+        """
+        self._get_tag_r(self.sections[2])
+        self._get_tag_f(self.sections[1])
+
+        # """
+        # finally,generate section item.
+        # """
+        self.section_item.set_item(self.tag_item)
+
         return self.section_item
 
     def get_section_item_for_opensooq(self):

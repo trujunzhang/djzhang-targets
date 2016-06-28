@@ -103,4 +103,4 @@ class MstamlParse(BaseParser):
         for a in _As:
             sections.append(a.encode('utf-8'))
 
-        return ",".join(sections)
+        return sections
