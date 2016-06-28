@@ -7,7 +7,7 @@ from cwharaj.database_factory import DatabaseFactory, CollectionTypes
 from cwharaj.parser.utils.harajs_section import HarajsSection
 
 
-class SectionData:
+class SectionDataxxx:
     url_from = 'https://sa.opensooq.com/ar/search/17978455/دهن-عود-ملكي'
     sections = [
         'سوق السعودية المفتوح',
@@ -18,6 +18,21 @@ class SectionData:
 
     expect = {
         "tags_f": 520,
+        "tags_ff": '',
+        "tags_r": 519,
+    }
+
+
+class SectionData:
+    url_from = 'https://sa.opensooq.com/ar/search/43370140/محرر-صحفي-سوداني-الجنسية'
+    sections = [
+        'سوق السعودية المفتوح',
+        'الدمام',  # Member's city
+        'عطور'  # tag_R
+    ]
+
+    expect = {
+        "tags_f": '',
         "tags_ff": '',
         "tags_r": 519,
     }
@@ -38,10 +53,9 @@ class OpensooqSecionTest(unittest.TestCase):
     def test_parse_section(self):
         _section_item = self.section_mgr.get_section_item_for_opensooq()
 
-        _tags_f = _section_item.ads_tags_F
+        _tags_f = '{}'.format(_section_item.ads_tags_F)
         _tags_ff = '{}'.format(_section_item.ads_tags_FF)
-        _tags_r = _section_item.ads_tags_R
-        _other_final = _section_item.type_ads_other_final
+        _tags_r = '{}'.format(_section_item.ads_tags_R)
 
         self.assertEqual(_tags_f, self.expect["tags_f"])
         self.assertEqual(_tags_ff, self.expect["tags_ff"])
