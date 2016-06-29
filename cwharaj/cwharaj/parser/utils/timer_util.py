@@ -47,7 +47,7 @@ class HarajsTime(object):
         return self._get_current_time() - seconds
 
     def _get_current_time(self):
-        return time.time()
+        return int(time.time())
 
     def _get_value_from_string(self, item):
         split = item.split(' ')
@@ -77,6 +77,14 @@ class TimerUtil(object):
         :param time_ago: such as 'قبل 6 يوم و 2 ساعه في'
         :return:
         """
+
+        spec_ago = 'قبل 0 دقيقه في'  # 0 minutes ago
+        if spec_ago in time_ago:
+            return int(time.time())
+        spec_ago = 'قبل دقيقه في'  # A minute ago at
+        if spec_ago in time_ago:
+            return int(time.time())
+
         time_ago = time_ago.replace(' في', '').replace('قبل ', '').strip()
         split = time_ago.split(' و')
         return HarajsTime().maketime(split)
