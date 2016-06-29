@@ -70,10 +70,8 @@ class OpensooqParse(BaseParser):
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
         # Replace "\n","\r"
-        _ads_city = _ads_city.strip()
         _time_added = _time_added.replace("\n", "").replace("\r", "").strip()
         _ads_title = _ads_title.replace("\n", "").replace("\r", "").strip()
-        _memberName = _memberName.replace('\n', '').replace('\r', '').strip()
 
         # ====
         # Save to relative database

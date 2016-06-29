@@ -186,6 +186,7 @@ class City(scrapy.Item):
 
     @classmethod
     def get_default(self, text):
+        text = text.replace("\n", "").replace("\r", "").strip()
         return City(
             text=text
         )
@@ -213,6 +214,7 @@ class Member(scrapy.Item):
 
     @classmethod
     def get_default(self, user_name, timeregister=0):
+        user_name = user_name.replace('\n', '').replace('\r', '').strip()
         return Member(
             username=user_name,
             password='',

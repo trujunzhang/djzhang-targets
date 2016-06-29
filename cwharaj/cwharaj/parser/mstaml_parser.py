@@ -71,8 +71,6 @@ class MstamlParse(BaseParser):
         _sections = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_mstaml()
 
-        # Replace "\n","\r"
-        _ads_city = _ads_city.replace("\n", "").replace("\r", "").strip()
 
         # ====
         # Save to relative database

@@ -89,7 +89,6 @@ class HarajSaParse(BaseParser):
 
         # Replace "\n","\r"
         _ads_body = _ads_body.replace("\r", "").strip()
-        _memberName = _memberName.strip()
 
         # ====
         # Save to relative database
