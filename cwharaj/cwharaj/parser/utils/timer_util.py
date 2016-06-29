@@ -78,7 +78,7 @@ class HarajsTime(object):
             self.tm_week = time_value
         elif index == 4:
             self.tm_month = time_value
-        elif index == 4:
+        elif index == 5:
             self.tm_year = time_value
 
         logging.debug("  make time for harajs sucessfully".format(item))
