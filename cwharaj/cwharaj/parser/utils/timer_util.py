@@ -12,23 +12,33 @@ class HarajsTime(object):
     tm_month = 0
     tm_year = 0
 
+    lang = [
+        "دقيقه",  # "minute"
+        "ساعه",  # "hour"
+        "يوم",  # "day"
+        "شهر",  # "month"
+        "سنه",  # "year"
+    ]
+
     def __init__(self):
         super(HarajsTime, self).__init__()
 
     def maketime(self, split):
+        for item in split:
+            self._get_value_from_string(item)
 
-        pass
+    def _get_value_from_string(self, item):
+        split = item.split(' ')
+        time_type = split[0]
+        time_value = split[1]
+
+        index = self.lang.index(time_type)
+
+        if index == 0:
+            self.tm_minute = time_value
 
 
 class TimerUtil(object):
-    lang = {
-        "minute": "دقيقه",
-        "hour": "ساعه",
-        "day": "يوم",
-        "month": "شهر",
-        "year": "سنه",
-    }
-
     def __init__(self):
         super(TimerUtil, self).__init__()
 
@@ -41,8 +51,6 @@ class TimerUtil(object):
         time_ago = time_ago.replace(' في', '').replace('قبل ', '')
         split = time_ago.split(' و')
         harajs_time = HarajsTime().maketime(split)
-
-        _len = len(split)
 
     def get_time_for_mstaml(self, time_ago):
         pass
