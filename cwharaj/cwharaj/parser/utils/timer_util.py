@@ -1,6 +1,8 @@
 # coding=utf-8
 
 from dateutil import parser
+import datetime
+import time
 
 
 class TimerUtil(object):
@@ -28,8 +30,12 @@ class TimerUtil(object):
 
     def get_time_for_opensooq(self, time_ago):
         """
-        Converting time string format to time int format.
+        Converting string time to int.
         :param time_ago:  such as '2016.06.28'
         :return:
         """
-        dt = parser.parse(time_ago)
+
+        today = time.strptime(time_ago, "%Y.%m.%d")
+        int_time = time.mktime(today)
+
+        return int_time
