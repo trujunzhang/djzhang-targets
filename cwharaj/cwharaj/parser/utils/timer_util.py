@@ -53,7 +53,7 @@ class HarajsTime(object):
     def _get_value_from_string(self, item):
         split = item.split(' ')
         if len(split) == 1:
-            if split[0] in self.lang: # such as 'ساعه'(an hour)
+            if split[0] in self.lang:  # such as 'ساعه'(an hour)
                 time_type = split[0]
                 time_value = 1
             else:
@@ -61,7 +61,7 @@ class HarajsTime(object):
                 return
         else:
             time_type = split[1]
-            time_value = split[0]
+            time_value = int(split[0])
 
         index = self.lang.index(time_type)
 
@@ -76,7 +76,7 @@ class HarajsTime(object):
         elif index == 4:
             self.tm_year = time_value
 
-        logging.debug("  make time for harajs sucessfully".format(item.encode('utf-8')))
+        logging.debug("  make time for harajs sucessfully".format(item))
 
 
 class TimerUtil(object):
