@@ -1,4 +1,5 @@
 # coding=utf-8
+import logging
 
 from dateutil import parser
 import datetime
@@ -51,8 +52,16 @@ class HarajsTime(object):
 
     def _get_value_from_string(self, item):
         split = item.split(' ')
-        time_type = split[1]
-        time_value = split[0]
+        if len(split) == 1:
+            if split[0] in self.lang: # such as 'ساعه'(an hour)
+                time_type = split[0]
+                time_value = 1
+            else:
+                logging.debug("  make time for harajs failure".format(item.encode('utf-8')))
+                return
+        else:
+            time_type = split[1]
+            time_value = split[0]
 
         index = self.lang.index(time_type)
 
@@ -66,6 +75,8 @@ class HarajsTime(object):
             self.tm_month = time_value
         elif index == 4:
             self.tm_year = time_value
+
+        logging.debug("  make time for harajs sucessfully".format(item.encode('utf-8')))
 
 
 class TimerUtil(object):
