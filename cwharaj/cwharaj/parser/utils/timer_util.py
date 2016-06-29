@@ -18,3 +18,6 @@ class TimerUtil(object):
 
     def __init__(self):
         super(TimerUtil, self).__init__()
+
+    def get_time_from_string(self, time_ago):
+        pass
