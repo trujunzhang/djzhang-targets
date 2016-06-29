@@ -5,13 +5,24 @@ import datetime
 import time
 
 
+class HarajsTime(object):
+    tm_minute = 0
+    tm_hour = 0
+    tm_day = 0
+    tm_month = 0
+    tm_year = 0
+
+    def __init__(self):
+        super(HarajsTime, self).__init__()
+
+
 class TimerUtil(object):
     lang = {
-        "year": "سنه",
-        "hours": "ساعه",
+        "minute": "دقيقه",
+        "hour": "ساعه",
         "day": "يوم",
-        "minutes": "دقيقه",
         "month": "شهر",
+        "year": "سنه",
     }
 
     def __init__(self):
