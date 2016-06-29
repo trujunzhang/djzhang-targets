@@ -49,7 +49,8 @@ class OpensooqParse(BaseParser):
         _ID = CrawlUtils.url_parse_id_from_page_url(url, 3)
 
         # ADs User
-        _memberName = self.get_value_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
+        _memberName = self.get_value_response(hxs,
+                                              '//*[@class="userDet tableCell vTop"]/strong/a/text()')  # len(list) = 2
         _member_timeregister = self.get_value_response(hxs, '//span[@class="joinDate"]/text()')
         _ads_city = self.get_value_response(hxs,
                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
