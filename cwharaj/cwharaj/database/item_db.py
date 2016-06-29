@@ -99,7 +99,7 @@ class ItemDatabase(MysqlDatabase):
 
     def save_member(self, member):
         sql = """ SELECT id FROM members WHERE username = '{}'""".format(member['username'])
-        _members_id = self._get_row_id(sql, "cities")
+        _members_id = self._get_row_id(sql, "members")
         if _members_id:
             return _members_id
 
