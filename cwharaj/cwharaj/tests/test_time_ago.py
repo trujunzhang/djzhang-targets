@@ -13,15 +13,15 @@ class TimeAgoTest(unittest.TestCase):
     #     self.time_util.get_time_from_string(time_ago)
 
     def test_get_time_for_harajs(self):
-        time_ago = 'قبل 4 دقيقه في'
-        int_time = self.time_util.get_time_for_harajs(time_ago)
-        expect = 1467043200.0
-        self.assertEqual(int_time, expect)
-
-        # time_ago = 'قبل 6 يوم و 2 ساعه في'
+        # time_ago = 'قبل 4 دقيقه في'
         # int_time = self.time_util.get_time_for_harajs(time_ago)
         # expect = 1467043200.0
         # self.assertEqual(int_time, expect)
+
+        time_ago = ' قبل 6 يوم و 2 ساعه في'
+        int_time = self.time_util.get_time_for_harajs(time_ago)
+        expect = 1467043200.0
+        self.assertEqual(int_time, expect)
 
         # def test_get_time_for_mstaml(self):
         #     time_ago = '2016.06.28'
