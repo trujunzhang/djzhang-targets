@@ -25,12 +25,12 @@ class HarajsTime(object):
 
     def maketime(self, split):
         for item in split:
-            self._get_value_from_string(item)
+            self._get_value_from_string(item.strip())
 
     def _get_value_from_string(self, item):
         split = item.split(' ')
-        time_type = split[0]
-        time_value = split[1]
+        time_type = split[1]
+        time_value = split[0]
 
         index = self.lang.index(time_type)
 
