@@ -1,4 +1,8 @@
 # coding=utf-8
+
+from dateutil import parser
+
+
 class TimerUtil(object):
     lang = {
         "second": "ثانية",
@@ -21,3 +25,11 @@ class TimerUtil(object):
 
     def get_time_from_string(self, time_ago):
         pass
+
+    def get_time_for_opensooq(self, time_ago):
+        """
+        Converting time string format to time int format.
+        :param time_ago:  such as '2016.06.28'
+        :return:
+        """
+        dt = parser.parse(time_ago)
