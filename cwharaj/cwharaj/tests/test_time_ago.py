@@ -18,19 +18,19 @@ class TimeAgoTest(unittest.TestCase):
         expect = 1467043200.0
         self.assertEqual(int_time, expect)
 
-        time_ago = 'قبل 6 يوم و 2 ساعه في'
-        int_time = self.time_util.get_time_for_harajs(time_ago)
-        expect = 1467043200.0
-        self.assertEqual(int_time, expect)
+        # time_ago = 'قبل 6 يوم و 2 ساعه في'
+        # int_time = self.time_util.get_time_for_harajs(time_ago)
+        # expect = 1467043200.0
+        # self.assertEqual(int_time, expect)
 
-    # def test_get_time_for_mstaml(self):
-    #     time_ago = '2016.06.28'
-    #     int_time = self.time_util.get_time_for_mstaml(time_ago)
-    #     expect = 1467043200.0
-    #     self.assertEqual(int_time, expect)
+        # def test_get_time_for_mstaml(self):
+        #     time_ago = '2016.06.28'
+        #     int_time = self.time_util.get_time_for_mstaml(time_ago)
+        #     expect = 1467043200.0
+        #     self.assertEqual(int_time, expect)
 
-    def test_get_time_for_opensooq(self):
-        time_ago = '2016.06.28'
-        int_time = self.time_util.get_time_for_opensooq(time_ago)
-        expect = 1467043200.0
-        self.assertEqual(int_time, expect)
+        # def test_get_time_for_opensooq(self):
+        #     time_ago = '2016.06.28'
+        #     int_time = self.time_util.get_time_for_opensooq(time_ago)
+        #     expect = 1467043200.0
+        #     self.assertEqual(int_time, expect)

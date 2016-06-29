@@ -26,7 +26,13 @@ class TimerUtil(object):
         super(TimerUtil, self).__init__()
 
     def get_time_for_harajs(self, time_ago):
-        pass
+        """
+        :param time_ago: such as 'قبل 6 يوم و 2 ساعه في'
+        :return:
+        """
+        time_ago = time_ago.replace(' في', '').replace('قبل ', '')
+        split = time_ago.split(' و')
+        _len = len(split)
 
     def get_time_for_mstaml(self, time_ago):
         pass
