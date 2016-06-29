@@ -73,7 +73,7 @@ class OpensooqParse(BaseParser):
         _ads_city = _ads_city.strip()
         _time_added = _time_added.replace("\n", "").replace("\r", "").strip()
         _ads_title = _ads_title.replace("\n", "").replace("\r", "").strip()
-        _memberName = _memberName.strip()
+        _memberName = _memberName.replace('\n', '').strip()
 
         # ====
         # Save to relative database
