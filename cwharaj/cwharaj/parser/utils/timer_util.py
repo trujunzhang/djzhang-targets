@@ -9,7 +9,7 @@ class TimerUtil(object):
     lang = {
         "second": "ثانية",
         "minute": "دقيقة",
-        "hour": "ساعة",
+        "hours": "ساعه",
         "month": "شهر",
         "year": "عام",
         "seconds": "ثواني",
@@ -17,9 +17,7 @@ class TimerUtil(object):
         "hours": "ساعات",
         "months": "شهور",
         "years": "سنوات",
-        "ago": "قبل",
         "day": "يوم",
-        "days": "ايام",
     }
 
     def __init__(self):
@@ -30,6 +28,7 @@ class TimerUtil(object):
         :param time_ago: such as 'قبل 6 يوم و 2 ساعه في'
         :return:
         """
+        time_ago = time_ago.strip()
         time_ago = time_ago.replace(' في', '').replace('قبل ', '')
         split = time_ago.split(' و')
         _len = len(split)
