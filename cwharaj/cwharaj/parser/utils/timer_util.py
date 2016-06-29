@@ -10,6 +10,7 @@ class HarajsTime(object):
     tm_minute = 0
     tm_hour = 0
     tm_day = 0
+    tm_week = 0
     tm_month = 0
     tm_year = 0
 
@@ -17,6 +18,7 @@ class HarajsTime(object):
         "دقيقه",  # "minute"
         "ساعه",  # "hour"
         "يوم",  # "day"
+        'أسبوع',  # "week"
         "شهر",  # "month"
         "سنه",  # "year"
     ]
@@ -25,6 +27,7 @@ class HarajsTime(object):
         60,  # => $lang['minute'],
         60 * 60,  # => $lang['hour'],
         24 * 60 * 60,  # => $lang['day'],
+        24 * 60 * 60 * 7,  # => $lang['week'],
         30 * 24 * 60 * 60,  # => $lang['month'],
         365 * 24 * 60 * 60,  # => $lang['year'],
     ]
@@ -72,6 +75,8 @@ class HarajsTime(object):
         elif index == 2:
             self.tm_day = time_value
         elif index == 3:
+            self.tm_week = time_value
+        elif index == 4:
             self.tm_month = time_value
         elif index == 4:
             self.tm_year = time_value
