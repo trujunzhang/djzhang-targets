@@ -14,49 +14,52 @@ class TimeAgoTest(unittest.TestCase):
     #     time_ago = 'آخر تحديث قبل 17 دقيقه'
     #     self.time_util.get_time_from_string(time_ago)
 
-    def test_get_time_for_harajs(self):
-        # time_ago = 'قبل 4 دقيقه في' # 4 minutes ago
-        # int_time = self.time_util.get_time_for_harajs(time_ago)
-        # expect = -1
-        # self.assertEqual(int_time, expect)
+    # def test_get_time_for_harajs(self):
 
-        # time_ago = 'قبل 0 دقيقه في'  # 0 minutes ago
-        # int_time = self.time_util.get_time_for_harajs(time_ago)
-        # expect = int(time.time())
-        # self.assertEqual(int_time, expect)
-        #
-        # time_ago = 'قبل دقيقه في'  # A minute ago at
-        # int_time = self.time_util.get_time_for_harajs(time_ago)
-        # expect = int(time.time())
-        # self.assertEqual(int_time, expect)
+    # time_ago = 'قبل 4 دقيقه في' # 4 minutes ago
+    # int_time = self.time_util.get_time_for_harajs(time_ago)
+    # expect = -1
+    # self.assertEqual(int_time, expect)
 
-        # time_ago = ' قبل ساعه و 21 دقيقه في'  # Before an hour and 21 minutes in
-        # int_time = self.time_util.get_time_for_harajs(time_ago)
-        # expect = 1467214211
-        # self.assertEqual(int_time, expect)
+    # time_ago = 'قبل 0 دقيقه في'  # 0 minutes ago
+    # int_time = self.time_util.get_time_for_harajs(time_ago)
+    # expect = int(time.time())
+    # self.assertEqual(int_time, expect)
+    #
+    # time_ago = 'قبل دقيقه في'  # A minute ago at
+    # int_time = self.time_util.get_time_for_harajs(time_ago)
+    # expect = int(time.time())
+    # self.assertEqual(int_time, expect)
 
-        # time_ago = ' قبل 6 يوم و 2 ساعه في'  # Before 6 days, 2 hours
-        # int_time = self.time_util.get_time_for_harajs(time_ago)
-        # expect = 1466688683
-        # self.assertEqual(int_time, expect)
+    # time_ago = ' قبل ساعه و 21 دقيقه في'  # Before an hour and 21 minutes in
+    # int_time = self.time_util.get_time_for_harajs(time_ago)
+    # expect = 1467214211
+    # self.assertEqual(int_time, expect)
 
-        # time_ago = ' قبل 3 شهر و 2 أسبوع في'  # Before 3 months and 2 weeks in
-        # int_time = self.time_util.get_time_for_harajs(time_ago)
-        # expect = 1465400116
-        # self.assertEqual(int_time, expect)
+    # time_ago = ' قبل 6 يوم و 2 ساعه في'  # Before 6 days, 2 hours
+    # int_time = self.time_util.get_time_for_harajs(time_ago)
+    # expect = 1466688683
+    # self.assertEqual(int_time, expect)
 
-        time_ago = 'قبل 5 سنه و 10 شهر في'  # Before five years and 10 months in
-        # url: 'https://haraj.com.sa/11140489/_قطع_غيار_سيارات_مستعملتشليح/'
-        int_time = self.time_util.get_time_for_harajs(time_ago)
-        expect = 1465400116
+    # time_ago = ' قبل 3 شهر و 2 أسبوع في'  # Before 3 months and 2 weeks in
+    # int_time = self.time_util.get_time_for_harajs(time_ago)
+    # expect = 1465400116
+    # self.assertEqual(int_time, expect)
+
+    # time_ago = 'قبل 5 سنه و 10 شهر في'  # Before five years and 10 months in
+    # # url: 'https://haraj.com.sa/11140489/_قطع_غيار_سيارات_مستعملتشليح/'
+    # int_time = self.time_util.get_time_for_harajs(time_ago)
+    # expect = 1465400116
+    # self.assertEqual(int_time, expect)
+
+
+    def test_get_time_for_mstaml(self):
+        time_ago = '2016-06-29 14:39:34 GMT'  # time_added
+        time_ago = '2016-06-29 14:41:10 GMT'  # _last_updated_ad
+        # url: 'http://www.mstaml.com/2079892/تفويض_إلكتروني_للمؤسسات/'
+        int_time = self.time_util.get_time_for_mstaml(time_ago)
+        expect = 1467043200.0
         self.assertEqual(int_time, expect)
-
-
-        # def test_get_time_for_mstaml(self):
-        #     time_ago = '2016.06.28'
-        #     int_time = self.time_util.get_time_for_mstaml(time_ago)
-        #     expect = 1467043200.0
-        #     self.assertEqual(int_time, expect)
 
         # def test_get_time_for_opensooq(self):
         #     time_ago = '2016.06.28'

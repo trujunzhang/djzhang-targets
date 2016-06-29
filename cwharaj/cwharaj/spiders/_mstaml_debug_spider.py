@@ -15,9 +15,11 @@ class MstamlDebugWatchSpider(scrapy.Spider):
         # Details
         # 'http://www.mstaml.com/2073561/للبيع_جمس_يوكن_1999/'
         # 'http://www.mstaml.com/2078991/للبيع_اكسبلورر_أبيض_2010_وارد_توكيلات_الجزيرة/'
-        'http://www.mstaml.com/2079607/افضل_عروض_لطابعات_الكروت/'
+        # 'http://www.mstaml.com/2079607/افضل_عروض_لطابعات_الكروت/'
         # contains emoji unicode
         # 'http://www.mstaml.com/2073595/للبيع_قطط_تركيه/'
+        # parse time_added and last_updated_ad
+        'http://www.mstaml.com/2079892/تفويض_إلكتروني_للمؤسسات/'
     ]
 
     def __init__(self, name=None, **kwargs):

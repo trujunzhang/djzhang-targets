@@ -56,7 +56,8 @@ class MstamlParse(BaseParser):
 
         # AD
         _ads_title = self.get_value_response(hxs, '//*[@class="titleSection doHighlight"]/text()')
-        _time = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
+        _time_added = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[2]/span/text()')
+        _last_updated_ad = self.get_value_response(hxs, '//*[@class="boxItem"]/table[2]/tr/td[2]/span/text()')
         _image_link = self.get_images_in_selector(hxs, '//noscript')
         _ads_body = self.get_all_value_response(hxs,
                                                 '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
@@ -70,7 +71,6 @@ class MstamlParse(BaseParser):
         # Sections
         _sections = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_mstaml()
-
 
         # ====
         # Save to relative database
