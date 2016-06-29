@@ -25,7 +25,10 @@ class TimerUtil(object):
     def __init__(self):
         super(TimerUtil, self).__init__()
 
-    def get_time_from_string(self, time_ago):
+    def get_time_for_harajs(self, time_ago):
+        pass
+
+    def get_time_for_mstaml(self, time_ago):
         pass
 
     def get_time_for_opensooq(self, time_ago):
@@ -39,3 +42,6 @@ class TimerUtil(object):
         int_time = time.mktime(today)
 
         return int_time
+
+    def _get_current_time(self):
+        return time.time()
