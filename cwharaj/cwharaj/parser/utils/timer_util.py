@@ -10,16 +10,8 @@ class TimerUtil(object):
         "year": "سنه",
         "hours": "ساعه",
         "day": "يوم",
-
-        "second": "ثانية",
-        "minute": "دقيقة",
+        "minutes": "دقيقه",
         "month": "شهر",
-        "seconds": "ثواني",
-        "minutes": "دقائق",
-        "hours": "ساعات",
-        "months": "شهور",
-        "years": "سنوات",
-
     }
 
     def __init__(self):
