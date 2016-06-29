@@ -20,12 +20,34 @@ class HarajsTime(object):
         "سنه",  # "year"
     ]
 
+    value = [
+        60,  # => $lang['minute'],
+        60 * 60,  # => $lang['hour'],
+        24 * 60 * 60,  # => $lang['day'],
+        30 * 24 * 60 * 60,  # => $lang['month'],
+        365 * 24 * 60 * 60,  # => $lang['year'],
+    ]
+
     def __init__(self):
         super(HarajsTime, self).__init__()
 
     def maketime(self, split):
         for item in split:
             self._get_value_from_string(item.strip())
+
+        return self._make_time()
+
+    def _make_time(self):
+        seconds = self.tm_minute * self.value[0] + \
+                  self.tm_hour * self.value[1] + \
+                  self.tm_day * self.value[2] + \
+                  self.tm_month * self.value[3] + \
+                  self.tm_year * self.value[4]
+
+        return self._get_current_time() - seconds
+
+    def _get_current_time(self):
+        return time.time()
 
     def _get_value_from_string(self, item):
         split = item.split(' ')
@@ -55,10 +77,9 @@ class TimerUtil(object):
         :param time_ago: such as 'قبل 6 يوم و 2 ساعه في'
         :return:
         """
-        time_ago = time_ago.strip()
-        time_ago = time_ago.replace(' في', '').replace('قبل ', '')
+        time_ago = time_ago.replace(' في', '').replace('قبل ', '').strip()
         split = time_ago.split(' و')
-        harajs_time = HarajsTime().maketime(split)
+        return HarajsTime().maketime(split)
 
     def get_time_for_mstaml(self, time_ago):
         pass
@@ -74,6 +95,3 @@ class TimerUtil(object):
         int_time = time.mktime(today)
 
         return int_time
-
-    def _get_current_time(self):
-        return time.time()
