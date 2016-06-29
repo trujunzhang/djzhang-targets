@@ -15,4 +15,6 @@ class TimeAgoTest(unittest.TestCase):
 
     def test_get_time_for_opensooq(self):
         time_ago = '2016.06.28'
-        self.time_util.get_time_for_opensooq(time_ago)
+        int_time = self.time_util.get_time_for_opensooq(time_ago)
+        expect = 1467043200.0
+        self.assertEqual(int_time, expect)
