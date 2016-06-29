@@ -15,6 +15,10 @@ class HarajsTime(object):
     def __init__(self):
         super(HarajsTime, self).__init__()
 
+    def maketime(self, split):
+
+        pass
+
 
 class TimerUtil(object):
     lang = {
@@ -36,6 +40,8 @@ class TimerUtil(object):
         time_ago = time_ago.strip()
         time_ago = time_ago.replace(' في', '').replace('قبل ', '')
         split = time_ago.split(' و')
+        harajs_time = HarajsTime().maketime(split)
+
         _len = len(split)
 
     def get_time_for_mstaml(self, time_ago):
