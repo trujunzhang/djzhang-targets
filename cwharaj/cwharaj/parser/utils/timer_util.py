@@ -7,17 +7,19 @@ import time
 
 class TimerUtil(object):
     lang = {
+        "year": "سنه",
+        "hours": "ساعه",
+        "day": "يوم",
+
         "second": "ثانية",
         "minute": "دقيقة",
-        "hours": "ساعه",
         "month": "شهر",
-        "year": "عام",
         "seconds": "ثواني",
         "minutes": "دقائق",
         "hours": "ساعات",
         "months": "شهور",
         "years": "سنوات",
-        "day": "يوم",
+
     }
 
     def __init__(self):
