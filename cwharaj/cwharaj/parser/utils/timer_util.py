@@ -36,6 +36,14 @@ class HarajsTime(object):
 
         if index == 0:
             self.tm_minute = time_value
+        elif index == 1:
+            self.tm_hour = time_value
+        elif index == 2:
+            self.tm_day = time_value
+        elif index == 3:
+            self.tm_month = time_value
+        elif index == 4:
+            self.tm_year = time_value
 
 
 class TimerUtil(object):
