@@ -121,9 +121,7 @@ class TimerUtil(object):
         utc_offset = (datetime.fromtimestamp(ts) -
                       datetime.utcfromtimestamp(ts)).total_seconds()
 
-        utf = int_time + utc_offset
-
-        return int_time - utc_offset
+        return int_time + utc_offset
 
     def get_time_for_opensooq(self, time_ago):
         """
