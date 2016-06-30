@@ -124,14 +124,28 @@ class TimerUtil(object):
                       datetime.utcfromtimestamp(ts)).total_seconds()
         return utc_offset
 
-    def get_time_for_opensooq(self, time_ago):
+    def get_time_for_opensooq_member_timeregister(self, _member_timeregister):
         """
         Converting string time to int.
-        :param time_ago:  such as '2016.06.28'
+        :param _member_timeregister:  such as '2016.06.28'
         :return:
         """
 
-        today = time.strptime(time_ago, "%Y/%m/%d")
+        today = time.strptime(_member_timeregister, "%Y.%m.%d")
+        time.tzset()
+        int_time = time.mktime(today)
+
+        return int_time + self._get_utc_offset()
+
+    def get_time_for_opensooq_time_added(self, _time_added):
+        """
+        Converting string time to int.
+        :param _time_added:  such as '19/07/2013'
+        :return:
+        """
+        _time_added = _time_added.replace("\n", "").replace("\r", "").strip()
+
+        today = time.strptime(_time_added, "%d/%m/%Y")
         time.tzset()
         int_time = time.mktime(today)
 

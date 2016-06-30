@@ -53,6 +53,7 @@ class OpensooqParse(BaseParser):
         # ADs User
         # memberName len(list) = 2
         _memberName = self.get_value_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
+        # _member_timeregister is 'اريخ الانضمام  08/10/2015'
         _member_timeregister = self.get_value_response(hxs, '//span[@class="joinDate"]/text()')
 
         _ads_city = self.get_value_response(hxs,
@@ -74,14 +75,14 @@ class OpensooqParse(BaseParser):
 
         # Replace "\n","\r"
         # _time_added is 'تاريخ النشر: 2016.06.28'.
-        _time_added = _time_added.replace("\n", "").replace("\r", "").replace(".", "/").strip()
+
         _ads_title = _ads_title.replace("\n", "").replace("\r", "").strip()
 
         # ====
         # Save to relative database
         # ====
-        _time_added = TimerUtil().get_time_for_opensooq(_time_added)
-        _member_timeregister = TimerUtil().get_time_for_opensooq(_member_timeregister)
+        _time_added = TimerUtil().get_time_for_opensooq_time_added(_time_added)
+        _member_timeregister = TimerUtil().get_time_for_opensooq_member_timeregister(_member_timeregister)
 
         _city_id = item_db.save_city(City.get_default(_ads_city))
 

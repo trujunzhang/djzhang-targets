@@ -66,8 +66,14 @@ class TimeAgoTest(unittest.TestCase):
             expect = item['time']
             self.assertEqual(int_time, expect)
 
-    def test_get_time_for_opensooq(self):
-        time_ago = '2016/06/28'
-        int_time = self.time_util.get_time_for_opensooq(time_ago)
+    def test_get_time_for_opensooq_member_timeregister(self):
+        time_ago = '2016.06.28'
+        int_time = self.time_util.get_time_for_opensooq_member_timeregister(time_ago)
         expect = 1467072000.0
+        self.assertEqual(int_time, expect)
+
+    def test_get_time_for_opensooq_time_added(self):
+        time_ago = '19/07/2013'
+        int_time = self.time_util.get_time_for_opensooq_time_added(time_ago)
+        expect = 1374192000.0
         self.assertEqual(int_time, expect)
