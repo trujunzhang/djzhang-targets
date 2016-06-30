@@ -70,7 +70,7 @@ class OpensooqParse(BaseParser):
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
         # Replace "\n","\r"
-        _time_added = _time_added.replace("\n", "").replace("\r", "").strip()
+        _time_added = _time_added.replace("\n", "").replace("\r", "").replace("\\", ".").strip()
         _ads_title = _ads_title.replace("\n", "").replace("\r", "").strip()
 
         # ====
@@ -93,6 +93,7 @@ class OpensooqParse(BaseParser):
             _ads_body=_ads_body,
             _image_link=_image_link,
             _His_announcement_id=_His_announcement_id,
+            Time_added=_time_added,
             _type_ads_or=1, _close_ads=0
         )
 

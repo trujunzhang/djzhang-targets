@@ -105,7 +105,14 @@ class Ad(scrapy.Item):
 
     @classmethod
     def get_default(self, section_item, _ads_title, _city_id, _ads_contact, _ads_body, _image_link,
-                    _His_announcement_id, _type_ads_or=1, _close_ads=0):
+                    _His_announcement_id, Time_added=-1, Last_updated_Ad=-1,
+                    _type_ads_or=1, _close_ads=0):
+        if Time_added == -1:
+            Time_added = int(time.time())
+        if Last_updated_Ad == -1:
+            # If no last_updated, set it the same as the time_added.
+            Last_updated_Ad = Time_added
+
         return Ad(
             ads_title=_ads_title,
             ads_city=_city_id,
@@ -119,11 +126,11 @@ class Ad(scrapy.Item):
             un_model=section_item.un_model,
             status=1,
             fixing=0,
-            Time_added=int(time.time()),
+            Time_added=Time_added,
             His_announcement=_His_announcement_id,
             type_ads_or=_type_ads_or,
             close_ads=_close_ads,
-            Last_updated_Ad=int(time.time()),
+            Last_updated_Ad=Last_updated_Ad,
             closecomment=0,
             fixed_home=0,
             fixed_tub=0,
