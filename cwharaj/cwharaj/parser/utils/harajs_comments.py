@@ -39,9 +39,11 @@ class HarajsComments(object):
             _member_timeregister = TimerUtil().get_time_for_opensooq_member_timeregister(_member_timeregister)
 
             _content = self.baseParser.get_value_response(hxs, _selector + '/div/div[2]/p/text()')
+            _time_added_co = self.baseParser.get_value_response(hxs, _selector + '/div/span/text()')
+            _time_added_co = TimerUtil().get_time_for_opensooq_comment(_time_added_co)
 
             id_His_response = self.item_db.save_member(
                 Member.get_default(user_name=_memberName, timeregister=_member_timeregister))
-            self.item_db.save_comment(Comment.get_default(self.id_ads, id_His_response, _content))
+            self.item_db.save_comment(Comment.get_default(self.id_ads, id_His_response, _content, _time_added_co))
 
             _count += 1

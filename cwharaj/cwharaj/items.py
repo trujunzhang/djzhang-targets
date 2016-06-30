@@ -178,12 +178,14 @@ class Comment(scrapy.Item):
     Time_added_co = scrapy.Field()
 
     @classmethod
-    def get_default(self, id_ads, id_His_response, text):
+    def get_default(self, id_ads, id_His_response, text, Time_added_co=-1):
+        if Time_added_co == -1:
+            Time_added_co = int(time.time())
         return Comment(
             id_ads=id_ads,
             id_His_response=id_His_response,
             text=text,
-            Time_added_co=int(time.time())
+            Time_added_co=Time_added_co
         )
 
 

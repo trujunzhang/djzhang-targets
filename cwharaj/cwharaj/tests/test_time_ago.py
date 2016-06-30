@@ -79,3 +79,11 @@ class TimeAgoTest(unittest.TestCase):
         int_time = self.time_util.get_time_for_opensooq_time_added(_time_added)
         expect = 1467072000.0
         self.assertEqual(int_time, expect)
+
+    def test_get_time_for_opensooq_comment(self):
+        # _time_added is 'منذ 6 أشهر'
+        # 6 months ago
+        _time_added_co = ' منذ 6 أشهر '
+        int_time = self.time_util.get_time_for_opensooq_comment(_time_added_co)
+        expect = 1467072000.0
+        self.assertEqual(int_time, expect)

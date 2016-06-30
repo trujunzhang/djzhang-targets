@@ -152,3 +152,17 @@ class TimerUtil(object):
         int_time = time.mktime(today)
 
         return int_time + self._get_utc_offset()
+
+    def get_time_for_opensooq_comment(self, _time_added_co):
+        """
+        Converting string time to int.
+        :param _time_added is 'تاريخ النشر: 2016.06.28'('Published: 2016.06.28')
+        :return:
+        """
+        _time_added_co = _time_added_co.replace("\n", "").replace("\r", "").strip()
+
+        today = time.strptime(_time_added_co, "%Y.%m.%d")
+        time.tzset()
+        int_time = time.mktime(today)
+
+        return int_time + self._get_utc_offset()
