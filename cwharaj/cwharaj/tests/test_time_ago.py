@@ -44,7 +44,7 @@ class TimeAgoTest(unittest.TestCase):
         time_ago = 'قبل 5 سنه و 10 شهر في'  # Before five years and 10 months in
         # url: 'https://haraj.com.sa/11140489/_قطع_غيار_سيارات_مستعملتشليح/'
         int_time = self.time_util.get_time_for_harajs(time_ago)
-        expect = int(time.time()) - 240
+        expect = int(time.time()) - 19008000
         self.assertEqual(int_time, expect)
 
     def test_get_time_for_mstaml(self):
