@@ -154,6 +154,7 @@ class TimerUtil(object):
         return int_time + self._get_utc_offset()
 
     def get_time_for_opensooq_comment(self, _time_added_co):
+        # TODO: djzhang
         """
         Converting string time to int.
         :param _time_added is 'منذ 6 أشهر'
