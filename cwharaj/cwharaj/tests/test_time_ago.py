@@ -68,14 +68,14 @@ class TimeAgoTest(unittest.TestCase):
 
     def test_get_time_for_opensooq_member_timeregister(self):
         # _member_timeregister is 'تاريخ الانضمام  19/07/2013'('Join date 19/07/2013')
-        time_ago = '19/07/2013'
+        time_ago = ' 19/07/2013 '
         int_time = self.time_util.get_time_for_opensooq_member_timeregister(time_ago)
         expect = 1374192000.0
         self.assertEqual(int_time, expect)
 
     def test_get_time_for_opensooq_time_added(self):
         # _time_added is 'تاريخ النشر: 2016.06.28'('Published: 2016.06.28')
-        _time_added = '2016.06.28'
+        _time_added = ' 2016.06.28 '
         int_time = self.time_util.get_time_for_opensooq_time_added(_time_added)
         expect = 1467072000.0
         self.assertEqual(int_time, expect)
