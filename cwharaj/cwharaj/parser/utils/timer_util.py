@@ -131,6 +131,8 @@ class TimerUtil(object):
         :return:
         """
 
+        _member_timeregister = _member_timeregister.strip()
+
         today = time.strptime(_member_timeregister, "%d/%m/%Y")
         time.tzset()
         int_time = time.mktime(today)
