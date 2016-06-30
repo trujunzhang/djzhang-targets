@@ -1,8 +1,8 @@
 # coding=utf-8
 import logging
 
-from dateutil import parser
-import datetime
+from datetime import datetime
+# import datetime
 import time
 
 
@@ -115,7 +115,15 @@ class TimerUtil(object):
         today = time.strptime(time_ago, "%Y-%m-%d %H:%M:%S %Z")
         int_time = time.mktime(today)
 
-        return int_time
+        ts = time.time()
+
+        off = 1467182470 - 1467211270
+        utc_offset = (datetime.fromtimestamp(ts) -
+                      datetime.utcfromtimestamp(ts)).total_seconds()
+
+        utf = int_time + utc_offset
+
+        return int_time - utc_offset
 
     def get_time_for_opensooq(self, time_ago):
         """
@@ -125,6 +133,7 @@ class TimerUtil(object):
         """
 
         today = time.strptime(time_ago, "%Y.%m.%d")
+        time.tzset()
         int_time = time.mktime(today)
 
         return int_time

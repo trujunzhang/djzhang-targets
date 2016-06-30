@@ -54,15 +54,26 @@ class TimeAgoTest(unittest.TestCase):
 
 
     def test_get_time_for_mstaml(self):
+        # url: 'http://www.mstaml.com/2079892/تفويض_إلكتروني_للمؤسسات/'
         # time_ago = '2016-06-29 14:39:34 GMT'  # time_added(1467211174)
         time_ago = '2016-06-29 14:41:10 GMT'  # _last_updated_ad(1467211270)
-        # url: 'http://www.mstaml.com/2079892/تفويض_إلكتروني_للمؤسسات/'
-        int_time = self.time_util.get_time_for_mstaml(time_ago)
-        expect = 1467182470.0
-        self.assertEqual(int_time, expect)
+        time_ago = [
+            {
+                'string': '2016-06-29 14:41:10 GMT',  # _last_updated_ad(1467211270)
+                'time': 1467211270
+            },
+            {
+                'string': '2016-06-29 14:39:34 GMT',  # time_added(1467211174)
+                'time': 1467211174
+            }
+        ]
+        for item in time_ago:
+            int_time = self.time_util.get_time_for_mstaml(item['string'])
+            expect = item['time']
+            self.assertEqual(int_time, expect)
 
-        # def test_get_time_for_opensooq(self):
-        #     time_ago = '2016.06.28'
-        #     int_time = self.time_util.get_time_for_opensooq(time_ago)
-        #     expect = 1467043200.0
-        #     self.assertEqual(int_time, expect)
+    def test_get_time_for_opensooq(self):
+        time_ago = '2016.06.28'
+        int_time = self.time_util.get_time_for_opensooq(time_ago)
+        expect = 1467043200.0
+        self.assertEqual(int_time, expect)
