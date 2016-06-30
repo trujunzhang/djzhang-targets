@@ -1,3 +1,4 @@
+# coding=utf-8
 import logging
 
 from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
@@ -6,6 +7,7 @@ from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
 from cwharaj.utils.phone_number_set import PhoneNumberItem
 from cwharaj.parser.utils.timer_util import TimerUtil
+
 
 class OpensooqParse(BaseParser):
     def __init__(self):
@@ -71,12 +73,15 @@ class OpensooqParse(BaseParser):
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
         # Replace "\n","\r"
-        _time_added = _time_added.replace("\n", "").replace("\r", "").replace("\\", ".").strip()
+        # _time_added is 'تاريخ النشر: 2016.06.28'.
+        _time_added = _time_added.replace("\n", "").replace("\r", "").replace(".", "/").strip()
         _ads_title = _ads_title.replace("\n", "").replace("\r", "").strip()
 
         # ====
         # Save to relative database
         # ====
+        _time_added = TimerUtil().get_time_for_opensooq(_time_added)
+        _member_timeregister = TimerUtil().get_time_for_opensooq(_member_timeregister)
 
         _city_id = item_db.save_city(City.get_default(_ads_city))
 

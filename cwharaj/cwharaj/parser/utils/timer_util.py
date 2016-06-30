@@ -131,7 +131,7 @@ class TimerUtil(object):
         :return:
         """
 
-        today = time.strptime(time_ago, "%Y.%m.%d")
+        today = time.strptime(time_ago, "%Y/%m/%d")
         time.tzset()
         int_time = time.mktime(today)
 
