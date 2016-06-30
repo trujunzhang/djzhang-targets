@@ -106,7 +106,16 @@ class TimerUtil(object):
         return HarajsTime().maketime(split)
 
     def get_time_for_mstaml(self, time_ago):
-        pass
+        """
+        Converting string time to int.
+        :param time_ago:  such as '2016-06-29 14:39:34 GMT'
+        :return:
+        """
+
+        today = time.strptime(time_ago, "%Y-%m-%d %H:%M:%S %Z")
+        int_time = time.mktime(today)
+
+        return int_time
 
     def get_time_for_opensooq(self, time_ago):
         """
