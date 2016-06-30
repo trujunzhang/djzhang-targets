@@ -1,5 +1,6 @@
 # coding=utf-8
 from cwharaj.items import Comment, Member
+from cwharaj.parser.utils.timer_util import TimerUtil
 
 
 class HarajsComments(object):
@@ -32,11 +33,15 @@ class HarajsComments(object):
         _count = 1
         for _comment_div in _comments_div:
             _selector = _comments_selector + '[' + str(_count) + ']'
+
             _memberName = self.baseParser.get_value_response(hxs, _selector + '/div/a/text()')
+            _member_timeregister = self.baseParser.get_value_response(hxs, _selector + '/div/a/@data-mc_joindate')
+            _member_timeregister = TimerUtil().get_time_for_opensooq_member_timeregister(_member_timeregister)
+
             _content = self.baseParser.get_value_response(hxs, _selector + '/div/div[2]/p/text()')
 
-            id_His_response = self.item_db.save_member(Member.get_default(_memberName))
-            comment = Comment.get_default(self.id_ads, id_His_response, _content)
-            self.item_db.save_comment(comment)
+            id_His_response = self.item_db.save_member(
+                Member.get_default(user_name=_memberName, timeregister=_member_timeregister))
+            self.item_db.save_comment(Comment.get_default(self.id_ads, id_His_response, _content))
 
             _count += 1
