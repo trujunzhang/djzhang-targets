@@ -1,8 +1,5 @@
 # coding=utf-8
 import logging
-
-from datetime import datetime
-# import datetime
 import time
 
 
@@ -115,13 +112,14 @@ class TimerUtil(object):
         today = time.strptime(time_ago, "%Y-%m-%d %H:%M:%S %Z")
         int_time = time.mktime(today)
 
-        ts = time.time()
+        return int_time + self._get_utc_offset()
 
-        off = 1467182470 - 1467211270
+    def _get_utc_offset(self):
+        from datetime import datetime
+        ts = time.time()
         utc_offset = (datetime.fromtimestamp(ts) -
                       datetime.utcfromtimestamp(ts)).total_seconds()
-
-        return int_time + utc_offset
+        return utc_offset
 
     def get_time_for_opensooq(self, time_ago):
         """
@@ -134,4 +132,4 @@ class TimerUtil(object):
         time.tzset()
         int_time = time.mktime(today)
 
-        return int_time
+        return int_time + self._get_utc_offset()
