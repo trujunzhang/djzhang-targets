@@ -156,7 +156,8 @@ class TimerUtil(object):
     def get_time_for_opensooq_comment(self, _time_added_co):
         """
         Converting string time to int.
-        :param _time_added is 'تاريخ النشر: 2016.06.28'('Published: 2016.06.28')
+        :param _time_added is 'منذ 6 أشهر'
+        :                     6 months ago
         :return:
         """
         _time_added_co = _time_added_co.replace("\n", "").replace("\r", "").strip()
