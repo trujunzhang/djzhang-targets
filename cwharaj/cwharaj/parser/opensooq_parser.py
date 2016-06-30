@@ -74,8 +74,6 @@ class OpensooqParse(BaseParser):
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
         # Replace "\n","\r"
-        # _time_added is 'تاريخ النشر: 2016.06.28'.
-
         _ads_title = _ads_title.replace("\n", "").replace("\r", "").strip()
 
         # ====

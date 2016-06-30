@@ -127,11 +127,11 @@ class TimerUtil(object):
     def get_time_for_opensooq_member_timeregister(self, _member_timeregister):
         """
         Converting string time to int.
-        :param _member_timeregister:  such as '2016.06.28'
+        :param _member_timeregister is 'تاريخ الانضمام  19/07/2013'('Join date 19/07/2013')
         :return:
         """
 
-        today = time.strptime(_member_timeregister, "%Y.%m.%d")
+        today = time.strptime(_member_timeregister, "%d/%m/%Y")
         time.tzset()
         int_time = time.mktime(today)
 
@@ -140,12 +140,12 @@ class TimerUtil(object):
     def get_time_for_opensooq_time_added(self, _time_added):
         """
         Converting string time to int.
-        :param _time_added:  such as '19/07/2013'
+        :param _time_added is 'تاريخ النشر: 2016.06.28'('Published: 2016.06.28')
         :return:
         """
         _time_added = _time_added.replace("\n", "").replace("\r", "").strip()
 
-        today = time.strptime(_time_added, "%d/%m/%Y")
+        today = time.strptime(_time_added, "%Y.%m.%d")
         time.tzset()
         int_time = time.mktime(today)
 
