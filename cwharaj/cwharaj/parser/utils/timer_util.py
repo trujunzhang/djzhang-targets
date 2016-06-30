@@ -4,6 +4,9 @@ import time
 
 
 class HarajsTime(object):
+    """
+    Converting the string date to time using 'GMT'.
+    """
     tm_minute = 0
     tm_hour = 0
     tm_day = 0
