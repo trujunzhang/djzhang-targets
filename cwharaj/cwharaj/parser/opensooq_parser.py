@@ -5,7 +5,7 @@ from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
 from cwharaj.utils.phone_number_set import PhoneNumberItem
-
+from cwharaj.parser.utils.timer_util import TimerUtil
 
 class OpensooqParse(BaseParser):
     def __init__(self):
@@ -52,6 +52,7 @@ class OpensooqParse(BaseParser):
         # memberName len(list) = 2
         _memberName = self.get_value_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
         _member_timeregister = self.get_value_response(hxs, '//span[@class="joinDate"]/text()')
+
         _ads_city = self.get_value_response(hxs,
                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
 
