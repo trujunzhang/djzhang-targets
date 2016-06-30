@@ -79,7 +79,8 @@ class OpensooqParse(BaseParser):
 
         _city_id = item_db.save_city(City.get_default(_ads_city))
 
-        _His_announcement_id = item_db.save_member(Member.get_default(_memberName))
+        _His_announcement_id = item_db.save_member(
+            Member.get_default(user_name=_memberName, timeregister=_member_timeregister))
 
         # Because opensooq's contact is image base64 format.
         # So the ads's contact must be empty.
