@@ -57,12 +57,16 @@ class OpensooqDebugCommentDateSpider(scrapy.Spider):
 
         yield scrapy.Request(_next_pagination, callback=self.parse, dont_filter=True)
 
-        # _row = self._cache_db.get_oldest_row('', WebsiteTypes.opensooq.value)
-        # if _row:
-        #     yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+        _row = self._cache_db.get_oldest_row('', WebsiteTypes.opensooq.value)
+        if _row:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
 
     def parse_page_from_opensooq(self, response):
         self._save_for_opensooq(response)
+
+        _row = self._cache_db.get_oldest_row(response.url, WebsiteTypes.opensooq.value)
+        if _row:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
 
     def _save_for_opensooq(self, hxs):
         _comments_selector = '//*[@class="commentItems clear"]/li'
