@@ -175,7 +175,7 @@ class ItemDatabase(MysqlDatabase):
 
     def save_opensooq_comment_date(self, opensooq_comment_date):
         sql = """ SELECT id FROM opensooq_comment_date WHERE text = '{}'""".format(opensooq_comment_date['text'])
-        _opensooq_comment_date_id = self._get_row_id(sql, "opensooq_phone")
+        _opensooq_comment_date_id = self._get_row_id(sql, "save_opensooq_comment_date")
         if _opensooq_comment_date_id:
             return _opensooq_comment_date_id
 
@@ -205,10 +205,10 @@ class ItemDatabase(MysqlDatabase):
             _connection.close()
 
         if _excep:
-            logging.debug("  mysql: insert the opensooq_phone row failure, {}".format(_excep))
+            logging.debug("  mysql: insert the save_opensooq_comment_date row failure, {}".format(_excep))
         else:
             logging.debug(
-                "  mysql: insert the opensooq_phone into the {} successfully".format(_opensooq_comment_date_id))
+                "  mysql: insert the save_opensooq_comment_date into the {} successfully".format(_opensooq_comment_date_id))
 
         return _opensooq_comment_date_id
 
