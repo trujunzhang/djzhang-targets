@@ -114,6 +114,7 @@ class OpensooqCommentDateUtil(TimerUtil):
             "يومين": 123,  # Two days ago
             "أسبوع": 123,  # a week ago
             "أسبوعين": 123,  # Two weeks ago
+            "3 اسابيع": -1,  # __Since 3 weeks__
             "شهر": 123,  # About a month ago
             "شهرين": 123,  # Two months ago
             "سنة": 123,  # A year ago
