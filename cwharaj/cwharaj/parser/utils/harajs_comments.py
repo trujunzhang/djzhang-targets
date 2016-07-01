@@ -35,6 +35,9 @@ class HarajsComments(object):
             _selector = _comments_selector + '[' + str(_count) + ']'
 
             _memberName = self.baseParser.get_value_response(hxs, _selector + '/div/a/text()')
+            if _memberName == '':
+                continue
+
             _member_timeregister = self.baseParser.get_value_response(hxs, _selector + '/div/a/@data-mc_joindate')
             _member_timeregister = TimerUtil().get_time_for_opensooq_member_timeregister(_member_timeregister)
 

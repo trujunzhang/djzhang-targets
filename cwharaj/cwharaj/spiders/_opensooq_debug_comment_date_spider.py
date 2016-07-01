@@ -77,6 +77,9 @@ class OpensooqDebugCommentDateSpider(scrapy.Spider):
             _selector = _comments_selector + '[' + str(_count) + ']'
 
             _comment_date = self.opensooq_parse.get_value_response(hxs, _selector + '/div/span/text()')
+            if _comment_date == '':
+                continue
+
             opensooq_comment_date = OpensooqCommentDateItem.get_default(_comment_date)
             self._item_db.save_opensooq_comment_date(opensooq_comment_date)
             _count += 1
