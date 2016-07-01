@@ -92,7 +92,6 @@ class OpensooqCommentDateUtil(TimerUtil):
 
     def get_time_for_opensooq_comment(self, comment_date):
         comment_date = OpensooqCommentDateUtil.get_comment_date(comment_date)
-        # TODO: djzhang
         """
         Converting string time to int.
         :param comment_date is 'منذ 6 أشهر'
@@ -105,7 +104,10 @@ class OpensooqCommentDateUtil(TimerUtil):
         time.tzset()
         int_time = time.mktime(today)
 
-        return int_time + self._get_utc_offset()
+        return OpensooqCommentDateItem().maketime('')
+
+    def get_special_comment_date(self, comment_date):
+        pass
 
     @classmethod
     def get_comment_date(self, text):
