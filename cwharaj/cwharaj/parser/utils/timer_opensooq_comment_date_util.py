@@ -50,10 +50,7 @@ class OpensooqCommentDateItem(object):
                   self.tm_month * self.value[3] + \
                   self.tm_year * self.value[4]
 
-        return self._get_current_time() - seconds
-
-    def _get_current_time(self):
-        return int(time.time())
+        return int(time.time()) - seconds
 
     def _get_value_from_string(self, item):
         split = item.split(' ')
@@ -100,7 +97,7 @@ class OpensooqCommentDateUtil(TimerUtil):
         comment_date = OpensooqCommentDateUtil.get_comment_date(comment_date)
         _offset = self.get_special_comment_date(comment_date)
         if _offset:
-            pass
+            return int(time.time()) - _offset
 
         return OpensooqCommentDateItem().maketime('')
 
