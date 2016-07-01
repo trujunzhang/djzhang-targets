@@ -17,8 +17,9 @@ class OpensooqDebugCommentDateSpider(scrapy.Spider):
     opensooq_pagination_total_page = 1000
     start_urls = [
         # paginate
-        opensooq_pagination.format(opensooq_pagination_start_page)
+        # opensooq_pagination.format(opensooq_pagination_start_page)
         # detail
+        'https://sa.opensooq.com/ar/search/29602021/بيت-شعبي-مع-مجلس-مسلح-للبيع'  # 8 comments
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -50,15 +51,16 @@ class OpensooqDebugCommentDateSpider(scrapy.Spider):
                                                                        )
 
     def parse(self, response):
-        self.opensooq_parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        self.opensooq_pagination_start_page -= 1
-        _next_pagination = self.opensooq_pagination.format(self.opensooq_pagination_start_page)
+        self._save_for_opensooq(response)
+        # self.opensooq_parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # self.opensooq_pagination_start_page -= 1
+        # _next_pagination = self.opensooq_pagination.format(self.opensooq_pagination_start_page)
 
-        yield scrapy.Request(_next_pagination, callback=self.parse, dont_filter=True)
+        # yield scrapy.Request(_next_pagination, callback=self.parse, dont_filter=True)
 
-        _row = self._cache_db.get_oldest_row('', WebsiteTypes.opensooq.value)
-        if _row:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+        # _row = self._cache_db.get_oldest_row('', WebsiteTypes.opensooq.value)
+        # if _row:
+        #     yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
 
     def parse_page_from_opensooq(self, response):
         self._save_for_opensooq(response)
