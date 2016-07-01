@@ -172,5 +172,4 @@ class TimerUtil(object):
 
     @classmethod
     def get_comment_date(self, text):
-        # return text.replace('منذ', '').replace("\n", "").replace("\r", "").strip()
-        return text.replace("\n", "").replace("\r", "").strip()
+        return text.replace('منذ', '').replace("\n", "").replace("\r", "").strip()
