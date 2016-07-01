@@ -17,9 +17,9 @@ class OpensooqDebugCommentDateSpider(scrapy.Spider):
     opensooq_pagination_total_page = 1000
     start_urls = [
         # paginate
-        # opensooq_pagination.format(opensooq_pagination_start_page)
+        opensooq_pagination.format(opensooq_pagination_start_page)
         # detail
-        'https://sa.opensooq.com/ar/search/29602021/بيت-شعبي-مع-مجلس-مسلح-للبيع'  # 8 comments
+        # 'https://sa.opensooq.com/ar/search/29602021/بيت-شعبي-مع-مجلس-مسلح-للبيع'  # 8 comments
     ]
 
     def __init__(self, name=None, **kwargs):
