@@ -13,8 +13,8 @@ class OpensooqDebugCommentDateSpider(scrapy.Spider):
     ]
 
     opensooq_pagination = 'https://sa.opensooq.com/ar/find?term=&cat_id=&scid=&city=&allposts_cb=true&allposts=no&price_from=&price_to=&page={}'
-    opensooq_pagination_start_page = 5000
-    opensooq_pagination_total_page = 1000
+    opensooq_pagination_start_page = 20
+    opensooq_pagination_total_page = 5
     start_urls = [
         # paginate
         opensooq_pagination.format(opensooq_pagination_start_page)
