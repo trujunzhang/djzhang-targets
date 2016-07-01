@@ -110,17 +110,17 @@ class OpensooqCommentDateUtil(TimerUtil):
         _special_comment_date = {
             "ساعة": 123,  # About an hour ago
             "ساعتين": 123,  # Two hours ago
-            "3 ساعة": -1,  # ___Three hours ago___
-            "3 ساعات": -1,  # __3(x) hours ago__
+            # "3 ساعة": -1,  # ___Three hours ago___
+            # "3 ساعات": -1,  # __3 hours ago__
             "يوم": 123,  # one day ago
             "يومين": 123,  # Two days ago
-            "3 أيام": -1,  # __3 days ago__
+            # "3 أيام": -1,  # __3 days ago__
             "أسبوع": 123,  # a week ago
             "أسبوعين": 123,  # Two weeks ago
-            "3 اسابيع": -1,  # __Since 3(x) weeks__
+            # "3 اسابيع": -1,  # __Since 3(x) weeks__
             "شهر": 123,  # About a month ago
             "شهرين": 123,  # Two months ago
-            "3 أشهر": -1,  # __3 months ago__
+            # "3 أشهر": -1,  # __3 months ago__
             "سنة": 123,  # A year ago
             "سنتين": 123,  # Two years ago
         }
