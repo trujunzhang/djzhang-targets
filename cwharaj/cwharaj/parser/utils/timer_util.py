@@ -153,18 +153,23 @@ class TimerUtil(object):
 
         return int_time + self._get_utc_offset()
 
-    def get_time_for_opensooq_comment(self, _time_added_co):
+    def get_time_for_opensooq_comment(self, comment_date):
+        comment_date = TimerUtil.get_comment_date(comment_date)
         # TODO: djzhang
         """
         Converting string time to int.
-        :param _time_added is 'منذ 6 أشهر'
+        :param comment_date is 'منذ 6 أشهر'
         :                     6 months ago
         :return:
         """
-        _time_added_co = _time_added_co.replace("\n", "").replace("\r", "").strip()
+        comment_date = comment_date.replace("\n", "").replace("\r", "").strip()
 
-        today = time.strptime(_time_added_co, "%Y.%m.%d")
+        today = time.strptime(comment_date, "%Y.%m.%d")
         time.tzset()
         int_time = time.mktime(today)
 
         return int_time + self._get_utc_offset()
+
+    @classmethod
+    def get_comment_date(self, text):
+        return text.replace('منذ', '').replace("\n", "").replace("\r", "").strip()

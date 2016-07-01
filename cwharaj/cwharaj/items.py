@@ -10,6 +10,7 @@ from enum import Enum
 import time
 from datetime import datetime
 
+from cwharaj.parser.utils.timer_util import TimerUtil
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 
@@ -69,7 +70,7 @@ class OpensooqCommentDateItem(scrapy.Item):
 
     @classmethod
     def get_default(self, text):
-        text = text.replace('منذ', '').replace("\n", "").replace("\r", "").strip()
+        text = TimerUtil.get_comment_date(text)
         return OpensooqCommentDateItem(
             text=text,
             english='',
