@@ -38,7 +38,6 @@ CREATE TABLE IF NOT EXISTS `opensooq_comment_date` (
   `text`    TEXT    NOT NULL,
   `english` TEXT    NOT NULL,
   `seconds` INT(11) NOT NULL,
-  url       TEXT,
   PRIMARY KEY (`id`)
 )
   ENGINE = MyISAM

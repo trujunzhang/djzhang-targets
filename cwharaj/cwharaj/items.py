@@ -67,16 +67,14 @@ class OpensooqCommentDateItem(scrapy.Item):
     text = scrapy.Field()
     english = scrapy.Field()
     seconds = scrapy.Field()
-    url = scrapy.Field()
 
     @classmethod
-    def get_default(self, text, url=''):
+    def get_default(self, text):
         text = TimerUtil.get_comment_date(text)
         return OpensooqCommentDateItem(
             text=text,
             english='',
             seconds=0,
-            url=url
         )
 
 
