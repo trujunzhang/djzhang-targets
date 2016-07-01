@@ -3,6 +3,7 @@ import unittest
 
 import time
 
+from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
 from cwharaj.parser.utils.timer_util import TimerUtil
 
 
@@ -80,12 +81,12 @@ class TimeAgoTest(unittest.TestCase):
         expect = 1467072000.0
         self.assertEqual(int_time, expect)
 
-    def test_get_time_for_opensooq_comment(self):
-         # 'منذ 12 ساعة'('12 hours ago')
+    def test_get_time_for_opensooq_comment_date(self):
+        # 'منذ 12 ساعة'('12 hours ago')
         _time_added_co = 'منذ 12 ساعة'
         # _time_added is 'منذ 6 أشهر'
         # 6 months ago
         _time_added_co = ' منذ 6 أشهر '
-        int_time = self.time_util.get_time_for_opensooq_comment(_time_added_co)
+        int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
         expect = 1467072000.0
         self.assertEqual(int_time, expect)

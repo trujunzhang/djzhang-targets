@@ -2,8 +2,10 @@
 import logging
 import time
 
+from cwharaj.parser.utils.timer_util import TimerUtil
 
-class HarajsTime(object):
+
+class OpensooqCommentDateItem(object):
     """
     Converting the string date to time using 'GMT'.
     """
@@ -33,7 +35,7 @@ class HarajsTime(object):
     ]
 
     def __init__(self):
-        super(HarajsTime, self).__init__()
+        super(OpensooqCommentDateItem, self).__init__()
 
     def maketime(self, split):
         for item in split:
@@ -84,72 +86,27 @@ class HarajsTime(object):
         logging.debug("  make time for harajs sucessfully".format(item))
 
 
-class TimerUtil(object):
+class OpensooqCommentDateUtil(TimerUtil):
     def __init__(self):
-        super(TimerUtil, self).__init__()
+        super(OpensooqCommentDateUtil, self).__init__()
 
-    def get_time_for_harajs(self, time_ago):
-        """
-        :param time_ago: such as 'قبل 6 يوم و 2 ساعه في'
-        :return:
-        """
-
-        spec_ago = 'قبل 0 دقيقه في'  # 0 minutes ago
-        if spec_ago in time_ago:
-            return int(time.time())
-        spec_ago = 'قبل دقيقه في'  # A minute ago at
-        if spec_ago in time_ago:
-            return int(time.time())
-
-        time_ago = time_ago.replace(' في', '').replace('قبل ', '').strip()
-        split = time_ago.split(' و')
-        return HarajsTime().maketime(split)
-
-    def get_time_for_mstaml(self, time_ago):
+    def get_time_for_opensooq_comment(self, comment_date):
+        comment_date = OpensooqCommentDateUtil.get_comment_date(comment_date)
+        # TODO: djzhang
         """
         Converting string time to int.
-        :param time_ago:  such as '2016-06-29 14:39:34 GMT'
+        :param comment_date is 'منذ 6 أشهر'
+        :                     6 months ago
         :return:
         """
+        comment_date = comment_date.replace("\n", "").replace("\r", "").strip()
 
-        today = time.strptime(time_ago, "%Y-%m-%d %H:%M:%S %Z")
-        int_time = time.mktime(today)
-
-        return int_time + self._get_utc_offset()
-
-    def _get_utc_offset(self):
-        from datetime import datetime
-        ts = time.time()
-        utc_offset = (datetime.fromtimestamp(ts) -
-                      datetime.utcfromtimestamp(ts)).total_seconds()
-        return utc_offset
-
-    def get_time_for_opensooq_member_timeregister(self, _member_timeregister):
-        """
-        Converting string time to int.
-        :param _member_timeregister is 'تاريخ الانضمام  19/07/2013'('Join date 19/07/2013')
-        :return:
-        """
-
-        _member_timeregister = _member_timeregister.strip()
-
-        today = time.strptime(_member_timeregister, "%d/%m/%Y")
+        today = time.strptime(comment_date, "%Y.%m.%d")
         time.tzset()
         int_time = time.mktime(today)
 
         return int_time + self._get_utc_offset()
 
-    def get_time_for_opensooq_time_added(self, _time_added):
-        """
-        Converting string time to int.
-        :param _time_added is 'تاريخ النشر: 2016.06.28'('Published: 2016.06.28')
-        :return:
-        """
-        _time_added = _time_added.replace("\n", "").replace("\r", "").strip()
-
-        today = time.strptime(_time_added, "%Y.%m.%d")
-        time.tzset()
-        int_time = time.mktime(today)
-
-        return int_time + self._get_utc_offset()
-
+    @classmethod
+    def get_comment_date(self, text):
+        return text.replace('منذ', '').replace("\n", "").replace("\r", "").strip()

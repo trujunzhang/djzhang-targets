@@ -1,5 +1,6 @@
 # coding=utf-8
 from cwharaj.items import Comment, Member
+from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
 from cwharaj.parser.utils.timer_util import TimerUtil
 
 
@@ -43,7 +44,7 @@ class HarajsComments(object):
 
             _content = self.baseParser.get_value_response(hxs, _selector + '/div/div[2]/p/text()')
             _time_added_co = self.baseParser.get_value_response(hxs, _selector + '/div/span/text()')
-            _time_added_co = TimerUtil().get_time_for_opensooq_comment(_time_added_co)
+            _time_added_co = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
 
             id_His_response = self.item_db.save_member(
                 Member.get_default(user_name=_memberName, timeregister=_member_timeregister))
