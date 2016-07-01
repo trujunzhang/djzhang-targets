@@ -51,11 +51,11 @@ class OpensooqDebugCommentDateSpider(scrapy.Spider):
                                                                        )
 
     def parse(self, response):
-        self.opensooq_parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        self.opensooq_pagination_start_page -= 1
-        _next_pagination = self.opensooq_pagination.format(self.opensooq_pagination_start_page)
-
-        yield scrapy.Request(_next_pagination, callback=self.parse, dont_filter=True)
+        # self.opensooq_parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # self.opensooq_pagination_start_page -= 1
+        # _next_pagination = self.opensooq_pagination.format(self.opensooq_pagination_start_page)
+        #
+        # yield scrapy.Request(_next_pagination, callback=self.parse, dont_filter=True)
 
         _row = self._cache_db.get_oldest_row('', WebsiteTypes.opensooq.value)
         if _row:
