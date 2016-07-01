@@ -108,16 +108,16 @@ class OpensooqCommentDateUtil(TimerUtil):
 
     def get_special_comment_date(self, comment_date):
         _special_comment_date = {
-            "شهر": 123,
-            "أسبوعين": 123,
-            "يوم": 123,
-            "شهرين": 123,
-            "يومين": 123,
-            "أسبوع": 123,
-            "ساعتين": 123,
-            "سنة": 123,
-            "سنتين": 123,
-            "ساعة": 123
+            "ساعة": 123,  # About an hour ago
+            "ساعتين": 123,  # Two hours ago
+            "يوم": 123,  # one day ago
+            "يومين": 123,  # Two days ago
+            "أسبوع": 123,  # a week ago
+            "أسبوعين": 123,  # Two weeks ago
+            "شهر": 123,  # About a month ago
+            "شهرين": 123,  # Two months ago
+            "سنة": 123,  # A year ago
+            "سنتين": 123,  # Two years ago
         }
         pass
 
