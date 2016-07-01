@@ -2,6 +2,9 @@
 
 import scrapy
 
+from cwharaj.items import WebsiteTypes
+from cwharaj.parser.utils.timer_util import TimerUtil
+
 
 class OpensooqDebugCommentDateSpider(scrapy.Spider):
     name = "opensooq_commentdate_debug"
@@ -52,3 +55,23 @@ class OpensooqDebugCommentDateSpider(scrapy.Spider):
         _next_pagination = self.opensooq_pagination.format(self.opensooq_pagination_start_page)
 
         yield scrapy.Request(_next_pagination, callback=self.parse, dont_filter=True)
+
+        _row = self._cache_db.get_oldest_row('', WebsiteTypes.opensooq.value)
+        if _row:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+
+    def parse_page_from_opensooq(self, response):
+        self._save_for_opensooq(response)
+
+    def _save_for_opensooq(self, hxs):
+        _comments_selector = '//*[@class="commentItems clear"]/li'
+        _comments_div = hxs.xpath(_comments_selector)
+
+        _count = 1
+        for _comment_div in _comments_div:
+            _selector = _comments_selector + '[' + str(_count) + ']'
+
+            opensooq_comment_date = self.opensooq_parse.get_value_response(hxs, _selector + '/div/span/text()')
+
+            # _opensooq_comment_date_id = self._item_db.save_opensooq_comment_date(opensooq_comment_date)
+            _count += 1
