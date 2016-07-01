@@ -62,6 +62,20 @@ class HistoryItem(scrapy.Item):
         )
 
 
+class OpensooqCommentDateItem(scrapy.Item):
+    text = scrapy.Field()
+    english = scrapy.Field()
+    seconds = scrapy.Field()
+
+    @classmethod
+    def get_default(self, text):
+        return HistoryItem(
+            text=text,
+            english='',
+            seconds=0
+        )
+
+
 class AdScrapeItem(scrapy.Item):
     model_id = scrapy.Field()
     url_from = scrapy.Field()

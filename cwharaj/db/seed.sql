@@ -30,6 +30,21 @@ CREATE TABLE IF NOT EXISTS `opensooq_phone` (
   AUTO_INCREMENT = 22;
 
 --
+-- Table structure for table `opensooq_comment_date`
+--
+
+CREATE TABLE IF NOT EXISTS `opensooq_comment_date` (
+  `id`      INT(11) NOT NULL AUTO_INCREMENT,
+  `text`    TEXT    NOT NULL,
+  `english` TEXT    NOT NULL,
+  `seconds`    INT(11) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+  ENGINE = MyISAM
+  DEFAULT CHARSET = utf8
+  AUTO_INCREMENT = 22;
+
+--
 -- Table structure for table `comment`
 --
 
