@@ -91,40 +91,39 @@ class OpensooqCommentDateUtil(TimerUtil):
         super(OpensooqCommentDateUtil, self).__init__()
 
     def get_time_for_opensooq_comment(self, comment_date):
-        comment_date = OpensooqCommentDateUtil.get_comment_date(comment_date)
         """
         Converting string time to int.
         :param comment_date is 'منذ 6 أشهر'
         :                     6 months ago
         :return:
         """
-        comment_date = comment_date.replace("\n", "").replace("\r", "").strip()
-
-        today = time.strptime(comment_date, "%Y.%m.%d")
-        time.tzset()
-        int_time = time.mktime(today)
+        comment_date = OpensooqCommentDateUtil.get_comment_date(comment_date)
+        _offset = self.get_special_comment_date(comment_date)
+        if _offset:
+            pass
 
         return OpensooqCommentDateItem().maketime('')
 
     def get_special_comment_date(self, comment_date):
         _special_comment_date = {
-            "ساعة": 123,  # About an hour ago
-            "ساعتين": 123,  # Two hours ago
+            "ساعة": 60 * 60,  # About an hour ago
+            "ساعتين": 60 * 60 * 2,  # Two hours ago
             # "3 ساعة": -1,  # ___Three hours ago___
             # "3 ساعات": -1,  # __3 hours ago__
-            "يوم": 123,  # one day ago
-            "يومين": 123,  # Two days ago
+            "يوم": 24 * 60 * 60,  # one day ago
+            "يومين": 24 * 60 * 60 * 2,  # Two days ago
             # "3 أيام": -1,  # __3 days ago__
-            "أسبوع": 123,  # a week ago
-            "أسبوعين": 123,  # Two weeks ago
+            "أسبوع": 24 * 60 * 60 * 7,  # a week ago
+            "أسبوعين": 24 * 60 * 60 * 7 * 2,  # Two weeks ago
             # "3 اسابيع": -1,  # __Since 3(x) weeks__
-            "شهر": 123,  # About a month ago
-            "شهرين": 123,  # Two months ago
+            "شهر": 30 * 24 * 60 * 60,  # About a month ago
+            "شهرين": 30 * 24 * 60 * 60 * 2,  # Two months ago
             # "3 أشهر": -1,  # __3 months ago__
-            "سنة": 123,  # A year ago
-            "سنتين": 123,  # Two years ago
+            "سنة": 365 * 24 * 60 * 60,  # A year ago
+            "سنتين": 365 * 24 * 60 * 60 * 2,  # Two years ago
         }
-        pass
+        if comment_date in _special_comment_date.keys():
+            return _special_comment_date[comment_date]
 
     @classmethod
     def get_comment_date(self, text):
