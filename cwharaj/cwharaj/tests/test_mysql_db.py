@@ -5,7 +5,8 @@ from datetime import datetime
 
 from cwharaj import settings
 from cwharaj.database_factory import DatabaseFactory, CollectionTypes
-from cwharaj.items import CacheItem, HistoryItem, Ad, WebsiteTypes, City, Member, Comment, Section, OpensooqPhone
+from cwharaj.items import CacheItem, HistoryItem, Ad, WebsiteTypes, City, Member, Comment, Section, OpensooqPhone, \
+    OpensooqCommentDateItem
 from cwharaj.parser.utils.section_item import SectionItem
 from cwharaj.utils.crawl_utils import CrawlUtils
 
@@ -182,13 +183,13 @@ class MysqlDBTest(unittest.TestCase):
     #     section_item = self._item_db.save_section(section)
     #     self.assertEqual(expect, section_item['id'])
 
-    def test_update_ads_contact(self):
-        image_phone = Ad.get_opensooq_phone(self.opensooq_phone_id)
-        self._item_db.update_ads_contact(self._ads_id, image_phone)
-
-    def test_update_member_phone(self):
-        image_phone = Ad.get_opensooq_phone(self.opensooq_phone_id)
-        self._item_db.update_members_phone(self._member_id, image_phone)
+    # def test_update_ads_contact(self):
+    #     image_phone = Ad.get_opensooq_phone(self.opensooq_phone_id)
+    #     self._item_db.update_ads_contact(self._ads_id, image_phone)
+    #
+    # def test_update_member_phone(self):
+    #     image_phone = Ad.get_opensooq_phone(self.opensooq_phone_id)
+    #     self._item_db.update_members_phone(self._member_id, image_phone)
 
     def test_insert_opensooq_phone(self):
         opensooq_phone = OpensooqPhone.get_default(
@@ -198,3 +199,12 @@ class MysqlDBTest(unittest.TestCase):
         expect = self.opensooq_phone_id
         _opensooq_phone_id = self._item_db.save_opensooq_phone(opensooq_phone)
         self.assertEqual(expect, _opensooq_phone_id)
+
+    def test_insert_opensooq_comment_date(self):
+        opensooq_comment_date = OpensooqCommentDateItem.get_default('منذ شهر')
+
+        sql = """ INSERT INTO opensooq_comment_date(text, english, seconds) VALUES ('{}','{}','{}')""".format(
+            opensooq_comment_date['text'], opensooq_comment_date['english'], opensooq_comment_date['seconds'])
+        expect = 1
+        _opensooq_comment_date_id = self._item_db.save_opensooq_comment_date(opensooq_comment_date)
+        self.assertEqual(expect, _opensooq_comment_date_id)

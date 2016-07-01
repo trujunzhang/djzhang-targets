@@ -173,6 +173,45 @@ class ItemDatabase(MysqlDatabase):
         else:
             logging.debug("  mysql: insert the members {} successfully".format(_members_id))
 
+    def save_opensooq_comment_date(self, opensooq_comment_date):
+        sql = """ SELECT id FROM opensooq_comment_date WHERE text = '{}'""".format(opensooq_comment_date['text'])
+        _opensooq_comment_date_id = self._get_row_id(sql, "opensooq_phone")
+        if _opensooq_comment_date_id:
+            return _opensooq_comment_date_id
+
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        sql = " INSERT INTO " + "opensooq_comment_date" + " (text, english, seconds) VALUES (%s,%s,%s)"
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql,
+                            (
+                                opensooq_comment_date['text'], opensooq_comment_date['english'],
+                                opensooq_comment_date['seconds']
+                            ))
+            # Commit your changes in the database
+            _connection.commit()
+            # get the "id" after INSERT into MySQL database
+            _opensooq_comment_date_id = _cursor.lastrowid
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        if _excep:
+            logging.debug("  mysql: insert the opensooq_phone row failure, {}".format(_excep))
+        else:
+            logging.debug(
+                "  mysql: insert the opensooq_phone into the {} successfully".format(_opensooq_comment_date_id))
+
+        return _opensooq_comment_date_id
+
     def save_opensooq_phone(self, opensooq_phone):
         sql = """ SELECT id FROM opensooq_phone WHERE phone = '{}'""".format(opensooq_phone['phone'])
         _opensooq_phone_id = self._get_row_id(sql, "opensooq_phone")
