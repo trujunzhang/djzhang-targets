@@ -205,6 +205,6 @@ class MysqlDBTest(unittest.TestCase):
 
         sql = """ INSERT INTO opensooq_comment_date(text, english, seconds) VALUES ('{}','{}','{}')""".format(
             opensooq_comment_date['text'], opensooq_comment_date['english'], opensooq_comment_date['seconds'])
-        expect = 23
+        expect = 22
         _opensooq_comment_date_id = self._item_db.save_opensooq_comment_date(opensooq_comment_date)
         self.assertEqual(expect, _opensooq_comment_date_id)
