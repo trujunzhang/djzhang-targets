@@ -69,7 +69,7 @@ class OpensooqCommentDateItem(scrapy.Item):
 
     @classmethod
     def get_default(self, text):
-        text = text.replace('منذ', '').strip()
+        text = text.replace('منذ', '').replace("\n", "").replace("\r", "").strip()
         return OpensooqCommentDateItem(
             text=text,
             english='',
