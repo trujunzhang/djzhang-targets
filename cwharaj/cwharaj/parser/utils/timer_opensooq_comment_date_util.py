@@ -107,6 +107,18 @@ class OpensooqCommentDateUtil(TimerUtil):
         return OpensooqCommentDateItem().maketime('')
 
     def get_special_comment_date(self, comment_date):
+        _special_comment_date = {
+            "شهر": 123,
+            "أسبوعين": 123,
+            "يوم": 123,
+            "شهرين": 123,
+            "يومين": 123,
+            "أسبوع": 123,
+            "ساعتين": 123,
+            "سنة": 123,
+            "سنتين": 123,
+            "ساعة": 123
+        }
         pass
 
     @classmethod
