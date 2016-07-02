@@ -13,10 +13,13 @@ class TimeAgoTest(unittest.TestCase):
 
     def test_get_time_for_harajs(self):
         # time_ago = '   قبل  أسبوع و  يوم في'
-        time_ago = 'بل أسبوع و يوم في    '
+        # int_time = self.time_util.get_time_for_harajs(time_ago)
+        # expect = int(time.time()) - 86400
+        # self.assertEqual(int_time, expect)
 
+        time_ago = 'بل أسبوع و يوم في    '
         int_time = self.time_util.get_time_for_harajs(time_ago)
-        expect = int(time.time()) - 525600
+        expect = int(time.time()) - 86400
         self.assertEqual(int_time, expect)
 
         #
