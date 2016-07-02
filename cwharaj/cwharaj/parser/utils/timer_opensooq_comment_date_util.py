@@ -39,6 +39,9 @@ class OpensooqCommentDateItem(object):
         time_type = split[1]
         time_value = int(split[0])
 
+        if time_type not in self.lang:
+            x = 0
+
         index = self.lang.index(time_type)
 
         if index == 0:
