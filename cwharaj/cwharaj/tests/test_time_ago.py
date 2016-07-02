@@ -94,7 +94,7 @@ class TimeAgoTest(unittest.TestCase):
 
         _time_added_co = "  3 أشهر "  # __3 months ago__
         int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
-        expect = int(time.time()) - 31536000
+        expect = int(time.time()) - 1814400
         self.assertEqual(int_time, expect)
 
         # 'منذ 12 ساعة'('12 hours ago')
