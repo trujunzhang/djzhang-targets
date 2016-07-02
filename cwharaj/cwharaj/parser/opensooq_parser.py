@@ -5,6 +5,7 @@ from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
 from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
+from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
 from cwharaj.utils.phone_number_set import PhoneNumberItem
 from cwharaj.parser.utils.timer_util import TimerUtil
 
@@ -79,8 +80,8 @@ class OpensooqParse(BaseParser):
         # ====
         # Save to relative database
         # ====
-        _time_added = TimerUtil().get_time_for_opensooq_time_added(_time_added)
-        _member_timeregister = TimerUtil().get_time_for_opensooq_member_timeregister(_member_timeregister)
+        _time_added = OpensooqCommentDateUtil().get_time_for_opensooq_time_added(_time_added)
+        _member_timeregister = OpensooqCommentDateUtil().get_time_for_opensooq_member_timeregister(_member_timeregister)
 
         _city_id = item_db.save_city(City.get_default(_ads_city))
 
@@ -105,6 +106,7 @@ class OpensooqParse(BaseParser):
 
         id_ads = item_db.save_ad(item)
 
+        # Scrape all comments for the ad.
         HarajsComments(self, item_db, id_ads).save_for_opensooq(hxs)
 
         # return phone_number_item

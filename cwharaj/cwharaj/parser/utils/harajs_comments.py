@@ -40,7 +40,8 @@ class HarajsComments(object):
                 continue
 
             _member_timeregister = self.baseParser.get_value_response(hxs, _selector + '/div/a/@data-mc_joindate')
-            _member_timeregister = TimerUtil().get_time_for_opensooq_member_timeregister(_member_timeregister)
+            _member_timeregister = OpensooqCommentDateUtil().get_time_for_opensooq_member_timeregister(
+                _member_timeregister)
 
             _content = self.baseParser.get_value_response(hxs, _selector + '/div/div[2]/p/text()')
             _time_added_co = self.baseParser.get_value_response(hxs, _selector + '/div/span/text()')
