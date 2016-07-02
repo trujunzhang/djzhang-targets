@@ -41,25 +41,23 @@ class OpensooqCommentDateItem(object):
         time_type = split[1]
         time_value = int(split[0])
 
-        if time_type not in self.lang:
-            x = 0
+        if time_type in self.lang:
+            index = self.lang.index(time_type)
 
-        index = self.lang.index(time_type)
+            if index == 0:
+                self.tm_minute = time_value
+            elif index == 1:
+                self.tm_hour = time_value
+            elif index == 2:
+                self.tm_hour = time_value
+            elif index == 3:
+                self.tm_day = time_value
+            elif index == 4:
+                self.tm_week = time_value
+            elif index == 5:
+                self.tm_month = time_value
 
-        if index == 0:
-            self.tm_minute = time_value
-        elif index == 1:
-            self.tm_hour = time_value
-        elif index == 2:
-            self.tm_hour = time_value
-        elif index == 3:
-            self.tm_day = time_value
-        elif index == 4:
-            self.tm_week = time_value
-        elif index == 5:
-            self.tm_month = time_value
-
-        logging.debug("  make time {} for opensooq sucessfully".format(split))
+            logging.debug("  make time {} for opensooq sucessfully".format(split))
 
         return self._make_time()
 
