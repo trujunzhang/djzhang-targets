@@ -148,7 +148,7 @@ class HarajSaParse(BaseParser):
             for a in _As:
                 a.replaceWith('')
 
-            value = soup.prettify().replace("\n", "").replace("\r", "")
+            value = soup.prettify().replace("\n", "").replace("\r", "").replace("&nbsp", "")
             # Here, no need encode the value.
             published_date = value
 
