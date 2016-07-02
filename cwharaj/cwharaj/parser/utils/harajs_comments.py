@@ -37,7 +37,7 @@ class HarajsComments(object):
             _len = len(_contents)
             if _len > 0:
                 _comment_date = _contents[_len - 1]
-                return _comment_date.encode('utf-8')
+                return _comment_date.encode('utf-8').replace('\r','').replace('\n','').replace('\t','')
 
         return ''
 
