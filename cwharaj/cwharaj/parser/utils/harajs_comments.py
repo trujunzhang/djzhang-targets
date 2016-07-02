@@ -31,17 +31,15 @@ class HarajsComments(object):
             self.item_db.save_comment(Comment.get_default(self.id_ads, id_His_response, _content, _time_added_co))
 
     def _get_comment_date_for_harajs(self, container, name=None, attrs={}):
-        _comment_date = ''
         _list = container.findAll(name, attrs)
-        if len(_list) != 1:
-            return ""
+        if len(_list) == 1:
+            _contents = _list[0].contents
+            _len = len(_contents)
+            if _len > 0:
+                _comment_date = _contents[_len - 1]
+                return _comment_date
 
-        _contents = _list[0].contents
-        _len = len(_contents)
-        if _len > 0:
-            _comment_date = _contents[_len - 1]
-
-        return _comment_date
+        return ''
 
     def save_for_opensooq(self, hxs):
         _comments_selector = '//*[@class="commentItems clear"]/li'
