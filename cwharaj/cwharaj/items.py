@@ -238,7 +238,7 @@ class Member(scrapy.Item):
     The_pay_commission = scrapy.Field()
 
     @classmethod
-    def get_default(self, user_name, timeregister=-1):
+    def get_default(self, user_name, timeregister=-1, email='', phone=''):
         user_name = user_name.replace('\n', '').replace('\r', '').strip()
         if timeregister == -1:
             timeregister = int(time.time())
@@ -247,12 +247,12 @@ class Member(scrapy.Item):
             username=user_name,
             password='',
             groupnumber=6,
-            email='',
+            email=email,
             timeregister=timeregister,
             member_code='',
             documentingmobile=0,
             Documentingemail=0,
-            phone='',
+            phone=phone,
             sendtime='3',
             active='',
             now='',

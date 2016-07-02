@@ -5,6 +5,7 @@ from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_section import HarajsSection
 from cwharaj.parser.utils.timer_util import TimerUtil
 
+
 class MstamlParse(BaseParser):
     def __init__(self):
         super(MstamlParse, self).__init__()
@@ -65,7 +66,8 @@ class MstamlParse(BaseParser):
         _ads_city = self.get_value_response(hxs,
                                             '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
         _memberName = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
-        _ads_contact = self.get_value_response(hxs, '//table[@class="dcs"]/tr[9]/td[2]/span/@title')
+        _member_email = self.get_value_response(hxs, '//table[@class="dcs"]/tr[8]/td[2]/span/a/text()')
+        _member_phone = self.get_value_response(hxs, '//table[@class="dcs"]/tr[9]/td[2]/span/@title')
 
         # Sections
         _sections = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
@@ -76,20 +78,24 @@ class MstamlParse(BaseParser):
         # ====
         _city_id = item_db.save_city(City.get_default(_ads_city))
 
-        _His_announcement_id = item_db.save_member(Member.get_default(_memberName))
+        _His_announcement_id = item_db.save_member(
+            Member.get_default(user_name=_memberName, email=_member_email, phone=_member_phone))
 
         item = Ad.get_default(
             section_item=_section_item,
             _ads_title=_ads_title,
             _city_id=_city_id,
-            _ads_contact=_ads_contact,
+            _ads_contact=_member_phone,
             _ads_body=_ads_body,
             _image_link=_image_link,
             _His_announcement_id=_His_announcement_id,
+            Time_added=_time_added, Last_updated_Ad=_last_updated_ad,
             _type_ads_or=1, _close_ads=0
         )
 
         id_ads = item_db.save_ad(item)
+
+        # mstaml no comments found.
 
         return item
 

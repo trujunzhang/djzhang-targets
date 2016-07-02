@@ -19,7 +19,9 @@ class MstamlDebugWatchSpider(scrapy.Spider):
         # contains emoji unicode
         # 'http://www.mstaml.com/2073595/للبيع_قطط_تركيه/'
         # parse time_added and last_updated_ad
-        'http://www.mstaml.com/2079892/تفويض_إلكتروني_للمؤسسات/'
+        # 'http://www.mstaml.com/2079892/تفويض_إلكتروني_للمؤسسات/'
+        # parsing member(has e-mail)
+        'http://www.mstaml.com/2080634/تلفزيون_Haier_29_بوصه_للبيع_بحاله_ممتازه_مستعمل/'
     ]
 
     def __init__(self, name=None, **kwargs):
