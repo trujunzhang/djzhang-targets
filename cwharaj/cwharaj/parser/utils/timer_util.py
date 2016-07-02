@@ -37,7 +37,7 @@ class HarajsTime(object):
 
     def maketime(self, split):
         for item in split:
-            item = item.replace('بل', '').replace('  ', '')
+            item = item.replace('بل', '').replace('  ', '').strip()
             self._get_value_from_string(item)
 
         return self._make_time()
