@@ -63,9 +63,11 @@ class MstamlParse(BaseParser):
                                                 '//*[@class="text linkify linkifyWithImages linkifyWithWasel doHighlight"]/text()')
 
         # Member(boxItem)
-        _ads_city = self.get_value_response(hxs,
-                                            '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
-        _memberName = self.get_value_response(hxs, '//*[@class="boxItem"]/table[1]/tr/td[1]/b/text()')
+        _memberName = self.get_value_response(hxs, '//table[@class="dcs"]/tr[1]/td/text()')
+        _ads_city = self.get_all_value_response(hxs,'//table[@class="dcs"]/tr[2]/td/text()')
+        # _ads_city = self.get_value_response(hxs,
+        #                                     '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
+
         _member_email = self.get_value_response(hxs, '//table[@class="dcs"]/tr[8]/td[2]/span/a/text()')
         _member_phone = self.get_value_response(hxs, '//table[@class="dcs"]/tr[9]/td[2]/span/@title')
 
