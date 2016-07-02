@@ -37,7 +37,7 @@ class HarajsTime(object):
 
     def maketime(self, split):
         for item in split:
-            item = item.replace('بل', '').replace("\xc2\xa0", "").strip()
+            item = item.replace('بل', '').strip()
             self._get_value_from_string(item)
 
         return self._make_time()
@@ -103,7 +103,7 @@ class TimerUtil(object):
         if spec_ago in time_ago:
             return int(time.time())
 
-        time_ago = time_ago.replace(' في', '').replace('قبل ', '').strip()
+        time_ago = time_ago.replace(' في', '').replace('قبل ', '').replace("\xc2\xa0", "").strip()
 
         split = time_ago.split(' و')
         return HarajsTime().maketime(split)
