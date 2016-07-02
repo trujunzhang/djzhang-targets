@@ -133,8 +133,11 @@ class HarajSaParse(BaseParser):
             header = _list[0]
             _header_content = header.contents
             for _content in _header_content:
+                if "class" in _content: # _containt is tag called "a"
+                    continue
                 _content = _content.encode('utf-8')
-                _content = _content.replace('\r', '').replace('\n', '').replace('\t', '').replace('›', '')
+                _content = _content.replace('\r', '').replace('\n', '').replace('\t', '').replace('›', '').strip()
+                _content = _content.replace("\xc2\xa0", "").strip()
                 if len(_content) > 0:
                     pass
 
