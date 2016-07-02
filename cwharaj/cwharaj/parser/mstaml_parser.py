@@ -111,19 +111,14 @@ class MstamlParse(BaseParser):
     def get_city(self, hxs):
         """
         Parseing _ads_city is like "السعودية - الرياض",
-        Then split to array, normally the city is index 0.
+        Then split to array, normally the city is index 1.
         :param hxs:
         :return:
         """
         _ads_city = self.get_all_value_response(hxs, '//table[@class="dcs"]/tr[2]/td/text()')
         _ads_city = _ads_city.replace("\n", "").replace("\r", "").strip()
-        _ads_cities = _ads_city.split(' ')
+        _ads_cities = _ads_city.split(' - ')
         if (len(_ads_cities) == 2):
-            return _ads_cities[0]
+            return _ads_cities[1]
 
         return _ads_city
-
-        # ''
-        #
-        # _ads_city = self.get_value_response(hxs,
-        #                                     '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
