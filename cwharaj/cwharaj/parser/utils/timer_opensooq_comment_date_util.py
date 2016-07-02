@@ -17,6 +17,7 @@ class OpensooqCommentDateItem(object):
     tm_year = 0
 
     lang = [
+        'دقيقة',  # ___Three minutes ago___
         'ساعة',  # ___Three hours ago___
         ' ساعات',  # __3 hours ago__
         'أيام',  # __3 days ago__
@@ -25,6 +26,7 @@ class OpensooqCommentDateItem(object):
     ]
 
     value = [
+        60,  # => $lang['minute'],
         60 * 60,  # => $lang['hour'],
         60 * 60,  # => $lang['hour'],
         24 * 60 * 60,  # => $lang['day'],
