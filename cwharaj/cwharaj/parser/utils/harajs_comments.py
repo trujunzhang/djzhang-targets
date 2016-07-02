@@ -23,9 +23,25 @@ class HarajsComments(object):
             _memberName = self.baseParser.get_value_from_beautifulsoup(_comment_div, "a", {"class": "username"})
             _content = self.baseParser.get_value_from_beautifulsoup(_comment_div, "div", {"class": "comment_body"})
 
+            _time_added_co = self._get_comment_date_for_harajs(_comment_div, "div", {
+                "class": "col-xs-12  col-sm-12 col-md-9 col-lg-9 comment_header"})
+            _time_added_co = TimerUtil().get_time_for_harajs(_time_added_co)
+
             id_His_response = self.item_db.save_member(Member.get_default(_memberName))
-            comment = Comment.get_default(self.id_ads, id_His_response, _content)
-            self.item_db.save_comment(comment)
+            self.item_db.save_comment(Comment.get_default(self.id_ads, id_His_response, _content, _time_added_co))
+
+    def _get_comment_date_for_harajs(self, container, name=None, attrs={}):
+        _comment_date = ''
+        _list = container.findAll(name, attrs)
+        if len(_list) != 1:
+            return ""
+
+        _contents = _list[0].contents
+        _len = len(_contents)
+        if _len > 0:
+            _comment_date = _contents[_len - 1]
+
+        return _comment_date
 
     def save_for_opensooq(self, hxs):
         _comments_selector = '//*[@class="commentItems clear"]/li'
