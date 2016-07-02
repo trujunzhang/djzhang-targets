@@ -37,8 +37,8 @@ class HarajsTime(object):
 
     def maketime(self, split):
         for item in split:
-            item = item.replace('بل', '')
-            self._get_value_from_string(item.strip())
+            item = item.replace('بل', '').strip()
+            self._get_value_from_string(item)
 
         return self._make_time()
 
@@ -67,22 +67,23 @@ class HarajsTime(object):
             time_type = split[1]
             time_value = int(split[0])
 
-        index = self.lang.index(time_type)
+        if time_type in self.lang:
+            index = self.lang.index(time_type)
 
-        if index == 0:
-            self.tm_minute = time_value
-        elif index == 1:
-            self.tm_hour = time_value
-        elif index == 2:
-            self.tm_day = time_value
-        elif index == 3:
-            self.tm_week = time_value
-        elif index == 4:
-            self.tm_month = time_value
-        elif index == 5:
-            self.tm_year = time_value
+            if index == 0:
+                self.tm_minute = time_value
+            elif index == 1:
+                self.tm_hour = time_value
+            elif index == 2:
+                self.tm_day = time_value
+            elif index == 3:
+                self.tm_week = time_value
+            elif index == 4:
+                self.tm_month = time_value
+            elif index == 5:
+                self.tm_year = time_value
 
-        logging.debug("  make time {} for harajs sucessfully".format(item))
+            logging.debug("  make time {} for harajs sucessfully".format(item))
 
 
 class TimerUtil(object):
