@@ -51,13 +51,13 @@ class OpensooqCommentDateItem(object):
         elif index == 1:
             self.tm_hour = time_value
         elif index == 2:
-            self.tm_day = time_value
+            self.tm_hour = time_value
         elif index == 3:
-            self.tm_week = time_value
+            self.tm_day = time_value
         elif index == 4:
-            self.tm_month = time_value
+            self.tm_week = time_value
         elif index == 5:
-            self.tm_year = time_value
+            self.tm_month = time_value
 
         logging.debug("  make time {} for opensooq sucessfully".format(split))
 
