@@ -127,44 +127,19 @@ class HarajSaParse(BaseParser):
         So we can't use xpath to select it."""
 
         from BeautifulSoup import BeautifulSoup
+        from BeautifulSoup import Tag
         soup = BeautifulSoup(comment_header_string)
         _list = soup.findAll('div', {"class": " comment_header"})
         if len(_list) == 1:
             header = _list[0]
             _header_content = header.contents
             for _content in _header_content:
-                if "class" in _content: # _containt is tag called "a"
+                if isinstance(_content, Tag):
                     continue
                 _content = _content.encode('utf-8')
                 _content = _content.replace('\r', '').replace('\n', '').replace('\t', '').replace('›', '').strip()
                 _content = _content.replace("\xc2\xa0", "").strip()
                 if len(_content) > 0:
-                    pass
+                    return _content
 
-        published_date = ""
-
-        # step 1: remove class called "comment_header"
-        comment_header_string = comment_header_string.replace('<div class=" comment_header">', '')
-        comment_header_string = comment_header_string.replace("\n", "").replace("\r", "")
-
-        # step 2: split it by "<br>", so we can get the first block.
-        blocks = comment_header_string.split('<br>')
-
-        # Basically, the length of blocks must be 3.
-        if len(blocks) == 3:
-            first_block = blocks[0]
-
-            # Finally, remove all <a> blocks, that the result is the published date string.
-            from BeautifulSoup import BeautifulSoup
-            soup = BeautifulSoup(first_block)
-
-            _As = soup.findAll('a')
-
-            for a in _As:
-                a.replaceWith('')
-
-            value = soup.prettify().replace("\n", "").replace("\r", "").replace("&nbsp", "")
-            # Here, no need encode the value.
-            published_date = value
-
-        return published_date
+        return ""
