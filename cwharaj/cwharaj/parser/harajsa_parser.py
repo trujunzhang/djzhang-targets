@@ -59,10 +59,9 @@ class HarajSaParse(BaseParser):
         _ads_city = self.get_value_response(hxs, '//*[@class=" comment_header"]/*[@class="city-head"]/text()')
         _published_data = self.get_published_date(self.get_value_response(hxs, '//*[@class=" comment_header"]'))
         # "_published_data' is the same as '_time_added'
-        # _time_added = '12345678901'  # ???
+        _time_added = TimerUtil().get_time_for_harajs(_published_data)
+        _last_updated_ad = _time_added
         _memberName = self.get_value_response(hxs, '//*[@class=" comment_header"]/*[@class="username"]/text()')
-
-        # _last_updated_ad = '23456789012'  # ???
 
         # ad_low
         def filter_for_image(src):
@@ -102,6 +101,7 @@ class HarajSaParse(BaseParser):
             _ads_body=_ads_body,
             _image_link=_image_link,
             _His_announcement_id=_His_announcement_id,
+            Time_added=_time_added, Last_updated_Ad=_last_updated_ad,
             _type_ads_or=1, _close_ads=0
         )
 
