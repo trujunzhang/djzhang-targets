@@ -71,6 +71,8 @@ class MstamlParse(BaseParser):
         _member_email = self.get_value_response(hxs, '//table[@class="dcs"]/tr[8]/td[2]/span/a/text()')
         _member_phone = self.get_value_response(hxs, '//table[@class="dcs"]/tr[9]/td[2]/span/@title')
 
+        hxs.xpath('//table[@class="dcs"]/tr[8]/td[2]/span')
+
         # Sections
         _sections = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_mstaml()
