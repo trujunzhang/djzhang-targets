@@ -126,6 +126,18 @@ class HarajSaParse(BaseParser):
         """Because the published date is not contained by any tag.
         So we can't use xpath to select it."""
 
+        from BeautifulSoup import BeautifulSoup
+        soup = BeautifulSoup(comment_header_string)
+        _list = soup.findAll('div', {"class": " comment_header"})
+        if len(_list) == 1:
+            header = _list[0]
+            _header_content = header.contents
+            for _content in _header_content:
+                _content = _content.encode('utf-8')
+                _content = _content.replace('\r', '').replace('\n', '').replace('\t', '').replace('›', '')
+                if len(_content) > 0:
+                    pass
+
         published_date = ""
 
         # step 1: remove class called "comment_header"
