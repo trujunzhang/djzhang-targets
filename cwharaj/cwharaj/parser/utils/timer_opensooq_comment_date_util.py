@@ -36,22 +36,6 @@ class OpensooqCommentDateItem(object):
         super(OpensooqCommentDateItem, self).__init__()
 
     def maketime(self, split):
-        for item in split:
-            self._get_value_from_string(item.strip())
-
-        return self._make_time()
-
-    def _make_time(self):
-        seconds = self.tm_minute * self.value[0] + \
-                  self.tm_hour * self.value[1] + \
-                  self.tm_day * self.value[2] + \
-                  self.tm_month * self.value[3] + \
-                  self.tm_year * self.value[4]
-
-        return int(time.time()) - seconds
-
-    def _get_value_from_string(self, item):
-        split = item.split(' ')
         if len(split) == 1:
             if split[0] in self.lang:  # such as 'ساعه'(an hour)
                 time_type = split[0]
@@ -78,7 +62,18 @@ class OpensooqCommentDateItem(object):
         elif index == 5:
             self.tm_year = time_value
 
-        logging.debug("  make time for harajs sucessfully".format(item))
+        logging.debug("  make time {} for opensooq sucessfully".format(split))
+
+        return self._make_time()
+
+    def _make_time(self):
+        seconds = self.tm_minute * self.value[0] + \
+                  self.tm_hour * self.value[1] + \
+                  self.tm_day * self.value[2] + \
+                  self.tm_month * self.value[3] + \
+                  self.tm_year * self.value[4]
+
+        return int(time.time()) - seconds
 
 
 class OpensooqCommentDateUtil(TimerUtil):

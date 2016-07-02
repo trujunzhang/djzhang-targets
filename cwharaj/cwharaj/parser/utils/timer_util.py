@@ -81,7 +81,7 @@ class HarajsTime(object):
         elif index == 5:
             self.tm_year = time_value
 
-        logging.debug("  make time for harajs sucessfully".format(item))
+        logging.debug("  make time {} for harajs sucessfully".format(item))
 
 
 class TimerUtil(object):
@@ -152,4 +152,3 @@ class TimerUtil(object):
         int_time = time.mktime(today)
 
         return int_time + self._get_utc_offset()
-
