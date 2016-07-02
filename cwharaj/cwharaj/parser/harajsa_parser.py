@@ -8,6 +8,7 @@ from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
 from cwharaj.parser.utils.timer_util import TimerUtil
 
+
 class HarajSaParse(BaseParser):
     def __init__(self):
         super(HarajSaParse, self).__init__()
@@ -82,10 +83,6 @@ class HarajSaParse(BaseParser):
         # TODO: djzhang, how to parse the sections when length is more then 3.
         if len(_sections) > 3:
             return {"id_ads": _ID}
-
-        # comment comment_div
-        _subject = ""
-        _address = ""  # not found
 
         # Replace "\n","\r"
         _ads_body = _ads_body.replace("\r", "").strip()
