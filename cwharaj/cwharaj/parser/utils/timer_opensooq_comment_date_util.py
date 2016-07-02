@@ -36,16 +36,8 @@ class OpensooqCommentDateItem(object):
         super(OpensooqCommentDateItem, self).__init__()
 
     def maketime(self, split):
-        if len(split) == 1:
-            if split[0] in self.lang:  # such as 'ساعه'(an hour)
-                time_type = split[0]
-                time_value = 1
-            else:
-                logging.debug("  make time for harajs failure".format(item.encode('utf-8')))
-                return
-        else:
-            time_type = split[1]
-            time_value = int(split[0])
+        time_type = split[1]
+        time_value = int(split[0])
 
         index = self.lang.index(time_type)
 
@@ -93,6 +85,10 @@ class OpensooqCommentDateUtil(TimerUtil):
             return int(time.time()) - _offset
 
         split = comment_date.split(' ')
+        if len(split) == 1:
+            logging.debug("  make time {} for harajs failure".format(split))
+            return int(time.time()) + self._get_utc_offset()
+
         return OpensooqCommentDateItem().maketime(split)
 
     def get_special_comment_date(self, comment_date):
