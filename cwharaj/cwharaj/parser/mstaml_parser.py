@@ -1,3 +1,4 @@
+# coding=utf-8
 import logging
 
 from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
@@ -64,14 +65,9 @@ class MstamlParse(BaseParser):
 
         # Member(boxItem)
         _memberName = self.get_value_response(hxs, '//table[@class="dcs"]/tr[1]/td/text()')
-        _ads_city = self.get_all_value_response(hxs,'//table[@class="dcs"]/tr[2]/td/text()')
-        # _ads_city = self.get_value_response(hxs,
-        #                                     '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
-
-        _member_email = self.get_value_response(hxs, '//table[@class="dcs"]/tr[8]/td[2]/span/a/text()')
-        _member_phone = self.get_value_response(hxs, '//table[@class="dcs"]/tr[9]/td[2]/span/@title')
-
-        hxs.xpath('//table[@class="dcs"]/tr[8]/td[2]/span')
+        _ads_city = self.get_city(hxs)
+        _member_email = self.get_value_response(hxs, '//table[@class="dcs"]/tr[8]/td[2]/span/@title')
+        _member_phone = self.get_value_response(hxs, '//table[@class="dcs"]/tr[10]/td[2]/span/@title')
 
         # Sections
         _sections = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
@@ -111,3 +107,23 @@ class MstamlParse(BaseParser):
             sections.append(a.encode('utf-8'))
 
         return sections
+
+    def get_city(self, hxs):
+        """
+        Parseing _ads_city is like "السعودية - الرياض",
+        Then split to array, normally the city is index 0.
+        :param hxs:
+        :return:
+        """
+        _ads_city = self.get_all_value_response(hxs, '//table[@class="dcs"]/tr[2]/td/text()')
+        _ads_city = _ads_city.replace("\n", "").replace("\r", "").strip()
+        _ads_cities = _ads_city.split(' ')
+        if (len(_ads_cities) == 2):
+            return _ads_cities[0]
+
+        return _ads_city
+
+        # ''
+        #
+        # _ads_city = self.get_value_response(hxs,
+        #                                     '//*[@class="boxDarkBody p1"]/table/tr[2]/td[@class="gH3 xCenter p3 fB"]/text()')
