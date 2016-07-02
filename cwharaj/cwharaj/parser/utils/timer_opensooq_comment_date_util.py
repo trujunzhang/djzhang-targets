@@ -17,21 +17,19 @@ class OpensooqCommentDateItem(object):
     tm_year = 0
 
     lang = [
-        "دقيقه",  # "minute"
-        "ساعه",  # "hour"
-        "يوم",  # "day"
-        'أسبوع',  # "week"
-        "شهر",  # "month"
-        "سنه",  # "year"
+        'ساعة',  # ___Three hours ago___
+        ' ساعات',  # __3 hours ago__
+        'أيام',  # __3 days ago__
+        'اسابيع',  # __Since 3(x) weeks__
+        'أشهر',  # __3 months ago__
     ]
 
     value = [
-        60,  # => $lang['minute'],
+        60 * 60,  # => $lang['hour'],
         60 * 60,  # => $lang['hour'],
         24 * 60 * 60,  # => $lang['day'],
         24 * 60 * 60 * 7,  # => $lang['week'],
         30 * 24 * 60 * 60,  # => $lang['month'],
-        365 * 24 * 60 * 60,  # => $lang['year'],
     ]
 
     def __init__(self):
@@ -99,7 +97,8 @@ class OpensooqCommentDateUtil(TimerUtil):
         if _offset:
             return int(time.time()) - _offset
 
-        return OpensooqCommentDateItem().maketime('')
+        split = comment_date.split(' ')
+        return OpensooqCommentDateItem().maketime(split)
 
     def get_special_comment_date(self, comment_date):
         _special_comment_date = {
