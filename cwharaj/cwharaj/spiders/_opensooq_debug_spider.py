@@ -23,8 +23,10 @@ class OpensooqDebugSpider(scrapy.Spider):
         # 'https://sa.opensooq.com/ar/search/43152549/إفطار-صائم-بمكه-المكرمه'
         # 'https://sa.opensooq.com/ar/search/17978455/دهن-عود-ملكي'
         # mysql: insert the members row failure, (1406, "Data too long for column 'username' at row 1")
-        'https://sa.opensooq.com/ar/search/29602021/بيت-شعبي-مع-مجلس-مسلح-للبيع'  # 8 comments
+        # 'https://sa.opensooq.com/ar/search/29602021/بيت-شعبي-مع-مجلس-مسلح-للبيع'  # 8 comments
         # 'https://sa.opensooq.com/ar/search/43796687/للبيع-لوحه-قمه-التميز-س-م-و-٨٨٨٨'  # 10 comments(no comment_date)
+        # Parsing comment_date failure.
+        'https://sa.opensooq.com/ar/search/38053621/لاصق-تثبيت-الجوال-والاغراض-على-طبلون-السيارة-والبيت'
     ]
 
     def __init__(self, name=None, **kwargs):
