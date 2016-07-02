@@ -103,7 +103,7 @@ class TimerUtil(object):
         if spec_ago in time_ago:
             return int(time.time())
 
-        time_ago = time_ago.replace(' في', '').replace('قبل ', '').strip()
+        time_ago = time_ago.replace(' في', '').replace('قبل ', '').replace('  ',' ').strip()
 
         split = time_ago.split(' و')
         return HarajsTime().maketime(split)
