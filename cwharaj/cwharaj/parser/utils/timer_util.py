@@ -37,6 +37,7 @@ class HarajsTime(object):
 
     def maketime(self, split):
         for item in split:
+            item = item.replace('بل', '')
             self._get_value_from_string(item.strip())
 
         return self._make_time()
@@ -102,6 +103,7 @@ class TimerUtil(object):
             return int(time.time())
 
         time_ago = time_ago.replace(' في', '').replace('قبل ', '').strip()
+
         split = time_ago.split(' و')
         return HarajsTime().maketime(split)
 
@@ -123,5 +125,3 @@ class TimerUtil(object):
         utc_offset = (datetime.fromtimestamp(ts) -
                       datetime.utcfromtimestamp(ts)).total_seconds()
         return utc_offset
-
-
