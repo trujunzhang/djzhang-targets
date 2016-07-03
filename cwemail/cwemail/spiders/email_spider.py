@@ -44,7 +44,8 @@ class EmailsSpider(scrapy.Spider):
         email_address = 'trujunzhang@gmail.com'
 
         # Initialize CURL:
-        _email_ajax = 'http://apilayer.net/api/check?access_key={}&email={}'.format(access_key, email_address)
+        _email_ajax = 'http://apilayer.net/api/check?access_key={}&email={}&catch_all=1'.format(access_key,
+                                                                                                email_address)
         yield scrapy.Request(url=_email_ajax, callback=self.parse_email_ajax, dont_filter=True,
                              errback=self.parse_email_ajax_error)
 
