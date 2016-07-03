@@ -83,7 +83,7 @@ class HarajsTime(object):
             elif index == 5:
                 self.tm_year = time_value
 
-            logging.debug("  make time {} for harajs sucessfully".format(item))
+            logging.debug("  make time for harajs sucessfully, {}".format(url))
 
 
 class TimerUtil(object):
