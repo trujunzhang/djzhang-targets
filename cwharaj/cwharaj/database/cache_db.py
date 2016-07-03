@@ -25,6 +25,7 @@ class CacheDatabase(MysqlDatabase):
 
     def get_oldest_row(self, _last, url_from):
         logging.debug("Get oldest row")
+
         if _last:
             logging.debug("  1. delete the row by the last url: {}".format(_last))
             self.delete_row(_last, url_from)
