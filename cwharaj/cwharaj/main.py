@@ -3,7 +3,8 @@ from scrapy import cmdline
 
 class Crawler:
     def execute(self, module):
-        command = ("scrapy crawl %s" % module)
+        para = '--set LOG_FILE=haraj.log'
+        command = "scrapy crawl {} {}".format(module, para)
         cmdline.execute(command.split())
 
 
