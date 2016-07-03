@@ -23,8 +23,11 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
         # Section
         # 'https://haraj.com.sa/1114020535/المحفظة_المثالية/'
         # 'https://haraj.com.sa/1113955445/للبيع_اسكاليد_موديل_2014_بسعر_جيد/'
-        'https://haraj.com.sa/1114186091/الرياض/'  # 2 comments
+        # 'https://haraj.com.sa/1114186091/الرياض/'  # 2 comments
         # 'https://haraj.com.sa/1113412781/مستودعات_ومصانع_للايجار_او_للبيع_/'  # four sections
+        # mysql: insert the ads row failure, (1406, "Data too long for column 'ads_title' at row 1")
+        # title is 'زيت_زيتون_فلسطيني_الشرقية_جيزان_نجران_الطايف_ابها_محايل_عسير_حائل_الشمال_المدينه_مكة_الرياض_جدة_أصلي'
+        'https://haraj.com.sa/1111467437/زيت_زيتون_فلسطيني_الشرقية_جيزان_نجران_الطايف_ابها_محايل_عسير_حائل_الشمال_المدينه_مكة_الرياض_جدة_أصلي'
     ]
 
     def __init__(self, name=None, **kwargs):

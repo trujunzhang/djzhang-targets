@@ -3,8 +3,8 @@ from scrapy import cmdline
 
 class Crawler:
     def execute(self, module):
-        # para = '--set LOG_FILE=haraj.log'
-        para = ''
+        para = '--set LOG_FILE=haraj.log'
+        # para = ''
         command = "scrapy crawl {} {}".format(module, para)
         cmdline.execute(command.split())
 
@@ -12,14 +12,14 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    # utils.execute("haraj")
+    utils.execute("haraj")
     # utils.execute('harajwatch')
 
     # ===============
     # test
     # ===============
     # utils.execute('opensooqwatch_debug')
-    utils.execute("opensooq_debug")
+    # utils.execute("opensooq_debug")
     # utils.execute("opensooq_commentdate_debug")
     # utils.execute("mstaml_debug")
     # utils.execute("harajsa_debug")
