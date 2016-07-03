@@ -96,6 +96,9 @@ class TimerUtil(object):
         :return:
         """
 
+        if time_ago == '':
+            return self._get_default_time()
+
         spec_ago = 'قبل 0 دقيقه في'  # 0 minutes ago
         if spec_ago in time_ago:
             return int(time.time())
@@ -114,6 +117,9 @@ class TimerUtil(object):
         :param time_ago:  such as '2016-06-29 14:39:34 GMT'
         :return:
         """
+
+        if time_ago == '':
+            return self._get_default_time()
 
         today = time.strptime(time_ago, "%Y-%m-%d %H:%M:%S %Z")
         int_time = time.mktime(today)
