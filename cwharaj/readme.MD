@@ -43,11 +43,11 @@ Empty page on
 
 # Create mysql database
 
-create database vps_scrapy_rails;
+create database mzadalny;
 
-grant all on vps_scrapy_rails.* to 'haraj' identified by 'haraj720';
+grant all on mzadalny.* to 'haraj' identified by 'haraj720';
 
-mysql -u haraj -p 'haraj720' vps_scrapy_rails
+mysql -u haraj -p 'haraj720' mzadalny
 
 
 # mysql issues
