@@ -126,6 +126,9 @@ class OpensooqCommentDateUtil(TimerUtil):
         :return:
         """
 
+        if _member_timeregister == '':
+            return int(time.time()) + self._get_utc_offset()
+
         _member_timeregister = _member_timeregister.strip()
 
         today = time.strptime(_member_timeregister, "%d/%m/%Y")
