@@ -29,7 +29,7 @@ class EmailsBrowserSpider(scrapy.Spider):
         from cwemail.parser.response_parser import ResponseParse
         self._crawl_parser = ResponseParse()
 
-        super(EmailsBrowserDebugSpider, self).__init__(name, **kwargs)
+        super(EmailsBrowserSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
