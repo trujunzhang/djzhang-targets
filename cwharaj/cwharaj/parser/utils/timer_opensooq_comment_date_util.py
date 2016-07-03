@@ -127,7 +127,7 @@ class OpensooqCommentDateUtil(TimerUtil):
         """
 
         if _member_timeregister == '':
-            return int(time.time()) + self._get_utc_offset()
+            return self._get_default_time()
 
         _member_timeregister = _member_timeregister.strip()
 

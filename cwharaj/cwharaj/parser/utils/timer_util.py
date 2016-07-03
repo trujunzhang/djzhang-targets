@@ -126,3 +126,10 @@ class TimerUtil(object):
         utc_offset = (datetime.fromtimestamp(ts) -
                       datetime.utcfromtimestamp(ts)).total_seconds()
         return utc_offset
+
+    def _get_default_time(self):
+        """
+        When time string is empty, So we only give it a default time.
+        :return:
+        """
+        return int(time.time()) + self._get_utc_offset()
