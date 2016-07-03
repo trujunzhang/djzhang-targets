@@ -3,7 +3,6 @@ from random import Random
 
 import scrapy
 from scrapy.selector import Selector, HtmlXPathSelector
-from scrapy_webdriver.http import WebdriverRequest
 # yield WebdriverRequest(_url, callback=self.parse_category_full_page)
 from cwemail.items import Email
 import urlparse
