@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import json
 from random import Random
 
 import scrapy
@@ -10,10 +11,12 @@ import urlparse
 
 class EmailsSpider(scrapy.Spider):
     name = "email"
-    allowed_domains = ["https://verifyemail.mashape.com"]
+    allowed_domains = ["http://apilayer.net"]
     start_urls = [
-        'https://verifyemail.p.mashape.com',
+        'http://apilayer.net',
     ]
+
+    handle_httpstatus_list = [404]
 
     def __init__(self, name=None, **kwargs):
         from cwemail.database_factory import DatabaseFactory, DatabaseTypes
@@ -34,12 +37,24 @@ class EmailsSpider(scrapy.Spider):
                                                      )
 
     def parse(self, response):
-        _email_ajax = '"https://verifyemail.p.mashape.com/verify/{}'.format('trujunzhang@gmail.com')
-        headers = {
-            "X-Mashape-Key": "8fh0baYNL8mshLAPIymcbSj5Pl9bp1hTG8zjsn2KRM90qRTicd",
-            "Accept": "application/json"
-        }
-        yield scrapy.Request(_email_ajax, callback=self.parse_email_ajax, dont_filter=True, headers=headers)
+        # set API_Access_Key
+        access_key = 'b60b7d69bda9c70ec9061a28561abbdc'
+
+        # set email address
+        email_address = 'trujunzhang@gmail.com'
+
+        # Initialize CURL:
+        _email_ajax = 'http://apilayer.net/api/check?access_key={}&email={}'.format(access_key, email_address)
+        yield scrapy.Request(url=_email_ajax, callback=self.parse_email_ajax, dont_filter=True,
+                             errback=self.parse_email_ajax_error)
+
+    def parse_email_ajax_error(self, response):
+        error = response.body
 
     def parse_email_ajax(self, response):
         content = response.body
+        validationResult = json.loads(content)
+        # Access and use your preferred validation result objects
+        format_valid = validationResult['format_valid']
+        smtp_check = validationResult['smtp_check']
+        score = validationResult['score']
