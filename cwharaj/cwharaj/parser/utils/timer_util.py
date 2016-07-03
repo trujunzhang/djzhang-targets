@@ -61,7 +61,7 @@ class HarajsTime(object):
                 time_type = split[0]
                 time_value = 1
             else:
-                logging.debug("  make time {} for harajs failure".format(url))
+                logging.debug("  make time for harajs failure, {}".format(url))
                 return
         else:
             time_type = split[1]
