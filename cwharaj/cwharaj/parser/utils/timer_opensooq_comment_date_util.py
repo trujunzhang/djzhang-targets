@@ -82,8 +82,12 @@ class OpensooqCommentDateUtil(TimerUtil):
         :                     6 months ago
         :return:
         """
+
+        if comment_date == '':
+            return self._get_default_time()
+
         comment_date = OpensooqCommentDateUtil.get_comment_date(comment_date)
-        _offset = self.get_special_comment_date(comment_date)
+        _offset = self._get_special_comment_date(comment_date)
         if _offset:
             return int(time.time()) - _offset
 
@@ -94,7 +98,7 @@ class OpensooqCommentDateUtil(TimerUtil):
 
         return OpensooqCommentDateItem().maketime(split)
 
-    def get_special_comment_date(self, comment_date):
+    def _get_special_comment_date(self, comment_date):
         _special_comment_date = {
             "ساعة": 60 * 60,  # About an hour ago
             "ساعتين": 60 * 60 * 2,  # Two hours ago
@@ -143,6 +147,10 @@ class OpensooqCommentDateUtil(TimerUtil):
         :param _time_added is 'تاريخ النشر: 2016.06.28'('Published: 2016.06.28')
         :return:
         """
+
+        if _time_added == '':
+            return self._get_default_time()
+
         _time_added = _time_added.replace("\n", "").replace("\r", "").strip()
 
         today = time.strptime(_time_added, "%Y.%m.%d")
