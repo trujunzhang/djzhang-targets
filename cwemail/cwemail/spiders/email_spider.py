@@ -30,16 +30,17 @@ class EmailsSpider(scrapy.Spider):
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(EmailsSpider, cls).from_crawler(crawler,
-                                                         args,
-                                                         mongo_uri=crawler.settings.get('MONGODB_SERVER')
-                                                         )
+                                                     args,
+                                                     mongo_uri=crawler.settings.get('MONGODB_SERVER')
+                                                     )
 
     def parse(self, response):
-        self._crawl_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        _email_ajax = '"https://verifyemail.p.mashape.com/verify/{}'.format('trujunzhang@gmail.com')
+        headers = {
+            "X-Mashape-Key": "8fh0baYNL8mshLAPIymcbSj5Pl9bp1hTG8zjsn2KRM90qRTicd",
+            "Accept": "application/json"
+        }
+        yield scrapy.Request(_email_ajax, callback=self.parse_email_ajax, dont_filter=True, headers=headers)
 
-    def parse_detail(self, response):
-        item = self._crawl_parser.parse(response.url, response)
-        yield item
-
-
-
+    def parse_email_ajax(self, response):
+        content = response.body
