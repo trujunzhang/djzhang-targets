@@ -35,10 +35,10 @@ class HarajsTime(object):
     def __init__(self):
         super(HarajsTime, self).__init__()
 
-    def maketime(self, split):
+    def maketime(self, split, url):
         for item in split:
             item = item.replace('بل', '').strip()
-            self._get_value_from_string(item)
+            self._get_value_from_string(item, url)
 
         return self._make_time()
 
@@ -54,14 +54,14 @@ class HarajsTime(object):
     def _get_current_time(self):
         return int(time.time())
 
-    def _get_value_from_string(self, item):
+    def _get_value_from_string(self, item, url):
         split = item.split(' ')
         if len(split) == 1:
             if split[0] in self.lang:  # such as 'ساعه'(an hour)
                 time_type = split[0]
                 time_value = 1
             else:
-                logging.debug("  make time for harajs failure".format(item.encode('utf-8')))
+                logging.debug("  make time {} for harajs failure".format(url))
                 return
         else:
             time_type = split[1]
@@ -90,7 +90,7 @@ class TimerUtil(object):
     def __init__(self):
         super(TimerUtil, self).__init__()
 
-    def get_time_for_harajs(self, time_ago):
+    def get_time_for_harajs(self, time_ago, url=''):
         """
         :param time_ago: such as 'قبل 6 يوم و 2 ساعه في'
         :return:
@@ -106,7 +106,7 @@ class TimerUtil(object):
         time_ago = time_ago.replace(' في', '').replace('قبل ', '').replace("\xc2\xa0", "").strip()
 
         split = time_ago.split(' و')
-        return HarajsTime().maketime(split)
+        return HarajsTime().maketime(split, url)
 
     def get_time_for_mstaml(self, time_ago):
         """
