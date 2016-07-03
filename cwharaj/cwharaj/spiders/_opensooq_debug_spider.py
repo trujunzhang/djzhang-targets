@@ -26,7 +26,9 @@ class OpensooqDebugSpider(scrapy.Spider):
         # 'https://sa.opensooq.com/ar/search/29602021/بيت-شعبي-مع-مجلس-مسلح-للبيع'  # 8 comments
         # 'https://sa.opensooq.com/ar/search/43796687/للبيع-لوحه-قمه-التميز-س-م-و-٨٨٨٨'  # 10 comments(no comment_date)
         # Parsing comment_date failure.
-        'https://sa.opensooq.com/ar/search/38053621/لاصق-تثبيت-الجوال-والاغراض-على-طبلون-السيارة-والبيت'
+        # 'https://sa.opensooq.com/ar/search/38053621/لاصق-تثبيت-الجوال-والاغراض-على-طبلون-السيارة-والبيت'
+        # No member register time.
+        'https://sa.opensooq.com/ar/search/11956749/مستودع-للايجار-في-الصناعيه'
     ]
 
     def __init__(self, name=None, **kwargs):
