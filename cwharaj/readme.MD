@@ -50,13 +50,10 @@ grant all on mzadalny.* to 'mzada' identified by 'mzada720';
 mysql -u mzada -p 'mzada720' mzadalny
 
 
-# mysql issues
+# harajs issues
 
-'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near \\'://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-ا\\' at line 1'
-            
-'You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 's Included\nGauge\n2 Alkaline batteries AAA 1.5V\nInstruction manual\nSoft pouch wit' at line 1"
-            
-            
+ 1. mysql: insert the ads row failure, (1406, "Data too long for column 'ads_title' at row 1")
+    from 'https://haraj.com.sa/1111467437/زيت_زيتون_فلسطيني_الشرقية_جيزان_نجران_الطايف_ابها_محايل_عسير_حائل_الشمال_المدينه_مكة_الرياض_جدة_أصلي'
 
             
             
