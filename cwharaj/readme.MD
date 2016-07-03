@@ -45,9 +45,9 @@ Empty page on
 
 create database mzadalny;
 
-grant all on mzadalny.* to 'haraj' identified by 'haraj720';
+grant all on mzadalny.* to 'mzada' identified by 'mzada720';
 
-mysql -u haraj -p 'haraj720' mzadalny
+mysql -u mzada -p 'mzada720' mzadalny
 
 
 # mysql issues
