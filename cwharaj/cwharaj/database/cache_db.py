@@ -17,7 +17,7 @@ class CacheDatabase(MysqlDatabase):
         _cache_id = self._get_row_id(sql, "Caches")
 
         if _cache_id:
-            logging.debug("  item exist {} from {} on the cache database".format(item["id"], item["url_from"]))
+            logging.debug("  item exist {} from {} on the cache database".format(item["model_id"], item["url_from"]))
         else:
             self._insert_for_cache(item)
 
@@ -45,7 +45,7 @@ class CacheDatabase(MysqlDatabase):
             logging.debug("  mysql: insert the ads_caches row failure, {}".format(_excep))
         else:
             logging.debug(
-                "  mysql: insert {} into the {} from the {} successfully".format(item['id'], self.collection_name,
+                "  mysql: insert {} into the {} from the {} successfully".format(item['model_id'], self.collection_name,
                                                                                  item['url_from']))
 
     def get_oldest_row(self, _last, url_from):
