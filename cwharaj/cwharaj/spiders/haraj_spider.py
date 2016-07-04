@@ -3,7 +3,7 @@ import time
 
 import scrapy
 
-from cwharaj.items import WebsiteTypes, Ad, OpensooqPhone
+from cwharaj.items import WebsiteTypes, Ad, OpensooqPhone, HistoryItem
 
 
 class HarajsSpider(scrapy.Spider):
@@ -97,7 +97,8 @@ class HarajsSpider(scrapy.Spider):
         phone_number_item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
 
         if phone_number_item:
-            self._history_db.save_history(response.url, id_ads=phone_number_item.id_ads)
+            self._history_db.save_history(HistoryItem.get_default(url=response.url, id_ads=phone_number_item.id_ads,
+                                                                  url_from=WebsiteTypes.opensooq.value))
 
             _ajax_url = phone_number_item.get_ajax_url()
             if _ajax_url:
@@ -139,7 +140,8 @@ class HarajsSpider(scrapy.Spider):
     def parse_page_from_mstaml(self, response):
         item = self._mstaml_Parse.parse(response.url, response, self._item_db)
 
-        self._history_db.save_history(url=response.url, id_ads=item["id_ads"])
+        self._history_db.save_history(HistoryItem.get_default(url=response.url, id_ads=item["id_ads"],
+                                                              url_from=WebsiteTypes.mstaml.value))
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(response.url, WebsiteTypes.mstaml.value)
@@ -151,7 +153,8 @@ class HarajsSpider(scrapy.Spider):
     def parse_page_from_harajsa(self, response):
         item = self._harajsa_Parse.parse(response.url, response, self._item_db)
 
-        self._history_db.save_history(url=response.url, id_ads=item["id_ads"])
+        self._history_db.save_history(HistoryItem.get_default(url=response.url, id_ads=item["id_ads"],
+                                                              url_from=WebsiteTypes.harajsa.value))
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(response.url, WebsiteTypes.harajsa.value)

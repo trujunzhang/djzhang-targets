@@ -49,9 +49,9 @@ class MysqlDBTest(unittest.TestCase):
     #     row = self._cache_db.get_oldest_row(self._page_url, self._page_from)
 
     # def test_insert_history_row(self):
-    #     item = HistoryItem.get_default(self._page_url, self._ads_id, self._page_from)
+    #     item = HistoryItem.get_default(url=self._page_url, id_ads=self._ads_id, url_from=self._page_from)
     #     self._history_db.save_history(item)
-    #
+
     # def test_exist_history_row(self):
     #     item = HistoryItem.get_default(self._page_url, self._ads_id, self._page_from)
     #     self._history_db.check_history_exist(item['model_id'])
