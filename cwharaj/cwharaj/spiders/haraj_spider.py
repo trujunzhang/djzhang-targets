@@ -16,8 +16,8 @@ class HarajsSpider(scrapy.Spider):
     ]
     start_urls = [
         'https://sa.opensooq.com',
-        # 'http://www.mstaml.com',
-        # 'https://haraj.com.sa',
+        'http://www.mstaml.com',
+        'https://haraj.com.sa',
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -134,9 +134,6 @@ class HarajsSpider(scrapy.Spider):
 
         # Finally, remove the item from the phone dict by model id.
         self.phone_dict.remove_row(model_id)
-
-        # Specially, the last url is not an ajax url,
-        # We must get the url from the item.
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(_last, WebsiteTypes.opensooq.value)
