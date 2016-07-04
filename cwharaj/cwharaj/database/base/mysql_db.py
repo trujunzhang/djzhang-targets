@@ -36,33 +36,6 @@ class MysqlDatabase(BaseDatabase):
     def close_spider(self):
         pass
 
-    def insert_for_cache(self, item):
-        _excep = None
-        _connection = self.get_client()
-        _cursor = _connection.cursor()
-
-        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, id, url_from) VALUES (%s,%s,%s,%s,%s)"
-
-        try:
-            # Execute the SQL command
-            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['id'], item['url_from']))
-            # Commit your changes in the database
-            _connection.commit()
-        except Exception, e:
-            _excep = e
-            # Rollback in case there is any error
-            _connection.rollback()
-        finally:
-            _cursor.close()
-            _connection.close()
-
-        if _excep:
-            logging.debug("  mysql: insert the cache row failure, {}".format(_excep))
-        else:
-            logging.debug(
-                "  mysql: insert {} into the {} from the {} successfully".format(item['id'], self.collection_name,
-                                                                                 item['url_from']))
-
     def insert_for_ads(self, item):
         _excep = None
         _connection = self.get_client()
@@ -171,7 +144,6 @@ class MysqlDatabase(BaseDatabase):
             _connection.close()
 
         return _count
-
 
     def check_exist_by_id(self, _id):
         """

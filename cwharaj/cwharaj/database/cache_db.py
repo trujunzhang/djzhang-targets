@@ -13,16 +13,43 @@ class CacheDatabase(MysqlDatabase):
     def save_cache(self, url, item=None, index=0):
         logging.debug("process the cache item at position: {}".format(index - 1))
 
-        guid = CrawlUtils.get_guid(url)
-
         item["url"] = url
-        item["guid"] = guid
         item["created_at"] = datetime.utcnow().replace(microsecond=0).isoformat(' ')
 
-        if self.check_exist_by_id(item["id"]):
+        sql = """ SELECT id FROM {} WHERE model_id = '{}' """.format(self.collection_name, item['model_id'])
+        _cache_id = self._get_row_id(sql, "Caches")
+
+        if _cache_id:
             logging.debug("  item exist {} from {} on the cache database".format(item["id"], item["url_from"]))
         else:
-            self.insert_for_cache(item)
+            self._insert_for_cache(item)
+
+    def _insert_for_cache(self, item):
+        _excep = None
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        sql = "INSERT INTO " + self.collection_name + " (model_id, url, url_from, created_at) VALUES(%s,%s,%s,%s)"
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql, (item['model_id'], item['url'], item['url_from'], item['created_at']))
+            # Commit your changes in the database
+            _connection.commit()
+        except Exception, e:
+            _excep = e
+            # Rollback in case there is any error
+            _connection.rollback()
+        finally:
+            _cursor.close()
+            _connection.close()
+
+        if _excep:
+            logging.debug("  mysql: insert the ads_caches row failure, {}".format(_excep))
+        else:
+            logging.debug(
+                "  mysql: insert {} into the {} from the {} successfully".format(item['id'], self.collection_name,
+                                                                                 item['url_from']))
 
     def get_oldest_row(self, _last, url_from):
         logging.debug("Get oldest row")
@@ -103,7 +130,7 @@ class CacheDatabase(MysqlDatabase):
 
         found_count = 0
 
-        sql = "SELECT guid,id,url,url_from,created_at FROM  {} WHERE url_from = '{}' ORDER BY {} ASC LIMIT 1".format(
+        sql = "SELECT id,url,url_from,created_at FROM  {} WHERE url_from = '{}' ORDER BY {} ASC LIMIT 1".format(
             self.collection_name, url_from, 'created_at')
 
         try:

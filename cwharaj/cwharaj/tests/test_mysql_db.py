@@ -41,23 +41,16 @@ class MysqlDBTest(unittest.TestCase):
 
         self.opensooq_phone_id = 24
 
-    # def test_insert_cache_row(self):
-    #     _guid = "1234321"
-    #     _id = CrawlUtils.url_parse_id_from_page_url(self._cache_url, 3)
-    #
-    #     self._cache_db.open_spider()
-    #     item = CacheItem(
-    #         url=self._cache_url,
-    #         guid=_guid,
-    #         created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-    #         id=_id,
-    #         url_from=self._cache_from
-    #     )
-    #     self._cache_db.insert_for_cache(item)
-    #
+    def test_insert_cache_row(self):
+        _id = CrawlUtils.url_parse_id_from_page_url(self._cache_url, 3)
+
+        item = CacheItem(
+            model_id=_id,
+            url_from=self._cache_from
+        )
+        self._cache_db.save_cache(self._cache_url, item, 0)
+
     # def test_oldest_cache(self):
-    #     self._cache_db.open_spider()
-    #
     #     # row = self._cache_db.find_oldest_for_cache()
     #
     #     self._cache_db.delete_row(self._cache_url, self._cache_from)
@@ -200,11 +193,11 @@ class MysqlDBTest(unittest.TestCase):
     #     _opensooq_phone_id = self._item_db.save_opensooq_phone(opensooq_phone)
     #     self.assertEqual(expect, _opensooq_phone_id)
 
-    def test_insert_opensooq_comment_date(self):
-        opensooq_comment_date = OpensooqCommentDateItem.get_default('منذ شهر')
-
-        sql = """ INSERT INTO opensooq_comment_date(text, english, seconds) VALUES ('{}','{}','{}')""".format(
-            opensooq_comment_date['text'], opensooq_comment_date['english'], opensooq_comment_date['seconds'])
-        expect = 22
-        _opensooq_comment_date_id = self._item_db.save_opensooq_comment_date(opensooq_comment_date)
-        self.assertEqual(expect, _opensooq_comment_date_id)
+    # def test_insert_opensooq_comment_date(self):
+    #     opensooq_comment_date = OpensooqCommentDateItem.get_default('منذ شهر')
+    #
+    #     sql = """ INSERT INTO opensooq_comment_date(text, english, seconds) VALUES ('{}','{}','{}')""".format(
+    #         opensooq_comment_date['text'], opensooq_comment_date['english'], opensooq_comment_date['seconds'])
+    #     expect = 22
+    #     _opensooq_comment_date_id = self._item_db.save_opensooq_comment_date(opensooq_comment_date)
+    #     self.assertEqual(expect, _opensooq_comment_date_id)
