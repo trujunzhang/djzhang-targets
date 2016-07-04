@@ -46,7 +46,7 @@ class MysqlDBTest(unittest.TestCase):
     #     self._cache_db.save_cache(CacheItem.get_default(model_id,self._cache_url,self._cache_from))
 
     def test_get_oldest_row(self):
-        row = self._cache_db.get_oldest_row('',self._cache_from)
+        row = self._cache_db.get_oldest_row(self._cache_url,self._cache_from)
 
     # def test_insert_history_row(self):
     #     _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"

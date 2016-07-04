@@ -59,23 +59,23 @@ class CacheDatabase(MysqlDatabase):
         return self._find_oldest_for_cache(url_from)
 
     def _delete_cache_row(self, _last, url_from):
-        # 1. Parse the url and get the unique id.
+        # 1. Parse the url and get the unique model_id.
         from cwharaj.items import WebsiteTypes
         _position = WebsiteTypes.get_id_index(url_from)
 
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _id = CrawlUtils.url_parse_id_from_page_url(_last, _position)
-        logging.debug("  2. get the last url's id: {}".format(_id))
+        model_id = CrawlUtils.url_parse_id_from_page_url(_last, _position)
+        logging.debug("  2. get the last url's model_id: {}".format(model_id))
 
         # Query the deleted item count, must be equal to 1.
-        sql = """ SELECT 1 FROM {} WHERE id = '{}'""".format(self.collection_name, _id)
+        sql = """ SELECT 1 FROM {} WHERE model_id = '{}'""".format(self.collection_name, model_id)
         count = self._get_count(sql, self.collection_name)
-        logging.debug("  3. found the deleted item count: {} by id".format(count))
+        logging.debug("  3. found the deleted item count: {} by model_id".format(count))
         if count:
 
             _connection = self.get_client()
             _cursor = _connection.cursor()
-            sql = """ DELETE FROM {} WHERE {} = '{}'""".format(self.collection_name, 'id', _id)
+            sql = """ DELETE FROM {} WHERE {} = '{}'""".format(self.collection_name, 'model_id', model_id)
             try:
                 # Execute the SQL command
                 _cursor.execute(sql)
@@ -91,8 +91,8 @@ class CacheDatabase(MysqlDatabase):
                 _connection.close()
 
                 logging.debug(
-                    "  4. deleted cache row, id: {}, deleted count: {}, from the {}"
-                        .format(_id, _cursor.rowcount, url_from))
+                    "  4. deleted cache row, model_id: {}, deleted count: {}, from the {}"
+                        .format(model_id, _cursor.rowcount, url_from))
 
     def _get_cache_total_count(self):
         _count = 0
