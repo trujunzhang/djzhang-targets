@@ -49,7 +49,7 @@ class CacheDatabase(MysqlDatabase):
                                                                                  item['url_from']))
 
     def get_oldest_row(self, _last, url_from):
-        logging.debug("Get oldest row")
+        logging.debug("Get the oldest row")
 
         if _last:
             logging.debug("  1. delete the row by the last url: {}".format(_last))
@@ -59,12 +59,11 @@ class CacheDatabase(MysqlDatabase):
         return self._find_oldest_for_cache(url_from)
 
     def _delete_cache_row(self, _last, url_from):
-        # 1. Parse the url and get the unique model_id.
-        from cwharaj.items import WebsiteTypes
-        _position = WebsiteTypes.get_id_index(url_from)
+        _excep = None
+        _deleted_count = 0
 
-        from cwharaj.utils.crawl_utils import CrawlUtils
-        model_id = CrawlUtils.get_model_id_from_page_url(_last, _position)
+        # 1. Parse the url and get the unique model_id.
+        model_id = CrawlUtils.get_model_id_by_url_from(_last, url_from)
         logging.debug("  2. get the last url's model_id: {}".format(model_id))
 
         # Query the deleted item count, must be equal to 1.
@@ -81,19 +80,23 @@ class CacheDatabase(MysqlDatabase):
                 _cursor.execute(sql)
                 # Commit your changes in the database
                 _connection.commit()
+                _deleted_count = _cursor.rowcount
             except Exception, e:
+                _excep = e
                 # Rollback in case there is any error
                 _connection.rollback()
-                logging.debug(
-                    "  mysql: delete the oldest cache row, model_id: {}, from the {} failure, {}".format(
-                        model_id, url_from, e))
             finally:
                 _cursor.close()
                 _connection.close()
 
-                logging.debug(
-                    "  4. deleted cache row, model_id: {}, deleted count: {}, from the {} successfully"
-                        .format(model_id, _cursor.rowcount, url_from))
+        if _excep:
+            logging.debug(
+                "  mysql: delete the oldest cache row, model_id: {}, from the {} failure, {}".format(
+                    model_id, url_from, _excep))
+        else:
+            logging.debug(
+                "  4. deleted cache row, model_id: {}, deleted count: {}, from the {} successfully"
+                    .format(model_id, _deleted_count, url_from))
 
     def _get_cache_total_count(self):
         _count = 0

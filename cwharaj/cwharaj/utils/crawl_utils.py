@@ -20,7 +20,7 @@ class CrawlUtils(object):
         return md5(_url).hexdigest()
 
     @classmethod
-    def get_id_from_phone_number_url(self, _ajax_url):
+    def get_id_from_phone_number_url(cls, _ajax_url):
         import urlparse
         # Here ajax_url like 'https://sa.opensooq.com/ar/post/get-phone-number?model_id={123}&model_type=post'
         query = urlparse.parse_qs(urlparse.urlparse(_ajax_url).query)
@@ -29,12 +29,16 @@ class CrawlUtils(object):
             return _id
         return None
 
+    @classmethod
+    def get_model_id_by_url_from(cls, _page_url, url_from):
+        from cwharaj.items import WebsiteTypes
+        _position = WebsiteTypes.get_id_index(url_from)
 
-    # @classmethod
-    # def url_parse_xid_from_page_url(self, _page_url, url_from):
+        model_id = CrawlUtils.get_model_id_from_page_url(_page_url, _position)
+        return model_id
 
     @classmethod
-    def get_model_id_from_page_url(self, _page_url, position):
+    def get_model_id_from_page_url(cls, _page_url, position):
         logging.debug("Get the id from page url:")
 
         from urlparse import urlparse
