@@ -42,13 +42,10 @@ class MysqlDBTest(unittest.TestCase):
         self.opensooq_phone_id = 24
 
     def test_insert_cache_row(self):
-        _id = CrawlUtils.url_parse_id_from_page_url(self._cache_url, 3)
+        model_id = CrawlUtils.url_parse_id_from_page_url(self._cache_url, 3)
 
-        item = CacheItem(
-            model_id=_id,
-            url_from=self._cache_from
-        )
-        self._cache_db.save_cache(self._cache_url, item, 0)
+        item = CacheItem.get_default(model_id,self._cache_from)
+        self._cache_db.save_cache(item)
 
     # def test_oldest_cache(self):
     #     # row = self._cache_db.find_oldest_for_cache()

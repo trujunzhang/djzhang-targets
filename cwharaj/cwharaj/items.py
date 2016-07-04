@@ -35,14 +35,20 @@ class WebsiteTypes(Enum):
 
 
 class CacheItem(scrapy.Item):
-    url = scrapy.Field()
-    guid = scrapy.Field()
-    created_at = scrapy.Field()
-
-    # unique row id
-    id = scrapy.Field()
+    model_id = scrapy.Field()
     # cache form where, such as opensooq,mstaml.(WebsiteTypes variable)
     url_from = scrapy.Field()
+
+    url = scrapy.Field()
+    created_at = scrapy.Field()
+
+    @classmethod
+    def get_default(self, model_id, url):
+        return CacheItem(
+            model_id=model_id,
+            url=url,
+            created_at=datetime.utcnow().replace(microsecond=0).isoformat(' ')
+        )
 
 
 class HistoryItem(scrapy.Item):
