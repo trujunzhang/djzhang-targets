@@ -8,6 +8,3 @@ class BaseDatabase(object):
 
     def close_spider(self):
         pass
-
-    def check_exist_by_id(self, _id):
-        return False

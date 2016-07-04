@@ -52,23 +52,9 @@ class HistoryDatabase(MysqlDatabase):
         :param model_id:
         :return:
         """
-        ret = 0
-        _connection = self.get_client()
-        _cursor = _connection.cursor()
-
-        sql = """ SELECT 1 FROM {} WHERE id = {}""".format(self.collection_name, _id)
-        try:
-            # Execute the SQL command
-            _cursor.execute(sql)
-            # Get the count of rows
-            ret = _cursor.rowcount
-        except Exception, e:
-            logging.debug("  mysql: check {} exist on the {} failure, {}".format(_id, self.collection_name, e))
-        finally:
-            _cursor.close()
-            _connection.close()
-
-        if ret:
+        sql = """ SELECT ads_id FROM {} WHERE model_id = '{}'""".format(self.collection_name, model_id)
+        _ads_id = self._get_row_id(sql, self.collection_name)
+        if _ads_id:
             return True
 
         return False

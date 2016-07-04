@@ -37,7 +37,7 @@ class HarajSaParse(BaseParser):
             _ID = CrawlUtils.get_model_id_from_page_url(href, 1)
 
             # If the link already exist on the history database,ignore it.
-            if history_db.check_exist_by_id(_ID):
+            if history_db.check_history_exist(_ID):
                 logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
