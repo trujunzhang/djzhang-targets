@@ -4,6 +4,7 @@ import time
 import scrapy
 
 from cwharaj.items import WebsiteTypes, Ad, OpensooqPhone, HistoryItem
+from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class HarajsSpider(scrapy.Spider):
@@ -114,21 +115,25 @@ class HarajsSpider(scrapy.Spider):
         :return:
         """
         _last = response.url
-
-        _url = response.url
-        if 'get-phone-number' in _url:
+        model_id = ""
+        if 'get-phone-number' in response.url: # the url is the ajax.
             _phone_number_base64 = response.body
             _opensooq_phone_id = self._item_db.save_opensooq_phone(OpensooqPhone.get_default(_phone_number_base64))
 
             phone_number_item = self.phone_dict.get_item_from_ajax_url(response.url)
             if phone_number_item:
-                _last = phone_number_item.url
                 _His_announcement_id = phone_number_item._His_announcement_id
                 id_ads = phone_number_item.id_ads
                 self._item_db.update_members_phone(_His_announcement_id, Ad.get_opensooq_phone(_opensooq_phone_id))
                 self._item_db.update_ads_contact(id_ads, Ad.get_opensooq_phone(_opensooq_phone_id))
 
-                self.phone_dict.remove_row(phone_number_item.model_id)
+                _last = phone_number_item.url
+                model_id = phone_number_item.model_id
+        else: # the url is the original page.
+            model_id = CrawlUtils.get_model_id_by_url_from(_last, WebsiteTypes.opensooq.value)
+
+        # Finally, remove the item from the phone dict by model id.
+        self.phone_dict.remove_row(model_id)
 
         # Specially, the last url is not an ajax url,
         # We must get the url from the item.
