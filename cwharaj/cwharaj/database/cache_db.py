@@ -127,7 +127,7 @@ class CacheDatabase(MysqlDatabase):
 
         found_count = 0
 
-        sql = "SELECT id,url,url_from,created_at FROM  {} WHERE url_from = '{}' ORDER BY {} ASC LIMIT 1".format(
+        sql = "SELECT model_id,url,url_from FROM {} WHERE url_from = '{}' ORDER BY {} ASC LIMIT 1".format(
             self.collection_name, url_from, 'created_at')
 
         try:
@@ -137,13 +137,7 @@ class CacheDatabase(MysqlDatabase):
             data = _cursor.fetchone()
             found_count = _cursor.rowcount
             if data:
-                row = CacheItem(
-                    guid=data[0],
-                    id=data[1],
-                    url=data[2],
-                    url_from=data[3],
-                    created_at=data[4]
-                )
+                row = CacheItem.get_default(model_id=data[0], url=data[1], url_from=data[2])
         except Exception, e:
             _excep = e
         finally:
