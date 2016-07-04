@@ -14,10 +14,14 @@ class HarajsSpider(scrapy.Spider):
         'http://www.mstaml.com',
         'https://haraj.com.sa',
     ]
+    homepage_opensooq = 'https://sa.opensooq.com'
+    homepage_mstaml = 'http://www.mstaml.com'
+    hoomepage_harajsa = 'https://haraj.com.sa'
+
     start_urls = [
-        'https://sa.opensooq.com',
-        'http://www.mstaml.com',
-        'https://haraj.com.sa',
+        homepage_opensooq,
+        homepage_mstaml,
+        hoomepage_harajsa
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -142,7 +146,7 @@ class HarajsSpider(scrapy.Spider):
         if _row:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
         else:
-            yield scrapy.Request(self.start_urls[0], callback=self.parse, dont_filter=True)
+            yield scrapy.Request(self.homepage_opensooq, callback=self.parse, dont_filter=True)
 
     # ====================================================================================
     # mstaml
@@ -158,7 +162,7 @@ class HarajsSpider(scrapy.Spider):
         if _row:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
         else:
-            yield scrapy.Request(self.start_urls[1], callback=self.parse, dont_filter=True)
+            yield scrapy.Request(self.homepage_mstaml, callback=self.parse, dont_filter=True)
 
     # ====================================================================================
     # harajsa
@@ -174,4 +178,4 @@ class HarajsSpider(scrapy.Spider):
         if _row:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
         else:
-            yield scrapy.Request(self.start_urls[2], callback=self.parse, dont_filter=True)
+            yield scrapy.Request(self.hoomepage_harajsa, callback=self.parse, dont_filter=True)
