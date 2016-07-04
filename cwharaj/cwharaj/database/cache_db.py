@@ -75,7 +75,7 @@ class CacheDatabase(MysqlDatabase):
 
             _connection = self.get_client()
             _cursor = _connection.cursor()
-            sql = """ DELETE FROM {} WHERE {} = '{}'""".format(self.collection_name, 'model_id', model_id)
+            sql = """ DELETE FROM {} WHERE model_id = '{}'""".format(self.collection_name, model_id)
             try:
                 # Execute the SQL command
                 _cursor.execute(sql)
@@ -85,13 +85,14 @@ class CacheDatabase(MysqlDatabase):
                 # Rollback in case there is any error
                 _connection.rollback()
                 logging.debug(
-                    "  mysql: delete the last row on the {} failure, {}".format(self.collection_name, e))
+                    "  mysql: delete the oldest cache row, model_id: {}, from the {} failure, {}".format(
+                        model_id, url_from, e))
             finally:
                 _cursor.close()
                 _connection.close()
 
                 logging.debug(
-                    "  4. deleted cache row, model_id: {}, deleted count: {}, from the {}"
+                    "  4. deleted cache row, model_id: {}, deleted count: {}, from the {} successfully"
                         .format(model_id, _cursor.rowcount, url_from))
 
     def _get_cache_total_count(self):
