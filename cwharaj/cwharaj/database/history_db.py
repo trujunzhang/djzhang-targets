@@ -24,11 +24,11 @@ class HistoryDatabase(MysqlDatabase):
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = " INSERT INTO " + self.collection_name + " (url, guid, created_at, id) VALUES (%s,%s,%s,%s)"
+        sql = " INSERT INTO " + self.collection_name + " (model_id,ads_id,url,created_at) VALUES (%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (item['url'], item['guid'], item['created_at'], item['id']))
+            _cursor.execute(sql, (item['model_id'], item['ads_id'], item['url'], item['created_at']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
@@ -40,9 +40,9 @@ class HistoryDatabase(MysqlDatabase):
             _connection.close()
 
         if _excep:
-            logging.debug("  mysql: insert the history row {} failure, {}".format(item['id'], _excep))
+            logging.debug("  mysql: insert the history row {} failure, {}".format(item['ads_id'], _excep))
         else:
-            logging.debug("  mysql: insert {} into the {} successfully".format(item['id'], self.collection_name))
+            logging.debug("  mysql: insert {} into the {} successfully".format(item['ads_id'], self.collection_name))
 
     def check_history_exist(self, model_id):
         """
