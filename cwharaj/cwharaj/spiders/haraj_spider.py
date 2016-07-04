@@ -80,16 +80,18 @@ class HarajsSpider(scrapy.Spider):
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
 
     def get_row_from_cache(self, _last, url_from):
-        while True:
-            _row = self._cache_db.get_oldest_row(_last, url_from)
-            if _row:
-                return _row
+        return self._cache_db.get_oldest_row(_last, url_from)
 
-            # Return 'None' when the cache table is empty,
-            # So we set the _last to empty string.
-            _last = ""
+        # while True:
+        # _row = self._cache_db.get_oldest_row(_last, url_from)
+        # if _row:
+        #     return _row
 
-            time.sleep(4)
+        # Return 'None' when the cache table is empty,
+        # So we set the _last to empty string.
+        # _last = ""
+
+        # time.sleep(4)
 
     # ====================================================================================
     # opensooq
@@ -137,7 +139,10 @@ class HarajsSpider(scrapy.Spider):
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(_last, WebsiteTypes.opensooq.value)
-        yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+        if _row:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+        else:
+            yield scrapy.Request(self.start_urls[0], callback=self.parse, dont_filter=True)
 
     # ====================================================================================
     # mstaml
@@ -150,7 +155,10 @@ class HarajsSpider(scrapy.Spider):
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(response.url, WebsiteTypes.mstaml.value)
-        yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
+        if _row:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
+        else:
+            yield scrapy.Request(self.start_urls[1], callback=self.parse, dont_filter=True)
 
     # ====================================================================================
     # harajsa
@@ -163,4 +171,7 @@ class HarajsSpider(scrapy.Spider):
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(response.url, WebsiteTypes.harajsa.value)
-        yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
+        if _row:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
+        else:
+            yield scrapy.Request(self.start_urls[2], callback=self.parse, dont_filter=True)
