@@ -76,5 +76,5 @@ class PhoneNumberSet(object):
         if model_id in self.dict:
             logging.debug("  2. row exist in the dict")
             del self.dict[model_id]
-            logging.debug("  3. deleted the dict row {}, sucessfully".format(model_id))
+            logging.debug("  3. deleted the dict row {}, successfully".format(model_id))
             logging.debug("  4. after, dict keys: {}".format(self.dict.keys()))
