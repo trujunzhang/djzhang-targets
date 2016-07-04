@@ -53,12 +53,12 @@ class CacheDatabase(MysqlDatabase):
 
         if _last:
             logging.debug("  1. delete the row by the last url: {}".format(_last))
-            self.delete_row(_last, url_from)
+            self._delete_cache_row(_last, url_from)
 
         # Query the oldest cache item.
-        return self.find_oldest_for_cache(url_from)
+        return self._find_oldest_for_cache(url_from)
 
-    def delete_row(self, _last, url_from):
+    def _delete_cache_row(self, _last, url_from):
         # 1. Parse the url and get the unique id.
         from cwharaj.items import WebsiteTypes
         _position = WebsiteTypes.get_id_index(url_from)
@@ -113,7 +113,7 @@ class CacheDatabase(MysqlDatabase):
 
         return _count
 
-    def find_oldest_for_cache(self, url_from):
+    def _find_oldest_for_cache(self, url_from):
         """Query the oldest cache item."""
         total_count = self._get_cache_total_count()
 

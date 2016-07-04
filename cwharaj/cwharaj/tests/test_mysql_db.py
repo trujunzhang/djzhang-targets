@@ -45,10 +45,8 @@ class MysqlDBTest(unittest.TestCase):
     #     model_id = CrawlUtils.url_parse_id_from_page_url(self._cache_url, 3)
     #     self._cache_db.save_cache(CacheItem.get_default(model_id,self._cache_url,self._cache_from))
 
-    def test_oldest_cache(self):
-        row = self._cache_db.find_oldest_for_cache(self._cache_from)
-
-        # self._cache_db.delete_row(self._cache_url, self._cache_from)
+    def test_get_oldest_row(self):
+        row = self._cache_db.get_oldest_row('',self._cache_from)
 
     # def test_insert_history_row(self):
     #     _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
