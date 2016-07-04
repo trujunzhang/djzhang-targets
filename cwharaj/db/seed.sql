@@ -45,21 +45,6 @@ CREATE TABLE IF NOT EXISTS `opensooq_comment_date` (
   DEFAULT CHARSET = utf8
   AUTO_INCREMENT = 22;
 
---
--- Table structure for table `comment`
---
-
-CREATE TABLE IF NOT EXISTS `ads_scrape` (
-  `id`         INT(11)    NOT NULL AUTO_INCREMENT,
-  `Model_id`   INT(11)    NOT NULL,
-  `Url`        TEXT       NOT NULL,
-  `Url_from`   INT(11)    NOT NULL,
-  `Created_at` BIGINT(20) NOT NULL,
-  PRIMARY KEY (`id`)
-)
-  ENGINE = MyISAM
-  DEFAULT CHARSET = utf8
-  AUTO_INCREMENT = 42;
 
 --
 -- Table structure for table `cities`

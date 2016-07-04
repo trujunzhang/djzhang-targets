@@ -29,7 +29,7 @@ item exist  on the cache database
 
 invalide picture url from the haraj.sa
 
-found the deleted item count: 0
+found the deleted item count: 0 by model_id
 
 failure,
 

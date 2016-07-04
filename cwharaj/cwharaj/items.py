@@ -87,13 +87,6 @@ class OpensooqCommentDateItem(scrapy.Item):
         )
 
 
-class AdScrapeItem(scrapy.Item):
-    model_id = scrapy.Field()
-    url_from = scrapy.Field()
-    url = scrapy.Field()
-    created_at = scrapy.Field()
-
-
 class Ad(scrapy.Item):
     # The variable is not contained on the ads(table),
     # Just store the id of the ads(table).
