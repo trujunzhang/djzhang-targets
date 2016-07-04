@@ -10,7 +10,7 @@ class CacheDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(CacheDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
-    def save_cache(self, item, index=0):
+    def save_cache(self, item, index=1):
         logging.debug("process the cache item at position: {}".format(index - 1))
 
         sql = """ SELECT id FROM {} WHERE model_id = '{}' """.format(self.collection_name, item['model_id'])

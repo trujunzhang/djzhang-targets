@@ -44,7 +44,7 @@ class MysqlDBTest(unittest.TestCase):
     def test_insert_cache_row(self):
         model_id = CrawlUtils.url_parse_id_from_page_url(self._cache_url, 3)
 
-        item = CacheItem.get_default(model_id,self._cache_from)
+        item = CacheItem.get_default(model_id,self._cache_url,self._cache_from)
         self._cache_db.save_cache(item)
 
     # def test_oldest_cache(self):

@@ -44,9 +44,10 @@ class CacheItem(scrapy.Item):
     created_at = scrapy.Field()
 
     @classmethod
-    def get_default(self, model_id, url):
+    def get_default(self, model_id, url, url_from):
         return CacheItem(
             model_id=model_id,
+            url_from=url_from,
             url=url,
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' ')
         )
