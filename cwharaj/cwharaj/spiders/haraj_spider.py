@@ -104,7 +104,7 @@ class HarajsSpider(scrapy.Spider):
             _ajax_url = phone_number_item.get_ajax_url()
             if _ajax_url:
                 yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
-            else:  # No phone number found, fetch the oldest from the cache database.
+            else:  # No phone number found, fetch the page again.
                 yield scrapy.Request(response.url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
 
     def ajax_phone_number_for_opensooq(self, response):
@@ -116,7 +116,7 @@ class HarajsSpider(scrapy.Spider):
         """
         _last = response.url
         model_id = ""
-        if 'get-phone-number' in response.url: # the url is the ajax.
+        if 'get-phone-number' in response.url:  # the url is the ajax.
             _phone_number_base64 = response.body
             _opensooq_phone_id = self._item_db.save_opensooq_phone(OpensooqPhone.get_default(_phone_number_base64))
 
@@ -129,7 +129,7 @@ class HarajsSpider(scrapy.Spider):
 
                 _last = phone_number_item.url
                 model_id = phone_number_item.model_id
-        else: # the url is the original page.
+        else:  # the url is the original page.
             model_id = CrawlUtils.get_model_id_by_url_from(_last, WebsiteTypes.opensooq.value)
 
         # Finally, remove the item from the phone dict by model id.
