@@ -107,6 +107,12 @@ class HarajsSpider(scrapy.Spider):
                 yield scrapy.Request(response.url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
 
     def ajax_phone_number_for_opensooq(self, response):
+        """
+        When the page has phone number, the response is the ajax url,
+        Otherwise the response is the original page.
+        :param response:
+        :return:
+        """
         _last = response.url
 
         _url = response.url
