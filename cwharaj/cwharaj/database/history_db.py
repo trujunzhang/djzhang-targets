@@ -10,16 +10,14 @@ class HistoryDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(HistoryDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
-    def save_history(self, url, id_ads):
-        item = HistoryItem.get_default(url=url, id_ads=id_ads)
-
-        sql = """ SELECT id FROM {} WHERE guid = '{}'""".format(self.collection_name, item['guid'])
+    def save_history(self, item):
+        sql = """ SELECT ads_id FROM {} WHERE model_id = '{}'""".format(self.collection_name, item['model_id'])
         _ads_id = self._get_row_id(sql, self.collection_name)
-        if _ads_id == "":
+        if _ads_id:
+            logging.debug("HarajHistory already exist!")
+        else:
             self._insert_for_history(item)
             logging.debug("HarajHistory added to database successfully!")
-        else:
-            logging.debug("HarajHistory already exist!")
 
     def _insert_for_history(self, item):
         _excep = None
@@ -45,7 +43,6 @@ class HistoryDatabase(MysqlDatabase):
             logging.debug("  mysql: insert the history row {} failure, {}".format(item['id'], _excep))
         else:
             logging.debug("  mysql: insert {} into the {} successfully".format(item['id'], self.collection_name))
-
 
     def check_history_exist(self, model_id):
         """

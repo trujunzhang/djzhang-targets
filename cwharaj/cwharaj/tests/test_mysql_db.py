@@ -21,8 +21,8 @@ class MysqlDBTest(unittest.TestCase):
         self._history_db = database_factory.get_database(CollectionTypes.history)
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
-        self._cache_url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
-        self._cache_from = WebsiteTypes.opensooq.value
+        self._page_url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
+        self._page_from = WebsiteTypes.opensooq.value
 
         self._ads_id = 70
         self._ads_item = Ad.get_default(
@@ -42,26 +42,17 @@ class MysqlDBTest(unittest.TestCase):
         self.opensooq_phone_id = 24
 
     # def test_insert_cache_row(self):
-    #     model_id = CrawlUtils.get_model_id_by_url_from(self._cache_url, self._cache_from)
-    #     self._cache_db.save_cache(CacheItem.get_default(model_id,self._cache_url,self._cache_from))
+    #     model_id = CrawlUtils.get_model_id_by_url_from(self._page_url, self._page_from)
+    #     self._cache_db.save_cache(CacheItem.get_default(model_id,self._page_url,self._page_from))
 
     # def test_get_oldest_cache_row(self):
-    #     row = self._cache_db.get_oldest_row(self._cache_url, self._cache_from)
+    #     row = self._cache_db.get_oldest_row(self._page_url, self._page_from)
 
-    # def test_insert_history_row(self):
-    #     _url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
-    #     _guid = "1234321"
-    #     # _id = CrawlUtils.get_model_id_from_page_url(_url, 3)
-    #     _id = "123"
-    #
-    #     self._history_db.open_spider()
-    #     item = HistoryItem(
-    #         url=_url,
-    #         guid=_guid,
-    #         created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
-    #         id=_id
-    #     )
-    #     self._history_db.update_for_history(_id, item)
+    def test_insert_history_row(self):
+        ads_id = "123"
+
+        item = HistoryItem.get_default(self._page_url, ads_id, self._page_from)
+        self._history_db.save_history(item)
 
     # def test_get_year_id(self):
     #     _years_row = {
