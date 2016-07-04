@@ -10,10 +10,10 @@ CREATE TABLE ads_caches (
 
 
 CREATE TABLE ads_histories (
-  guid       CHAR(32) PRIMARY KEY,
-  id         TEXT,
-  url        TEXT,
-  created_at DATETIME
+  `model_id`   INT(22) PRIMARY KEY,
+  `ads_id`     TEXT,
+  `url`        TEXT,
+  `created_at` DATETIME
 )
   DEFAULT CHARSET = utf8mb4;
 
