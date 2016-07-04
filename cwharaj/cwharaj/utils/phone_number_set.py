@@ -67,14 +67,14 @@ class PhoneNumberSet(object):
 
         logging.debug("  3. not found item from ajax url: {}".format(_ajax_url))
 
-    def remove_row(self, _id):
+    def remove_row(self, model_id):
         logging.debug("Remove row from dict:")
         logging.debug("  *. dict keys: {}".format(self.dict.keys()))
 
-        logging.debug("  1. id: {}".format(_id))
+        logging.debug("  1. id: {}".format(model_id))
 
-        if _id in self.dict:
+        if model_id in self.dict:
             logging.debug("  2. row exist in the dict")
-            del self.dict[_id]
-            logging.debug("  3. deleted the row sucessfully: {}".format(_id))
+            del self.dict[model_id]
+            logging.debug("  3. deleted the dict row {}, sucessfully".format(model_id))
             logging.debug("  4. after, dict keys: {}".format(self.dict.keys()))
