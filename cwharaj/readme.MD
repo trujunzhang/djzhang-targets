@@ -41,6 +41,8 @@ no tag_r in the sections, count
 
 Empty page on
 
+converting to utf-8 exception on the get_guid()
+
 # Create mysql database
 
 create database mzadalny;
