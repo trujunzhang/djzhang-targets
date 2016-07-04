@@ -38,7 +38,7 @@ class OpensooqParse(BaseParser):
                 logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
-            item = CacheItem.get_default(model_id=_ID, url=url, url_from=WebsiteTypes.opensooq.value)
+            item = CacheItem.get_default(model_id=_ID, url=href, url_from=WebsiteTypes.opensooq.value)
             cache_db.save_cache(item, count)
             # here, must sleep a second.
             # time.sleep(1)
