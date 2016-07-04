@@ -55,17 +55,18 @@ class CacheItem(scrapy.Item):
 
 class HistoryItem(scrapy.Item):
     url = scrapy.Field()
-    guid = scrapy.Field()
     created_at = scrapy.Field()
 
     # the same as ads(table).id_ads
     id = scrapy.Field()
 
+    model_id = scrapy.Field()
+
     @classmethod
-    def get_default(self, url, id_ads):
+    def get_default(self, url, id_ads,url_from):
+
         return HistoryItem(
             url=url,
-            guid=CrawlUtils.get_guid(url),
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
             id=id_ads
         )

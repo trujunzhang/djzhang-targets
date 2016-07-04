@@ -34,7 +34,7 @@ class HarajSaParse(BaseParser):
             href = self.get_value_response(hxs, Li_selector + '/td[2]/a/@href')
 
             from cwharaj.utils.crawl_utils import CrawlUtils
-            _ID = CrawlUtils.url_parse_id_from_page_url(href, 1)
+            _ID = CrawlUtils.get_model_id_from_page_url(href, 1)
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist_by_id(_ID):
@@ -48,7 +48,7 @@ class HarajSaParse(BaseParser):
 
     def parse(self, url, hxs, item_db, phoneNumberSet=None):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _ID = CrawlUtils.url_parse_id_from_page_url(url, 1)
+        _ID = CrawlUtils.get_model_id_from_page_url(url, 1)
 
         # comment ad_div
         _ads_title = self.get_value_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')

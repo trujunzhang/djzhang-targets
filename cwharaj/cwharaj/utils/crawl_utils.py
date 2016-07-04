@@ -29,8 +29,12 @@ class CrawlUtils(object):
             return _id
         return None
 
+
+    # @classmethod
+    # def url_parse_xid_from_page_url(self, _page_url, url_from):
+
     @classmethod
-    def url_parse_id_from_page_url(self, _page_url, position):
+    def get_model_id_from_page_url(self, _page_url, position):
         logging.debug("Get the id from page url:")
 
         from urlparse import urlparse

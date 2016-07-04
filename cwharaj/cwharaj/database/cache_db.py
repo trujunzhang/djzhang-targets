@@ -64,7 +64,7 @@ class CacheDatabase(MysqlDatabase):
         _position = WebsiteTypes.get_id_index(url_from)
 
         from cwharaj.utils.crawl_utils import CrawlUtils
-        model_id = CrawlUtils.url_parse_id_from_page_url(_last, _position)
+        model_id = CrawlUtils.get_model_id_from_page_url(_last, _position)
         logging.debug("  2. get the last url's model_id: {}".format(model_id))
 
         # Query the deleted item count, must be equal to 1.

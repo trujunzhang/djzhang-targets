@@ -18,5 +18,5 @@ class AjaxUrlPhoneNumberTest(unittest.TestCase):
 
     def test_parse_id_from_page_url(self):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _ID = CrawlUtils.url_parse_id_from_page_url(self._page_url_opensooq, 3)
+        _ID = CrawlUtils.get_model_id_from_page_url(self._page_url_opensooq, 3)
         self.assertEqual(_ID, self.expect_opensooq)

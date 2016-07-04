@@ -31,7 +31,7 @@ class OpensooqParse(BaseParser):
                                                              url)
 
             from cwharaj.utils.crawl_utils import CrawlUtils
-            _ID = CrawlUtils.url_parse_id_from_page_url(href, 3)
+            _ID = CrawlUtils.get_model_id_from_page_url(href, 3)
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_exist_by_id(_ID):
@@ -45,7 +45,7 @@ class OpensooqParse(BaseParser):
 
     def parse(self, url, hxs, item_db, phoneNumberSet=None):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _ID = CrawlUtils.url_parse_id_from_page_url(url, 3)
+        _ID = CrawlUtils.get_model_id_from_page_url(url, 3)
 
         # ADs User
         # memberName len(list) = 2
