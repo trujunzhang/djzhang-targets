@@ -12,8 +12,8 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    # utils.execute("haraj")
-    utils.execute('harajwatch')
+    utils.execute("haraj")
+    # utils.execute('harajwatch')
 
     # ===============
     # test

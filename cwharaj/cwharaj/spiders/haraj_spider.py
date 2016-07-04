@@ -15,8 +15,8 @@ class HarajsSpider(scrapy.Spider):
     ]
     start_urls = [
         'https://sa.opensooq.com',
-        'http://www.mstaml.com',
-        'https://haraj.com.sa',
+        # 'http://www.mstaml.com',
+        # 'https://haraj.com.sa',
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -104,31 +104,28 @@ class HarajsSpider(scrapy.Spider):
             if _ajax_url:
                 yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
             else:  # No phone number found, fetch the oldest from the cache database.
-                self.phone_dict.remove_row(phone_number_item.model_id)
-
-            # step 1: request the last row on the cache database
-            _row = self.get_row_from_cache(response.url, WebsiteTypes.opensooq.value)
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+                yield scrapy.Request(response.url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
 
     def ajax_phone_number_for_opensooq(self, response):
-        _phone_number_base64 = response.body
-        _opensooq_phone_id = self._item_db.save_opensooq_phone(OpensooqPhone.get_default(_phone_number_base64))
+        _last = response.url
 
-        _last = ''
-        phone_number_item = self.phone_dict.get_item_from_ajax_url(response.url)
-        if phone_number_item:
-            _last = phone_number_item.url
-            _His_announcement_id = phone_number_item._His_announcement_id
-            id_ads = phone_number_item.id_ads
-            self._item_db.update_members_phone(_His_announcement_id, Ad.get_opensooq_phone(_opensooq_phone_id))
-            self._item_db.update_ads_contact(id_ads, Ad.get_opensooq_phone(_opensooq_phone_id))
+        _url = response.url
+        if 'get-phone-number' in _url:
+            _phone_number_base64 = response.body
+            _opensooq_phone_id = self._item_db.save_opensooq_phone(OpensooqPhone.get_default(_phone_number_base64))
 
-            self.phone_dict.remove_row(phone_number_item.model_id)
+            phone_number_item = self.phone_dict.get_item_from_ajax_url(response.url)
+            if phone_number_item:
+                _last = phone_number_item.url
+                _His_announcement_id = phone_number_item._His_announcement_id
+                id_ads = phone_number_item.id_ads
+                self._item_db.update_members_phone(_His_announcement_id, Ad.get_opensooq_phone(_opensooq_phone_id))
+                self._item_db.update_ads_contact(id_ads, Ad.get_opensooq_phone(_opensooq_phone_id))
+
+                self.phone_dict.remove_row(phone_number_item.model_id)
 
         # Specially, the last url is not an ajax url,
         # We must get the url from the item.
-        if _last == '':
-            _len = len(_phone_number_base64)
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(_last, WebsiteTypes.opensooq.value)
