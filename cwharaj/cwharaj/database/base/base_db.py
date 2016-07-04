@@ -21,8 +21,5 @@ class BaseDatabase(object):
     def delete_row(self, _last, url_from):
         pass
 
-    def find_oldest_for_cache(self):
-        pass
-
     def check_exist_by_id(self, _id):
         return False

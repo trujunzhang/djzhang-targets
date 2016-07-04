@@ -31,7 +31,7 @@ class CacheDatabase(MysqlDatabase):
             self.delete_row(_last, url_from)
 
         # Query the oldest cache item.
-        return self.find_oldest_for_cache()
+        return self.find_oldest_for_cache(url_from)
 
     def process_for(self):
         pass

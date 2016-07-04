@@ -228,22 +228,23 @@ class MysqlDatabase(BaseDatabase):
 
         return _count
 
-    def find_oldest_for_cache(self):
+    def find_oldest_for_cache(self, url_from):
+        """Query the oldest cache item."""
         total_count = self._get_cache_total_count()
 
         logging.debug(
             "  mysql: find the total count {} on the {}".format(total_count, self.collection_name))
 
         _excep = None
-        """Query the oldest cache item."""
         row = None
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
         found_count = 0
 
-        sql = 'SELECT guid,id,url,url_from,created_at FROM  {} ORDER BY {} ASC LIMIT 1'.format(self.collection_name,
-                                                                                               'created_at')
+        sql = "SELECT guid,id,url,url_from,created_at FROM  {} WHERE url_from = '{}' ORDER BY {} ASC LIMIT 1".format(
+            self.collection_name, url_from, 'created_at')
+
         try:
             # Execute the SQL command
             _cursor.execute(sql)

@@ -15,6 +15,8 @@ class HarajsSpider(scrapy.Spider):
     ]
     start_urls = [
         'https://sa.opensooq.com',
+        'http://www.mstaml.com',
+        'https://haraj.com.sa',
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -55,8 +57,16 @@ class HarajsSpider(scrapy.Spider):
 
     # This is entry point
     def parse(self, response):
+        _url = response.url
+
         _last = ""
         _url_from = ""
+        if 'opensooq' in _url:
+            _url_from = WebsiteTypes.opensooq.value
+        elif 'mstaml' in _url:
+            _url_from = WebsiteTypes.mstaml.value
+        elif 'haraj' in _url:
+            _url_from = WebsiteTypes.harajsa.value
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(_last, _url_from)
