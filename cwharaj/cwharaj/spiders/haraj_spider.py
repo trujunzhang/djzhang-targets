@@ -76,12 +76,15 @@ class HarajsSpider(scrapy.Spider):
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(_last, _url_from)
 
-        if _row['url_from'] == WebsiteTypes.opensooq.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.mstaml.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.harajsa.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
+        if _row:
+            if _row['url_from'] == WebsiteTypes.opensooq.value:
+                yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+            elif _row['url_from'] == WebsiteTypes.mstaml.value:
+                yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
+            elif _row['url_from'] == WebsiteTypes.harajsa.value:
+                yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
+        else:
+            yield scrapy.Request(_url, callback=self.parse, dont_filter=True)
 
     def get_row_from_cache(self, _last, url_from):
         return self._cache_db.get_oldest_row(_last, url_from)

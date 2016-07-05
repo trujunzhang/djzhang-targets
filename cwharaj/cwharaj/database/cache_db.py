@@ -131,8 +131,7 @@ class CacheDatabase(MysqlDatabase):
 
         found_count = 0
 
-        sql = "SELECT model_id,url,url_from FROM {} WHERE url_from = '{}' ORDER BY {} ASC LIMIT 1".format(
-            self.collection_name, url_from, 'created_at')
+        sql = "SELECT model_id,url,url_from FROM {}  ORDER BY id ASC LIMIT 1".format(self.collection_name)
 
         try:
             # Execute the SQL command
@@ -152,7 +151,6 @@ class CacheDatabase(MysqlDatabase):
             logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, _excep))
         else:
             logging.debug(
-                "  mysql: find the count {} for the oldest row from {} on the {}".format(
-                    found_count, url_from, self.collection_name))
+                "  mysql: find the count {} for the oldest row  on the {}".format(found_count, self.collection_name))
 
         return row
