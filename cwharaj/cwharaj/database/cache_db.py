@@ -56,7 +56,7 @@ class CacheDatabase(MysqlDatabase):
             self._delete_cache_row(_last, url_from)
 
         # Query the oldest cache item.
-        return self._find_oldest_for_cache(url_from)
+        return self._find_oldest_for_cache()
 
     def _delete_cache_row(self, _last, url_from):
         _excep = None
@@ -117,7 +117,7 @@ class CacheDatabase(MysqlDatabase):
 
         return _count
 
-    def _find_oldest_for_cache(self, url_from):
+    def _find_oldest_for_cache(self):
         """Query the oldest cache item."""
         total_count = self._get_cache_total_count()
 
