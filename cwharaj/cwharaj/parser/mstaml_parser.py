@@ -71,6 +71,11 @@ class MstamlParse(BaseParser):
         _sections = self.get_section(hxs, '//div[@class="pageRight"]/h1[@class="titlePage"]/a/text()')
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_mstaml()
 
+        # Fixing the empty page.
+        if _ads_title == '' and _ads_body == '':
+            logging.debug("  The empty page on the mstaml")
+            return {"id_ads": _ID}
+
         # ====
         # Save to relative database
         # ====
@@ -94,6 +99,7 @@ class MstamlParse(BaseParser):
         id_ads = item_db.save_ad(item)
 
         # mstaml no comments found.
+        # ignore parsing the comments.
 
         return item
 

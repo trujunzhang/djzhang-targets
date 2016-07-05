@@ -64,8 +64,9 @@ class OpensooqParse(BaseParser):
 
         _sections = self.get_section(self.get_value_response(hxs, '//*[@class="breadcrumbs"]'))
 
+        # Fixing the empty page.
         if (_ads_title == '') and (len(_sections) == 0):
-            logging.debug("  Empty page on the opensooq")
+            logging.debug("  The empty page on the opensooq")
             return PhoneNumberItem(url, _ID)
 
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()

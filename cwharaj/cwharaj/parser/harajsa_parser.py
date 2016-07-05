@@ -77,6 +77,7 @@ class HarajSaParse(BaseParser):
 
         # Fixing the empty page.
         if _ads_title == '' and _ads_body == '':
+            logging.debug("  The empty page on the harajsa")
             return {"id_ads": _ID}
 
         # TODO: djzhang, how to parse the sections when length is more then 3.

@@ -12,7 +12,7 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    utils.execute("haraj")
+    # utils.execute("haraj")
     # utils.execute('harajwatch')
 
     # ===============
@@ -22,7 +22,7 @@ def main():
     # utils.execute("opensooq_debug")
     # utils.execute("opensooq_commentdate_debug")
     # utils.execute("mstaml_debug")
-    # utils.execute("harajsa_debug")
+    utils.execute("harajsa_debug")
 
 
 if __name__ == '__main__':
