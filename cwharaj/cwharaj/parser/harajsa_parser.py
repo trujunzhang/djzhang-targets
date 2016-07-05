@@ -75,6 +75,10 @@ class HarajSaParse(BaseParser):
         _sections = self.get_section(self.get_value_response(hxs, '//*[@class="ad_low"]'))
         _section_item = HarajsSection(_sections, item_db).get_section_item_for_harajsa()
 
+        # Fixing the empty page.
+        if _ads_title == '' and _ads_body == '':
+            return {"id_ads": _ID}
+
         # TODO: djzhang, how to parse the sections when length is more then 3.
         if len(_sections) > 3:
             return {"id_ads": _ID}
