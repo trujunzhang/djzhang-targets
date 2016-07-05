@@ -19,9 +19,7 @@ class HarajsSpider(scrapy.Spider):
     hoomepage_harajsa = 'https://haraj.com.sa'
 
     start_urls = [
-        homepage_opensooq,
-        homepage_mstaml,
-        hoomepage_harajsa
+        "https://sa.opensooq.com/"
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -62,43 +60,30 @@ class HarajsSpider(scrapy.Spider):
 
     # This is entry point
     def parse(self, response):
-        _url = response.url
-
         _last = ""
         _url_from = ""
-        if 'opensooq' in _url:
-            _url_from = WebsiteTypes.opensooq.value
-        elif 'mstaml' in _url:
-            _url_from = WebsiteTypes.mstaml.value
-        elif 'haraj' in _url:
-            _url_from = WebsiteTypes.harajsa.value
 
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(_last, _url_from)
 
-        if _row:
-            if _row['url_from'] == WebsiteTypes.opensooq.value:
-                yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
-            elif _row['url_from'] == WebsiteTypes.mstaml.value:
-                yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
-            elif _row['url_from'] == WebsiteTypes.harajsa.value:
-                yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
-        else:
-            yield scrapy.Request(_url, callback=self.parse, dont_filter=True)
+        if _row['url_from'] == WebsiteTypes.opensooq.value:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
+        elif _row['url_from'] == WebsiteTypes.mstaml.value:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
+        elif _row['url_from'] == WebsiteTypes.harajsa.value:
+            yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
 
     def get_row_from_cache(self, _last, url_from):
-        return self._cache_db.get_oldest_row(_last, url_from)
+        while True:
+            _row = self._cache_db.get_oldest_row(_last, url_from)
+            if _row:
+                return _row
 
-        # while True:
-        # _row = self._cache_db.get_oldest_row(_last, url_from)
-        # if _row:
-        #     return _row
+            # Return 'None' when the cache table is empty,
+            # So we set the _last to empty string.
+            _last = ""
 
-        # Return 'None' when the cache table is empty,
-        # So we set the _last to empty string.
-        # _last = ""
-
-        # time.sleep(4)
+            time.sleep(4)
 
     # ====================================================================================
     # opensooq
