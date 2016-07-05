@@ -127,7 +127,9 @@ class HarajsSpider(scrapy.Spider):
         self.phone_dict.remove_row(model_id)
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(response.url, WebsiteTypes.harajsa.value)
+        # the response's url have two types.
+        # one is the opensooq's page url,other is the ajax url.
+        _row = self.get_row_from_cache(_last, WebsiteTypes.opensooq.value)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
@@ -146,7 +148,7 @@ class HarajsSpider(scrapy.Spider):
                                                               url_from=WebsiteTypes.mstaml.value))
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(response.url, WebsiteTypes.harajsa.value)
+        _row = self.get_row_from_cache(response.url, WebsiteTypes.mstaml.value)
 
         if _row['url_from'] == WebsiteTypes.opensooq.value:
             yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
