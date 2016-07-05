@@ -55,10 +55,12 @@ mysql -u mzada -p 'mzada720' mzadalny
 # harajs issues
 
  1. mysql: insert the ads row failure, (1406, "Data too long for column 'ads_title' at row 1")
-    from 'https://haraj.com.sa/1111467437/زيت_زيتون_فلسطيني_الشرقية_جيزان_نجران_الطايف_ابها_محايل_عسير_حائل_الشمال_المدينه_مكة_الرياض_جدة_أصلي'
+    from: 'https://haraj.com.sa/1111467437/زيت_زيتون_فلسطيني_الشرقية_جيزان_نجران_الطايف_ابها_محايل_عسير_حائل_الشمال_المدينه_مكة_الرياض_جدة_أصلي'
 
-            
-            
+ 2. mysql: get id on the ads failure, (1267, "Illegal mix of collations (utf8_general_ci,IMPLICIT) and (utf8mb4_general_ci,COERCIBLE) for operation '='")
+    mysql: insert the ads row failure, (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'ads_title' at row 1")
+    from: 'http://www.mstaml.com/2081492/👍👍👍_ثلاث_تأشيرات_منزليه_-_بنجلاديش_-_👍👍👍/'
+    title: '👍👍👍 ثلاث تأشيرات منزليه - بنجلاديش - 👍👍👍'                  
             
             
             
