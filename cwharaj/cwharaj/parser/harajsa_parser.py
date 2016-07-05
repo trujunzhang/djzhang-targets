@@ -82,6 +82,7 @@ class HarajSaParse(BaseParser):
 
         # TODO: djzhang, how to parse the sections when length is more then 3.
         if len(_sections) > 3:
+            logging.debug("  The sections length is more than 3 on the harajsa")
             return {"id_ads": _ID}
 
         # Replace "\n","\r"
