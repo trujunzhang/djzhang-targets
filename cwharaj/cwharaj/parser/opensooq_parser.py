@@ -35,7 +35,7 @@ class OpensooqParse(BaseParser):
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_history_exist(_ID):
-                logging.debug("  item exist {} on the history database".format(_ID))
+                # logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
             item = CacheItem.get_default(model_id=_ID, url=href, url_from=WebsiteTypes.opensooq.value)

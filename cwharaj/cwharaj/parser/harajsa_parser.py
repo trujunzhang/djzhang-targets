@@ -28,7 +28,7 @@ class HarajSaParse(BaseParser):
 
             td_count = len(hxs.xpath(Li_selector + "/td"))
             if td_count == 0:  # ignore the table title row(only have <th>s)
-                logging.debug("ignore the table title, at {}".format(count - 1))
+                # logging.debug("ignore the table title, at {}".format(count - 1))
                 continue
 
             href = self.get_value_response(hxs, Li_selector + '/td[2]/a/@href')
@@ -38,7 +38,7 @@ class HarajSaParse(BaseParser):
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_history_exist(_ID):
-                logging.debug("  item exist {} on the history database".format(_ID))
+                # logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
             item = CacheItem.get_default(model_id=_ID, url=href, url_from=WebsiteTypes.harajsa.value)

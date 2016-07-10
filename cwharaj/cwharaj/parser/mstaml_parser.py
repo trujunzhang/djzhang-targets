@@ -29,7 +29,7 @@ class MstamlParse(BaseParser):
             # This div is empty line, such as "<div id="item2072286" class="clear"></div>"
             # valid div is "class="boxDarkBody dw1 gWhite ui-corner-all mb20 mt20""
             if len(class_name) <= 10:
-                logging.debug("ignore the empty line, class name: {}, at {}".format(class_name, count - 1))
+                # logging.debug("ignore the empty line, class name: {}, at {}".format(class_name, count - 1))
                 continue
 
             href = self.get_value_response(hxs, Li_selector + '/*[@class="pb3"]/a[@class="xRight fL1"]/@href')
@@ -39,7 +39,7 @@ class MstamlParse(BaseParser):
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_history_exist(_ID):
-                logging.debug("  item exist {} on the history database".format(_ID))
+                # logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
             item = CacheItem.get_default(model_id=_ID, url=href, url_from=WebsiteTypes.mstaml.value)

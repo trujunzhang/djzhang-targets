@@ -39,15 +39,15 @@ class CrawlUtils(object):
 
     @classmethod
     def get_model_id_from_page_url(cls, _page_url, position):
-        logging.debug("Get the id from page url:")
+        # logging.debug("Get the id from page url:")
 
         from urlparse import urlparse
         array = urlparse(_page_url).path.split('/')
 
-        logging.debug("  1. array split length: {}".format(len(array)))
+        # logging.debug("  1. array split length: {}".format(len(array)))
         if len(array) >= position:
             _id = array[position]
-            logging.debug("  2. id: {} at position: {}".format(_id, position))
+            # logging.debug("  2. id: {} at position: {}".format(_id, position))
             return _id
 
         logging.debug("  3. split the page url failure: {}".format(_page_url.encode('utf-8')))
