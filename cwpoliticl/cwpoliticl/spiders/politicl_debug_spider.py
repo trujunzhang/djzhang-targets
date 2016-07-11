@@ -2,9 +2,8 @@
 from random import Random
 
 import scrapy
+from scrapy.http import XmlRpcRequest
 from scrapy.selector import Selector, HtmlXPathSelector
-from scrapy_webdriver.http import WebdriverRequest
-# yield WebdriverRequest(_url, callback=self.parse_category_full_page)
 from cwpoliticl.items import Politicl
 import urlparse
 
@@ -30,11 +29,13 @@ class PoliticlsDebugSpider(scrapy.Spider):
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(PoliticlsDebugSpider, cls).from_crawler(crawler,
-                                                         args,
-                                                         mongo_uri=crawler.settings.get('MONGODB_SERVER')
-                                                         )
+                                                             args,
+                                                             mongo_uri=crawler.settings.get('MONGODB_SERVER')
+                                                             )
 
     def parse(self, response):
+        yield XmlRpcRequest("", self.parse_cluster)
+
         item = self._crawl_parser.parse(response.url, response)
         yield item
 
