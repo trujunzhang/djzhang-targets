@@ -52,9 +52,9 @@ class HistoryDatabase(MysqlDatabase):
         :param model_id:
         :return:
         """
-        sql = """ SELECT ads_id FROM {} WHERE model_id = '{}'""".format(self.collection_name, model_id)
-        _ads_id = self._get_row_id(sql, self.collection_name)
-        if _ads_id:
-            return True
+        # sql = "SELECT EXISTS(SELECT 1 FROM {} WHERE url = '{}')".format(self.collection_name, href)
+        # _ads_id = self._get_row_id(sql, self.collection_name)
+        # if _ads_id:
+        #     return True
 
         return False

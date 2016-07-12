@@ -15,18 +15,15 @@ class DnaIndiaParser(BaseParser):
         count = 1
         for link in links:
             href_selector = "{}/div[{}]/div[2]/a/@href".format(selector, count)
-            # '//*[@id="adswrapper"]/table/tr[' + str(count) + ']'
-
             detailed_href = self.get_value_with_urljoin(hxs, href_selector, url)
 
             count += 1
 
-            # If the link already exist on the history database,ignore it.
-            if history_db.check_history_exist(href_selector):
-                # logging.debug("  item exist {} on the history database".format(_ID))
+            # If the link already exist on the history database, ignore it.
+            if history_db.check_history_exist(detailed_href):
                 continue
 
-            item = CacheItem.get_default(model_id=_ID, url=href_selector, url_from=WebsiteTypes.dnaindia.value)
+            item = CacheItem.get_default(url=detailed_href, url_from=WebsiteTypes.dnaindia.value)
             cache_db.save_cache(item, count)
 
     def parse(self, url, hxs, item_db):
