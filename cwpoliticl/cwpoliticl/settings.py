@@ -115,8 +115,8 @@ SQL_DB = 'politicl'
 SQL_COLLECTION_NAME = 'politicl'
 
 # python-wordpress-xmlrpc
-WD_HOST = 'http://localhost:8888/wordpress'
-WD_HOST = 'http://192.168.1.106:8888'
-WD_HOST = 'http://104.236.77.182:8888'
+WD_HOST = 'http://localhost:8888/politicl'
+# WD_HOST = 'http://192.168.1.106:8888'
+# WD_HOST = 'http://104.236.77.182:8888'
 WD_USER = 'trujunzhang'
 WD_PASSWD = 'wanghao720'
