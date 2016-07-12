@@ -6,7 +6,6 @@ from datetime import datetime
 from cwpoliticl import settings
 from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
 from cwpoliticl.items import CacheItem, HistoryItem
-from cwpoliticl.parser.utils.section_item import SectionItem
 from cwpoliticl.utils.crawl_utils import CrawlUtils
 
 
@@ -19,26 +18,26 @@ class MysqlDBTest(unittest.TestCase):
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
         self._item_db = database_factory.get_database(CollectionTypes.item)
-
-        self._page_url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
-        self._page_from = WebsiteTypes.opensooq.value
-
-        self._ads_id = 70
-        self._ads_item = Ad.get_default(
-            section_item=SectionItem.get_default(),
-            _ads_title="اسكاليد موديل 2016 بسعر جي",
-            _city_id='44',
-            _ads_contact="123454321",
-            _ads_body="test mysql db",
-            _image_link="https://img1cdn.politicl.com.sa/userfiles30/2015-07-18/55aa1ba3366cd.jpeg,https://img1cdn.politicl.com.sa/userfiles30/2015-07-18/55aa1bab49a3b.jpeg,https://img1cdn.politicl.com.sa/userfiles30/2015-07-18/55aa1bb0b6ca6.jpeg",
-            _His_announcement_id=60,
-            _type_ads_or=1, _close_ads=0
-        )
-
-        self._member_id = 60
-        self._memberName = "djzhang"
-
-        self.opensooq_phone_id = 24
+        #
+        # self._page_url = "https://sa.opensooq.com/ar/search/30002057/استراحة-سديم-للايجار-اليومي-والشهري-والسنوي-حي-الأمانة-شمال-الرياض"
+        # self._page_from = WebsiteTypes.opensooq.value
+        #
+        # self._ads_id = 70
+        # self._ads_item = Ad.get_default(
+        #     section_item=SectionItem.get_default(),
+        #     _ads_title="اسكاليد موديل 2016 بسعر جي",
+        #     _city_id='44',
+        #     _ads_contact="123454321",
+        #     _ads_body="test mysql db",
+        #     _image_link="https://img1cdn.politicl.com.sa/userfiles30/2015-07-18/55aa1ba3366cd.jpeg,https://img1cdn.politicl.com.sa/userfiles30/2015-07-18/55aa1bab49a3b.jpeg,https://img1cdn.politicl.com.sa/userfiles30/2015-07-18/55aa1bb0b6ca6.jpeg",
+        #     _His_announcement_id=60,
+        #     _type_ads_or=1, _close_ads=0
+        # )
+        #
+        # self._member_id = 60
+        # self._memberName = "djzhang"
+        #
+        # self.opensooq_phone_id = 24
 
     # def test_insert_cache_row(self):
     #     model_id = CrawlUtils.get_model_id_by_url_from(self._page_url, self._page_from)

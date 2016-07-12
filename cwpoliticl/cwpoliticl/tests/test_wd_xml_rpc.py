@@ -16,11 +16,12 @@ class WDXmlRpcTest(unittest.TestCase):
 
     def test_get_posts(self):
         wp_call = self.wp.call(GetPosts())
+        x = 0
         # [ < WordPressPost: hello - world(id=1) >]
 
-    def test_get_user_info(self):
-        wp_call = self.wp.call(GetUserInfo())
-        # < WordPressUser: max >
+    # def test_get_user_info(self):
+    #     wp_call = self.wp.call(GetUserInfo())
+    #     < WordPressUser: max >
 
         # def test_post_page(self):
         #     post = WordPressPost()
