@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-from random import Random
 
 import scrapy
-from scrapy.selector import Selector, HtmlXPathSelector
+
+
 # yield WebdriverRequest(_url, callback=self.parse_category_full_page)
-from cwpoliticl.items import Politicl
-import urlparse
 
 
 class PoliticlsDebugSpider(scrapy.Spider):
@@ -25,7 +23,7 @@ class PoliticlsDebugSpider(scrapy.Spider):
         self._history_db = database_factory.get_database(CollectionTypes.history)
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
-        from cwpoliticl.parser.response_parser import ResponseParse
+        from cwpoliticl.parser import ResponseParse
         self._crawl_parser = ResponseParse()
 
         super(PoliticlsDebugSpider, self).__init__(name, **kwargs)
