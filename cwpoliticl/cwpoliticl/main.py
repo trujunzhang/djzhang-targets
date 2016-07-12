@@ -4,8 +4,8 @@ import os
 
 class Crawler:
     def execute(self, module):
-        para = '--set LOG_FILE={}.log'.format(module)
-        # para = ''
+        # para = '--set LOG_FILE={}.log'.format(module)
+        para = ''
         command = "scrapy crawl {} {}".format(module, para)
         cmdline.execute(command.split())
 
