@@ -8,10 +8,12 @@ class DnaIndiaDebugSpider(scrapy.Spider):
     allowed_domains = ["www.dnaindia.com"]
     start_urls = [
         # Pagination
-        # 'http://www.dnaindia.com/analysis',
+        'http://www.dnaindia.com/analysis',
         # Detail
-        'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
+        # 'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
     ]
+
+    # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
 
     def __init__(self, name=None, **kwargs):
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
@@ -42,5 +44,5 @@ class DnaIndiaDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        # self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._dna_india_Parse.parse(response.url, response, self._item_db)
+        self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._dna_india_Parse.parse(response.url, response, self._item_db)
