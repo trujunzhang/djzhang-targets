@@ -10,7 +10,7 @@ import urlparse
 
 
 class PoliticlsSpider(scrapy.Spider):
-    name = "politicl"
+    name = "politicl_rpc"
     allowed_domains = ["xxx"]
     start_urls = [
         'yyy',

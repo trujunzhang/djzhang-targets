@@ -3,7 +3,6 @@ from random import Random
 
 import scrapy
 from scrapy.selector import Selector, HtmlXPathSelector
-|
 # yield WebdriverRequest(_url, callback=self.parse_category_full_page)
 from cwpoliticl.items import Politicl
 import urlparse

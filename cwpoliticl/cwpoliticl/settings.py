@@ -113,8 +113,11 @@ MONGODB_COLLECTION = "politicls"
 # SQL DATABASE SETTING
 SQL_HOST = 'localhost'
 # SQL_HOST = '104.236.77.182'
+# SQL_HOST = '192.168.1.106'
 SQL_PORT = 3306
-SQL_USER = 'mzada'
-SQL_PASSWD = 'mzada720'
-SQL_DB = 'politicls'
-SQL_COLLECTION_NAME = 'politicls'
+SQL_USER = 'politicl'
+SQL_PASSWD = 'politicl720'
+# database_name
+SQL_DB = 'politicl'
+# table_name
+SQL_COLLECTION_NAME = 'politicl'
