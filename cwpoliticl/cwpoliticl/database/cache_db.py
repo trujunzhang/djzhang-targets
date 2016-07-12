@@ -21,6 +21,22 @@ class CacheDatabase(MysqlDatabase):
 
     def _check_exist_cache(self, url):
         sql = "SELECT EXISTS(SELECT 1 FROM {} WHERE url='{}')".format(self.collection_name, url)
+
+        _connection = self.get_client()
+        _cursor = _connection.cursor()
+
+        try:
+            # Execute the SQL command
+            _cursor.execute(sql)
+            found_count = _cursor.rowcount
+        except Exception, e:
+            # Rollback in case there is any error
+            _connection.rollback()
+            logging.debug("  mysql: insert the ads_caches row failure, {}".format(e))
+        finally:
+            _cursor.close()
+            _connection.close()
+
         return False
 
     def _insert_for_cache(self, item):

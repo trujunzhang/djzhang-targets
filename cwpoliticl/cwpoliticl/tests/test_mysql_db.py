@@ -20,7 +20,7 @@ class MysqlDBTest(unittest.TestCase):
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
     def test_exist_cache_row(self):
-        url = 'http://www.dnaindia.com/analysis/editorial-dnaedit-ruins-of-the-iraq-war-2232200'
+        url = 'http://www.dnaindia.com/analysis/editorial-dnaedit-ruins-of-the-iraq-war-2232200xxx'
         exist = self._cache_db._check_exist_cache(url)
         self.assertEqual(True, exist)
 
