@@ -1,7 +1,7 @@
 import urlparse
 
 from cwpoliticl.extensions.base_parser import BaseParser
-from cwpoliticl.items import Politicl
+from cwpoliticl.items import Politicl, CacheItem, WebsiteTypes
 
 
 class DnaIndiaParser(BaseParser):
@@ -9,12 +9,25 @@ class DnaIndiaParser(BaseParser):
         super(DnaIndiaParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        links = hxs.select('//a[@class="card-click-target"]/@href').extract()
-        count = 0
+        selector = '//*[@class="media-list eventtracker"]'
+        links = hxs.select(selector).extract()
+
+        count = 1
         for link in links:
-            appLink = urlparse.urljoin(url, link.strip())
-            cache_db.process_item(url)
+            href_selector = "{}/div[{}]/div[2]/a/@href".format(selector, count)
+            # '//*[@id="adswrapper"]/table/tr[' + str(count) + ']'
+
+            detailed_href = self.get_value_with_urljoin(hxs, href_selector, url)
+
             count += 1
+
+            # If the link already exist on the history database,ignore it.
+            if history_db.check_history_exist(href_selector):
+                # logging.debug("  item exist {} on the history database".format(_ID))
+                continue
+
+            item = CacheItem.get_default(model_id=_ID, url=href_selector, url_from=WebsiteTypes.dnaindia.value)
+            cache_db.save_cache(item, count)
 
     def parse(self, url, hxs, item_db):
 

@@ -44,7 +44,7 @@ class HistoryDatabase(MysqlDatabase):
         else:
             logging.debug("  mysql: insert {} into the {} successfully".format(item['ads_id'], self.collection_name))
 
-    def check_history_exist(self, model_id):
+    def check_history_exist(self, href):
         """
         This method is so important!
 
