@@ -129,14 +129,9 @@ class CacheDatabase(MysqlDatabase):
                 row = CacheItem.get_default(model_id=data[0], url=data[1], url_from=data[2])
         except Exception, e:
             _excep = e
+            logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, _excep))
         finally:
             _cursor.close()
             _connection.close()
-
-        if _excep:
-            logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, _excep))
-        else:
-            logging.debug(
-                "  mysql: find the count {} for the oldest row  on the {}".format(found_count, self.collection_name))
 
         return row
