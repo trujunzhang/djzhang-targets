@@ -5,9 +5,12 @@ import scrapy
 
 class DnaIndiaDebugSpider(scrapy.Spider):
     name = "dnaindia_debug"
-    allowed_domains = ["http://www.dnaindia.com"]
+    allowed_domains = ["www.dnaindia.com"]
     start_urls = [
-        'http://www.dnaindia.com/analysis',
+        # Pagination
+        # 'http://www.dnaindia.com/analysis',
+        # Detail
+        'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -39,5 +42,5 @@ class DnaIndiaDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._dna_india_Parse.parse(response.url, response, self._item_db)
+        # self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        item = self._dna_india_Parse.parse(response.url, response, self._item_db)
