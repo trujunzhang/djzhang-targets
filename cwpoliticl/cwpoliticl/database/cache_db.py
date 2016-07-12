@@ -25,13 +25,11 @@ class CacheDatabase(MysqlDatabase):
         _connection = self.get_client()
         xcnx = _connection.cursor()
 
-        found_count = 0
         rowcount = 0
 
         try:
             # Execute the SQL command
             xcnx.execute(sql)
-            found_count = xcnx.fetchone()
             rowcount = xcnx.rowcount
         except Exception, e:
             logging.debug("  mysql: check exist on the ads_caches failure, {}".format(e))
