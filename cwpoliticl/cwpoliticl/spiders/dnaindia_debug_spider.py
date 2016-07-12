@@ -8,9 +8,9 @@ class DnaIndiaDebugSpider(scrapy.Spider):
     allowed_domains = ["www.dnaindia.com"]
     start_urls = [
         # Pagination
-        'http://www.dnaindia.com/analysis',
+        # 'http://www.dnaindia.com/analysis',
         # Detail
-        # 'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
+        'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
     ]
 
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
