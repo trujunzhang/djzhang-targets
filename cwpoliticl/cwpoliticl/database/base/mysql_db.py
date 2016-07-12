@@ -173,3 +173,21 @@ class MysqlDatabase(BaseDatabase):
             return True
 
         return False
+
+    def _check_exist_with_sql(self, sql):
+        _connection = self.get_client()
+        xcnx = _connection.cursor()
+
+        rowcount = 0
+
+        try:
+            # Execute the SQL command
+            xcnx.execute(sql)
+            rowcount = xcnx.rowcount
+        except Exception, e:
+            logging.debug("  mysql: check exist failure, {}".format(e))
+        finally:
+            xcnx.close()
+            _connection.close()
+
+        return rowcount != 0

@@ -21,7 +21,7 @@ class MysqlDBTest(unittest.TestCase):
 
     def test_exist_cache_row(self):
         url = 'http://www.dnaindia.com/analysis/editorial-dnaedit-ruins-of-the-iraq-war-2232200'
-        exist = self._cache_db._check_exist_cache(url)
+        exist = self._cache_db._check_exist_with_sql(url)
         self.assertEqual(True, exist)
 
         # def test_get_oldest_cache_row(self):

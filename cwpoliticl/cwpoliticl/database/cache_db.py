@@ -11,33 +11,11 @@ class CacheDatabase(MysqlDatabase):
         super(CacheDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
     def save_cache(self, item, index=1):
-        # sql = """ SELECT id FROM {} WHERE model_id = '{}' """.format(self.collection_name, item['model_id'])
-        # _cache_id = self._get_row_id(sql, "Caches")
+        sql = "SELECT * FROM {} WHERE url = '{}'".format(self.collection_name, item['url'])
+        if self._check_exist_with_sql(sql):
+            return
 
-        # if _cache_id:
-        #     logging.debug("  item exist {} from {} on the cache database".format(item["model_id"], item["url_from"]))
-        # else:
         self._insert_for_cache(item)
-
-    def _check_exist_cache(self, url):
-        sql = "SELECT COUNT(1) FROM {} WHERE url = '{}'".format(self.collection_name, url)
-
-        _connection = self.get_client()
-        xcnx = _connection.cursor()
-
-        rowcount = 0
-
-        try:
-            # Execute the SQL command
-            xcnx.execute(sql)
-            rowcount = xcnx.rowcount
-        except Exception, e:
-            logging.debug("  mysql: check exist on the ads_caches failure, {}".format(e))
-        finally:
-            xcnx.close()
-            _connection.close()
-
-        return False
 
     def _insert_for_cache(self, item):
         _connection = self.get_client()
