@@ -1,36 +1,41 @@
-from cwpoliticl.parser.browse_parser import BrowseParser
-from cwpoliticl.parser.response_parser import ResponseParse
-
 from enum import Enum
 
 
-class DatabaseTypes(Enum):
+class CollectionTypes(Enum):
     cache = 1
     history = 2
     item = 3
 
 
-class DatabaseFactory:
-    def __init__(self):
-        pass
+class DatabaseFactory(object):
+    def __init__(self, host, port, user, passwd, db, collection_name):
+        super(DatabaseFactory, self).__init__()
+        self.host = host
+        self.port = port
+        self.user = user
+        self.passwd = passwd
+        self.db = db
+        self.collection_name = collection_name
 
-    # This is the factory method
-    @staticmethod
-    def get_database(dbType, uri, db="vps_scrapy_rails", collection="politicls"):
-
-        from cwpoliticl.database.cache_db import CacheDatabase
-        from cwpoliticl.database.history_db import HistoryDatabase
-        from cwpoliticl.database.item_db import ItemDatabase
-
-        if DatabaseTypes.cache == dbType:
-            database = CacheDatabase(uri, db + "_cache", "_cache_" + collection)
+    def get_database(self, collection_type):
+        if CollectionTypes.cache == collection_type:
+            from cwpoliticl.database.cache_db import CacheDatabase
+            database = CacheDatabase(host=self.host, port=self.port,
+                                     user=self.user, passwd=self.passwd,
+                                     db=self.db, collection_name=self.collection_name + '_caches')
             database.open_spider()
             return database
-        elif DatabaseTypes.history == dbType:
-            history_database = HistoryDatabase(uri, db + "_history", "_history_" + collection)
+        elif CollectionTypes.history == collection_type:
+            from cwpoliticl.database.history_db import HistoryDatabase
+            history_database = HistoryDatabase(host=self.host, port=self.port,
+                                               user=self.user, passwd=self.passwd,
+                                               db=self.db, collection_name=self.collection_name + "_histories")
             history_database.open_spider()
             return history_database
-        elif DatabaseTypes.item == dbType:
-            return ItemDatabase(uri, db, collection)
+        elif CollectionTypes.item == collection_type:
+            from cwpoliticl.database.item_db import ItemDatabase
+            return ItemDatabase(host=self.host, port=self.port,
+                                user=self.user, passwd=self.passwd,
+                                db=self.db, collection_name=self.collection_name)
         else:
             return None

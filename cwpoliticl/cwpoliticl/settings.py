@@ -61,10 +61,9 @@ COOKIES_ENABLED=False
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'cwpoliticl.pipelines.MongoPipeline': 300,
-}
-
+# ITEM_PIPELINES = {
+#
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -110,3 +109,12 @@ MONGODB_SERVER = "localhost"
 MONGODB_PORT = 27017
 MONGODB_DB = "vps_scrapy_rails"
 MONGODB_COLLECTION = "politicls"
+
+# SQL DATABASE SETTING
+SQL_HOST = 'localhost'
+# SQL_HOST = '104.236.77.182'
+SQL_PORT = 3306
+SQL_USER = 'mzada'
+SQL_PASSWD = 'mzada720'
+SQL_DB = 'politicls'
+SQL_COLLECTION_NAME = 'politicls'

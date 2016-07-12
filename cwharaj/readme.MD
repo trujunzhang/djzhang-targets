@@ -21,8 +21,6 @@ curl http://104.236.77.182:6800/schedule.json -d project=cwharaj -d spider=haraj
 
 curl http://localhost:6800/schedule.json -d project=myproject -d spider=spider2
 
-
-
 # debug log
 
 item exist  on the cache database
@@ -52,7 +50,7 @@ grant all on mzadalny.* to 'mzada' identified by 'mzada720';
 mysql -u mzada -p 'mzada720' mzadalny
 
 
-# harajs issues
+# scrape issues
 
  1. mysql: insert the ads row failure, (1406, "Data too long for column 'ads_title' at row 1")
     from: 'https://haraj.com.sa/1111467437/زيت_زيتون_فلسطيني_الشرقية_جيزان_نجران_الطايف_ابها_محايل_عسير_حائل_الشمال_المدينه_مكة_الرياض_جدة_أصلي'

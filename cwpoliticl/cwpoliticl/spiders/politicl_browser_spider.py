@@ -13,18 +13,22 @@ import urlparse
 
 class PoliticlsBrowserSpider(scrapy.Spider):
     name = "politicl_browser"
-    allowed_domains = ["http://localhost:8888"]
+    allowed_domains = ["xxx"]
     start_urls = [
-        'http://localhost:8888/wordpress',
+        'yyy',
     ]
 
     def __init__(self, name=None, **kwargs):
         self.driver = webdriver.Firefox()
 
-        from cwpoliticl.database_factory import DatabaseFactory, DatabaseTypes
+        from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
+        database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
+                                           kwargs['user'], kwargs['passwd'],
+                                           kwargs['db'], kwargs['collection_name'])
 
-        self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['mongo_uri'])
-        self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['mongo_uri'])
+        self._cache_db = database_factory.get_database(CollectionTypes.cache)
+        self._history_db = database_factory.get_database(CollectionTypes.history)
+        self._item_db = database_factory.get_database(CollectionTypes.item)
 
         from cwpoliticl.parser.response_parser import ResponseParse
         self._crawl_parser = ResponseParse()
