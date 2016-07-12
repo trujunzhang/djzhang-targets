@@ -17,22 +17,15 @@ class CustomDownloaderMiddleware(object):
         visit the google cache.Or you can define a google_cache_domains in your spider and it
         is as the highest priority.
     """
-    google_cache = 'http://webcache.googleusercontent.com/search?q=cache:'
 
-    def __init__(self, cache_domains=''):
-        self.cache = WeakKeyCache(self._cache_domains)
-        self.cache_domains = cache_domains
+    def __init__(self):
+        super(CustomDownloaderMiddleware, self).__init__()
 
     @classmethod
     def from_crawler(cls, crawler):
-        return cls(crawler.settings['GOOGLE_CACHE_DOMAINS'])
+        return cls('')
 
     def _cache_domains(self, spider):
-        if hasattr(spider, 'google_cache_domains'):
-            return spider.google_cache_domains
-        elif self.cache_domains:
-            return self.cache_domains
-
         return ""
 
     def process_request(self, request, spider):
