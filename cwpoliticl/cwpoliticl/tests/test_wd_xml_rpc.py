@@ -14,21 +14,25 @@ class WDXmlRpcTest(unittest.TestCase):
         url = "{}/xmlrpc.php".format(settings.WD_HOST)
         self.wp = Client(url, settings.WD_USER, settings.WD_PASSWD)
 
-    def test_get_posts(self):
-        wp_call = self.wp.call(GetPosts())
-        x = 0
+        # def test_get_posts(self):
+        #     wp_call = self.wp.call(GetPosts())
+        #     x = 0
         # [ < WordPressPost: hello - world(id=1) >]
 
-    # def test_get_user_info(self):
-    #     wp_call = self.wp.call(GetUserInfo())
-    #     < WordPressUser: max >
+        # def test_get_user_info(self):
+        #     wp_call = self.wp.call(GetUserInfo())
+        #     x = 0
+        #     < WordPressUser: max >
 
-        # def test_post_page(self):
-        #     post = WordPressPost()
-        #     post.title = 'My new title'
-        #     post.content = 'This is the body of my new post.'
-        #     post.terms_names = {
-        #         'post_tag': ['test', 'firstpost'],
-        #         'category': ['Introductions', 'Tests']
-        #     }
-        #     self.wp.call(NewPost(post))
+    def test_post_page(self):
+        post = WordPressPost()
+        post.title = 'Python_Scraping_for_WordPress'
+        post.content = 'How to post to wordpress using xml_rpc.'
+        post.post_type = "post"
+        post.post_status = "publish"
+        post.terms_names = {
+            'post_tag': ['scrapy', 'xml_rpc'],
+            'category': ['Tutorial', 'Tests']
+        }
+        wp_call = self.wp.call(NewPost(post))
+        x = 0
