@@ -20,34 +20,36 @@ class CacheDatabase(MysqlDatabase):
         self._insert_for_cache(item)
 
     def _check_exist_cache(self, url):
-        sql = "SELECT EXISTS(SELECT 1 FROM {} WHERE url='{}')".format(self.collection_name, url)
+        sql = "SELECT COUNT(1) FROM {} WHERE url = '{}'".format(self.collection_name, url)
 
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
+
+        found_count = 0
+        rowcount = 0
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql)
-            found_count = _cursor.rowcount
+            xcnx.execute(sql)
+            found_count = xcnx.fetchone()
+            rowcount = xcnx.rowcount
         except Exception, e:
-            # Rollback in case there is any error
-            _connection.rollback()
-            logging.debug("  mysql: insert the ads_caches row failure, {}".format(e))
+            logging.debug("  mysql: check exist on the ads_caches failure, {}".format(e))
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         return False
 
     def _insert_for_cache(self, item):
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         sql = "INSERT INTO " + self.collection_name + " (url, url_from, created_at) VALUES(%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (item['url'], item['url_from'], item['created_at']))
+            xcnx.execute(sql, (item['url'], item['url_from'], item['created_at']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
@@ -55,7 +57,7 @@ class CacheDatabase(MysqlDatabase):
             _connection.rollback()
             logging.debug("  mysql: insert the ads_caches row failure, {}".format(e))
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
     def get_oldest_row(self, _last, url_from):
@@ -83,38 +85,38 @@ class CacheDatabase(MysqlDatabase):
         if count:
 
             _connection = self.get_client()
-            _cursor = _connection.cursor()
+            xcnx = _connection.cursor()
             sql = """ DELETE FROM {} WHERE model_id = '{}'""".format(self.collection_name, model_id)
             try:
                 # Execute the SQL command
-                _cursor.execute(sql)
+                xcnx.execute(sql)
                 # Commit your changes in the database
                 _connection.commit()
-                _deleted_count = _cursor.rowcount
+                _deleted_count = xcnx.rowcount
             except Exception, e:
                 _excep = e
                 # Rollback in case there is any error
                 _connection.rollback()
                 logging.debug("  mysql: delete the oldest cache row, from the {} failure, {}".format(url_from, _excep))
             finally:
-                _cursor.close()
+                xcnx.close()
                 _connection.close()
 
     def _get_cache_total_count(self):
         _count = 0
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         sql = """ SELECT * FROM {} """.format(self.collection_name)
         try:
             # Execute the SQL command
-            _cursor.execute(sql)
-            _count = _cursor.rowcount
+            xcnx.execute(sql)
+            _count = xcnx.rowcount
         except Exception, e:
             logging.debug(
                 "  mysql: get count  on the {} failure, {}".format(self.collection_name, e))
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         return _count
@@ -129,7 +131,7 @@ class CacheDatabase(MysqlDatabase):
         _excep = None
         row = None
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         found_count = 0
 
@@ -137,17 +139,17 @@ class CacheDatabase(MysqlDatabase):
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql)
+            xcnx.execute(sql)
             # Get the row data
-            data = _cursor.fetchone()
-            found_count = _cursor.rowcount
+            data = xcnx.fetchone()
+            found_count = xcnx.rowcount
             if data:
                 row = CacheItem.get_default(model_id=data[0], url=data[1], url_from=data[2])
         except Exception, e:
             _excep = e
             logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, _excep))
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         return row

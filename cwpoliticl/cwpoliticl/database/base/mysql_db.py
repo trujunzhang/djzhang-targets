@@ -39,18 +39,18 @@ class MysqlDatabase(BaseDatabase):
     def insert_for_ads(self, item):
         _excep = None
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         _ads_id = -1
 
         sql = " INSERT INTO ads (ads_title, ads_city, ads_tags_R, ads_tags_F, ads_tags_FF, ads_contact, ads_body, image_link, type_ads_other_final, un_model, status, fixing, Time_added, His_announcement, type_ads_or, close_ads, Last_updated_Ad, closecomment, fixed_home, fixed_tub, fixed_sec, fixed_sec2, fixed_sec3, timer_mazad) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         try:
-            _cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
-            _cursor.execute("SET CHARACTER SET utf8mb4;")  # same as above
-            _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
+            xcnx.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
+            xcnx.execute("SET CHARACTER SET utf8mb4;")  # same as above
+            xcnx.execute("SET character_set_connection=utf8mb4;")  # same as above
             # Execute the SQL command
-            _cursor.execute(sql, (
+            xcnx.execute(sql, (
                 item['ads_title'], item['ads_city'], item['ads_tags_R'], item['ads_tags_F'], item['ads_tags_FF'],
                 item['ads_contact'], item['ads_body'], item['image_link'], item['type_ads_other_final'],
                 item['un_model'], item['status'], item['fixing'], item['Time_added'], item['His_announcement'],
@@ -60,13 +60,13 @@ class MysqlDatabase(BaseDatabase):
             ))
             # Commit your changes in the database
             _connection.commit()
-            _ads_id = _cursor.lastrowid
+            _ads_id = xcnx.lastrowid
         except Exception, e:
             _excep = e
             # Rollback in case there is any error
             _connection.rollback()
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         if _excep:
@@ -79,16 +79,16 @@ class MysqlDatabase(BaseDatabase):
     def _update_contact_for_ads(self, ads_id, image_phone):
         _excep = None
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         sql = " UPDATE ads SET ads_contact = %s WHERE id = %s"
 
         try:
-            _cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
-            _cursor.execute("SET CHARACTER SET utf8mb4;")  # same as above
-            _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
+            xcnx.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
+            xcnx.execute("SET CHARACTER SET utf8mb4;")  # same as above
+            xcnx.execute("SET character_set_connection=utf8mb4;")  # same as above
             # Execute the SQL command
-            _cursor.execute(sql, (
+            xcnx.execute(sql, (
                 image_phone, ads_id
             ))
             # Commit your changes in the database
@@ -98,7 +98,7 @@ class MysqlDatabase(BaseDatabase):
             # Rollback in case there is any error
             _connection.rollback()
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         if _excep:
@@ -108,22 +108,22 @@ class MysqlDatabase(BaseDatabase):
 
     def _get_row_id(self, sql, table_name):
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         _row_id = ""
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql)
+            xcnx.execute(sql)
             # Get the row data
-            data = _cursor.fetchone()
-            found_count = _cursor.rowcount
+            data = xcnx.fetchone()
+            found_count = xcnx.rowcount
             if data:
                 _row_id = data[0]
         except Exception, e:
             logging.debug("  mysql: get id on the {} failure, {}".format(table_name, e))
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         return _row_id
@@ -131,16 +131,16 @@ class MysqlDatabase(BaseDatabase):
     def _get_count(self, sql, table_name):
         _count = 0
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql)
-            _count = _cursor.rowcount
+            xcnx.execute(sql)
+            _count = xcnx.rowcount
         except Exception, e:
             logging.debug("  mysql: get count on the {} failure, {}".format(table_name, e))
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         return _count
@@ -155,18 +155,18 @@ class MysqlDatabase(BaseDatabase):
         """
         ret = 0
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         sql = """ SELECT 1 FROM {} WHERE id = {}""".format(self.collection_name, _id)
         try:
             # Execute the SQL command
-            _cursor.execute(sql)
+            xcnx.execute(sql)
             # Get the count of rows
-            ret = _cursor.rowcount
+            ret = xcnx.rowcount
         except Exception, e:
             logging.debug("  mysql: check {} exist on the {} failure, {}".format(_id, self.collection_name, e))
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         if ret:

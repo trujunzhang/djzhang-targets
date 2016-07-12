@@ -30,14 +30,14 @@ class ItemDatabase(MysqlDatabase):
 
         _excep = None
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
         _members_id = -1
 
         sql = " INSERT INTO members (username, password, groupnumber, email, timeregister, member_code, documentingmobile, Documentingemail, phone, sendtime, active, now, Lastactivity, subscribe_1, subscribe_2, subscribe_3, The_pay_commission) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (
+            xcnx.execute(sql, (
                 member['username'], member['password'], member['groupnumber'], member['email'], member['timeregister'],
                 member['member_code'], member['documentingmobile'], member['Documentingemail'], member['phone'],
                 member['sendtime'], member['active'], member['now'], member['Lastactivity'], member['subscribe_1'],
@@ -46,13 +46,13 @@ class ItemDatabase(MysqlDatabase):
             # Commit your changes in the database
             _connection.commit()
             # get the "id" after INSERT into MySQL database
-            _members_id = _cursor.lastrowid
+            _members_id = xcnx.lastrowid
         except Exception, e:
             _excep = e
             # Rollback in case there is any error
             _connection.rollback()
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         if _excep:
@@ -71,16 +71,16 @@ class ItemDatabase(MysqlDatabase):
     def _update_phone_for_members(self, _members_id, image_phone):
         _excep = None
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         sql = " UPDATE members SET phone = %s WHERE id = %s"
 
         try:
-            _cursor.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
-            _cursor.execute("SET CHARACTER SET utf8mb4;")  # same as above
-            _cursor.execute("SET character_set_connection=utf8mb4;")  # same as above
+            xcnx.execute("SET NAMES utf8mb4;")  # or utf8 or any other charset you want to handle
+            xcnx.execute("SET CHARACTER SET utf8mb4;")  # same as above
+            xcnx.execute("SET character_set_connection=utf8mb4;")  # same as above
             # Execute the SQL command
-            _cursor.execute(sql, (
+            xcnx.execute(sql, (
                 image_phone, _members_id
             ))
             # Commit your changes in the database
@@ -90,7 +90,7 @@ class ItemDatabase(MysqlDatabase):
             # Rollback in case there is any error
             _connection.rollback()
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         if _excep:

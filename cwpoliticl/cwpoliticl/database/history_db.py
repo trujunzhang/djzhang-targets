@@ -22,13 +22,13 @@ class HistoryDatabase(MysqlDatabase):
     def _insert_for_history(self, item):
         _excep = None
         _connection = self.get_client()
-        _cursor = _connection.cursor()
+        xcnx = _connection.cursor()
 
         sql = " INSERT INTO " + self.collection_name + " (model_id,ads_id,url,created_at) VALUES (%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (item['model_id'], item['ads_id'], item['url'], item['created_at']))
+            xcnx.execute(sql, (item['model_id'], item['ads_id'], item['url'], item['created_at']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
@@ -36,7 +36,7 @@ class HistoryDatabase(MysqlDatabase):
             # Rollback in case there is any error
             _connection.rollback()
         finally:
-            _cursor.close()
+            xcnx.close()
             _connection.close()
 
         if _excep:
