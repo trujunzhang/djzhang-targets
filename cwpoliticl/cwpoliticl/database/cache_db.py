@@ -13,24 +13,24 @@ class CacheDatabase(MysqlDatabase):
     def save_cache(self, item, index=1):
         logging.debug("process the cache item at position: {}".format(index - 1))
 
-        sql = """ SELECT id FROM {} WHERE model_id = '{}' """.format(self.collection_name, item['model_id'])
-        _cache_id = self._get_row_id(sql, "Caches")
+        # sql = """ SELECT id FROM {} WHERE model_id = '{}' """.format(self.collection_name, item['model_id'])
+        # _cache_id = self._get_row_id(sql, "Caches")
 
-        if _cache_id:
-            logging.debug("  item exist {} from {} on the cache database".format(item["model_id"], item["url_from"]))
-        else:
-            self._insert_for_cache(item)
+        # if _cache_id:
+        #     logging.debug("  item exist {} from {} on the cache database".format(item["model_id"], item["url_from"]))
+        # else:
+        self._insert_for_cache(item)
 
     def _insert_for_cache(self, item):
         _excep = None
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
-        sql = "INSERT INTO " + self.collection_name + " (model_id, url, url_from, created_at) VALUES(%s,%s,%s,%s)"
+        sql = "INSERT INTO " + self.collection_name + " (url, url_from, created_at) VALUES(%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            _cursor.execute(sql, (item['model_id'], item['url'], item['url_from'], item['created_at']))
+            _cursor.execute(sql, (item['url'], item['url_from'], item['created_at']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:

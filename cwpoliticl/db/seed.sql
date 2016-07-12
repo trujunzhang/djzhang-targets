@@ -1,4 +1,4 @@
-CREATE TABLE politicls_caches (
+CREATE TABLE politicls_cache (
   `id`         INT(11) NOT NULL AUTO_INCREMENT,
   `url`        TEXT,
   `url_from`   TEXT,
@@ -8,9 +8,11 @@ CREATE TABLE politicls_caches (
   DEFAULT CHARSET = utf8mb4;
 
 
-CREATE TABLE politicls_histories (
+CREATE TABLE politicls_history (
+  `id`         INT(11) NOT NULL AUTO_INCREMENT,
   `url`        TEXT,
-  `created_at` DATETIME
+  `created_at` DATETIME,
+  PRIMARY KEY (`id`)
 )
   DEFAULT CHARSET = utf8mb4;
 

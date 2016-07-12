@@ -22,14 +22,14 @@ class DatabaseFactory(object):
             from cwpoliticl.database.cache_db import CacheDatabase
             database = CacheDatabase(host=self.host, port=self.port,
                                      user=self.user, passwd=self.passwd,
-                                     db=self.db, collection_name=self.collection_name + '_caches')
+                                     db=self.db, collection_name=self.collection_name + '_cache')
             database.open_spider()
             return database
         elif CollectionTypes.history == collection_type:
             from cwpoliticl.database.history_db import HistoryDatabase
             history_database = HistoryDatabase(host=self.host, port=self.port,
                                                user=self.user, passwd=self.passwd,
-                                               db=self.db, collection_name=self.collection_name + "_histories")
+                                               db=self.db, collection_name=self.collection_name + "_history")
             history_database.open_spider()
             return history_database
         elif CollectionTypes.item == collection_type:
