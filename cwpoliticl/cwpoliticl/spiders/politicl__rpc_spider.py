@@ -9,7 +9,7 @@ from cwpoliticl.items import Politicl
 import urlparse
 
 
-class PoliticlsSpider(scrapy.Spider):
+class PoliticlsRPCSpider(scrapy.Spider):
     name = "politicl_rpc"
     allowed_domains = ["xxx"]
     start_urls = [
@@ -30,11 +30,11 @@ class PoliticlsSpider(scrapy.Spider):
         from cwpoliticl.parser.response_parser import ResponseParse
         self._crawl_parser = ResponseParse()
 
-        super(PoliticlsSpider, self).__init__(name, **kwargs)
+        super(PoliticlsRPCSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(PoliticlsSpider, cls).from_crawler(crawler,
+        return super(PoliticlsRPCSpider, cls).from_crawler(crawler,
                                                          args,
                                                          mongo_uri=crawler.settings.get('MONGODB_SERVER')
                                                          )
