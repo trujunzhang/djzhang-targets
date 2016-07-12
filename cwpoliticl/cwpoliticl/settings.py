@@ -65,16 +65,6 @@ AUTOTHROTTLE_DEBUG = True
 # HTTPCACHE_IGNORE_HTTP_CODES=[]
 # HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
-# Retry many times since proxies often fail
-RETRY_TIMES = 10
-# Retry on most error codes since proxies fail for different reasons
-RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
-
-DOWNLOADER_MIDDLEWARES = {
-    'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,
-    # Fix path to this module
-}
-
 # SQL DATABASE SETTING
 SQL_HOST = 'localhost'
 # SQL_HOST = '104.236.77.182'
