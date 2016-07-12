@@ -10,7 +10,7 @@ class DnaIndiaParser(BaseParser):
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
         selector = '//*[@class="media-list eventtracker"]'
-        links = hxs.select(selector).extract()
+        links = hxs.xpath(selector).extract()
 
         count = 1
         for link in links:
