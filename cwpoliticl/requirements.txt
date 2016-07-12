@@ -64,6 +64,7 @@ pytest-cov==2.2.1
 pytest-twisted==1.5
 python-bidi==0.4.0
 python-dateutil==2.5.3
+python-wordpress-xmlrpc==2.3
 pytz==2016.3
 queuelib==1.4.2
 requests==2.10.0
