@@ -18,8 +18,8 @@ class DnaIndiaParser(BaseParser):
             detailed_href = self.get_value_with_urljoin(hxs, href_selector, url)
 
             # If the link already exist on the history database, ignore it.
-            # if history_db.check_history_exist(detailed_href):
-            #     continue
+            if history_db.check_history_exist(detailed_href):
+                continue
 
             item = CacheItem.get_default(url=detailed_href, url_from=WebsiteTypes.dnaindia.value)
             cache_db.save_cache(item, count)

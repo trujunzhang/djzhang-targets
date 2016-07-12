@@ -49,12 +49,8 @@ class HistoryDatabase(MysqlDatabase):
         This method is so important!
 
         Checking wheather the row exist before insert to database.
-        :param model_id:
+        :param href:
         :return:
         """
-        # sql = "SELECT EXISTS(SELECT 1 FROM {} WHERE url = '{}')".format(self.collection_name, href)
-        # _ads_id = self._get_row_id(sql, self.collection_name)
-        # if _ads_id:
-        #     return True
-
-        return False
+        sql = "SELECT * FROM {} WHERE url = '{}'".format(self.collection_name, href)
+        return self._check_exist_with_sql(sql)
