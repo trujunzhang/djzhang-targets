@@ -61,7 +61,10 @@ mysql -u mzada -p 'mzada720' mzadalny
     mysql: insert the ads row failure, (1366, "Incorrect string value: '\\xF0\\x9F\\x91\\x8D\\xF0\\x9F...' for column 'ads_title' at row 1")
     from: 'http://www.mstaml.com/2081492/👍👍👍_ثلاث_تأشيرات_منزليه_-_بنجلاديش_-_👍👍👍/'
     title: '👍👍👍 ثلاث تأشيرات منزليه - بنجلاديش - 👍👍👍'                  
-            
+
+ 3. mysql: get id on the comments failure, (1064, "You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'm willing to work in anyplace where people speak English or Arabic. I like worki' at line 1")
+    comment: ??
+    from: 'https://sa.opensooq.com/ar/search/44710985/%D9%85%D8%B7%D9%84%D9%88%D8%A8-%D9%85%D8%AF%D9%8A%D8%B1-%D9%85%D8%B7%D8%B9%D9%85'             
             
             
             
