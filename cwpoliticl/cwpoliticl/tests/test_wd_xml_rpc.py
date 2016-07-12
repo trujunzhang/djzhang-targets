@@ -74,10 +74,10 @@ class WDXmlRpcTest(unittest.TestCase):
         post.content = 'How to post to wordpress using xml_rpc with a thumbnail.'
         post.post_type = "post"
         post.post_status = "publish"
-        # post.terms_names = {
-        #     'post_tag': ['scrapy', 'xml_rpc'],
-        #     'category': ['Tutorial', 'Tests']
-        # }
+        post.terms_names = {
+            'post_tag': ['scrapy', 'xml_rpc'],
+            'category': ['Tutorial', 'Tests']
+        }
         post.custom_fields = []
         post.custom_fields.append({
             'key': 'custom_source_url',

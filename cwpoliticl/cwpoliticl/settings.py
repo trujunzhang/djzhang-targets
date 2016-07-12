@@ -46,24 +46,6 @@ COOKIES_ENABLED = False
 #    'cwpoliticl.middlewares.MyCustomSpiderMiddleware': 543,
 # }
 
-# Enable or disable downloader middlewares
-# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'cwpoliticl.middlewares.MyCustomDownloaderMiddleware': 543,
-# }
-
-# Enable or disable extensions
-# See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
-# EXTENSIONS = {
-#    'scrapy.telnet.TelnetConsole': None,
-# }
-
-# Configure item pipelines
-# See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#
-# }
-
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # NOTE: AutoThrottle will honour the standard settings for concurrency and delay
@@ -91,16 +73,7 @@ RETRY_HTTP_CODES = [500, 503, 504, 400, 403, 404, 408]
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddlewares.retry.RetryMiddleware': 90,
     # Fix path to this module
-    # 'cwpoliticl.extensions.randomproxy.RandomProxy': 100,
-    'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware': 110,
 }
-
-# Proxy list containing entries like
-# http://host1:port
-# http://username:password@host2:port
-# http://host3:port
-# ...
-PROXY_LIST = '/var/scrapy/proxy/list.txt'
 
 # SQL DATABASE SETTING
 SQL_HOST = 'localhost'
