@@ -63,12 +63,7 @@ class HarajsSpider(scrapy.Spider):
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache("", "")
 
-        if _row['url_from'] == WebsiteTypes.opensooq.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.mstaml.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.harajsa.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
+        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
 
     def get_row_from_cache(self, _last, url_from):
         while True:
@@ -131,12 +126,7 @@ class HarajsSpider(scrapy.Spider):
         # one is the opensooq's page url,other is the ajax url.
         _row = self.get_row_from_cache(_last, WebsiteTypes.opensooq.value)
 
-        if _row['url_from'] == WebsiteTypes.opensooq.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.mstaml.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.harajsa.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
+        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
 
     # ====================================================================================
     # mstaml
@@ -150,12 +140,7 @@ class HarajsSpider(scrapy.Spider):
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(response.url, WebsiteTypes.mstaml.value)
 
-        if _row['url_from'] == WebsiteTypes.opensooq.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.mstaml.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.harajsa.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
+        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
 
     # ====================================================================================
     # harajsa
@@ -169,9 +154,16 @@ class HarajsSpider(scrapy.Spider):
         # step 1: request the last row on the cache database
         _row = self.get_row_from_cache(response.url, WebsiteTypes.harajsa.value)
 
-        if _row['url_from'] == WebsiteTypes.opensooq.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_opensooq, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.mstaml.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_mstaml, dont_filter=True)
-        elif _row['url_from'] == WebsiteTypes.harajsa.value:
-            yield scrapy.Request(_row['url'], callback=self.parse_page_from_harajsa, dont_filter=True)
+        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
+
+    def get_call_back(self, url_from):
+        callback = None
+
+        if url_from == WebsiteTypes.opensooq.value:
+            callback = self.parse_page_from_opensooq
+        elif url_from == WebsiteTypes.mstaml.value:
+            callback = self.parse_page_from_mstaml
+        elif url_from == WebsiteTypes.harajsa.value:
+            callback = self.parse_page_from_harajsa
+
+        return callback
