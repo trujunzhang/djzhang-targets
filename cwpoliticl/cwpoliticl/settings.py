@@ -65,6 +65,10 @@ AUTOTHROTTLE_DEBUG = True
 # HTTPCACHE_IGNORE_HTTP_CODES=[]
 # HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
+DOWNLOADER_MIDDLEWARES = {
+    'cwpoliticl.middlewares.CustomDownloaderMiddleware': 650
+}
+
 # SQL DATABASE SETTING
 SQL_HOST = 'localhost'
 # SQL_HOST = '104.236.77.182'
