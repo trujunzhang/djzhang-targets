@@ -13,11 +13,13 @@ def main():
     utils = Crawler()
 
     # utils.execute("politicl")
-    utils.execute("politicl_rpc")
 
     # utils.execute("politicl_debug")
     # utils.execute("politicl_browser")
     # utils.execute("politicl_browser_debug")
+
+    # Extensions
+    utils.execute("dnaindia_debug")
 
 if __name__ == '__main__':
     main()

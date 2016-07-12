@@ -70,12 +70,12 @@ SQL_HOST = 'localhost'
 # SQL_HOST = '104.236.77.182'
 # SQL_HOST = '192.168.1.106'
 SQL_PORT = 3306
-SQL_USER = 'politicl'
-SQL_PASSWD = 'politicl720'
+SQL_USER = 'cwpoliticl'
+SQL_PASSWD = 'cwpoliticl720'
 # database_name
 SQL_DB = 'politicl'
 # table_name
-SQL_COLLECTION_NAME = 'politicl'
+SQL_COLLECTION_NAME = 'politicls'
 
 # python-wordpress-xmlrpc
 WD_HOST = 'http://localhost:8888/politicl'
