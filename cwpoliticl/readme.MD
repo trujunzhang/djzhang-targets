@@ -1,3 +1,10 @@
+# Installation
+## Python == 2.7.11
+
+pip freeze > requirements.txt
+
+pip install -r requirements.txt
+
 	
 scrapy crawl politicl
 scrapy crawl politicl_browser
