@@ -34,18 +34,18 @@ class WDXmlRpcTest(unittest.TestCase):
         #     x = 0
         #     < WordPressUser: max >
 
-    def test_post_page(self):
-        post = WordPressPost()
-        post.title = 'Python_Scraping_for_WordPress'
-        post.content = 'How to post to wordpress using xml_rpc.'
-        post.post_type = "post"
-        post.post_status = "publish"
-        post.terms_names = {
-            'post_tag': ['scrapy', 'xml_rpc'],
-            'category': ['Tutorial', 'Tests']
-        }
-        wp_call = self.wp.call(NewPost(post))
-
+    # def test_post_page(self):
+    #     post = WordPressPost()
+    #     post.title = 'Python_Scraping_for_WordPress'
+    #     post.content = 'How to post to wordpress using xml_rpc.'
+    #     post.post_type = "post"
+    #     post.post_status = "publish"
+    #     post.terms_names = {
+    #         'post_tag': ['scrapy', 'xml_rpc'],
+    #         'category': ['Tutorial', 'Tests']
+    #     }
+    #     wp_call = self.wp.call(NewPost(post))
+    #
     #     x = 0
 
     def get_image_path(self):
