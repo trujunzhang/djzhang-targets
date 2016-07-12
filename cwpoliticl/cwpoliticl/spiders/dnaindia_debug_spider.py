@@ -29,9 +29,15 @@ class DnaIndiaDebugSpider(scrapy.Spider):
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(DnaIndiaDebugSpider, cls).from_crawler(crawler,
                                                             args,
-                                                            mongo_uri=crawler.settings.get('MONGODB_SERVER')
+                                                            host=crawler.settings.get('SQL_HOST'),
+                                                            port=crawler.settings.get('SQL_PORT'),
+                                                            user=crawler.settings.get('SQL_USER'),
+                                                            passwd=crawler.settings.get('SQL_PASSWD'),
+                                                            db=crawler.settings.get('SQL_DB'),
+                                                            collection_name=crawler.settings.get(
+                                                                'SQL_COLLECTION_NAME')
                                                             )
 
     def parse(self, response):
-        item = self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         # item = self._dna_india_Parse.parse(response.url, response, self._item_db)
