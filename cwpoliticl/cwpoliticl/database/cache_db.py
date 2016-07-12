@@ -19,6 +19,10 @@ class CacheDatabase(MysqlDatabase):
         # else:
         self._insert_for_cache(item)
 
+    def _check_exist_cache(self, url):
+        sql = "SELECT EXISTS(SELECT 1 FROM {} WHERE url='{}')".format(self.collection_name, url)
+        return False
+
     def _insert_for_cache(self, item):
         _connection = self.get_client()
         _cursor = _connection.cursor()
