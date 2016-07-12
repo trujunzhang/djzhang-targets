@@ -4,9 +4,9 @@ from cwpoliticl.extensions.base_parser import BaseParser
 from cwpoliticl.items import Politicl
 
 
-class ResponseParse(BaseParser):
+class DnaIndiaParser(BaseParser):
     def __init__(self):
-        super(ResponseParse, self).__init__()
+        super(DnaIndiaParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
         links = hxs.select('//a[@class="card-click-target"]/@href').extract()
@@ -16,7 +16,7 @@ class ResponseParse(BaseParser):
             cache_db.process_item(url)
             count += 1
 
-    def parse(self, url, hxs):
+    def parse(self, url, hxs, item_db):
 
         cluster = self.get_value_from_response(hxs, '// a[ @class = "document-subtitle primary"]/@href', 0)
         cluster = urlparse.urljoin(url, cluster.strip())

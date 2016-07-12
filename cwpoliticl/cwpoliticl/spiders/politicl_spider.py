@@ -13,11 +13,10 @@ class PoliticlsSpider(scrapy.Spider):
     name = "politicl"
     allowed_domains = ["xxx"]
     start_urls = [
-        'yyy',
+        'http://www.dnaindia.com/analysis',
     ]
 
     def __init__(self, name=None, **kwargs):
-
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
@@ -35,9 +34,9 @@ class PoliticlsSpider(scrapy.Spider):
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(PoliticlsSpider, cls).from_crawler(crawler,
-                                                         args,
-                                                         mongo_uri=crawler.settings.get('MONGODB_SERVER')
-                                                         )
+                                                        args,
+                                                        mongo_uri=crawler.settings.get('MONGODB_SERVER')
+                                                        )
 
     def parse(self, response):
         self._crawl_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
@@ -56,7 +55,4 @@ class PoliticlsSpider(scrapy.Spider):
         navs = sel.xpath(select)
 
         if not self._history_db.check_exist(abstractPath):
-           yield scrapy.Request(abstractPath, self.parse_detail, meta={'type': title})
-
-
-
+            yield scrapy.Request(abstractPath, self.parse_detail, meta={'type': title})

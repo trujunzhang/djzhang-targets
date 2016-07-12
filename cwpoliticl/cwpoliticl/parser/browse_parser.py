@@ -1,4 +1,4 @@
-from cwpoliticl.parser.base_parser import BaseParser
+from cwpoliticl.extensions.base_parser import BaseParser
 
 
 class BrowseParser(BaseParser):
