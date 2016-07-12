@@ -37,16 +37,10 @@ class CacheDatabase(MysqlDatabase):
             _excep = e
             # Rollback in case there is any error
             _connection.rollback()
+            logging.debug("  mysql: insert the ads_caches row failure, {}".format(_excep))
         finally:
             _cursor.close()
             _connection.close()
-
-        if _excep:
-            logging.debug("  mysql: insert the ads_caches row failure, {}".format(_excep))
-        else:
-            logging.debug(
-                "  mysql: insert {} into the {} from the {} successfully".format(item['model_id'], self.collection_name,
-                                                                                 item['url_from']))
 
     def get_oldest_row(self, _last, url_from):
         logging.debug("Get the oldest row")
@@ -85,18 +79,10 @@ class CacheDatabase(MysqlDatabase):
                 _excep = e
                 # Rollback in case there is any error
                 _connection.rollback()
+                logging.debug("  mysql: delete the oldest cache row, from the {} failure, {}".format(url_from, _excep))
             finally:
                 _cursor.close()
                 _connection.close()
-
-        if _excep:
-            logging.debug(
-                "  mysql: delete the oldest cache row, model_id: {}, from the {} failure, {}".format(
-                    model_id, url_from, _excep))
-        else:
-            logging.debug(
-                "  4. deleted cache row, model_id: {}, deleted count: {}, from the {} successfully"
-                    .format(model_id, _deleted_count, url_from))
 
     def _get_cache_total_count(self):
         _count = 0
