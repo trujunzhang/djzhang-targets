@@ -22,7 +22,6 @@ class CacheDatabase(MysqlDatabase):
         self._insert_for_cache(item)
 
     def _insert_for_cache(self, item):
-        _excep = None
         _connection = self.get_client()
         _cursor = _connection.cursor()
 
@@ -34,10 +33,9 @@ class CacheDatabase(MysqlDatabase):
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
-            _excep = e
             # Rollback in case there is any error
             _connection.rollback()
-            logging.debug("  mysql: insert the ads_caches row failure, {}".format(_excep))
+            logging.debug("  mysql: insert the ads_caches row failure, {}".format(e))
         finally:
             _cursor.close()
             _connection.close()
