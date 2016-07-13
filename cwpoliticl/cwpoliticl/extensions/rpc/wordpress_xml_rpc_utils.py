@@ -23,6 +23,28 @@ class WDXmlRPCUtils(object):
     def post_to_wordpress(self):
         pass
 
+    def _post_newpost_to_wordpress(self, attachment_id):
+        # Step 02
+        post = WordPressPost()
+        post.title = 'Post by the xml_rpc with a thumbnail'
+        post.content = 'How to post to wordpress using xml_rpc with a thumbnail.'
+        post.post_type = "post"
+        post.post_status = "publish"
+        post.terms_names = {
+            'post_tag': ['scrapy', 'xml_rpc'],
+            'category': ['Tutorial', 'Tests']
+        }
+        post.custom_fields = []
+        post.custom_fields.append({
+            'key': 'custom_source_url',
+            'value': 'http://www.scruby.site'
+        })
+        # cat1 = self.wp.call(taxonomies.GetTerm('category', 'wanghao'))
+        # post.terms.append(cat1)
+        post.thumbnail = attachment_id
+
+        addpost = self.wp.call(posts.NewPost(post))
+
     def _post_image_to_wordpress(self, image_location):
         # Step 01
         # prepare metadata
@@ -36,3 +58,5 @@ class WDXmlRPCUtils(object):
             data['bits'] = xmlrpc_client.Binary(img.read())
         response = self.wp.call(media.UploadFile(data))
         attachment_id = response['id']
+
+        return attachment_id
