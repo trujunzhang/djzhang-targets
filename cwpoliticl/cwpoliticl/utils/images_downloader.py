@@ -24,6 +24,8 @@ class ImagesDownload(object):
     def write_cache(cls, image_link):
         filename = md5(image_link).hexdigest()
         image_location = '{}/{}'.format(ImagesDownload._get_image_tmp_folder(), filename)
+        if os.path.exists(image_location):
+            return image_location
         urllib.urlretrieve(image_link, image_location)
         return image_location
 
