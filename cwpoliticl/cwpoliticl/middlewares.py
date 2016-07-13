@@ -5,9 +5,7 @@ import random
 from urlparse import urlparse
 from scrapy.http import Request
 from scrapy.utils.python import WeakKeyCache
-
 from scrapy.exceptions import IgnoreRequest
-from scrapy import log
 
 USER_AGENT_LIST = [
     'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/34.0.1847.131 Safari/537.36',
@@ -47,7 +45,7 @@ class CustomDownloaderMiddleware(object):
 
     @classmethod
     def from_crawler(cls, crawler):
-        return cls('')
+        return cls()
 
     def _cache_domains(self, spider):
         return ""

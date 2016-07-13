@@ -67,7 +67,7 @@ AUTOTHROTTLE_DEBUG = True
 
 DOWNLOADER_MIDDLEWARES = {
     'cwpoliticl.middlewares.RandomUserAgentMiddleware': 200,
-    # 'cwpoliticl.middlewares.CustomDownloaderMiddleware': 543,
+    'cwpoliticl.middlewares.CustomDownloaderMiddleware': 543,
 }
 
 # SQL DATABASE SETTING
