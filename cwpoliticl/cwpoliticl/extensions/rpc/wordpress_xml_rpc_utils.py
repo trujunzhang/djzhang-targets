@@ -17,9 +17,9 @@ from cwpoliticl.utils.images_downloader import ImagesDownload
 
 
 class WDXmlRPCUtils(object):
-    def __init__(self):
-        url = "{}/xmlrpc.php".format(settings.WD_HOST)
-        self.wp = Client(url, settings.WD_USER, settings.WD_PASSWD)
+    def __init__(self, wd_host, wd_user, wd_passwd):
+        url = "{}/xmlrpc.php".format(wd_host)
+        self.wp = Client(url, wd_user, wd_passwd)
         super(WDXmlRPCUtils, self).__init__()
 
     def post(self, item):

@@ -24,7 +24,9 @@ class DnaIndiaDebugSpider(scrapy.Spider):
 
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
-        self._item_db = database_factory.get_database(CollectionTypes.item)
+
+        from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
+        self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
         from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
         self._dna_india_Parse = DnaIndiaParser()
@@ -41,9 +43,12 @@ class DnaIndiaDebugSpider(scrapy.Spider):
                                                             passwd=crawler.settings.get('SQL_PASSWD'),
                                                             db=crawler.settings.get('SQL_DB'),
                                                             collection_name=crawler.settings.get(
-                                                                'SQL_COLLECTION_NAME')
+                                                                'SQL_COLLECTION_NAME'),
+                                                            wd_host=crawler.settings.get('WD_HOST'),
+                                                            wd_user=crawler.settings.get('WD_USER'),
+                                                            wd_passwd=crawler.settings.get('WD_PASSWD')
                                                             )
 
     def parse(self, response):
         # self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._dna_india_Parse.parse(response.url, response, self._item_db)
+        item = self._dna_india_Parse.parse(response.url, response, self.wd_rpc)

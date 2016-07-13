@@ -26,7 +26,7 @@ class DnaIndiaParser(BaseParser):
 
             count += 1
 
-    def parse(self, url, hxs, item_db):
+    def parse(self, url, hxs, wd_rpc):
         title = self.get_value_response(hxs, '//*[@class="img-caption"]/h1/text()')
         image = self.get_value_response(hxs, '//*[@class="row article-img pos-lead"]/img/@src')
         content = self.get_all_value_response(hxs, '//*[@class="body-text"]/p', max_len=2, sperator='\n' + '\n')
@@ -35,6 +35,6 @@ class DnaIndiaParser(BaseParser):
 
         item = WDPost(url=url, title=title, image=image, content=content, tags=tags)
 
-        post_id = WDXmlRPCUtils().post(item)
+        post_id = wd_rpc.post(item)
 
         pass
