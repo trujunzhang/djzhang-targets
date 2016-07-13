@@ -4,9 +4,6 @@ import scrapy
 from scrapy.selector import Selector
 
 
-# yield WebdriverRequest(_url, callback=self.parse_category_full_page)
-
-
 class PoliticlsSpider(scrapy.Spider):
     name = "politicl"
     allowed_domains = ["xxx"]

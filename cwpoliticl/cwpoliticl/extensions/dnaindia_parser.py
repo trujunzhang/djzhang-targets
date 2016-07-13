@@ -2,8 +2,7 @@ import urlparse
 
 from cwpoliticl.extensions.base_parser import BaseParser
 from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
-from cwpoliticl.items import Politicl, CacheItem, WebsiteTypes, WDPost
-from cwpoliticl.utils.images_downloader import ImagesDownload
+from cwpoliticl.items import CacheItem, WebsiteTypes, WDPost
 
 
 class DnaIndiaParser(BaseParser):
@@ -23,8 +22,7 @@ class DnaIndiaParser(BaseParser):
             if history_db.check_history_exist(detailed_href):
                 continue
 
-            item = CacheItem.get_default(url=detailed_href, url_from=WebsiteTypes.dnaindia.value)
-            cache_db.save_cache(item, count)
+            cache_db.save_cache(CacheItem.get_default(url=detailed_href, url_from=WebsiteTypes.dnaindia.value), count)
 
             count += 1
 

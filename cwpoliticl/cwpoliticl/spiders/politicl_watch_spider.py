@@ -3,10 +3,6 @@
 import scrapy
 from scrapy.selector import Selector
 
-
-# yield WebdriverRequest(_url, callback=self.parse_category_full_page)
-
-
 class PoliticlsWatchSpider(scrapy.Spider):
     name = "politicl_watch"
     allowed_domains = ["xxx"]
