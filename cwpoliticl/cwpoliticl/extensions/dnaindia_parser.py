@@ -34,6 +34,3 @@ class DnaIndiaParser(BaseParser):
 
         pass
 
-    def parse_tags(self, hxs):
-
-        pass
