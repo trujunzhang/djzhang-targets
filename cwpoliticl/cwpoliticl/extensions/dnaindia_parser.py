@@ -27,7 +27,7 @@ class DnaIndiaParser(BaseParser):
             count += 1
 
     def parse(self, url, hxs, item_db):
-        title = self.get_value_response(hxs, '//*[@class="img-caption"]/text()')
+        title = self.get_value_response(hxs, '//*[@class="img-caption"]/h1/text()')
         image = self.get_value_response(hxs, '//*[@class="row article-img pos-lead"]/img/@src')
         content = self.get_all_value_response(hxs, '//*[@class="body-text"]/p', max_len=2, sperator='\n' + '\n')
 
