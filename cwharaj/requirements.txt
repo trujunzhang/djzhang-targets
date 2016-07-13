@@ -5,7 +5,6 @@ appnope==0.1.0
 arrow==0.7.0
 astroid==1.4.5
 attrs==15.2.0
-Babel==2.2.0
 backports.shutil-get-terminal-size==1.0.0
 bcrypt==2.0.0
 BeautifulSoup==3.2.1
