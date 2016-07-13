@@ -27,6 +27,11 @@ class DnaIndiaParser(BaseParser):
             count += 1
 
     def parse(self, url, hxs, item_db):
-        image_href = self.get_value_response(hxs, '//*[@class=row article-img pos-lead]/img/@src')
-        article_selector = '//*[@class=article-content]'
+        image_href = self.get_value_response(hxs, '//*[@class="row article-img pos-lead"]/img/@src')
+        self.get_all_value_response(hxs, article_selector='//*[@class="body-text"]/p')
+
+        pass
+
+    def parse_tags(self, hxs):
+
         pass

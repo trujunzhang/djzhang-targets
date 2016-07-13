@@ -1,5 +1,7 @@
 import urlparse
 
+import sys
+
 
 class BaseParser(object):
     def __init__(self):
@@ -20,19 +22,25 @@ class BaseParser(object):
             return value
         return default
 
-    def get_all_value_response(self, hxs, query):
+    def get_all_value_response(self, hxs, query, max_len=sys.maxint, sperator=''):
         _list = hxs.xpath(query)
-        value = ""
-        for line in _list:
-            value += line.extract()
+        lines = []
 
-        return value.encode('utf-8')
+        count = 0
+        for line in _list:
+            if count >= max_len:
+                break
+
+            lines.append(line.extract())
+            count += 1
+
+        return sperator.join(lines)
 
     def get_value_from_beautifulsoup(self, container, name=None, attrs={}, index=0, default=""):
         _list = container.findAll(name, attrs)
         if len(_list) > index:
             value = _list[index].text
-            return value.encode('utf-8')
+            return value
         return default
 
     def get_images_in_selector(self, hxs, selector, index=0, filter_method=None):
