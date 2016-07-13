@@ -66,7 +66,8 @@ AUTOTHROTTLE_DEBUG = True
 # HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 DOWNLOADER_MIDDLEWARES = {
-    'cwpoliticl.middlewares.CustomDownloaderMiddleware': 650
+    'cwpoliticl.middlewares.RandomUserAgentMiddleware': 200,
+    # 'cwpoliticl.middlewares.CustomDownloaderMiddleware': 543,
 }
 
 # SQL DATABASE SETTING
