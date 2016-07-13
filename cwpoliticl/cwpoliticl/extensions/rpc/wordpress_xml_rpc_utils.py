@@ -23,9 +23,13 @@ class WDXmlRPCUtils(object):
         super(WDXmlRPCUtils, self).__init__()
 
     def post(self, item):
+        # Step 1: download the featured image to the template folder.
         image_location = ImagesDownload.write_cache(item['image'])
+        # step 2: post to the wordpress via xml_rpc.
         attachment_id = self._post_image_to_wordpress(image_location)
         addpost = self._post_newpost_to_wordpress(item, attachment_id)
+        # Step 3: remove the featured image on the template folder.
+        ImagesDownload.remove_image_location(image_location)
 
         return addpost
 
@@ -37,7 +41,7 @@ class WDXmlRPCUtils(object):
         post.post_type = "post"
         post.post_status = "publish"
         post.terms_names = {
-            'post_tag': ['scrapy', 'xml_rpc'],
+            'post_tag': item['tags'],
             'category': ['Tutorial', 'Tests']
         }
         post.custom_fields = []
