@@ -37,6 +37,6 @@ class DnaIndiaParser(BaseParser):
 
         item = WDPost(title=title, image=image, content=content, tags=tags)
 
-        WDXmlRPCUtils().post(item)
+        post_id = WDXmlRPCUtils().post(item)
 
         pass

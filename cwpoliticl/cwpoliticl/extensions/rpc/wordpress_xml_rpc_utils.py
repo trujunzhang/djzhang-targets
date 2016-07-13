@@ -27,7 +27,7 @@ class WDXmlRPCUtils(object):
         attachment_id = self._post_image_to_wordpress(image_location)
         addpost = self._post_newpost_to_wordpress(item, attachment_id)
 
-        pass
+        return addpost
 
     def _post_newpost_to_wordpress(self, item, attachment_id):
         # Step 02
