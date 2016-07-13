@@ -34,7 +34,6 @@ class WDXmlRPCUtils(object):
         return addpost
 
     def _post_newpost_to_wordpress(self, item, attachment_id):
-        # Step 02
         post = WordPressPost()
         post.title = item['title']
         post.content = item['content']
@@ -58,7 +57,6 @@ class WDXmlRPCUtils(object):
         return addpost
 
     def _post_image_to_wordpress(self, image_location):
-        # Step 01
         # prepare metadata
         data = {
             'name': 'picture.jpeg',
