@@ -65,8 +65,6 @@ queuelib==1.4.2
 requests==2.10.0
 Scrapy==1.0.5
 scrapy-splash==0.6.1
-scrapyd==1.1.0
-scrapyd-client==1.0.1
 selenium==2.53.2
 service-identity==16.0.0
 simplegeneric==0.8.1
