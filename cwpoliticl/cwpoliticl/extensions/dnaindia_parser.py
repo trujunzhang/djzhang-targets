@@ -33,7 +33,7 @@ class DnaIndiaParser(BaseParser):
 
         tags = hxs.xpath('//*[@data-event-sub-cat="ArticleTags"]/div/div/ul/li/a/text()').extract()
 
-        item = WDPost(title=title, image=image, content=content, tags=tags)
+        item = WDPost(url=url, title=title, image=image, content=content, tags=tags)
 
         post_id = WDXmlRPCUtils().post(item)
 

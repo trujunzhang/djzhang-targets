@@ -47,7 +47,7 @@ class WDXmlRPCUtils(object):
         post.custom_fields = []
         post.custom_fields.append({
             'key': 'custom_source_url',
-            'value': 'http://www.scruby.site'
+            'value': item['url']
         })
         # cat1 = self.wp.call(taxonomies.GetTerm('category', 'wanghao'))
         # post.terms.append(cat1)
