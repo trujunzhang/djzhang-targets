@@ -14,4 +14,5 @@ class ImagesDownloaderTest(unittest.TestCase):
 
     def test_post_page(self):
         image_location = ImagesDownload.write_cache(self.image_url)
+        ImagesDownload.remove_image_location(image_location)
         x = 0
