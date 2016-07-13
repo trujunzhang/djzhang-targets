@@ -3,12 +3,9 @@ import os
 import urllib
 
 from hashlib import md5
-
 import logging
 
-# Cache_Folder = 'politicl'
-Cache_Folder = 'djzhang'
-
+Cache_Folder = 'politicl'
 
 class ImagesDownload(object):
     @classmethod
