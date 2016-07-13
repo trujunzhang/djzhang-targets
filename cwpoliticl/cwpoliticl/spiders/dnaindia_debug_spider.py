@@ -44,5 +44,5 @@ class DnaIndiaDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._dna_india_Parse.parse(response.url, response, self._item_db)
+        # self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        item = self._dna_india_Parse.parse(response.url, response, self._item_db)
