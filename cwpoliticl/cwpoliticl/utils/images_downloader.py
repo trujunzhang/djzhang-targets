@@ -10,7 +10,8 @@ class ImagesDownload(object):
     def _get_image_tmp_folder(self):
         import tempfile, os
         tmp = os.path.join(tempfile.gettempdir(), 'politicl')
-        os.makedirs(tmp)
+        if not os.path.exists(tmp):
+            os.makedirs(tmp)
 
         return tmp
 
