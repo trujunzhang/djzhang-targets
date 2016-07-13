@@ -55,3 +55,12 @@ class WDPost(scrapy.Item):
 
     # tags list['Unicode']
     tags = scrapy.Field()
+
+    @classmethod
+    def get_default(self, title, image, content, tags):
+        return HistoryItem(
+            title=title,
+            image=image,
+            content=content,
+            tags=tags
+        )

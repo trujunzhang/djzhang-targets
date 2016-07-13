@@ -1,7 +1,8 @@
 import urlparse
 
 from cwpoliticl.extensions.base_parser import BaseParser
-from cwpoliticl.items import Politicl, CacheItem, WebsiteTypes
+from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
+from cwpoliticl.items import Politicl, CacheItem, WebsiteTypes, WDPost
 from cwpoliticl.utils.images_downloader import ImagesDownload
 
 
@@ -34,6 +35,8 @@ class DnaIndiaParser(BaseParser):
 
         tags = hxs.xpath('//*[@data-event-sub-cat="ArticleTags"]/div/div/ul/li/a/text()').extract()
 
-        image_location = ImagesDownload.write_cache(image)
+        item = WDPost(title=title, image=image, content=content, tags=tags)
+
+        WDXmlRPCUtils().post(item)
 
         pass

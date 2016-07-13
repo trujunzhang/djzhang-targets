@@ -13,6 +13,8 @@ from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
 from wordpress_xmlrpc.methods.users import GetUserInfo
 from wordpress_xmlrpc.methods import taxonomies
 
+from cwpoliticl.utils.images_downloader import ImagesDownload
+
 
 class WDXmlRPCUtils(object):
     def __init__(self):
@@ -20,14 +22,18 @@ class WDXmlRPCUtils(object):
         self.wp = Client(url, settings.WD_USER, settings.WD_PASSWD)
         super(WDXmlRPCUtils, self).__init__()
 
-    def post_to_wordpress(self):
+    def post(self, item):
+        image_location = ImagesDownload.write_cache(item['image'])
+        attachment_id = self._post_image_to_wordpress(image_location)
+        addpost = self._post_newpost_to_wordpress(item, attachment_id)
+
         pass
 
-    def _post_newpost_to_wordpress(self, attachment_id):
+    def _post_newpost_to_wordpress(self, item, attachment_id):
         # Step 02
         post = WordPressPost()
-        post.title = 'Post by the xml_rpc with a thumbnail'
-        post.content = 'How to post to wordpress using xml_rpc with a thumbnail.'
+        post.title = item['title']
+        post.content = item['content']
         post.post_type = "post"
         post.post_status = "publish"
         post.terms_names = {
@@ -44,6 +50,8 @@ class WDXmlRPCUtils(object):
         post.thumbnail = attachment_id
 
         addpost = self.wp.call(posts.NewPost(post))
+
+        return addpost
 
     def _post_image_to_wordpress(self, image_location):
         # Step 01
