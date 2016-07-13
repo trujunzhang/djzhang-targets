@@ -88,8 +88,8 @@ AUTOTHROTTLE_DEBUG=True
 #HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
 
 
-# MONGODB_SERVER = "localhost"
-MONGODB_SERVER = "139.59.226.195"
+MONGODB_SERVER = "localhost"
+# MONGODB_SERVER = "139.59.226.195"
 MONGODB_PORT = 27017
 MONGODB_DB = "vps_scrapy_rails"
 MONGODB_COLLECTION = "itunes"
