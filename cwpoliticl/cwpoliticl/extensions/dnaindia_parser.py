@@ -2,6 +2,7 @@ import urlparse
 
 from cwpoliticl.extensions.base_parser import BaseParser
 from cwpoliticl.items import Politicl, CacheItem, WebsiteTypes
+from cwpoliticl.utils.images_downloader import ImagesDownload
 
 
 class DnaIndiaParser(BaseParser):
@@ -32,5 +33,7 @@ class DnaIndiaParser(BaseParser):
 
         tags = hxs.xpath('//*[@data-event-sub-cat="ArticleTags"]/div/div/ul/li/a/text()').extract()
 
-        pass
+        image_location = ImagesDownload.write_cache(image)
 
+
+        pass
