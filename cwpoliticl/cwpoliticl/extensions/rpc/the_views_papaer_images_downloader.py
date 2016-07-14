@@ -3,29 +3,22 @@ import urllib2
 
 from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
 from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
+import logging
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 '' \
 ''(KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36'
 
 
-class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
-    def __init__(self, wd_host, wd_user, wd_passwd):
-        super(TheViewsPaperXmlRPCUtils, self).__init__(wd_host, wd_user, wd_passwd)
-
+class TheViewsPaperImagesDownloader(ImagesDownload):
     # Override
-    def _download_image_to_cache(self, item):
-        image_link = item['image_src']
+    def _download_photo(self, item, image_link, image_location):
         access_denied_cookie = item['access_denied_cookie']
+        if access_denied_cookie:
+            self._download_image_with_cookie(image_link, image_location, cookie=access_denied_cookie)
+        else:
+            logging.debug("Not found the access_denied_cookie to download the blocked image!")
 
-        # step 1: Download the featured image to the template folder.
-        image_location = ImagesDownload.get_image_location(image_link)
-        if not os.path.exists(image_location):
-            TheViewsPaperXmlRPCUtils.download_image(image_link, image_location, cookie=access_denied_cookie)
-
-        return image_location
-
-    @classmethod
-    def download_image(cls, image_link, path, referer=None, cookie=None):
+    def _download_image_with_cookie(self, image_link, path, referer=None, cookie=None):
         req = urllib2.Request(image_link)
         if referer:
             req.add_header("Referer", referer)

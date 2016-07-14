@@ -24,16 +24,17 @@ class ImagesDownload(object):
         filename = md5(image_link).hexdigest()
         return '{}/{}'.format(ImagesDownload._get_image_tmp_folder(), filename)
 
-    def write_cache(self, image_link):
+    def write_cache(self, item):
+        image_link = item['image_src']
         image_location = ImagesDownload.get_image_location(image_link)
         if not os.path.exists(image_location):
-            self._download_photo(image_link, image_location)
+            self._download_photo(item, image_link, image_location)
 
         # wget.download(image_link, image_location)
         # ImagesDownload._download_photo(image_link, image_location)
         return image_location
 
-    def _download_photo(self, image_link, image_location):
+    def _download_photo(self, item, image_link, image_location):
         urllib.urlretrieve(image_link, image_location)
 
     # def _download_photo(cls, img_url, image_location):
