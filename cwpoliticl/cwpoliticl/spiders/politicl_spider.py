@@ -3,6 +3,8 @@
 import scrapy
 from scrapy.selector import Selector
 
+from cwpoliticl.items import WebsiteTypes
+
 
 class PoliticlsSpider(scrapy.Spider):
     name = "politicl"
@@ -54,13 +56,4 @@ class PoliticlsSpider(scrapy.Spider):
         yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
 
     def get_row_from_cache(self, _last, url_from):
-        while True:
-            _row = self._cache_db.get_oldest_row(_last, url_from)
-            if _row:
-                return _row
-
-            # Return 'None' when the cache table is empty,
-            # So we set the _last to empty string.
-            _last = ""
-
-            time.sleep(4)
+        return self._cache_db.get_oldest_row(_last, url_from)
