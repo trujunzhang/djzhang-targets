@@ -52,5 +52,5 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        # self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc)
+        self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc)
