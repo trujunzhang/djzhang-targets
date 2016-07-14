@@ -14,10 +14,16 @@ scrapy crawl politicl_browser
 scrapyd-deploy local -p cwpoliticl
 curl http://localhost:6800/schedule.json -d project=cwpoliticl -d spider=dnaindia_debug
 
-scrapyd-deploy xubuntu -p cwpoliticl
+scrapyd-deploy droplet -p cwpoliticl
 curl http://104.236.77.182:6800/schedule.json -d project=cwpoliticl -d spider=politicl
 curl http://104.236.77.182:6800/schedule.json -d project=cwpoliticl -d spider=politicl_watch
 
+. Droplet
+{"status": "error", "message": "ImportError: No module named enum", "node_name": "ubuntu-scruby"}
+
+. Xubuntu
+Permission denied: '/var/lib/scrapyd/eggs/
+run 'python setup.py clean -a bdist_egg -d /tmp/scrapydeploy-8NnURF'
 
 # debug log
 
