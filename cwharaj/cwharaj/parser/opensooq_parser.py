@@ -7,7 +7,6 @@ from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
 from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
 from cwharaj.utils.phone_number_set import PhoneNumberItem
-from cwharaj.parser.utils.timer_util import TimerUtil
 
 
 class OpensooqParse(BaseParser):

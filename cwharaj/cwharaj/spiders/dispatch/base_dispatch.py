@@ -1,8 +1,7 @@
 from cwharaj.items import WebsiteTypes
-
-from cwharaj.parser.opensooq_parser import OpensooqParse
-from cwharaj.parser.mstaml_parser import MstamlParse
 from cwharaj.parser.harajsa_parser import HarajSaParse
+from cwharaj.parser.mstaml_parser import MstamlParse
+from cwharaj.parser.opensooq_parser import OpensooqParse
 
 
 class BaseDispatch(object):

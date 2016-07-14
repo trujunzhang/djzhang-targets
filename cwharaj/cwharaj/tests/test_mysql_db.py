@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from datetime import datetime
 
 from cwharaj import settings
 from cwharaj.database_factory import DatabaseFactory, CollectionTypes
-from cwharaj.items import CacheItem, HistoryItem, Ad, WebsiteTypes, City, Member, Comment, Section, OpensooqPhone, \
-    OpensooqCommentDateItem
+from cwharaj.items import Ad, WebsiteTypes
 from cwharaj.parser.utils.section_item import SectionItem
-from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class MysqlDBTest(unittest.TestCase):

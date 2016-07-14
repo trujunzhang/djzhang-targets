@@ -3,7 +3,7 @@ import time
 
 import scrapy
 
-from cwharaj.items import WebsiteTypes, Ad, OpensooqPhone, HistoryItem
+from cwharaj.items import HistoryItem
 
 
 class HarajsSpider(scrapy.Spider):

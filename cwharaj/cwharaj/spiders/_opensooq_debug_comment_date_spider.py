@@ -3,7 +3,6 @@
 import scrapy
 
 from cwharaj.items import WebsiteTypes, OpensooqCommentDateItem
-from cwharaj.parser.utils.timer_util import TimerUtil
 
 
 class OpensooqDebugCommentDateSpider(scrapy.Spider):

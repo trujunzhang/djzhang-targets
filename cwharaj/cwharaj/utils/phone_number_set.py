@@ -1,6 +1,5 @@
 import logging
 
-from cwharaj.items import Ad
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 

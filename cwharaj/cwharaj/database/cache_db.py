@@ -1,5 +1,4 @@
 import logging
-from datetime import datetime
 
 from cwharaj.database.base.mysql_db import MysqlDatabase
 from cwharaj.items import CacheItem

@@ -5,13 +5,13 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
-import scrapy
-from enum import Enum
 import time
 from datetime import datetime
 
+import scrapy
+from enum import Enum
+
 from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
-from cwharaj.parser.utils.timer_util import TimerUtil
 from cwharaj.utils.crawl_utils import CrawlUtils
 
 

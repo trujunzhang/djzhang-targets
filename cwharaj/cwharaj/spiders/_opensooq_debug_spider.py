@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
-from cwharaj.items import Ad, OpensooqPhone
-
 
 class OpensooqDebugSpider(scrapy.Spider):
     name = "opensooq_debug"

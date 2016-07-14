@@ -1,9 +1,6 @@
 # coding=utf-8
 import unittest
-from datetime import datetime
 
-from cwharaj.items import CacheItem
-from cwharaj.utils.crawl_utils import CrawlUtils
 from cwharaj.utils.phone_number_set import PhoneNumberSet
 
 

@@ -1,9 +1,7 @@
 # coding=utf-8
+import time
 import unittest
 
-import time
-
-from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
 from cwharaj.parser.utils.timer_util import TimerUtil
 
 

@@ -1,4 +1,3 @@
-from cwharaj.items import WebsiteTypes
 from cwharaj.spiders.dispatch.base_dispatch import BaseDispatch
 
 
