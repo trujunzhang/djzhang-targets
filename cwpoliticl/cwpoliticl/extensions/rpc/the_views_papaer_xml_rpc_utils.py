@@ -30,7 +30,8 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
 
     def post_to_wd_for_theviewspaper(self, item, access_denied_cookie):
         # step 1: Download the featured image to the template folder.
-        image_location = ImagesDownload.get_image_location(item['image'])
+        image_location = ImagesDownload.get_image_location(item['image_src'])
+        self.download(item['image_src'], image_location, access_denied_cookie)
 
         pass
 
