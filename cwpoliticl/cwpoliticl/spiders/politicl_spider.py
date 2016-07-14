@@ -20,6 +20,9 @@ class PoliticlsSpider(scrapy.Spider):
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
 
+        from cwpoliticl.extensions.rpc.the_views_papaer_xml_rpc_utils import TheViewsPaperXmlRPCUtils
+        self.views_paper_wd_rpc = TheViewsPaperXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
+
         from cwpoliticl.spiders.dispatch.spider_dispatch import SpiderDispatch
         self.spider_dispatch = SpiderDispatch()
 
@@ -43,4 +46,4 @@ class PoliticlsSpider(scrapy.Spider):
                                                         )
 
     def parse(self, response):
-        self._crawl_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        self.spider_dispatch.parse_from_detail_page(response.url, response, self.views_paper_wd_rpc)
