@@ -31,6 +31,7 @@ class WDXmlRPCUtils(object):
         addpost = self._post_newpost_to_wordpress(item, attachment_id)
 
         # step 3: Remove the featured image on the template folder.
+        time.sleep(1)
         ImagesDownload.remove_image_location(image_location)
 
         return addpost

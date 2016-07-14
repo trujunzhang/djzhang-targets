@@ -52,6 +52,8 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
         file_size = int(meta.getheaders("Content-Length")[0])
         # print u"Downloading: %s Bytes: %s" % (path, file_size)
 
+        time.sleep(1)
+
         file_size_dl = 0
         block_sz = 8192
         while True:
@@ -63,6 +65,6 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
             f.write(_buffer)
             status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
             status += chr(8) * (len(status) + 1)
-            print status,
+            # print status,
 
         f.close()
