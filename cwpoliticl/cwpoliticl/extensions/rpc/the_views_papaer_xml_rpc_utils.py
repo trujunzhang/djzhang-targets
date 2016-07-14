@@ -31,11 +31,11 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
         # step 1: Download the featured image to the template folder.
         image_location = ImagesDownload.get_image_location(image_link)
         if not os.path.exists(image_location):
-            self.download_image(image_link, image_location, access_denied_cookie)
+            self.download_image(image_link, image_location, cookie=access_denied_cookie)
 
         image_location = image_location
 
-    def download_image(image_link, path, referer=None, cookie=None):
+    def download_image(self, image_link, path, referer=None, cookie=None):
         req = urllib2.Request(image_link)
         if referer:
             req.add_header("Referer", referer)
