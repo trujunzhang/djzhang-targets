@@ -23,14 +23,14 @@ class TheViewsPaperParser(BaseParser):
 
     def parse(self, url, hxs, views_paper_wd_rpc, access_denied_cookie):
         title = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="entry-header"]/h2/a/text()')
-        image = self._get_image(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@srcset')
+        image_src = self._get_image(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@srcset')
         content = self.get_all_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p',
                                               max_len=2, sperator='\n' + '\n', start_index=2)
 
         tags = hxs.xpath(
             '//*[@class="entry-content"]/*[@class="post-meta"]/*[@class="categories-links"]/a/text()').extract()
 
-        item = WDPost(url=url, url_from=self._url_from, title=title, image=image, content=content, tags=tags)
+        item = WDPost(url=url, url_from=self._url_from, title=title, image=image_src, content=content, tags=tags)
 
         post_id = views_paper_wd_rpc.post_to_wd_for_theviewspaper(item, access_denied_cookie)
 

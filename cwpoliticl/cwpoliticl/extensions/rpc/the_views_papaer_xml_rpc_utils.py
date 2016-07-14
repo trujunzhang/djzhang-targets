@@ -16,6 +16,11 @@ from wordpress_xmlrpc.methods import taxonomies
 from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
 from cwpoliticl.utils.images_downloader import ImagesDownload
 
+import urllib2
+
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 '' \
+''(KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36'
+
 
 class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
     def __init__(self, wd_host, wd_user, wd_passwd):
@@ -24,4 +29,35 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
         super(TheViewsPaperXmlRPCUtils, self).__init__(wd_host, wd_user, wd_passwd)
 
     def post_to_wd_for_theviewspaper(self, item, access_denied_cookie):
+        # step 1: Download the featured image to the template folder.
+        image_location = ImagesDownload.get_image_location(item['image'])
+
         pass
+
+    def download(url, path, referer=None, cookie=None):
+        req = urllib2.Request(url)
+        if referer:
+            req.add_header("Referer", referer)
+        if cookie:
+            req.add_header("Cookie", cookie)
+        req.add_header("User-Agent", USER_AGENT)
+        u = urllib2.urlopen(req)
+        f = open(path, 'wb')
+        meta = u.info()
+        file_size = int(meta.getheaders("Content-Length")[0])
+        # print u"Downloading: %s Bytes: %s" % (path, file_size)
+
+        file_size_dl = 0
+        block_sz = 8192
+        while True:
+            _buffer = u.read(block_sz)
+            if not _buffer:
+                break
+
+            file_size_dl += len(_buffer)
+            f.write(_buffer)
+            status = r"%10d  [%3.2f%%]" % (file_size_dl, file_size_dl * 100. / file_size)
+            status += chr(8) * (len(status) + 1)
+            print status,
+
+        f.close()

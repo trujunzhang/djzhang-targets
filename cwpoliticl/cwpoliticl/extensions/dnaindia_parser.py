@@ -29,12 +29,12 @@ class DnaIndiaParser(BaseParser):
 
     def parse(self, url, hxs, wd_rpc):
         title = self.get_value_response(hxs, '//*[@class="img-caption"]/h1/text()')
-        image = self.get_value_response(hxs, '//*[@class="row article-img pos-lead"]/img/@src')
+        image_src = self.get_value_response(hxs, '//*[@class="row article-img pos-lead"]/img/@src')
         content = self.get_all_value_response(hxs, '//*[@class="body-text"]/p', max_len=2, sperator='\n' + '\n')
 
         tags = hxs.xpath('//*[@data-event-sub-cat="ArticleTags"]/div/div/ul/li/a/text()').extract()
 
-        item = WDPost(url=url, url_from=self._url_from, title=title, image=image, content=content, tags=tags)
+        item = WDPost(url=url, url_from=self._url_from, title=title, image_src=image_src, content=content, tags=tags)
 
         post_id = wd_rpc.post_to_wd(item)
 

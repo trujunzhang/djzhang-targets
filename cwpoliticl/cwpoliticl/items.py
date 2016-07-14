@@ -51,7 +51,7 @@ class HistoryItem(scrapy.Item):
 class WDPost(scrapy.Item):
     url = scrapy.Field()
     title = scrapy.Field()
-    image = scrapy.Field()
+    image_src = scrapy.Field()
     content = scrapy.Field()
 
     url_from = scrapy.Field()
@@ -60,12 +60,12 @@ class WDPost(scrapy.Item):
     tags = scrapy.Field()
 
     @classmethod
-    def get_default(self, url, url_from, title, image, content, tags):
+    def get_default(self, url, url_from, title, image_src, content, tags):
         return HistoryItem(
             url=url,
             url_from=url_from,
             title=title,
-            image=image,
+            image_src=image_src,
             content=content,
             tags=tags
         )

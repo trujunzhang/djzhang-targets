@@ -23,12 +23,12 @@ class IndianExpressParser(BaseParser):
 
     def parse(self, url, hxs, wd_rpc):
         title = self.get_value_response(hxs, '//*[@class="heading-part"]/*[@itemprop="headline"]/text()')
-        image = self.get_value_response(hxs, '//*[@itemprop="articleBody"]/*[@class="custom-caption"]/img/@src')
+        image_src = self.get_value_response(hxs, '//*[@itemprop="articleBody"]/*[@class="custom-caption"]/img/@src')
         content = self.get_all_value_response(hxs, '//*[@itemprop="articleBody"]/p', max_len=2, sperator='\n' + '\n')
 
         tags = hxs.xpath('//*[@class="storytags"]/ul/li/a/text()').extract()
 
-        item = WDPost(url=url, url_from=self._url_from, title=title, image=image, content=content, tags=tags)
+        item = WDPost(url=url, url_from=self._url_from, title=title, image=image_src, content=content, tags=tags)
 
         post_id = wd_rpc.post_to_wd(item)
 
