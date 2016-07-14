@@ -2,7 +2,7 @@
 
 import unittest
 
-from cwpoliticl.utils.images_downloader import ImagesDownload
+from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
 
 
 class ImagesDownloaderTest(unittest.TestCase):

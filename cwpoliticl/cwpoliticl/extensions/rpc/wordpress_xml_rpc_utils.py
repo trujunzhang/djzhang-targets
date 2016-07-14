@@ -4,7 +4,7 @@ from wordpress_xmlrpc import Client, WordPressPost
 from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import posts, media
 
-from cwpoliticl.utils.images_downloader import ImagesDownload
+from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
 
 
 class WDXmlRPCUtils(object):

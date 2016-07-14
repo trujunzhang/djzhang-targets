@@ -5,7 +5,7 @@ import unittest
 from wordpress_xmlrpc import Client
 
 from cwpoliticl import settings
-from cwpoliticl.utils.images_downloader import ImagesDownload
+from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
 
 
 class WDXmlRpcTest(unittest.TestCase):
