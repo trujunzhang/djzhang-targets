@@ -62,7 +62,6 @@ class CacheDatabase(MysqlDatabase):
                 _connection.commit()
                 _deleted_count = xcnx.rowcount
             except Exception, e:
-                _excep = e
                 # Rollback in case there is any error
                 _connection.rollback()
                 logging.debug("  mysql: delete the oldest cache row, from the {} failure, {}".format(url_from, e))
