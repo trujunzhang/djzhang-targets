@@ -6,11 +6,15 @@ class SpiderDispatch(BaseDispatch):
     def __init__(self):
         super(SpiderDispatch, self).__init__()
 
-    def parse_from_detail_page(self, url, hxs, views_paper_wd_rpc):
-        type = self.websites[url]
-        parse = self.parses[type]
+    def _get_detail_page_type(self, url):
+        for homepage in self.websites:
+            if homepage in url:
+                return self.websites[homepage]
 
-        return parse.parse(url, hxs, views_paper_wd_rpc, self._get_access_denied_cookie(type, hxs))
+    def parse_from_detail_page(self, url, hxs, views_paper_wd_rpc):
+        type = self._get_detail_page_type(url)
+        if type:
+            return self.parses[type].parse(url, hxs, views_paper_wd_rpc, self._get_access_denied_cookie(type, hxs))
 
     def _get_access_denied_cookie(self, type, hxs):
         """
