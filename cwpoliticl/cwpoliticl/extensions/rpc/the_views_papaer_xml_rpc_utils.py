@@ -15,7 +15,7 @@ from wordpress_xmlrpc.methods import taxonomies
 
 from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
 from cwpoliticl.utils.images_downloader import ImagesDownload
-
+import os
 import urllib2
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 '' \
@@ -29,9 +29,11 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
         super(TheViewsPaperXmlRPCUtils, self).__init__(wd_host, wd_user, wd_passwd)
 
     def post_to_wd_for_theviewspaper(self, item, access_denied_cookie):
+        image_link = item['image_src']
         # step 1: Download the featured image to the template folder.
-        image_location = ImagesDownload.get_image_location(item['image_src'])
-        self.download(item['image_src'], image_location, access_denied_cookie)
+        image_location = ImagesDownload.get_image_location(image_link)
+        if not os.path.exists(image_location):
+            self.download(image_link, image_location, access_denied_cookie)
 
         pass
 
