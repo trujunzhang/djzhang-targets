@@ -13,8 +13,8 @@ class IndianExpressParser(BaseParser):
 
         count = 1
         for link in links:
-            href_selector = '{}/h6/a/@href'.format(selector, count)
-            thumbnail_selector = '{}/*[@class="sto-img"]/a/img/@src'.format(selector, count)
+            href_selector = '{}[{}]/h6/a/@href'.format(selector, count)
+            thumbnail_selector = '{}[{}]/*[@class="sto-img"]/a/img/@src'.format(selector, count)
             count += 1
 
             href = self.get_value_response(hxs, href_selector)
