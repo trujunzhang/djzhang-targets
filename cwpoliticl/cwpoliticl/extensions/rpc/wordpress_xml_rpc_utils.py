@@ -22,18 +22,21 @@ class WDXmlRPCUtils(object):
             return ImagesDownload()
 
     def post_to_wd(self, item):
+        attachment_id = None
+
         image_download = self._get_image_downloader(item)
 
         # step 1: Download the featured image to the template folder.
-        image_location = image_download.write_cache(item)
+        image_cache_path = image_download.write_cache(item)
 
         # step 2: Post to the wordpress via xml_rpc.
-        attachment_id = self._post_image_to_wordpress(image_location)
-        addpost = self._post_newpost_to_wordpress(item, attachment_id)
+        if image_cache_path:
+            attachment_id = self._post_image_to_wordpress(image_cache_path)
+            # step 3: Remove the featured image on the template folder.
+            time.sleep(1)
+            image_download.remove_image_location(image_cache_path)
 
-        # step 3: Remove the featured image on the template folder.
-        time.sleep(1)
-        image_download.remove_image_location(image_location)
+        addpost = self._post_newpost_to_wordpress(item, attachment_id)
 
         return addpost
 
@@ -54,7 +57,9 @@ class WDXmlRPCUtils(object):
         })
         # cat1 = self.wp.call(taxonomies.GetTerm('category', 'wanghao'))
         # post.terms.append(cat1)
-        post.thumbnail = attachment_id
+
+        if attachment_id:
+            post.thumbnail = attachment_id
 
         addpost = self.wp.call(posts.NewPost(post))
 
