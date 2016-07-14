@@ -3,7 +3,7 @@
 import scrapy
 from scrapy.selector import Selector
 
-from cwpoliticl.items import WebsiteTypes
+from cwpoliticl.items import WebsiteTypes, HistoryItem
 import logging
 
 
@@ -55,6 +55,8 @@ class PoliticlsSpider(scrapy.Spider):
 
     def parse(self, response):
         item = self.spider_dispatch.parse_from_detail_page(response.url, response, self.views_paper_wd_rpc)
+
+        self._history_db.save_history(HistoryItem.get_default(url=response.url))
 
         # step 1: request the last row on the cache database
         row = self.get_row_from_cache(item['url'], item['url_from'])
