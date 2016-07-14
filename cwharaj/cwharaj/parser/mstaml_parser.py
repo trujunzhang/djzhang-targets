@@ -9,6 +9,7 @@ from cwharaj.parser.utils.timer_util import TimerUtil
 
 class MstamlParse(BaseParser):
     def __init__(self):
+        self.url_from = WebsiteTypes.mstaml.value
         super(MstamlParse, self).__init__()
 
     # Here,we store items from newest to oldest.
@@ -42,12 +43,12 @@ class MstamlParse(BaseParser):
                 # logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
-            item = CacheItem.get_default(model_id=_ID, url=href, url_from=WebsiteTypes.mstaml.value)
+            item = CacheItem.get_default(model_id=_ID, url=href, url_from=self.url_from)
             cache_db.save_cache(item, count)
             # here, must sleep a second.
             # time.sleep(1)
 
-    def parse(self, url, hxs, item_db, phoneNumberSet=None):
+    def parse(self, url, hxs, item_db):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.get_model_id_from_page_url(url, 1)
 
@@ -86,7 +87,7 @@ class MstamlParse(BaseParser):
 
         item = Ad.get_default(
             section_item=_section_item,
-            _ads_title=_ads_title,
+            ads_title=_ads_title,
             city_id=_city_id,
             ads_contact=_member_phone,
             ads_body=_ads_body,

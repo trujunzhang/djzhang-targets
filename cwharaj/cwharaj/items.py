@@ -117,14 +117,19 @@ class Ad(scrapy.Item):
     fixed_sec3 = scrapy.Field()
     timer_mazad = scrapy.Field()
 
+    # Temp Variable
+    url_from = scrapy.Field()
+
     @classmethod
     def get_opensooq_phone(cls, opensooq_phone_id):
         return 'base64,{}'.format(opensooq_phone_id)
 
     @classmethod
-    def get_default(self, section_item, _ads_title, city_id, ads_contact, ads_body, image_link,
-                    His_announcement_id, Time_added=-1, Last_updated_Ad=-1,
+    def get_default(self, section_item, ads_title, city_id, ads_contact, ads_body, image_link,
+                    His_announcement_id, url_from,
+                    Time_added=-1, Last_updated_Ad=-1,
                     type_ads_or=1, _close_ads=0):
+
         if Time_added == -1:
             Time_added = int(time.time())
         if Last_updated_Ad == -1:
@@ -132,7 +137,7 @@ class Ad(scrapy.Item):
             Last_updated_Ad = Time_added
 
         return Ad(
-            ads_title=_ads_title,
+            ads_title=ads_title,
             ads_city=city_id,
             ads_tags_R=section_item.ads_tags_R,
             ads_tags_F=section_item.ads_tags_F,

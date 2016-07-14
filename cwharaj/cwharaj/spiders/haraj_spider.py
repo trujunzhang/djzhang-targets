@@ -4,7 +4,6 @@ import time
 import scrapy
 
 from cwharaj.items import WebsiteTypes, Ad, OpensooqPhone, HistoryItem
-from cwharaj.utils.crawl_utils import CrawlUtils
 
 
 class HarajsSpider(scrapy.Spider):
@@ -32,17 +31,16 @@ class HarajsSpider(scrapy.Spider):
         self._history_db = database_factory.get_database(CollectionTypes.history)
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
-        from cwharaj.parser.opensooq_parser import OpensooqParse
-        self._opensooq_parser = OpensooqParse()
+        from cwharaj.spiders.dispatch.spider_dispatch import SpiderDispatch
+        self.spider_dispatch = SpiderDispatch()
 
-        from cwharaj.parser.mstaml_parser import MstamlParse
-        self._mstaml_Parse = MstamlParse()
+        # Dynamic the domains
+        self.allowed_domains = self.spider_dispatch.get_allowed_domains()
 
-        from cwharaj.parser.harajsa_parser import HarajSaParse
-        self._harajsa_Parse = HarajSaParse()
-
-        from cwharaj.utils.phone_number_set import PhoneNumberSet
-        self.phone_dict = PhoneNumberSet()
+        # Get the start urls from the cache database
+        row = self.get_row_from_cache("", "")
+        if row:
+            self.start_urls = [row['url']]
 
         super(HarajsSpider, self).__init__(name, **kwargs)
 
@@ -60,10 +58,15 @@ class HarajsSpider(scrapy.Spider):
 
     # This is entry point
     def parse(self, response):
-        # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache("", "")
+        item = self.spider_dispatch.parse_from_detail_page(response.url, response, self._item_db)
 
-        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
+        self._history_db.save_history(HistoryItem.get_default(url=response.url, id_ads=item["id_ads"],
+                                                              url_from=WebsiteTypes.mstaml.value))
+
+        # step 1: request the last row on the cache database
+        _row = self.get_row_from_cache(response.url, WebsiteTypes.harajsa.value)
+
+        yield scrapy.Request(_row['url'], callback=self.parse, dont_filter=True)
 
     def get_row_from_cache(self, _last, url_from):
         while True:
@@ -76,94 +79,3 @@ class HarajsSpider(scrapy.Spider):
             _last = ""
 
             time.sleep(4)
-
-    # ====================================================================================
-    # opensooq
-    # ====================================================================================
-    def parse_page_from_opensooq(self, response):
-        phone_number_item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
-
-        if phone_number_item:
-            self._history_db.save_history(HistoryItem.get_default(url=response.url, id_ads=phone_number_item.id_ads,
-                                                                  url_from=WebsiteTypes.opensooq.value))
-
-            _ajax_url = phone_number_item.get_ajax_url()
-            if _ajax_url:
-                yield scrapy.Request(_ajax_url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
-            else:  # No phone number found, fetch the page again.
-                yield scrapy.Request(response.url, callback=self.ajax_phone_number_for_opensooq, dont_filter=True)
-
-    def ajax_phone_number_for_opensooq(self, response):
-        """
-        When the page has phone number, the response is the ajax url,
-        Otherwise the response is the original page.
-        :param response:
-        :return:
-        """
-        _last = response.url
-        model_id = ""
-        if 'get-phone-number' in response.url:  # the url is the ajax.
-            _phone_number_base64 = response.body
-            _opensooq_phone_id = self._item_db.save_opensooq_phone(OpensooqPhone.get_default(_phone_number_base64))
-
-            phone_number_item = self.phone_dict.get_item_from_ajax_url(response.url)
-            if phone_number_item:
-                _His_announcement_id = phone_number_item._His_announcement_id
-                id_ads = phone_number_item.id_ads
-                self._item_db.update_members_phone(_His_announcement_id, Ad.get_opensooq_phone(_opensooq_phone_id))
-                self._item_db.update_ads_contact(id_ads, Ad.get_opensooq_phone(_opensooq_phone_id))
-
-                _last = phone_number_item.url
-                model_id = phone_number_item.model_id
-        else:  # the url is the original page.
-            model_id = CrawlUtils.get_model_id_by_url_from(_last, WebsiteTypes.opensooq.value)
-
-        # Finally, remove the item from the phone dict by model id.
-        self.phone_dict.remove_row(model_id)
-
-        # step 1: request the last row on the cache database
-        # the response's url have two types.
-        # one is the opensooq's page url,other is the ajax url.
-        _row = self.get_row_from_cache(_last, WebsiteTypes.opensooq.value)
-
-        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
-
-    # ====================================================================================
-    # mstaml
-    # ====================================================================================
-    def parse_page_from_mstaml(self, response):
-        item = self._mstaml_Parse.parse(response.url, response, self._item_db)
-
-        self._history_db.save_history(HistoryItem.get_default(url=response.url, id_ads=item["id_ads"],
-                                                              url_from=WebsiteTypes.mstaml.value))
-
-        # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(response.url, WebsiteTypes.mstaml.value)
-
-        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
-
-    # ====================================================================================
-    # harajsa
-    # ====================================================================================
-    def parse_page_from_harajsa(self, response):
-        item = self._harajsa_Parse.parse(response.url, response, self._item_db)
-
-        self._history_db.save_history(HistoryItem.get_default(url=response.url, id_ads=item["id_ads"],
-                                                              url_from=WebsiteTypes.harajsa.value))
-
-        # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(response.url, WebsiteTypes.harajsa.value)
-
-        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
-
-    def get_call_back(self, url_from):
-        callback = None
-
-        if url_from == WebsiteTypes.opensooq.value:
-            callback = self.parse_page_from_opensooq
-        elif url_from == WebsiteTypes.mstaml.value:
-            callback = self.parse_page_from_mstaml
-        elif url_from == WebsiteTypes.harajsa.value:
-            callback = self.parse_page_from_harajsa
-
-        return callback

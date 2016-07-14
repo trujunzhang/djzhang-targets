@@ -12,6 +12,7 @@ from cwharaj.parser.utils.timer_util import TimerUtil
 
 class OpensooqParse(BaseParser):
     def __init__(self):
+        self.url_from = WebsiteTypes.opensooq.value
         super(OpensooqParse, self).__init__()
 
     # Here,we store items from newest to oldest.
@@ -38,12 +39,12 @@ class OpensooqParse(BaseParser):
                 # logging.debug("  item exist {} on the history database".format(_ID))
                 continue
 
-            item = CacheItem.get_default(model_id=_ID, url=href, url_from=WebsiteTypes.opensooq.value)
+            item = CacheItem.get_default(model_id=_ID, url=href, url_from=self.url_from)
             cache_db.save_cache(item, count)
             # here, must sleep a second.
             # time.sleep(1)
 
-    def parse(self, url, hxs, item_db, phoneNumberSet=None):
+    def parse(self, url, hxs, item_db):
         from cwharaj.utils.crawl_utils import CrawlUtils
         _ID = CrawlUtils.get_model_id_from_page_url(url, 3)
 
@@ -69,7 +70,7 @@ class OpensooqParse(BaseParser):
             logging.debug("  The empty page on the opensooq")
             return PhoneNumberItem(url, _ID)
 
-        _section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
+        section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
         # Replace "\n","\r"
         _ads_title = _ads_title.replace("\n", "").replace("\r", "").strip()
@@ -96,8 +97,8 @@ class OpensooqParse(BaseParser):
             Member.get_default(user_name=_memberName, timeregister=member_timeregister, phone=ads_contact))
 
         item = Ad.get_default(
-            section_item=_section_item,
-            _ads_title=_ads_title,
+            section_item=section_item,
+            ads_title=_ads_title,
             city_id=city_id,
             ads_contact=ads_contact,
             ads_body=_ads_body,

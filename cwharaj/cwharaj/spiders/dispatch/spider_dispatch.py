@@ -16,19 +16,17 @@ class SpiderDispatch(BaseDispatch):
 
         pass
 
-    def parse_from_detail_page(self, url, hxs, wd_rpc, cache_item):
+    def parse_from_detail_page(self, url, hxs, item_db):
         """
 
         Parsing the detail page.
 
         :param url:
         :param hxs:
-        :param wd_rpc:
+        :param item_db:
         :return:
         """
 
         type = self._get_detail_page_type(url)
         if type:
-            return self.parses[type].parse(url, hxs, wd_rpc,
-                                           cache_item['thumbnail_url'],
-                                           )
+            return self.parses[type].parse(url, hxs, item_db)

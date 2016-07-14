@@ -27,7 +27,7 @@ class MysqlDBTest(unittest.TestCase):
         self._ads_id = 70
         self._ads_item = Ad.get_default(
             section_item=SectionItem.get_default(),
-            _ads_title="اسكاليد موديل 2016 بسعر جي",
+            ads_title="اسكاليد موديل 2016 بسعر جي",
             city_id='44',
             ads_contact="123454321",
             ads_body="test mysql db",

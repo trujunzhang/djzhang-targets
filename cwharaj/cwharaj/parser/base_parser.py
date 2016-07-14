@@ -5,11 +5,8 @@ class BaseParser(object):
     def __init__(self):
         pass
 
-    def parse(self, url, hxs, item_db, phoneNumberSet=None):
+    def parse(self, url, hxs, item_db):
         return None
-
-    def parse_relative(self, url, hxs):
-        pass
 
     def get_value_from_response_with_urljoin(self, hxs, query, base, index=0):
         href = self.get_value_response(hxs, query, index)
