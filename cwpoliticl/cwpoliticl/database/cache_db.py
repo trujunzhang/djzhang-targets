@@ -19,11 +19,11 @@ class CacheDatabase(MysqlDatabase):
         _connection = self.get_client()
         xcnx = _connection.cursor()
 
-        sql = "INSERT INTO " + self.collection_name + " (url, url_from, created_at) VALUES(%s,%s,%s)"
+        sql = "INSERT INTO " + self.collection_name + " (url, thumbnail_url, url_from, created_at) VALUES(%s,%s,%s,%s)"
 
         try:
             # Execute the SQL command
-            xcnx.execute(sql, (item['url'], item['url_from'], item['created_at']))
+            xcnx.execute(sql, (item['url'], item['thumbnail_url'], item['url_from'], item['created_at']))
             # Commit your changes in the database
             _connection.commit()
         except Exception, e:
@@ -102,7 +102,7 @@ class CacheDatabase(MysqlDatabase):
         _connection = self.get_client()
         xcnx = _connection.cursor()
 
-        sql = "SELECT url,url_from FROM {}  ORDER BY id ASC LIMIT 1".format(self.collection_name)
+        sql = "SELECT url,thumbnail_url,url_from FROM {}  ORDER BY id ASC LIMIT 1".format(self.collection_name)
 
         try:
             # Execute the SQL command
@@ -110,7 +110,7 @@ class CacheDatabase(MysqlDatabase):
             # Get the row data
             data = xcnx.fetchone()
             if data:
-                row = CacheItem.get_default(url=data[0], url_from=data[1])
+                row = CacheItem.get_default(url=data[0], thumbnail_url=data[1], url_from=data[2])
         except Exception, e:
             logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, e))
         finally:

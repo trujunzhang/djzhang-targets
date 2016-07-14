@@ -1,8 +1,9 @@
 CREATE TABLE politicls_cache (
-  `id`         INT(11) NOT NULL AUTO_INCREMENT,
-  `url`        TEXT,
-  `url_from`   TEXT,
-  `created_at` DATETIME,
+  `id`            INT(11) NOT NULL AUTO_INCREMENT,
+  `url`           TEXT,
+  `thumbnail_url` TEXT,
+  `url_from`      TEXT,
+  `created_at`    DATETIME,
   PRIMARY KEY (`id`)
 )
   DEFAULT CHARSET = utf8mb4;
