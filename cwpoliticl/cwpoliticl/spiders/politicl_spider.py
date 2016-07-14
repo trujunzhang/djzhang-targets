@@ -19,8 +19,8 @@ class PoliticlsSpider(scrapy.Spider):
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
 
-        from cwpoliticl.extensions.rpc.the_views_papaer_images_downloader import TheViewsPaperImagesDownloader
-        self.views_paper_wd_rpc = TheViewsPaperImagesDownloader(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
+        from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
+        self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
         from cwpoliticl.spiders.dispatch.spider_dispatch import SpiderDispatch
         self.spider_dispatch = SpiderDispatch()
@@ -54,7 +54,7 @@ class PoliticlsSpider(scrapy.Spider):
                                                         )
 
     def parse(self, response):
-        item = self.spider_dispatch.parse_from_detail_page(response.url, response, self.views_paper_wd_rpc)
+        item = self.spider_dispatch.parse_from_detail_page(response.url, response, self.wd_rpc)
         if item:
             self._history_db.save_history(HistoryItem.get_default(url=response.url))
 

@@ -18,7 +18,7 @@ class TheViewsPaperParser(BaseParser):
 
             cache_db.save_cache(CacheItem.get_default(url=href, url_from=self._url_from))
 
-    def parse(self, url, hxs, views_paper_wd_rpc, access_denied_cookie):
+    def parse(self, url, hxs, wd_rpc, access_denied_cookie):
         title = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="entry-header"]/h2/a/text()')
         image_src = self._get_image(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@srcset')
         content = self.get_all_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p',
@@ -30,7 +30,7 @@ class TheViewsPaperParser(BaseParser):
         item = WDPost(url=url, url_from=self._url_from, title=title, image_src=image_src, content=content, tags=tags,
                       access_denied_cookie=access_denied_cookie)
 
-        post_id = views_paper_wd_rpc.post_to_wd(item)
+        post_id = wd_rpc.post_to_wd(item)
 
         return item
 

@@ -16,10 +16,10 @@ class SpiderDispatch(BaseDispatch):
 
         pass
 
-    def parse_from_detail_page(self, url, hxs, views_paper_wd_rpc):
+    def parse_from_detail_page(self, url, hxs, wd_rpc):
         type = self._get_detail_page_type(url)
         if type:
-            return self.parses[type].parse(url, hxs, views_paper_wd_rpc, self._get_access_denied_cookie(type, hxs))
+            return self.parses[type].parse(url, hxs, wd_rpc, self._get_access_denied_cookie(type, hxs))
 
     def _get_access_denied_cookie(self, type, hxs):
         """
