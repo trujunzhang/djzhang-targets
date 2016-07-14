@@ -68,7 +68,7 @@ class WDPost(scrapy.Item):
         if not image_src:
             image_src = thumbnail_url
 
-        return HistoryItem(
+        return WDPost(
             url=url,
             url_from=url_from,
             title=title,
