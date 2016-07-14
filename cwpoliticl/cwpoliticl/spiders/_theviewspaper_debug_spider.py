@@ -8,10 +8,10 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
     allowed_domains = ["http://theviewspaper.net"]
     start_urls = [
         # Pagination
-        # 'http://theviewspaper.net',
+        'http://theviewspaper.net',
         # Detail
         # 'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/',
-        'http://theviewspaper.net/is-congress-too-weighed-down-by-its-corrupt-baggage-for-redemption/'
+        # 'http://theviewspaper.net/is-congress-too-weighed-down-by-its-corrupt-baggage-for-redemption/'
     ]
 
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
@@ -50,7 +50,7 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        # self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        access_denied_cookie = response.headers.get('Set-Cookie').split(';', 1)[0]
+        # access_denied_cookie = response.headers.get('Set-Cookie').split(';', 1)[0]
 
-        item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc, access_denied_cookie)
+        self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc, access_denied_cookie)
