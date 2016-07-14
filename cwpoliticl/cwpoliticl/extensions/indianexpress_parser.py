@@ -8,15 +8,22 @@ class IndianExpressParser(BaseParser):
         super(IndianExpressParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        selector = '//*[@class="profile-container"]/*[@class="opi-story"]/h6/a/@href'
+        selector = '//*[@class="profile-container"]/*[@class="opi-story"]'
         links = hxs.xpath(selector).extract()  # Type: List['unicode']
 
-        for href in links:
+        count = 1
+        for link in links:
+            href_selector = '{}/h6/a/@href'.format(selector, count)
+            href = self.get_value_response(hxs, href_selector)
             # If the link already exist on the history database, ignore it.
             if history_db.check_history_exist(href):
                 continue
 
-            cache_db.save_cache(CacheItem.get_default(url=href, url_from=self._url_from))
+            thumbnail_selector = '{}/*[@class="sto-img"]/a/img/@src'.format(selector, count)
+            thumbnail_src = self.get_value_response(hxs, thumbnail_selector)
+            cache_db.save_cache(CacheItem.get_default(url=href, thumbmail_url=thumbnail_src, url_from=self._url_from))
+
+            count += 1
 
     def parse(self, url, hxs, wd_rpc, access_denied_cookie=None):
         title = self.get_value_response(hxs, '//*[@class="heading-part"]/*[@itemprop="headline"]/text()')
