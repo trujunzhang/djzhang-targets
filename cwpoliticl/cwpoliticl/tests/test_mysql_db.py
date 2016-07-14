@@ -29,7 +29,3 @@ class MysqlDBTest(unittest.TestCase):
     def test_insert_history_row(self):
         item = HistoryItem.get_default(url=self.page_url)
         self._history_db.save_history(item)
-
-        # def test_exist_history_row(self):
-        #     item = HistoryItem.get_default(self._page_url, self._ads_id, self._page_from)
-        #     self._history_db.check_history_exist(item['model_id'])
