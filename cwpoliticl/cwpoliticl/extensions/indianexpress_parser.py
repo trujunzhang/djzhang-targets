@@ -21,7 +21,7 @@ class IndianExpressParser(BaseParser):
 
             thumbnail_selector = '{}/*[@class="sto-img"]/a/img/@src'.format(selector, count)
             thumbnail_src = self.get_value_response(hxs, thumbnail_selector)
-            cache_db.save_cache(CacheItem.get_default(url=href, thumbmail_url=thumbnail_src, url_from=self._url_from))
+            cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self._url_from))
 
             count += 1
 

@@ -26,13 +26,13 @@ class CacheItem(scrapy.Item):
 
     url = scrapy.Field()
     created_at = scrapy.Field()
-    thumbmail_url = scrapy.Field()
+    thumbnail_url = scrapy.Field()
 
     @classmethod
-    def get_default(self, url, thumbmail_url, url_from):
+    def get_default(self, url, thumbnail_url, url_from):
         return CacheItem(
             url_from=url_from,
-            thumbmail_url=thumbmail_url,
+            thumbnail_url=thumbnail_url,
             url=url,
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' ')
         )
