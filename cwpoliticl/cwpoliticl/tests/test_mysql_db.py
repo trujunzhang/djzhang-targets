@@ -4,7 +4,7 @@ import unittest
 
 from cwpoliticl import settings
 from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
-from cwpoliticl.items import HistoryItem
+from cwpoliticl.items import HistoryItem, WebsiteTypes
 
 
 class MysqlDBTest(unittest.TestCase):
@@ -26,5 +26,11 @@ class MysqlDBTest(unittest.TestCase):
     # def test_get_oldest_cache_row(self):
     #     row = self._cache_db.get_oldest_row("", "")
 
-    def test_insert_history_row(self):
-        self._history_db.save_history(HistoryItem.get_default(url=self.page_url))
+    def test_get_cache_row_by_url(self):
+        row = self._cache_db.query_cache_item(self.page_url)
+        self.assertEqual(row['url_from'], WebsiteTypes.indianexpress.value)
+        self.assertEqual(row['url'], self.page_url)
+        self.assertEqual(row['thumbnail_url'], '//images.indianexpress.com/2016/07/kashmir-small.jpg?w=450')
+
+        # def test_insert_history_row(self):
+        #     self._history_db.save_history(HistoryItem.get_default(url=self.page_url))

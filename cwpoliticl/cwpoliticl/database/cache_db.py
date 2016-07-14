@@ -118,3 +118,31 @@ class CacheDatabase(MysqlDatabase):
             _connection.close()
 
         return row
+
+    def query_cache_item(self, url):
+        """
+
+        Query the cache item via the url.
+
+        """
+
+        row = None
+        _connection = self.get_client()
+        xcnx = _connection.cursor()
+
+        sql = "SELECT url,thumbnail_url,url_from FROM {}  WHERE url = '{}'".format(self.collection_name, url)
+
+        try:
+            # Execute the SQL command
+            xcnx.execute(sql)
+            # Get the row data
+            data = xcnx.fetchone()
+            if data:
+                row = CacheItem.get_default(url=data[0], thumbnail_url=data[1], url_from=data[2])
+        except Exception, e:
+            logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, e))
+        finally:
+            xcnx.close()
+            _connection.close()
+
+        return row

@@ -54,6 +54,7 @@ class PoliticlsSpider(scrapy.Spider):
                                                         )
 
     def parse(self, response):
+        self._cache_db.get_oldest_row(last, url_from)
         item = self.spider_dispatch.parse_from_detail_page(response.url, response, self.wd_rpc)
         if item:
             self._history_db.save_history(HistoryItem.get_default(url=response.url))
