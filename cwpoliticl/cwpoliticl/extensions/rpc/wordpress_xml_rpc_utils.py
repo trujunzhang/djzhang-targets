@@ -22,9 +22,6 @@ class WDXmlRPCUtils(object):
         self.wp = Client(url, wd_user, wd_passwd)
         super(WDXmlRPCUtils, self).__init__()
 
-    def post_to_wd_for_theviewspaper(self, item, access_denied_cookie):
-        pass
-
     def post_to_wd(self, item):
         # step 1: Download the featured image to the template folder.
         image_location = ImagesDownload.write_cache(item['image'])
