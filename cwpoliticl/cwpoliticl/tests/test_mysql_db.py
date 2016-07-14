@@ -27,5 +27,4 @@ class MysqlDBTest(unittest.TestCase):
     #     row = self._cache_db.get_oldest_row("", "")
 
     def test_insert_history_row(self):
-        item = HistoryItem.get_default(url=self.page_url)
-        self._history_db.save_history(item)
+        self._history_db.save_history(HistoryItem.get_default(url=self.page_url))
