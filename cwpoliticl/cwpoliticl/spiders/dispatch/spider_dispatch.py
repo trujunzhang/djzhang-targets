@@ -1,11 +1,11 @@
 from cwpoliticl.spiders.dispatch.base_dispatch import BaseDispatch
 
 
-class SpiderWatchDispatch(BaseDispatch):
+class SpiderDispatch(BaseDispatch):
     def __init__(self):
-        super(SpiderWatchDispatch, self).__init__()
+        super(SpiderDispatch, self).__init__()
 
-    def parse_from_pagination(self, url, hxs, cache_db, history_db):
+    def parse_from_detail_page(self, url, hxs, cache_db, history_db):
         type = self.websites[url]
         parse = self.parses[type]
 

@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
 import scrapy
-from scrapy.selector import Selector
-
 
 class PoliticlsWatchSpider(scrapy.Spider):
     name = "politicl_watch"
