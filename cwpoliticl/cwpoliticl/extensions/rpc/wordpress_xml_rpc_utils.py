@@ -24,7 +24,7 @@ class WDXmlRPCUtils(object):
 
     def post_to_wd(self, item):
         # step 1: Download the featured image to the template folder.
-        image_location = ImagesDownload.write_cache(item['image_src'])
+        image_location = self._download_image_to_cache(item)
 
         # step 2: Post to the wordpress via xml_rpc.
         attachment_id = self._post_image_to_wordpress(image_location)
@@ -34,6 +34,10 @@ class WDXmlRPCUtils(object):
         ImagesDownload.remove_image_location(image_location)
 
         return addpost
+
+    def _download_image_to_cache(self, item):
+        image_location = ImagesDownload.write_cache(item['image_src'])
+        return image_location
 
     def _post_newpost_to_wordpress(self, item, attachment_id):
         post = WordPressPost()

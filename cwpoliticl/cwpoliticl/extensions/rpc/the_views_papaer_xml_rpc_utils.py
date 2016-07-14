@@ -26,16 +26,18 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
     def __init__(self, wd_host, wd_user, wd_passwd):
         super(TheViewsPaperXmlRPCUtils, self).__init__(wd_host, wd_user, wd_passwd)
 
-    def post_to_wd_for_theviewspaper(self, item, access_denied_cookie):
+    def _download_image_to_cache(self, item):
         image_link = item['image_src']
+        access_denied_cookie = item['access_denied_cookie']
         # step 1: Download the featured image to the template folder.
         image_location = ImagesDownload.get_image_location(image_link)
         if not os.path.exists(image_location):
-            self.download_image(image_link, image_location, cookie=access_denied_cookie)
+            TheViewsPaperXmlRPCUtils.download_image(image_link, image_location, cookie=access_denied_cookie)
 
-        image_location = image_location
+        return image_location
 
-    def download_image(self, image_link, path, referer=None, cookie=None):
+    @classmethod
+    def download_image(cls, image_link, path, referer=None, cookie=None):
         req = urllib2.Request(image_link)
         if referer:
             req.add_header("Referer", referer)

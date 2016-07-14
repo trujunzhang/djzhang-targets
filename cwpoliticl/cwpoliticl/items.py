@@ -56,16 +56,19 @@ class WDPost(scrapy.Item):
 
     url_from = scrapy.Field()
 
+    access_denied_cookie = scrapy.Field()
+
     # tags list['Unicode']
     tags = scrapy.Field()
 
     @classmethod
-    def get_default(self, url, url_from, title, image_src, content, tags):
+    def get_default(self, url, url_from, title, image_src, content, tags, access_denied_cookie=None):
         return HistoryItem(
             url=url,
             url_from=url_from,
             title=title,
             image_src=image_src,
             content=content,
-            tags=tags
+            tags=tags,
+            access_denied_cookie=access_denied_cookie
         )
