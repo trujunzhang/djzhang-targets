@@ -22,13 +22,16 @@ class BaseParser(object):
             return value
         return default
 
-    def get_all_value_response(self, hxs, query, max_len=sys.maxint, sperator=''):
+    def get_all_value_response(self, hxs, query, max_len=sys.maxint, sperator='', start_index=1):
         _list = hxs.xpath(query)
         lines = []
 
-        count = 0
+        count = 1
         for line in _list:
-            if count >= max_len:
+            if count < start_index:
+                continue
+
+            if count > max_len:
                 break
 
             lines.append(line.extract())

@@ -22,9 +22,10 @@ class TheViewsPaperParser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, url_from=self._url_from))
 
     def parse(self, url, hxs, wd_rpc):
-        title = self.get_value_response(hxs, '//*[@class="heading-part"]/*[@itemprop="headline"]/text()')
-        image = self.get_value_response(hxs, '//*[@itemprop="articleBody"]/*[@class="custom-caption"]/img/@src')
-        content = self.get_all_value_response(hxs, '//*[@itemprop="articleBody"]/p', max_len=2, sperator='\n' + '\n')
+        title = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@header="entry-header"]/h2/a/text()')
+        image = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@src')
+        content = self.get_all_value_response(hxs, '//*[@itemprop="articleBody"]/p', max_len=2, sperator='\n' + '\n',
+                                              start_index=2)
 
         tags = hxs.xpath('//*[@class="storytags"]/ul/li/a/text()').extract()
 
