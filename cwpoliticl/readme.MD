@@ -31,3 +31,5 @@ mysql -u cwpoliticl -p 'cwpoliticl720' politicl
 
 # scrape issues
 
+ .1 Access denied | theviewspaper.net used CloudFlare to restrict access
+  fixed: using "https://github.com/Anorov/cloudflare-scrape" 

@@ -7,6 +7,7 @@ import logging
 
 Cache_Folder = 'politicl'
 
+
 class ImagesDownload(object):
     @classmethod
     def _get_image_tmp_folder(cls):
@@ -23,8 +24,26 @@ class ImagesDownload(object):
         image_location = '{}/{}'.format(ImagesDownload._get_image_tmp_folder(), filename)
         if os.path.exists(image_location):
             return image_location
+
         urllib.urlretrieve(image_link, image_location)
+        # ImagesDownload._download_photo(image_link, image_location)
         return image_location
+
+    @classmethod
+    def _download_photo(cls, img_url, image_location):
+        try:
+            image_on_web = urllib.urlopen(img_url)
+            if image_on_web.headers.maintype == 'image':
+                buf = image_on_web.read()
+                downloaded_image = file(image_location, "wb")
+                downloaded_image.write(buf)
+                downloaded_image.close()
+                image_on_web.close()
+            else:
+                return False
+        except:
+            return False
+        return True
 
     @classmethod
     def remove_image_location(cls, image_location):
