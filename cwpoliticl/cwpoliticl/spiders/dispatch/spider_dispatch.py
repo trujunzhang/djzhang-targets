@@ -14,8 +14,10 @@ class SpiderDispatch(BaseDispatch):
 
     def _get_access_denied_cookie(self, type, hxs):
         """
-        Fixed: Access denied | theviewspaper.net used CloudFlare to restrict access
+
+        Issue: Access denied | theviewspaper.net used CloudFlare to restrict access
         Because 'theviewspaper.net' need cookie to download all images.
+
         :param type:
         :param hxs:
         :return:
