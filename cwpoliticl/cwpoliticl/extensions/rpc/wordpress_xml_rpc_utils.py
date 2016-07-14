@@ -5,6 +5,8 @@ from wordpress_xmlrpc.compat import xmlrpc_client
 from wordpress_xmlrpc.methods import posts, media
 
 from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
+from cwpoliticl.extensions.rpc.the_views_papaer_images_downloader import TheViewsPaperImagesDownloader
+from cwpoliticl.items import WebsiteTypes
 
 
 class WDXmlRPCUtils(object):
@@ -13,8 +15,14 @@ class WDXmlRPCUtils(object):
         self.wp = Client(url, wd_user, wd_passwd)
         super(WDXmlRPCUtils, self).__init__()
 
+    def _get_image_downloader(self, item):
+        if item['url_from'] == WebsiteTypes.theviewspaper.value:
+            return TheViewsPaperImagesDownloader()
+        else:
+            return ImagesDownload()
+
     def post_to_wd(self, item):
-        image_download = ImagesDownload()
+        image_download = self._get_image_downloader(item)
 
         # step 1: Download the featured image to the template folder.
         image_location = image_download.write_cache(item)
