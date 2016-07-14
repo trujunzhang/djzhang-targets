@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 
 import scrapy
+from scrapy.spiders import CrawlSpider
 
 
-class TheViewsPaperDebugSpider(scrapy.Spider):
+class TheViewsPaperDebugSpider(CrawlSpider):
     name = "theviewspaper_debug"
     allowed_domains = ["http://theviewspaper.net"]
     start_urls = [
         # Pagination
-        # 'http://theviewspaper.net',
+        'http://theviewspaper.net',
         # Detail
-        'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/'
+        # 'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/'
     ]
 
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
@@ -48,6 +49,10 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
                                                                  wd_passwd=crawler.settings.get('WD_PASSWD')
                                                                  )
 
+    def parse_start_url(self, response):
+        self.cookie = response.headers.get('Set-Cookie').split(';', 1)[0]
+        return super(TheViewsPaperDebugSpider, self).parse_start_url(response)
+
     def parse(self, response):
-        # self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc)
+        self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc)
