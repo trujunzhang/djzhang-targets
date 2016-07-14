@@ -53,9 +53,9 @@ class HarajsSpider(scrapy.Spider):
                                                               url_from=url_from))
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(response.url, url_from)
+        row = self.get_row_from_cache(response.url, url_from)
 
-        yield scrapy.Request(_row['url'], callback=self.parse, dont_filter=True)
+        yield scrapy.Request(row['url'], callback=self.parse, dont_filter=True)
 
     def get_row_from_cache(self, _last, url_from):
         while True:
