@@ -1,24 +1,10 @@
 # -*- coding: utf-8 -*-
 import scrapy
-# yield WebdriverRequest(_url, callback=self.parse_category_full_page)
 import logging
 
 
 class HarajsSpiderWatch(scrapy.Spider):
     name = "harajwatch"
-    allowed_domains = [
-        "https://sa.opensooq.com/",
-        'http://www.mstaml.com',
-        'https://haraj.com.sa',
-    ]
-    start_urls = [
-        # paginate
-        'https://sa.opensooq.com',
-    ]
-
-    url_from_opensooq = 'https://sa.opensooq.com/ar/find?term=&cat_id=&scid=&city=&allposts_cb=true&allposts=no&price_from=&price_to=&page=1'
-    url_from_mstaml = 'http://www.mstaml.com/market/?t=0&l=0&d=0&x=&u=&o=3'
-    url_from_harajsa = 'https://haraj.com.sa'
 
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
@@ -30,14 +16,12 @@ class HarajsSpiderWatch(scrapy.Spider):
         self._history_db = database_factory.get_database(CollectionTypes.history)
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
-        from cwharaj.parser.opensooq_parser import OpensooqParse
-        self._opensooq_parser = OpensooqParse()
+        from cwharaj.spiders.dispatch.spider_watch_dispatch import SpiderWatchDispatch
+        self.watch_dispatch = SpiderWatchDispatch()
 
-        from cwharaj.parser.mstaml_parser import MstamlParse
-        self._mstaml_Parse = MstamlParse()
-
-        from cwharaj.parser.harajsa_parser import HarajSaParse
-        self._harajsa_Parse = HarajSaParse()
+        # Dynamic the domains and start url.
+        self.allowed_domains = self.watch_dispatch.get_allowed_domains()
+        self.start_urls = self.watch_dispatch.get_pagination_websites()
 
         super(HarajsSpiderWatch, self).__init__(name, **kwargs)
 
@@ -55,28 +39,6 @@ class HarajsSpiderWatch(scrapy.Spider):
 
     # This methond is entry point
     def parse(self, response):
-        # Here, 3 website need to fetch again and again(Through 24X7, full-time)
-        yield scrapy.Request(self.url_from_opensooq, callback=self.parse_pagination_from_opensooq, dont_filter=True)
-        yield scrapy.Request(self.url_from_mstaml, callback=self.parse_pagination_from_mstaml, dont_filter=True)
-        yield scrapy.Request(self.url_from_harajsa, callback=self.parse_pagination_from_harajsa, dont_filter=True)
+        self.watch_dispatch.parse_from_pagination(response.url, response, self._cache_db, self._history_db)
 
-    def parse_pagination_from_opensooq(self, response):
-        # Step 1: parse all list items to the cache database.
-        self._opensooq_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # step 2: fetching the same pagination again.
-        logging.debug("Fetching the pagination from the opensooq again")
-        yield scrapy.Request(self.url_from_opensooq, callback=self.parse_pagination_from_opensooq, dont_filter=True)
-
-    def parse_pagination_from_mstaml(self, response):
-        # Step 1: parse all list items to the cache database.
-        self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # step 2: fetching the same pagination again.
-        logging.debug("Fetching the pagination from the mstaml again")
-        yield scrapy.Request(self.url_from_mstaml, callback=self.parse_pagination_from_mstaml, dont_filter=True)
-
-    def parse_pagination_from_harajsa(self, response):
-        # Step 1: parse all list items to the cache database.
-        self._harajsa_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # step 2: fetching the same pagination again.
-        logging.debug("Fetching the pagination from the harajsa again")
-        yield scrapy.Request(self.url_from_harajsa, callback=self.parse_pagination_from_harajsa, dont_filter=True)
+        yield scrapy.Request(response.url, callback=self.parse, dont_filter=True)
