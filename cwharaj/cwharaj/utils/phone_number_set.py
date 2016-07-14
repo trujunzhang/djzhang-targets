@@ -3,6 +3,9 @@ import logging
 from cwharaj.items import Ad
 from cwharaj.utils.crawl_utils import CrawlUtils
 
+import urllib2
+import requests
+
 
 class PhoneNumberItem(object):
     model_id = ''
@@ -77,3 +80,8 @@ class PhoneNumberSet(object):
             # logging.debug("  2. row exist in the dict")
             del self.dict[model_id]
             logging.debug("  3. deleted the dict row {}, dict keys: {} successfully".format(model_id, self.dict.keys()))
+
+    def query_phone_base64_image(self, ajax_url):
+        r = requests.get(ajax_url)
+        if r.status_code == 200:
+            return r.text
