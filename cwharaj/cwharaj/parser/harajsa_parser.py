@@ -100,13 +100,13 @@ class HarajSaParse(BaseParser):
         item = Ad.get_default(
             section_item=_section_item,
             _ads_title=_ads_title,
-            _city_id=_city_id,
-            _ads_contact=_ads_contact,
-            _ads_body=_ads_body,
-            _image_link=_image_link,
-            _His_announcement_id=_His_announcement_id,
+            city_id=_city_id,
+            ads_contact=_ads_contact,
+            ads_body=_ads_body,
+            image_link=_image_link,
+            His_announcement_id=_His_announcement_id,
             Time_added=_time_added, Last_updated_Ad=_last_updated_ad,
-            _type_ads_or=1, _close_ads=0
+            type_ads_or=1, _close_ads=0
         )
 
         id_ads = item_db.save_ad(item)

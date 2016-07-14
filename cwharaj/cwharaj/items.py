@@ -122,9 +122,9 @@ class Ad(scrapy.Item):
         return 'base64,{}'.format(opensooq_phone_id)
 
     @classmethod
-    def get_default(self, section_item, _ads_title, _city_id, _ads_contact, _ads_body, _image_link,
-                    _His_announcement_id, Time_added=-1, Last_updated_Ad=-1,
-                    _type_ads_or=1, _close_ads=0):
+    def get_default(self, section_item, _ads_title, city_id, ads_contact, ads_body, image_link,
+                    His_announcement_id, Time_added=-1, Last_updated_Ad=-1,
+                    type_ads_or=1, _close_ads=0):
         if Time_added == -1:
             Time_added = int(time.time())
         if Last_updated_Ad == -1:
@@ -133,20 +133,20 @@ class Ad(scrapy.Item):
 
         return Ad(
             ads_title=_ads_title,
-            ads_city=_city_id,
+            ads_city=city_id,
             ads_tags_R=section_item.ads_tags_R,
             ads_tags_F=section_item.ads_tags_F,
             ads_tags_FF=section_item.ads_tags_FF,
-            ads_contact=_ads_contact,
-            ads_body=_ads_body,
-            image_link=_image_link,
+            ads_contact=ads_contact,
+            ads_body=ads_body,
+            image_link=image_link,
             type_ads_other_final=section_item.type_ads_other_final,
             un_model=section_item.un_model,
             status=1,
             fixing=0,
             Time_added=Time_added,
-            His_announcement=_His_announcement_id,
-            type_ads_or=_type_ads_or,
+            His_announcement=His_announcement_id,
+            type_ads_or=type_ads_or,
             close_ads=_close_ads,
             Last_updated_Ad=Last_updated_Ad,
             closecomment=0,

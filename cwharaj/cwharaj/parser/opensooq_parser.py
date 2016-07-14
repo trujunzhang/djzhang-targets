@@ -59,7 +59,7 @@ class OpensooqParse(BaseParser):
         # ADs
         _ads_title = self.get_value_response(hxs, '//*[@class="postTitleCont"]/div/h1/text()')
         _image_link = self.get_pictures(hxs, '//*[@class="galleryLeftList fLeft"]/ul/li/a/img/@src')
-        _time_added = self.get_value_response(hxs, '//*[@class="postDate fRight"]/text()')
+        time_added = self.get_value_response(hxs, '//*[@class="postDate fRight"]/text()')
         _ads_body = self.get_all_value_response(hxs, '//*[@class="postDesc"]/p/text()')
 
         _sections = self.get_section(self.get_value_response(hxs, '//*[@class="breadcrumbs"]'))
@@ -87,10 +87,10 @@ class OpensooqParse(BaseParser):
             # opensooq's contact is a specialized format.
             ads_contact = Ad.get_opensooq_phone(opensooq_phone_id)
 
-        _time_added = OpensooqCommentDateUtil().get_time_for_opensooq_time_added(_time_added)
+        time_added = OpensooqCommentDateUtil().get_time_for_opensooq_time_added(time_added)
         member_timeregister = OpensooqCommentDateUtil().get_time_for_opensooq_member_timeregister(member_timeregister)
 
-        _city_id = item_db.save_city(City.get_default(_ads_city))
+        city_id = item_db.save_city(City.get_default(_ads_city))
 
         _His_announcement_id = item_db.save_member(
             Member.get_default(user_name=_memberName, timeregister=member_timeregister, phone=ads_contact))
@@ -98,13 +98,13 @@ class OpensooqParse(BaseParser):
         item = Ad.get_default(
             section_item=_section_item,
             _ads_title=_ads_title,
-            _city_id=_city_id,
-            _ads_contact=ads_contact,
-            _ads_body=_ads_body,
-            _image_link=_image_link,
-            _His_announcement_id=_His_announcement_id,
-            Time_added=_time_added,
-            _type_ads_or=1, _close_ads=0
+            city_id=city_id,
+            ads_contact=ads_contact,
+            ads_body=_ads_body,
+            image_link=_image_link,
+            His_announcement_id=_His_announcement_id,
+            Time_added=time_added,
+            type_ads_or=1, _close_ads=0
         )
 
         id_ads = item_db.save_ad(item)
