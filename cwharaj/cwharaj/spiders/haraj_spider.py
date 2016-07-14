@@ -60,11 +60,12 @@ class HarajsSpider(scrapy.Spider):
     def parse(self, response):
         item = self.spider_dispatch.parse_from_detail_page(response.url, response, self._item_db)
 
+        url_from = item['url_from']
         self._history_db.save_history(HistoryItem.get_default(url=response.url, id_ads=item["id_ads"],
-                                                              url_from=WebsiteTypes.mstaml.value))
+                                                              url_from=url_from))
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(response.url, WebsiteTypes.harajsa.value)
+        _row = self.get_row_from_cache(response.url, url_from)
 
         yield scrapy.Request(_row['url'], callback=self.parse, dont_filter=True)
 
