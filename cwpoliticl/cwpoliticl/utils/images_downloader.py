@@ -4,7 +4,6 @@ import urllib
 
 from hashlib import md5
 import logging
-import wget
 
 Cache_Folder = 'politicl'
 
@@ -28,8 +27,8 @@ class ImagesDownload(object):
     def write_cache(cls, image_link):
         image_location = ImagesDownload.get_image_location(image_link)
         if not os.path.exists(image_location):
-            wget.download(image_link, image_location)
-            # urllib.urlretrieve(image_link, image_location)
+            urllib.urlretrieve(image_link, image_location)
+            # wget.download(image_link, image_location)
             # ImagesDownload._download_photo(image_link, image_location)
         return image_location
 

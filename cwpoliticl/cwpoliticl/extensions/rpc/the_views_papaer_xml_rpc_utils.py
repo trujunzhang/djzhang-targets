@@ -26,9 +26,11 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
     def __init__(self, wd_host, wd_user, wd_passwd):
         super(TheViewsPaperXmlRPCUtils, self).__init__(wd_host, wd_user, wd_passwd)
 
+    # Override
     def _download_image_to_cache(self, item):
         image_link = item['image_src']
         access_denied_cookie = item['access_denied_cookie']
+
         # step 1: Download the featured image to the template folder.
         image_location = ImagesDownload.get_image_location(image_link)
         if not os.path.exists(image_location):

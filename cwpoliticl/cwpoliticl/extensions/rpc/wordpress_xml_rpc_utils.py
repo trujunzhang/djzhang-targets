@@ -36,8 +36,7 @@ class WDXmlRPCUtils(object):
         return addpost
 
     def _download_image_to_cache(self, item):
-        image_location = ImagesDownload.write_cache(item['image_src'])
-        return image_location
+        return ImagesDownload.write_cache(item['image_src'])
 
     def _post_newpost_to_wordpress(self, item, attachment_id):
         post = WordPressPost()
