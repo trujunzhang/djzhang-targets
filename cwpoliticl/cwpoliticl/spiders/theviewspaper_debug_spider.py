@@ -30,8 +30,8 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
         from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
         self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
-        from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
-        self._indian_express_Parse = IndianExpressParser()
+        from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
+        self._the_views_paper_Parse = TheViewsPaperParser()
 
         super(TheViewsPaperDebugSpider, self).__init__(name, **kwargs)
 
@@ -52,5 +52,5 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        self._indian_express_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._indian_express_Parse.parse(response.url, response, self.wd_rpc)
+        # self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc)
