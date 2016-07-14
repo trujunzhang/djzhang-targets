@@ -25,7 +25,7 @@ class IndianExpressParser(BaseParser):
             thumbnail_src = self.get_value_response(hxs, thumbnail_selector)
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self._url_from))
 
-    def parse(self, url, hxs, wd_rpc, access_denied_cookie=None):
+    def parse(self, url, hxs, wd_rpc, thumbnail_url,access_denied_cookie=None):
         title = self.get_value_response(hxs, '//*[@class="heading-part"]/*[@itemprop="headline"]/text()')
         image_src = self.get_value_response(hxs, '//*[@itemprop="articleBody"]/*[@class="custom-caption"]/img/@src')
         content = self.get_all_value_response(hxs, '//*[@itemprop="articleBody"]/p', max_len=2, sperator='\n' + '\n')

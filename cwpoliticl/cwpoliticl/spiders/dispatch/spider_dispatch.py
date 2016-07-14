@@ -29,7 +29,9 @@ class SpiderDispatch(BaseDispatch):
 
         type = self._get_detail_page_type(url)
         if type:
-            return self.parses[type].parse(url, hxs, wd_rpc, self._get_access_denied_cookie(type, hxs))
+            return self.parses[type].parse(url, hxs, wd_rpc,
+                                           cache_item['thumbnail_url'],
+                                           self._get_access_denied_cookie(type, hxs))
 
     def _get_access_denied_cookie(self, type, hxs):
         """
