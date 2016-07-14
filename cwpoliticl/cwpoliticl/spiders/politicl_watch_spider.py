@@ -3,11 +3,18 @@
 import scrapy
 from scrapy.selector import Selector
 
+
 class PoliticlsWatchSpider(scrapy.Spider):
     name = "politicl_watch"
-    allowed_domains = ["xxx"]
+    allowed_domains = [
+        "www.dnaindia.com",
+        "www.indianexpress.com",
+        "http://theviewspaper.net"
+    ]
     start_urls = [
         'http://www.dnaindia.com/analysis',
+        'http://indianexpress.com/opinion/',
+        'http://theviewspaper.net',
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -18,25 +25,30 @@ class PoliticlsWatchSpider(scrapy.Spider):
 
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
-        self._item_db = database_factory.get_database(CollectionTypes.item)
 
-        from cwpoliticl.parser import ResponseParse
-        self._crawl_parser = ResponseParse()
+        from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
+        self._dna_india_Parse = DnaIndiaParser()
+
+        from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
+        self._indian_express_Parse = IndianExpressParser()
+
+        from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
+        self._the_views_paper_Parse = TheViewsPaperParser()
 
         super(PoliticlsWatchSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
         return super(PoliticlsWatchSpider, cls).from_crawler(crawler,
-                                                               args,
-                                                               host=crawler.settings.get('SQL_HOST'),
-                                                               port=crawler.settings.get('SQL_PORT'),
-                                                               user=crawler.settings.get('SQL_USER'),
-                                                               passwd=crawler.settings.get('SQL_PASSWD'),
-                                                               db=crawler.settings.get('SQL_DB'),
-                                                               collection_name=crawler.settings.get(
-                                                                   'SQL_COLLECTION_NAME')
-                                                               )
+                                                             args,
+                                                             host=crawler.settings.get('SQL_HOST'),
+                                                             port=crawler.settings.get('SQL_PORT'),
+                                                             user=crawler.settings.get('SQL_USER'),
+                                                             passwd=crawler.settings.get('SQL_PASSWD'),
+                                                             db=crawler.settings.get('SQL_DB'),
+                                                             collection_name=crawler.settings.get(
+                                                                 'SQL_COLLECTION_NAME')
+                                                             )
 
     def parse(self, response):
         self._crawl_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
