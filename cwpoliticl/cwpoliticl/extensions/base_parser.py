@@ -23,6 +23,15 @@ class BaseParser(object):
         return default
 
     def get_all_value_response(self, hxs, query, max_len=sys.maxint, sperator='', start_index=1):
+        """
+        Get the all value.
+        :param hxs:
+        :param query:
+        :param max_len:
+        :param sperator:
+        :param start_index:
+        :return:
+        """
         _list = hxs.xpath(query)
         lines = []
 
@@ -31,7 +40,7 @@ class BaseParser(object):
             if count < start_index:
                 continue
 
-            if count > max_len:
+            if len(lines) >= max_len:
                 break
 
             lines.append(line.extract())
