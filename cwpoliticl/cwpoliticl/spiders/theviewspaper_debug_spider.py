@@ -8,12 +8,9 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
     allowed_domains = ["http://theviewspaper.net"]
     start_urls = [
         # Pagination
-        'http://theviewspaper.net',
+        # 'http://theviewspaper.net',
         # Detail
-        # no tags
-        # ''
-        # one tag
-        ''
+        'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/'
     ]
 
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
@@ -52,5 +49,5 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc)
+        # self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc)
