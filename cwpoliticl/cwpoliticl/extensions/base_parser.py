@@ -37,13 +37,12 @@ class BaseParser(object):
 
         count = 1
         for line in _list:
-            if count < start_index:
-                continue
+            if count >= start_index:
+                if len(lines) >= max_len:
+                    break
 
-            if len(lines) >= max_len:
-                break
+                lines.append(line.extract())
 
-            lines.append(line.extract())
             count += 1
 
         return sperator.join(lines)
