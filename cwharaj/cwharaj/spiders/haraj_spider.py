@@ -8,18 +8,6 @@ from cwharaj.items import WebsiteTypes, Ad, OpensooqPhone, HistoryItem
 
 class HarajsSpider(scrapy.Spider):
     name = "haraj"
-    allowed_domains = [
-        "https://sa.opensooq.com/",
-        'http://www.mstaml.com',
-        'https://haraj.com.sa',
-    ]
-    homepage_opensooq = 'https://sa.opensooq.com'
-    homepage_mstaml = 'http://www.mstaml.com'
-    hoomepage_harajsa = 'https://haraj.com.sa'
-
-    start_urls = [
-        "https://sa.opensooq.com/"
-    ]
 
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
