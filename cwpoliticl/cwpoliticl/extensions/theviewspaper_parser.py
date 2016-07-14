@@ -30,7 +30,7 @@ class TheViewsPaperParser(BaseParser):
         tags = hxs.xpath(
             '//*[@class="entry-content"]/*[@class="post-meta"]/*[@class="categories-links"]/a/text()').extract()
 
-        item = WDPost(url=url, url_from=self._url_from, title=title, image=image_src, content=content, tags=tags)
+        item = WDPost(url=url, url_from=self._url_from, title=title, image_src=image_src, content=content, tags=tags)
 
         post_id = views_paper_wd_rpc.post_to_wd_for_theviewspaper(item, access_denied_cookie)
 
