@@ -107,7 +107,6 @@ class CacheDatabase(MysqlDatabase):
         logging.debug(
             "  mysql: find the total count {} on the {}".format(total_count, self.collection_name))
 
-        _excep = None
         row = None
         _connection = self.get_client()
         xcnx = _connection.cursor()
@@ -122,8 +121,7 @@ class CacheDatabase(MysqlDatabase):
             if data:
                 row = CacheItem.get_default(url=data[0], url_from=data[1])
         except Exception, e:
-            _excep = e
-            logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, _excep))
+            logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, e))
         finally:
             xcnx.close()
             _connection.close()
