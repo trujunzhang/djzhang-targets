@@ -4,7 +4,7 @@ from cwpoliticl.items import CacheItem, WebsiteTypes, WDPost
 
 class DnaIndiaParser(BaseParser):
     def __init__(self):
-        self._url_from = WebsiteTypes.dnaindia.value
+        self.url_from = WebsiteTypes.dnaindia.value
         super(DnaIndiaParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
@@ -20,7 +20,7 @@ class DnaIndiaParser(BaseParser):
             if history_db.check_history_exist(detailed_href):
                 continue
 
-            cache_db.save_cache(CacheItem.get_default(url=detailed_href, url_from=self._url_from))
+            cache_db.save_cache(CacheItem.get_default(url=detailed_href, url_from=self.url_from))
 
             count += 1
 
@@ -31,7 +31,10 @@ class DnaIndiaParser(BaseParser):
 
         tags = hxs.xpath('//*[@data-event-sub-cat="ArticleTags"]/div/div/ul/li/a/text()').extract()
 
-        item = WDPost(url, self._url_from, title, image_src, thumbnail_url, content=content, tags=tags)
+        item = WDPost(url=url, url_from=self.url_from,
+                      title=title,
+                      image_src=image_src, thumbnail_url=thumbnail_url,
+                      content=content, tags=tags)
 
         post_id = wd_rpc.post_to_wd(item)
 

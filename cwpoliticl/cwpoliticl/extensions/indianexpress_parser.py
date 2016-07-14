@@ -4,7 +4,7 @@ from cwpoliticl.items import CacheItem, WebsiteTypes, WDPost
 
 class IndianExpressParser(BaseParser):
     def __init__(self):
-        self._url_from = WebsiteTypes.indianexpress.value
+        self.url_from = WebsiteTypes.indianexpress.value
         super(IndianExpressParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
@@ -23,7 +23,7 @@ class IndianExpressParser(BaseParser):
                 continue
 
             thumbnail_src = self.get_value_response(hxs, thumbnail_selector)
-            cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self._url_from))
+            cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie=None):
         title = self.get_value_response(hxs, '//*[@class="heading-part"]/*[@itemprop="headline"]/text()')
@@ -32,7 +32,7 @@ class IndianExpressParser(BaseParser):
 
         tags = hxs.xpath('//*[@class="storytags"]/ul/li/a/text()').extract()
 
-        item = WDPost(url, self._url_from, title, image_src, thumbnail_url, content=content, tags=tags)
+        item = WDPost(url, self.url_from, title, image_src, thumbnail_url, content, tags)
 
         post_id = wd_rpc.post_to_wd(item)
 

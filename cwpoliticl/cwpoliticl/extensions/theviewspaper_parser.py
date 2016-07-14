@@ -4,7 +4,7 @@ from cwpoliticl.items import CacheItem, WebsiteTypes, WDPost
 
 class TheViewsPaperParser(BaseParser):
     def __init__(self):
-        self._url_from = WebsiteTypes.theviewspaper.value
+        self.url_from = WebsiteTypes.theviewspaper.value
         super(TheViewsPaperParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
@@ -16,7 +16,7 @@ class TheViewsPaperParser(BaseParser):
             if history_db.check_history_exist(href):
                 continue
 
-            cache_db.save_cache(CacheItem.get_default(url=href, url_from=self._url_from))
+            cache_db.save_cache(CacheItem.get_default(url=href, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="entry-header"]/h2/a/text()')
@@ -27,7 +27,7 @@ class TheViewsPaperParser(BaseParser):
         tags = hxs.xpath(
             '//*[@class="entry-content"]/*[@class="post-meta"]/*[@class="categories-links"]/a/text()').extract()
 
-        item = WDPost(url, self._url_from, title, image_src, thumbnail_url, content, tags, access_denied_cookie)
+        item = WDPost(url, self.url_from, title, image_src, thumbnail_url, content, tags, access_denied_cookie)
 
         post_id = wd_rpc.post_to_wd(item)
 
