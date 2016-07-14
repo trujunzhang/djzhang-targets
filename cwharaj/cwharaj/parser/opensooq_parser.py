@@ -1,7 +1,7 @@
 # coding=utf-8
 import logging
 
-from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member
+from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member, OpensooqPhone
 from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
@@ -50,8 +50,8 @@ class OpensooqParse(BaseParser):
         # ADs User
         # memberName len(list) = 2
         _memberName = self.get_value_response(hxs, '//*[@class="userDet tableCell vTop"]/strong/a/text()')
-        # _member_timeregister is 'اريخ الانضمام  08/10/2015'
-        _member_timeregister = self.get_value_response(hxs, '//span[@class="joinDate"]/text()')
+        # member_timeregister is 'اريخ الانضمام  08/10/2015'
+        member_timeregister = self.get_value_response(hxs, '//span[@class="joinDate"]/text()')
 
         _ads_city = self.get_value_response(hxs,
                                             '//*[@class="sellerAddress"]/span[@class="sellerAddressText"]/a/text()')
@@ -77,23 +77,29 @@ class OpensooqParse(BaseParser):
         # ====
         # Save to relative database
         # ====
+
+        # Because opensooq's contact is image base64 format,
+        # So Firstly request it via ajax.
+        ads_contact = ''
+        phone_number_base64 = self.query_phone_number_base64_image(hxs)
+        if phone_number_base64:
+            opensooq_phone_id = item_db.save_opensooq_phone(OpensooqPhone.get_default(phone_number_base64))
+            # opensooq's contact is a specialized format.
+            ads_contact = Ad.get_opensooq_phone(opensooq_phone_id)
+
         _time_added = OpensooqCommentDateUtil().get_time_for_opensooq_time_added(_time_added)
-        _member_timeregister = OpensooqCommentDateUtil().get_time_for_opensooq_member_timeregister(_member_timeregister)
+        member_timeregister = OpensooqCommentDateUtil().get_time_for_opensooq_member_timeregister(member_timeregister)
 
         _city_id = item_db.save_city(City.get_default(_ads_city))
 
         _His_announcement_id = item_db.save_member(
-            Member.get_default(user_name=_memberName, timeregister=_member_timeregister))
-
-        # Because opensooq's contact is image base64 format.
-        # So the ads's contact must be empty.
-        _ads_contact = ""
+            Member.get_default(user_name=_memberName, timeregister=member_timeregister, phone=ads_contact))
 
         item = Ad.get_default(
             section_item=_section_item,
             _ads_title=_ads_title,
             _city_id=_city_id,
-            _ads_contact=_ads_contact,
+            _ads_contact=ads_contact,
             _ads_body=_ads_body,
             _image_link=_image_link,
             _His_announcement_id=_His_announcement_id,
@@ -106,19 +112,7 @@ class OpensooqParse(BaseParser):
         # Scrape all comments for the ad.
         HarajsComments(self, item_db, id_ads).save_for_opensooq(hxs)
 
-        # return phone_number_item
-        phone_number_item = phoneNumberSet.get_phone_number_item(url, _ID)
-        if phone_number_item:
-            # Specially, parse phone_number only for opensooq
-            _phone_data_id = self.get_value_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-id')
-            _phone_data_type = self.get_value_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
-
-            phone_number_item.phone_data_id = _phone_data_id
-            phone_number_item.phone_data_type = _phone_data_type
-            phone_number_item._His_announcement_id = _His_announcement_id
-            phone_number_item.id_ads = id_ads
-
-        return phone_number_item
+        return item
 
     def query_phone_number_base64_image(self, hxs):
         """
