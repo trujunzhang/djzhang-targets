@@ -120,6 +120,27 @@ class OpensooqParse(BaseParser):
 
         return phone_number_item
 
+    def query_phone_number_base64_image(self, hxs):
+        """
+
+        Because the opensooq's phone number is the base64 image,
+        So we need to get the base64 format via ajax.
+
+        :param hxs:
+        :return:
+        """
+        phone_data_id = self.get_value_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-id')
+        phone_data_type = self.get_value_response(hxs, '//*[@class="phoneNumber table getPhoneNumber"]/@data-type')
+
+        if phone_data_id:
+            ajax_url = "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type={}".format(
+                phone_data_id, phone_data_type)
+
+            import requests
+            r = requests.get(ajax_url)
+            if r.status_code == 200:
+                return r.text
+
     def get_pictures(self, hxs, selector):
         _pictures = hxs.xpath(selector).extract()
         list = []
