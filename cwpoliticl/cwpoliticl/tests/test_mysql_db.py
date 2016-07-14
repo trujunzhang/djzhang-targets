@@ -18,6 +18,7 @@ class MysqlDBTest(unittest.TestCase):
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
         self.page_url = 'http://indianexpress.com/article/opinion/columns/burhan-wani-death-kashmir-protests-mehbooba-mufti-hurriyat-2909858/'
+        self.url_from = WebsiteTypes.indianexpress.value
 
     # def test_exist_cache_row(self):
     #     exist = self._cache_db._check_exist_with_sql(self.page_url)
@@ -28,7 +29,7 @@ class MysqlDBTest(unittest.TestCase):
 
     def test_get_cache_row_by_url(self):
         row = self._cache_db.query_cache_item(self.page_url)
-        self.assertEqual(row['url_from'], WebsiteTypes.indianexpress.value)
+        self.assertEqual(row['url_from'], self.url_from)
         self.assertEqual(row['url'], self.page_url)
         self.assertEqual(row['thumbnail_url'], '//images.indianexpress.com/2016/07/kashmir-small.jpg?w=450')
 
