@@ -27,7 +27,7 @@ class WDXmlRPCUtils(object):
         image_download = self._get_image_downloader(item)
 
         # step 1: Download the featured image to the template folder.
-        image_cache_path = image_download.write_cache(item)
+        image_cache_path = image_download.write_image_cache(item)
 
         # step 2: Post to the wordpress via xml_rpc.
         if image_cache_path:

@@ -24,7 +24,7 @@ class ImagesDownload(object):
         filename = md5(image_link).hexdigest()
         return '{}/{}'.format(ImagesDownload._get_image_tmp_folder(), filename)
 
-    def write_cache(self, item):
+    def write_image_cache(self, item):
         image_link = item['image_src']
         if image_link:
             image_location = ImagesDownload.get_image_location(image_link)
