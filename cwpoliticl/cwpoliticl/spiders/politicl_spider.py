@@ -47,3 +47,20 @@ class PoliticlsSpider(scrapy.Spider):
 
     def parse(self, response):
         self.spider_dispatch.parse_from_detail_page(response.url, response, self.views_paper_wd_rpc)
+
+        # step 1: request the last row on the cache database
+        _row = self.get_row_from_cache(response.url, WebsiteTypes.mstaml.value)
+
+        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
+
+    def get_row_from_cache(self, _last, url_from):
+        while True:
+            _row = self._cache_db.get_oldest_row(_last, url_from)
+            if _row:
+                return _row
+
+            # Return 'None' when the cache table is empty,
+            # So we set the _last to empty string.
+            _last = ""
+
+            time.sleep(4)
