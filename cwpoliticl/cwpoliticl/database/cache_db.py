@@ -10,7 +10,7 @@ class CacheDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(CacheDatabase, self).__init__(host, port, user, passwd, db, collection_name)
 
-    def save_cache(self, item, index=1):
+    def save_cache(self, item):
         sql = "SELECT * FROM {} WHERE url = '{}'".format(self.collection_name, item['url'])
         if self._check_exist_with_sql(sql):
             return

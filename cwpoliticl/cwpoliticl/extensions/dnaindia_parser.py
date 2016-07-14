@@ -23,7 +23,7 @@ class DnaIndiaParser(BaseParser):
             if history_db.check_history_exist(detailed_href):
                 continue
 
-            cache_db.save_cache(CacheItem.get_default(url=detailed_href, url_from=self._url_from), count)
+            cache_db.save_cache(CacheItem.get_default(url=detailed_href, url_from=self._url_from))
 
             count += 1
 

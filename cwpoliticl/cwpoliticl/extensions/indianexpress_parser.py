@@ -12,20 +12,14 @@ class IndianExpressParser(BaseParser):
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
         selector = '//*[@class="profile-container"]/*[@class="opi-story"]/h6/a/@href'
-        links = hxs.xpath(selector).extract()
+        links = hxs.xpath(selector).extract()  # Type: List['unicode']
 
-        count = 1
-        for link in links:
-            href_selector = "{}/div[{}]/div[2]/a/@href".format(selector, count)
-            detailed_href = self.get_value_with_urljoin(hxs, href_selector, url)
-
+        for href in links:
             # If the link already exist on the history database, ignore it.
-            if history_db.check_history_exist(detailed_href):
+            if history_db.check_history_exist(href):
                 continue
 
-            cache_db.save_cache(CacheItem.get_default(url=detailed_href, url_from=self._url_from), count)
-
-            count += 1
+            cache_db.save_cache(CacheItem.get_default(url=href, url_from=self._url_from))
 
     def parse(self, url, hxs, wd_rpc):
         title = self.get_value_response(hxs, '//*[@class="img-caption"]/h1/text()')
