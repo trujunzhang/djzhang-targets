@@ -8,9 +8,9 @@ class DnaIndiaDebugSpider(scrapy.Spider):
     allowed_domains = ["www.dnaindia.com"]
     start_urls = [
         # Pagination
-        # 'http://www.dnaindia.com/analysis',
+        'http://www.dnaindia.com/analysis',
         # Detail
-        'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
+        # 'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
         # 'http://www.dnaindia.com/analysis/column-nda-s-decisive-push-to-garner-tax-from-fugitive-firms-2232199'
     ]
 
@@ -50,5 +50,5 @@ class DnaIndiaDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        # self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._dna_india_Parse.parse(response.url, response, self.wd_rpc)
+        self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._dna_india_Parse.parse(response.url, response, self.wd_rpc)

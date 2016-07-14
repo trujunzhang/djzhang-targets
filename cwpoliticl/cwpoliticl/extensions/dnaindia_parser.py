@@ -13,16 +13,17 @@ class DnaIndiaParser(BaseParser):
 
         count = 1
         for link in links:
-            href_selector = "{}/div[{}]/div[2]/a/@href".format(selector, count)
-            detailed_href = self.get_value_with_urljoin(hxs, href_selector, url)
+            href_selector = '{}/div[{}]/div[@class="media-left"]/a/@href'.format(selector, count)
+            thumbnail_selector = '{}/div[{}]/div[@class="media-left"]/a/img/@src'.format(selector, count)
+            count += 1
 
+            href = self.get_value_with_urljoin(hxs, href_selector, url)
             # If the link already exist on the history database, ignore it.
-            if history_db.check_history_exist(detailed_href):
+            if history_db.check_history_exist(href):
                 continue
 
-            cache_db.save_cache(CacheItem.get_default(url=detailed_href, url_from=self.url_from))
-
-            count += 1
+            thumbnail_src = self.get_value_response(hxs, thumbnail_selector)
+            cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie=None):
         title = self.get_value_response(hxs, '//*[@class="img-caption"]/h1/text()')
