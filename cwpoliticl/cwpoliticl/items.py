@@ -64,7 +64,10 @@ class WDPost(scrapy.Item):
     tags = scrapy.Field()
 
     @classmethod
-    def get_default(self, url, url_from, title, image_src, content, tags, access_denied_cookie=None):
+    def get_default(self, url, url_from, title, image_src, thumbnail_url, content, tags, access_denied_cookie=None):
+        if not image_src:
+            image_src = thumbnail_url
+
         return HistoryItem(
             url=url,
             url_from=url_from,

@@ -27,8 +27,7 @@ class TheViewsPaperParser(BaseParser):
         tags = hxs.xpath(
             '//*[@class="entry-content"]/*[@class="post-meta"]/*[@class="categories-links"]/a/text()').extract()
 
-        item = WDPost(url=url, url_from=self._url_from, title=title, image_src=image_src, content=content, tags=tags,
-                      access_denied_cookie=access_denied_cookie)
+        item = WDPost(url, self._url_from, title, image_src, thumbnail_url, content, tags, access_denied_cookie)
 
         post_id = wd_rpc.post_to_wd(item)
 
