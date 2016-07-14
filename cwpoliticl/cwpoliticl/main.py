@@ -12,8 +12,8 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    # utils.execute("politicl")
-    utils.execute("politicl_watch")
+    utils.execute("politicl")
+    # utils.execute("politicl_watch")
 
     # utils.execute("politicl_debug")
     # utils.execute("politicl_browser")
