@@ -28,5 +28,3 @@ class IndianExpressParser(BaseParser):
         item = WDPost(url=url, url_from=self._url_from, title=title, image_src=image_src, content=content, tags=tags)
 
         post_id = wd_rpc.post_to_wd(item)
-
-        pass

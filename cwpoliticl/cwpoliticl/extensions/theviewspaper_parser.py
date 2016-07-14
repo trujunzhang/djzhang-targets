@@ -32,8 +32,6 @@ class TheViewsPaperParser(BaseParser):
 
         post_id = views_paper_wd_rpc.post_to_wd(item)
 
-        pass
-
     def _get_image(self, hxs, selector):
         image = self.get_value_response(hxs, selector)
         srcset = image.split(',')
