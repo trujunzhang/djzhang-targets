@@ -14,7 +14,7 @@ scrapy crawl politicl_browser
 scrapyd-deploy local -p cwpoliticl
 curl http://localhost:6800/schedule.json -d project=cwpoliticl -d spider=dnaindia_debug
 
-scrapyd-deploy droplet -p cwpoliticl
+scrapyd-deploy xubuntu -p cwpoliticl
 curl http://104.236.77.182:6800/schedule.json -d project=cwpoliticl -d spider=politicl
 curl http://104.236.77.182:6800/schedule.json -d project=cwpoliticl -d spider=politicl_watch
 
