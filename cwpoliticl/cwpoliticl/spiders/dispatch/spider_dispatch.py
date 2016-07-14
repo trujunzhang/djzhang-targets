@@ -7,10 +7,14 @@ class SpiderDispatch(BaseDispatch):
         super(SpiderDispatch, self).__init__()
 
     def _get_detail_page_type(self, url):
-        page_domain = ''
+        import urlparse
+        hostname = urlparse.urlparse(url).hostname
+
         for homepage in self.websites:
-            if homepage in url:
+            if hostname in homepage:
                 return self.websites[homepage]
+
+        pass
 
     def parse_from_detail_page(self, url, hxs, views_paper_wd_rpc):
         type = self._get_detail_page_type(url)
