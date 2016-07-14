@@ -27,7 +27,8 @@ class TheViewsPaperParser(BaseParser):
         content = self.get_all_value_response(hxs, '//*[@itemprop="articleBody"]/p', max_len=2, sperator='\n' + '\n',
                                               start_index=2)
 
-        tags = hxs.xpath('//*[@class="storytags"]/ul/li/a/text()').extract()
+        tags = hxs.xpath(
+            '//*[@class="entry-content"]/*[@class="post-meta"]/*[@class="categories-links"]/a/text()').extract()
 
         item = WDPost(url=url, url_from=self._url_from, title=title, image=image, content=content, tags=tags)
 
