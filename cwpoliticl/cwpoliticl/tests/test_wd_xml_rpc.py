@@ -39,6 +39,8 @@ class WDXmlRpcTest(unittest.TestCase):
         #     < WordPressUser: max >
 
     def test_post_image(self):
+        # '/var/folders/t1/tylq1lf13nv3rzfll_hh_5fh0000gn/T/politicl/daaf4badb91771a0d23647d713068663'
+        # '/var/folders/t1/tylq1lf13nv3rzfll_hh_5fh0000gn/T/politicl'
         image_location = ImagesDownload.write_cache(self.image_link)
         self.assertIsNotNone(image_location)
 
