@@ -19,7 +19,7 @@ class SpiderWatchDispatch(object):
         return self.allowed_domains
 
     def get_pagination_websites(self):
-        return self.websites
+        return self.websites.values()
 
     def parse_from_pagination(self, url, hxs, cache_db, history_db):
         pass
