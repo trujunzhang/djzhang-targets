@@ -1,23 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import inspect, os
 import unittest
-from datetime import datetime
 
-from wordpress_xmlrpc.methods import media
+from wordpress_xmlrpc import Client
 
 from cwpoliticl import settings
-from wordpress_xmlrpc import Client, WordPressPost, xmlrpc_client
-from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
-from wordpress_xmlrpc.methods.users import GetUserInfo
-from BeautifulSoup import BeautifulSoup
-from wordpress_xmlrpc import Client, WordPressPost
-from wordpress_xmlrpc.methods import posts, media, taxonomies
-from wordpress_xmlrpc.compat import xmlrpc_client
-from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
-from wordpress_xmlrpc.methods.users import GetUserInfo
-from wordpress_xmlrpc.methods import taxonomies
-
 from cwpoliticl.utils.images_downloader import ImagesDownload
 
 

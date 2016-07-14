@@ -1,6 +1,5 @@
-import urlparse
-
 import sys
+import urlparse
 
 
 class BaseParser(object):

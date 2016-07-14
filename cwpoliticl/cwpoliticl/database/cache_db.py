@@ -1,5 +1,4 @@
 import logging
-from datetime import datetime
 
 from cwpoliticl.database.base.mysql_db import MysqlDatabase
 from cwpoliticl.items import CacheItem

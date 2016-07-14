@@ -1,9 +1,7 @@
-import datetime
+import logging
 import os
 import urllib
-
 from hashlib import md5
-import logging
 
 Cache_Folder = 'politicl'
 

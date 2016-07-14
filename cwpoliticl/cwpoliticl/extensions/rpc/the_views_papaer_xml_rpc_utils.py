@@ -1,22 +1,8 @@
-from datetime import datetime, time
-from hashlib import md5
-
-from cwpoliticl import settings
-from wordpress_xmlrpc import Client, WordPressPost, xmlrpc_client
-from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
-from wordpress_xmlrpc.methods.users import GetUserInfo
-from BeautifulSoup import BeautifulSoup
-from wordpress_xmlrpc import Client, WordPressPost
-from wordpress_xmlrpc.methods import posts, media, taxonomies
-from wordpress_xmlrpc.compat import xmlrpc_client
-from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
-from wordpress_xmlrpc.methods.users import GetUserInfo
-from wordpress_xmlrpc.methods import taxonomies
+import os
+import urllib2
 
 from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
 from cwpoliticl.utils.images_downloader import ImagesDownload
-import os
-import urllib2
 
 USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 '' \
 ''(KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36'
@@ -52,7 +38,7 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
         file_size = int(meta.getheaders("Content-Length")[0])
         # print u"Downloading: %s Bytes: %s" % (path, file_size)
 
-        time.sleep(1)
+        # time.sleep(1)
 
         file_size_dl = 0
         block_sz = 8192

@@ -5,10 +5,10 @@
 # See documentation in:
 # http://doc.scrapy.org/en/latest/topics/items.html
 
+from datetime import datetime
+
 import scrapy
 from enum import Enum
-import time
-from datetime import datetime
 
 
 class WebsiteTypes(Enum):

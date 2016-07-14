@@ -1,12 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import unittest
-from datetime import datetime
 
 from cwpoliticl import settings
 from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
-from cwpoliticl.items import CacheItem, HistoryItem
-from cwpoliticl.utils.crawl_utils import CrawlUtils
 
 
 class MysqlDBTest(unittest.TestCase):

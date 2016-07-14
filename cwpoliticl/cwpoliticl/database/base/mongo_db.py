@@ -1,5 +1,3 @@
-import logging
-
 import MySQLdb
 
 from cwpoliticl.database.base.base_db import BaseDatabase

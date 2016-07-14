@@ -1,7 +1,4 @@
-import urlparse
-
 from cwpoliticl.extensions.base_parser import BaseParser
-from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
 from cwpoliticl.items import CacheItem, WebsiteTypes, WDPost
 
 

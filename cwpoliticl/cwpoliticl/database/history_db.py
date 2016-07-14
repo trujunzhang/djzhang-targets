@@ -1,9 +1,6 @@
 import logging
-from datetime import datetime
 
 from cwpoliticl.database.base.mysql_db import MysqlDatabase
-from cwpoliticl.items import HistoryItem
-from cwpoliticl.utils.crawl_utils import CrawlUtils
 
 
 class HistoryDatabase(MysqlDatabase):

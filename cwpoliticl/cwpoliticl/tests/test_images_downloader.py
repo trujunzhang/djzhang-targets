@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 
-import inspect, os
 import unittest
-from datetime import datetime
 
-from cwpoliticl.extensions.base_parser import BaseParser
 from cwpoliticl.utils.images_downloader import ImagesDownload
 
 

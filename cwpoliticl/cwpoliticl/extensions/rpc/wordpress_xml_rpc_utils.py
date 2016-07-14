@@ -1,17 +1,8 @@
-from datetime import datetime, time
-from hashlib import md5
+import time
 
-from cwpoliticl import settings
-from wordpress_xmlrpc import Client, WordPressPost, xmlrpc_client
-from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
-from wordpress_xmlrpc.methods.users import GetUserInfo
-from BeautifulSoup import BeautifulSoup
 from wordpress_xmlrpc import Client, WordPressPost
-from wordpress_xmlrpc.methods import posts, media, taxonomies
 from wordpress_xmlrpc.compat import xmlrpc_client
-from wordpress_xmlrpc.methods.posts import GetPosts, NewPost
-from wordpress_xmlrpc.methods.users import GetUserInfo
-from wordpress_xmlrpc.methods import taxonomies
+from wordpress_xmlrpc.methods import posts, media
 
 from cwpoliticl.utils.images_downloader import ImagesDownload
 
