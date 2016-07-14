@@ -11,7 +11,7 @@ class IndianExpressParser(BaseParser):
         super(IndianExpressParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        selector = '//*[@class="profile-container"]/*[@class="opi-story"]/h6/a/@href'
+        selector = '//*[@class="container"]/*[@class="row"]/*[@class="col-md-8"]/article/a/@href'
         links = hxs.xpath(selector).extract()  # Type: List['unicode']
 
         for href in links:
