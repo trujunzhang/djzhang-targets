@@ -38,8 +38,6 @@ class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
         file_size = int(meta.getheaders("Content-Length")[0])
         # print u"Downloading: %s Bytes: %s" % (path, file_size)
 
-        # time.sleep(1)
-
         file_size_dl = 0
         block_sz = 8192
         while True:
