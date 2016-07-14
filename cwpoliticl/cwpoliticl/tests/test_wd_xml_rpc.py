@@ -26,7 +26,8 @@ class WDXmlRpcTest(unittest.TestCase):
         url = "{}/xmlrpc.php".format(settings.WD_HOST)
         self.wp = Client(url, settings.WD_USER, settings.WD_PASSWD)
 
-        self.image_link = 'http://theviewspaper.net/wp-content/uploads/WordsOfTerror-1024x576.jpg'
+        # self.image_link = 'http://theviewspaper.net/wp-content/uploads/WordsOfTerror-1024x576.jpg'
+        self.image_link = 'http://localhost:8888/politicl/wp-content/uploads/2016/07/picture-324x160.jpeg'
 
         # def test_get_posts(self):
         #     wp_call = self.wp.call(GetPosts())
