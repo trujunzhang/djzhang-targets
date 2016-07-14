@@ -32,7 +32,7 @@ class TheViewsPaperParser(BaseParser):
 
         item = WDPost(url=url, url_from=self._url_from, title=title, image=image, content=content, tags=tags)
 
-        post_id = wd_rpc.post_to_wd(item)
+        post_id = wd_rpc.post_to_wd_for_theviewspaper(item,access_denied_cookie)
 
         pass
 
