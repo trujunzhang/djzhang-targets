@@ -97,7 +97,11 @@ class CacheDatabase(MysqlDatabase):
         return _count
 
     def _find_oldest_for_cache(self):
-        """Query the oldest cache item."""
+        """
+
+        Query the oldest cache item.
+
+        """
         total_count = self._get_cache_total_count()
 
         logging.debug(
@@ -108,18 +112,15 @@ class CacheDatabase(MysqlDatabase):
         _connection = self.get_client()
         xcnx = _connection.cursor()
 
-        found_count = 0
-
-        sql = "SELECT model_id,url,url_from FROM {}  ORDER BY id ASC LIMIT 1".format(self.collection_name)
+        sql = "SELECT url,url_from FROM {}  ORDER BY id ASC LIMIT 1".format(self.collection_name)
 
         try:
             # Execute the SQL command
             xcnx.execute(sql)
             # Get the row data
             data = xcnx.fetchone()
-            found_count = xcnx.rowcount
             if data:
-                row = CacheItem.get_default(model_id=data[0], url=data[1], url_from=data[2])
+                row = CacheItem.get_default(url=data[0], url_from=data[1])
         except Exception, e:
             _excep = e
             logging.debug("  mysql: find the oldest row on the {} failure, {}".format(self.collection_name, _excep))
