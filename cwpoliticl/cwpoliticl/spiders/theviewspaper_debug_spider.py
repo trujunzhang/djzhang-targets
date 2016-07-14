@@ -3,17 +3,17 @@
 import scrapy
 
 
-class IndianExpressDebugSpider(scrapy.Spider):
-    name = "indianexpress_debug"
-    allowed_domains = ["www.indianexpress.com"]
+class TheViewsPaperDebugSpider(scrapy.Spider):
+    name = "theviewspaper_debug"
+    allowed_domains = ["http://theviewspaper.net"]
     start_urls = [
         # Pagination
-        # 'http://indianexpress.com/opinion/',
+        'http://theviewspaper.net',
         # Detail
         # no tags
-        # 'http://indianexpress.com/article/opinion/columns/gulberg-society-massacre-ehsan-jafri-zakia-jafri-case-naroda-patiya-conspiracy-under-the-carpet-2877863/'
+        # ''
         # one tag
-        'http://indianexpress.com/article/opinion/columns/prakash-javadekar-hrd-ministry-narendra-modi-cabinet-reshuffle-expansion-2900114/'
+        ''
     ]
 
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
@@ -33,11 +33,11 @@ class IndianExpressDebugSpider(scrapy.Spider):
         from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
         self._indian_express_Parse = IndianExpressParser()
 
-        super(IndianExpressDebugSpider, self).__init__(name, **kwargs)
+        super(TheViewsPaperDebugSpider, self).__init__(name, **kwargs)
 
     @classmethod
     def from_crawler(cls, crawler, *args, **kwargs):
-        return super(IndianExpressDebugSpider, cls).from_crawler(crawler,
+        return super(TheViewsPaperDebugSpider, cls).from_crawler(crawler,
                                                                  args,
                                                                  host=crawler.settings.get('SQL_HOST'),
                                                                  port=crawler.settings.get('SQL_PORT'),

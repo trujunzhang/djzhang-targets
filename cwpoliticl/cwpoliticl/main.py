@@ -21,7 +21,8 @@ def main():
 
     # Extensions
     # utils.execute("dnaindia_debug")
-    utils.execute("indianexpress_debug")
+    # utils.execute("indianexpress_debug")
+    utils.execute("theviewspaper_debug")
 
 
 if __name__ == '__main__':

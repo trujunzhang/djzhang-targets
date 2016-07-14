@@ -17,6 +17,7 @@ class WebsiteTypes(Enum):
 
     dnaindia = "dnaindia"
     indianexpress = "indianexpress"
+    theviewspaper = "theviewspaper"
 
 
 class CacheItem(scrapy.Item):
