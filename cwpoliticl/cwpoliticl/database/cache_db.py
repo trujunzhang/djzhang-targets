@@ -45,23 +45,16 @@ class CacheDatabase(MysqlDatabase):
         # Query the oldest cache item.
         return self._find_oldest_for_cache()
 
-    def _delete_cache_row(self, _last, url_from):
-        _excep = None
-        _deleted_count = 0
-
-        # 1. Parse the url and get the unique model_id.
-        model_id = CrawlUtils.get_model_id_by_url_from(_last, url_from)
-        logging.debug("  2. get the last url's model_id: {}".format(model_id))
-
+    def _delete_cache_row(self, last, url_from):
         # Query the deleted item count, must be equal to 1.
-        sql = """ SELECT 1 FROM {} WHERE model_id = '{}'""".format(self.collection_name, model_id)
+        sql = """ SELECT 1 FROM {} WHERE url = '{}'""".format(self.collection_name, last)
         count = self._get_count(sql, self.collection_name)
-        logging.debug("  3. found the deleted item count: {} by model_id".format(count))
-        if count:
+        logging.debug("  1. found the deleted item count: {} by url".format(count))
 
+        if count:
             _connection = self.get_client()
             xcnx = _connection.cursor()
-            sql = """ DELETE FROM {} WHERE model_id = '{}'""".format(self.collection_name, model_id)
+            sql = """ DELETE FROM {} WHERE url = '{}'""".format(self.collection_name, last)
             try:
                 # Execute the SQL command
                 xcnx.execute(sql)
@@ -72,7 +65,7 @@ class CacheDatabase(MysqlDatabase):
                 _excep = e
                 # Rollback in case there is any error
                 _connection.rollback()
-                logging.debug("  mysql: delete the oldest cache row, from the {} failure, {}".format(url_from, _excep))
+                logging.debug("  mysql: delete the oldest cache row, from the {} failure, {}".format(url_from, e))
             finally:
                 xcnx.close()
                 _connection.close()

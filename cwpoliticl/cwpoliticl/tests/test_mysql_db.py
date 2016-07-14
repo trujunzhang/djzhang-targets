@@ -21,8 +21,12 @@ class MysqlDBTest(unittest.TestCase):
     #     exist = self._cache_db._check_exist_with_sql(url)
     #     self.assertEqual(True, exist)
 
-    def test_get_oldest_cache_row(self):
-        row = self._cache_db.get_oldest_row("", "")
+    # def test_get_oldest_cache_row(self):
+    #     row = self._cache_db.get_oldest_row("", "")
+
+    def test_remove_last_cache_row(self):
+        row = self._cache_db.get_oldest_row(
+            "http://indianexpress.com/article/opinion/editorials/tony-blair-2003-iraq-war-2909991/", "indianexpress")
 
         # def test_insert_history_row(self):
         #     item = HistoryItem.get_default(url=self._page_url, id_ads=self._ads_id, url_from=self._page_from)
