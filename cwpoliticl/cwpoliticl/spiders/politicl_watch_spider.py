@@ -23,15 +23,6 @@ class PoliticlsWatchSpider(scrapy.Spider):
         self.allowed_domains = self.watch_dispatch.get_allowed_domains()
         self.start_urls = self.watch_dispatch.get_pagination_websites()
 
-        # from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
-        # self._dna_india_Parse = DnaIndiaParser()
-        #
-        # from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
-        # self._indian_express_Parse = IndianExpressParser()
-        #
-        # from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
-        # self._the_views_paper_Parse = TheViewsPaperParser()
-
         super(PoliticlsWatchSpider, self).__init__(name, **kwargs)
 
     @classmethod
