@@ -29,7 +29,7 @@ class CacheItem(scrapy.Item):
     thumbnail_url = scrapy.Field()
 
     @classmethod
-    def get_default(self, url, thumbnail_url, url_from):
+    def get_default(cls, url, thumbnail_url, url_from):
         return CacheItem(
             url_from=url_from,
             thumbnail_url=thumbnail_url,
@@ -43,7 +43,7 @@ class HistoryItem(scrapy.Item):
     created_at = scrapy.Field()
 
     @classmethod
-    def get_default(self, url):
+    def get_default(cls, url):
         return HistoryItem(
             url=url,
             created_at=datetime.utcnow().replace(microsecond=0).isoformat(' '),
@@ -64,7 +64,7 @@ class WDPost(scrapy.Item):
     tags = scrapy.Field()
 
     @classmethod
-    def get_default(self, url, url_from, title, image_src, thumbnail_url, content, tags, access_denied_cookie=None):
+    def get_default(cls, url, url_from, title, image_src, thumbnail_url, content, tags, access_denied_cookie=None):
         if not image_src:
             image_src = thumbnail_url
 
