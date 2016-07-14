@@ -4,14 +4,11 @@ import scrapy
 from scrapy.selector import Selector
 
 from cwpoliticl.items import WebsiteTypes
+import logging
 
 
 class PoliticlsSpider(scrapy.Spider):
     name = "politicl"
-    allowed_domains = ["xxx"]
-    start_urls = [
-        'http://www.dnaindia.com/analysis',
-    ]
 
     def __init__(self, name=None, **kwargs):
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
@@ -28,9 +25,15 @@ class PoliticlsSpider(scrapy.Spider):
         from cwpoliticl.spiders.dispatch.spider_dispatch import SpiderDispatch
         self.spider_dispatch = SpiderDispatch()
 
-        # Dynamic the domains and start url.
+        # Dynamic the domains
         self.allowed_domains = self.spider_dispatch.get_allowed_domains()
-        self.start_urls = self.spider_dispatch.get_pagination_websites()
+
+        # Get the start urls from the cache database
+        cache = self.get_row_from_cache()
+        if cache:
+            self.start_urls = [cache['url']]
+        else:
+            logging.debug("Not found the caches currently, the schedulared task end!")
 
         super(PoliticlsSpider, self).__init__(name, **kwargs)
 
@@ -48,12 +51,14 @@ class PoliticlsSpider(scrapy.Spider):
                                                         )
 
     def parse(self, response):
-        self.spider_dispatch.parse_from_detail_page(response.url, response, self.views_paper_wd_rpc)
+        item = self.spider_dispatch.parse_from_detail_page(response.url, response, self.views_paper_wd_rpc)
 
         # step 1: request the last row on the cache database
-        _row = self.get_row_from_cache(response.url, WebsiteTypes.mstaml.value)
+        row = self.get_row_from_cache(item['url'], item['url_from'])
+        if row:
+            yield scrapy.Request(row['url'], callback=self.parse, dont_filter=True)
+        else:
+            logging.debug("Not found the caches currently, the schedulared task end!")
 
-        yield scrapy.Request(_row['url'], callback=self.get_call_back(_row['url_from']), dont_filter=True)
-
-    def get_row_from_cache(self, _last, url_from):
-        return self._cache_db.get_oldest_row(_last, url_from)
+    def get_row_from_cache(self, last='', url_from=''):
+        return self._cache_db.get_oldest_row(last, url_from)

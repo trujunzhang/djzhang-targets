@@ -10,7 +10,7 @@ class SpiderDispatch(BaseDispatch):
         type = self.websites[url]
         parse = self.parses[type]
 
-        parse.parse(url, hxs, views_paper_wd_rpc, self._get_access_denied_cookie(type, hxs))
+        return parse.parse(url, hxs, views_paper_wd_rpc, self._get_access_denied_cookie(type, hxs))
 
     def _get_access_denied_cookie(self, type, hxs):
         """
