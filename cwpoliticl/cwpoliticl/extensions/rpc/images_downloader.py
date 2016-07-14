@@ -7,6 +7,9 @@ Cache_Folder = 'politicl'
 
 
 class ImagesDownload(object):
+    def __init__(self):
+        super(ImagesDownload, self).__init__()
+
     @classmethod
     def _get_image_tmp_folder(cls):
         import tempfile, os
@@ -21,33 +24,34 @@ class ImagesDownload(object):
         filename = md5(image_link).hexdigest()
         return '{}/{}'.format(ImagesDownload._get_image_tmp_folder(), filename)
 
-    @classmethod
-    def write_cache(cls, image_link):
+    def write_cache(self, image_link):
         image_location = ImagesDownload.get_image_location(image_link)
         if not os.path.exists(image_location):
-            urllib.urlretrieve(image_link, image_location)
-            # wget.download(image_link, image_location)
-            # ImagesDownload._download_photo(image_link, image_location)
+            self._download_photo(image_link, image_location)
+
+        # wget.download(image_link, image_location)
+        # ImagesDownload._download_photo(image_link, image_location)
         return image_location
 
-    @classmethod
-    def _download_photo(cls, img_url, image_location):
-        try:
-            image_on_web = urllib.urlopen(img_url)
-            if image_on_web.headers.maintype == 'image':
-                buf = image_on_web.read()
-                downloaded_image = file(image_location, "wb")
-                downloaded_image.write(buf)
-                downloaded_image.close()
-                image_on_web.close()
-            else:
-                return False
-        except:
-            return False
-        return True
+    def _download_photo(self, image_link, image_location):
+        urllib.urlretrieve(image_link, image_location)
 
-    @classmethod
-    def remove_image_location(cls, image_location):
+    # def _download_photo(cls, img_url, image_location):
+    #     try:
+    #         image_on_web = urllib.urlopen(img_url)
+    #         if image_on_web.headers.maintype == 'image':
+    #             buf = image_on_web.read()
+    #             downloaded_image = file(image_location, "wb")
+    #             downloaded_image.write(buf)
+    #             downloaded_image.close()
+    #             image_on_web.close()
+    #         else:
+    #             return False
+    #     except:
+    #         return False
+    #     return True
+
+    def remove_image_location(self, image_location):
         ## delete only if file exists ##
         if os.path.exists(image_location):
             os.remove(image_location)
