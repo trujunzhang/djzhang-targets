@@ -66,7 +66,7 @@ class PoliticlsSpider(scrapy.Spider):
                 logging.debug("Not found the caches currently, the schedulared task end!")
 
         else:
-            logging.debug("Parse the detailed page failure,{}!".format(response.url))
+            logging.debug("Parse the detailed page failure, {}!".format(response.url))
 
     def get_row_from_cache(self, last='', url_from=''):
         return self._cache_db.get_oldest_row(last, url_from)

@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+
+import unittest
+
+from cwpoliticl.extensions.base_parser import BaseParser
+from cwpoliticl.items import WebsiteTypes
+
+
+class DispatchTest(unittest.TestCase):
+    def setUp(self):
+        from cwpoliticl.spiders.dispatch.spider_dispatch import SpiderDispatch
+        self.spider_dispatch = SpiderDispatch()
+        self.page_url = 'http://indianexpress.com/article/opinion/columns/burhan-wani-death-kashmir-protests-mehbooba-mufti-hurriyat-2909858/'
+
+    def test_get_type_from_detailed_page(self):
+        page_type = self.spider_dispatch._get_detail_page_type(self.page_url)
+        self.assertEqual(page_type, WebsiteTypes.indianexpress)

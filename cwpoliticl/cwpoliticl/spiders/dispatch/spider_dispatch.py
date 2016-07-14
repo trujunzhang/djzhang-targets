@@ -7,6 +7,7 @@ class SpiderDispatch(BaseDispatch):
         super(SpiderDispatch, self).__init__()
 
     def _get_detail_page_type(self, url):
+        page_domain = ''
         for homepage in self.websites:
             if homepage in url:
                 return self.websites[homepage]
