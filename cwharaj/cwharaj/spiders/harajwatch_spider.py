@@ -37,7 +37,7 @@ class HarajsSpiderWatch(scrapy.Spider):
                                                           collection_name=crawler.settings.get('SQL_COLLECTION_NAME')
                                                           )
 
-    # This methond is entry point
+    # This method is entry point
     def parse(self, response):
         self.watch_dispatch.parse_from_pagination(response.url, response, self._cache_db, self._history_db)
 
