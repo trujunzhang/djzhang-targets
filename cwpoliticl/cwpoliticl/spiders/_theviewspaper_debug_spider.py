@@ -25,8 +25,8 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
 
-        from cwpoliticl.extensions.rpc.the_views_papaer_images_downloader import TheViewsPaperImagesDownloader
-        self.views_paper_wd_rpc = TheViewsPaperImagesDownloader(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
+        from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
+        self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
         from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
         self._the_views_paper_Parse = TheViewsPaperParser()
@@ -53,4 +53,4 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
         # self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         access_denied_cookie = response.headers.get('Set-Cookie').split(';', 1)[0]
 
-        item = self._the_views_paper_Parse.parse(response.url, response, self.views_paper_wd_rpc, access_denied_cookie)
+        item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc, access_denied_cookie)

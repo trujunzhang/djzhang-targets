@@ -2,7 +2,6 @@
 
 import unittest
 
-from cwpoliticl.extensions.base_parser import BaseParser
 from cwpoliticl.items import WebsiteTypes
 
 

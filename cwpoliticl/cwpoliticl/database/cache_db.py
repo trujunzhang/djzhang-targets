@@ -2,7 +2,6 @@ import logging
 
 from cwpoliticl.database.base.mysql_db import MysqlDatabase
 from cwpoliticl.items import CacheItem
-from cwpoliticl.utils.crawl_utils import CrawlUtils
 
 
 class CacheDatabase(MysqlDatabase):

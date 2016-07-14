@@ -1,5 +1,4 @@
 # coding=utf-8
-import logging
 
 from cwpoliticl.database.base.mysql_db import MysqlDatabase
 

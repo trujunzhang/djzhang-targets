@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-import scrapy
-from scrapy.selector import Selector
-
-from cwpoliticl.items import WebsiteTypes, HistoryItem
 import logging
+
+import scrapy
+
+from cwpoliticl.items import HistoryItem
 
 
 class PoliticlsSpider(scrapy.Spider):
