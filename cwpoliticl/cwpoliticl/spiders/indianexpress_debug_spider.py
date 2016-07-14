@@ -8,9 +8,9 @@ class IndianExpressDebugSpider(scrapy.Spider):
     allowed_domains = ["www.indianexpress.com"]
     start_urls = [
         # Pagination
-        # 'http://www.dnaindia.com/analysis',
+        'http://indianexpress.com/opinion/',
         # Detail
-        'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
+        # 'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
         # 'http://www.dnaindia.com/analysis/column-nda-s-decisive-push-to-garner-tax-from-fugitive-firms-2232199'
     ]
 

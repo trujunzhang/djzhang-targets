@@ -9,6 +9,7 @@ class Crawler:
         command = "scrapy crawl {} {}".format(module, para)
         cmdline.execute(command.split())
 
+
 def main():
     utils = Crawler()
 
@@ -19,7 +20,9 @@ def main():
     # utils.execute("politicl_browser_debug")
 
     # Extensions
-    utils.execute("dnaindia_debug")
+    # utils.execute("dnaindia_debug")
+    utils.execute("indianexpress_debug")
+
 
 if __name__ == '__main__':
     main()
