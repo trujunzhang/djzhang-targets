@@ -137,6 +137,8 @@ class Ad(scrapy.Item):
             Last_updated_Ad = Time_added
 
         return Ad(
+            url_from=url_from,
+
             ads_title=ads_title,
             ads_city=city_id,
             ads_tags_R=section_item.ads_tags_R,

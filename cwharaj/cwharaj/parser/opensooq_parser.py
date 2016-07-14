@@ -104,6 +104,7 @@ class OpensooqParse(BaseParser):
             ads_body=_ads_body,
             image_link=_image_link,
             His_announcement_id=_His_announcement_id,
+            url_from=self.url_from,
             Time_added=time_added,
             type_ads_or=1, _close_ads=0
         )
