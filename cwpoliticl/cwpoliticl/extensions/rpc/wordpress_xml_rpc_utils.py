@@ -22,7 +22,7 @@ class WDXmlRPCUtils(object):
         self.wp = Client(url, wd_user, wd_passwd)
         super(WDXmlRPCUtils, self).__init__()
 
-    def post(self, item):
+    def post_to_wd(self, item):
         # step 1: Download the featured image to the template folder.
         image_location = ImagesDownload.write_cache(item['image'])
 
@@ -43,7 +43,7 @@ class WDXmlRPCUtils(object):
         post.post_status = "publish"
         post.terms_names = {
             'post_tag': item['tags'],
-            'category': ['Tutorial', 'Tests']
+            'category': [item['url_from']]
         }
         post.custom_fields = []
         post.custom_fields.append({

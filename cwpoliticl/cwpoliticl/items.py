@@ -54,13 +54,16 @@ class WDPost(scrapy.Item):
     image = scrapy.Field()
     content = scrapy.Field()
 
+    url_from = scrapy.Field()
+
     # tags list['Unicode']
     tags = scrapy.Field()
 
     @classmethod
-    def get_default(self, url, title, image, content, tags):
+    def get_default(self, url, url_from, title, image, content, tags):
         return HistoryItem(
             url=url,
+            url_from=url_from,
             title=title,
             image=image,
             content=content,
