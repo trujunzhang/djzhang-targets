@@ -23,6 +23,8 @@ class IndianExpressParser(BaseParser):
                 continue
 
             thumbnail_src = self.get_value_response(hxs, thumbnail_selector)
+            thumbnail_src = self._add_url_scheme(thumbnail_src)
+
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie=None):

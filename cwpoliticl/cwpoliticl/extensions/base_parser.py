@@ -6,6 +6,12 @@ class BaseParser(object):
     def __init__(self):
         pass
 
+    def _add_url_scheme(self, thumbnail_src):
+        if not 'http:' in thumbnail_src:
+            thumbnail_src = 'http:{}'.format(thumbnail_src)
+
+        return thumbnail_src
+
     def get_value_with_urljoin(self, hxs, query, base, index=0):
         href = self.get_value_response(hxs, query, index)
         href = urlparse.urljoin(base, href.strip())

@@ -20,8 +20,8 @@ def main():
     # utils.execute("politicl_browser_debug")
 
     # Extensions
-    utils.execute("dnaindia_debug")
-    # utils.execute("indianexpress_debug")
+    # utils.execute("dnaindia_debug")
+    utils.execute("indianexpress_debug")
     # utils.execute("theviewspaper_debug")
 
 
