@@ -23,7 +23,7 @@ class TheViewsPaperParser(BaseParser):
 
     def parse(self, url, hxs, wd_rpc):
         title = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="entry-header"]/h2/a/text()')
-        image = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@src')
+        image = self._get_image(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@srcset')
         content = self.get_all_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p',
                                               max_len=2, sperator='\n' + '\n', start_index=2)
 
@@ -35,3 +35,14 @@ class TheViewsPaperParser(BaseParser):
         post_id = wd_rpc.post_to_wd(item)
 
         pass
+
+    def _get_image(self, hxs, selector):
+        image = self.get_value_response(hxs, selector)
+        srcset = image.split(',')
+        if len(srcset) > 0:
+            src_format = srcset[len(srcset) - 1].strip()
+            src_split = src_format.split(' ')
+            if len(src_split) == 2:
+                return src_split[0]
+
+        return ""
