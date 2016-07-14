@@ -4,9 +4,9 @@ from cwpoliticl.items import WebsiteTypes
 class SpiderWatchDispatch(object):
     def __init__(self):
         self.websites = {
-            WebsiteTypes.dnaindia: 'http://www.dnaindia.com/analysis',
-            WebsiteTypes.indianexpress: 'http://indianexpress.com/opinion/',
-            WebsiteTypes.theviewspaper: 'http://theviewspaper.net',
+            'http://www.dnaindia.com/analysis': WebsiteTypes.dnaindia,
+            'http://indianexpress.com/opinion/': WebsiteTypes.indianexpress,
+            'http://theviewspaper.net': WebsiteTypes.theviewspaper,
         }
         self.allowed_domains = [
             "www.dnaindia.com",
@@ -19,7 +19,7 @@ class SpiderWatchDispatch(object):
         return self.allowed_domains
 
     def get_pagination_websites(self):
-        return self.websites.values()
+        return self.websites.keys()
 
     def parse_from_pagination(self, url, hxs, cache_db, history_db):
         pass

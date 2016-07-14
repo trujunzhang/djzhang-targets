@@ -7,19 +7,6 @@ from scrapy.selector import Selector
 class PoliticlsWatchSpider(scrapy.Spider):
     name = "politicl_watch"
 
-    # allowed_domains = [
-    #     "www.dnaindia.com",
-    #     "www.indianexpress.com",
-    #     "http://theviewspaper.net"
-    # ]
-    # start_urls = [
-    #     'http://www.dnaindia.com/analysis',
-    # ]
-
-    # url_from_dnaindia = 'http://www.dnaindia.com/analysis'
-    # url_from_indiaexpress = 'http://indianexpress.com/opinion/'
-    # url_from_theviewspaper = 'http://theviewspaper.net'
-
     def __init__(self, name=None, **kwargs):
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
@@ -32,6 +19,7 @@ class PoliticlsWatchSpider(scrapy.Spider):
         from cwpoliticl.spiders.dispatch.spider_watch_dispatch import SpiderWatchDispatch
         self.watch_dispatch = SpiderWatchDispatch()
 
+        # Dynamic the domains and start url.
         self.allowed_domains = self.watch_dispatch.get_allowed_domains()
         self.start_urls = self.watch_dispatch.get_pagination_websites()
 
@@ -61,6 +49,4 @@ class PoliticlsWatchSpider(scrapy.Spider):
 
     # This methond is entry point
     def parse(self, response):
-        _url = response.url
-        pass
-        # self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        self.watch_dispatch.parse_from_pagination(response.url, response, self._cache_db, self._history_db)
