@@ -16,8 +16,7 @@ class WebsiteTypes(Enum):
         return str(self.value)
 
     dnaindia = "dnaindia"
-    mstaml = "mstaml"
-    harajsa = "harajsa"
+    indianexpress = "indianexpress"
 
 
 class CacheItem(scrapy.Item):
