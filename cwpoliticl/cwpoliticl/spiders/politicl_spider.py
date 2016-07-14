@@ -56,18 +56,18 @@ class PoliticlsSpider(scrapy.Spider):
     def parse(self, response):
         cache_item = self._cache_db.query_cache_item(response.url)
         item = self.spider_dispatch.parse_from_detail_page(response.url, response, self.wd_rpc, cache_item)
-        if item:
-            self._history_db.save_history(HistoryItem.get_default(url=response.url))
-
-            # step 1: request the last row on the cache database
-            row = self.get_row_from_cache(item['url'], item['url_from'])
-            if row:
-                yield scrapy.Request(row['url'], callback=self.parse, dont_filter=True)
-            else:
-                logging.debug("Not found the caches currently, the schedulared task end!")
-
-        else:
-            logging.debug("Parse the detailed page failure, {}!".format(response.url))
+        # if item:
+        #     self._history_db.save_history(HistoryItem.get_default(url=response.url))
+        #
+        #     # step 1: request the last row on the cache database
+        #     row = self.get_row_from_cache(item['url'], item['url_from'])
+        #     if row:
+        #         yield scrapy.Request(row['url'], callback=self.parse, dont_filter=True)
+        #     else:
+        #         logging.debug("Not found the caches currently, the schedulared task end!")
+        #
+        # else:
+        #     logging.debug("Parse the detailed page failure, {}!".format(response.url))
 
     def get_row_from_cache(self, last='', url_from=''):
         return self._cache_db.get_oldest_row(last, url_from)
