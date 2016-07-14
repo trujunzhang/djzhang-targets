@@ -7,9 +7,6 @@ class BaseParser(object):
     def __init__(self):
         pass
 
-    def parse(self, url, hxs, item_db):
-        return None
-
     def get_value_with_urljoin(self, hxs, query, base, index=0):
         href = self.get_value_response(hxs, query, index)
         href = urlparse.urljoin(base, href.strip())

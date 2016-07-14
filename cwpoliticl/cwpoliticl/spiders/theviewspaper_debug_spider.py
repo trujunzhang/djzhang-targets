@@ -50,4 +50,6 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
 
     def parse(self, response):
         # self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc)
+        access_denied_cookie = response.headers.get('Set-Cookie').split(';', 1)[0]
+
+        item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc, access_denied_cookie)
