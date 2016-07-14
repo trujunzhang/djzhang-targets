@@ -6,16 +6,19 @@ from scrapy.selector import Selector
 
 class PoliticlsWatchSpider(scrapy.Spider):
     name = "politicl_watch"
-    allowed_domains = [
-        "www.dnaindia.com",
-        "www.indianexpress.com",
-        "http://theviewspaper.net"
-    ]
-    start_urls = [
-        'http://www.dnaindia.com/analysis',
-        'http://indianexpress.com/opinion/',
-        'http://theviewspaper.net',
-    ]
+
+    # allowed_domains = [
+    #     "www.dnaindia.com",
+    #     "www.indianexpress.com",
+    #     "http://theviewspaper.net"
+    # ]
+    # start_urls = [
+    #     'http://www.dnaindia.com/analysis',
+    # ]
+
+    # url_from_dnaindia = 'http://www.dnaindia.com/analysis'
+    # url_from_indiaexpress = 'http://indianexpress.com/opinion/'
+    # url_from_theviewspaper = 'http://theviewspaper.net'
 
     def __init__(self, name=None, **kwargs):
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
@@ -26,14 +29,20 @@ class PoliticlsWatchSpider(scrapy.Spider):
         self._cache_db = database_factory.get_database(CollectionTypes.cache)
         self._history_db = database_factory.get_database(CollectionTypes.history)
 
-        from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
-        self._dna_india_Parse = DnaIndiaParser()
+        from cwpoliticl.spiders.dispatch.spider_watch_dispatch import SpiderWatchDispatch
+        self.watch_dispatch = SpiderWatchDispatch()
 
-        from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
-        self._indian_express_Parse = IndianExpressParser()
+        self.allowed_domains = self.watch_dispatch.get_allowed_domains()
+        self.start_urls = self.watch_dispatch.get_pagination_websites()
 
-        from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
-        self._the_views_paper_Parse = TheViewsPaperParser()
+        # from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
+        # self._dna_india_Parse = DnaIndiaParser()
+        #
+        # from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
+        # self._indian_express_Parse = IndianExpressParser()
+        #
+        # from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
+        # self._the_views_paper_Parse = TheViewsPaperParser()
 
         super(PoliticlsWatchSpider, self).__init__(name, **kwargs)
 
@@ -50,21 +59,8 @@ class PoliticlsWatchSpider(scrapy.Spider):
                                                                  'SQL_COLLECTION_NAME')
                                                              )
 
+    # This methond is entry point
     def parse(self, response):
-        self._crawl_parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-
-    def parse_detail(self, response):
-        item = self._crawl_parser.parse(response.url, response)
-        yield item
-
-        yield scrapy.Request(item['cluster'], self.parse_cluster)
-
-        # yield scrapy.Request(response.url, self.parse_relatived_app)
-
-        # the below is that crawl a random relatived app.
-        select = '//a[@class="card-click-target"]'
-        sel = Selector(response)
-        navs = sel.xpath(select)
-
-        if not self._history_db.check_exist(abstractPath):
-            yield scrapy.Request(abstractPath, self.parse_detail, meta={'type': title})
+        _url = response.url
+        pass
+        # self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
