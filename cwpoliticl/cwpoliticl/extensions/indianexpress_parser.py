@@ -32,7 +32,10 @@ class IndianExpressParser(BaseParser):
 
         tags = hxs.xpath('//*[@class="storytags"]/ul/li/a/text()').extract()
 
-        item = WDPost(url, self.url_from, title, image_src, thumbnail_url, content, tags)
+        item = WDPost(url=url, url_from=self.url_from,
+                      title=title,
+                      image_src=image_src, thumbnail_url=thumbnail_url,
+                      content=content, tags=tags)
 
         post_id = wd_rpc.post_to_wd(item)
 
