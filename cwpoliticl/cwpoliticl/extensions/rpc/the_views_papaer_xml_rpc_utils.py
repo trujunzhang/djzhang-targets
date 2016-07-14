@@ -24,8 +24,6 @@ USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 
 
 class TheViewsPaperXmlRPCUtils(WDXmlRPCUtils):
     def __init__(self, wd_host, wd_user, wd_passwd):
-        url = "{}/xmlrpc.php".format(wd_host)
-        self.wp = Client(url, wd_user, wd_passwd)
         super(TheViewsPaperXmlRPCUtils, self).__init__(wd_host, wd_user, wd_passwd)
 
     def post_to_wd_for_theviewspaper(self, item, access_denied_cookie):
