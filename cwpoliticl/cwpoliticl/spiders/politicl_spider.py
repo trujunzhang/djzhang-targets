@@ -47,7 +47,10 @@ class PoliticlsSpider(scrapy.Spider):
                                                         passwd=crawler.settings.get('SQL_PASSWD'),
                                                         db=crawler.settings.get('SQL_DB'),
                                                         collection_name=crawler.settings.get(
-                                                            'SQL_COLLECTION_NAME')
+                                                            'SQL_COLLECTION_NAME'),
+                                                        wd_host=crawler.settings.get('WD_HOST'),
+                                                        wd_user=crawler.settings.get('WD_USER'),
+                                                        wd_passwd=crawler.settings.get('WD_PASSWD')
                                                         )
 
     def parse(self, response):
