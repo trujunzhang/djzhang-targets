@@ -9,7 +9,7 @@ class DailyoParser(BaseParser):
         super(DailyoParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        select_block = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list"]'
+        select_block = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list "]'
         self._parse_block_for_pagination(hxs, cache_db, history_db, select_block)
 
         select_block = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list graybg"]'
