@@ -2,7 +2,8 @@
 
 import scrapy
 
-from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, WebsiteTypes
+from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, WebsiteTypes, \
+    websites_parses
 
 
 class DailyoDebugSpider(scrapy.Spider):
@@ -31,8 +32,7 @@ class DailyoDebugSpider(scrapy.Spider):
         from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
         self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
-        from cwpoliticl.extensions.dailyo_parser import DailyoParser
-        self._dailyo_Parse = DailyoParser()
+        self._parser = websites_parses.get(self.url_from)
 
         super(DailyoDebugSpider, self).__init__(name, **kwargs)
 
@@ -53,5 +53,5 @@ class DailyoDebugSpider(scrapy.Spider):
                                                           )
 
     def parse(self, response):
-        self._dailyo_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._dailyo_Parse.parse(response.url, response, self.wd_rpc, thumbnail_url='')
+        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='')

@@ -2,7 +2,8 @@
 
 import scrapy
 
-from cwpoliticl.scraped_websites import WebsiteTypes, scraped_websites_pagination, websites_allowed_domains
+from cwpoliticl.scraped_websites import WebsiteTypes, scraped_websites_pagination, websites_allowed_domains, \
+    websites_parses
 
 
 class IndianExpressDebugSpider(scrapy.Spider):
@@ -37,8 +38,7 @@ class IndianExpressDebugSpider(scrapy.Spider):
         from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
         self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
-        from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
-        self._indian_express_Parse = IndianExpressParser()
+        self._parser = websites_parses.get(self.url_from)
 
         super(IndianExpressDebugSpider, self).__init__(name, **kwargs)
 
@@ -59,5 +59,5 @@ class IndianExpressDebugSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        self._indian_express_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._indian_express_Parse.parse(response.url, response, self.wd_rpc, thumbnail_url='')
+        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='')

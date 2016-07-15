@@ -2,7 +2,7 @@
 
 import scrapy
 
-from cwpoliticl.scraped_websites import WebsiteTypes, websites_allowed_domains
+from cwpoliticl.scraped_websites import WebsiteTypes, websites_allowed_domains, websites_parses
 
 
 class TheViewsPaperDebugSpider(scrapy.Spider):
@@ -33,8 +33,7 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
         from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
         self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
-        from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
-        self._the_views_paper_Parse = TheViewsPaperParser()
+        self._parser = websites_parses.get(self.url_from)
 
         super(TheViewsPaperDebugSpider, self).__init__(name, **kwargs)
 
@@ -55,8 +54,8 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        self._the_views_paper_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
 
         # access_denied_cookie = response.headers.get('Set-Cookie').split(';', 1)[0]
-        # item = self._the_views_paper_Parse.parse(response.url, response, self.wd_rpc, thumbnail_url='',
+        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='',
         #                                          access_denied_cookie=access_denied_cookie)

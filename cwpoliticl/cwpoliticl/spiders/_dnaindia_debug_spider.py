@@ -2,7 +2,8 @@
 
 import scrapy
 
-from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, WebsiteTypes
+from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, WebsiteTypes, \
+    websites_parses
 
 
 class DnaIndiaDebugSpider(scrapy.Spider):
@@ -33,8 +34,7 @@ class DnaIndiaDebugSpider(scrapy.Spider):
         from cwpoliticl.extensions.rpc.wordpress_xml_rpc_utils import WDXmlRPCUtils
         self.wd_rpc = WDXmlRPCUtils(kwargs['wd_host'], kwargs['wd_user'], kwargs['wd_passwd'])
 
-        from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
-        self._dna_india_Parse = DnaIndiaParser()
+        self._parser = websites_parses.get(self.url_from)
 
         super(DnaIndiaDebugSpider, self).__init__(name, **kwargs)
 
@@ -55,5 +55,5 @@ class DnaIndiaDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        # self._dna_india_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._dna_india_Parse.parse(response.url, response, self.wd_rpc, thumbnail_url='')
+        # self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='')
