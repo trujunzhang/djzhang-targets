@@ -2,13 +2,16 @@
 
 import scrapy
 
+from cwpoliticl.scraped_websites import WebsiteTypes, scraped_websites_pagination, websites_allowed_domains
+
 
 class IndianExpressDebugSpider(scrapy.Spider):
     name = "indianexpress_debug"
-    allowed_domains = ["www.indianexpress.com"]
+
+    url_from = WebsiteTypes.indianexpress.value
     start_urls = [
         # Pagination
-        'http://indianexpress.com/opinion/',
+        WebsiteTypes.get_pagination_url(url_from)
         # Detail
         # no tags
         # 'http://indianexpress.com/article/opinion/columns/gulberg-society-massacre-ehsan-jafri-zakia-jafri-case-naroda-patiya-conspiracy-under-the-carpet-2877863/'
@@ -21,6 +24,8 @@ class IndianExpressDebugSpider(scrapy.Spider):
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
 
     def __init__(self, name=None, **kwargs):
+        self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],

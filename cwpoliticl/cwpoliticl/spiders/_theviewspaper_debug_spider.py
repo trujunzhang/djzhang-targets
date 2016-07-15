@@ -2,13 +2,16 @@
 
 import scrapy
 
+from cwpoliticl.scraped_websites import WebsiteTypes, websites_allowed_domains
+
 
 class TheViewsPaperDebugSpider(scrapy.Spider):
     name = "theviewspaper_debug"
-    allowed_domains = ["http://theviewspaper.net"]
+
+    url_from = WebsiteTypes.theviewspaper.value
     start_urls = [
         # Pagination
-        'http://theviewspaper.net',
+        WebsiteTypes.get_pagination_url(url_from)
         # Detail
         # 'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/',
         # 'http://theviewspaper.net/is-congress-too-weighed-down-by-its-corrupt-baggage-for-redemption/'
@@ -17,6 +20,8 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
 
     def __init__(self, name=None, **kwargs):
+        self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],

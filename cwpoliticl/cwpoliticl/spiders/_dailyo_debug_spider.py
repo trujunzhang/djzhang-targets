@@ -8,10 +8,10 @@ from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websit
 class DailyoDebugSpider(scrapy.Spider):
     name = "dailyo_debug"
 
-    url_from = WebsiteTypes.theviewspaper.value
+    url_from = WebsiteTypes.dailyo.value
     start_urls = [
         # Pagination
-        scraped_websites_pagination.get(url_from)
+        WebsiteTypes.get_pagination_url(url_from)
         # Detail
     ]
 
