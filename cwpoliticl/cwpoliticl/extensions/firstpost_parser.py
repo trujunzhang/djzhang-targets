@@ -58,14 +58,12 @@ class FirstPostParser(BaseParser):
         c = BeautifulSoup(article_content)
 
         lines = []
-        count = 1
-
         # filter '<p class="wp-caption-text">File image of raj babbar. CNN-News18</p>' and all empty lines.
         p_tags = c.findAll('p')
 
-        for p_tag in p_tags:
+        for idx, p_tag in enumerate(p_tags):
             text = p_tag.text
-            if len(p_tags[count].attrs):  # attrs contains 'class' that is image's title, ignore it.
+            if len(p_tags[idx].attrs):  # attrs contains 'class' that is image's title, ignore it.
                 continue
             if not text:  # the empty line, ignore it
                 continue
@@ -74,7 +72,5 @@ class FirstPostParser(BaseParser):
                 break
 
             lines.append(text)
-
-        count += 1
 
         return seperator.join(lines)
