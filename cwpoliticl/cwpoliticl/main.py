@@ -14,7 +14,8 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    utils.execute(get_crawler_name())
+    utils.execute(get_crawler_name()['name'])
+
 
 if __name__ == '__main__':
     main()

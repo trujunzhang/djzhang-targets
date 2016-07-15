@@ -53,15 +53,16 @@ websites_parses = {
     WebsiteTypes.firstpost: FirstPostParser(),
 }
 
-# ===
-# Debug
-# ===
-# is_pagination = True
-is_pagination = False
 
+# ===
+# for debug
+# ===
 
 def get_crawler_name():
     # Extensions
+
+    # is_pagination = True
+    is_pagination = False
 
     url_from = WebsiteTypes.dnaindia
     # url_from = WebsiteTypes.indianexpress
@@ -77,4 +78,10 @@ def get_crawler_name():
         "{}_debug".format(url_from.value)
     ]
 
-    return crawler_names[0]
+    return {
+        'name': crawler_names[0],
+        'is_pagination': is_pagination
+    }
+
+
+is_pagination = get_crawler_name()['is_pagination']
