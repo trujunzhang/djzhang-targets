@@ -22,7 +22,7 @@ class DeccanchronicleParser(BaseParser):
 
             count += 1
 
-            href = self.get_value_with_urljoin(hxs, href_selector)
+            href = self.get_value_with_urljoin(hxs, href_selector, url)
             # If the link already exist on the history database, ignore it.
             if history_db.check_history_exist(href):
                 continue
