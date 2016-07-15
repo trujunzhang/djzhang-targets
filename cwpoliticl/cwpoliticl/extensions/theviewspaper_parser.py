@@ -30,8 +30,7 @@ class TheViewsPaperParser(BaseParser):
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="entry-header"]/h2/a/text()')
         image_src = self._get_image(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@srcset')
-        content = self.get_all_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p',
-                                              max_len=2, sperator='\n' + '\n', start_index=2)
+        content = self.get_all_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p', start_index=2)
 
         tags = hxs.xpath(
             '//*[@class="entry-content"]/*[@class="post-meta"]/*[@class="categories-links"]/a/text()').extract()

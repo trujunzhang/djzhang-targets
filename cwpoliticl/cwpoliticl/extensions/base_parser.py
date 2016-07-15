@@ -1,6 +1,8 @@
 import sys
 import urlparse
 
+from cwpoliticl.scraped_websites import content_seperator
+
 
 class BaseParser(object):
     def __init__(self):
@@ -24,7 +26,7 @@ class BaseParser(object):
             return value
         return default
 
-    def get_all_value_response(self, hxs, query, max_len=sys.maxint, sperator='', start_index=1):
+    def get_all_value_response(self, hxs, query, max_len=2, sperator=content_seperator, start_index=1):
         """
         Get the all value.
         :param hxs:

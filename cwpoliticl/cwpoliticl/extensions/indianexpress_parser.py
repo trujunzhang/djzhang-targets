@@ -31,7 +31,7 @@ class IndianExpressParser(BaseParser):
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie=None):
         title = self.get_value_response(hxs, '//*[@class="heading-part"]/*[@itemprop="headline"]/text()')
         image_src = self.get_value_response(hxs, '//*[@itemprop="articleBody"]/*[@class="custom-caption"]/img/@src')
-        content = self.get_all_value_response(hxs, '//*[@itemprop="articleBody"]/p', max_len=2, sperator='\n' + '\n')
+        content = self.get_all_value_response(hxs, '//*[@itemprop="articleBody"]/p')
 
         tags = hxs.xpath('//*[@class="storytags"]/ul/li/a/text()').extract()
 
