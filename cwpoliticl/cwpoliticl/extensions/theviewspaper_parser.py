@@ -32,7 +32,7 @@ class TheViewsPaperParser(BaseParser):
         title = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="entry-header"]/h2/a/text()')
         image_src = self._get_image(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@srcset')
         content = self.get_all_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p/text()',
-                                              start_index=2)
+                                              start_index=1)
 
         tags = hxs.xpath(
             '//*[@class="entry-content"]/*[@class="post-meta"]/*[@class="categories-links"]/a/text()').extract()

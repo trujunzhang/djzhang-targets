@@ -31,7 +31,7 @@ class BaseParser(object):
             return value
         return default
 
-    def get_all_value_response(self, hxs, query, max_len=2, seperator=None, start_index=1):
+    def get_all_value_response(self, hxs, query, max_len=2, seperator=None, start_index=0):
         """
         Get the all value.
         :param hxs:
@@ -49,15 +49,12 @@ class BaseParser(object):
         _list = hxs.xpath(query)
         lines = []
 
-        count = 1
-        for line in _list:
-            if count >= start_index:
+        for idx, line in enumerate(_list):
+            if idx >= start_index:
                 if len(lines) >= max_len:
                     break
 
                 lines.append(line.extract())
-
-            count += 1
 
         return seperator.join(lines)
 
