@@ -39,9 +39,11 @@ class DailyoParser(BaseParser):
         title = self.get_value_response(hxs, '//*[@id="header-story"]/*[@class="header-inner"]/h1/text()')
         image_src = self._get_image_src(hxs, '//*[@id="header-story"]/@style')
 
-        from cwpoliticl.scraped_websites import content_seperator
-        lines = [self.get_value_response(hxs, '//*[@id="p_1"]/text()'), self.get_value_response(hxs, '//*[@id="p_2"]/text()')]
-        content = content_seperator.join(lines)
+        # from cwpoliticl.scraped_websites import content_seperator
+        # lines = [self.get_value_response(hxs, '//*[@id="p_1"]/text()'), self.get_value_response(hxs, '//*[@id="p_2"]/text()')]
+        # content = content_seperator.join(lines)
+
+        content = self.get_all_value_response(hxs, '//*[@class="mediumcontent"]/p/text()')
 
         tags = hxs.xpath(
             '//*[@class="bottom-full"]/*[@class="bottom_cont_tg"]/*[@class="story-middle"]/*[@id="taglist"]/a/text()').extract()
