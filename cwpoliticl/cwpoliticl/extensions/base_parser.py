@@ -18,7 +18,13 @@ class BaseParser(object):
         return href
 
     def get_value_response(self, hxs, query, index=0, default=""):
-        _list = hxs.xpath(query)
+        _list = []
+
+        try:
+            _list = hxs.xpath(query)
+        except:
+            pass
+
         if len(_list) > index:
             value = _list[index].extract()
             return value

@@ -33,7 +33,7 @@ class DeccanchronicleParser(BaseParser):
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, '//*[@id="header-story"]/*[@class="header-inner"]/h1/text()')
-        image_src = self._get_image_src(hxs, '//*[@id="header-story"]/@style')
+        # image_src = self._get_image_src(hxs, '//*[@id="header-story"]/@style')
 
         # from cwpoliticl.scraped_websites import content_seperator
         # lines = [self.get_value_response(hxs, '//*[@id="p_1"]/text()'), self.get_value_response(hxs, '//*[@id="p_2"]/text()')]
@@ -44,19 +44,9 @@ class DeccanchronicleParser(BaseParser):
         tags = hxs.xpath(
             '//*[@class="bottom-full"]/*[@class="bottom_cont_tg"]/*[@class="story-middle"]/*[@id="taglist"]/a/text()').extract()
 
-        item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
-                                  access_denied_cookie=access_denied_cookie)
+        # item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
+        #                           access_denied_cookie=access_denied_cookie)
 
         post_id = wd_rpc.post_to_wd(item)
 
         return item
-
-    def _get_image_src(self, hxs, selector):
-        style = hxs.xpath(selector).extract()
-        image_style = self.get_value_response(hxs, selector)
-
-        split = image_style.split("'")
-        if len(split) >= 2:
-            return split[1]
-
-        return ''
