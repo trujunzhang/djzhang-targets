@@ -55,4 +55,4 @@ class IndianExpressDebugSpider(scrapy.Spider):
 
     def parse(self, response):
         self._indian_express_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._indian_express_Parse.parse(response.url, response, self.wd_rpc)
+        # item = self._indian_express_Parse.parse(response.url, response, self.wd_rpc, thumbnail_url='')
