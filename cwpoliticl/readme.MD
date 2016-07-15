@@ -46,3 +46,8 @@ mysql -u cwpoliticl -p 'cwpoliticl720' politicl
    
  2. xmlrpc.php: 413 Request Entity Too Large
   fixed: client_max_body_size 20M; (from: 'http://www.daveperrett.com/articles/2009/11/18/nginx-error-413-request-entity-too-large/')
+  
+ 3. Upload too large image(more than 1M) to the wordpress failure on the 'theviewspaper' website 
+   'http://theviewspaper.net/wp-content/uploads/WordsOfTerror-1024x576.jpg'
+  
+  
