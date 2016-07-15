@@ -1,10 +1,9 @@
 from cwpoliticl.extensions.base_parser import BaseParser
 from cwpoliticl.items import CacheItem, WDPost
-from cwpoliticl.scraped_websites import WebsiteTypes
-
 
 class TheViewsPaperParser(BaseParser):
     def __init__(self):
+        from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.theviewspaper.value
         super(TheViewsPaperParser, self).__init__()
 

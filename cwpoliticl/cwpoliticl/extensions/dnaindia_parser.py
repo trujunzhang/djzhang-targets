@@ -1,10 +1,10 @@
 from cwpoliticl.extensions.base_parser import BaseParser
 from cwpoliticl.items import CacheItem, WDPost
-from cwpoliticl.scraped_websites import WebsiteTypes
 
 
 class DnaIndiaParser(BaseParser):
     def __init__(self):
+        from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.dnaindia.value
         super(DnaIndiaParser, self).__init__()
 

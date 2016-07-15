@@ -1,10 +1,10 @@
 from cwpoliticl.extensions.base_parser import BaseParser
 from cwpoliticl.items import CacheItem, WDPost
-from cwpoliticl.scraped_websites import WebsiteTypes
 
 
 class IndianExpressParser(BaseParser):
     def __init__(self):
+        from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.indianexpress.value
         super(IndianExpressParser, self).__init__()
 
