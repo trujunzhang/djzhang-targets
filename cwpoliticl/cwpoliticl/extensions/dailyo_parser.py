@@ -9,13 +9,13 @@ class DailyoParser(BaseParser):
         super(DailyoParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        selector = '//*[@class="container"]/*[@class="row"]/*[@class="col-md-8"]/article'
+        selector = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list graybg"]'
         links = hxs.xpath(selector).extract()  # Type: List['unicode']
 
         count = 1
         for href in links:
-            href_selector = '{}[{}]/a/@href'.format(selector, count)
-            thumbnail_selector = '{}[{}]/a/img/@src'.format(selector, count)
+            href_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/@href'.format(selector, count)
+            thumbnail_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/img/src'.format(selector, count)
             count += 1
 
             href = self.get_value_response(hxs, href_selector)
