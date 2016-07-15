@@ -11,9 +11,9 @@ class DailyoDebugSpider(scrapy.Spider):
     name = "{}_debug".format(url_from.value)
     start_urls = [
         # Pagination
-        # WebsiteTypes.get_pagination_url(url_from),
+        WebsiteTypes.get_pagination_url(url_from),
         # Detail
-        'http://www.dailyo.in/politics/sheila-dikshit-up-assembly-polls-congress-priyanka-gandhi-salman-khurshid-chief-ministerial-candidate-brahmin/story/1/11757.html'
+        # 'http://www.dailyo.in/politics/sheila-dikshit-up-assembly-polls-congress-priyanka-gandhi-salman-khurshid-chief-ministerial-candidate-brahmin/story/1/11757.html'
     ]
 
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
@@ -53,5 +53,5 @@ class DailyoDebugSpider(scrapy.Spider):
                                                           )
 
     def parse(self, response):
-        # self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='', access_denied_cookie=None)
+        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='', access_denied_cookie=None)
