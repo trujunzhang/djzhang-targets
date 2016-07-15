@@ -1,8 +1,6 @@
 import sys
 import urlparse
 
-from cwpoliticl.scraped_websites import content_seperator
-
 
 class BaseParser(object):
     def __init__(self):
@@ -26,16 +24,21 @@ class BaseParser(object):
             return value
         return default
 
-    def get_all_value_response(self, hxs, query, max_len=2, sperator=content_seperator, start_index=1):
+    def get_all_value_response(self, hxs, query, max_len=2, seperator=None, start_index=1):
         """
         Get the all value.
         :param hxs:
         :param query:
         :param max_len:
-        :param sperator:
+        :param seperator:
         :param start_index:
         :return:
         """
+
+        if not seperator:
+            from cwpoliticl.scraped_websites import content_seperator
+            seperator = content_seperator
+
         _list = hxs.xpath(query)
         lines = []
 
@@ -49,7 +52,7 @@ class BaseParser(object):
 
             count += 1
 
-        return sperator.join(lines)
+        return seperator.join(lines)
 
     def get_value_from_beautifulsoup(self, container, name=None, attrs={}, index=0, default=""):
         _list = container.findAll(name, attrs)
