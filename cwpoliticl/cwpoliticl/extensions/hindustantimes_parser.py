@@ -10,13 +10,27 @@ class HindustantimesParser(BaseParser):
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
         # Top picks
-        self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db,
-                                                      '//*[@class="top_single_story_photo"]')
+        # self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db,
+        #                                               '//*[@class="top_single_story_photo"]')
+        # self._parse_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="hm_topstory_3_story"]/ul/li')
 
-        select_block = '//*[@class="hm_topstory_3_story"]/ul/li'
-        self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block, '', '')
+        # columns
+        row_container = '//*[@class="row_container"]/*[@class="col_2 india_headlines"]'
+        lists = hxs.xpath(row_container)
+        for idx, link in enumerate(lists):
+            single_photo_section = '//*[@class="row_container"]/*[@class="col_2 col_2_right_margin india_topNews"]'.format(
+                row_container, (idx + 1))
+            # lists_section = '//*[@class="row_container"]/*[@class="col_2 india_headlines"]'.format(
+            #     row_container, (idx + 1))
+
+            self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db, single_photo_section)
+
+            # self._parse_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="hm_topstory_3_story"]/ul/li')
 
     def _parse_single_photo_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
+        lists = hxs.xpath(select_block)
+        _len = len(lists)
+
         href_selector = '{}/a/@href'.format(select_block)
         thumbnail_selector = '{}/a/img/@src'.format(select_block)
 
@@ -29,7 +43,7 @@ class HindustantimesParser(BaseParser):
 
         cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
-    def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block, left_block, right_block):
+    def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
         links = hxs.xpath(select_block).extract()
 
         for idx, link in enumerate(links):
