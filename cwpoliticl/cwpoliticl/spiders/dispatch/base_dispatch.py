@@ -2,25 +2,14 @@ from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
 from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
 from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
 from cwpoliticl.items import WebsiteTypes
+from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites, websites_parses
 
 
 class BaseDispatch(object):
     def __init__(self):
-        self.allowed_domains = [
-            "www.dnaindia.com",
-            "www.indianexpress.com",
-            "http://theviewspaper.net"
-        ]
-        self.websites = {
-            'http://www.dnaindia.com/analysis': WebsiteTypes.dnaindia,
-            'http://indianexpress.com/opinion/': WebsiteTypes.indianexpress,
-            'http://theviewspaper.net': WebsiteTypes.theviewspaper,
-        }
-        self.parses = {
-            WebsiteTypes.dnaindia: DnaIndiaParser(),
-            WebsiteTypes.indianexpress: IndianExpressParser(),
-            WebsiteTypes.theviewspaper: TheViewsPaperParser(),
-        }
+        self.allowed_domains = websites_allowed_domains
+        self.websites = scraped_websites
+        self.parses = websites_parses
         super(BaseDispatch, self).__init__()
 
     def get_allowed_domains(self):
