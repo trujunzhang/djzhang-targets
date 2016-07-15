@@ -16,10 +16,10 @@ def main():
     # utils.execute("politicl_watch")
 
     # Extensions
-    # utils.execute("dnaindia_debug")
+    utils.execute("dnaindia_debug")
     # utils.execute("indianexpress_debug")
     # utils.execute("theviewspaper_debug")
-    utils.execute("dailyo_debug")
+    # utils.execute("dailyo_debug")
 
 
 if __name__ == '__main__':

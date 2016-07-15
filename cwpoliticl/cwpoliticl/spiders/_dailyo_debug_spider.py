@@ -13,14 +13,11 @@ class DailyoDebugSpider(scrapy.Spider):
         # Pagination
         scraped_websites_pagination.get(url_from)
         # Detail
-        # 'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/',
-        # 'http://theviewspaper.net/is-congress-too-weighed-down-by-its-corrupt-baggage-for-redemption/'
     ]
 
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
 
     def __init__(self, name=None, **kwargs):
-        from cwpoliticl.scraped_websites import WebsiteTypes
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
 
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
@@ -56,6 +53,5 @@ class DailyoDebugSpider(scrapy.Spider):
                                                           )
 
     def parse(self, response):
-        pass
-        # self._dailyo_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        self._dailyo_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
         # item = self._dailyo_Parse.parse(response.url, response, self.wd_rpc, access_denied_cookie)

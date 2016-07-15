@@ -2,13 +2,16 @@
 
 import scrapy
 
+from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, WebsiteTypes
+
 
 class DnaIndiaDebugSpider(scrapy.Spider):
     name = "dnaindia_debug"
-    allowed_domains = ["www.dnaindia.com"]
+
+    url_from = WebsiteTypes.dnaindia.value
     start_urls = [
         # Pagination
-        'http://www.dnaindia.com/analysis',
+        scraped_websites_pagination.get(url_from)
         # Detail
         # 'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
         # 'http://www.dnaindia.com/analysis/column-nda-s-decisive-push-to-garner-tax-from-fugitive-firms-2232199'
@@ -17,6 +20,8 @@ class DnaIndiaDebugSpider(scrapy.Spider):
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
 
     def __init__(self, name=None, **kwargs):
+        self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
