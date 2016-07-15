@@ -8,10 +8,10 @@ from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websit
 class DnaIndiaDebugSpider(scrapy.Spider):
     name = "dnaindia_debug"
 
-    url_from = WebsiteTypes.dnaindia.value
+    url_from = WebsiteTypes.dnaindia
     start_urls = [
         # Pagination
-        scraped_websites_pagination.get(url_from)
+        WebsiteTypes.get_pagination_url(url_from)
         # Detail
         # 'http://www.dnaindia.com/analysis/editorial-dnaedit-modi-s-manoeuvre-2231861'
         # 'http://www.dnaindia.com/analysis/column-nda-s-decisive-push-to-garner-tax-from-fugitive-firms-2232199'

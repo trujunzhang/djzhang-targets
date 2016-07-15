@@ -15,6 +15,10 @@ class WebsiteTypes(Enum):
     theviewspaper = "theviewspaper"
     dailyo = "dailyo"
 
+    @classmethod
+    def get_pagination_url(self, type):
+        return scraped_websites_pagination.keys()[scraped_websites_pagination.values().index(type)]
+
 
 websites_allowed_domains = {
     WebsiteTypes.dnaindia: "www.dnaindia.com",
