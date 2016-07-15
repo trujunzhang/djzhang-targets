@@ -65,7 +65,7 @@ class FirstPostParser(BaseParser):
 
         for p_tag in p_tags:
             text = p_tag.text
-            if len(p_tags[1].attrs):  # attrs contains 'class' that is image's title, ignore it.
+            if len(p_tags[count].attrs):  # attrs contains 'class' that is image's title, ignore it.
                 continue
             if not text:  # the empty line, ignore it
                 continue
