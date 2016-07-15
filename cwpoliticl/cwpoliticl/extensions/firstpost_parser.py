@@ -15,12 +15,9 @@ class FirstPostParser(BaseParser):
     def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
         links = hxs.xpath(select_block).extract()
 
-        count = 1
-        for href in links:
-            href_selector = '{}[{}]/a/@href'.format(select_block, count)
-            thumbnail_selector = '{}[{}]/a/img/@data-original'.format(select_block, count)
-
-            count += 1
+        for idx, link in enumerate(links):
+            href_selector = '{}[{}]/a/@href'.format(select_block, (idx + 1))
+            thumbnail_selector = '{}[{}]/a/img/@data-original'.format(select_block, (idx + 1))
 
             href = self.get_value_response(hxs, href_selector)
             # If the link already exist on the history database, ignore it.

@@ -15,12 +15,9 @@ class DeccanchronicleParser(BaseParser):
     def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
         links = hxs.xpath(select_block).extract()
 
-        count = 1
-        for href in links:
-            href_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/@href'.format(select_block, count)
-            thumbnail_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/img/@data-src'.format(select_block, count)
-
-            count += 1
+        for idx, link in enumerate(links):
+            href_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/@href'.format(select_block, (idx + 1))
+            thumbnail_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/img/@data-src'.format(select_block, (idx + 1))
 
             href = self.get_value_with_urljoin(hxs, href_selector, url)
             # If the link already exist on the history database, ignore it.
