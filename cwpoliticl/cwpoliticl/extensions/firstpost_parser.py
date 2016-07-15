@@ -36,9 +36,7 @@ class FirstPostParser(BaseParser):
         image_src = self.get_value_response(hxs,
                                             '//*[@class="artWarp"]/*[@itemprop="articleBody"]/*[@class="wp-caption alignleft"]/img/@@data-original')
 
-        content = self.get_all_value_response(hxs,
-                                              '//*[@class="artWarp"]/*[@itemprop="articleBody"]/p/text()',
-                                              start_index=2)
+        content = self.get_all_value_from_beautifulsoup(hxs, '//*[@class="artWarp"]/*[@itemprop="articleBody"]')
 
         tags = hxs.xpath('//*[@class="artTps"]/div/p[2]/a/text()').extract()
 
@@ -48,3 +46,33 @@ class FirstPostParser(BaseParser):
         post_id = wd_rpc.post_to_wd(item)
 
         return item
+
+    def get_all_value_from_beautifulsoup(self, hxs, block, max_len=2, seperator=None):
+        if not seperator:
+            from cwpoliticl.scraped_websites import content_seperator
+            seperator = content_seperator
+
+        article_content = self.get_value_response(hxs, block)
+
+        from BeautifulSoup import BeautifulSoup
+        c = BeautifulSoup(article_content)
+
+        lines = []
+        count = 1
+
+        # filter '<p class="wp-caption-text">File image of raj babbar. CNN-News18</p>' and all empty lines.
+        p_tags = c.findAll('p')
+
+        for p_tag in p_tags:
+            text = p_tag.text
+            if not text:
+                continue
+
+            if len(lines) >= max_len:
+                break
+
+            lines.append(text)
+
+        count += 1
+
+        return seperator.join(lines)
