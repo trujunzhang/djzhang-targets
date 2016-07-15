@@ -33,7 +33,8 @@ class ImagesDownload(object):
 
                 # wget.download(image_link, image_location)
                 # ImagesDownload._download_photo(image_link, image_location)
-                return image_location
+
+            return image_location
 
     def _download_photo(self, item, image_link, image_location):
         urllib.urlretrieve(image_link, image_location)

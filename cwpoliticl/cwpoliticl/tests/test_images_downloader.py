@@ -26,6 +26,6 @@ class ImagesDownloaderTest(unittest.TestCase):
         :return:
         """
         image_location = self.item['downloader'].write_image_cache(self.item)
-        exist = os.path.exists(image_location)
-        self.assertEqual(exist, True)
-        # self.image_downloader.remove_image_location(image_location)
+        self.assertEqual(os.path.exists(image_location), True)
+        self.item['downloader'].remove_image_location(image_location)
+        self.assertEqual(os.path.exists(image_location), False)
