@@ -9,13 +9,16 @@ class TheViewsPaperParser(BaseParser):
         super(TheViewsPaperParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        selector = '//*[@class="container"]/*[@class="row"]/*[@class="col-md-8"]/article'
-        links = hxs.xpath(selector).extract()
+        select_block = '//*[@class="container"]/*[@class="row"]/*[@class="col-md-8"]/article'
+        self._parse_block_for_pagination(hxs, cache_db, history_db, select_block)
+
+    def _parse_block_for_pagination(self, hxs, cache_db, history_db, select_block):
+        links = hxs.xpath(select_block).extract()
 
         count = 1
         for href in links:
-            href_selector = '{}[{}]/a/@href'.format(selector, count)
-            thumbnail_selector = '{}[{}]/a/img/@src'.format(selector, count)
+            href_selector = '{}[{}]/a/@href'.format(select_block, count)
+            thumbnail_selector = '{}[{}]/a/img/@src'.format(select_block, count)
             count += 1
 
             href = self.get_value_response(hxs, href_selector)

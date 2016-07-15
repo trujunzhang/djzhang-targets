@@ -12,9 +12,6 @@ class DeccanchronicleParser(BaseParser):
         select_block = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list "]'
         self._parse_block_for_pagination(hxs, cache_db, history_db, select_block)
 
-        select_block = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list graybg"]'
-        self._parse_block_for_pagination(hxs, cache_db, history_db, select_block)
-
     def _parse_block_for_pagination(self, hxs, cache_db, history_db, select_block):
         links = hxs.xpath(select_block).extract()
 
