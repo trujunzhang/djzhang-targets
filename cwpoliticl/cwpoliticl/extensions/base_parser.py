@@ -1,5 +1,6 @@
 import sys
 import urlparse
+import logging
 
 
 class BaseParser(object):
@@ -22,8 +23,8 @@ class BaseParser(object):
 
         try:
             _list = hxs.xpath(query)
-        except:
-            pass
+        except Exception, e:
+            logging.debug("  get value via xpath failure, {}".format(e))
 
         if len(_list) > index:
             value = _list[index].extract()

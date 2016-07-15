@@ -17,7 +17,7 @@ class DeccanchronicleParser(BaseParser):
 
         count = 1
         for href in links:
-            href_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]a/@href'.format(select_block, count)
+            href_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/@href'.format(select_block, count)
             thumbnail_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/img/@src'.format(select_block, count)
 
             count += 1
