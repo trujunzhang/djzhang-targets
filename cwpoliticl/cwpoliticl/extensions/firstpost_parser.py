@@ -18,7 +18,7 @@ class FirstPostParser(BaseParser):
         count = 1
         for href in links:
             href_selector = '{}[{}]/a/@href'.format(select_block, count)
-            thumbnail_selector = '{}[{}]/a/img/@data-src'.format(select_block, count)
+            thumbnail_selector = '{}[{}]/a/img/@data-original'.format(select_block, count)
 
             count += 1
 
