@@ -36,7 +36,7 @@ class HindustantimesParser(BaseParser):
             href_selector = '{}[{}]/div[1]/a/@href'.format(select_block, (idx + 1))
             thumbnail_selector = '{}[{}]/div[1]/a/img/@src'.format(select_block, (idx + 1))
 
-            href = self.get_value_response(hxs, href_selector, url)
+            href = self.get_value_response(hxs, href_selector)
             # If the link already exist on the history database, ignore it.
             if history_db.check_history_exist(href):
                 continue
