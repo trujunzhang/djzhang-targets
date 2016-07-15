@@ -15,7 +15,7 @@ class DailyoParser(BaseParser):
         count = 1
         for href in links:
             href_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/@href'.format(selector, count)
-            thumbnail_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/img/src'.format(selector, count)
+            thumbnail_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/img/@src'.format(selector, count)
             count += 1
 
             href = self.get_value_response(hxs, href_selector)
