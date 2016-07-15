@@ -18,6 +18,8 @@ class WebsiteTypes(Enum):
     dailyo = "dailyo"
     deccanchronicle = "deccanchronicle"
     firstpost = "firstpost"
+    forbesindia = "forbesindia"  # ???
+    hindustantimes = "hindustantimes"
 
     @classmethod
     def get_pagination_url(self, type):
@@ -33,6 +35,8 @@ websites_allowed_domains = {
     WebsiteTypes.dailyo: 'www.dailyo.in',
     WebsiteTypes.deccanchronicle: 'www.deccanchronicle.com',
     WebsiteTypes.firstpost: 'www.firstpost.com',
+    WebsiteTypes.forbesindia: 'forbesindia.com',  # ???
+    WebsiteTypes.hindustantimes: 'http://www.hindustantimes.com/opinion/',
 }
 
 scraped_websites_pagination = {
@@ -42,6 +46,8 @@ scraped_websites_pagination = {
     'http://www.dailyo.in/politics': WebsiteTypes.dailyo,
     'http://www.deccanchronicle.com/opinion': WebsiteTypes.deccanchronicle,
     'http://www.firstpost.com/category/politics': WebsiteTypes.firstpost,
+    'http://forbesindia.com/': WebsiteTypes.forbesindia,  # ???
+    'http://www.hindustantimes.com/opinion/': WebsiteTypes.hindustantimes
 }
 
 websites_parses = {
@@ -51,6 +57,8 @@ websites_parses = {
     WebsiteTypes.dailyo: DailyoParser(),
     WebsiteTypes.deccanchronicle: DeccanchronicleParser(),
     WebsiteTypes.firstpost: FirstPostParser(),
+    WebsiteTypes.forbesindia: FirstPostParser(),  # ???
+    WebsiteTypes.hindustantimes: HindustantimesParser(),
 }
 
 
@@ -61,15 +69,17 @@ websites_parses = {
 def get_crawler_name():
     # Extensions
 
-    # is_pagination = True
-    is_pagination = False
+    is_pagination = True
+    # is_pagination = False
 
     # url_from = WebsiteTypes.dnaindia
     # url_from = WebsiteTypes.indianexpress
     # url_from = WebsiteTypes.theviewspaper
     # url_from = WebsiteTypes.dailyo
     # url_from = WebsiteTypes.deccanchronicle
-    url_from = WebsiteTypes.firstpost
+    # url_from = WebsiteTypes.firstpost
+    # url_from = WebsiteTypes.forbesindia  # ???
+    url_from = WebsiteTypes.hindustantimes
 
     crawler_names = [
         # "politicl",
