@@ -11,9 +11,9 @@ class DeccanchronicleDebugSpider(scrapy.Spider):
     name = "{}_debug".format(url_from.value)
     start_urls = [
         # Pagination
-        WebsiteTypes.get_pagination_url(url_from),
+        # WebsiteTypes.get_pagination_url(url_from),
         # Detail
-
+        'http://www.deccanchronicle.com/opinion/op-ed/150716/mystic-mantra-stay-youthful-and-skilful.html'
     ]
 
     def __init__(self, name=None, **kwargs):
@@ -51,5 +51,5 @@ class DeccanchronicleDebugSpider(scrapy.Spider):
                                                                    )
 
     def parse(self, response):
-        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='', access_denied_cookie=None)
+        # self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='', access_denied_cookie=None)
