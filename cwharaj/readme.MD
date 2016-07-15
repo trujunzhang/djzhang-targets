@@ -64,7 +64,7 @@ mysql -u mzada -p 'mzada720' mzadalny
     comment: ??
     from: 'https://sa.opensooq.com/ar/search/44710985/%D9%85%D8%B7%D9%84%D9%88%D8%A8-%D9%85%D8%AF%D9%8A%D8%B1-%D9%85%D8%B7%D8%B9%D9%85'             
             
-            
+ 4. mysql: insert the members row failure, (1406, "Data too long for column 'username' at row 1")            
             
             
             
