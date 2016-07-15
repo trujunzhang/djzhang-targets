@@ -7,9 +7,8 @@ from cwpoliticl.scraped_websites import websites_allowed_domains, WebsiteTypes, 
 
 
 class DailyoDebugSpider(scrapy.Spider):
-    name = "dailyo_debug"
-
     url_from = WebsiteTypes.dailyo
+    name = "{}_debug".format(url_from.value)
     start_urls = [
         # Pagination
         WebsiteTypes.get_pagination_url(url_from)

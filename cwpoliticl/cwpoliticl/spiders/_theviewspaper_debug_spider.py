@@ -6,9 +6,8 @@ from cwpoliticl.scraped_websites import WebsiteTypes, websites_allowed_domains, 
 
 
 class TheViewsPaperDebugSpider(scrapy.Spider):
-    name = "theviewspaper_debug"
-
     url_from = WebsiteTypes.theviewspaper
+    name = "{}_debug".format(url_from.value)
     start_urls = [
         # Pagination
         WebsiteTypes.get_pagination_url(url_from)

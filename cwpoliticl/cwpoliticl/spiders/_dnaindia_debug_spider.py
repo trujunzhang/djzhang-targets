@@ -7,9 +7,8 @@ from cwpoliticl.scraped_websites import websites_allowed_domains, WebsiteTypes, 
 
 
 class DnaIndiaDebugSpider(scrapy.Spider):
-    name = "dnaindia_debug"
-
     url_from = WebsiteTypes.dnaindia
+    name = "{}_debug".format(url_from.value)
     start_urls = [
         # Pagination
         WebsiteTypes.get_pagination_url(url_from)
