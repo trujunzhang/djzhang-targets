@@ -42,9 +42,6 @@ class OpensooqDebugSpider(scrapy.Spider):
         from cwharaj.parser.opensooq_parser import OpensooqParse
         self._opensooq_parser = OpensooqParse()
 
-        from cwharaj.utils.phone_number_set import PhoneNumberSet
-        self.phone_dict = PhoneNumberSet()
-
         super(OpensooqDebugSpider, self).__init__(name, **kwargs)
 
     @classmethod
@@ -60,5 +57,5 @@ class OpensooqDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        item = self._opensooq_parser.parse(response.url, response, self._item_db, self.phone_dict)
+        item = self._opensooq_parser.parse(response.url, response, self._item_db)
         _ids_id = item["id_ads"]
