@@ -9,10 +9,25 @@ class HindustantimesParser(BaseParser):
         super(HindustantimesParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        select_block = '//*[@class="col-sm-12 noPadding noMargin"]/*[@class="col-sm-12 SunChNewListing"]'
-        self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block)
+        self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db,
+                                                      '//*[@class="top_single_story_photo"]')
+        # select_block = '//*[@class="col-sm-12 noPadding noMargin"]/*[@class="col-sm-12 SunChNewListing"]'
+        # self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block, '', '')
 
-    def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
+    def _parse_single_photo_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
+        href_selector = '{}/a/@href'.format(select_block)
+        thumbnail_selector = '{}/a/img/@src'.format(select_block)
+
+        href = self.get_value_with_urljoin(hxs, href_selector, url)
+        # If the link already exist on the history database, ignore it.
+        if history_db.check_history_exist(href):
+            return
+
+        thumbnail_src = self.get_value_response(hxs, thumbnail_selector)
+
+        cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
+
+    def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block, left_block, right_block):
         links = hxs.xpath(select_block).extract()
 
         for idx, link in enumerate(links):

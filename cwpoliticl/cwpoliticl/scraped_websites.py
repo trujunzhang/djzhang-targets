@@ -4,6 +4,7 @@ from cwpoliticl.extensions.dailyo_parser import DailyoParser
 from cwpoliticl.extensions.deccanchronicle_parser import DeccanchronicleParser
 from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
 from cwpoliticl.extensions.firstpost_parser import FirstPostParser
+from cwpoliticl.extensions.hindustantimes_parser import HindustantimesParser
 from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
 from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
 
