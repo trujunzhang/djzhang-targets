@@ -9,13 +9,16 @@ class IndianExpressParser(BaseParser):
         super(IndianExpressParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        selector = '//*[@class="profile-container"]/*[@class="opi-story"]'
-        links = hxs.xpath(selector).extract()
+        select_block = '//*[@class="profile-container"]/*[@class="opi-story"]'
+        self._parse_block_for_pagination(hxs, cache_db, history_db, select_block)
+
+    def _parse_block_for_pagination(self, hxs, cache_db, history_db, select_block):
+        links = hxs.xpath(select_block).extract()
 
         count = 1
         for link in links:
-            href_selector = '{}[{}]/h6/a/@href'.format(selector, count)
-            thumbnail_selector = '{}[{}]/*[@class="sto-img"]/a/img/@src'.format(selector, count)
+            href_selector = '{}[{}]/h6/a/@href'.format(select_block, count)
+            thumbnail_selector = '{}[{}]/*[@class="sto-img"]/a/img/@src'.format(select_block, count)
             count += 1
 
             href = self.get_value_response(hxs, href_selector)
