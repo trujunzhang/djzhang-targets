@@ -1,5 +1,6 @@
 from enum import Enum
 
+from cwpoliticl.extensions.dailyo_parser import DailyoParser
 from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
 from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
 from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
@@ -22,7 +23,7 @@ websites_allowed_domains = {
     WebsiteTypes.dailyo: 'www.dailyo.in',
 }
 
-scraped_websites = {
+scraped_websites_pagination = {
     'http://www.dnaindia.com/analysis': WebsiteTypes.dnaindia,
     'http://indianexpress.com/opinion/': WebsiteTypes.indianexpress,
     'http://theviewspaper.net': WebsiteTypes.theviewspaper,
@@ -33,4 +34,5 @@ websites_parses = {
     WebsiteTypes.dnaindia: DnaIndiaParser(),
     WebsiteTypes.indianexpress: IndianExpressParser(),
     WebsiteTypes.theviewspaper: TheViewsPaperParser(),
+    WebsiteTypes.dailyo: DailyoParser(),
 }

@@ -1,10 +1,10 @@
-from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites, websites_parses
+from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, websites_parses
 
 
 class BaseDispatch(object):
     def __init__(self):
         self.allowed_domains = websites_allowed_domains
-        self.websites = scraped_websites
+        self.websites = scraped_websites_pagination
         self.parses = websites_parses
         super(BaseDispatch, self).__init__()
 

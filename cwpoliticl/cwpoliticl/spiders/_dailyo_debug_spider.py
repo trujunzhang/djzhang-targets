@@ -2,13 +2,16 @@
 
 import scrapy
 
+from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, WebsiteTypes
+
 
 class DailyoDebugSpider(scrapy.Spider):
     name = "dailyo_debug"
-    allowed_domains = ["http://theviewspaper.net"]
+
+    url_from = WebsiteTypes.theviewspaper.value
     start_urls = [
         # Pagination
-        'http://theviewspaper.net',
+        scraped_websites_pagination.get(url_from)
         # Detail
         # 'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/',
         # 'http://theviewspaper.net/is-congress-too-weighed-down-by-its-corrupt-baggage-for-redemption/'
@@ -17,6 +20,9 @@ class DailyoDebugSpider(scrapy.Spider):
     # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
 
     def __init__(self, name=None, **kwargs):
+        from cwpoliticl.scraped_websites import WebsiteTypes
+        self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
