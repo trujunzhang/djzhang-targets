@@ -40,8 +40,8 @@ class DailyoParser(BaseParser):
         image_src = self._get_image_src(hxs, '//*[@id="header-story"]/@style')
 
         content = self.get_all_value_response(hxs,
-                                              '//*[@itemprop="articleBody"]/*[@class="page-content"]/div/div/*[@id="middle_container"]/*[@class="story-middle"]/*[@class="mediumcontent"]',
-                                              max_len=2, sperator='\n' + '\n', start_index=2)
+                                              '//*[@itemprop="articleBody"]/*[@class="page-content"]/div/div/*[@id="middle_container"]/*[@class="story-middle"]/*[@class="mediumcontent"]/p',
+                                              max_len=2, sperator='\n' + '\n')
 
         tags = hxs.xpath(
             '//*[@class="bottom-full"]/*[@class="bottom_cont_tg"]/*[@class="story-middle"]/*[@id="taglist"]/a/text()').extract()

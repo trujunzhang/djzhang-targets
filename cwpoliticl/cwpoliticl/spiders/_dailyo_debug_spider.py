@@ -54,4 +54,4 @@ class DailyoDebugSpider(scrapy.Spider):
 
     def parse(self, response):
         # self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='')
+        item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='', access_denied_cookie=None)
