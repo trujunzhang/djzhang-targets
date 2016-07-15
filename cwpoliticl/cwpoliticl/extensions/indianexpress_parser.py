@@ -16,8 +16,8 @@ class IndianExpressParser(BaseParser):
         links = hxs.xpath(select_block).extract()
 
         for idx, link in enumerate(links):
-            href_selector = '{}[{}]/h6/a/@href'.format(select_block, idx)
-            thumbnail_selector = '{}[{}]/*[@class="sto-img"]/a/img/@src'.format(select_block, idx)
+            href_selector = '{}[{}]/h6/a/@href'.format(select_block, (idx + 1))
+            thumbnail_selector = '{}[{}]/*[@class="sto-img"]/a/img/@src'.format(select_block, (idx + 1))
 
             href = self.get_value_response(hxs, href_selector)
             # If the link already exist on the history database, ignore it.
