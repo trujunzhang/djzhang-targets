@@ -2,15 +2,13 @@
 
 import scrapy
 
-from cwpoliticl.scraped_websites import WebsiteTypes, websites_allowed_domains, websites_parses
+from cwpoliticl.scraped_websites import WebsiteTypes, websites_allowed_domains, websites_parses, is_pagination
 
 
 class TheViewsPaperDebugSpider(scrapy.Spider):
     url_from = WebsiteTypes.theviewspaper
     name = "{}_debug".format(url_from.value)
-    start_urls = [
-        # Pagination
-        WebsiteTypes.get_pagination_url(url_from)
+    details_urls = [
         # Detail
         # 'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/',
         # 'http://theviewspaper.net/is-congress-too-weighed-down-by-its-corrupt-baggage-for-redemption/'
@@ -18,6 +16,11 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
 
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
+        if is_pagination:
+            self.start_urls = WebsiteTypes.get_pagination_url(self.url_from)
+        else:
+            self.start_urls = self.details_urls
 
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
@@ -51,8 +54,9 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-
-        # access_denied_cookie = response.headers.get('Set-Cookie').split(';', 1)[0]
-        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='',
-        #                                          access_denied_cookie=access_denied_cookie)
+        if is_pagination:
+            self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        else:
+            access_denied_cookie = response.headers.get('Set-Cookie').split(';', 1)[0]
+            item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='',
+                                      access_denied_cookie=access_denied_cookie)

@@ -3,26 +3,29 @@
 import scrapy
 
 from cwpoliticl.scraped_websites import WebsiteTypes, websites_allowed_domains, \
-    websites_parses
+    websites_parses, is_pagination
 
 
 class IndianExpressDebugSpider(scrapy.Spider):
     url_from = WebsiteTypes.indianexpress
     name = "{}_debug".format(url_from.value)
-    start_urls = [
-        # Pagination
-        WebsiteTypes.get_pagination_url(url_from)
+    details_urls = [
         # Detail
         # no tags
         # 'http://indianexpress.com/article/opinion/columns/gulberg-society-massacre-ehsan-jafri-zakia-jafri-case-naroda-patiya-conspiracy-under-the-carpet-2877863/'
         # one tag
-        # 'http://indianexpress.com/article/opinion/columns/prakash-javadekar-hrd-ministry-narendra-modi-cabinet-reshuffle-expansion-2900114/'
+        'http://indianexpress.com/article/opinion/columns/prakash-javadekar-hrd-ministry-narendra-modi-cabinet-reshuffle-expansion-2900114/'
         # no immage
         # 'http://indianexpress.com/article/opinion/editorials/thomas-isaac-kerala-finance-minister-fat-tax-junk-food-2909962/'
     ]
 
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
+        if is_pagination:
+            self.start_urls = WebsiteTypes.get_pagination_url(self.url_from)
+        else:
+            self.start_urls = self.details_urls
 
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
@@ -56,5 +59,7 @@ class IndianExpressDebugSpider(scrapy.Spider):
                                                                  )
 
     def parse(self, response):
-        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='')
+        if is_pagination:
+            self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        else:
+            item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='')

@@ -3,21 +3,24 @@
 import scrapy
 
 from cwpoliticl.scraped_websites import websites_allowed_domains, WebsiteTypes, \
-    websites_parses
+    websites_parses, is_pagination
 
 
 class FirstPostDebugSpider(scrapy.Spider):
     url_from = WebsiteTypes.firstpost
     name = "{}_debug".format(url_from.value)
-    start_urls = [
-        # Pagination
-        WebsiteTypes.get_pagination_url(url_from),
-        # Detail
 
+    details_urls = [
+        # Detail
+        'http://www.firstpost.com/politics/appointing-raj-babbar-as-the-chief-will-not-help-congress-in-up-polls-bjp-2893498.html',
     ]
 
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+        if is_pagination:
+            self.start_urls = WebsiteTypes.get_pagination_url(self.url_from)
+        else:
+            self.start_urls = self.details_urls
 
         from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
@@ -51,5 +54,7 @@ class FirstPostDebugSpider(scrapy.Spider):
                                                              )
 
     def parse(self, response):
-        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='', access_denied_cookie=None)
+        if is_pagination:
+            self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        else:
+            item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='', access_denied_cookie=None)

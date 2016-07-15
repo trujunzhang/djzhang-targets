@@ -52,3 +52,9 @@ websites_parses = {
     WebsiteTypes.deccanchronicle: DeccanchronicleParser(),
     WebsiteTypes.firstpost: FirstPostParser(),
 }
+
+# ===
+# Debug
+# ===
+is_pagination = True
+# is_pagination = False
