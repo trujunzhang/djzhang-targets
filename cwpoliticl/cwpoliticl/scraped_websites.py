@@ -16,6 +16,7 @@ class WebsiteTypes(Enum):
     theviewspaper = "theviewspaper"
     dailyo = "dailyo"
     deccanchronicle = "deccanchronicle"
+    firstpost = "firstpost"
 
     @classmethod
     def get_pagination_url(self, type):
@@ -30,6 +31,7 @@ websites_allowed_domains = {
     WebsiteTypes.theviewspaper: "theviewspaper.net",
     WebsiteTypes.dailyo: 'www.dailyo.in',
     WebsiteTypes.deccanchronicle: 'www.deccanchronicle.com',
+    WebsiteTypes.firstpost: 'www.firstpost.com',
 }
 
 scraped_websites_pagination = {
@@ -38,6 +40,7 @@ scraped_websites_pagination = {
     'http://theviewspaper.net': WebsiteTypes.theviewspaper,
     'http://www.dailyo.in/politics': WebsiteTypes.dailyo,
     'http://www.deccanchronicle.com/opinion': WebsiteTypes.deccanchronicle,
+    'http://www.firstpost.com/category/politics': WebsiteTypes.firstpost,
 }
 
 websites_parses = {
@@ -46,4 +49,5 @@ websites_parses = {
     WebsiteTypes.theviewspaper: TheViewsPaperParser(),
     WebsiteTypes.dailyo: DailyoParser(),
     WebsiteTypes.deccanchronicle: DeccanchronicleParser(),
+    WebsiteTypes.firstpost: FirstPostParser(),
 }
