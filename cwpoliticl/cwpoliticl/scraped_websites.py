@@ -64,11 +64,11 @@ def get_crawler_name():
     # is_pagination = True
     is_pagination = False
 
-    url_from = WebsiteTypes.dnaindia
+    # url_from = WebsiteTypes.dnaindia
     # url_from = WebsiteTypes.indianexpress
     # url_from = WebsiteTypes.theviewspaper
     # url_from = WebsiteTypes.dailyo
-    # url_from = WebsiteTypes.deccanchronicle
+    url_from = WebsiteTypes.deccanchronicle
     # url_from = WebsiteTypes.firstpost
 
     crawler_names = [

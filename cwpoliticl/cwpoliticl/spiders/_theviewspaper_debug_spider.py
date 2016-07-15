@@ -10,7 +10,7 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
     name = "{}_debug".format(url_from.value)
     details_urls = [
         # Detail
-        # 'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/',
+        'http://theviewspaper.net/to-ban-or-not-to-ban-the-regulation-of-hate-speech/',
         # 'http://theviewspaper.net/is-congress-too-weighed-down-by-its-corrupt-baggage-for-redemption/'
     ]
 
