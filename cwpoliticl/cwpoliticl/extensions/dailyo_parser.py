@@ -5,7 +5,7 @@ from cwpoliticl.items import CacheItem, WDPost
 class DailyoParser(BaseParser):
     def __init__(self):
         from cwpoliticl.scraped_websites import WebsiteTypes
-        self.url_from = WebsiteTypes.theviewspaper.value
+        self.url_from = WebsiteTypes.dailyo.value
         super(DailyoParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
