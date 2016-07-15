@@ -2,6 +2,7 @@
 
 from cwpoliticl.database.base.mysql_db import MysqlDatabase
 
+
 class ItemDatabase(MysqlDatabase):
     def __init__(self, host, port, user, passwd, db, collection_name):
         super(ItemDatabase, self).__init__(host, port, user, passwd, db, collection_name)

@@ -2,6 +2,7 @@
 
 import scrapy
 
+
 class PoliticlsWatchSpider(scrapy.Spider):
     name = "politicl_watch"
 

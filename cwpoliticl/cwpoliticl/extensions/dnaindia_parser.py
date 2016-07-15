@@ -1,5 +1,5 @@
 from cwpoliticl.extensions.base_parser import BaseParser
-from cwpoliticl.items import CacheItem,  WDPost
+from cwpoliticl.items import CacheItem, WDPost
 from cwpoliticl.scraped_websites import WebsiteTypes
 
 

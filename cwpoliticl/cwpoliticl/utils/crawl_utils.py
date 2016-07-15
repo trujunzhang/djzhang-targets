@@ -5,7 +5,6 @@ class CrawlUtils(object):
     def __init__(self):
         super(CrawlUtils, self).__init__()
 
-
     @classmethod
     def get_guid(self, _url):
         """Generates an unique identifier for a given item."""
