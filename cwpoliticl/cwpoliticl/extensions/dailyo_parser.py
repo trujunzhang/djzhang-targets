@@ -54,9 +54,10 @@ class DailyoParser(BaseParser):
         return item
 
     def _get_image_src(self, hxs, selector):
+        style = hxs.xpath(selector).extract()
         image_style = self.get_value_response(hxs, selector)
 
-        split = image_style.split('"')
+        split = image_style.split("'")
         if len(split) >= 2:
             return split[1]
 
