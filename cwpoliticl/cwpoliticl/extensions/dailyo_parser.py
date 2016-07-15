@@ -9,13 +9,21 @@ class DailyoParser(BaseParser):
         super(DailyoParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        selector = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list graybg"]'
-        links = hxs.xpath(selector).extract()  # Type: List['unicode']
+        select_block = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list"]'
+        self._parse_block_for_pagination(hxs, cache_db, history_db, select_block)
+
+        select_block = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list graybg"]'
+        self._parse_block_for_pagination(hxs, cache_db, history_db, select_block)
+
+    def _parse_block_for_pagination(self, hxs, cache_db, history_db, select_block):
+        links = hxs.xpath(select_block).extract()
 
         count = 1
         for href in links:
-            href_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/@href'.format(selector, count)
-            thumbnail_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/img/@src'.format(selector, count)
+            href_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/@href'.format(select_block, count)
+            thumbnail_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/img/@src'.format(
+                select_block, count)
+
             count += 1
 
             href = self.get_value_response(hxs, href_selector)

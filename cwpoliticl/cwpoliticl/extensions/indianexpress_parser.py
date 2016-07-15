@@ -10,7 +10,7 @@ class IndianExpressParser(BaseParser):
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
         selector = '//*[@class="profile-container"]/*[@class="opi-story"]'
-        links = hxs.xpath(selector).extract()  # Type: List['unicode']
+        links = hxs.xpath(selector).extract()
 
         count = 1
         for link in links:

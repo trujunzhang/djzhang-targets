@@ -10,7 +10,7 @@ class TheViewsPaperParser(BaseParser):
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
         selector = '//*[@class="container"]/*[@class="row"]/*[@class="col-md-8"]/article'
-        links = hxs.xpath(selector).extract()  # Type: List['unicode']
+        links = hxs.xpath(selector).extract()
 
         count = 1
         for href in links:
