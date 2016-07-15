@@ -18,7 +18,7 @@ class FirstPostDebugSpider(scrapy.Spider):
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
         if is_pagination:
-            self.start_urls = WebsiteTypes.get_pagination_url(self.url_from)
+            self.start_urls = [WebsiteTypes.get_pagination_url(self.url_from)]
         else:
             self.start_urls = self.details_urls
 
