@@ -35,7 +35,7 @@ class HarajSaParse(BaseParser):
             href = self.get_value_response(hxs, Li_selector + '/td[2]/a/@href')
 
             from cwharaj.utils.crawl_utils import CrawlUtils
-            _ID = CrawlUtils.get_model_id_from_page_url(href, 1)
+            _ID = CrawlUtils.get_model_id_by_url_from(href, self.url_from)
 
             # If the link already exist on the history database,ignore it.
             if history_db.check_history_exist(_ID):
@@ -49,7 +49,7 @@ class HarajSaParse(BaseParser):
 
     def parse(self, url, hxs, item_db):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _ID = CrawlUtils.get_model_id_from_page_url(url, 1)
+        _ID = CrawlUtils.get_model_id_by_url_from(url, self.url_from)
 
         # comment ad_div
         _ads_title = self.get_value_response(hxs, '//*[@itemprop="name"]/text()').replace('» ', '')
@@ -79,12 +79,18 @@ class HarajSaParse(BaseParser):
         # Fixing the empty page.
         if _ads_title == '' and _ads_body == '':
             logging.debug("  The empty page on the harajsa")
-            return {"id_ads": _ID}
+            return {
+                "id_ads": _ID,
+                'url_from': self.url_from
+            }
 
         # TODO: djzhang, how to parse the sections when length is more then 3.
         if len(_sections) > 3:
             logging.debug("  The sections length is more than 3 on the harajsa")
-            return {"id_ads": _ID}
+            return {
+                "id_ads": _ID,
+                'url_from': self.url_from
+            }
 
         # Replace "\n","\r"
         _ads_body = _ads_body.replace("\r", "").strip()

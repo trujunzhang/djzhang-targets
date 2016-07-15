@@ -1,6 +1,8 @@
 # coding=utf-8
 import unittest
 
+from cwharaj.items import WebsiteTypes
+
 
 class AjaxUrlPhoneNumberTest(unittest.TestCase):
     def setUp(self):
@@ -9,6 +11,7 @@ class AjaxUrlPhoneNumberTest(unittest.TestCase):
 
         self._page_url_opensooq = 'https://sa.opensooq.com/ar/search/41957149/عمارة-في-حي-الراية-للتواصل-0541080350'
         self.expect_opensooq = '41957149'
+        self.url_from = WebsiteTypes.opensooq.value
 
     def test_regex_get_id(self):
         from urlparse import urlparse
@@ -18,5 +21,5 @@ class AjaxUrlPhoneNumberTest(unittest.TestCase):
 
     def test_parse_id_from_page_url(self):
         from cwharaj.utils.crawl_utils import CrawlUtils
-        _ID = CrawlUtils.get_model_id_from_page_url(self._page_url_opensooq, 3)
+        _ID = CrawlUtils.get_model_id_by_url_from(self._page_url_opensooq, self.url_from)
         self.assertEqual(_ID, self.expect_opensooq)

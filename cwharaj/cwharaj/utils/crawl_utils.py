@@ -22,14 +22,7 @@ class CrawlUtils(object):
     @classmethod
     def get_model_id_by_url_from(cls, _page_url, url_from):
         from cwharaj.items import WebsiteTypes
-        _position = WebsiteTypes.get_id_index(url_from)
-
-        model_id = CrawlUtils.get_model_id_from_page_url(_page_url, _position)
-        return model_id
-
-    @classmethod
-    def get_model_id_from_page_url(cls, _page_url, position):
-        # logging.debug("Get the id from page url:")
+        position = WebsiteTypes.get_id_index(url_from)
 
         from urlparse import urlparse
         array = urlparse(_page_url).path.split('/')
@@ -39,6 +32,3 @@ class CrawlUtils(object):
             _id = array[position]
             # logging.debug("  2. id: {} at position: {}".format(_id, position))
             return _id
-
-        logging.debug("  3. split the page url failure: {}".format(_page_url.encode('utf-8')))
-        return None
