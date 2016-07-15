@@ -4,7 +4,7 @@ import unittest
 
 from cwpoliticl import settings
 from cwpoliticl.database_factory import DatabaseFactory, CollectionTypes
-from cwpoliticl.items import HistoryItem, WebsiteTypes
+from cwpoliticl.scraped_websites import WebsiteTypes
 
 
 class MysqlDBTest(unittest.TestCase):

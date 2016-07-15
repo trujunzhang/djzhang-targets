@@ -1,7 +1,18 @@
 from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
 from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
 from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
-from cwpoliticl.items import WebsiteTypes
+
+from enum import Enum
+
+
+class WebsiteTypes(Enum):
+    def __str__(self):
+        return str(self.value)
+
+    dnaindia = "dnaindia"
+    indianexpress = "indianexpress"
+    theviewspaper = "theviewspaper"
+
 
 websites_allowed_domains = [
     "www.dnaindia.com",

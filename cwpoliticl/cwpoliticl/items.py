@@ -8,16 +8,6 @@
 from datetime import datetime
 
 import scrapy
-from enum import Enum
-
-
-class WebsiteTypes(Enum):
-    def __str__(self):
-        return str(self.value)
-
-    dnaindia = "dnaindia"
-    indianexpress = "indianexpress"
-    theviewspaper = "theviewspaper"
 
 
 class CacheItem(scrapy.Item):

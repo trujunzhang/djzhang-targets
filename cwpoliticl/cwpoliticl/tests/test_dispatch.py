@@ -2,7 +2,7 @@
 
 import unittest
 
-from cwpoliticl.items import WebsiteTypes
+from cwpoliticl.scraped_websites import WebsiteTypes
 
 
 class DispatchTest(unittest.TestCase):
