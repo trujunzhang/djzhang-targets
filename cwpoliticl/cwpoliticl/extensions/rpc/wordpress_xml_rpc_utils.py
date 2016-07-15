@@ -6,7 +6,7 @@ from wordpress_xmlrpc.methods import posts, media
 
 from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
 from cwpoliticl.extensions.rpc.the_views_papaer_images_downloader import TheViewsPaperImagesDownloader
-from cwpoliticl.items import WebsiteTypes
+from cwpoliticl.scraped_websites import WebsiteTypes
 
 
 class WDXmlRPCUtils(object):

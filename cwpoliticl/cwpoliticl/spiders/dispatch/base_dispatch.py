@@ -1,7 +1,3 @@
-from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
-from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
-from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
-from cwpoliticl.items import WebsiteTypes
 from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites, websites_parses
 
 

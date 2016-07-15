@@ -1,4 +1,4 @@
-from cwpoliticl.items import WebsiteTypes
+from cwpoliticl.scraped_websites import WebsiteTypes
 from cwpoliticl.spiders.dispatch.base_dispatch import BaseDispatch
 
 
