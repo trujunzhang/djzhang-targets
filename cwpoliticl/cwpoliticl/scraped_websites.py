@@ -1,6 +1,7 @@
 from enum import Enum
 
 from cwpoliticl.extensions.dailyo_parser import DailyoParser
+from cwpoliticl.extensions.deccanchronicle_parser import DeccanchronicleParser
 from cwpoliticl.extensions.dnaindia_parser import DnaIndiaParser
 from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
 from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser

@@ -12,18 +12,24 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    utils.execute("politicl")
+    def _debug_execute():
+        # Extensions
+        from cwpoliticl.scraped_websites import WebsiteTypes
+
+        # url_from = WebsiteTypes.dnaindia
+        # url_from = WebsiteTypes.indianexpress
+        # url_from = WebsiteTypes.theviewspaper
+        # url_from = WebsiteTypes.dailyo
+        url_from = WebsiteTypes.deccanchronicle
+
+        utils.execute("{}_debug".format(url_from.value))
+
+    # ========
+    # ========
+    # utils.execute("politicl")
     # utils.execute("politicl_watch")
 
-    # Extensions
-    from cwpoliticl.scraped_websites import WebsiteTypes
-
-    # url_from = WebsiteTypes.dnaindia
-    # url_from = WebsiteTypes.indianexpress
-    # url_from = WebsiteTypes.theviewspaper
-    # url_from = WebsiteTypes.dailyo
-
-    # utils.execute("{}_debug".format(url_from.value))
+    _debug_execute()
 
 
 if __name__ == '__main__':
