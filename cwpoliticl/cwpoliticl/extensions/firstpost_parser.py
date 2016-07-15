@@ -34,10 +34,10 @@ class FirstPostParser(BaseParser):
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, '//*[@class="contentWarp"]/*[@class="articleTop"]/div/h1/text()')
         image_src = self.get_value_response(hxs,
-                                            '//*[@class="artWarp"]/*[@itemprop="articleBody""]/*[@class="wp-caption alignleft"]/img/@src')
+                                            '//*[@class="artWarp"]/*[@itemprop="articleBody"]/*[@class="wp-caption alignleft"]/img/@@data-original')
 
         content = self.get_all_value_response(hxs,
-                                              '//*[@class="artWarp"]/*[@itemprop="articleBody""]/p/text()',
+                                              '//*[@class="artWarp"]/*[@itemprop="articleBody"]/p/text()',
                                               start_index=2)
 
         tags = hxs.xpath('//*[@class="artTps"]/div/p[2]/a/text()').extract()
