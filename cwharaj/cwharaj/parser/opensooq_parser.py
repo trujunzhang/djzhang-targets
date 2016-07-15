@@ -5,8 +5,8 @@ from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member, OpensooqPho
 from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
+from cwharaj.parser.utils.section_item import SectionItem
 from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
-from cwharaj.utils.phone_number_set import PhoneNumberItem
 
 
 class OpensooqParse(BaseParser):
@@ -67,7 +67,10 @@ class OpensooqParse(BaseParser):
         # Fixing the empty page.
         if (_ads_title == '') and (len(_sections) == 0):
             logging.debug("  The empty page on the opensooq")
-            return PhoneNumberItem(url, _ID)
+            return {
+                "id_ads": _ID,
+                "url_from": self.url_from
+            }
 
         section_item = HarajsSection(_sections, item_db).get_section_item_for_opensooq()
 
