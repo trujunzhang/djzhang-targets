@@ -16,8 +16,6 @@ class DailyoDebugSpider(scrapy.Spider):
         # 'http://www.dailyo.in/politics/sheila-dikshit-up-assembly-polls-congress-priyanka-gandhi-salman-khurshid-chief-ministerial-candidate-brahmin/story/1/11757.html'
     ]
 
-    # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
-
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
 

@@ -16,8 +16,6 @@ class TheViewsPaperDebugSpider(scrapy.Spider):
         # 'http://theviewspaper.net/is-congress-too-weighed-down-by-its-corrupt-baggage-for-redemption/'
     ]
 
-    # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
-
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
 

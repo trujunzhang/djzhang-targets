@@ -17,8 +17,6 @@ class DnaIndiaDebugSpider(scrapy.Spider):
         # 'http://www.dnaindia.com/analysis/column-nda-s-decisive-push-to-garner-tax-from-fugitive-firms-2232199'
     ]
 
-    # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
-
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
 

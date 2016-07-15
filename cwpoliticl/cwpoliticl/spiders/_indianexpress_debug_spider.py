@@ -21,8 +21,6 @@ class IndianExpressDebugSpider(scrapy.Spider):
         # 'http://indianexpress.com/article/opinion/editorials/thomas-isaac-kerala-finance-minister-fat-tax-junk-food-2909962/'
     ]
 
-    # 'Ignoring response <403 http://www.dnaindia.com/analysis>: HTTP status code is not handled or not allowed'
-
     def __init__(self, name=None, **kwargs):
         self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
 
