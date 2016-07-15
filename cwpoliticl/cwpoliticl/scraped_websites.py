@@ -56,5 +56,25 @@ websites_parses = {
 # ===
 # Debug
 # ===
-is_pagination = True
-# is_pagination = False
+# is_pagination = True
+is_pagination = False
+
+
+def get_crawler_name():
+    # Extensions
+
+    url_from = WebsiteTypes.dnaindia
+    # url_from = WebsiteTypes.indianexpress
+    # url_from = WebsiteTypes.theviewspaper
+    # url_from = WebsiteTypes.dailyo
+    # url_from = WebsiteTypes.deccanchronicle
+    # url_from = WebsiteTypes.firstpost
+
+
+    crawler_names = [
+        # "politicl",
+        # "politicl_watch",
+        "{}_debug".format(url_from.value)
+    ]
+
+    return crawler_names[0]

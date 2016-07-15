@@ -1,5 +1,7 @@
 from scrapy import cmdline
 
+from cwpoliticl.scraped_websites import get_crawler_name
+
 
 class Crawler:
     def execute(self, module):
@@ -12,26 +14,7 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    def _debug_execute():
-        # Extensions
-        from cwpoliticl.scraped_websites import WebsiteTypes
-
-        url_from = WebsiteTypes.dnaindia
-        # url_from = WebsiteTypes.indianexpress
-        # url_from = WebsiteTypes.theviewspaper
-        # url_from = WebsiteTypes.dailyo
-        # url_from = WebsiteTypes.deccanchronicle
-        # url_from = WebsiteTypes.firstpost
-
-        utils.execute("{}_debug".format(url_from.value))
-
-    # ========
-    # ========
-    # utils.execute("politicl")
-    # utils.execute("politicl_watch")
-
-    _debug_execute()
-
+    utils.execute(get_crawler_name())
 
 if __name__ == '__main__':
     main()
