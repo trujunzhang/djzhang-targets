@@ -19,11 +19,13 @@ websites_allowed_domains = [
     "www.indianexpress.com",
     "http://theviewspaper.net"
 ]
+
 scraped_websites = {
     'http://www.dnaindia.com/analysis': WebsiteTypes.dnaindia,
     'http://indianexpress.com/opinion/': WebsiteTypes.indianexpress,
     'http://theviewspaper.net': WebsiteTypes.theviewspaper,
 }
+
 websites_parses = {
     WebsiteTypes.dnaindia: DnaIndiaParser(),
     WebsiteTypes.indianexpress: IndianExpressParser(),
