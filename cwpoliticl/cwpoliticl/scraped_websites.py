@@ -20,6 +20,8 @@ class WebsiteTypes(Enum):
         return scraped_websites_pagination.keys()[scraped_websites_pagination.values().index(type)]
 
 
+content_seperator = '\n' + '\n'
+
 websites_allowed_domains = {
     WebsiteTypes.dnaindia: "www.dnaindia.com",
     WebsiteTypes.indianexpress: "www.indianexpress.com",
