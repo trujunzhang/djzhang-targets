@@ -9,7 +9,7 @@ class FirstPostParser(BaseParser):
         super(FirstPostParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        select_block = '//*[@class="col-sm-12 noPadding noMargin"]/*[@class="col-sm-12 SunChNewListing"]'
+        select_block = '//*[@class="artCol top_stories"]/ul/li'
         self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block)
 
     def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
