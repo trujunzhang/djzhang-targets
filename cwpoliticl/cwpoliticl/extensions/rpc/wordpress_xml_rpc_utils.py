@@ -6,7 +6,6 @@ from wordpress_xmlrpc.methods import posts, media
 
 from cwpoliticl.extensions.rpc.images_downloader import ImagesDownload
 from cwpoliticl.extensions.rpc.the_views_papaer_images_downloader import TheViewsPaperImagesDownloader
-from cwpoliticl.scraped_websites import WebsiteTypes
 
 
 class WDXmlRPCUtils(object):
@@ -16,6 +15,7 @@ class WDXmlRPCUtils(object):
         super(WDXmlRPCUtils, self).__init__()
 
     def _get_image_downloader(self, item):
+        from cwpoliticl.scraped_websites import WebsiteTypes
         if item['url_from'] == WebsiteTypes.theviewspaper.value:
             return TheViewsPaperImagesDownloader()
         else:
