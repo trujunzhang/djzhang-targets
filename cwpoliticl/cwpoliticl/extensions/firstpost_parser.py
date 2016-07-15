@@ -36,7 +36,7 @@ class FirstPostParser(BaseParser):
         image_src = self.get_value_response(hxs,
                                             '//*[@class="artWarp"]/*[@itemprop="articleBody"]/*[@class="wp-caption alignleft"]/img/@@data-original')
 
-        content = self.get_all_value_from_beautifulsoup(hxs, '//*[@class="artWarp"]/*[@itemprop="articleBody"]')
+        content = self._get_all_value_from_beautifulsoup(hxs, '//*[@class="artWarp"]/*[@itemprop="articleBody"]')
 
         tags = hxs.xpath('//*[@class="artTps"]/div/p[2]/a/text()').extract()
 
@@ -47,7 +47,7 @@ class FirstPostParser(BaseParser):
 
         return item
 
-    def get_all_value_from_beautifulsoup(self, hxs, block, max_len=2, seperator=None):
+    def _get_all_value_from_beautifulsoup(self, hxs, block, max_len=2, seperator=None):
         if not seperator:
             from cwpoliticl.scraped_websites import content_seperator
             seperator = content_seperator
@@ -65,7 +65,9 @@ class FirstPostParser(BaseParser):
 
         for p_tag in p_tags:
             text = p_tag.text
-            if not text:
+            if len(p_tags[1].attrs):  # attrs contains 'class' that is image's title, ignore it.
+                continue
+            if not text:  # the empty line, ignore it
                 continue
 
             if len(lines) >= max_len:
