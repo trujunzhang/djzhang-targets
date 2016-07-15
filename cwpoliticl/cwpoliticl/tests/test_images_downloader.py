@@ -19,6 +19,10 @@ class ImagesDownloaderTest(unittest.TestCase):
             'image_src': 'http://media2.intoday.in/dailyo//story/header/201607/priyankag-sheila-ab_071416102045.jpg',
             "downloader": ImagesDownload()
         }
+        self.item = {
+            'image_src': 'http://dc-cdn.s3-ap-southeast-1.amazonaws.com/dc-Cover-k69lc81sp2h0alh7auf1pmcra7-20160715005036.Medi.jpeg',
+            "downloader": ImagesDownload()
+        }
 
     def test_download_image(self):
         """

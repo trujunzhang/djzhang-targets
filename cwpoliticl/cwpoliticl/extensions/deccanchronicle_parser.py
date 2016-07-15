@@ -32,20 +32,18 @@ class DeccanchronicleParser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
-        title = self.get_value_response(hxs, '//*[@id="header-story"]/*[@class="header-inner"]/h1/text()')
-        # image_src = self._get_image_src(hxs, '//*[@id="header-story"]/@style')
+        title = self.get_value_response(hxs, '//*[@class="story-main"]/h1/span/text()')
+        image_src = self.get_value_response(hxs,
+                                            '//*[@class="story-main"]/*[@id="story-body"]/*[@class="cover"]/img/@src')
 
-        # from cwpoliticl.scraped_websites import content_seperator
-        # lines = [self.get_value_response(hxs, '//*[@id="p_1"]/text()'), self.get_value_response(hxs, '//*[@id="p_2"]/text()')]
-        # content = content_seperator.join(lines)
-
-        content = self.get_all_value_response(hxs, '//*[@class="mediumcontent"]/p/text()')
+        content = self.get_all_value_response(hxs,
+                                              '//*[@class="story-main"]/*[@id="story-body"]/*[@id="storyBody"]/p/text()')
 
         tags = hxs.xpath(
-            '//*[@class="bottom-full"]/*[@class="bottom_cont_tg"]/*[@class="story-middle"]/*[@id="taglist"]/a/text()').extract()
+            '//*[@class="story-main"]/*[@id="story-body"]/*[@class="articleTags"]/a/text()').extract()
 
-        # item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
-        #                           access_denied_cookie=access_denied_cookie)
+        item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
+                                  access_denied_cookie=access_denied_cookie)
 
         post_id = wd_rpc.post_to_wd(item)
 
