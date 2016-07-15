@@ -9,7 +9,7 @@ class BaseDispatch(object):
         super(BaseDispatch, self).__init__()
 
     def get_allowed_domains(self):
-        return self.allowed_domains
+        return self.allowed_domains.values()
 
     def get_pagination_websites(self):
         return self.websites.keys()

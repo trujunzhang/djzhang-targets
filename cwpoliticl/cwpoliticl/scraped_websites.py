@@ -12,18 +12,21 @@ class WebsiteTypes(Enum):
     dnaindia = "dnaindia"
     indianexpress = "indianexpress"
     theviewspaper = "theviewspaper"
+    dailyo = "dailyo"
 
 
-websites_allowed_domains = [
-    "www.dnaindia.com",
-    "www.indianexpress.com",
-    "http://theviewspaper.net"
-]
+websites_allowed_domains = {
+    WebsiteTypes.dnaindia: "www.dnaindia.com",
+    WebsiteTypes.indianexpress: "www.indianexpress.com",
+    WebsiteTypes.theviewspaper: "theviewspaper.net",
+    WebsiteTypes.dailyo: 'www.dailyo.in',
+}
 
 scraped_websites = {
     'http://www.dnaindia.com/analysis': WebsiteTypes.dnaindia,
     'http://indianexpress.com/opinion/': WebsiteTypes.indianexpress,
     'http://theviewspaper.net': WebsiteTypes.theviewspaper,
+    'http://www.dailyo.in/politics': WebsiteTypes.dailyo,
 }
 
 websites_parses = {
