@@ -9,7 +9,7 @@ class DeccanchronicleParser(BaseParser):
         super(DeccanchronicleParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        select_block = '//*[@id="story_container"]/*[@class="pagedno"]/*[@class="story-list "]'
+        select_block = '//*[@class="col-sm-12 noPadding noMargin"]/*[@class="col-sm-12 SunChNewListing"]'
         self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block)
 
     def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
@@ -17,9 +17,8 @@ class DeccanchronicleParser(BaseParser):
 
         count = 1
         for href in links:
-            href_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/@href'.format(select_block, count)
-            thumbnail_selector = '{}[{}]/*[@class="storybox"]/*[@class="storyimg"]/a/img/@src'.format(
-                select_block, count)
+            href_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]a/@href'.format(select_block, count)
+            thumbnail_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/img/@src'.format(select_block, count)
 
             count += 1
 
