@@ -19,7 +19,7 @@ class WebsiteTypes(Enum):
     dailyo = "dailyo"
     deccanchronicle = "deccanchronicle"
     firstpost = "firstpost"
-    forbesindia = "forbesindia"  # ???
+    # forbesindia = "forbesindia"  # ???
     hindustantimes = "hindustantimes"
 
     @classmethod
@@ -36,8 +36,8 @@ websites_allowed_domains = {
     WebsiteTypes.dailyo: 'www.dailyo.in',
     WebsiteTypes.deccanchronicle: 'www.deccanchronicle.com',
     WebsiteTypes.firstpost: 'www.firstpost.com',
-    WebsiteTypes.forbesindia: 'forbesindia.com',  # ???
-    WebsiteTypes.hindustantimes: 'http://www.hindustantimes.com/opinion/',
+    # WebsiteTypes.forbesindia: 'forbesindia.com',  # ???
+    WebsiteTypes.hindustantimes: 'www.hindustantimes.com',
 }
 
 scraped_websites_pagination = {
@@ -47,7 +47,7 @@ scraped_websites_pagination = {
     'http://www.dailyo.in/politics': WebsiteTypes.dailyo,
     'http://www.deccanchronicle.com/opinion': WebsiteTypes.deccanchronicle,
     'http://www.firstpost.com/category/politics': WebsiteTypes.firstpost,
-    'http://forbesindia.com/': WebsiteTypes.forbesindia,  # ???
+    # 'http://forbesindia.com/': WebsiteTypes.forbesindia,  # ???
     'http://www.hindustantimes.com/opinion/': WebsiteTypes.hindustantimes
 }
 
@@ -58,7 +58,7 @@ websites_parses = {
     WebsiteTypes.dailyo: DailyoParser(),
     WebsiteTypes.deccanchronicle: DeccanchronicleParser(),
     WebsiteTypes.firstpost: FirstPostParser(),
-    WebsiteTypes.forbesindia: FirstPostParser(),  # ???
+    # WebsiteTypes.forbesindia: FirstPostParser(),  # ???
     WebsiteTypes.hindustantimes: HindustantimesParser(),
 }
 
