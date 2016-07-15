@@ -9,13 +9,16 @@ class DnaIndiaParser(BaseParser):
         super(DnaIndiaParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        selector = '//*[@class="media-list eventtracker"]'
-        links = hxs.xpath(selector).extract()
+        select_block = '//*[@class="media-list eventtracker"]'
+        self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block)
+
+    def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
+        links = hxs.xpath(select_block).extract()
 
         count = 1
         for link in links:
-            href_selector = '{}/div[{}]/div[@class="media-left"]/a/@href'.format(selector, count)
-            thumbnail_selector = '{}/div[{}]/div[@class="media-left"]/a/img/@src'.format(selector, count)
+            href_selector = '{}/div[{}]/div[@class="media-left"]/a/@href'.format(select_block, count)
+            thumbnail_selector = '{}/div[{}]/div[@class="media-left"]/a/img/@src'.format(select_block, count)
             count += 1
 
             href = self.get_value_with_urljoin(hxs, href_selector, url)

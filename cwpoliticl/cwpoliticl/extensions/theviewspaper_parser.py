@@ -10,9 +10,9 @@ class TheViewsPaperParser(BaseParser):
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
         select_block = '//*[@class="container"]/*[@class="row"]/*[@class="col-md-8"]/article'
-        self._parse_block_for_pagination(hxs, cache_db, history_db, select_block)
+        self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block)
 
-    def _parse_block_for_pagination(self, hxs, cache_db, history_db, select_block):
+    def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
         links = hxs.xpath(select_block).extract()
 
         count = 1
