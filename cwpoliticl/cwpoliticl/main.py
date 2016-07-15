@@ -20,8 +20,8 @@ def main():
 
     # url_from = WebsiteTypes.dnaindia
     # url_from = WebsiteTypes.indianexpress
-    url_from = WebsiteTypes.theviewspaper
-    # url_from = WebsiteTypes.dailyo
+    # url_from = WebsiteTypes.theviewspaper
+    url_from = WebsiteTypes.dailyo
 
     utils.execute("{}_debug".format(url_from.value))
 
