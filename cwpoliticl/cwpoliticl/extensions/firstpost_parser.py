@@ -32,14 +32,15 @@ class FirstPostParser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
-        title = self.get_value_response(hxs, '//*[@class="story-main"]/h1/span/text()')
+        title = self.get_value_response(hxs, '//*[@class="contentWarp"]/*[@class="articleTop"]/div/h1/text()')
         image_src = self.get_value_response(hxs,
-                                            '//*[@class="story-main"]/*[@class="story-body"]/*[@class="cover"]/img/@src')
+                                            '//*[@class="artWarp"]/*[@itemprop="articleBody""]/*[@class="wp-caption alignleft"]/img/@src')
 
         content = self.get_all_value_response(hxs,
-                                              '//*[@class="story-main"]/*[@class="story-body"]/*[@id="storyBody"]/p/text()')
+                                              '//*[@class="artWarp"]/*[@itemprop="articleBody""]/p/text()',
+                                              start_index=2)
 
-        tags = hxs.xpath('//*[@class="story-main"]/*[@class="story-body"]/*[@class="articleTags"]/a/text()').extract()
+        tags = hxs.xpath('//*[@class="artTps"]/div/p[2]/a/text()').extract()
 
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
                                   access_denied_cookie=access_denied_cookie)
