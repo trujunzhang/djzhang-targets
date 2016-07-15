@@ -15,11 +15,9 @@ class IndianExpressParser(BaseParser):
     def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
         links = hxs.xpath(select_block).extract()
 
-        count = 1
-        for link in links:
-            href_selector = '{}[{}]/h6/a/@href'.format(select_block, count)
-            thumbnail_selector = '{}[{}]/*[@class="sto-img"]/a/img/@src'.format(select_block, count)
-            count += 1
+        for idx, link in enumerate(links):
+            href_selector = '{}[{}]/h6/a/@href'.format(select_block, idx)
+            thumbnail_selector = '{}[{}]/*[@class="sto-img"]/a/img/@src'.format(select_block, idx)
 
             href = self.get_value_response(hxs, href_selector)
             # If the link already exist on the history database, ignore it.
