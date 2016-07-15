@@ -2,7 +2,7 @@
 
 import scrapy
 
-from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, WebsiteTypes, \
+from cwpoliticl.scraped_websites import websites_allowed_domains, WebsiteTypes, \
     websites_parses
 
 

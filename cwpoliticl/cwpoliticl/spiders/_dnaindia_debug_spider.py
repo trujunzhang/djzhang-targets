@@ -2,7 +2,7 @@
 
 import scrapy
 
-from cwpoliticl.scraped_websites import websites_allowed_domains, scraped_websites_pagination, WebsiteTypes, \
+from cwpoliticl.scraped_websites import websites_allowed_domains, WebsiteTypes, \
     websites_parses
 
 
@@ -55,5 +55,5 @@ class DnaIndiaDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        # self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='')
+        self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        # item = self._parser.parse(response.url, response, self.wd_rpc, thumbnail_url='')
