@@ -91,11 +91,7 @@ class BaseParser(object):
 
         return ""
 
-    def get_image_src_from_bg(self, hxs, selector):
-        image_style = self.get_value_response(hxs, selector)
-        self.get_image_scr_from_style(image_style)
-
-    def get_image_scr_from_style(self, style_content):
+    def get_image_src_from_style(self, style_content):
         import cssutils
 
         style = cssutils.parseStyle(style_content)

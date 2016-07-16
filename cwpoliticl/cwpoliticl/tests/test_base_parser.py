@@ -27,17 +27,17 @@ class BaseParseTest(unittest.TestCase):
     #
     #     self.assertEqual(item['url'], url)
 
-    # def test_css_background_image_for_dailyo(self):
-    #     image_style = "background-image:url('http://media2.intoday.in/dailyo//story/header/201607/priyankag-sheila-ab_071416102045.jpg')"
-    #
-    #     url = self.base_parse.get_image_scr_from_style(image_style)
-    #     self.assertEqual(
-    #         'http://media2.intoday.in/dailyo//story/header/201607/priyankag-sheila-ab_071416102045.jpg',
-    #         url)
+    def test_css_background_image_for_dailyo(self):
+        image_style = "background-image:url('http://media2.intoday.in/dailyo//story/header/201607/priyankag-sheila-ab_071416102045.jpg')"
+
+        url = self.base_parse.get_image_src_from_style(image_style)
+        self.assertEqual(
+            'http://media2.intoday.in/dailyo//story/header/201607/priyankag-sheila-ab_071416102045.jpg',
+            url)
 
     def test_css_background_image_for_theindianeconomist(self):
         image_style = 'background-image: url(http://i2.wp.com/theindianeconomist.com/wp-content/uploads/2016/07/16344930632_f89cc36a46_o.jpg?fit=1280%2C850); opacity: 0.3;'
-        url = self.base_parse.get_image_scr_from_style(image_style)
+        url = self.base_parse.get_image_src_from_style(image_style)
         self.assertEqual(
             'http://i2.wp.com/theindianeconomist.com/wp-content/uploads/2016/07/16344930632_f89cc36a46_o.jpg?fit=1280%2C850',
             url)

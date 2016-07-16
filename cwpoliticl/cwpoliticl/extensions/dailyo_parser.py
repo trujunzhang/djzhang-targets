@@ -40,7 +40,7 @@ class DailyoParser(BaseParser):
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, self.page_selector_dict['title'])
-        image_src = self.get_image_src_from_bg(hxs, self.page_selector_dict['image'])
+        image_src = self.get_image_src_from_style(self.get_value_response(hxs, self.page_selector_dict['image']))
         content = self.get_all_value_response(hxs, self.page_selector_dict['content'])
         tags = hxs.xpath(self.page_selector_dict['tags']).extract()
 
@@ -50,5 +50,3 @@ class DailyoParser(BaseParser):
         post_id = wd_rpc.post_to_wd(item)
 
         return item
-
-
