@@ -91,14 +91,5 @@ class HindustantimesPaginationScraper(object):
         links = hxs.xpath(select_block).extract()
 
         for idx, link in enumerate(links):
-            href_selector = '{}[{}]/div[1]/a/@href'.format(select_block, (idx + 1))
-            thumbnail_selector = '{}[{}]/div[1]/a/img/@{}'.format(select_block, (idx + 1), dict['attr'])
-
-            href = self.parser.get_value_response(hxs, href_selector)
-            # If the link already exist on the history database, ignore it.
-            if history_db.check_history_exist(href):
-                continue
-
-            thumbnail_src = self.parser.get_value_response(hxs, thumbnail_selector)
-
-            cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
+            list_select_block = '{}[{}]/div[1]'.format(select_block, (idx + 1))
+            self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db, dict, list_select_block)
