@@ -11,7 +11,8 @@ class DailyoDebugSpider(scrapy.Spider):
     name = "{}_debug".format(url_from.value)
     details_urls = [
         # Detail
-        'http://www.dailyo.in/politics/sheila-dikshit-up-assembly-polls-congress-priyanka-gandhi-salman-khurshid-chief-ministerial-candidate-brahmin/story/1/11757.html'
+        # 'http://www.dailyo.in/politics/sheila-dikshit-up-assembly-polls-congress-priyanka-gandhi-salman-khurshid-chief-ministerial-candidate-brahmin/story/1/11757.html',
+        'http://www.dailyo.in/politics/mehbooba-mufti-kashmir-unrest-burhan-wani-pellets-indian-army-omar-abdullah/story/1/11797.html'
     ]
 
     def __init__(self, name=None, **kwargs):

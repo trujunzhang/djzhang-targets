@@ -34,7 +34,7 @@ class BaseParser(object):
             return value
         return default
 
-    def get_all_value_response(self, hxs, query, max_len=2, seperator=None, start_index=0):
+    def get_all_value_response(self, hxs, query, max_len=2, seperator=None, start_index=0, max_size=150):
         """
         Get the all value.
         :param hxs:
@@ -52,14 +52,27 @@ class BaseParser(object):
         _list = hxs.xpath(query)
         lines = []
 
+        total_size = 0
         for idx, line in enumerate(_list):
             if idx >= start_index:
                 if len(lines) >= max_len:
                     break
+                text = line.extract()
+                limit = self._get_limit_size(text, total_size, max_size)
+                if limit:
+                    text = text[:limit]
 
-                lines.append(line.extract())
+                lines.append(text)
+
+                if not limit:  # already more than the max_size
+                    break
 
         return seperator.join(lines)
+
+    def _get_limit_size(self, text, total_side, max_size):
+        _len = len(text)
+        if (total_side + _len) > max_size:
+            return ((total_side + _len) - max_size)
 
     def get_value_from_beautifulsoup(self, container, name=None, attrs={}, index=0, default=""):
         _list = container.findAll(name, attrs)
