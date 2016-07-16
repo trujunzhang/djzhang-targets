@@ -63,6 +63,7 @@ class HindustantimesPaginationScraper(object):
 
     def _right_panel_parse(self, url, hxs, cache_db, history_db):
         # top news
+        self._ajax_for_block(url, hxs, cache_db, history_db, dict)
         pass
 
     def _left_panel_parse(self, url, hxs, cache_db, history_db):
