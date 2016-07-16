@@ -109,7 +109,7 @@ class HindustantimesPaginationScraper(object):
             list_select_block = '{}[{}]/div[1]'.format(select_block, (idx + 1))
             self._parse_single_photo_block_for_pagination(dict, list_select_block)
 
-    def _ajax_for_block(self, url, hxs, cache_db, history_db, dict):
-        ajax_url = self.parser.get_url_join(url, dict['ajax'])
+    def _ajax_for_block(self, dict):
+        ajax_url = self.parser.get_url_join(self.url, dict['ajax'])
         response = self.parser.ajax(ajax_url)
         x = 0
