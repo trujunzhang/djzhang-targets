@@ -79,3 +79,14 @@ class BaseParser(object):
         if string:
             import json
             return json.loads(string)
+
+    def get_image_from_srcset(self, hxs, selector):
+        image = self.get_value_response(hxs, selector)
+        srcset = image.split(',')
+        if len(srcset) > 0:
+            src_format = srcset[len(srcset) - 1].strip()
+            src_split = src_format.split(' ')
+            if len(src_split) == 2:
+                return src_split[0]
+
+        return ""

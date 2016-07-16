@@ -38,7 +38,7 @@ class TheViewsPaperParser(BaseParser):
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, self.page_selector_dict['title'])
-        image_src = self._get_image(hxs, self.page_selector_dict['image'])
+        image_src = self.get_image_from_srcset(hxs, self.page_selector_dict['image'])
         content = self.get_all_value_response(hxs, self.page_selector_dict['content'], start_index=1)
         tags = hxs.xpath(self.page_selector_dict['tags']).extract()
 
@@ -49,13 +49,3 @@ class TheViewsPaperParser(BaseParser):
 
         return item
 
-    def _get_image(self, hxs, selector):
-        image = self.get_value_response(hxs, selector)
-        srcset = image.split(',')
-        if len(srcset) > 0:
-            src_format = srcset[len(srcset) - 1].strip()
-            src_split = src_format.split(' ')
-            if len(src_split) == 2:
-                return src_split[0]
-
-        return ""
