@@ -12,7 +12,7 @@ class HindustantimesParser(BaseParser):
         # Because the Hindustantimes's pagination is complicated.
         # use HindustantimesPagination scraper to parse it.
         from cwpoliticl.extensions.specialsites.hindustantimes_pagination import HindustantimesPaginationScraper
-        HindustantimesPaginationScraper(self, self.url_from).parse_pagination(url, hxs, cache_db, history_db)
+        HindustantimesPaginationScraper(self, self.url_from, url, hxs, cache_db, history_db).parse_pagination()
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, '//*[@class="story-main"]/h1/span/text()')
