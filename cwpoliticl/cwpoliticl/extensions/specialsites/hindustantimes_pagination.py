@@ -2,6 +2,11 @@ from cwpoliticl.items import CacheItem
 
 
 class HindustantimesPaginationScraper(object):
+    # Template
+    # row_container: [index]
+    # |              |              |
+    # | single story | 3 items list |
+    # |              |              |
     hindustantimes_selector_dict = {
         "top_picks": {
             "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][2]',
@@ -23,13 +28,9 @@ class HindustantimesPaginationScraper(object):
     def parse_pagination(self, url, hxs, cache_db, history_db):
 
         # Top picks
-        # |              |              |
-        # | single story | 3 items list |
-        # |              |              |
         self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['top_picks'])
 
-
-        # columns (like 'Top picks')
+        # columns
         # self._parse_row_container(url, hxs, cache_db, history_db,
         #                           '//*[@id="div_storyContent"]/*[@class="row_container"][4]')
 
@@ -48,11 +49,11 @@ class HindustantimesPaginationScraper(object):
         # self._parse_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="hm_topstory_3_story"]/ul/li')
 
     def _parse_row_container(self, url, hxs, cache_db, history_db, dict):
-        single_selector = '{}{}'.format(dict['row_container'], dict['single'])
-        self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db, single_selector)
+        self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db,
+                                                      '{}{}'.format(dict['row_container'], dict['single']))
 
-        items_list_selector = '{}{}'.format(dict['row_container'], dict['right_list'])
-        self._parse_block_for_pagination(url, hxs, cache_db, history_db, items_list_selector)
+        self._parse_block_for_pagination(url, hxs, cache_db, history_db,
+                                         '{}{}'.format(dict['row_container'], dict['right_list']))
 
     def _parse_single_photo_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
         lists = hxs.xpath(select_block)
