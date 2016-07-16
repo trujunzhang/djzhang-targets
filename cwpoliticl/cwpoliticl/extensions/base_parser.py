@@ -94,7 +94,11 @@ class BaseParser(object):
     def get_image_src_from_bg(self, hxs, selector):
         image_style = self.get_value_response(hxs, selector)
 
+    def get_image_scr_from_style(self, style_content):
         import cssutils
-        style = cssutils.parseStyle(image_style)
+
+        style = cssutils.parseStyle(style_content)
         url = style['background-image']
+        url = url.replace("'", '').replace('"', '')
+        url = url.replace('url(', '').replace(')', '')
         return url
