@@ -3,6 +3,13 @@ from cwpoliticl.items import CacheItem, WDPost
 
 
 class IndianExpressParser(BaseParser):
+    page_selector_dict = {
+        "title": '//*[@class="heading-part"]/*[@itemprop="headline"]/text()',
+        "image": '//*[@itemprop="articleBody"]/*[@class="custom-caption"]/img/@src',
+        "content": '//*[@itemprop="articleBody"]/p/text()',
+        "tags": '//*[@class="storytags"]/ul/li/a/text()',
+    }
+
     def __init__(self):
         from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.indianexpress.value
@@ -30,11 +37,10 @@ class IndianExpressParser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie=None):
-        title = self.get_value_response(hxs, '//*[@class="heading-part"]/*[@itemprop="headline"]/text()')
-        image_src = self.get_value_response(hxs, '//*[@itemprop="articleBody"]/*[@class="custom-caption"]/img/@src')
-        content = self.get_all_value_response(hxs, '//*[@itemprop="articleBody"]/p/text()')
-
-        tags = hxs.xpath('//*[@class="storytags"]/ul/li/a/text()').extract()
+        title = self.get_value_response(hxs, self.page_selector_dict['title'])
+        image_src = self.get_value_response(hxs, self.page_selector_dict['image'])
+        content = self.get_all_value_response(hxs, self.page_selector_dict['content'])
+        tags = hxs.xpath(self.page_selector_dict['tags']).extract()
 
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags)
 
