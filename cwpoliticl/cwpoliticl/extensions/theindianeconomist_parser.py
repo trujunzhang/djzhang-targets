@@ -17,7 +17,7 @@ class TheIndianEconomistParser(BaseParser):
         super(TheIndianEconomistParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        select_block = '//*[@class="container"]/*[@class="row"]/*[@class="col-md-8"]/article'
+        select_block = '//*[@id="main"]/div[@id="post-wrapper"]/div[@class="grid-wrapper"]/div'
         self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block)
 
     def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
