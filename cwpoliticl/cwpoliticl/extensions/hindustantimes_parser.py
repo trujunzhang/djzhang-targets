@@ -1,6 +1,5 @@
 from cwpoliticl.extensions.base_parser import BaseParser
-from cwpoliticl.extensions.specialsites.hindustantimes_pagination import HindustantimesPaginationScraper
-from cwpoliticl.items import CacheItem, WDPost
+from cwpoliticl.items import WDPost
 
 
 class HindustantimesParser(BaseParser):
@@ -12,6 +11,7 @@ class HindustantimesParser(BaseParser):
     def parse_paginate(self, url, hxs, cache_db, history_db):
         # Because the Hindustantimes's pagination is complicated.
         # use HindustantimesPagination scraper to parse it.
+        from cwpoliticl.extensions.specialsites.hindustantimes_pagination import HindustantimesPaginationScraper
         HindustantimesPaginationScraper(self, self.url_from).parse_pagination(url, hxs, cache_db, history_db)
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):

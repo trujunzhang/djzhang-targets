@@ -13,13 +13,14 @@ class HindustantimesPaginationScraper(object):
         # |              |              |
         # | single story | 3 items list |
         # |              |              |
-        self._parse_row_container(url, hxs, cache_db, history_db,
-                                  '//*[@id="div_storyContent"]/*[@class="row_container"][2]')
+        # self._parse_row_container(url, hxs, cache_db, history_db,
+        #                           '//*[@id="div_storyContent"]/*[@class="row_container"][2]')
 
-        # self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db,
-        #                                               '//*[@class="top_single_story_photo"]')
-        # self._parse_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="hm_topstory_3_story"]/ul/li')
-        #
+        # columns (like 'Top picks')
+        self._parse_row_container(url, hxs, cache_db, history_db,
+                                  '//*[@id="div_storyContent"]/*[@class="row_container"][4]')
+
+
         # # columns
         # row_container = '//*[@class="row_container"]/*[@class="col_2 india_headlines"]'
         # lists = hxs.xpath(row_container)
