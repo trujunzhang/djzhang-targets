@@ -3,6 +3,7 @@ from cwpoliticl.items import CacheItem
 
 class HindustantimesPaginationScraper(object):
     # Template
+    #
     # row_container: [index]
     # |              |              |
     # | single story | 3 items list |
@@ -14,7 +15,7 @@ class HindustantimesPaginationScraper(object):
             'right_list': '/div/div/div[2]/ul/li'
         },
         "columns": {
-            "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][4]',
+            "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][3]',
             "single": '/section[1]/div[1]',
             'right_list': '/section[2]/ul/li'
         }
@@ -28,12 +29,10 @@ class HindustantimesPaginationScraper(object):
     def parse_pagination(self, url, hxs, cache_db, history_db):
 
         # Top picks
-        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['top_picks'])
+        # self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['top_picks'])
 
         # columns
-        # self._parse_row_container(url, hxs, cache_db, history_db,
-        #                           '//*[@id="div_storyContent"]/*[@class="row_container"][4]')
-
+        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['columns'])
 
         # # columns
         # row_container = '//*[@class="row_container"]/*[@class="col_2 india_headlines"]'
@@ -56,9 +55,6 @@ class HindustantimesPaginationScraper(object):
                                          '{}{}'.format(dict['row_container'], dict['right_list']))
 
     def _parse_single_photo_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
-        lists = hxs.xpath(select_block)
-        _len = len(lists)
-
         href_selector = '{}/a/@href'.format(select_block)
         thumbnail_selector = '{}/a/img/@src'.format(select_block)
 
