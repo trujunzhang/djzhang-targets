@@ -111,5 +111,7 @@ class HindustantimesPaginationScraper(object):
 
     def _ajax_for_block(self, dict):
         ajax_url = self.parser.get_url_join(dict['ajax'], self.url)
-        json = self.parser.ajax(ajax_url)
+        string = self.parser.ajax(ajax_url)
+        import json
+        json.loads(string)
         x = 0
