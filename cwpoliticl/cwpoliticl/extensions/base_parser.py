@@ -68,28 +68,6 @@ class BaseParser(object):
             return value
         return default
 
-    def get_images_in_selector(self, hxs, selector, index=0, filter_method=None):
-        noscript_images = self.get_value_response(hxs, selector, index=index)
-
-        from BeautifulSoup import BeautifulSoup
-        soup = BeautifulSoup(noscript_images)
-
-        images = soup.findAll('img')
-
-        list = [""]
-        for image in images:
-            src_ = image['src']
-
-            result = True
-
-            if filter_method:
-                result = filter_method(src_)
-
-            if result:
-                list.append(src_)
-
-        return ",".join(list)
-
     def ajax(self, ajax_url):
         import requests
         r = requests.get(ajax_url)
