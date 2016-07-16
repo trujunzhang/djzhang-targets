@@ -20,7 +20,19 @@ class HindustantimesPaginationScraper(object):
             "single": '/section[1]/div[1]',
             'right_list': '/section[2]/ul/li',
             'image_attr': 'data-original'
-        }
+        },
+        "editorials": {
+            "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][4]',
+            "single": '/section[1]/div[1]',
+            'right_list': '/section[2]/ul/li',
+            'image_attr': 'data-original'
+        },
+        "analysis": {
+            "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][5]',
+            "single": '/section[1]/div[1]',
+            'right_list': '/section[2]/ul/li',
+            'image_attr': 'data-original'
+        },
     }
 
     def __init__(self, parser, url_from):
@@ -34,7 +46,11 @@ class HindustantimesPaginationScraper(object):
         # self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['top_picks'])
 
         # columns
-        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['columns'])
+        # self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['columns'])
+
+        # editorials
+        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['editorials'])
+
 
         # # columns
         # row_container = '//*[@class="row_container"]/*[@class="col_2 india_headlines"]'
