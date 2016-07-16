@@ -1,17 +1,14 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+from cwharaj.scraped_websites import WebsiteTypes, websites_allowed_domains, is_pagination
+
 
 class MstamlDebugWatchSpider(scrapy.Spider):
-    name = "mstaml_debug"
-    allowed_domains = [
-        "https://sa.opensooq.com/",
-        'http://www.mstaml.com'
-    ]
+    url_from = WebsiteTypes.mstaml
+    name = "{}_debug".format(url_from.value)
 
-    start_urls = [
-        # paginate
-        # 'http://www.mstaml.com/market/?t=0&l=0&d=0&x=&u=&o=3',
+    details_urls = [
         # Details
         # 'http://www.mstaml.com/2073561/للبيع_جمس_يوكن_1999/'
         # 'http://www.mstaml.com/2078991/للبيع_اكسبلورر_أبيض_2010_وارد_توكيلات_الجزيرة/'
@@ -25,6 +22,13 @@ class MstamlDebugWatchSpider(scrapy.Spider):
     ]
 
     def __init__(self, name=None, **kwargs):
+        self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
+        if is_pagination:
+            self.start_urls = [WebsiteTypes.get_pagination_url(self.url_from)]
+        else:
+            self.start_urls = self.details_urls
+
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
@@ -35,7 +39,7 @@ class MstamlDebugWatchSpider(scrapy.Spider):
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
         from cwharaj.parser.mstaml_parser import MstamlParse
-        self._mstaml_Parse = MstamlParse()
+        self._parser = MstamlParse()
 
         super(MstamlDebugWatchSpider, self).__init__(name, **kwargs)
 
@@ -53,5 +57,7 @@ class MstamlDebugWatchSpider(scrapy.Spider):
                                                                )
 
     def parse(self, response):
-        # self._mstaml_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._mstaml_Parse.parse(response.url, response, self._item_db)
+        if is_pagination:
+            self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        else:
+            item = self._parser.parse(response.url, response, self._item_db)

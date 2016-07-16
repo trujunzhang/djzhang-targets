@@ -18,12 +18,9 @@ class MstamlParse(BaseParser):
         links = hxs.xpath('//*[@class="center mb10 "]/div')
         logging.debug("Get rows count from the mstaml: {}.".format(len(links)))
 
-        count = 1
-        for link in links:
-            Li_selector = '//*[@class="center mb10 "]/div[' + str(count) + ']'
-            div_class_selector = '//*[@class="center mb10 "]/div[' + str(count) + ']/@class'
-
-            count += 1
+        for idx, link in enumerate(links):
+            Li_selector = '//*[@class="center mb10 "]/div[' + str(idx + 1) + ']'
+            div_class_selector = '//*[@class="center mb10 "]/div[' + str(idx + 1) + ']/@class'
 
             class_name = self.get_value_response(hxs, div_class_selector)
             # This div is empty line, such as "<div id="item2072286" class="none"></div>"
@@ -44,7 +41,7 @@ class MstamlParse(BaseParser):
                 continue
 
             item = CacheItem.get_default(model_id=_ID, url=href, url_from=self.url_from)
-            cache_db.save_cache(item, count)
+            cache_db.save_cache(item, idx)
             # here, must sleep a second.
             # time.sleep(1)
 

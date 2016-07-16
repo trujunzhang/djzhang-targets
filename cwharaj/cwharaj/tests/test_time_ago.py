@@ -62,61 +62,61 @@ class TimeAgoTest(unittest.TestCase):
         # expect = int(time.time()) - 19008000
         # self.assertEqual(int_time, expect)
 
-    # def test_get_time_for_mstaml(self):
-    #     # url: 'http://www.mstaml.com/2079892/تفويض_إلكتروني_للمؤسسات/'
-    #     # time_ago = '2016-06-29 14:39:34 GMT'  # time_added(1467211174)
-    #     time_ago = '2016-06-29 14:41:10 GMT'  # _last_updated_ad(1467211270)
-    #     time_ago = [
-    #         {
-    #             'string': '2016-06-29 14:41:10 GMT',  # _last_updated_ad(1467211270)
-    #             'time': 1467211270
-    #         },
-    #         {
-    #             'string': '2016-06-29 14:39:34 GMT',  # time_added(1467211174)
-    #             'time': 1467211174
-    #         }
-    #     ]
-    #     for item in time_ago:
-    #         int_time = self.time_util.get_time_for_mstaml(item['string'])
-    #         expect = item['time']
-    #         self.assertEqual(int_time, expect)
-    #
-    # def test_get_time_for_opensooq_member_timeregister(self):
-    #     # _member_timeregister is 'تاريخ الانضمام  19/07/2013'('Join date 19/07/2013')
-    #     time_ago = ' 19/07/2013 '
-    #     int_time = self.time_util.get_time_for_opensooq_member_timeregister(time_ago)
-    #     expect = 1374192000.0
-    #     self.assertEqual(int_time, expect)
-    #
-    # def test_get_time_for_opensooq_time_added(self):
-    #     # _time_added is 'تاريخ النشر: 2016.06.28'('Published: 2016.06.28')
-    #     _time_added = ' 2016.06.28 '
-    #     int_time = self.time_util.get_time_for_opensooq_time_added(_time_added)
-    #     expect = 1467072000.0
-    #     self.assertEqual(int_time, expect)
+        # def test_get_time_for_mstaml(self):
+        #     # url: 'http://www.mstaml.com/2079892/تفويض_إلكتروني_للمؤسسات/'
+        #     # time_ago = '2016-06-29 14:39:34 GMT'  # time_added(1467211174)
+        #     time_ago = '2016-06-29 14:41:10 GMT'  # _last_updated_ad(1467211270)
+        #     time_ago = [
+        #         {
+        #             'string': '2016-06-29 14:41:10 GMT',  # _last_updated_ad(1467211270)
+        #             'time': 1467211270
+        #         },
+        #         {
+        #             'string': '2016-06-29 14:39:34 GMT',  # time_added(1467211174)
+        #             'time': 1467211174
+        #         }
+        #     ]
+        #     for item in time_ago:
+        #         int_time = self.time_util.get_time_for_mstaml(item['string'])
+        #         expect = item['time']
+        #         self.assertEqual(int_time, expect)
+        #
+        # def test_get_time_for_opensooq_member_timeregister(self):
+        #     # _member_timeregister is 'تاريخ الانضمام  19/07/2013'('Join date 19/07/2013')
+        #     time_ago = ' 19/07/2013 '
+        #     int_time = self.time_util.get_time_for_opensooq_member_timeregister(time_ago)
+        #     expect = 1374192000.0
+        #     self.assertEqual(int_time, expect)
+        #
+        # def test_get_time_for_opensooq_time_added(self):
+        #     # _time_added is 'تاريخ النشر: 2016.06.28'('Published: 2016.06.28')
+        #     _time_added = ' 2016.06.28 '
+        #     int_time = self.time_util.get_time_for_opensooq_time_added(_time_added)
+        #     expect = 1467072000.0
+        #     self.assertEqual(int_time, expect)
 
-    # def test_get_time_for_opensooq_comment_date(self):
-    #     _time_added_co = " منذ ساعة "  # About an hour ago
-    #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
-    #     expect = int(time.time()) - 3600
-    #     self.assertEqual(int_time, expect)
-    #
-    #     _time_added_co = " منذ سنة "  # A year ago
-    #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
-    #     expect = int(time.time()) - 31536000
-    #     self.assertEqual(int_time, expect)
-    #
-    #     _time_added_co = "  3 أشهر "  # __3 months ago__
-    #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
-    #     expect = int(time.time()) - 259200
-    #     self.assertEqual(int_time, expect)
-    #
-    #     _time_added_co = "منذ 12 ساعة"  # __12 hours ago__
-    #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
-    #     expect = int(time.time()) - 43200
-    #     self.assertEqual(int_time, expect)
-    #
-    #     _time_added_co = "منذ 13 دقيقة"  # 13 minutes ago
-    #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
-    #     expect = int(time.time()) - 780
-    #     self.assertEqual(int_time, expect)
+        # def test_get_time_for_opensooq_comment_date(self):
+        #     _time_added_co = " منذ ساعة "  # About an hour ago
+        #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
+        #     expect = int(time.time()) - 3600
+        #     self.assertEqual(int_time, expect)
+        #
+        #     _time_added_co = " منذ سنة "  # A year ago
+        #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
+        #     expect = int(time.time()) - 31536000
+        #     self.assertEqual(int_time, expect)
+        #
+        #     _time_added_co = "  3 أشهر "  # __3 months ago__
+        #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
+        #     expect = int(time.time()) - 259200
+        #     self.assertEqual(int_time, expect)
+        #
+        #     _time_added_co = "منذ 12 ساعة"  # __12 hours ago__
+        #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
+        #     expect = int(time.time()) - 43200
+        #     self.assertEqual(int_time, expect)
+        #
+        #     _time_added_co = "منذ 13 دقيقة"  # 13 minutes ago
+        #     int_time = OpensooqCommentDateUtil().get_time_for_opensooq_comment(_time_added_co)
+        #     expect = int(time.time()) - 780
+        #     self.assertEqual(int_time, expect)

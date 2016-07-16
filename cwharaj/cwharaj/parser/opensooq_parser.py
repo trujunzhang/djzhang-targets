@@ -5,7 +5,6 @@ from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member, OpensooqPho
 from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
-from cwharaj.parser.utils.section_item import SectionItem
 from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
 
 
@@ -20,11 +19,8 @@ class OpensooqParse(BaseParser):
         links = hxs.xpath('//*[@id="gridPostListing"]/li')
         logging.debug("Get rows count from the opensooq: {}.".format(len(links)))
 
-        count = 1
-        for link in links:
-            Li_selector = '//*[@id="gridPostListing"]/li[' + str(count) + ']'
-
-            count += 1
+        for idx, link in enumerate(links):
+            Li_selector = '//*[@id="gridPostListing"]/li[' + str(idx + 1) + ']'
 
             href = self.get_value_from_response_with_urljoin(hxs,
                                                              Li_selector + '/div/div[@class="rectLiDetails"]/h3/a/@href',
@@ -39,7 +35,7 @@ class OpensooqParse(BaseParser):
                 continue
 
             item = CacheItem.get_default(model_id=_ID, url=href, url_from=self.url_from)
-            cache_db.save_cache(item, count)
+            cache_db.save_cache(item, idx)
             # here, must sleep a second.
             # time.sleep(1)
 

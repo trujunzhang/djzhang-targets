@@ -227,7 +227,6 @@ def get_lam_alef(candidate_alef, candidate_lam, is_end_of_word):
 
 
 class DecomposedWord(object):
-
     def __init__(self, word):
         self.stripped_harakat = []
         self.harakat_positions = []

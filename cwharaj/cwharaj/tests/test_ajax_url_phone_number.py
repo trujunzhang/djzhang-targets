@@ -1,7 +1,7 @@
 # coding=utf-8
 import unittest
 
-from cwharaj.items import WebsiteTypes
+from cwharaj.scraped_websites import WebsiteTypes
 
 
 class AjaxUrlPhoneNumberTest(unittest.TestCase):

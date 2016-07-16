@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+from cwharaj.scraped_websites import WebsiteTypes, websites_allowed_domains, is_pagination
+
 
 class HarajsaDebugWatchSpider(scrapy.Spider):
-    name = "harajsa_debug"
-    allowed_domains = [
-        "https://sa.opensooq.com/",
-        'http://www.mstaml.com',
-        'https://haraj.com.sa',
-    ]
+    url_from = WebsiteTypes.harajsa
+    name = "{}_debug".format(url_from.value)
 
-    start_urls = [
-        # paginate
-        # 'https://haraj.com.sa',
+    details_urls = [
         # Details
         # 'https://haraj.com.sa/1113951569/ساعات_واطقم_واساور_ومحافظ_ماركات_وصل_حديثا/'
         # 'https://haraj.com.sa/1111841958/%D9%83%D8%A7%D8%B4%D9%81_%D8%A7%D9%84%D8%B5%D8%A8%D8%BA_%D9%88%D8%A7%D9%84%D8%B3%D9%85%D9%83%D8%B1%D8%A9_%D8%A7%D9%84%D8%A7%D9%84%D9%85%D8%A7%D9%86%D9%8A_%D8%A7%D9%84%D9%87%D8%A7%D9%86%D8%AF%D9%8A/'
@@ -33,6 +29,13 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
     ]
 
     def __init__(self, name=None, **kwargs):
+        self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
+        if is_pagination:
+            self.start_urls = [WebsiteTypes.get_pagination_url(self.url_from)]
+        else:
+            self.start_urls = self.details_urls
+
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
@@ -43,7 +46,7 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
         from cwharaj.parser.harajsa_parser import HarajSaParse
-        self._harajsa_Parse = HarajSaParse()
+        self._parser = HarajSaParse()
 
         super(HarajsaDebugWatchSpider, self).__init__(name, **kwargs)
 
@@ -61,7 +64,9 @@ class HarajsaDebugWatchSpider(scrapy.Spider):
                                                                 )
 
     def parse(self, response):
-        # self._harajsa_Parse.parse_paginate(response.url, response, self._cache_db, self._history_db)
-        item = self._harajsa_Parse.parse(response.url, response, self._item_db)
-        _ids_id = item["id_ads"]
-        # _row = self._cache_db.get_last_row("")
+        if is_pagination:
+            self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        else:
+            item = self._parser.parse(response.url, response, self._item_db)
+            _ids_id = item["id_ads"]
+            # _row = self._cache_db.get_last_row("")

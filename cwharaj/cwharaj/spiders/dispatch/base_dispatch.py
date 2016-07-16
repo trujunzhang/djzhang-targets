@@ -1,30 +1,15 @@
-from cwharaj.items import WebsiteTypes
-from cwharaj.parser.harajsa_parser import HarajSaParse
-from cwharaj.parser.mstaml_parser import MstamlParse
-from cwharaj.parser.opensooq_parser import OpensooqParse
+from cwharaj.scraped_websites import websites_allowed_domains, scraped_websites_pagination, websites_parses
 
 
 class BaseDispatch(object):
     def __init__(self):
-        self.allowed_domains = [
-            "https://sa.opensooq.com/",
-            'http://www.mstaml.com',
-            'https://haraj.com.sa',
-        ]
-        self.websites = {
-            'https://sa.opensooq.com/ar/find?term=&cat_id=&scid=&city=&allposts_cb=true&allposts=no&price_from=&price_to=&page=1': WebsiteTypes.opensooq,
-            'http://www.mstaml.com/market/?t=0&l=0&d=0&x=&u=&o=3': WebsiteTypes.mstaml,
-            'https://haraj.com.sa': WebsiteTypes.harajsa,
-        }
-        self.parses = {
-            WebsiteTypes.opensooq: OpensooqParse(),
-            WebsiteTypes.mstaml: MstamlParse(),
-            WebsiteTypes.harajsa: HarajSaParse()
-        }
+        self.allowed_domains = websites_allowed_domains
+        self.websites = scraped_websites_pagination
+        self.parses = websites_parses
         super(BaseDispatch, self).__init__()
 
     def get_allowed_domains(self):
-        return self.allowed_domains
+        return self.allowed_domains.values()
 
     def get_pagination_websites(self):
         return self.websites.keys()

@@ -208,7 +208,8 @@ class ItemDatabase(MysqlDatabase):
             logging.debug("  mysql: insert the save_opensooq_comment_date row failure, {}".format(_excep))
         else:
             logging.debug(
-                "  mysql: insert the save_opensooq_comment_date into the {} successfully".format(_opensooq_comment_date_id))
+                "  mysql: insert the save_opensooq_comment_date into the {} successfully".format(
+                    _opensooq_comment_date_id))
 
         return _opensooq_comment_date_id
 

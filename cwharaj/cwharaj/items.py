@@ -9,30 +9,9 @@ import time
 from datetime import datetime
 
 import scrapy
-from enum import Enum
 
 from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
 from cwharaj.utils.crawl_utils import CrawlUtils
-
-
-class WebsiteTypes(Enum):
-    def __str__(self):
-        return str(self.value)
-
-    @classmethod
-    def get_id_index(self, _url_from):
-        if _url_from == WebsiteTypes.opensooq.value:
-            return 3
-        elif _url_from == WebsiteTypes.mstaml.value:
-            return 1
-        elif _url_from == WebsiteTypes.harajsa.value:
-            return 1
-
-        return -1
-
-    opensooq = "opensooq"
-    mstaml = "mstaml"
-    harajsa = "harajsa"
 
 
 class CacheItem(scrapy.Item):

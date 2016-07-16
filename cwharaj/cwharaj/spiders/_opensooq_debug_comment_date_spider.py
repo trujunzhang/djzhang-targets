@@ -2,7 +2,8 @@
 
 import scrapy
 
-from cwharaj.items import WebsiteTypes, OpensooqCommentDateItem
+from cwharaj.items import OpensooqCommentDateItem
+from cwharaj.scraped_websites import WebsiteTypes
 
 
 class OpensooqDebugCommentDateSpider(scrapy.Spider):

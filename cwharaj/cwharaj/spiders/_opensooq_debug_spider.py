@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+from cwharaj.scraped_websites import WebsiteTypes, websites_allowed_domains, is_pagination
+
 
 class OpensooqDebugSpider(scrapy.Spider):
-    name = "opensooq_debug"
-    allowed_domains = ["https://sa.opensooq.com/"]
-    start_urls = [
-        # paginate
-        # 'https://sa.opensooq.com/ar/find?term=&cat_id=&scid=&city=&allposts_cb=true&allposts=no&price_from=&price_to=&page=1',
+    url_from = WebsiteTypes.opensooq
+    name = "{}_debug".format(url_from.value)
+    details_urls = [
         # ajax
         # 'https://sa.opensooq.com/ar/post/get-phone-number?model_id=42946557&model_type=post'
         # detail
@@ -30,6 +30,13 @@ class OpensooqDebugSpider(scrapy.Spider):
     ]
 
     def __init__(self, name=None, **kwargs):
+        self.allowed_domains = [websites_allowed_domains.get(self.url_from)]
+
+        if is_pagination:
+            self.start_urls = [WebsiteTypes.get_pagination_url(self.url_from)]
+        else:
+            self.start_urls = self.details_urls
+
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
         database_factory = DatabaseFactory(kwargs['host'], kwargs['port'],
                                            kwargs['user'], kwargs['passwd'],
@@ -40,7 +47,7 @@ class OpensooqDebugSpider(scrapy.Spider):
         self._item_db = database_factory.get_database(CollectionTypes.item)
 
         from cwharaj.parser.opensooq_parser import OpensooqParse
-        self._opensooq_parser = OpensooqParse()
+        self._parser = OpensooqParse()
 
         super(OpensooqDebugSpider, self).__init__(name, **kwargs)
 
@@ -57,5 +64,8 @@ class OpensooqDebugSpider(scrapy.Spider):
                                                             )
 
     def parse(self, response):
-        item = self._opensooq_parser.parse(response.url, response, self._item_db)
-        _ids_id = item["id_ads"]
+        if is_pagination:
+            self._parser.parse_paginate(response.url, response, self._cache_db, self._history_db)
+        else:
+            item = self._parser.parse(response.url, response, self._item_db)
+            _ids_id = item["id_ads"]

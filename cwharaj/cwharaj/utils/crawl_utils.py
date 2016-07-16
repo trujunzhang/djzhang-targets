@@ -21,7 +21,7 @@ class CrawlUtils(object):
 
     @classmethod
     def get_model_id_by_url_from(cls, _page_url, url_from):
-        from cwharaj.items import WebsiteTypes
+        from cwharaj.scraped_websites import WebsiteTypes
         position = WebsiteTypes.get_id_index(url_from)
 
         from urlparse import urlparse

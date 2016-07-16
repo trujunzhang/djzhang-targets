@@ -21,11 +21,8 @@ class HarajSaParse(BaseParser):
         links = hxs.xpath('//*[@id="adswrapper"]/table/tr')
         logging.debug("Get rows count from the harajsa: {}".format(len(links)))
 
-        count = 1
-        for link in links:
-            Li_selector = '//*[@id="adswrapper"]/table/tr[' + str(count) + ']'
-
-            count += 1
+        for idx, link in enumerate(links):
+            Li_selector = '//*[@id="adswrapper"]/table/tr[' + str(idx + 1) + ']'
 
             td_count = len(hxs.xpath(Li_selector + "/td"))
             if td_count == 0:  # ignore the table title row(only have <th>s)
@@ -43,7 +40,7 @@ class HarajSaParse(BaseParser):
                 continue
 
             item = CacheItem.get_default(model_id=_ID, url=href, url_from=self.url_from)
-            cache_db.save_cache(item, count)
+            cache_db.save_cache(item, idx + 1)
             # here, must sleep a second.
             # time.sleep(1)
 
