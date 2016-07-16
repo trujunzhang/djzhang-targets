@@ -28,8 +28,7 @@ class TheViewsPaperParser(BaseParser):
             thumbnail_selector = '{}[{}]/a/img/@src'.format(select_block, (idx + 1))
 
             href = self.get_value_response(hxs, href_selector)
-            # If the link already exist on the history database, ignore it.
-            if history_db.check_history_exist(href):
+            if history_db.check_history_exist(href):  # If the link already exist on the history database, ignore it.
                 continue
 
             thumbnail_src = self.get_value_response(hxs, thumbnail_selector)
@@ -48,4 +47,3 @@ class TheViewsPaperParser(BaseParser):
         post_id = wd_rpc.post_to_wd(item)
 
         return item
-
