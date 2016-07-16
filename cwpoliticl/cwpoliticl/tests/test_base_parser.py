@@ -26,3 +26,13 @@ class BaseParseTest(unittest.TestCase):
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags)
 
         self.assertEqual(item['url'], url)
+
+    def test_css_background_image(self):
+        image_style = 'background-image: url(http://i2.wp.com/theindianeconomist.com/wp-content/uploads/2016/07/16344930632_f89cc36a46_o.jpg?fit=1280%2C850); opacity: 0.3;'
+        import cssutils
+        style = cssutils.parseStyle(image_style)
+        url = style['background-image']
+
+        self.assertEqual(
+            'http://i2.wp.com/theindianeconomist.com/wp-content/uploads/2016/07/16344930632_f89cc36a46_o.jpg?fit=1280%2C850',
+            url)
