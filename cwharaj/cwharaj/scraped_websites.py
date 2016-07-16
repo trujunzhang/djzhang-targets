@@ -65,8 +65,8 @@ def get_crawler_name():
     url_from = WebsiteTypes.harajsa
 
     crawler_names = [
-        # "haraj",
-        "haraj_watch",
+        "haraj",
+        # "haraj_watch",
         # "{}_debug".format(url_from.value)
     ]
 
