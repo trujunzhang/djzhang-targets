@@ -9,15 +9,15 @@ class News18Parser(BaseParser):
         super(News18Parser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        select_block = '//*[@class="col-sm-12 noPadding noMargin"]/*[@class="col-sm-12 SunChNewListing"]'
+        select_block = '//*[@class="author-lest-blog cflip"]/*[@class="author-list flip-container"]'
         self._parse_block_for_pagination(url, hxs, cache_db, history_db, select_block)
 
     def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
         links = hxs.xpath(select_block).extract()
 
         for idx, link in enumerate(links):
-            href_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/@href'.format(select_block, (idx + 1))
-            thumbnail_selector = '{}[{}]/*[@class="col-sm-4 ThumbImg"]/a/img/@data-src'.format(select_block, (idx + 1))
+            href_selector = '{}[{}]/div/div/figure/a/@href'.format(select_block, (idx + 1))
+            thumbnail_selector = '{}[{}]/div/div/figure/a/img/@src'.format(select_block, (idx + 1))
 
             href = self.get_value_with_urljoin(hxs, href_selector, url)
             # If the link already exist on the history database, ignore it.
