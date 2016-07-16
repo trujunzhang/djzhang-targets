@@ -7,7 +7,7 @@ class TheIndianEconomistParser(BaseParser):
     page_selector_dict = {
         "title": '//*[@class="hero-text"]/h1/text()',
         "image": '//*[@class="site-header-bg background-effect"]/@style'.format(detail_root_selector),
-        "content": '//*[@id="main"]/article/*[@class="entry-content"]p/text()'.format(detail_root_selector),
+        "content": '//*[@id="main"]/article/*[@class="entry-content"]/p/text()'.format(detail_root_selector),
         "tags": '//*[@class="meta-tag"]/a/text()'.format(detail_root_selector),
     }
 
