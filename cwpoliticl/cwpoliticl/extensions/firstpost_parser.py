@@ -3,6 +3,13 @@ from cwpoliticl.items import CacheItem, WDPost
 
 
 class FirstPostParser(BaseParser):
+    page_selector_dict = {
+        "title": '//*[@class="contentWarp"]/*[@class="articleTop"]/div/h1/text()',
+        "image": '//*[@class="artWarp"]/*[@itemprop="articleBody"]/*[@class="wp-caption alignleft"]/img/@data-original',
+        "content": '//*[@class="artWarp"]/*[@itemprop="articleBody"]',
+        "tags": '//*[@class="artTps"]/div/p[2]/a/text()',
+    }
+
     def __init__(self):
         from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.firstpost.value
@@ -29,13 +36,10 @@ class FirstPostParser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
-        title = self.get_value_response(hxs, '//*[@class="contentWarp"]/*[@class="articleTop"]/div/h1/text()')
-        image_src = self.get_value_response(hxs,
-                                            '//*[@class="artWarp"]/*[@itemprop="articleBody"]/*[@class="wp-caption alignleft"]/img/@data-original')
-
-        content = self._get_all_value_from_beautifulsoup(hxs, '//*[@class="artWarp"]/*[@itemprop="articleBody"]')
-
-        tags = hxs.xpath('//*[@class="artTps"]/div/p[2]/a/text()').extract()
+        title = self.get_value_response(hxs, self.page_selector_dict['title'])
+        image_src = self.get_value_response(hxs, self.page_selector_dict['image'])
+        content = self._get_all_value_from_beautifulsoup(hxs, self.page_selector_dict['content'])
+        tags = hxs.xpath(self.page_selector_dict['tags']).extract()
 
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
                                   access_denied_cookie=access_denied_cookie)
