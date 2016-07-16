@@ -5,10 +5,10 @@ from cwpoliticl.items import CacheItem, WDPost
 class TheIndianEconomistParser(BaseParser):
     detail_root_selector = '//*[@class="entry-content"]'
     page_selector_dict = {
-        "title": '{}/*[@class="entry-header"]/h2/a/text()'.format(detail_root_selector),
-        "image": '{}/*[@class="content"]/p[1]/img/@srcset'.format(detail_root_selector),
-        "content": '{}/*[@class="content"]/p/text()'.format(detail_root_selector),
-        "tags": '{}/*[@class="post-meta"]/*[@class="categories-links"]/a/text()'.format(detail_root_selector),
+        "title": '//*[@class="hero-text"]/h1/text()',
+        "image": '//*[@class="site-header-bg background-effect"]/@style'.format(detail_root_selector),
+        "content": '//*[@id="main"]/article/*[@class="entry-content"]p/text()'.format(detail_root_selector),
+        "tags": '//*[@class="meta-tag"]/a/text()'.format(detail_root_selector),
     }
 
     def __init__(self):
@@ -37,12 +37,12 @@ class TheIndianEconomistParser(BaseParser):
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, self.page_selector_dict['title'])
-        # image_src = self._get_image(hxs, self.page_selector_dict['image'])
+        image_src = self.get_image_src_from_bg(hxs, self.page_selector_dict['image'])
         content = self.get_all_value_response(hxs, self.page_selector_dict['content'], start_index=1)
         tags = hxs.xpath(self.page_selector_dict['tags']).extract()
 
-        # item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
-        #                           access_denied_cookie=access_denied_cookie)
+        item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
+                                  access_denied_cookie=access_denied_cookie)
 
         post_id = wd_rpc.post_to_wd(item)
 

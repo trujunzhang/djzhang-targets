@@ -90,3 +90,13 @@ class BaseParser(object):
                 return src_split[0]
 
         return ""
+
+    def get_image_src_from_bg(self, hxs, selector):
+        style = hxs.xpath(selector).extract()
+        image_style = self.get_value_response(hxs, selector)
+
+        split = image_style.split("'")
+        if len(split) >= 2:
+            return split[1]
+
+        return ''
