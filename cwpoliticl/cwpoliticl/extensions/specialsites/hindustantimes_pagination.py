@@ -8,9 +8,9 @@ class HindustantimesPaginationScraper(object):
     # |              |              |
     # | single story | 3 items list |
     # |              |              |
-    hindustantimes_selector_dict = {
+    left_panel_selector_dict = {
         "top_picks": {
-            "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][2]',
+            "row_container": '//*[@class="global_leftpanel"]/*[@id="div_storyContent"]/*[@class="row_container"][2]',
             "single": '/div/div/div[1]/div[1]',
             'right_list': '/div/div/div[2]/ul/li',
             'image': {
@@ -18,7 +18,7 @@ class HindustantimesPaginationScraper(object):
             }
         },
         "columns": {
-            "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][3]',
+            "row_container": '//*[@class="global_leftpanel"]/*[@id="div_storyContent"]/*[@class="row_container"][3]',
             "single": '/section[1]/div[1]',
             'right_list': '/section[2]/ul/li',
             'image': {
@@ -26,7 +26,7 @@ class HindustantimesPaginationScraper(object):
             }
         },
         "editorials": {
-            "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][4]',
+            "row_container": '//*[@class="global_leftpanel"]/*[@id="div_storyContent"]/*[@class="row_container"][4]',
             "single": '/section[1]/div[1]',
             'right_list': '/section[2]/ul/li',
             'image': {
@@ -34,9 +34,18 @@ class HindustantimesPaginationScraper(object):
             }
         },
         "analysis": {
-            "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][5]',
+            "row_container": '//*[@class="global_leftpanel"]/*[@id="div_storyContent"]/*[@class="row_container"][5]',
             "single": '/section[1]/div[1]',
             'right_list': '/section[2]/ul/li',
+            'image': {
+                'attr': 'data-original'
+            }
+        },
+    }
+
+    right_panel_selector_dict = {
+        "top_news": {
+            'list': '//*[@class="global_rightpanel"]/*[@id="righttopnewsssection"][1]/section/ul/li',
             'image': {
                 'attr': 'data-original'
             }
@@ -50,21 +59,27 @@ class HindustantimesPaginationScraper(object):
 
     def parse_pagination(self, url, hxs, cache_db, history_db):
         # Parsing for the left panel.
-        self._parse_pagination_for_leftpanel(url, hxs, cache_db, history_db)
+        # self._left_panel_parse(url, hxs, cache_db, history_db)
         # Parsing for the right panel.
+        self._right_panel_parse(url, hxs, cache_db, history_db)
 
-    def _parse_pagination_for_leftpanel(self, url, hxs, cache_db, history_db):
+    def _right_panel_parse(self, url, hxs, cache_db, history_db):
+        # top news
+        self._parse_block_for_pagination(url, hxs, cache_db, history_db, dict,
+                                         self.right_panel_selector_dict['top_news']['list'])
+
+    def _left_panel_parse(self, url, hxs, cache_db, history_db):
         # Top picks
-        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['top_picks'])
+        self._parse_row_container(url, hxs, cache_db, history_db, self.left_panel_selector_dict['top_picks'])
 
         # columns
-        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['columns'])
+        self._parse_row_container(url, hxs, cache_db, history_db, self.left_panel_selector_dict['columns'])
 
         # editorials
-        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['editorials'])
+        self._parse_row_container(url, hxs, cache_db, history_db, self.left_panel_selector_dict['editorials'])
 
         # analysis
-        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['analysis'])
+        self._parse_row_container(url, hxs, cache_db, history_db, self.left_panel_selector_dict['analysis'])
 
     def _parse_row_container(self, url, hxs, cache_db, history_db, dict):
         # Left single column
