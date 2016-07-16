@@ -23,6 +23,7 @@ class WebsiteTypes(Enum):
     # forbesindia = "forbesindia"  # ???
     hindustantimes = "hindustantimes"
     news18 = "news18"
+    theindianeconomist = "theindianeconomist"
 
     @classmethod
     def get_pagination_url(self, type):
@@ -41,6 +42,7 @@ websites_allowed_domains = {
     # WebsiteTypes.forbesindia: 'forbesindia.com',  # ???
     WebsiteTypes.hindustantimes: 'www.hindustantimes.com',
     WebsiteTypes.news18: 'www.news18.com',
+    WebsiteTypes.theindianeconomist: 'theindianeconomist.com',
 }
 
 scraped_websites_pagination = {
@@ -53,6 +55,7 @@ scraped_websites_pagination = {
     # 'http://forbesindia.com/': WebsiteTypes.forbesindia,  # ???
     'http://www.hindustantimes.com/opinion/': WebsiteTypes.hindustantimes,
     'http://www.news18.com/blogs/': WebsiteTypes.news18,
+    'http://theindianeconomist.com/': WebsiteTypes.theindianeconomist,
 }
 
 websites_parses = {
@@ -65,6 +68,7 @@ websites_parses = {
     # WebsiteTypes.forbesindia: FirstPostParser(),  # ???
     WebsiteTypes.hindustantimes: HindustantimesParser(),
     WebsiteTypes.news18: News18Parser(),
+    WebsiteTypes.theindianeconomist: TheindianeconomistParser()
 }
 
 
@@ -80,13 +84,14 @@ def get_crawler_name():
 
     # url_from = WebsiteTypes.dnaindia
     # url_from = WebsiteTypes.indianexpress
-    url_from = WebsiteTypes.theviewspaper
+    # url_from = WebsiteTypes.theviewspaper
     # url_from = WebsiteTypes.dailyo
     # url_from = WebsiteTypes.deccanchronicle
     # url_from = WebsiteTypes.firstpost
     # url_from = WebsiteTypes.forbesindia  # ???
     # url_from = WebsiteTypes.hindustantimes
     # url_from = WebsiteTypes.news18
+    url_from = WebsiteTypes.theindianeconomist
 
     crawler_names = [
         # "politicl",
