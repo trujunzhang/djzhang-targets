@@ -74,7 +74,6 @@ class HindustantimesPaginationScraper(object):
         """
         # top news
         self._ajax_for_block(self.right_panel_selector_dict["top_news"])
-        pass
 
     def _left_panel_parse(self):
         # Top picks
