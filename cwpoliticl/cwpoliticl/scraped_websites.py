@@ -7,6 +7,7 @@ from cwpoliticl.extensions.firstpost_parser import FirstPostParser
 from cwpoliticl.extensions.hindustantimes_parser import HindustantimesParser
 from cwpoliticl.extensions.indianexpress_parser import IndianExpressParser
 from cwpoliticl.extensions.news18_parser import News18Parser
+from cwpoliticl.extensions.theindianeconomist_parser import TheIndianEconomistParser
 from cwpoliticl.extensions.theviewspaper_parser import TheViewsPaperParser
 
 
@@ -68,7 +69,7 @@ websites_parses = {
     # WebsiteTypes.forbesindia: FirstPostParser(),  # ???
     WebsiteTypes.hindustantimes: HindustantimesParser(),
     WebsiteTypes.news18: News18Parser(),
-    WebsiteTypes.theindianeconomist: TheindianeconomistParser()
+    WebsiteTypes.theindianeconomist: TheIndianEconomistParser()
 }
 
 
@@ -79,8 +80,8 @@ websites_parses = {
 def get_crawler_name():
     # Extensions
 
-    # is_pagination = True
-    is_pagination = False
+    is_pagination = True
+    # is_pagination = False
 
     # url_from = WebsiteTypes.dnaindia
     # url_from = WebsiteTypes.indianexpress
