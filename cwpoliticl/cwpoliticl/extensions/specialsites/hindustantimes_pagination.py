@@ -45,10 +45,8 @@ class HindustantimesPaginationScraper(object):
 
     right_panel_selector_dict = {
         "top_news": {
-            'list': '//*[@class="global_rightpanel"]/*[@id="righttopnewsssection"][1]/section/ul/li',
-            'image': {
-                'attr': 'data-original'
-            }
+            'ajax': '/fragment/PortalConfig/Common/modules/ht-feed/section-feed/rpcontroller.jpt?category={}&device=website'.format(
+                'righttopnewsssection')
         },
     }
 
@@ -64,9 +62,9 @@ class HindustantimesPaginationScraper(object):
         self._right_panel_parse(url, hxs, cache_db, history_db)
 
     def _right_panel_parse(self, url, hxs, cache_db, history_db):
-        # top news
-        self._parse_block_for_pagination(url, hxs, cache_db, history_db, dict,
-                                         self.right_panel_selector_dict['top_news']['list'])
+
+    # top news
+
 
     def _left_panel_parse(self, url, hxs, cache_db, history_db):
         # Top picks
@@ -108,3 +106,6 @@ class HindustantimesPaginationScraper(object):
         for idx, link in enumerate(links):
             list_select_block = '{}[{}]/div[1]'.format(select_block, (idx + 1))
             self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db, dict, list_select_block)
+
+    def _ajax_for_block(self, url, hxs, cache_db, history_db, dict):
+        self.parser.get_url_joinI(url, dict['ajax'])

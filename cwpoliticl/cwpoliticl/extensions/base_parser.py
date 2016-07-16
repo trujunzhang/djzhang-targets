@@ -1,5 +1,5 @@
 import sys
-import urlparse
+
 import logging
 
 
@@ -15,8 +15,11 @@ class BaseParser(object):
 
     def get_value_with_urljoin(self, hxs, query, base, index=0):
         href = self.get_value_response(hxs, query, index)
-        href = urlparse.urljoin(base, href.strip())
-        return href
+        return self.get_url_join(href, base)
+
+    def get_url_join(self, href, base):
+        import urlparse
+        return urlparse.urljoin(base, href.strip())
 
     def get_value_response(self, hxs, query, index=0, default=""):
         _list = []
