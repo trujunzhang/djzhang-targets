@@ -1,11 +1,13 @@
 # coding=utf-8
 import logging
 
-from cwharaj.items import Ad, CacheItem, WebsiteTypes, City, Member, OpensooqPhone
+from cwharaj.items import Ad, CacheItem, City, Member, OpensooqPhone
 from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_comments import HarajsComments
 from cwharaj.parser.utils.harajs_section import HarajsSection
 from cwharaj.parser.utils.timer_opensooq_comment_date_util import OpensooqCommentDateUtil
+
+from cwharaj.scraped_websites import WebsiteTypes
 
 
 class OpensooqParse(BaseParser):

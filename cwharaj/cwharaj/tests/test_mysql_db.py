@@ -4,8 +4,9 @@ import unittest
 
 from cwharaj import settings
 from cwharaj.database_factory import DatabaseFactory, CollectionTypes
-from cwharaj.items import Ad, WebsiteTypes
+from cwharaj.items import Ad
 from cwharaj.parser.utils.section_item import SectionItem
+from cwharaj.scraped_websites import WebsiteTypes
 
 
 class MysqlDBTest(unittest.TestCase):
