@@ -3,6 +3,14 @@ from cwpoliticl.items import CacheItem, WDPost
 
 
 class DeccanchronicleParser(BaseParser):
+    detail_root_selector = '//*[@class="story-main"]'
+    page_selector_dict = {
+        "title": '{}/h1/span/text()'.format(detail_root_selector),
+        "image": '{}/*[@class="story-body"]/*[@class="cover"]/img/@src'.format(detail_root_selector),
+        "content": '{}/*[@class="story-body"]/*[@id="storyBody"]/p/text()'.format(detail_root_selector),
+        "tags": '{}/*[@class="story-body"]/*[@class="articleTags"]/a/text()'.format(detail_root_selector),
+    }
+
     def __init__(self):
         from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.deccanchronicle.value
@@ -29,14 +37,10 @@ class DeccanchronicleParser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
-        title = self.get_value_response(hxs, '//*[@class="story-main"]/h1/span/text()')
-        image_src = self.get_value_response(hxs,
-                                            '//*[@class="story-main"]/*[@class="story-body"]/*[@class="cover"]/img/@src')
-
-        content = self.get_all_value_response(hxs,
-                                              '//*[@class="story-main"]/*[@class="story-body"]/*[@id="storyBody"]/p/text()')
-
-        tags = hxs.xpath('//*[@class="story-main"]/*[@class="story-body"]/*[@class="articleTags"]/a/text()').extract()
+        title = self.get_value_response(hxs, self.page_selector_dict['title'])
+        image_src = self.get_value_response(hxs, self.page_selector_dict['image'])
+        content = self.get_all_value_response(hxs, self.page_selector_dict['content'])
+        tags = hxs.xpath(self.page_selector_dict['tags']).extract()
 
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
                                   access_denied_cookie=access_denied_cookie)
