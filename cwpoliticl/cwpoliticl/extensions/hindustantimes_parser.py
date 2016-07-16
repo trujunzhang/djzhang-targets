@@ -9,8 +9,16 @@ class HindustantimesParser(BaseParser):
         super(HindustantimesParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        # Because the Hindustantimes's pagination is complicated.
-        # use HindustantimesPagination scraper to parse it.
+        """
+        Because the Hindustantimes's pagination is complicated.
+        Using HindustantimesPagination scraper to parse it.
+
+        :param url:
+        :param hxs:
+        :param cache_db:
+        :param history_db:
+        :return:
+        """
         from cwpoliticl.extensions.specialsites.hindustantimes_pagination import HindustantimesPaginationScraper
         HindustantimesPaginationScraper(self, self.url_from, url, hxs, cache_db, history_db).parse_pagination()
 

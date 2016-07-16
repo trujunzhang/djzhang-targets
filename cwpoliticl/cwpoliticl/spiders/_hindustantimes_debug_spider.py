@@ -11,7 +11,7 @@ class HindustantimesDebugSpider(scrapy.Spider):
     name = "{}_debug".format(url_from.value)
     details_urls = [
         # Detail
-        'http://www.deccanchronicle.com/opinion/op-ed/150716/mystic-mantra-stay-youthful-and-skilful.html'
+        'http://www.hindustantimes.com/opinion/a-bigot-at-the-top-boris-johnson-is-no-joke-he-is-racist/story-G7FjLTgNqqkYeVhOcwbzcM.html'
     ]
 
     def __init__(self, name=None, **kwargs):
