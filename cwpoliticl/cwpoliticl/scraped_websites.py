@@ -48,7 +48,7 @@ scraped_websites_pagination = {
     'http://www.deccanchronicle.com/opinion': WebsiteTypes.deccanchronicle,
     'http://www.firstpost.com/category/politics': WebsiteTypes.firstpost,
     # 'http://forbesindia.com/': WebsiteTypes.forbesindia,  # ???
-    # 'http://www.hindustantimes.com/opinion/': WebsiteTypes.hindustantimes
+    'http://www.hindustantimes.com/opinion/': WebsiteTypes.hindustantimes
 }
 
 websites_parses = {
@@ -59,7 +59,7 @@ websites_parses = {
     WebsiteTypes.deccanchronicle: DeccanchronicleParser(),
     WebsiteTypes.firstpost: FirstPostParser(),
     # WebsiteTypes.forbesindia: FirstPostParser(),  # ???
-    # WebsiteTypes.hindustantimes: HindustantimesParser(),
+    WebsiteTypes.hindustantimes: HindustantimesParser(),
 }
 
 
