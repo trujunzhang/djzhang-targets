@@ -44,6 +44,8 @@ class HindustantimesPaginationScraper(object):
         # Parsing for the left panel.
         self._parse_pagination_for_leftpanel(url, hxs, cache_db, history_db)
 
+
+
     def _parse_pagination_for_leftpanel(self, url, hxs, cache_db, history_db):
         # Top picks
         self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['top_picks'])
