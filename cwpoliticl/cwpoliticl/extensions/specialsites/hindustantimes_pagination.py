@@ -70,7 +70,7 @@ class HindustantimesPaginationScraper(object):
 
     def parse_pagination(self):
         # Parsing for the left panel.
-        # self._left_panel_parse()
+        self._left_panel_parse()
 
         # Parsing for the right panel.
         self._right_panel_parse()
@@ -81,8 +81,8 @@ class HindustantimesPaginationScraper(object):
 
         """
 
-        # self._ajax_for_block(self.right_panel_selector_dict["top_news"])
-        # self._ajax_for_block(self.right_panel_selector_dict["most_popular"])
+        self._ajax_for_block(self.right_panel_selector_dict["top_news"])
+        self._ajax_for_block(self.right_panel_selector_dict["most_popular"])
         self._ajax_for_block(self.right_panel_selector_dict["editors-pick"])
 
     def _left_panel_parse(self):
