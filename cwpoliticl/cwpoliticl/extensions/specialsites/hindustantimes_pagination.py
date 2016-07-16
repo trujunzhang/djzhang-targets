@@ -67,6 +67,11 @@ class HindustantimesPaginationScraper(object):
         self._right_panel_parse()
 
     def _right_panel_parse(self):
+        """
+        All right panel's contents are required by ajax.
+
+        :return:
+        """
         # top news
         self._ajax_for_block(self.right_panel_selector_dict["top_news"])
         pass
