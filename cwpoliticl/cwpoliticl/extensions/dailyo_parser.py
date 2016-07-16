@@ -3,6 +3,13 @@ from cwpoliticl.items import CacheItem, WDPost
 
 
 class DailyoParser(BaseParser):
+    page_selector_dict = {
+        "title": '//*[@id="header-story"]/*[@class="header-inner"]/h1/text()',
+        "image": '//*[@id="header-story"]/@style',
+        "content": '//*[@class="mediumcontent"]/p/text()',
+        "tags": '//*[@class="bottom-full"]/*[@class="bottom_cont_tg"]/*[@class="story-middle"]/*[@id="taglist"]/a/text()',
+    }
+
     def __init__(self):
         from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.dailyo.value
@@ -33,13 +40,10 @@ class DailyoParser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
-        title = self.get_value_response(hxs, '//*[@id="header-story"]/*[@class="header-inner"]/h1/text()')
-        image_src = self._get_image_src(hxs, '//*[@id="header-story"]/@style')
-
-        content = self.get_all_value_response(hxs, '//*[@class="mediumcontent"]/p/text()')
-
-        tags = hxs.xpath(
-            '//*[@class="bottom-full"]/*[@class="bottom_cont_tg"]/*[@class="story-middle"]/*[@id="taglist"]/a/text()').extract()
+        title = self.get_value_response(hxs, self.page_selector_dict['title'])
+        image_src = self._get_image_src(hxs, self.page_selector_dict['image'])
+        content = self.get_all_value_response(hxs, self.page_selector_dict['content'])
+        tags = hxs.xpath(self.page_selector_dict['tags']).extract()
 
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
                                   access_denied_cookie=access_denied_cookie)
