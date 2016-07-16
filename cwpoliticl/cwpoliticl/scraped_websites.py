@@ -27,7 +27,7 @@ class WebsiteTypes(Enum):
     theindianeconomist = "theindianeconomist"
 
     @classmethod
-    def get_pagination_url(self, type):
+    def get_pagination_url(cls, type):
         return scraped_websites_pagination.keys()[scraped_websites_pagination.values().index(type)]
 
 
