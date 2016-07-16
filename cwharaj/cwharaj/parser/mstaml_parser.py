@@ -5,10 +5,11 @@ from cwharaj.items import Ad, CacheItem, City, Member
 from cwharaj.parser.base_parser import BaseParser
 from cwharaj.parser.utils.harajs_section import HarajsSection
 from cwharaj.parser.utils.timer_util import TimerUtil
-from cwharaj.scraped_websites import WebsiteTypes
+
 
 class MstamlParse(BaseParser):
     def __init__(self):
+        from cwharaj.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.mstaml.value
         super(MstamlParse, self).__init__()
 

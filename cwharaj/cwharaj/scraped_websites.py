@@ -57,8 +57,8 @@ websites_parses = {
 def get_crawler_name():
     # Extensions
 
-    is_pagination = True
-    # is_pagination = False
+    # is_pagination = True
+    is_pagination = False
 
     # url_from = WebsiteTypes.opensooq
     # url_from = WebsiteTypes.mstaml

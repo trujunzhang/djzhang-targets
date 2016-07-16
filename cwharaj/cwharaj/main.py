@@ -1,10 +1,12 @@
 from scrapy import cmdline
 
+from cwharaj.scraped_websites import get_crawler_name
+
 
 class Crawler:
     def execute(self, module):
-        para = '--set LOG_FILE={}.log'.format(module)
-        # para = ''
+        # para = '--set LOG_FILE={}.log'.format(module)
+        para = ''
         command = "scrapy crawl {} {}".format(module, para)
         cmdline.execute(command.split())
 
@@ -12,17 +14,7 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    utils.execute("haraj")
-    # utils.execute('harajwatch')
-
-    # ===============
-    # test
-    # ===============
-    # utils.execute('opensooqwatch_debug')
-    # utils.execute("opensooq_debug")
-    # utils.execute("opensooq_commentdate_debug")
-    # utils.execute("mstaml_debug")
-    # utils.execute("harajsa_debug")
+    utils.execute(get_crawler_name()['name'])
 
 
 if __name__ == '__main__':
