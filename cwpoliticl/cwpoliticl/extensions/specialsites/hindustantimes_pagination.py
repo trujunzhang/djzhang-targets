@@ -52,6 +52,10 @@ class HindustantimesPaginationScraper(object):
             'ajax': '/fragment/PortalConfig/Common/modules/ht-feed/section-feed/rpcontroller.jpt?category={}&device=website'.format(
                 'rightmost-popularsection')
         },
+        "editors-pick": {
+            'ajax': '/fragment/PortalConfig/Common/modules/ht-feed/section-feed/rpcontroller.jpt?category={}&device=website'.format(
+                'righteditors-pick')
+        },
     }
 
     def __init__(self, parser, url_from, url, hxs, cache_db, history_db):
@@ -75,11 +79,11 @@ class HindustantimesPaginationScraper(object):
         """
         All right panel's contents are required by ajax.
 
-        :return:
         """
-        # top news
+
         # self._ajax_for_block(self.right_panel_selector_dict["top_news"])
-        self._ajax_for_block(self.right_panel_selector_dict["most_popular"])
+        # self._ajax_for_block(self.right_panel_selector_dict["most_popular"])
+        self._ajax_for_block(self.right_panel_selector_dict["editors-pick"])
 
     def _left_panel_parse(self):
         # Top picks
