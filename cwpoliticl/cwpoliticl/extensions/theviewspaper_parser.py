@@ -3,6 +3,14 @@ from cwpoliticl.items import CacheItem, WDPost
 
 
 class TheViewsPaperParser(BaseParser):
+    detail_root_selector = '//*[@class="entry-content"]'
+    page_selector_dict = {
+        "title": '{}/*[@class="entry-header"]/h2/a/text()'.format(detail_root_selector),
+        "image": '{}/*[@class="content"]/p[1]/img/@srcset'.format(detail_root_selector),
+        "content": '{}/*[@class="content"]/p/text()'.format(detail_root_selector),
+        "tags": '{}/*[@class="post-meta"]/*[@class="categories-links"]/a/text()'.format(detail_root_selector),
+    }
+
     def __init__(self):
         from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.theviewspaper.value
@@ -29,13 +37,10 @@ class TheViewsPaperParser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
-        title = self.get_value_response(hxs, '//*[@class="entry-content"]/*[@class="entry-header"]/h2/a/text()')
-        image_src = self._get_image(hxs, '//*[@class="entry-content"]/*[@class="content"]/p[1]/img/@srcset')
-        content = self.get_all_value_response(hxs, '//*[@class="entry-content"]/*[@class="content"]/p/text()',
-                                              start_index=1)
-
-        tags = hxs.xpath(
-            '//*[@class="entry-content"]/*[@class="post-meta"]/*[@class="categories-links"]/a/text()').extract()
+        title = self.get_value_response(hxs, self.page_selector_dict['title'])
+        image_src = self._get_image(hxs, self.page_selector_dict['img'])
+        content = self.get_all_value_response(hxs, self.page_selector_dict['content'], start_index=1)
+        tags = hxs.xpath(self.page_selector_dict['tags']).extract()
 
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
                                   access_denied_cookie=access_denied_cookie)
