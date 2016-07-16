@@ -27,7 +27,7 @@ class HindustantimesParser(BaseParser):
         image_src = self.get_value_with_urljoin(hxs,
                                                 '//*[@class="story_top_news"]/*[@class="news_photo"]/img/@src',
                                                 url)
-        content = self.get_all_value_response(hxs, '//*[@class="div_storyContent"]/p/text()')
+        content = self.get_all_value_response(hxs, '//*[@id="div_storyContent"]/p/text()')
         tags = hxs.xpath('//*[@class="story_tags"]/li/a/text()').extract()
 
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
