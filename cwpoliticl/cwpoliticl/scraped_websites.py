@@ -80,13 +80,13 @@ def get_crawler_name():
 
     # url_from = WebsiteTypes.dnaindia
     # url_from = WebsiteTypes.indianexpress
-    # url_from = WebsiteTypes.theviewspaper
+    url_from = WebsiteTypes.theviewspaper
     # url_from = WebsiteTypes.dailyo
     # url_from = WebsiteTypes.deccanchronicle
     # url_from = WebsiteTypes.firstpost
     # url_from = WebsiteTypes.forbesindia  # ???
     # url_from = WebsiteTypes.hindustantimes
-    url_from = WebsiteTypes.news18
+    # url_from = WebsiteTypes.news18
 
     crawler_names = [
         # "politicl",
