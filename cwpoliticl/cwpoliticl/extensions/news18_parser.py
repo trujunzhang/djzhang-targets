@@ -3,6 +3,14 @@ from cwpoliticl.items import CacheItem, WDPost
 
 
 class News18Parser(BaseParser):
+    detail_root_selector = '//*[@class="section-blog-left-aricle"]'
+    page_selector_dict = {
+        "title": '{}/h1/text()'.format(detail_root_selector),
+        "image": '{}/*[@class="articleimg"]/img/@src'.format(detail_root_selector),
+        "content": '{}/*[@id="article_body"]/p/text()'.format(detail_root_selector),
+        "tags": '{}/*[@class="story-body"]/*[@class="articleTags"]/a/text()'.format(detail_root_selector),
+    }
+
     def __init__(self):
         from cwpoliticl.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.news18.value
@@ -29,12 +37,9 @@ class News18Parser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
-        title = self.get_value_response(hxs, '//*[@class="section-blog-left-aricle"]/h1/text()')
-        image_src = self.get_value_response(hxs,
-                                            '//*[@class="section-blog-left-aricle"]/*[@class="articleimg"]/img/@src')
-
-        content = self.get_all_value_response(hxs,
-                                              '//*[@class="section-blog-left-aricle"]/*[@id="article_body"]/p/text()')
+        title = self.get_value_response(hxs, self.page_selector_dict['title'])
+        image_src = self.get_value_response(hxs, self.page_selector_dict['image'])
+        content = self.get_all_value_response(hxs, self.page_selector_dict['content'])
 
         # not found any tags on the detailed page.
         tags = []
