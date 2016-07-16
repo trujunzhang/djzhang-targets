@@ -62,13 +62,13 @@ class HindustantimesPaginationScraper(object):
 
     def parse_pagination(self):
         # Parsing for the left panel.
-        self._left_panel_parse()
+        # self._left_panel_parse()
         # Parsing for the right panel.
-        # self._right_panel_parse()
+        self._right_panel_parse()
 
-    def _right_panel_parse(self, url, hxs, cache_db, history_db):
+    def _right_panel_parse(self):
         # top news
-        self._ajax_for_block(url, hxs, cache_db, history_db, self.right_panel_selector_dict)
+        self._ajax_for_block(self.right_panel_selector_dict["top_news"])
         pass
 
     def _left_panel_parse(self):
@@ -110,6 +110,6 @@ class HindustantimesPaginationScraper(object):
             self._parse_single_photo_block_for_pagination(dict, list_select_block)
 
     def _ajax_for_block(self, dict):
-        ajax_url = self.parser.get_url_join(self.url, dict['ajax'])
-        response = self.parser.ajax(ajax_url)
+        ajax_url = self.parser.get_url_join(dict['ajax'], self.url)
+        json = self.parser.ajax(ajax_url)
         x = 0
