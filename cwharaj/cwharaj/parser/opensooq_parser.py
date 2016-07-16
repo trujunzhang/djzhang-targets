@@ -131,10 +131,7 @@ class OpensooqParse(BaseParser):
             ajax_url = "https://sa.opensooq.com/ar/post/get-phone-number?model_id={}&model_type={}".format(
                 phone_data_id, phone_data_type)
 
-            import requests
-            r = requests.get(ajax_url)
-            if r.status_code == 200:
-                return r.text
+            return self.ajax(ajax_url)
 
     def get_pictures(self, hxs, selector):
         _pictures = hxs.xpath(selector).extract()

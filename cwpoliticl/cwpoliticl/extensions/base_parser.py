@@ -89,3 +89,9 @@ class BaseParser(object):
                 list.append(src_)
 
         return ",".join(list)
+
+    def ajax(self, ajax_url):
+        import requests
+        r = requests.get(ajax_url)
+        if r.status_code == 200:
+            return r.text
