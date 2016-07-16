@@ -24,7 +24,9 @@ class HindustantimesParser(BaseParser):
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.get_value_response(hxs, '//*[@class="story_pg_head"]/h1/text()')
-        image_src = self.get_value_response(hxs, '//*[@class="story_top_news"]/*[@class="news_photo"]/img/@src')
+        image_src = self.get_value_with_urljoin(hxs,
+                                                '//*[@class="story_top_news"]/*[@class="news_photo"]/img/@src',
+                                                url)
         content = self.get_all_value_response(hxs, '//*[@class="div_storyContent"]/p/text()')
         tags = hxs.xpath('//*[@class="story_tags"]/li/a/text()').extract()
 
