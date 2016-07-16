@@ -12,12 +12,14 @@ class HindustantimesPaginationScraper(object):
         "top_picks": {
             "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][2]',
             "single": '/div/div/div[1]/div[1]',
-            'right_list': '/div/div/div[2]/ul/li'
+            'right_list': '/div/div/div[2]/ul/li',
+            'image_attr': 'src'
         },
         "columns": {
             "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][3]',
             "single": '/section[1]/div[1]',
-            'right_list': '/section[2]/ul/li'
+            'right_list': '/section[2]/ul/li',
+            'image_attr': 'data-original'
         }
     }
 
@@ -48,15 +50,15 @@ class HindustantimesPaginationScraper(object):
         # self._parse_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="hm_topstory_3_story"]/ul/li')
 
     def _parse_row_container(self, url, hxs, cache_db, history_db, dict):
-        self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db,
+        self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db, dict,
                                                       '{}{}'.format(dict['row_container'], dict['single']))
 
-        self._parse_block_for_pagination(url, hxs, cache_db, history_db,
+        self._parse_block_for_pagination(url, hxs, cache_db, history_db, dict,
                                          '{}{}'.format(dict['row_container'], dict['right_list']))
 
-    def _parse_single_photo_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
+    def _parse_single_photo_block_for_pagination(self, url, hxs, cache_db, history_db, dict, select_block):
         href_selector = '{}/a/@href'.format(select_block)
-        thumbnail_selector = '{}/a/img/@src'.format(select_block)
+        thumbnail_selector = '{}/a/img/@{}'.format(select_block, dict['image_attr'])
 
         href = self.parser.get_value_with_urljoin(hxs, href_selector, url)
         # If the link already exist on the history database, ignore it.
@@ -67,12 +69,12 @@ class HindustantimesPaginationScraper(object):
 
         cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
-    def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, select_block):
+    def _parse_block_for_pagination(self, url, hxs, cache_db, history_db, dict, select_block):
         links = hxs.xpath(select_block).extract()
 
         for idx, link in enumerate(links):
             href_selector = '{}[{}]/div[1]/a/@href'.format(select_block, (idx + 1))
-            thumbnail_selector = '{}[{}]/div[1]/a/img/@src'.format(select_block, (idx + 1))
+            thumbnail_selector = '{}[{}]/div[1]/a/img/@{}'.format(select_block, (idx + 1), dict['image_attr'])
 
             href = self.parser.get_value_response(hxs, href_selector)
             # If the link already exist on the history database, ignore it.
