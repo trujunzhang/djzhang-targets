@@ -3,7 +3,7 @@ import scrapy
 
 
 class HarajsSpiderWatch(scrapy.Spider):
-    name = "harajwatch"
+    name = "haraj_watch"
 
     def __init__(self, name=None, **kwargs):
         from cwharaj.database_factory import DatabaseFactory, CollectionTypes
