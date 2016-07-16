@@ -29,14 +29,15 @@ class News18Parser(BaseParser):
             cache_db.save_cache(CacheItem.get_default(url=href, thumbnail_url=thumbnail_src, url_from=self.url_from))
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
-        title = self.get_value_response(hxs, '//*[@class="story-main"]/h1/span/text()')
+        title = self.get_value_response(hxs, '//*[@class="section-blog-left-aricle"]/h1/text()')
         image_src = self.get_value_response(hxs,
-                                            '//*[@class="story-main"]/*[@class="story-body"]/*[@class="cover"]/img/@src')
+                                            '//*[@class="section-blog-left-aricle"]/*[@class="articleimg"]/img/@src')
 
         content = self.get_all_value_response(hxs,
-                                              '//*[@class="story-main"]/*[@class="story-body"]/*[@id="storyBody"]/p/text()')
+                                              '//*[@class="section-blog-left-aricle"]/*[@class="article_body"]/p/text()')
 
-        tags = hxs.xpath('//*[@class="story-main"]/*[@class="story-body"]/*[@class="articleTags"]/a/text()').extract()
+        # not found any tags on the detailed page.
+        tags = []
 
         item = WDPost.get_default(url, self.url_from, title, image_src, thumbnail_url, content, tags,
                                   access_denied_cookie=access_denied_cookie)

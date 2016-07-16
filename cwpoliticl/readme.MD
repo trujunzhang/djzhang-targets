@@ -49,5 +49,7 @@ mysql -u cwpoliticl -p 'cwpoliticl720' politicl
   
  3. Upload too large image(more than 1M) to the wordpress failure on the 'theviewspaper' website 
    'http://theviewspaper.net/wp-content/uploads/WordsOfTerror-1024x576.jpg'
+   
+ 4. # not found any tags on the detailed page of the 'news18'.
   
   
