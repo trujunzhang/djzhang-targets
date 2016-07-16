@@ -112,4 +112,9 @@ class HindustantimesPaginationScraper(object):
     def _ajax_for_block(self, dict):
         ajax_url = self.parser.get_url_join(dict['ajax'], self.url)
         json = self.parser.ajax_json(ajax_url)
-        x = 0
+        if json:
+            lists = json['content']['sectionItems']
+            for line in lists:
+                self.cache_db.save_cache(
+                    CacheItem.get_default(url=line['websiteURL'], thumbnail_url=line['thumbImage'],
+                                          url_from=self.url_from))

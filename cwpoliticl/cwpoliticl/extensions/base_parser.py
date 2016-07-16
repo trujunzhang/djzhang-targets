@@ -96,7 +96,8 @@ class BaseParser(object):
         if r.status_code == 200:
             return r.text
 
-    def ajax_json(self,ajax_url):
+    def ajax_json(self, ajax_url):
         string = self.ajax(ajax_url)
-        import json
-        return json.loads(string)
+        if string:
+            import json
+            return json.loads(string)
