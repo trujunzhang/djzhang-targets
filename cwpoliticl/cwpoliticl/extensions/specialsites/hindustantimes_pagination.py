@@ -41,29 +41,21 @@ class HindustantimesPaginationScraper(object):
         super(HindustantimesPaginationScraper, self).__init__()
 
     def parse_pagination(self, url, hxs, cache_db, history_db):
+        # Parsing for the left panel.
+        self._parse_pagination_for_leftpanel(url, hxs, cache_db, history_db)
 
+    def _parse_pagination_for_leftpanel(self, url, hxs, cache_db, history_db):
         # Top picks
-        # self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['top_picks'])
+        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['top_picks'])
 
         # columns
-        # self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['columns'])
+        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['columns'])
 
         # editorials
         self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['editorials'])
 
-
-        # # columns
-        # row_container = '//*[@class="row_container"]/*[@class="col_2 india_headlines"]'
-        # lists = hxs.xpath(row_container)
-        # for idx, link in enumerate(lists):
-        #     single_photo_section = '//*[@class="row_container"]/*[@class="col_2 col_2_right_margin india_topNews"]'.format(
-        #         row_container, (idx + 1))
-        #     # lists_section = '//*[@class="row_container"]/*[@class="col_2 india_headlines"]'.format(
-        #     #     row_container, (idx + 1))
-        #
-        #     self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db, single_photo_section)
-
-        # self._parse_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="hm_topstory_3_story"]/ul/li')
+        # analysis
+        self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['analysis'])
 
     def _parse_row_container(self, url, hxs, cache_db, history_db, dict):
         self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db, dict,
