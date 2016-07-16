@@ -16,7 +16,6 @@ class HindustantimesPaginationScraper(object):
             'image': {
                 'attr': 'src'
             }
-
         },
         "columns": {
             "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][3]',
@@ -68,9 +67,10 @@ class HindustantimesPaginationScraper(object):
         self._parse_row_container(url, hxs, cache_db, history_db, self.hindustantimes_selector_dict['analysis'])
 
     def _parse_row_container(self, url, hxs, cache_db, history_db, dict):
+        # Left single column
         self._parse_single_photo_block_for_pagination(url, hxs, cache_db, history_db, dict,
                                                       '{}{}'.format(dict['row_container'], dict['single']))
-
+        # Right list column
         self._parse_block_for_pagination(url, hxs, cache_db, history_db, dict,
                                          '{}{}'.format(dict['row_container'], dict['right_list']))
 
