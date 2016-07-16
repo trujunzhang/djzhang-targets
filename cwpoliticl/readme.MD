@@ -46,7 +46,7 @@ mysql -u cwpoliticl -p 'cwpoliticl720' politicl
 
 # scrape issues
 
- .1 Access denied | theviewspaper.net used CloudFlare to restrict access
+ 1. Access denied | theviewspaper.net used CloudFlare to restrict access
   fixed: using "https://github.com/Anorov/cloudflare-scrape"
    
  2. xmlrpc.php: 413 Request Entity Too Large
@@ -56,5 +56,9 @@ mysql -u cwpoliticl -p 'cwpoliticl720' politicl
    'http://theviewspaper.net/wp-content/uploads/WordsOfTerror-1024x576.jpg'
    
  4. # not found any tags on the detailed page of the 'news18'.
+ 
+ # requirements
+ 
+  1. Instead of the first 2 paragraphs can we limit the content to 150 words even if we have to scraper more than 2 paragraphs
   
   
