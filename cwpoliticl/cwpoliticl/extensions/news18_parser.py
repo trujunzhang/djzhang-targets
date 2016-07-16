@@ -34,7 +34,7 @@ class News18Parser(BaseParser):
                                             '//*[@class="section-blog-left-aricle"]/*[@class="articleimg"]/img/@src')
 
         content = self.get_all_value_response(hxs,
-                                              '//*[@class="section-blog-left-aricle"]/*[@class="article_body"]/p/text()')
+                                              '//*[@class="section-blog-left-aricle"]/*[@id="article_body"]/p/text()')
 
         # not found any tags on the detailed page.
         tags = []
