@@ -13,25 +13,34 @@ class HindustantimesPaginationScraper(object):
             "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][2]',
             "single": '/div/div/div[1]/div[1]',
             'right_list': '/div/div/div[2]/ul/li',
-            'image_attr': 'src'
+            'image': {
+                'attr': 'src'
+            }
+
         },
         "columns": {
             "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][3]',
             "single": '/section[1]/div[1]',
             'right_list': '/section[2]/ul/li',
-            'image_attr': 'data-original'
+            'image': {
+                'attr': 'data-original'
+            }
         },
         "editorials": {
             "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][4]',
             "single": '/section[1]/div[1]',
             'right_list': '/section[2]/ul/li',
-            'image_attr': 'data-original'
+            'image': {
+                'attr': 'data-original'
+            }
         },
         "analysis": {
             "row_container": '//*[@id="div_storyContent"]/*[@class="row_container"][5]',
             "single": '/section[1]/div[1]',
             'right_list': '/section[2]/ul/li',
-            'image_attr': 'data-original'
+            'image': {
+                'attr': 'data-original'
+            }
         },
     }
 
@@ -43,8 +52,7 @@ class HindustantimesPaginationScraper(object):
     def parse_pagination(self, url, hxs, cache_db, history_db):
         # Parsing for the left panel.
         self._parse_pagination_for_leftpanel(url, hxs, cache_db, history_db)
-
-
+        # Parsing for the right panel.
 
     def _parse_pagination_for_leftpanel(self, url, hxs, cache_db, history_db):
         # Top picks
@@ -68,7 +76,7 @@ class HindustantimesPaginationScraper(object):
 
     def _parse_single_photo_block_for_pagination(self, url, hxs, cache_db, history_db, dict, select_block):
         href_selector = '{}/a/@href'.format(select_block)
-        thumbnail_selector = '{}/a/img/@{}'.format(select_block, dict['image_attr'])
+        thumbnail_selector = '{}/a/img/@{}'.format(select_block, dict['image']['attr'])
 
         href = self.parser.get_value_with_urljoin(hxs, href_selector, url)
         # If the link already exist on the history database, ignore it.
@@ -84,7 +92,7 @@ class HindustantimesPaginationScraper(object):
 
         for idx, link in enumerate(links):
             href_selector = '{}[{}]/div[1]/a/@href'.format(select_block, (idx + 1))
-            thumbnail_selector = '{}[{}]/div[1]/a/img/@{}'.format(select_block, (idx + 1), dict['image_attr'])
+            thumbnail_selector = '{}[{}]/div[1]/a/img/@{}'.format(select_block, (idx + 1), dict['attr'])
 
             href = self.parser.get_value_response(hxs, href_selector)
             # If the link already exist on the history database, ignore it.
