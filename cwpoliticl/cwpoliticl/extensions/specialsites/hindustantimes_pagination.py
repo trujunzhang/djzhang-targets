@@ -48,6 +48,10 @@ class HindustantimesPaginationScraper(object):
             'ajax': '/fragment/PortalConfig/Common/modules/ht-feed/section-feed/rpcontroller.jpt?category={}&device=website'.format(
                 'righttopnewsssection')
         },
+        "most_popular": {
+            'ajax': '/fragment/PortalConfig/Common/modules/ht-feed/section-feed/rpcontroller.jpt?category={}&device=website'.format(
+                'rightmost-popularsection')
+        },
     }
 
     def __init__(self, parser, url_from, url, hxs, cache_db, history_db):
@@ -63,6 +67,7 @@ class HindustantimesPaginationScraper(object):
     def parse_pagination(self):
         # Parsing for the left panel.
         # self._left_panel_parse()
+
         # Parsing for the right panel.
         self._right_panel_parse()
 
@@ -73,7 +78,8 @@ class HindustantimesPaginationScraper(object):
         :return:
         """
         # top news
-        self._ajax_for_block(self.right_panel_selector_dict["top_news"])
+        # self._ajax_for_block(self.right_panel_selector_dict["top_news"])
+        self._ajax_for_block(self.right_panel_selector_dict["most_popular"])
 
     def _left_panel_parse(self):
         # Top picks
