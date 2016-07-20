@@ -16,7 +16,8 @@ class BioliteEnergyParser(BaseParser):
         super(BioliteEnergyParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
-        self.save_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="storyimg"]', self.url_from)
+        self.save_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="product-grid-item__inner"]',
+                                       self.url_from)
 
     def parse(self, url, hxs, wd_rpc, thumbnail_url, access_denied_cookie):
         title = self.extract_by_query(hxs, self.page_selector_dict['title'])

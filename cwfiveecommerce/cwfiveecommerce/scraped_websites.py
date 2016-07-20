@@ -1,6 +1,6 @@
 from enum import Enum
 
-from cwfiveecommerce.extensions.bioliteenergy_parser import DailyoParser, BioliteEnergyParser
+from cwfiveecommerce.extensions.bioliteenergy_parser import  BioliteEnergyParser
 
 
 class WebsiteTypes(Enum):
