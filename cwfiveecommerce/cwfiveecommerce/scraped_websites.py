@@ -1,6 +1,6 @@
 from enum import Enum
 
-from cwfiveecommerce.extensions.dailyo_parser import DailyoParser
+from cwfiveecommerce.extensions.bioliteenergy_parser import DailyoParser, BioliteEnergyParser
 
 
 class WebsiteTypes(Enum):
@@ -27,7 +27,7 @@ scraped_websites_pagination = {
 }
 
 websites_parses = {
-    WebsiteTypes.bioliteenergy: DailyoParser(),
+    WebsiteTypes.bioliteenergy: BioliteEnergyParser(),
 }
 
 scraped_whole_pages_pagination = {

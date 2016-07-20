@@ -2,7 +2,7 @@ from cwfiveecommerce.extensions.base_parser import BaseParser
 from cwfiveecommerce.items import WDPost
 
 
-class DailyoParser(BaseParser):
+class BioliteEnergyParser(BaseParser):
     page_selector_dict = {
         "title": '//*[@id="header-story"]/*[@class="header-inner"]/h1/text()',
         "image": '//*[@id="header-story"]/@style',
@@ -13,7 +13,7 @@ class DailyoParser(BaseParser):
     def __init__(self):
         from cwfiveecommerce.scraped_websites import WebsiteTypes
         self.url_from = WebsiteTypes.bioliteenergy.value
-        super(DailyoParser, self).__init__()
+        super(BioliteEnergyParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
         self.save_block_for_pagination(url, hxs, cache_db, history_db, '//*[@class="storyimg"]', self.url_from)
