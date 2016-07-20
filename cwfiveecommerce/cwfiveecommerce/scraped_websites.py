@@ -44,8 +44,8 @@ scraped_whole_pages_pagination = {
 def get_crawler_name():
     # Extensions
 
-    is_pagination = True
-    # is_pagination = False
+    # is_pagination = True
+    is_pagination = False
 
     url_from = WebsiteTypes.bioliteenergy
 

@@ -3,6 +3,7 @@
 import unittest
 
 from wordpress_xmlrpc import Client
+from wordpress_xmlrpc.methods.posts import GetPosts
 
 from cwfiveecommerce import settings
 from cwfiveecommerce.extensions.rpc.images_downloader import ImagesDownload
@@ -16,8 +17,8 @@ class WDXmlRpcTest(unittest.TestCase):
         # self.image_link = 'http://theviewspaper.net/wp-content/uploads/WordsOfTerror-1024x576.jpg'
         self.image_link = 'http://localhost:8888/fiveecommerce/wp-content/uploads/2016/07/picture-324x160.jpeg'
 
-        # def test_get_posts(self):
-        #     wp_call = self.wp.call(GetPosts())
+        def test_get_posts(self):
+            wp_call = self.wp.call(GetPosts())
         #     x = 0
         # [ < WordPressPost: hello - world(id=1) >]
 
