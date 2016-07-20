@@ -4,7 +4,7 @@ from cwfiveecommerce.items import WDPost
 
 class BioliteEnergyParser(BaseParser):
     page_selector_dict = {
-        "title": '//*[@id="header-story"]/*[@class="header-inner"]/h1/text()',
+        "title": '//h1/text()',
         "image": '//*[@id="header-story"]/@style',
         "content": '//*[@class="mediumcontent"]',
         "tags": '//*[@id="taglist"]/a/text()',
