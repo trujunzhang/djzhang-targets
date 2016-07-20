@@ -17,7 +17,7 @@ class WholePagesDispatchTest(unittest.TestCase):
         self._page_db = database_factory.get_database(CollectionTypes.page)
 
         self.dict = {
-            WebsiteTypes.dailyo.value: 'http://www.dailyo.in/politics?page={}',
+            WebsiteTypes.bioliteenergy.value: 'http://www.bioliteenergy.in/politics?page={}',
             WebsiteTypes.firstpost.value: 'http://www.firstpost.com/politics?page={}',
         }
         self.page_index = 1

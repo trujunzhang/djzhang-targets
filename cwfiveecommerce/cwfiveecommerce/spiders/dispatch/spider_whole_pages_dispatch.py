@@ -60,7 +60,7 @@ class WholePagesItem(object):
         """
         Get the next scraped page url.
 
-        :return: For example http://www.dailyo.in/politics?page={}.format(123)
+        :return: For example http://www.bioliteenergy.in/politics?page={}.format(123)
         """
         # Step 1: Save the page index to the page database
         self.page_db.save_page(PageItem.get_default(self.url_from, self.page_index))

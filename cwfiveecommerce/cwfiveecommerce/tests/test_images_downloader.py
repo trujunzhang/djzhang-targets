@@ -16,7 +16,7 @@ class ImagesDownloaderTest(unittest.TestCase):
             # "downloader": ImagesDownload()
         }
         self.item = {
-            'image_src': 'http://media2.intoday.in/dailyo//story/header/201607/priyankag-sheila-ab_071416102045.jpg',
+            'image_src': 'http://media2.intoday.in/bioliteenergy//story/header/201607/priyankag-sheila-ab_071416102045.jpg',
             "downloader": ImagesDownload()
         }
         self.item = {

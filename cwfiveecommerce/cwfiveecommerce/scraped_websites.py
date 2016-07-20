@@ -2,11 +2,12 @@ from enum import Enum
 
 from cwfiveecommerce.extensions.dailyo_parser import DailyoParser
 
+
 class WebsiteTypes(Enum):
     def __str__(self):
         return str(self.value)
 
-    dailyo = "dailyo"
+    bioliteenergy = "bioliteenergy"
 
     @classmethod
     def get_pagination_url(cls, type):
@@ -16,21 +17,21 @@ class WebsiteTypes(Enum):
 content_seperator = '\n' + '\n'
 
 websites_allowed_domains = {
-    WebsiteTypes.dailyo: 'www.dailyo.in',
+    WebsiteTypes.bioliteenergy: 'www.bioliteenergy.com',
 }
 
 scraped_websites_pagination = {
     # ==Done
     # 1	DailyO ('http://www.dailyo.in/politics')
-    'http://www.dailyo.in/politics': WebsiteTypes.dailyo,
+    'http://www.bioliteenergy.com/products': WebsiteTypes.bioliteenergy,
 }
 
 websites_parses = {
-    WebsiteTypes.dailyo: DailyoParser(),
+    WebsiteTypes.bioliteenergy: DailyoParser(),
 }
 
 scraped_whole_pages_pagination = {
-    WebsiteTypes.dailyo.value: 'http://www.dailyo.in/politics?page={}'
+    WebsiteTypes.bioliteenergy.value: 'http://www.bioliteenergy.in/politics?page={}'
 }
 
 
@@ -46,12 +47,11 @@ def get_crawler_name():
     is_pagination = True
     # is_pagination = False
 
-    url_from = WebsiteTypes.dailyo
-
+    url_from = WebsiteTypes.bioliteenergy
 
     crawler_names = [
         # "fiveecommerce",
-         "fiveecommerce_debug"
+        "fiveecommerce_debug"
         # "fiveecommerce_watch",
     ]
 

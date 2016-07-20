@@ -12,7 +12,7 @@ class DailyoParser(BaseParser):
 
     def __init__(self):
         from cwfiveecommerce.scraped_websites import WebsiteTypes
-        self.url_from = WebsiteTypes.dailyo.value
+        self.url_from = WebsiteTypes.bioliteenergy.value
         super(DailyoParser, self).__init__()
 
     def parse_paginate(self, url, hxs, cache_db, history_db):
