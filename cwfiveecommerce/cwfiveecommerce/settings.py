@@ -84,8 +84,8 @@ SQL_COLLECTION_NAME = 'fiveecommerces'
 
 # python-wordpress-xmlrpc
 WD_HOST = 'http://localhost:8888/fiveecommerce'
-# WD_HOST = 'http://localhost:8888'
-# WD_HOST = 'http://192.168.1.106:8888'
-# WD_HOST = 'http://104.236.77.182:8888'
+# WD_HOST = 'http://localhost:8020'
+# WD_HOST = 'http://192.168.1.106:8020'
+# WD_HOST = 'http://104.236.77.182:8020'
 WD_USER = 'trujunzhang'
 WD_PASSWD = 'wanghao720'
