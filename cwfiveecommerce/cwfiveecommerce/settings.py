@@ -89,3 +89,7 @@ WD_HOST = 'http://localhost:8888/fiveecommerce'
 # WD_HOST = 'http://104.236.77.182:8020'
 WD_USER = 'trujunzhang'
 WD_PASSWD = 'wanghao720'
+
+# woocommerce rest
+woo_consumer_key = 'ck_24b46913196dc096bd381a5169bf779bbee635d5'
+woo_consumer_secret = 'cs_64775d8334e115ac1d925b069d888da14768daa8'
