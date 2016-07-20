@@ -45,3 +45,5 @@ class WoocommerceRestTest(unittest.TestCase):
                 ]
             }
             callback = self.wcapi.post("products", data).json()
+
+            x = 0
