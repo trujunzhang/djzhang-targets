@@ -18,11 +18,12 @@ class FlockSpider(scrapy.Spider):
     def __init__(self, name=None, **kwargs):
         # the dispatcher is now called in init
         dispatcher.connect(self.handle_spider_closed, signals.spider_closed)
+        logging.debug('It is time to sleep on the constructor!')
         time.sleep(60 * 5)
         super(FlockSpider, self).__init__(name, **kwargs)
 
     def parse(self, response):
-        x = 0
+        logging.debug('It is time to sleep on the parse!')
         time.sleep(60 * 5)
 
     def handle_spider_closed(self, spider, reason):  # added self
