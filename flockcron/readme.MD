@@ -10,10 +10,10 @@ curl http://104.236.77.182:6800/schedule.json -d project=flockcron -d spider=flo
 
 # cron jobs
   
-  */1 * * * * curl http://localhost:6800/schedule.json -d project=cwpoliticl -d spider=flock
+  * * * * * curl http://localhost:6800/schedule.json -d project=flockcron -d spider=flock
   
   
-  */1 * * * * /usr/bin/flock -w 0 /tmp/cron.lock curl http://localhost:6800/schedule.json -d project=cwpoliticl -d spider=flock
+  * * * * * /usr/bin/flock -w 0 /tmp/flockcron.lock curl http://localhost:6800/schedule.json -d project=flockcron -d spider=flock
     
   
   
