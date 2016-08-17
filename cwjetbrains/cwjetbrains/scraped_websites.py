@@ -62,5 +62,13 @@ def get_crawler_name():
 is_pagination = get_crawler_name()['is_pagination']
 
 
+# Webstorm
 # https://data.services.jetbrains.com/products/download?code=WS&platform=mac
+# Pycharm
 # https://data.services.jetbrains.com/products/download?code=PCP&platform=mac
+# Phpstorm
+# https://data.services.jetbrains.com/products/download?code=PS&platform=mac
+# AppCode
+# https://data.services.jetbrains.com/products/download?code=AC&platform=mac
+# Rubymine
+# https://data.services.jetbrains.com/products/download?code=RM&platform=mac
