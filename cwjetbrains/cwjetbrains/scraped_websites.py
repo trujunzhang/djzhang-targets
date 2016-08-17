@@ -60,3 +60,7 @@ def get_crawler_name():
 
 
 is_pagination = get_crawler_name()['is_pagination']
+
+
+# https://data.services.jetbrains.com/products/download?code=WS&platform=mac
+# https://data.services.jetbrains.com/products/download?code=PCP&platform=mac
