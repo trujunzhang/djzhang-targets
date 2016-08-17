@@ -66,6 +66,7 @@ is_pagination = get_crawler_name()['is_pagination']
 # https://data.services.jetbrains.com/products/download?code=WS&platform=mac
 # Pycharm
 # https://data.services.jetbrains.com/products/download?code=PCP&platform=mac
+# wget -O pycharm.dmg "https://data.services.jetbrains.com/products/download?code=PCP&platform=mac"
 # Phpstorm
 # https://data.services.jetbrains.com/products/download?code=PS&platform=mac
 # AppCode
