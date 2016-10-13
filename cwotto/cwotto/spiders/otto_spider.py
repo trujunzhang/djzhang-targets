@@ -10,8 +10,11 @@ class OttoSpider(scrapy.Spider):
     name = "otto"
     allowed_domains = ["oto.com"]
     start_urls = [
+        # Pagination
+        'https://www.otto.de/damenmode/kategorien/blazer/kurzblazer/',
+        #  Detail
         # 'https://www.otto.de/p/bruno-banani-blazer-im-uniform-look-512770595#variationId=512770596',
-        'https://www.otto.de/p/sit-sideboard-corsica-breite-150-cm-562203065#variationId=562204027',
+        # 'https://www.otto.de/p/sit-sideboard-corsica-breite-150-cm-562203065#variationId=562204027',
         # "https://www.otto.de/p/melrose-blazer-509995713/#variationId=509998431"
     ]
 
@@ -22,6 +25,9 @@ class OttoSpider(scrapy.Spider):
         super(OttoSpider, self).__init__(name, **kwargs)
 
     def parse(self, response):
+        url = response.request.url
+
+    def parse_item(self, response):
         url = response.request.url
         split = url.split("#")
         if len(split) == 2:
