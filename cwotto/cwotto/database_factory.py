@@ -1,6 +1,3 @@
-from cwotto.parser.browse_parser import BrowseParser
-from cwotto.parser.response_parser import ResponseParse
-
 from enum import Enum
 
 
