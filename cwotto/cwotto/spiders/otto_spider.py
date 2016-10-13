@@ -24,6 +24,10 @@ class OttoSpider(scrapy.Spider):
         url = response.request.url
         split = url.split("#")
         if len(split) == 2:
-            variationId = split[1]
-            item = self._crawl_parser.parse_item(url, response, variationId)
-            yield item
+            para = split[1]
+            s = para.split('=')
+            if len(s) == 2:
+                variationId = s[1]
+
+                item = self._crawl_parser.parse_item(url, response, variationId)
+                yield item
