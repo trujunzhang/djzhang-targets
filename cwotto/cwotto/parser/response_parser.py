@@ -1,11 +1,8 @@
-from selenium.common.exceptions import NoSuchElementException
 from cwotto.items import Product
 from cwotto.parser.base_parser import BaseParser
 
 import urlparse
 import time
-
-from cwotto.utils.selenium_utils import SeleniumUtils
 
 
 class ResponseParse(BaseParser):
