@@ -22,6 +22,8 @@ class ResponseParse(BaseParser):
         productScript = self.extract_by_query(hxs, "//script[@id='productDataJson']").replace("</script>", "").replace(
             '<script id="productDataJson" type="application/json">', "")
 
+        productScript = productScript.replace('#ft5_slash#', '/')
+
         product_json = json.loads(productScript)
 
         return self._parse_via_json(hxs, url, product_json, variationId)
@@ -79,7 +81,7 @@ class ResponseParse(BaseParser):
         if firstImage:
             _images.insert(0, firstImage)
         for img in _images:
-            _uri = img['uriTemplate'].replace('#ft5_slash#', '/').replace('?${format}$', '')
+            _uri = img['uriTemplate'].replace('?${format}$', '')
             result.append(_uri)
 
         return result
@@ -111,11 +113,8 @@ class ResponseParse(BaseParser):
         values = block['values']
         for value in values:
             iconUrl = value['iconUrl']
-            iconUrl = iconUrl.replace('#ft5_slash#', '/').replace('?$articlecolorthumbsmall$', '')
+            iconUrl = iconUrl.replace('?$articlecolorthumbsmall$', '')
             value['iconUrl'] = iconUrl
-            _value = value['value']
-            _value = _value.replace('#ft5_slash#', '/')
-            value['value'] = _value
             result.append(values)
 
         return result
