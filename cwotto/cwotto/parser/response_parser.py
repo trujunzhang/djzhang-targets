@@ -6,8 +6,7 @@ import time
 import json
 
 from cwotto.parser.review_fetcher import ReviewFetcher
-
-from slugify import slugify
+from cwotto.utils.slugify import slugify
 
 
 class ResponseParse(BaseParser):
