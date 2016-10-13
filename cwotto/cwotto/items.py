@@ -12,11 +12,15 @@ class Product(scrapy.Item):
     post_id = scrapy.Field()
     post_type = scrapy.Field()
     post_parent = scrapy.Field()
+    post_status = scrapy.Field()
+    menu_order = scrapy.Field()
 
     url = scrapy.Field()
 
-    title = scrapy.Field()
-    uniqueHtmlDetails = scrapy.Field()
+    post_title = scrapy.Field()
+    post_name = scrapy.Field()
+    post_content = scrapy.Field()
+    post_excerpt = scrapy.Field()
 
     retailPrice = scrapy.Field()
     oldPrice = scrapy.Field()

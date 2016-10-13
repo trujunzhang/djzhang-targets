@@ -7,6 +7,8 @@ import json
 
 from cwotto.parser.review_fetcher import ReviewFetcher
 
+from slugify import slugify
+
 
 class ResponseParse(BaseParser):
     def __init__(self):
@@ -69,8 +71,10 @@ class ResponseParse(BaseParser):
         item = Product(
             url=url,
 
-            title=_title,
-            uniqueHtmlDetails=_uniqueHtmlDetails,
+            post_title=_title,
+            post_name=slugify(_title),
+            post_content=_uniqueHtmlDetails,
+            post_excerpt=_uniqueHtmlDetails,
 
             retailPrice=_retailPrice,
             oldPrice=_oldPrice,
@@ -86,7 +90,9 @@ class ResponseParse(BaseParser):
 
             post_id=product_id,
             post_type="product",
-            post_parent=0
+            post_parent=0,
+            post_status='publish',
+            menu_order=0,
         )
 
         return item
