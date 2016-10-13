@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-from random import Random
-
 import scrapy
-from scrapy.selector import Selector, HtmlXPathSelector
-import urlparse
 
 
 class OttoDebugSpider(scrapy.Spider):
@@ -24,7 +20,7 @@ class OttoDebugSpider(scrapy.Spider):
 
         super(OttoDebugSpider, self).__init__(name, **kwargs)
 
-    def parse_item(self, response):
+    def parse(self, response):
         url = response.request.url
         split = url.split("#")
         if len(split) == 2:

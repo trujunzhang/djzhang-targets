@@ -79,17 +79,24 @@ class ResponseParse(BaseParser):
         return item
 
     def _get_images_via_json(self, __variation):
-        firstImage = __variation["images"]
         result = []
-        _images = __variation["alternativeImageList"]["images"]
-        if not _images:
-            _images = []
+        _images = []
 
+        # alternativeImageList
+        _alternativeImageList = __variation["alternativeImageList"]
+        if _alternativeImageList:
+            _images = _alternativeImageList["images"]
+
+        # default image
+        firstImage = __variation["images"]
         if firstImage:
             _images.insert(0, firstImage)
+
+        # parse images to array
         for img in _images:
             _uri = img['uriTemplate']
-            result.append(_uri)
+            if _uri:
+                result.append(_uri)
 
         return result
 
