@@ -22,73 +22,34 @@ class ResponseParse(BaseParser):
 
     def parse_item(self, hxs, _selector):
 
-        thumbnail = hxs.find_element_by_xpath(
-            _selector + "/div[@class='img-container left-block util-clearfix']/div/a/img").get_attribute(
-            "src")
+        _title = self.extract_by_query(hxs, "//*[@class='prd_shortInfo__text']/h1/text()")
+        _description = self.extract_by_query(hxs, "//*[@id='description/text()")
 
-        _detail_selector = _selector + "/div[@class='right-block util-clearfix']/div/div[@class='detail']"
+        _reviewCount = self.extract_by_query(hxs, "//*[@class='js_cr_reviewHeadline__amount/text()")
+        _price = self.extract_by_query(hxs, "//*[@class='normalPriceAmount/text()")
+        _oldPrice = 0
+        _newPrice = 0
 
-        title = hxs.find_element_by_xpath(_detail_selector + "/h3/a").get_attribute("title")
-        seller = hxs.find_element_by_xpath(_detail_selector + "/div/span/a[2]").get_attribute("title")
+        _pictures = []
 
-        _info_price_selector = _selector + "/div[@class='right-block util-clearfix']/div/div[@class='info infoprice']"
+        _colors = []
 
-        price = hxs.find_element_by_xpath(_info_price_selector + "/span/span[@itemprop='price']").text
-
-        original_price = ""
-        try:
-            original_price = hxs.find_element_by_xpath(_info_price_selector + "/div[1]/del").text
-        except NoSuchElementException:
-            original_price = ""
-
-        shipping = ""
-        try:
-            shipping = hxs.find_element_by_xpath(_info_price_selector + "/strong").text
-        except NoSuchElementException:
-            shipping = ""
-
-        ship_from = ""
-        try:
-            ship_from = hxs.find_element_by_xpath(
-                _info_price_selector + "/div[@class='delivery-wrap']/p[@class='from-foreign-country']").text
-        except NoSuchElementException:
-            ship_from = ""
-
-        delivery_time = ""
-        try:
-            delivery_time = hxs.find_element_by_xpath(
-                _info_price_selector + "/div[@class='delivery-wrap']/p[@class='delivery-time']").text
-        except NoSuchElementException:
-            delivery_time = ""
-
-        rate_num = ""
-        try:
-            rate_num = hxs.find_element_by_xpath(_info_price_selector + "/div[@class='rate-history']/a").text
-        except NoSuchElementException:
-            rate_num = ""
-
-        total_orders = ""
-        try:
-            total_orders = hxs.find_element_by_xpath(
-                _info_price_selector + "/div[@class='rate-history']/span[@class='order-num']/a/em").text
-        except NoSuchElementException:
-            total_orders = ""
-
-        detail_url = hxs.find_element_by_xpath(
-            _selector + "/div[@class='right-block util-clearfix']/div/div[@class='detail']/h3/a").get_attribute("href")
+        _reviews = []
 
         item = Product(
-            url=detail_url,
-            title=title,
-            thumbnail=thumbnail,
-            seller=seller,
-            price=price,
-            original_price=original_price,
-            shipping=shipping,
-            ship_from=ship_from,
-            delivery_time=delivery_time,
-            rate_num=rate_num,
-            total_orders=total_orders
+            title=_title,
+            description=_description,
+
+            price=_price,
+            oldPrice=_oldPrice,
+            newPrice=_newPrice,
+
+            pictures=_pictures,
+
+            color=_colors,
+
+            reviewCount=_reviewCount,
+            reviews=_reviews,
         )
 
         return item

@@ -10,10 +10,14 @@ import scrapy
 
 class Product(scrapy.Item):
     title = scrapy.Field()
+    description = scrapy.Field()
+
+    price = scrapy.Field()
     oldPrice = scrapy.Field()
     newPrice = scrapy.Field()
     pictures = scrapy.Field()
 
     color = scrapy.Field()
-    description = scrapy.Field()
+
+    reviewCount = scrapy.Field()
     reviews = scrapy.Field()
