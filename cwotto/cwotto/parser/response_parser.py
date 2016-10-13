@@ -73,8 +73,11 @@ class ResponseParse(BaseParser):
         return item
 
     def _get_images_via_json(self, __variation):
+        firstImage = __variation["images"]
         result = []
         _images = __variation["alternativeImageList"]["images"]
+        if firstImage:
+            _images.append(firstImage)
         for img in _images:
             _uri = img['uriTemplate'].replace('#ft5_slash#', '').replace('?${format}$', '')
             result.append(_uri)
