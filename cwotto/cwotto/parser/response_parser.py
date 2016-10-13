@@ -113,6 +113,9 @@ class ResponseParse(BaseParser):
             iconUrl = value['iconUrl']
             iconUrl = iconUrl.replace('#ft5_slash#', '/').replace('?$articlecolorthumbsmall$', '')
             value['iconUrl'] = iconUrl
+            _value = value['value']
+            _value = _value.replace('#ft5_slash#', '/')
+            value['value'] = _value
             result.append(values)
 
         return result
