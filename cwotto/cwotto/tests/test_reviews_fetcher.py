@@ -2,8 +2,6 @@
 
 import unittest
 
-from cwpoliticl.scraped_websites import WebsiteTypes
-
 from cwotto.parser.review_fetcher import ReviewFetcher
 
 
