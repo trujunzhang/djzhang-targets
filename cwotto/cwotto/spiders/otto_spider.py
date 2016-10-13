@@ -29,7 +29,7 @@ class OttoSpider(scrapy.Spider):
 
         links = self._crawl_parser.parse_paginate(url, response)
         for link in links:
-            yield scrapy.Request(link, self.parse_item)
+            yield scrapy.Request(link, self.parse_item, dont_filter=True)
 
     def parse_item(self, response):
         url = response.request.url
