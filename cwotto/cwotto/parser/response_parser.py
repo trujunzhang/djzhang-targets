@@ -17,6 +17,9 @@ class ResponseParse(BaseParser):
         links = hxs.xpath('//*[@class="product small"]/a/@href').extract()
         count = 0
         for link in links:
+            if count >= 10:
+                break
+            count = count + 1
             appLink = urlparse.urljoin(url, link.strip())
             product_links.append(appLink)
 
@@ -59,7 +62,7 @@ class ResponseParse(BaseParser):
         _color = _distinctDimensions['color']
         _sizes = _distinctDimensions['size']
 
-        reviewFetcher = ReviewFetcher("535544120")
+        reviewFetcher = ReviewFetcher(product_id)
         _reviews = reviewFetcher.fetch_reviews_as_json()
 
         item = Product(
