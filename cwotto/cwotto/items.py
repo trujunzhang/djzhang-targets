@@ -9,6 +9,10 @@ import scrapy
 
 
 class Product(scrapy.Item):
+    post_id = scrapy.Field()
+    post_type = scrapy.Field()
+    post_parent = scrapy.Field()
+
     url = scrapy.Field()
 
     title = scrapy.Field()
