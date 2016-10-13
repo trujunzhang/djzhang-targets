@@ -14,7 +14,8 @@ class Crawler:
             print("Sorry, I can not remove %s file." % self.filename)
 
     def execute(self, module):
-        command = ("scrapy crawl  %s -o %s" % module, self.filename)
+
+        command = "scrapy crawl  {} -o {}".format(module, self.filename)
         cmdline.execute(command.split())
 
 
