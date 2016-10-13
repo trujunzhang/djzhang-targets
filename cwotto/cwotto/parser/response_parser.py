@@ -20,13 +20,13 @@ class ResponseParse(BaseParser):
             cache_db.process_item(url)
             count += 1
 
-    def parse_item(self, hxs, _selector):
+    def parse_item(self, url, hxs):
 
         _title = self.extract_by_query(hxs, "//*[@class='prd_shortInfo__text']/h1/text()")
         _description = self.extract_by_query(hxs, "//*[@id='description/text()")
 
-        _reviewCount = self.extract_by_query(hxs, "//*[@class='js_cr_reviewHeadline__amount/text()")
-        _price = self.extract_by_query(hxs, "//*[@class='normalPriceAmount/text()")
+        _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content")
+        _price = self.extract_by_query(hxs, "//*[@itemprop='price']/@content")
         _oldPrice = 0
         _newPrice = 0
 
