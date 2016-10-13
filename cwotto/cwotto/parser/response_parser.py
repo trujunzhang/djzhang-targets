@@ -25,6 +25,8 @@ class ResponseParse(BaseParser):
             '<script id="productDataJson" type="application/json">', "")
 
         productScript = productScript.replace('#ft5_slash#', '/')
+        productScript = productScript.replace('?$articlecolorthumbsmall$', '')
+        productScript = productScript.replace('?${format}$', '')
 
         product_json = json.loads(productScript)
 
@@ -83,7 +85,7 @@ class ResponseParse(BaseParser):
         if firstImage:
             _images.insert(0, firstImage)
         for img in _images:
-            _uri = img['uriTemplate'].replace('?${format}$', '')
+            _uri = img['uriTemplate']
             result.append(_uri)
 
         return result
@@ -114,9 +116,6 @@ class ResponseParse(BaseParser):
         result = []
         values = block['values']
         for value in values:
-            iconUrl = value['iconUrl']
-            iconUrl = iconUrl.replace('?$articlecolorthumbsmall$', '')
-            value['iconUrl'] = iconUrl
             result.append(values)
 
         return result
