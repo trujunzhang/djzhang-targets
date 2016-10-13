@@ -4,7 +4,7 @@ import os
 
 class Crawler:
     ## get input ##
-    filename = "results.json"
+    filename = "products.csv"
 
     def prepare(self):
         ## delete only if file exists ##
@@ -15,7 +15,7 @@ class Crawler:
 
     def execute(self, module):
 
-        command = "scrapy crawl  {} -o {}".format(module, self.filename)
+        command = "scrapy crawl  {}  -t csv -o {}".format(module, self.filename)
         cmdline.execute(command.split())
 
 
