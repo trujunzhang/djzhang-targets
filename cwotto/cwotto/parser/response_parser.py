@@ -44,7 +44,10 @@ class ResponseParse(BaseParser):
 
         _pictures = self._get_images_via_json(__variation)
 
-        _colors = []
+        # distinctDimensions
+        _distinctDimensions = self._get_distinctDimensions(product_json)
+        _colors = _distinctDimensions['colors']
+        _sizes = _distinctDimensions['sizes']
 
         _reviews = []
 
@@ -60,7 +63,8 @@ class ResponseParse(BaseParser):
 
             pictures=_pictures,
 
-            color=_colors,
+            colors=_colors,
+            sizes=_sizes,
 
             reviewCount=_reviewCount,
             reviews=_reviews,
@@ -74,5 +78,14 @@ class ResponseParse(BaseParser):
         for img in _images:
             _uri = img['uriTemplate'].replace('#ft5_slash#', '').replace('?${format}$', '')
             result.append(_uri)
+
+        return result
+
+    def _get_distinctDimensions(self, product_json):
+        result = {}
+        _sizes = []
+        _colors = []
+
+        _distinctDimensions = product_json['distinctDimensions']
 
         return result

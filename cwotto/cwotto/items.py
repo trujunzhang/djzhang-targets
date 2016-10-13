@@ -20,7 +20,8 @@ class Product(scrapy.Item):
 
     pictures = scrapy.Field()
 
-    color = scrapy.Field()
+    colors = scrapy.Field()
+    sizes = scrapy.Field()
 
     reviewCount = scrapy.Field()
     reviews = scrapy.Field()

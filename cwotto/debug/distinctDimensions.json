@@ -1,0 +1,92 @@
+{
+  "distinctDimensions": [
+    {
+      "type": "color",
+      "displayName": "Farbe",
+      "values": [
+        {
+          "value": "navy-goldfarben",
+          "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16692069.jpg?$articlecolorthumbsmall$",
+          "colorThumbType": "iconUrl",
+          "baseColor": "blau",
+          "infoUrl": null
+        }
+      ]
+    },
+    {
+      "type": "size",
+      "displayName": "Größe",
+      "values": [
+        {
+          "value": "34 (XS)",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "36",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "38 (S)",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "40",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "42 (M)",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "44",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "46 (L)",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "48",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        }
+      ]
+    },
+    {
+      "type": "unknown",
+      "displayName": "Unknown",
+      "values": [
+        {
+          "value": "Normalgrößen",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        }
+      ]
+    }
+  ]
+}
