@@ -46,7 +46,7 @@ class ResponseParse(BaseParser):
 
         # distinctDimensions
         _distinctDimensions = self._get_distinctDimensions(product_json)
-        _colors = _distinctDimensions['colors']
+        _color = _distinctDimensions['colors']
         _sizes = _distinctDimensions['sizes']
 
         _reviews = []
@@ -63,7 +63,7 @@ class ResponseParse(BaseParser):
 
             pictures=_pictures,
 
-            colors=_colors,
+            color=_color,
             sizes=_sizes,
 
             reviewCount=_reviewCount,
@@ -83,9 +83,24 @@ class ResponseParse(BaseParser):
 
     def _get_distinctDimensions(self, product_json):
         result = {}
-        _sizes = []
-        _colors = []
 
         _distinctDimensions = product_json['distinctDimensions']
+        for block in _distinctDimensions:
+            type = block['type']
+            if type == "color":
+                result['color'] = block['values']
+            if type == "size":
+                result['size'] = block['values']
+
+        return result
+
+    def _get_sizes(self, json):
+        pass
+
+    def _get_colors(self, json):
+        result = []
+        values = json['values']
+        for value in values:
+            pass
 
         return result
