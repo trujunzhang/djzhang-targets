@@ -27,6 +27,8 @@ class ResponseParse(BaseParser):
         _oldPrice = 0
         _newPrice = 0
 
+        tmp = hxs.xpath("//*[@class='prd_alternateImages js_prd_thumbViewPort']")
+
         _pictures = []
 
         _colors = []
