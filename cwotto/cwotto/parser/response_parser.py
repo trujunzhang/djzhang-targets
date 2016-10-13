@@ -48,8 +48,8 @@ class ResponseParse(BaseParser):
 
         # distinctDimensions
         _distinctDimensions = self._get_distinctDimensions(product_json)
-        _color = _distinctDimensions['colors']
-        _sizes = _distinctDimensions['sizes']
+        _color = _distinctDimensions['color']
+        _sizes = _distinctDimensions['size']
 
         _reviews = []
 
