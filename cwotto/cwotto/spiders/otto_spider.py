@@ -27,6 +27,10 @@ class OttoSpider(scrapy.Spider):
     def parse(self, response):
         url = response.request.url
 
+        links = self._crawl_parser.parse_paginate(url, response)
+        for link in links:
+            yield scrapy.Request(link, self.parse_item)
+
     def parse_item(self, response):
         url = response.request.url
         split = url.split("#")

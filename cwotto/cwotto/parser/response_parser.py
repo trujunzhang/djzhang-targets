@@ -10,13 +10,15 @@ class ResponseParse(BaseParser):
     def __init__(self):
         super(ResponseParse, self).__init__()
 
-    def parse_paginate(self, url, hxs, cache_db):
-        links = hxs.select('//a[@class="card-click-target"]/@href').extract()
+    def parse_paginate(self, url, hxs):
+        product_links = []
+        links = hxs.xpath('//*[@class="product small"]/a/@href').extract()
         count = 0
         for link in links:
             appLink = urlparse.urljoin(url, link.strip())
-            cache_db.process_item(url)
-            count += 1
+            product_links.append(appLink)
+
+        return product_links
 
     def parse_item(self, url, hxs, variationId):
         productScript = self.extract_by_query(hxs, "//script[@id='productDataJson']").replace("</script>", "").replace(
