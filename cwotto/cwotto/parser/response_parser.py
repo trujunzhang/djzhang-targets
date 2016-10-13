@@ -20,10 +20,7 @@ class ResponseParse(BaseParser):
             cache_db.process_item(url)
             count += 1
 
-    def parse(self, url, hxs, index):
-        pass
-
-    def parse_item(self, hxs, _selector, index):
+    def parse_item(self, hxs, _selector):
 
         thumbnail = hxs.find_element_by_xpath(
             _selector + "/div[@class='img-container left-block util-clearfix']/div/a/img").get_attribute(

@@ -20,5 +20,5 @@ class OttoSpider(scrapy.Spider):
 
 
     def parse(self, response):
-        item = self._crawl_parser.parse(response.url, response, 0)
+        item = self._crawl_parser.parse_item(response.url, response, 0)
         yield item
