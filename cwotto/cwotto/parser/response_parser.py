@@ -85,7 +85,7 @@ class ResponseParse(BaseParser):
         return result
 
     def _get_distinctDimensions(self, product_json):
-        result = {}
+        result = {"color": [], "size": []}
 
         _distinctDimensions = product_json['distinctDimensions']
         for block in _distinctDimensions:
@@ -102,7 +102,7 @@ class ResponseParse(BaseParser):
 
         values = block['values']
         for value in values:
-            pass
+            result.append(values)
 
         return result
 
@@ -110,6 +110,6 @@ class ResponseParse(BaseParser):
         result = []
         values = block['values']
         for value in values:
-            pass
+            result.append(values)
 
         return result
