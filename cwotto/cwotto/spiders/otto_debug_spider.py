@@ -5,6 +5,7 @@ import scrapy
 from scrapy.selector import Selector, HtmlXPathSelector
 import urlparse
 
+
 class OttoDebugSpider(scrapy.Spider):
     name = "otto_debug"
     allowed_domains = ["aliexpress.com"]
@@ -18,7 +19,6 @@ class OttoDebugSpider(scrapy.Spider):
 
         super(OttoDebugSpider, self).__init__(name, **kwargs)
 
-
     def parse(self, response):
-        item = self._crawl_parser.parse(response.url, response,0)
+        item = self._crawl_parser.parse(response.url, response, 0)
         yield item
