@@ -18,7 +18,7 @@ class ResponseParse(BaseParser):
             cache_db.process_item(url)
             count += 1
 
-    def parse_item(self, url, hxs):
+    def parse_item(self, url, hxs, variationId):
         productScript = self.extract_by_query(hxs, "//script[@id='productDataJson']").replace("</script>", "").replace(
             '<script id="productDataJson" type="application/json">', "")
 
@@ -31,7 +31,7 @@ class ResponseParse(BaseParser):
 
         _title = _variations['name']
 
-        _description = _variations['uniqueDescription'];
+        _description = _variations['uniqueDescription']
         _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content")
 
         _price = self.extract_by_query(hxs, "//*[@itemprop='price']/@content")

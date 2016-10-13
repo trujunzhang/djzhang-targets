@@ -21,5 +21,8 @@ class OttoSpider(scrapy.Spider):
         super(OttoSpider, self).__init__(name, **kwargs)
 
     def parse(self, response):
-        item = self._crawl_parser.parse_item(response.url, response)
-        yield item
+        split = response.request.url.split("#")
+        if len(split) == 2:
+            variationId = split[1]
+            item = self._crawl_parser.parse_item(response.url, response,variationId)
+            yield item
