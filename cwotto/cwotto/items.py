@@ -12,7 +12,7 @@ class Product(scrapy.Item):
     url = scrapy.Field()
 
     title = scrapy.Field()
-    uniqueDescription = scrapy.Field()
+    uniqueHtmlDetails = scrapy.Field()
 
     retailPrice = scrapy.Field()
     oldPrice = scrapy.Field()

@@ -1,0 +1,3129 @@
+{
+  "id": "515032920",
+  "uniqueDescription": null,
+  "uniqueHtmlDetails": "Blazer. Mit effektvoll perforierten Lederimitat-Einsätzen im Vorderteil, an den Ärmeln und an der Rückenpasse. Rundhals-Ausschnitt, Reißverschluss sowie Reißverschlüsse an den Taschen und an den langen Ärmeln. Formgebende Teilungsnähte. N-Größe: Länge in Gr. 42 ca. 60 cm.K-Größe: Länge in Gr. 21 ca. 58 cm. Figurnahe Form. 100% Polyester. Maschinenwäsche.",
+  "articleServices": [],
+  "variations": {
+    "515088652": {
+      "id": "515088652",
+      "sku": "31667474-19",
+      "name": "Lady Blazer",
+      "retailPrice": 6999,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515088652"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643161.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "19",
+              "normalizedSize": "19"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "K-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "316674",
+      "promotionNumber": "74",
+      "skuSuffix": "19",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "31667474",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292574"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515088652,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "69,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "6,30",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515088656": {
+      "id": "515088656",
+      "sku": "31667474-20",
+      "name": "Lady Blazer",
+      "retailPrice": 6999,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515088656"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643161.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "20",
+              "normalizedSize": "20"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "K-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "316674",
+      "promotionNumber": "74",
+      "skuSuffix": "20",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "31667474",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292581"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515088656,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "69,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "6,30",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515032942": {
+      "id": "515032942",
+      "sku": "47888774-36",
+      "name": "Lady Blazer",
+      "retailPrice": 6999,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515032942"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "36",
+              "normalizedSize": "36"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "36",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292475"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515032942,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "69,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "6,30",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515032961": {
+      "id": "515032961",
+      "sku": "47888774-38",
+      "name": "Lady Blazer",
+      "retailPrice": 6999,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515032961"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "38",
+              "normalizedSize": "38"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "38",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292482"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515032961,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "69,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "6,30",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515032987": {
+      "id": "515032987",
+      "sku": "47888774-40",
+      "name": "Lady Blazer",
+      "retailPrice": 6999,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515032987"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": null,
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "40",
+              "normalizedSize": "40"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "40",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292499"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515032987,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "69,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "6,30",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515088657": {
+      "id": "515088657",
+      "sku": "31667474-21",
+      "name": "Lady Blazer",
+      "retailPrice": 7899,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515088657"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643161.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "21",
+              "normalizedSize": "21"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "K-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "316674",
+      "promotionNumber": "74",
+      "skuSuffix": "21",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "31667474",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292598"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515088657,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "78,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,10",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515088662": {
+      "id": "515088662",
+      "sku": "31667474-22",
+      "name": "Lady Blazer",
+      "retailPrice": 7899,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515088662"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643161.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "22",
+              "normalizedSize": "22"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "K-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "316674",
+      "promotionNumber": "74",
+      "skuSuffix": "22",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "31667474",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292604"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515088662,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "78,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,10",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515088666": {
+      "id": "515088666",
+      "sku": "31667474-23",
+      "name": "Lady Blazer",
+      "retailPrice": 7899,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515088666"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643161.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "23",
+              "normalizedSize": "23"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "K-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "316674",
+      "promotionNumber": "74",
+      "skuSuffix": "23",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "31667474",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292611"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": true,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515088666,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "78,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,10",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515033021": {
+      "id": "515033021",
+      "sku": "47888774-42",
+      "name": "Lady Blazer",
+      "retailPrice": 7899,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515033021"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": null,
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "42",
+              "normalizedSize": "42"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "42",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292505"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515033021,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "78,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,10",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515033044": {
+      "id": "515033044",
+      "sku": "47888774-44",
+      "name": "Lady Blazer",
+      "retailPrice": 7899,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515033044"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": null,
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "44",
+              "normalizedSize": "44"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "44",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292512"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515033044,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "78,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,10",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515033078": {
+      "id": "515033078",
+      "sku": "47888774-46",
+      "name": "Lady Blazer",
+      "retailPrice": 7899,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515033078"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": null,
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "46",
+              "normalizedSize": "46"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "46",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292529"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": true,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515033078,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "78,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,10",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515088671": {
+      "id": "515088671",
+      "sku": "31667474-24",
+      "name": "Lady Blazer",
+      "retailPrice": 8699,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515088671"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643161.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "24",
+              "normalizedSize": "24"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "K-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "316674",
+      "promotionNumber": "74",
+      "skuSuffix": "24",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "31667474",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292628"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": true,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515088671,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "86,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,80",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515088677": {
+      "id": "515088677",
+      "sku": "31667474-25",
+      "name": "Lady Blazer",
+      "retailPrice": 8699,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515088677"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643161.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "25",
+              "normalizedSize": "25"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "K-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "316674",
+      "promotionNumber": "74",
+      "skuSuffix": "25",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "31667474",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292635"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": true,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515088677,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "86,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,80",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515033095": {
+      "id": "515033095",
+      "sku": "47888774-48",
+      "name": "Lady Blazer",
+      "retailPrice": 8699,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515033095"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "48",
+              "normalizedSize": "48"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "48",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292536"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": true,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515033095,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "86,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,80",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515033116": {
+      "id": "515033116",
+      "sku": "47888774-50",
+      "name": "Lady Blazer",
+      "retailPrice": 8699,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515033116"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "50",
+              "normalizedSize": "50"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "50",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292543"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": true,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 515033116,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "86,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,80",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515033144": {
+      "id": "515033144",
+      "sku": "47888774-52",
+      "name": "Lady Blazer",
+      "retailPrice": 8699,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515033144"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "52",
+              "normalizedSize": "52"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "52",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292550"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": true,
+      "largeSizePlus": true,
+      "itemOptionCommKey": 515033144,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "86,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "7,80",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": true,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    },
+    "515033216": {
+      "id": "515033216",
+      "sku": "47888774-54",
+      "name": "Lady Blazer",
+      "retailPrice": 9499,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#blazer-515032920#ft5_slash##variationId=515033216"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": "KNAPP",
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP",
+        "speditionCharge": false
+      },
+      "supplierId": 111913,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "sand",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643155.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "e1d2c6",
+              "baseColor": "natur",
+              "colorThumbType": "iconUrl"
+            }
+          },
+          {
+            "size": {
+              "displayName": "Größe",
+              "value": "54",
+              "normalizedSize": "54"
+            }
+          },
+          {
+            "unknown": {
+              "displayName": "Unknown",
+              "value": "N-Größen",
+              "name": "unknown"
+            }
+          }
+        ]
+      },
+      "articleNumber": "478887",
+      "promotionNumber": "74",
+      "skuSuffix": "54",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "141",
+      "articleNumberWithPromotion": "47888774",
+      "description": null,
+      "onlineDate": "07.01.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Blazer mit Lederimitat-Einsätzen im Vorderteil",
+          "Polyester",
+          "Figurnahe Form",
+          "Reißverschluss",
+          "Auch in Kurzgrößen"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "DOB",
+        "group": "FASHION_SPORT"
+      },
+      "companyId": 4,
+      "eanList": {
+        "value": "4893829292567"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "DOBAnlaesse,GG Streetwear,GrosseGroessenAnlaesse,Streetwear",
+      "largeSize": true,
+      "largeSizePlus": true,
+      "itemOptionCommKey": 515033216,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "94,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "8,55",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": false,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643030?${format}$",
+        "width": 678,
+        "height": 960
+      },
+      "alternativeImageList": null,
+      "energyEfficiencyImage": null
+    }
+  },
+  "sortedVariationIds": [
+    "515088652",
+    "515088656",
+    "515032942",
+    "515032961",
+    "515032987",
+    "515088657",
+    "515088662",
+    "515088666",
+    "515033021",
+    "515033044",
+    "515033078",
+    "515088671",
+    "515088677",
+    "515033095",
+    "515033116",
+    "515033144",
+    "515033216"
+  ],
+  "distinctDimensions": [
+    {
+      "type": "color",
+      "displayName": "Farbe",
+      "values": [
+        {
+          "value": "sand",
+          "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#15643161.jpg?$articlecolorthumbsmall$",
+          "colorThumbType": "iconUrl",
+          "baseColor": "natur",
+          "infoUrl": null
+        }
+      ]
+    },
+    {
+      "type": "size",
+      "displayName": "Größe",
+      "values": [
+        {
+          "value": "19",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "20",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "21",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "22",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "23",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "24",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "25",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "36",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "38",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "40",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "42",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "44",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "46",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "48",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "50",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "52",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "54",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        }
+      ]
+    },
+    {
+      "type": "unknown",
+      "displayName": "Unknown",
+      "values": [
+        {
+          "value": "K-Größen",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        },
+        {
+          "value": "N-Größen",
+          "iconUrl": null,
+          "colorThumbType": null,
+          "baseColor": null,
+          "infoUrl": null
+        }
+      ]
+    }
+  ],
+  "variationTree": {
+    "dim": "root",
+    "value": null,
+    "variationId": "515088652",
+    "available": true,
+    "children": [
+      {
+        "dim": "color",
+        "value": "sand",
+        "variationId": "515088652",
+        "available": true,
+        "children": [
+          {
+            "dim": "size",
+            "value": "19",
+            "variationId": "515088652",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "K-Größen",
+                "variationId": "515088652",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "20",
+            "variationId": "515088656",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "K-Größen",
+                "variationId": "515088656",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "21",
+            "variationId": "515088657",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "K-Größen",
+                "variationId": "515088657",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "22",
+            "variationId": "515088662",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "K-Größen",
+                "variationId": "515088662",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "23",
+            "variationId": "515088666",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "K-Größen",
+                "variationId": "515088666",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "24",
+            "variationId": "515088671",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "K-Größen",
+                "variationId": "515088671",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "25",
+            "variationId": "515088677",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "K-Größen",
+                "variationId": "515088677",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "36",
+            "variationId": "515032942",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515032942",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "38",
+            "variationId": "515032961",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515032961",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "40",
+            "variationId": "515032987",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515032987",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "42",
+            "variationId": "515033021",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515033021",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "44",
+            "variationId": "515033044",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515033044",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "46",
+            "variationId": "515033078",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515033078",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "48",
+            "variationId": "515033095",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515033095",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "50",
+            "variationId": "515033116",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515033116",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "52",
+            "variationId": "515033144",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515033144",
+                "available": true,
+                "children": []
+              }
+            ]
+          },
+          {
+            "dim": "size",
+            "value": "54",
+            "variationId": "515033216",
+            "available": true,
+            "children": [
+              {
+                "dim": "unknown",
+                "value": "N-Größen",
+                "variationId": "515033216",
+                "available": true,
+                "children": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "campaigns": {},
+  "videoInformation": null
+}

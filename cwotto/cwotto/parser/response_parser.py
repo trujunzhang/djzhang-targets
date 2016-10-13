@@ -37,7 +37,7 @@ class ResponseParse(BaseParser):
         _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content", default=0)
 
         # parse from product_json
-        _uniqueDescription = product_json['uniqueDescription']
+        _uniqueHtmlDetails = product_json['uniqueHtmlDetails']
 
         # parse by variationId
         __variation = product_json["variations"][variationId]
@@ -61,7 +61,7 @@ class ResponseParse(BaseParser):
             url=url,
 
             title=_title,
-            uniqueDescription=_uniqueDescription,
+            uniqueHtmlDetails=_uniqueHtmlDetails,
 
             retailPrice=_retailPrice,
             oldPrice=_oldPrice,
