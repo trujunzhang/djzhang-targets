@@ -23,7 +23,7 @@ class ResponseParse(BaseParser):
     def parse_item(self, url, hxs):
 
         _title = self.extract_by_query(hxs, "//*[@class='prd_shortInfo__text']/h1/text()")
-        _description = self.extract_by_query(hxs, "//*[@id='description/text()")
+        _description = self.extract_by_query(hxs, "//*[@id='description']/text()")
 
         _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content")
         _price = self.extract_by_query(hxs, "//*[@itemprop='price']/@content")
