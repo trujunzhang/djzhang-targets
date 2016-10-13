@@ -14,15 +14,15 @@ class Crawler:
             print("Sorry, I can not remove %s file." % self.filename)
 
     def execute(self, module):
-        command = ("scrapy crawl %s" % module)
+        command = ("scrapy crawl  %s" % module)
         cmdline.execute(command.split())
 
 def main():
     utils = Crawler()
     utils.prepare()
-    # utils.execute("aliexpress")
+    utils.execute("otto")
     # utils.execute("aliexpress_debug")
-    utils.execute("aliexpress_browser")
+    # utils.execute("aliexpress_browser")
     # utils.execute("aliexpress_browser_debug")
 
 if __name__ == '__main__':

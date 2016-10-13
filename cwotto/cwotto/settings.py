@@ -62,7 +62,6 @@ COOKIES_ENABLED=False
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'cwotto.pipelines.MongoPipeline': 300,
 }
 
 
@@ -105,8 +104,8 @@ DOWNLOADER_MIDDLEWARES = {
 PROXY_LIST = '/var/scrapy/proxy/list.txt'
 
 
-MONGODB_SERVER = "localhost"
+# MONGODB_SERVER = "localhost"
 # MONGODB_SERVER = "104.236.77.182"
-MONGODB_PORT = 27017
-MONGODB_DB = "vps_scrapy_rails"
-MONGODB_COLLECTION = "aliexpresss"
+# MONGODB_PORT = 27017
+# MONGODB_DB = "vps_scrapy_rails"
+# MONGODB_COLLECTION = "aliexpresss"
