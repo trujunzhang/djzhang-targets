@@ -77,9 +77,9 @@ class ResponseParse(BaseParser):
         result = []
         _images = __variation["alternativeImageList"]["images"]
         if firstImage:
-            _images.append(firstImage)
+            _images.insert(0, firstImage)
         for img in _images:
-            _uri = img['uriTemplate'].replace('#ft5_slash#', '').replace('?${format}$', '')
+            _uri = img['uriTemplate'].replace('#ft5_slash#', '/').replace('?${format}$', '')
             result.append(_uri)
 
         return result
