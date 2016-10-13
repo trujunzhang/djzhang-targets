@@ -3,7 +3,7 @@ from cwotto.parser.base_parser import BaseParser
 
 import urlparse
 import time
-
+import json
 
 class ResponseParse(BaseParser):
     def __init__(self):
@@ -27,7 +27,12 @@ class ResponseParse(BaseParser):
         _oldPrice = 0
         _newPrice = 0
 
-        tmp = hxs.xpath("//*[@class='prd_alternateImages js_prd_thumbViewPort']")
+        productScript = self.extract_by_query(hxs, "//script[@id='productDataJson']").replace("</script>", "").replace(
+            '<script id="productDataJson" type="application/json">', "")
+
+        d = json.loads(productScript)
+
+        tmp = hxs.xpath("//script[@id='productDataJson']")
 
         _pictures = []
 
