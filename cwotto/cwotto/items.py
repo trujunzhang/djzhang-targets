@@ -16,7 +16,8 @@ class Product(scrapy.Item):
 
     retailPrice = scrapy.Field()
     oldPrice = scrapy.Field()
-    newPrice = scrapy.Field()
+    normPrice = scrapy.Field()
+
     pictures = scrapy.Field()
 
     color = scrapy.Field()

@@ -39,8 +39,8 @@ class ResponseParse(BaseParser):
         _title = __variation['name']
 
         _retailPrice = __variation['retailPrice']
-        _oldPrice = 0
-        _newPrice = 0
+        _oldPrice = __variation['oldPrice']
+        _normPrice = __variation['normPrice']
 
         _pictures = self._get_images_via_json(product_json)
 
@@ -56,7 +56,7 @@ class ResponseParse(BaseParser):
 
             retailPrice=_retailPrice,
             oldPrice=_oldPrice,
-            newPrice=_newPrice,
+            normPrice=_normPrice,
 
             pictures=_pictures,
 
