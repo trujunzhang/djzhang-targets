@@ -11,7 +11,11 @@ class OttoDebugSpider(scrapy.Spider):
         # 'https://www.otto.de/damenmode/kategorien/blazer/kurzblazer/',
         #  Detail
         #  only one image
-        'https://www.otto.de/p/blazer-515032920/#variationId=515032942',
+        # 'https://www.otto.de/p/blazer-515032920/#variationId=515032942',
+        # product
+        'https://www.otto.de/p/apple-iphone-se-64gb-smartphone-10-1-cm-4-zoll-display-lte-4g-ios-9-12-0-megapixel-nfc-535544120/#variationId=535544121'
+        # reviews
+        'https://www.otto.de/p/apple-iphone-se-64gb-smartphone-10-1-cm-4-zoll-display-lte-4g-ios-9-12-0-megapixel-nfc-535544120-kundenbewertungen/#variationId=535544121'
     ]
 
     def __init__(self, name=None, **kwargs):
