@@ -9,10 +9,12 @@ import scrapy
 
 
 class Product(scrapy.Item):
-    title = scrapy.Field()
-    description = scrapy.Field()
+    url = scrapy.Field()
 
-    price = scrapy.Field()
+    title = scrapy.Field()
+    uniqueDescription = scrapy.Field()
+
+    retailPrice = scrapy.Field()
     oldPrice = scrapy.Field()
     newPrice = scrapy.Field()
     pictures = scrapy.Field()

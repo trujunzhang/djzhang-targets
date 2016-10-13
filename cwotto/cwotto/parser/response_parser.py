@@ -24,17 +24,21 @@ class ResponseParse(BaseParser):
 
         product_json = json.loads(productScript)
 
-        return self._parse_via_json(hxs, product_json)
+        return self._parse_via_json(hxs, url, product_json, variationId)
 
-    def _parse_via_json(self, hxs, product_json):
-        _variations = product_json["variations"]
-
-        _title = _variations['name']
-
-        _description = _variations['uniqueDescription']
+    def _parse_via_json(self, hxs, url, product_json, variationId):
+        # using xpath query
         _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content")
 
-        _price = self.extract_by_query(hxs, "//*[@itemprop='price']/@content")
+        # parse from product_json
+        _uniqueDescription = product_json['uniqueDescription']
+
+        # parse by variationId
+        __variation = product_json["variations"][variationId]
+
+        _title = __variation['name']
+
+        _retailPrice = __variation['retailPrice']
         _oldPrice = 0
         _newPrice = 0
 
@@ -45,10 +49,12 @@ class ResponseParse(BaseParser):
         _reviews = []
 
         item = Product(
-            title=_title,
-            description=_description,
+            url=url,
 
-            price=_price,
+            title=_title,
+            uniqueDescription=_uniqueDescription,
+
+            retailPrice=_retailPrice,
             oldPrice=_oldPrice,
             newPrice=_newPrice,
 
