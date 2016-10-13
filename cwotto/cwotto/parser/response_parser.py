@@ -65,8 +65,8 @@ class ResponseParse(BaseParser):
         _sizes = _distinctDimensions['size']
 
         reviewFetcher = ReviewFetcher(product_id)
-        # _reviews = reviewFetcher.fetch_reviews_as_json()
-        _reviews = []
+        _reviews = reviewFetcher.fetch_reviews_as_json()
+        # _reviews = []
 
         item = Product(
             url=url,
