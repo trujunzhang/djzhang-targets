@@ -5,6 +5,7 @@ import urlparse
 import time
 import json
 
+
 class ResponseParse(BaseParser):
     def __init__(self):
         super(ResponseParse, self).__init__()
@@ -18,23 +19,26 @@ class ResponseParse(BaseParser):
             count += 1
 
     def parse_item(self, url, hxs):
+        productScript = self.extract_by_query(hxs, "//script[@id='productDataJson']").replace("</script>", "").replace(
+            '<script id="productDataJson" type="application/json">', "")
 
-        _title = self.extract_by_query(hxs, "//*[@class='prd_shortInfo__text']/h1/text()")
-        _description = self.extract_by_query(hxs, "//*[@id='description']/text()")
+        product_json = json.loads(productScript)
 
+        return self._parse_via_json(hxs, product_json)
+
+    def _parse_via_json(self, hxs, product_json):
+        _variations = product_json["variations"]
+
+        _title = _variations['name']
+
+        _description = _variations['uniqueDescription'];
         _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content")
+
         _price = self.extract_by_query(hxs, "//*[@itemprop='price']/@content")
         _oldPrice = 0
         _newPrice = 0
 
-        productScript = self.extract_by_query(hxs, "//script[@id='productDataJson']").replace("</script>", "").replace(
-            '<script id="productDataJson" type="application/json">', "")
-
-        d = json.loads(productScript)
-
-        tmp = hxs.xpath("//script[@id='productDataJson']")
-
-        _pictures = []
+        _pictures = self._get_images_via_json(product_json)
 
         _colors = []
 
@@ -58,41 +62,5 @@ class ResponseParse(BaseParser):
 
         return item
 
-    def submit_search(self, driver):
-        driver.find_element_by_id("search-key").send_keys("apple watch")
-        time.sleep(1)
-
-        driver.find_element_by_class_name("search-button").click()
-        time.sleep(1)
-
-    def get_category_href(self, driver):
-        categories = driver.find_elements_by_xpath("//*[@class='special-son-category']/ul/li/a")
-        _href = SeleniumUtils.find_a_href(categories, "computer")
-        return _href
-
-    def get_items_from_pagenate(self, driver):
-        items = []
-
-        # _selector = "//ul[@id='hs-list-items']/li"
-        # hs_list_items = driver.find_elements_by_xpath("//ul[@id='hs-list-items']/li")
-        # count = 1
-        # for item_div in hs_list_items:
-        #     _item_selector = _selector + "[" + str(count) + "]"
-        #     item = self.parse_item(driver, _item_selector, count)
-        #     items.append(item)
-        #
-        #     count += 1
-
-        _selector = "//div[@id='hs-below-list-items']/ul/li"
-        hs_below_list_items = driver.find_elements_by_xpath("//div[@id='hs-below-list-items']/ul/li")
-        count = 1
-        for item_div in hs_below_list_items:
-            # if count >= 10:
-            #     break
-            _item_selector = _selector + "[" + str(count) + "]"
-            item = self.parse_item(driver, _item_selector, count)
-            items.append(item)
-
-            count += 1
-
-        return items
+    def _get_images_via_json(self, product_json):
+        pass
