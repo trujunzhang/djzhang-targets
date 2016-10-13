@@ -5,6 +5,8 @@ import urlparse
 import time
 import json
 
+from cwotto.parser.review_fetcher import ReviewFetcher
+
 
 class ResponseParse(BaseParser):
     def __init__(self):
@@ -55,7 +57,8 @@ class ResponseParse(BaseParser):
         _color = _distinctDimensions['color']
         _sizes = _distinctDimensions['size']
 
-        _reviews = []
+        reviewFetcher = ReviewFetcher("")
+        _reviews = reviewFetcher.fetch_reviews_as_json()
 
         item = Product(
             url=url,
