@@ -34,7 +34,11 @@ class ResponseParse(BaseParser):
         _uniqueDescription = product_json['uniqueDescription']
 
         # parse by variationId
-        __variation = product_json["variations"][variationId]
+        _variations = product_json["variations"]
+        __variation = {}
+        for varId in _variations:
+            if varId == variationId:
+                __variation = [variationId]
 
         _title = __variation['name']
 
