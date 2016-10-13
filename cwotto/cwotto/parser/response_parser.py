@@ -30,7 +30,7 @@ class ResponseParse(BaseParser):
 
     def _parse_via_json(self, hxs, url, product_json, variationId):
         # using xpath query
-        _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content")
+        _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content", default=0)
 
         # parse from product_json
         _uniqueDescription = product_json['uniqueDescription']

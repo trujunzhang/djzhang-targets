@@ -22,11 +22,11 @@ class BaseParser(object):
             return value
         return default
 
-    def get_value_with_urljoin(self, hxs, query, base, index=0):
+    def get_value_with_urljoin(self, hxs, query, base, index=0, default=''):
         href = self.extract_by_query(hxs, query, index)
         if href:
             return self.get_url_join(href, base)
-        return ""
+        return default
 
     def get_url_join(self, href, base):
         if href:
