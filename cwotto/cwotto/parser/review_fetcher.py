@@ -1,6 +1,7 @@
 import urllib2
 import logging
 import os
+import json
 
 
 class ReviewFetcher(object):
@@ -15,7 +16,8 @@ class ReviewFetcher(object):
         try:
             data = urllib2.urlopen(req).read()
         except Exception, e:
-            logging.debug("  Downloading photo failure, {}, item: {}".format(e, item))
+            logging.debug("  Downloading photo failure, {}, item: {}".format(e, self.review_url))
 
         if data:
+            reviews_json = json.loads(data)
             x = 0

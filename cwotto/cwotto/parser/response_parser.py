@@ -35,6 +35,8 @@ class ResponseParse(BaseParser):
         return self._parse_via_json(hxs, url, product_json, variationId)
 
     def _parse_via_json(self, hxs, url, product_json, variationId):
+        product_id = product_json['id']
+
         # using xpath query
         _reviewCount = self.extract_by_query(hxs, "//*[@itemprop='reviewCount']/@content", default=0)
 
@@ -57,7 +59,7 @@ class ResponseParse(BaseParser):
         _color = _distinctDimensions['color']
         _sizes = _distinctDimensions['size']
 
-        reviewFetcher = ReviewFetcher("")
+        reviewFetcher = ReviewFetcher("535544120")
         _reviews = reviewFetcher.fetch_reviews_as_json()
 
         item = Product(
