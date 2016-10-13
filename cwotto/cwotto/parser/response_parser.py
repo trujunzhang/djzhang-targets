@@ -82,6 +82,9 @@ class ResponseParse(BaseParser):
         firstImage = __variation["images"]
         result = []
         _images = __variation["alternativeImageList"]["images"]
+        if not _images:
+            _images = []
+
         if firstImage:
             _images.insert(0, firstImage)
         for img in _images:

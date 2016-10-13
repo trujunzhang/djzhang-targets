@@ -22,10 +22,8 @@ class Crawler:
 def main():
     utils = Crawler()
     utils.prepare()
-    utils.execute("otto")
-    # utils.execute("aliexpress_debug")
-    # utils.execute("aliexpress_browser")
-    # utils.execute("aliexpress_browser_debug")
+    # utils.execute("otto")
+    utils.execute("otto_debug")
 
 
 if __name__ == '__main__':
