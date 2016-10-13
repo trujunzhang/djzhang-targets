@@ -42,7 +42,7 @@ class ResponseParse(BaseParser):
         _oldPrice = __variation['oldPrice']
         _normPrice = __variation['normPrice']
 
-        _pictures = self._get_images_via_json(product_json)
+        _pictures = self._get_images_via_json(__variation)
 
         _colors = []
 
@@ -68,5 +68,11 @@ class ResponseParse(BaseParser):
 
         return item
 
-    def _get_images_via_json(self, product_json):
-        pass
+    def _get_images_via_json(self, __variation):
+        result = []
+        _images = __variation["alternativeImageList"]["images"]
+        for img in _images:
+            _uri = img['uriTemplate'].replace('#ft5_slash#', '').replace('?${format}$', '')
+            result.append(_uri)
+
+        return result
