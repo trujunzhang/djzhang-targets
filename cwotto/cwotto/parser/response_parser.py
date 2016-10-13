@@ -91,18 +91,24 @@ class ResponseParse(BaseParser):
         for block in _distinctDimensions:
             type = block['type']
             if type == "color":
-                result['color'] = block['values']
+                result['color'] = self._get_colors(block)
             if type == "size":
-                result['size'] = block['values']
+                result['size'] = self._get_sizes(block)
 
         return result
 
-    def _get_sizes(self, json):
-        pass
-
-    def _get_colors(self, json):
+    def _get_sizes(self, block):
         result = []
-        values = json['values']
+
+        values = block['values']
+        for value in values:
+            pass
+
+        return result
+
+    def _get_colors(self, block):
+        result = []
+        values = block['values']
         for value in values:
             pass
 
