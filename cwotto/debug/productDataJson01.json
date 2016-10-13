@@ -1,0 +1,217 @@
+{
+  "id": "562203065",
+  "uniqueDescription": "Durch rustikale Optik besticht das Sideboard im mediterranen Landhausstil »Corsica« aus der Kollektion von SIT. Dabei punktet es mit besonderen Eigenschaften. Es wird aus FSC®-zertifiziertem Holz gefertigt. Verwendet wird dafür auf antik getrimmtes, recyceltes Massivholz. Die Struktur und Maserung bleibt sichtbar und gibt dem Raum eine besonders edle Note. Unterstrichen wird das südliche Flair durch die halbmondförmigen, verzierten Metallgriffe an den Schubkästen und die Griffe an den Türen. Die Anrichte kann ideal im Wohnzimmer, in der Diele oder im Flur zum Einsatz kommen. Der erwünschte Stauraum findet sich in hinter den blickdichten Türen. Kleinere Accessoires können in den Schubkästen aufbewahrt werden. Ein besonderes Möbelstück, das die Blicke der Gäste auf sich ziehen wird: das SIT Sideboard »Corsica« im mediterranen Landhausstil.",
+  "uniqueHtmlDetails": "<b>In folgenden Farben erhältlich:<#ft5_slash#b><br #ft5_slash#><ul><li>schwarz<#ft5_slash#li><li>honigfarben Deckplatte<#ft5_slash#li><li>Farbe Schublade: schwarz<#ft5_slash#li><li>Farbe Griffe: antikschwarz<#ft5_slash#li><#ft5_slash#ul><b>Details:<#ft5_slash#b><br #ft5_slash#><ul><li>3 Türen<#ft5_slash#li><li>3 Schubkästen<#ft5_slash#li><li>1 Holzeinlegeboden<#ft5_slash#li><li>Im Landhaus-Stil<#ft5_slash#li><li>Pflegeleichte Oberflächen<#ft5_slash#li><li>Das Holz ist lackiert<#ft5_slash#li><li>Viel Stauraum<#ft5_slash#li><li>In hochwertiger Verarbeitung<#ft5_slash#li><li>Metallgriffe<#ft5_slash#li><#ft5_slash#ul><b>Maße:<#ft5_slash#b><br #ft5_slash#><ul><li>Maße (B#ft5_slash#T#ft5_slash#H): ca. 150#ft5_slash#40#ft5_slash#90 cm<#ft5_slash#li><li>Alles ca.-Maße<#ft5_slash#li><#ft5_slash#ul><b>Informationen zu Lieferumfang und Montage:<#ft5_slash#b><br #ft5_slash#><ul><li>Montiert<#ft5_slash#li><#ft5_slash#ul><b>Material:<#ft5_slash#b><br #ft5_slash#><ul><li>FSC®-zertifiziertes Massivholz<#ft5_slash#li><li>FSC®-zertifizierter Holzwerkstoff<#ft5_slash#li><li>Griffe aus Metall<#ft5_slash#li><li>Scharniere aus Metall<#ft5_slash#li><li>Türeinsatz, Einlegeböden MDF<#ft5_slash#li><#ft5_slash#ul><b>Pflegehinweise:<#ft5_slash#b><br #ft5_slash#><ul><li>Pflegehinweise für naturbelassene#ft5_slash#gelackte Möbel aus Naturholz:<br #ft5_slash#>Die Oberfläche lässt sich am besten mit einem mäßig feuchten Tuch säubern.<br #ft5_slash#>Achtung: Ätzende oder lösungsmittelhaltige Reinigungsmittel oder Politur darf nicht verwendet werden.<br #ft5_slash#><#ft5_slash#li><#ft5_slash#ul><b>FSC®-zertifizierter Holzwerkstoff:<#ft5_slash#b><br #ft5_slash#><ul><li>Das Holz dieser Produkte stammt aus vorbildlich bewirtschafteten Wäldern, die von einer unabhängigen Organisation in Übereinstimmung mit den strengen ökologischen, sozialen und wirtschaftlichen Standards des Forest Stewardship Council® zertifiziert wurden.<#ft5_slash#li><#ft5_slash#ul><b>FSC®-zertifiziertes Massivholz:<#ft5_slash#b><br #ft5_slash#><ul><li>Das Holz dieser Produkte stammt aus vorbildlich bewirtschafteten Wäldern, die von einer unabhängigen Organisation in Übereinstimmung mit den strengen ökologischen, sozialen und wirtschaftlichen Standards des Forest Stewardship Council® zertifiziert wurden.<#ft5_slash#li><#ft5_slash#ul>",
+  "articleServices": [
+    "#ft5_slash#product#ft5_slash#products#ft5_slash#details#ft5_slash#SERVICE#ft5_slash#CONSULTING_FURNITURE#ft5_slash#"
+  ],
+  "variations": {
+    "562204027": {
+      "id": "562204027",
+      "sku": "72938973-0",
+      "name": "SIT Sideboard »Corsica«, Breite 150 cm",
+      "retailPrice": 72999,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text#ft5_slash#html",
+            "href": "#ft5_slash#p#ft5_slash#sit-sideboard-corsica-breite-150-cm-562203065#ft5_slash##variationId=562204027"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_4_WEEKS",
+        "limitation": null,
+        "delivery24H": false,
+        "value": "DELAYED",
+        "displayName": "lieferbar in 4 Wochen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": false,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": true,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "SPEDITION",
+        "speditionCharge": true
+      },
+      "supplierId": 81301,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "schwarz#ft5_slash#honigfarben",
+              "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#17230112.jpg?$articlecolorthumbsmall$",
+              "colorHexCode": "131311",
+              "baseColor": "schwarz",
+              "colorThumbType": "iconUrl"
+            }
+          }
+        ]
+      },
+      "articleNumber": "729389",
+      "promotionNumber": "73",
+      "skuSuffix": "0",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "157",
+      "articleNumberWithPromotion": "72938973",
+      "description": null,
+      "onlineDate": "05.09.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Antike Oberfläche",
+          "In hochwertiger Verarbeitung",
+          "Extravagantes Design",
+          "Im mediterranen Landhaus-Stil",
+          "FSC®-zertifiziertes Massivholz"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": null,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "MOEBEL_HOMEAFFAIRE",
+        "group": "HARTWAREN"
+      },
+      "companyId": 0,
+      "eanList": {
+        "value": "4055195580307"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "GOODproduct – Nachhaltigkeit,Möbel Neuheiten,Möbel_Esszimmer,Möbel_Wohnzimmer,Wohninspiration",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 562204027,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "729,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "20,30",
+          "count": 48
+        },
+        "hasMoreExpensiveAvailableVariation": false,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": {
+        "displayName": "Qualitätshinweise",
+        "qualityDetails": [
+          {
+            "displayName": "GOODproduct - Nachhaltige Produkte bei OTTO",
+            "imageUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#qualityDetail.GOODPRODUCT.gif?$001ICON01$",
+            "name": "GOODPRODUCT",
+            "glossaryUrl": "#ft5_slash#shoppages#ft5_slash#quality_goodproduct"
+          },
+          {
+            "displayName": "FSC®",
+            "imageUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#qualityDetail.FSC.gif?$001ICON01$",
+            "name": "FSC",
+            "glossaryUrl": "#ft5_slash#shoppages#ft5_slash#quality_fsc"
+          }
+        ]
+      },
+      "consultingDetails": [],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#17230116?${format}$",
+        "width": 960,
+        "height": 573
+      },
+      "alternativeImageList": {
+        "images": [
+          {
+            "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#17230121?${format}$",
+            "width": 960,
+            "height": 678
+          },
+          {
+            "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#17230127?${format}$",
+            "width": 960,
+            "height": 645
+          }
+        ]
+      },
+      "energyEfficiencyImage": null
+    }
+  },
+  "sortedVariationIds": [
+    "562204027"
+  ],
+  "distinctDimensions": [
+    {
+      "type": "color",
+      "displayName": "Farbe",
+      "values": [
+        {
+          "value": "schwarz#ft5_slash#honigfarben",
+          "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#17230112.jpg?$articlecolorthumbsmall$",
+          "colorThumbType": "iconUrl",
+          "baseColor": "schwarz",
+          "infoUrl": null
+        }
+      ]
+    }
+  ],
+  "variationTree": {
+    "dim": "root",
+    "value": null,
+    "variationId": "562204027",
+    "available": true,
+    "children": [
+      {
+        "dim": "color",
+        "value": "schwarz#ft5_slash#honigfarben",
+        "variationId": "562204027",
+        "available": true,
+        "children": []
+      }
+    ]
+  },
+  "campaigns": {},
+  "videoInformation": null
+}
