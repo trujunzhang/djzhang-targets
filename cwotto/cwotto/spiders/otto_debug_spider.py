@@ -3,9 +3,6 @@ from random import Random
 
 import scrapy
 from scrapy.selector import Selector, HtmlXPathSelector
-from scrapy_webdriver.http import WebdriverRequest
-# yield WebdriverRequest(_url, callback=self.parse_category_full_page)
-from cwotto.items import AliExpress
 import urlparse
 
 class OttoDebugSpider(scrapy.Spider):
@@ -16,28 +13,12 @@ class OttoDebugSpider(scrapy.Spider):
     ]
 
     def __init__(self, name=None, **kwargs):
-        from cwotto.database_factory import DatabaseFactory, DatabaseTypes
-
-        self._cache_db = DatabaseFactory.get_database(DatabaseTypes.cache, kwargs['mongo_uri'])
-        self._history_db = DatabaseFactory.get_database(DatabaseTypes.history, kwargs['mongo_uri'])
-
         from cwotto.parser.response_parser import ResponseParse
         self._crawl_parser = ResponseParse()
 
         super(OttoDebugSpider, self).__init__(name, **kwargs)
 
-    @classmethod
-    def from_crawler(cls, crawler, *args, **kwargs):
-        return super(OttoDebugSpider, cls).from_crawler(crawler,
-                                                         args,
-                                                         mongo_uri=crawler.settings.get('MONGODB_SERVER')
-                                                         )
 
     def parse(self, response):
-        yield WebdriverRequest(response.url, callback=self.parse_search_with_js)
-
-    def parse_search_with_js(self, response):
         item = self._crawl_parser.parse(response.url, response,0)
         yield item
-
-        self._history_db.process_item(response.url)

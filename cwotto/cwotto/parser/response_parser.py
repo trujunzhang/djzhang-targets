@@ -1,7 +1,5 @@
 from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support.select import Select
-
-from cwotto.items import AliExpress
+from cwotto.items import Product
 from cwotto.parser.base_parser import BaseParser
 
 import urlparse
@@ -82,7 +80,7 @@ class ResponseParse(BaseParser):
         detail_url = hxs.find_element_by_xpath(
             _selector + "/div[@class='right-block util-clearfix']/div/div[@class='detail']/h3/a").get_attribute("href")
 
-        item = AliExpress(
+        item = Product(
             url=detail_url,
             title=title,
             thumbnail=thumbnail,

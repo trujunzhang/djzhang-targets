@@ -2,11 +2,7 @@
 from random import Random
 
 import scrapy
-from scrapy.selector import Selector, HtmlXPathSelector
-from scrapy_webdriver.http import WebdriverRequest
-# yield WebdriverRequest(_url, callback=self.parse_category_full_page)
-from cwotto.items import AliExpress
-import urlparse
+from cwotto.items import Product
 
 
 class OttoSpider(scrapy.Spider):

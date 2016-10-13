@@ -8,7 +8,7 @@
 import scrapy
 
 
-class AliExpress(scrapy.Item):
+class Product(scrapy.Item):
     created_at = scrapy.Field()
     updated_at = scrapy.Field()
 
