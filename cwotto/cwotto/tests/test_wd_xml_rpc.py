@@ -12,9 +12,9 @@ class WDXmlRpcTest(unittest.TestCase):
         host = "http://{}/{}".format(settings.WD_HOST, settings.WD_COLLECTION)
         self.client = Client(host, settings.WD_USER, settings.WD_PASSWD)
 
-    def test_posts_list(self):
-        from wordpress_xmlrpc.methods import posts
-        posts = self.client.call(posts.GetPosts())
+    # def test_posts_list(self):
+    #     from wordpress_xmlrpc.methods import posts
+    #     posts = self.client.call(posts.GetPosts())
 
     def import_product_to_wd(self, product):
         from wordpress_xmlrpc.methods import posts
@@ -22,7 +22,7 @@ class WDXmlRpcTest(unittest.TestCase):
 
         # now let's create a new product
         widget = WordPressPost()
-        widget.post_type = 'acme_product'
+        widget.post_type = 'product'
         widget.title = 'Widget'
         widget.content = 'AJC Kurzblazer bedruckt oder uni'
         widget.custom_fields = []
