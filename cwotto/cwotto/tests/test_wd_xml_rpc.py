@@ -24,7 +24,7 @@ class WDXmlRpcTest(unittest.TestCase):
         widget = WordPressPost()
         widget.post_type = 'acme_product'
         widget.title = 'Widget'
-        widget.content = 'This is the widget'
+        widget.content = 'AJC Kurzblazer bedruckt oder uni'
         widget.custom_fields = []
         widget.custom_fields.append({
             'key': 'price',
