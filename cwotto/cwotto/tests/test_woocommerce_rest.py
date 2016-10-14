@@ -23,11 +23,11 @@ class WDWoocommerceRestTest(unittest.TestCase):
     def import_product_to_wd(self, product):
         self.assertNotEqual(product.id, None)
 
-    # def test_multiple_posts(self):
-    #     current_paths = os.path.dirname(__file__).replace('/tests', '')
-    #     path = '{}/{}'.format(current_paths, 'utils/items_otto.json')
-    #     with open(path) as data_file:
-    #         data = json.load(data_file)
-    #
-    #     product = data[0]
-    #     self.import_product_to_wd(product)
+        # def test_multiple_posts(self):
+        #     current_paths = os.path.dirname(__file__).replace('/tests', '')
+        #     path = '{}/{}'.format(current_paths, 'utils/items_otto.json')
+        #     with open(path) as data_file:
+        #         data = json.load(data_file)
+        #
+        #     product = data[0]
+        #     self.import_product_to_wd(product)
