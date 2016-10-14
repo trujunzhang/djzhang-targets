@@ -74,7 +74,7 @@ AUTOTHROTTLE_MAX_DELAY = 60
 # Enable showing throttling stats for every response received:
 AUTOTHROTTLE_DEBUG = True
 
-WD_HOST = 'localhost:3001'  # data['PWD_HOST']
+WD_HOST = 'localhost:8444'  # data['PWD_HOST']
 WD_USER = 'djzhang'  # ''  # data['PWD_USER']
 WD_PASSWD = 'wanghaoTJ720'  # ''  # data['PWD_PASSWD']
 WD_COLLECTION = 'xmlrpc.php'  # 'meteor'  # data['PWD_URL']
