@@ -15,9 +15,10 @@ class WDWoocommerceRestTest(unittest.TestCase):
             consumer_secret=settings.consumer_secret
         )
 
-    # def test_posts_list(self):
-    #     from wordpress_xmlrpc.methods import posts
-    #     posts = self.client.call(posts.GetPosts())
+    def test_posts_list(self):
+        r = self.wcapi.get("products")
+        s = r.status_code
+        j = r.json()
 
     def import_product_to_wd(self, product):
         self.assertNotEqual(product.id, None)
