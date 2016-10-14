@@ -12,17 +12,27 @@ class WDXmlRpcTest(unittest.TestCase):
         host = "http://{}/{}".format(settings.WD_HOST, settings.WD_COLLECTION)
         self.client = Client(host, settings.WD_USER, settings.WD_PASSWD)
 
-        x = 0
-        # self.image_link = 'http://theviewspaper.net/wp-content/uploads/WordsOfTerror-1024x576.jpg'
-        # self.image_link = 'http://localhost:8888/politicl/wp-content/uploads/2016/07/picture-324x160.jpeg'
-
-    def import_product_to_wd(self, product):
-        pass
-
-    def test_multiple_posts(self):
+    def test_posts_list(self):
         from wordpress_xmlrpc.methods import posts
         posts = self.client.call(posts.GetPosts())
 
+    def import_product_to_wd(self, product):
+        from wordpress_xmlrpc.methods import posts
+        from wordpress_xmlrpc import WordPressPost
+
+        # now let's create a new product
+        widget = WordPressPost()
+        widget.post_type = 'acme_product'
+        widget.title = 'Widget'
+        widget.content = 'This is the widget'
+        widget.custom_fields = []
+        widget.custom_fields.append({
+            'key': 'price',
+            'value': 2
+        })
+        widget.id = self.client.call(posts.NewPost(widget))
+
+    def test_multiple_posts(self):
         current_paths = os.path.dirname(__file__).replace('/tests', '')
         path = '{}/{}'.format(current_paths, 'utils/items_otto.json')
         with open(path) as data_file:
