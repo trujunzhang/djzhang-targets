@@ -80,6 +80,8 @@ WD_PASSWD = 'wanghaoTJ720'  # ''  # data['PWD_PASSWD']
 WD_COLLECTION = 'xmlrpc.php'  # 'meteor'  # data['PWD_URL']
 MAX_COUNT_PER_TIME = 10
 
+consumer_key = "ck_cd41f77f231e3b8330293fab671c6ecdd79e447a",
+consumer_secret = "cs_3b27e243a24b3a693850b58fadb85e406c10b851"
 
 
 # MONGODB_SERVER = "localhost"

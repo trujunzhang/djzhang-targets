@@ -25,13 +25,10 @@ class WDXmlRpcTest(unittest.TestCase):
         widget.post_type = 'product'
         widget.title = product['post_title']
         widget.content = 'AJC Kurzblazer bedruckt oder uni'
-        widget.custom_fields = []
-        widget.custom_fields.append(
-            [
-                {'key': '_regular_price', 'value': 20},
-                {'key': '_sale_price', 'value': 14}
-            ]
-        )
+        widget.custom_fields = [
+            {'key': '_regular_price', 'value': 20},
+            {'key': '_sale_price', 'value': 14}
+        ]
         widget.id = self.client.call(posts.NewPost(widget))
         self.assertNotEqual(widget.id, None)
 
