@@ -9,7 +9,7 @@ import scrapy
 
 
 class Product(scrapy.Item):
-    post_id = scrapy.Field()
+    product_id = scrapy.Field()
     post_type = scrapy.Field()
     post_parent = scrapy.Field()
     post_status = scrapy.Field()
