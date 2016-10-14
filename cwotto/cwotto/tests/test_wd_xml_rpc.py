@@ -31,6 +31,7 @@ class WDXmlRpcTest(unittest.TestCase):
             'value': 2
         })
         widget.id = self.client.call(posts.NewPost(widget))
+        self.assertNotEqual(widget.id, None)
 
     def test_multiple_posts(self):
         current_paths = os.path.dirname(__file__).replace('/tests', '')
