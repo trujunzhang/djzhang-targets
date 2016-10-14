@@ -23,7 +23,7 @@ class WDXmlRpcTest(unittest.TestCase):
         # now let's create a new product
         widget = WordPressPost()
         widget.post_type = 'product'
-        widget.title = 'Widget'
+        widget.title = product['post_title']
         widget.content = 'AJC Kurzblazer bedruckt oder uni'
         widget.custom_fields = []
         widget.custom_fields.append(
