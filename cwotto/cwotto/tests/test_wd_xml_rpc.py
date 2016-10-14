@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import json
+import os
 import unittest
 
 from cwotto import settings
@@ -17,4 +19,9 @@ class WDXmlRpcTest(unittest.TestCase):
     def test_multiple_posts(self):
         from wordpress_xmlrpc.methods import posts
         posts = self.client.call(posts.GetPosts())
+
+        current_paths = os.path.dirname(__file__).replace('/tests', '')
+        path = '{}/{}'.format(current_paths, 'utils/items_otto.json')
+        with open(path) as data_file:
+            data = json.load(data_file)
         x = 0
