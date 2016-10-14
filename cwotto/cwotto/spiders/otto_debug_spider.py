@@ -8,7 +8,12 @@ class OttoDebugSpider(scrapy.Spider):
     allowed_domains = ["oto.com"]
     start_urls = [
         # Homepage
-        'https://www.otto.de/'
+        # 'https://www.otto.de/'
+        # the same first page
+        'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche'
+        'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?1=2&ps=72'
+        # second page
+        'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?p=2&ps=72'
         # Pagination
         # 'https://www.otto.de/damenmode/kategorien/blazer/kurzblazer/',
         #  Detail
