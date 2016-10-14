@@ -74,17 +74,12 @@ AUTOTHROTTLE_MAX_DELAY = 60
 # Enable showing throttling stats for every response received:
 AUTOTHROTTLE_DEBUG = True
 
-# Enable and configure HTTP caching (disabled by default)
-# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
-# HTTPCACHE_ENABLED=True
-# HTTPCACHE_EXPIRATION_SECS=0
-# HTTPCACHE_DIR='httpcache'
-# HTTPCACHE_IGNORE_HTTP_CODES=[]
-# HTTPCACHE_STORAGE='scrapy.extensions.httpcache.FilesystemCacheStorage'
+WD_HOST = 'localhost:3001'  # data['PWD_HOST']
+WD_USER = 'djzhang'  # ''  # data['PWD_USER']
+WD_PASSWD = 'wanghaoTJ720'  # ''  # data['PWD_PASSWD']
+WD_COLLECTION = 'xmlrpc.php'  # 'meteor'  # data['PWD_URL']
+MAX_COUNT_PER_TIME = 10
 
-DOWNLOADER_MIDDLEWARES = {
-
-}
 
 
 # MONGODB_SERVER = "localhost"
