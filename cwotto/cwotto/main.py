@@ -25,7 +25,6 @@ def main():
     utils.prepare()
     # utils.execute("otto")
     utils.execute("otto_debug")
-    # utils.execute("otto_wd")
 
 
 if __name__ == '__main__':
