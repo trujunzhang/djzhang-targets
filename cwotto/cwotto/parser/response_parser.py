@@ -81,7 +81,7 @@ class ResponseParse(BaseParser):
             price=_normPrice,
 
             featured_image=_featured_image,
-            pictures=_pictures,
+            gallery_images=_pictures,
 
             color=_color,
             sizes=_sizes,
