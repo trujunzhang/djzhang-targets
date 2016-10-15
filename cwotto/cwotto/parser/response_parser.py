@@ -60,12 +60,12 @@ class ResponseParse(BaseParser):
 
         # distinctDimensions
         _distinctDimensions = self._get_distinctDimensions(product_json)
-        _color = _distinctDimensions['color']
-        _sizes = _distinctDimensions['size']
+        _color = []  # _distinctDimensions['color']
+        _sizes = []  # _distinctDimensions['size']
 
-        reviewFetcher = ReviewFetcher(product_id)
-        _reviews = reviewFetcher.fetch_reviews_as_json()
-        # _reviews = []
+        # reviewFetcher = ReviewFetcher(product_id)
+        # _reviews = reviewFetcher.fetch_reviews_as_json()
+        _reviews = []
 
         item = Product(
             url=url,

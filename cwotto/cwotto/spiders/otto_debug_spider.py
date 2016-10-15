@@ -10,15 +10,15 @@ class OttoDebugSpider(scrapy.Spider):
         # Homepage
         # 'https://www.otto.de/'
         # the same first page
-        'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche'
-        'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?1=2&ps=72'
+        # 'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche'
+        # 'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?1=2&ps=72'
         # second page
-        'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?p=2&ps=72'
+        # 'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?p=2&ps=72'
         # Pagination
         # 'https://www.otto.de/damenmode/kategorien/blazer/kurzblazer/',
         #  Detail
         #  only one image
-        # 'https://www.otto.de/p/blazer-515032920/#variationId=515032942',
+        'https://www.otto.de/p/blazer-515032920/#variationId=515032942',
         # 'Apple iPhone SE 4" 64 GB'
         # product
         # 'https://www.otto.de/p/apple-iphone-se-64gb-smartphone-10-1-cm-4-zoll-display-lte-4g-ios-9-12-0-megapixel-nfc-535544120/#variationId=535544121'
