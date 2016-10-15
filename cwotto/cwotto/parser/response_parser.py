@@ -56,9 +56,8 @@ class ResponseParse(BaseParser):
         _oldPrice = __variation['oldPrice']
         _normPrice = __variation['normPrice']
 
-        images = self._get_images_via_json(__variation)
-        _featured_image = images['featured_image']
-        _pictures = images['images']
+        _featured_image = self._get_featured_image(__variation)
+        _pictures = self._get_gallery_images(__variation)
 
         # distinctDimensions
         _distinctDimensions = self._get_distinctDimensions(product_json)
@@ -77,9 +76,9 @@ class ResponseParse(BaseParser):
             post_content=_uniqueHtmlDetails,
             post_excerpt=_uniqueHtmlDetails,
 
-            retailPrice=_retailPrice,
+            regular_price=_retailPrice,
             oldPrice=_oldPrice,
-            normPrice=_normPrice,
+            price=_normPrice,
 
             featured_image=_featured_image,
             pictures=_pictures,
@@ -99,29 +98,31 @@ class ResponseParse(BaseParser):
 
         return item
 
-    def _get_images_via_json(self, __variation):
-        result = {"featured_image": None, "images": []}
+    def _get_featured_image(self, __variation):
+        _uri = None
+        # featured_image
+        featured_image = __variation["images"]
+        if featured_image:
+            _uri = featured_image['uriTemplate']
 
+        return _uri
+
+    def _get_gallery_images(self, __variation):
         _gallery = []
-        _images = []
 
         # alternativeImageList
         _alternativeImageList = __variation["alternativeImageList"]
         if _alternativeImageList:
             _images = _alternativeImageList["images"]
 
-        # featured_image
-        result["featured_image"] = __variation["images"]
+            if _images:
+                # parse images to array
+                for img in _images:
+                    _uri = img['uriTemplate']
+                    if _uri:
+                        _gallery.append(_uri)
 
-        # parse images to array
-        for img in _images:
-            _uri = img['uriTemplate']
-            if _uri:
-                _gallery.append(_uri)
-
-        result["images"] = _gallery
-
-        return result
+        return _gallery
 
     def _get_distinctDimensions(self, product_json):
         result = {"color": [], "size": []}

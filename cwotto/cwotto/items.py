@@ -24,9 +24,9 @@ class Product(scrapy.Item):
     post_content = scrapy.Field()
     post_excerpt = scrapy.Field()
 
-    retailPrice = scrapy.Field()
+    regular_price = scrapy.Field()
     oldPrice = scrapy.Field()
-    normPrice = scrapy.Field()
+    price = scrapy.Field()
 
     pictures = scrapy.Field()
 
