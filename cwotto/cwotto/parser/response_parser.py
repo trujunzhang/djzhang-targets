@@ -89,7 +89,7 @@ class ResponseParse(BaseParser):
             reviewCount=_reviewCount,
             reviews=_reviews,
 
-            product_id=product_id,
+            ID=product_id,
             post_type="product",
             post_parent=0,
             post_status='publish',
