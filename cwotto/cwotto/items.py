@@ -15,6 +15,8 @@ class Product(scrapy.Item):
     post_status = scrapy.Field()
     menu_order = scrapy.Field()
 
+    featured_image = scrapy.Field()
+
     url = scrapy.Field()
 
     post_title = scrapy.Field()

@@ -56,7 +56,9 @@ class ResponseParse(BaseParser):
         _oldPrice = __variation['oldPrice']
         _normPrice = __variation['normPrice']
 
-        _pictures = self._get_images_via_json(__variation)
+        images = self._get_images_via_json(__variation)
+        _featured_image = images['featured_image']
+        _pictures = images['images']
 
         # distinctDimensions
         _distinctDimensions = self._get_distinctDimensions(product_json)
@@ -79,6 +81,7 @@ class ResponseParse(BaseParser):
             oldPrice=_oldPrice,
             normPrice=_normPrice,
 
+            featured_image=_featured_image,
             pictures=_pictures,
 
             color=_color,
@@ -97,7 +100,9 @@ class ResponseParse(BaseParser):
         return item
 
     def _get_images_via_json(self, __variation):
-        result = []
+        result = {"featured_image": None, "images": []}
+
+        _gallery = []
         _images = []
 
         # alternativeImageList
@@ -105,16 +110,16 @@ class ResponseParse(BaseParser):
         if _alternativeImageList:
             _images = _alternativeImageList["images"]
 
-        # default image
-        firstImage = __variation["images"]
-        if firstImage:
-            _images.insert(0, firstImage)
+        # featured_image
+        result["featured_image"] = __variation["images"]
 
         # parse images to array
         for img in _images:
             _uri = img['uriTemplate']
             if _uri:
-                result.append(_uri)
+                _gallery.append(_uri)
+
+        result["images"] = _gallery
 
         return result
 
