@@ -1,0 +1,185 @@
+[{
+      "id": "535544154",
+      "sku": "84025094-0",
+      "name": "Apple iPhone SE 4\" 64 GB",
+      "retailPrice": 53999,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "/p/apple-iphone-se-64gb-smartphone-10-1-cm-4-zoll-display-lte-4g-ios-9-12-0-megapixel-nfc-535544120/#variationId=535544154"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_BETWEEN_2_AND_3_DAYS",
+        "limitation": null,
+        "delivery24H": true,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 2-3 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": true,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": true,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "PAKETSHOP|VERSAND_24H",
+        "speditionCharge": false
+      },
+      "supplierId": 86142,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": [
+          {
+            "color": {
+              "displayName": "Farbe",
+              "value": "Gold",
+              "iconUrl": "https://i.otto.de/i/otto/16162394.jpg",
+              "colorHexCode": "f0d9c1",
+              "baseColor": "goldfarben",
+              "colorThumbType": "iconUrl"
+            }
+          }
+        ]
+      },
+      "articleNumber": "840250",
+      "promotionNumber": "94",
+      "skuSuffix": "0",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "652",
+      "articleNumberWithPromotion": "84025094",
+      "description": null,
+      "onlineDate": "23.03.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "4\" Retina Display (10,16 cm Diagonale), 1136 x 640 Pixel",
+          "A9 Chip mit integriertem M9 Motion Coprozessor",
+          "12 Megapixel iSight Kamera mit Focus Pixels und True Tone Flash",
+          "4K Videoaufnahme mit 30 fps und Zeitlupenvideo mit 240 fps",
+          "1,2 Megapixel FaceTime HD Kamera mit Retina Flash"
+        ]
+      },
+      "oldPrice": 58900,
+      "suggestedRetailPrice": null,
+      "sale": true,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "MULTIMEDIA",
+        "group": "HARTWAREN"
+      },
+      "companyId": 0,
+      "eanList": {
+        "value": "888462802895"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "Multimedia_Themen,Multimedia_Topseller,Multimedianextdaydelivery,dto_empfehlungen,nextdaydelivery,ottowelten_01_modul",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 535544154,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": "49,01",
+        "comparativePriceAdvantage": "8",
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": true,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": "589,00",
+        "priceAmount": "539,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "15,00",
+          "count": 48
+        },
+        "hasMoreExpensiveAvailableVariation": false,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [
+        {
+          "type": "consultingdetail",
+          "title": null,
+          "details": [
+            "/product/products/details/CONSULTINGDETAIL/DISPOSALNOTE/"
+          ]
+        }
+      ],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": null,
+      "consultingDetails": [
+        {
+          "displayName": "Entsorgungshinweis",
+          "name": "DISPOSALNOTE",
+          "contentUrl": "/shoppages/consultingdetail_disposalnote"
+        }
+      ],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https://i.otto.de/i/otto/17016253",
+        "width": 394,
+        "height": 831
+      },
+      "alternativeImageList": {
+        "images": [
+          {
+            "uriTemplate": "https://i.otto.de/i/otto/17016265",
+            "width": 960,
+            "height": 824
+          },
+          {
+            "uriTemplate": "https://i.otto.de/i/otto/16162890",
+            "width": 296,
+            "height": 467
+          },
+          {
+            "uriTemplate": "https://i.otto.de/i/otto/16149570",
+            "width": 960,
+            "height": 459
+          },
+          {
+            "uriTemplate": "https://i.otto.de/i/otto/17016256",
+            "width": 960,
+            "height": 511
+          },
+          {
+            "uriTemplate": "https://i.otto.de/i/otto/17016260",
+            "width": 633,
+            "height": 860
+          }
+        ]
+      },
+      "energyEfficiencyImage": null
+    }]
