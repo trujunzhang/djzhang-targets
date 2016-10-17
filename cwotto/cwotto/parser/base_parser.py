@@ -33,7 +33,8 @@ class BaseParser(object):
             href = href.strip()
         return urlparse.urljoin(base, href)
 
-    def extract_by_query(self, hxs, query, index=0, default=""):
+    @classmethod
+    def extract_by_query(cls, hxs, query, index=0, default=""):
         list = []
 
         try:

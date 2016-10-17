@@ -1,11 +1,8 @@
+import json
+import urlparse
+
 from cwotto.items import Product
 from cwotto.parser.base_parser import BaseParser
-
-import urlparse
-import time
-import json
-
-from cwotto.parser.review_fetcher import ReviewFetcher
 from cwotto.utils.slugify import slugify
 
 

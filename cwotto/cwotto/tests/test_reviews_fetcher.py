@@ -2,7 +2,7 @@
 
 import unittest
 
-from cwotto.parser.review_fetcher import ReviewFetcher
+from cwotto.parser.products.review_fetcher import ReviewFetcher
 
 
 class ReviewsFetcherTest(unittest.TestCase):

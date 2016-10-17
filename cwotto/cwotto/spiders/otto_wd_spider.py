@@ -30,8 +30,8 @@ class OttoWDSpider(scrapy.Spider):
     ]
 
     def __init__(self, name=None, **kwargs):
-        from cwotto.parser.response_parser import ResponseParse
-        self._crawl_parser = ResponseParse()
+        from cwotto.parser.otto_parser import OttoParse
+        self._crawl_parser = OttoParse()
 
         super(OttoWDSpider, self).__init__(name, **kwargs)
 
