@@ -47,15 +47,18 @@ class ResponseParse(BaseParser):
         # parse from product_json
         # _uniqueHtmlDetails = product_json['uniqueHtmlDetails']
         # if not _uniqueHtmlDetails:
-        _uniqueHtmlDetails = self.extract_by_query(hxs,'//*[@class="article-properties-body"]')
+        _uniqueHtmlDetails = self.extract_by_query(hxs, '//*[@class="article-properties-body"]')
 
         # parse by variationId
         __variation = product_json["variations"][variationId]
 
         _title = __variation['name']
 
-        _retailPrice = __variation['retailPrice']
-        _oldPrice = __variation['oldPrice']
+        # retailPrice is 'Sale price ($)'
+        # oldPrice is 'Regular price ($)'
+        # sale price is less than old price
+        _sale_price = __variation['retailPrice']
+        _regular_price = __variation['oldPrice']
         _normPrice = __variation['normPrice']
 
         _featured_image = self._get_featured_image(__variation)
@@ -78,8 +81,8 @@ class ResponseParse(BaseParser):
             post_content=_uniqueHtmlDetails,
             post_excerpt=_uniqueHtmlDetails,
 
-            regular_price=_retailPrice,
-            oldPrice=_oldPrice,
+            sale_price=_sale_price,
+            regular_price=_regular_price,
             price=_normPrice,
 
             featured_image=_featured_image,
