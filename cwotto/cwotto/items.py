@@ -30,8 +30,4 @@ class Product(scrapy.Item):
 
     product_gallery = scrapy.Field()
 
-    color = scrapy.Field()
-    sizes = scrapy.Field()
-
-    reviewCount = scrapy.Field()
-    reviews = scrapy.Field()
+    variations = scrapy.Field()

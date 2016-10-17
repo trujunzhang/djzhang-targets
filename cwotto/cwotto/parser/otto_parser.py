@@ -43,8 +43,7 @@ class OttoParse(BaseParser):
         _uniqueHtmlDetails = _otto_util.get_product_description()
         _title = _otto_util.get_title()
 
-        _color = []  # _distinctDimensions['color']
-        _sizes = []  # _distinctDimensions['size']
+        _variations = _otto_util.get_variations()
 
         item = Product(
             url=url,
@@ -54,8 +53,7 @@ class OttoParse(BaseParser):
             post_content=_uniqueHtmlDetails,
             post_excerpt=_uniqueHtmlDetails,
 
-            color=_color,
-            sizes=_sizes,
+            variations=_variations,
 
             ID=product_id,
             post_type="product",

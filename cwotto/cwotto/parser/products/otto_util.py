@@ -16,3 +16,7 @@ class OttoUtil(object):
         __variation = self.product_json["variations"][self.variationId]
         _title = __variation['name']
         return _title
+
+    def get_variations(self):
+        __variations = self.product_json["variations"]
+        return __variations
