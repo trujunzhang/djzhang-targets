@@ -35,7 +35,7 @@ class OttoParse(BaseParser):
 
         product_id = product_json['id']
 
-        _otto_products = OttoProducts(hxs, url, product_json, variationId)
+        _otto_products = OttoProducts(hxs, url, product_json, product_id, variationId)
 
         return self._parse_common(url, product_id, _otto_products)
 
@@ -43,11 +43,13 @@ class OttoParse(BaseParser):
         _uniqueHtmlDetails = _otto_products.get_product_description()
         _title = _otto_products.get_title()
 
-        children = _otto_products.get_variations_products()
-
+        # Parent product
         parent = Product.get_parent_product(url=url,
                                             product_id=product_id,
                                             title=_title,
                                             _uniqueHtmlDetails=_uniqueHtmlDetails)
+
+        # child products
+        children = _otto_products.get_variations_products()
 
         return {"parent": parent, "children": children}
