@@ -60,7 +60,7 @@ class Product(scrapy.Item):
         )
 
     @classmethod
-    def get_variable_product(cls, url, product_id, title, featured_image, product_gallery):
+    def get_variable_product(cls, url, product_id, title, regular_price, price, featured_image, product_gallery):
         return Product(
             product_id=product_id,
 
@@ -71,7 +71,7 @@ class Product(scrapy.Item):
             menu_order=0,
 
             featured_image=featured_image,
-            product_gallery=product_id,
+            product_gallery=product_gallery,
 
             url=url,
 
