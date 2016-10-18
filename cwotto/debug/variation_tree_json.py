@@ -9,8 +9,7 @@ class VariationTreeJson(object):
     def get_variation_tree_json(self):
         data = None
         json_file = "{}/{}".format(self.debug_folder, "Apple_iPhone_SE_4/product.json")
-        with json_file as data_file:
+        with open(json_file) as data_file:
             data = json.load(data_file)
 
         return data['variationTree']
-
