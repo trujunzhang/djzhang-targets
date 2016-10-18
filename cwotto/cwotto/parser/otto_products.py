@@ -1,6 +1,7 @@
 import json
 
 from cwotto.parser.base_parser import BaseParser
+from cwotto.parser.products.otto_variations_parser import OttoVariationsParser
 
 
 class OttoProducts(object):
@@ -21,6 +22,10 @@ class OttoProducts(object):
         return _title
 
     def get_variations_products(self):
+        # Step 1: parse all variations as product items.
+        _variations_parser = OttoVariationsParser(self.product_json)
+        __all_products = _variations_parser.get_all_variations_products()
+
         children = []
 
         __variations = self.product_json["variations"]
