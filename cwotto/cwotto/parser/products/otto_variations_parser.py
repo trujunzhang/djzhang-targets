@@ -3,9 +3,9 @@ from cwotto.parser.products.otto_base import OttoBase
 
 
 class OttoVariationsParser(OttoBase):
-    def __init__(self, product_json, parent_product_id):
+    def __init__(self, product_json, product_id):
         self.product_json = product_json
-        self.parent_product_id = parent_product_id
+        self.product_id = product_id
         super(OttoVariationsParser, self).__init__(product_json)
 
     def get_all_variations_products(self):
@@ -20,7 +20,7 @@ class OttoVariationsParser(OttoBase):
 
     def __parse_product(self, variation):
         url = self.get_child_link(variation)
-        product_id = variation['id']
+        variable_id = variation['id']
         title = variation['name']
 
         regular_price = variation['displayPrice']['comparativePriceAmount'].replace(',', '.')
@@ -29,6 +29,6 @@ class OttoVariationsParser(OttoBase):
         featured_image = variation['images']['uriTemplate']
         product_gallery = self.get_product_gallery(variation)
 
-        return Product.get_variable_product(url, self.parent_product_id, product_id,
+        return Product.get_variable_product(url, self.product_id, variable_id,
                                             title, regular_price, price,
                                             featured_image, product_gallery)

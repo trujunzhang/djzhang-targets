@@ -11,6 +11,7 @@ from cwotto.utils.slugify import slugify
 
 class Product(scrapy.Item):
     product_id = scrapy.Field()
+    variable_id = scrapy.Field()
 
     post_type = scrapy.Field()
     post_parent = scrapy.Field()
@@ -60,13 +61,14 @@ class Product(scrapy.Item):
         )
 
     @classmethod
-    def get_variable_product(cls, url, parent_product_id, product_id, title, regular_price, price, featured_image,
+    def get_variable_product(cls, url, product_id, variable_id, title, regular_price, price, featured_image,
                              product_gallery):
         return Product(
-            product_id=product_id,
+            product_id=0,
+            variable_id=variable_id,
 
             post_type="product_variation",
-            post_parent=parent_product_id,
+            post_parent=product_id,
 
             post_status='publish',
             menu_order=0,
