@@ -1,6 +1,5 @@
 import json
 
-from cwotto.parser.base_parser import BaseParser
 from cwotto.parser.products.otto_variations_parser import OttoVariationsParser
 
 

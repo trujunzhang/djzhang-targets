@@ -4,4 +4,13 @@ class OttoVariationsParser(object):
         super(OttoVariationsParser, self).__init__()
 
     def get_all_variations_products(self):
+        items = []
+        __variations = self.product_json['variations']
+        for variation in __variations:
+            item = self.__parse_product(variation=variation)
+            items.append(item)
+
+        return items
+
+    def __parse_product(self, variation):
         pass
