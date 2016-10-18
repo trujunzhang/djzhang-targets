@@ -1,3 +1,5 @@
+import json
+
 from cwotto.items import Product
 from cwotto.parser.products.otto_base import OttoBase
 
@@ -37,17 +39,12 @@ class OttoVariationsParser(OttoBase):
                                             attributes)
 
     def _get_product_attributes(self, variation):
+        attributes = {}
         dimension = variation['dimensions']['dimension']
         for attribute in dimension:
             if 'color' in attribute:
-                self._get_color_attribute(attribute)
+                attributes['color'] = attribute['color']['value']
             elif 'size' in attribute:
-                self._get_size_attribute(attribute)
+                attributes['size'] = attribute['size']['value']
 
-    def _get_color_attribute(self, attribute):
-        dict = attribute['color']
-        return dict['value']
-
-    def _get_size_attribute(self, attribute):
-        dict = attribute['size']
-        return dict['value']
+        return json.dumps(attributes)
