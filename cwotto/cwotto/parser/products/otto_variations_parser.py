@@ -29,7 +29,7 @@ class OttoVariationsParser(OttoBase):
         featured_image = variation['images']['uriTemplate']
         product_gallery = []  # self.get_product_gallery(variation)
 
-        attributes = ''
+        attributes = self._get_product_attributes(variation=variation)
 
         return Product.get_variable_product(url, self.product_id, variable_id,
                                             title, regular_price, price,
@@ -37,5 +37,4 @@ class OttoVariationsParser(OttoBase):
                                             attributes)
 
     def _get_product_attributes(self, variation):
-
         pass
