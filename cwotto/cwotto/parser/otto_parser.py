@@ -3,7 +3,7 @@ import urlparse
 
 from cwotto.items import Product
 from cwotto.parser.base_parser import BaseParser
-from cwotto.parser.products.otto_util import OttoUtil
+from cwotto.parser.products.otto_products import OttoProducts
 
 
 class OttoParse(BaseParser):
@@ -33,10 +33,10 @@ class OttoParse(BaseParser):
 
         product_json = json.loads(productScript)
 
-        _otto_util = OttoUtil(hxs, url, product_json, variationId)
+        _otto_products = OttoProducts(hxs, url, product_json, variationId)
 
         product_id = product_json['id']
-        return self._parse_common(url, product_id, _otto_util)
+        return self._parse_common(url, product_id, _otto_products)
 
     def _parse_common(self, url, product_id, _otto_util):
         _uniqueHtmlDetails = _otto_util.get_product_description()
