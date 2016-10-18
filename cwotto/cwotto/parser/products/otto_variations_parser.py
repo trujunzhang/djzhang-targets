@@ -64,3 +64,4 @@ class OttoVariationsParser(OttoBase):
             __av_value = self.available_attributes[key]
 
         __av_value.append(value)
+        self.available_attributes[key] = __av_value

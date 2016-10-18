@@ -22,4 +22,10 @@ class OttoProducts(OttoBase):
         return children
 
     def get_available_attributes(self):
-        return self.child_products_parser.available_attributes
+        attributes = self.child_products_parser.available_attributes
+        for __key in attributes.keys():
+            __value = attributes[__key]
+            __new_value = __value.join('|')
+            attributes[__key] = __new_value
+
+        return attributes

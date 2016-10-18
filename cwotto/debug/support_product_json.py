@@ -9,9 +9,9 @@ class ProductJsonSupport(object):
     def get_variation_json(self):
         data = []
         # only color
-        # variations__json = "Apple_iPhone_SE_4/variations/535544121.json"
+        variations__json = "Apple_iPhone_SE_4/variations/535544121.json"
         # only color and other
-        variations__json = "boxspringbett-starlight/variations/538203081.json"
+        # variations__json = "boxspringbett-starlight/variations/538203081.json"
         # color and size and other
         # variations__json = "bruno-banani-blazer-im-uniform-look/variations/512770598.json"
 
