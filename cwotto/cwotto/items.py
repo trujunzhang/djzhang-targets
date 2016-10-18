@@ -29,5 +29,3 @@ class Product(scrapy.Item):
     price = scrapy.Field()
 
     product_gallery = scrapy.Field()
-
-    variations = scrapy.Field()

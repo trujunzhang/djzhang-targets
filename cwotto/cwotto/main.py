@@ -15,7 +15,8 @@ class Crawler:
 
     def execute(self, module):
 
-        command = "scrapy crawl  {}  -t csv -o {}".format(module, self.filename)
+        # command = "scrapy crawl  {}  -t csv -o {}".format(module, self.filename)
+        command = "scrapy crawl  {}   -o {}".format(module, 'products.json')
         # command = "scrapy crawl  {}  ".format(module)
         cmdline.execute(command.split())
 
