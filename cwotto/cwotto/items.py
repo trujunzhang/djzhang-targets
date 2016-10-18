@@ -36,7 +36,7 @@ class Product(scrapy.Item):
     variationTree = scrapy.Field()
 
     @classmethod
-    def get_parent_product(cls, url, product_id, title, _uniqueHtmlDetails, variationTree):
+    def get_parent_product(cls, url, product_id, title, uniqueHtmlDetails, variationTree):
         return Product(
             product_id=product_id,
 
@@ -53,8 +53,8 @@ class Product(scrapy.Item):
 
             post_title=title,
             post_name=slugify(title),
-            post_content=_uniqueHtmlDetails,
-            post_excerpt=_uniqueHtmlDetails,
+            post_content=uniqueHtmlDetails,
+            post_excerpt=uniqueHtmlDetails,
 
             regular_price=0,
             price=0,

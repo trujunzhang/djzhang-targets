@@ -51,7 +51,7 @@ class OttoParse(BaseParser):
         parent = Product.get_parent_product(url=url,
                                             product_id=product_id,
                                             title=_title,
-                                            _uniqueHtmlDetails=_uniqueHtmlDetails,
+                                            uniqueHtmlDetails=_uniqueHtmlDetails,
                                             variationTree=_variationTree)
 
         # child products
