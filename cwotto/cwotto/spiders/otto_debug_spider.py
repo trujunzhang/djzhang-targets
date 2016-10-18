@@ -49,6 +49,7 @@ class OttoDebugSpider(scrapy.Spider):
                 variationId = s[1]
 
                 product = self._crawl_parser.parse_item(url, response, variationId)
+
                 parent = product["parent"]
                 yield parent
 
