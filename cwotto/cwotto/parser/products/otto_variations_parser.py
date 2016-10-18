@@ -2,16 +2,17 @@ from cwotto.items import Product
 
 
 class OttoVariationsParser(object):
-    def __init__(self, product_json):
+    def __init__(self, product_json, parent_product_id):
         self.product_json = product_json
+        self.parent_product_id = parent_product_id
         super(OttoVariationsParser, self).__init__()
 
     def get_all_variations_products(self):
         items = []
         __variations = self.product_json['variations']
         for variation in __variations:
-            item = self.__parse_product(variation=variation)
-            items.append(item)
+            __item = self.__parse_product(variation=variation)
+            items.append(__item)
 
         return items
 
@@ -26,7 +27,8 @@ class OttoVariationsParser(object):
         featured_image = variation['images']['uriTemplate']
         product_gallery = variation['alternativeImageList']['images']
 
-        return Product.get_variable_product(url, product_id, title, regular_price, price,
+        return Product.get_variable_product(url, self.parent_product_id, product_id,
+                                            title, regular_price, price,
                                             featured_image, product_gallery)
 
     def _get_product_gallery(self, variation):

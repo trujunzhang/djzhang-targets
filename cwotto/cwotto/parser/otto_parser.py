@@ -33,9 +33,10 @@ class OttoParse(BaseParser):
 
         product_json = json.loads(productScript)
 
+        product_id = product_json['id']
+
         _otto_products = OttoProducts(hxs, url, product_json, variationId)
 
-        product_id = product_json['id']
         return self._parse_common(url, product_id, _otto_products)
 
     def _parse_common(self, url, product_id, _otto_products):
