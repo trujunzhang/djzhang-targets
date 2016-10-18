@@ -17,3 +17,7 @@ https://www.otto.de/p/apple-iphone-se-64gb-smartphone-10-1-cm-4-zoll-display-lte
 children:
 https://www.otto.de/p/apple-iphone-se-64gb-smartphone-10-1-cm-4-zoll-display-lte-4g-ios-9-12-0-megapixel-nfc-535544120/#variationId=535544121
 
+attribute:
+
+Gold | Roségold | Silber | Space Grau
+

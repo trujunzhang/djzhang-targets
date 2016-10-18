@@ -8,6 +8,7 @@
 import scrapy
 from cwotto.utils.slugify import slugify
 
+
 class Product(scrapy.Item):
     product_id = scrapy.Field()
 
@@ -32,29 +33,55 @@ class Product(scrapy.Item):
     oldPrice = scrapy.Field()
 
     @classmethod
-    def get_parent_product(cls, url,product_id,title,_uniqueHtmlDetails):
+    def get_parent_product(cls, url, product_id, title, _uniqueHtmlDetails):
         return Product(
             product_id=product_id,
 
-        post_type = "product",
-        post_parent = -1,
+            post_type="product",
+            post_parent=-1,
 
-        post_status = 'publish',
-        menu_order = 0,
+            post_status='publish',
+            menu_order=0,
 
-        featured_image = [],
-        product_gallery = [],
+            featured_image=[],
+            product_gallery=[],
 
-        url = url,
+            url=url,
 
-        post_title = title,
-        post_name = slugify(title),
-        post_content = _uniqueHtmlDetails,
-        post_excerpt = _uniqueHtmlDetails,
+            post_title=title,
+            post_name=slugify(title),
+            post_content=_uniqueHtmlDetails,
+            post_excerpt=_uniqueHtmlDetails,
 
-        regular_price = 0,
-        price = 0,
-        oldPrice = 0,
+            regular_price=0,
+            price=0,
+            oldPrice=0,
 
         )
 
+    @classmethod
+    def get_variable_product(cls, url, product_id, title, featured_image, product_gallery):
+        return Product(
+            product_id=product_id,
+
+            post_type="product",
+            post_parent=-1,
+
+            post_status='publish',
+            menu_order=0,
+
+            featured_image=featured_image,
+            product_gallery=product_id,
+
+            url=url,
+
+            post_title=title,
+            post_name=slugify(title),
+            post_content="",
+            post_excerpt="",
+
+            regular_price=0,
+            price=0,
+            oldPrice=0,
+
+        )
