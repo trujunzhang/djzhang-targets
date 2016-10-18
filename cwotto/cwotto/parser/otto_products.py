@@ -18,3 +18,6 @@ class OttoProducts(OttoBase):
         children = OttoVariationsParser(self.product_json, self.product_id).get_all_variations_products()
 
         return children
+
+    def get_available_attributes(self, children):
+        pass
