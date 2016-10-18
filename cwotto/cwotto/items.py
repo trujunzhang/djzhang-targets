@@ -65,8 +65,10 @@ class Product(scrapy.Item):
         )
 
     @classmethod
-    def get_variable_product(cls, url, product_id, variable_id, title, regular_price, price, featured_image,
-                             product_gallery):
+    def get_variable_product(cls, url, product_id, variable_id, title,
+                             regular_price, price,
+                             featured_image, product_gallery,
+                             attributes):
         return Product(
             product_id=0,
             variable_id=variable_id,
@@ -91,5 +93,6 @@ class Product(scrapy.Item):
             price=price,
             oldPrice=0,
 
+            attributes=attributes,
             variationTree=""
         )
