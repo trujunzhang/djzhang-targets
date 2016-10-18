@@ -32,11 +32,12 @@ class OttoVariationsParser(OttoBase):
 
         display_price_ = variation['displayPrice']
 
-        regular_price = 0
+        price = display_price_['priceAmount'].replace(',', '.')
+
+        regular_price = price
         __comparativePriceAmount = display_price_['comparativePriceAmount']
         if __comparativePriceAmount:
             regular_price = __comparativePriceAmount.replace(',', '.')
-        price = display_price_['priceAmount'].replace(',', '.')
 
         featured_image = variation['images']['uriTemplate']
         product_gallery = []  # self.get_product_gallery(variation)
