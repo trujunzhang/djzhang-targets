@@ -8,9 +8,10 @@ from debug.support_product_json import ProductJsonSupport
 
 class OttoVariationsParserTest(unittest.TestCase):
     def setUp(self):
-        self.parser = OttoVariationsParser(product_json=None, product_id=None)
+        self.child_products_parser = OttoVariationsParser(product_json=None, product_id=None)
 
     def test_product_attribute(self):
         variation = ProductJsonSupport().get_variation_json()
-        self.parser._get_product_attributes(variation)
+        result = self.child_products_parser._get_product_attributes(variation)
+        available_attributes = self.child_products_parser.available_attributes
         x = 0

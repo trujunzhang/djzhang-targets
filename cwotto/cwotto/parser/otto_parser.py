@@ -46,7 +46,7 @@ class OttoParse(BaseParser):
 
         # Some product only have size or color.
         # So we need to get available attributes from children
-        available_attributes = _otto_products.get_available_attributes(children)
+        available_attributes = _otto_products.get_available_attributes()
 
         # Parent product
         parent = Product.get_parent_product(url=url,
