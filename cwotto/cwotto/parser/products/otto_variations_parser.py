@@ -59,9 +59,8 @@ class OttoVariationsParser(OttoBase):
         return json.dumps(attributes)
 
     def _append_attribute_to_type(self, key, value):
-        av_keys = self.available_attributes.keys()
-        av_value = []
-        if key in av_keys:
-            av_value = self.available_attributes[key]
+        __av_value = []
+        if key in self.available_attributes.keys():
+            __av_value = self.available_attributes[key]
 
-        av_value.append(value)
+        __av_value.append(value)
