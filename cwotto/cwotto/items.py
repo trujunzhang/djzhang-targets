@@ -9,13 +9,16 @@ import scrapy
 
 
 class Product(scrapy.Item):
-    ID = scrapy.Field()
+    product_id = scrapy.Field()
+
     post_type = scrapy.Field()
     post_parent = scrapy.Field()
+
     post_status = scrapy.Field()
     menu_order = scrapy.Field()
 
     featured_image = scrapy.Field()
+    product_gallery = scrapy.Field()
 
     url = scrapy.Field()
 
@@ -24,8 +27,6 @@ class Product(scrapy.Item):
     post_content = scrapy.Field()
     post_excerpt = scrapy.Field()
 
-    sale_price = scrapy.Field()
     regular_price = scrapy.Field()
+    oldPrice = scrapy.Field()
     price = scrapy.Field()
-
-    product_gallery = scrapy.Field()
