@@ -13,6 +13,7 @@ class Product(scrapy.Item):
     product_id = scrapy.Field()
     variable_id = scrapy.Field()
 
+    is_parent = scrapy.Field()
     product_type = scrapy.Field()
     product_parent = scrapy.Field()
 
@@ -41,6 +42,7 @@ class Product(scrapy.Item):
         return Product(
             variable_id=0,
 
+            is_parent=True,
             product_type="product",
             product_id=product_id,
             product_parent=0,
@@ -75,6 +77,7 @@ class Product(scrapy.Item):
 
             variable_id=variable_id,
 
+            is_parent=False,
             product_type="product_variation",
             product_id=product_id,
             product_parent=product_id,
