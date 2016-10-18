@@ -12,6 +12,7 @@ class OttoVariationsParserTest(unittest.TestCase):
 
     def test_product_attribute(self):
         variation = ProductJsonSupport().get_variation_json()
+
         result = self.child_products_parser._get_product_attributes(variation)
         available_attributes = self.child_products_parser.available_attributes
         x = 0
