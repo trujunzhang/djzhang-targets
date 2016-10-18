@@ -13,3 +13,4 @@ class VariationTreeJson(object):
             data = json.load(data_file)
 
         return data['variationTree']
+

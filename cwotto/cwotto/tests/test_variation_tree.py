@@ -10,8 +10,7 @@ from debug.variation_tree_json import VariationTreeJson
 class ProductVariationTreeTest(unittest.TestCase):
     def setUp(self):
         variation_tree_json = VariationTreeJson().get_variation_tree_json()
-        self.reviewFetcher = OttoVariationTree(variation_tree_json)
+        self.otto_variation_tree = OttoVariationTree(variation_tree_json)
 
     def test_fetching(self):
-        reviews = self.reviewFetcher.fetch_reviews_as_json()
         x = 0
