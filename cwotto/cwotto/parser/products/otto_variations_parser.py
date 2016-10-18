@@ -11,7 +11,8 @@ class OttoVariationsParser(OttoBase):
     def get_all_variations_products(self):
         items = []
         __variations = self.product_json['variations']
-        for variation in __variations:
+        for variation_id in __variations:
+            variation = __variations[variation_id]
             __item = self.__parse_product(variation=variation)
             items.append(__item)
 
