@@ -38,11 +38,15 @@ class OttoVariationsParser(OttoBase):
 
     def _get_product_attributes(self, variation):
         dimension = variation['dimensions']['dimension']
+        for attribute in dimension:
+            if 'color' in attribute:
+                self._get_color_attribute(attribute)
+            elif 'size' in attribute:
+                self._get_size_attribute(attribute)
+
+    def _get_color_attribute(self, attribute):
 
         pass
 
-    def _get_color_attribute(self, dimensions):
-        pass
-
-    def _get_size_attribute(self, dimensions):
+    def _get_size_attribute(self, attribute):
         pass
