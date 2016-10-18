@@ -39,9 +39,10 @@ class Product(scrapy.Item):
     @classmethod
     def get_parent_product(cls, url, product_id, title, uniqueHtmlDetails, available_attributes):
         return Product(
-            product_id=product_id,
+            variable_id=0,
 
             product_type="product",
+            product_id=product_id,
             product_parent=0,
 
             post_status='publish',
@@ -71,10 +72,11 @@ class Product(scrapy.Item):
                              featured_image, product_gallery,
                              attributes):
         return Product(
-            product_id=product_id,
+
             variable_id=variable_id,
 
             product_type="product_variation",
+            product_id=product_id,
             product_parent=product_id,
 
             post_status='publish',
