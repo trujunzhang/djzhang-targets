@@ -16,6 +16,7 @@ class Product(scrapy.Item):
     is_parent = scrapy.Field()
     product_type = scrapy.Field()
     product_parent = scrapy.Field()
+    variable_index = scrapy.Field()
 
     post_status = scrapy.Field()
     menu_order = scrapy.Field()
@@ -46,6 +47,7 @@ class Product(scrapy.Item):
             product_type="product",
             product_id=product_id,
             product_parent=0,
+            variable_index=-1,
 
             post_status='publish',
             menu_order=0,
@@ -69,8 +71,9 @@ class Product(scrapy.Item):
         )
 
     @classmethod
-    def get_variable_product(cls, url, product_id, variable_id, title,
-                             regular_price, price,
+    def get_variable_product(cls, url,
+                             variable_index, product_id, variable_id,
+                             title, regular_price, price,
                              featured_image, product_gallery,
                              attributes):
         return Product(
@@ -81,6 +84,7 @@ class Product(scrapy.Item):
             product_type="product_variation",
             product_id=product_id,
             product_parent=product_id,
+            variable_index=variable_index,
 
             post_status='publish',
             menu_order=0,

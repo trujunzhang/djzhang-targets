@@ -15,14 +15,17 @@ class OttoVariationsParser(OttoBase):
     def get_all_variations_products(self):
         items = []
         __variations = self.product_json['variations']
+        count = 1
         for variation_id in __variations:
             variation = __variations[variation_id]
-            __item = self.__parse_product(variation=variation)
+            __item = self.__parse_product(variation=variation, count=count)
             items.append(__item)
+
+            count += 1
 
         return items
 
-    def __parse_product(self, variation):
+    def __parse_product(self, variation, count):
         url = self.get_child_link(variation)
         variable_id = variation['id']
         title = variation['name']
@@ -35,7 +38,7 @@ class OttoVariationsParser(OttoBase):
 
         attributes = self._get_product_attributes(variation=variation)
 
-        return Product.get_variable_product(url, self.product_id, variable_id,
+        return Product.get_variable_product(url, count, self.product_id, variable_id,
                                             title, regular_price, price,
                                             featured_image, product_gallery,
                                             attributes)
