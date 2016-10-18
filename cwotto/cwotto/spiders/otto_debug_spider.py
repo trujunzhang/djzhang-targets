@@ -30,8 +30,8 @@ class OttoDebugSpider(scrapy.Spider):
         # FIX
         # No uniqueHtmlDetails
         # 'https://www.otto.de/p/ajc-kurzblazer-552791036/#variationId=552791094',
-        # 'https://www.otto.de/p/boxspringbett-starlight-538202722/#variationId=538203077',
-        'https://www.otto.de/p/bruno-banani-blazer-im-uniform-look-512770595#variationId=512770597'
+        'https://www.otto.de/p/boxspringbett-starlight-538202722/#variationId=538203077',
+        # 'https://www.otto.de/p/bruno-banani-blazer-im-uniform-look-512770595#variationId=512770597'
     ]
 
     def __init__(self, name=None, **kwargs):
