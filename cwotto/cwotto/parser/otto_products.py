@@ -15,13 +15,6 @@ class OttoProducts(OttoBase):
 
     def get_variations_products(self):
         # Step 1: parse all variations as product items.
-        _variations_parser = OttoVariationsParser(self.product_json, self.product_id)
-        __all_products = _variations_parser.get_all_variations_products()
-
-        children = []
-
-        __variations = self.product_json["variations"]
-        for variation in __variations:
-            pass
+        children = OttoVariationsParser(self.product_json, self.product_id).get_all_variations_products()
 
         return children
