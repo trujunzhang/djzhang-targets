@@ -1,0 +1,95 @@
+[
+  {
+    "name": "T-Shirt",
+    "sku": "TS1000",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac erat maximus augue accumsan egestas. Quisque posuere augue quis libero molestie posuere.",
+    "categories": [
+      "Clothes",
+      "Mens"
+    ],
+    "available_attributes": [
+      "size",
+      "color"
+    ],
+    "variations": [
+      {
+        "attributes": {
+          "size": "Small",
+          "color": "Red"
+        },
+        "price": "8.00"
+      },
+      {
+        "attributes": {
+          "size": "Medium",
+          "color": "Red"
+        },
+        "price": "10.00"
+      },
+      {
+        "attributes": {
+          "size": "Small",
+          "color": "Blue"
+        },
+        "price": "8.00"
+      },
+      {
+        "attributes": {
+          "size": "Large",
+          "color": "Blue"
+        },
+        "price": "12.00"
+      }
+    ]
+  },
+  {
+    "name": "Jeans",
+    "sku": "JE1000",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ac erat maximus augue accumsan egestas. Quisque posuere augue quis libero molestie posuere.",
+    "categories": [
+      "Clothes",
+      "Mens"
+    ],
+    "available_attributes": [
+      "waist",
+      "length"
+    ],
+    "variations": [
+      {
+        "attributes": {
+          "waist": "34",
+          "length": "Short"
+        },
+        "price": "22.00"
+      },
+      {
+        "attributes": {
+          "waist": "36",
+          "length": "Short"
+        },
+        "price": "22.00"
+      },
+      {
+        "attributes": {
+          "waist": "38",
+          "length": "Medium"
+        },
+        "price": "30.00"
+      },
+      {
+        "attributes": {
+          "waist": "34",
+          "length": "Long"
+        },
+        "price": "32.00"
+      },
+      {
+        "attributes": {
+          "waist": "36",
+          "length": "Long"
+        },
+        "price": "26.00"
+      }
+    ]
+  }
+]
