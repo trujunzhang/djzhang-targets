@@ -3,7 +3,7 @@
 import unittest
 
 from cwotto.parser.products.review_fetcher import ReviewFetcher
-from debug.variation_tree_json import VariationTreeJson
+from debug.support_product_json import VariationTreeJson
 
 
 class ProductVariationTreeTest(unittest.TestCase):
