@@ -6,7 +6,7 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
-
+from cwotto.utils.slugify import slugify
 
 class Product(scrapy.Item):
     product_id = scrapy.Field()
@@ -28,5 +28,33 @@ class Product(scrapy.Item):
     post_excerpt = scrapy.Field()
 
     regular_price = scrapy.Field()
-    oldPrice = scrapy.Field()
     price = scrapy.Field()
+    oldPrice = scrapy.Field()
+
+    @classmethod
+    def get_parent_product(cls, url,product_id,title,_uniqueHtmlDetails):
+        return Product(
+            product_id=product_id,
+
+        post_type = "product",
+        post_parent = -1,
+
+        post_status = 'publish',
+        menu_order = 0,
+
+        featured_image = [],
+        product_gallery = [],
+
+        url = url,
+
+        post_title = title,
+        post_name = slugify(title),
+        post_content = _uniqueHtmlDetails,
+        post_excerpt = _uniqueHtmlDetails,
+
+        regular_price = 0,
+        price = 0,
+        oldPrice = 0,
+
+        )
+

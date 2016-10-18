@@ -4,7 +4,6 @@ import urlparse
 from cwotto.items import Product
 from cwotto.parser.base_parser import BaseParser
 from cwotto.parser.products.otto_util import OttoUtil
-from cwotto.utils.slugify import slugify
 
 
 class OttoParse(BaseParser):
@@ -43,23 +42,16 @@ class OttoParse(BaseParser):
         _uniqueHtmlDetails = _otto_util.get_product_description()
         _title = _otto_util.get_title()
 
-        _variations = _otto_util.get_variations()
+        product = {
+            "parent": None,
+            "children": None
+        }
 
-        item = Product(
-            url=url,
+        product["children"] = _otto_util.get_variations_products()
 
-            post_title=_title,
-            post_name=slugify(_title),
-            post_content=_uniqueHtmlDetails,
-            post_excerpt=_uniqueHtmlDetails,
+        product["parent"] = Product.get_parent_product(url=url,
+                                                       product_id=product_id,
+                                                       title=_title,
+                                                       _uniqueHtmlDetails=_uniqueHtmlDetails)
 
-            variations=_variations,
-
-            ID=product_id,
-            post_type="product",
-            post_parent=0,
-            post_status='publish',
-            menu_order=0,
-        )
-
-        return item
+        return product
