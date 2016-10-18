@@ -37,7 +37,7 @@ class OttoParse(BaseParser):
         product_id = product_json['id']
 
         _otto_products = OttoProducts(hxs, url, product_json, product_id, variationId)
-        _otto_variationTree = OttoVariationTree(product_json)
+        _otto_variationTree = OttoVariationTree(product_json['variationTree'])
 
         return self._parse_common(url, product_id, _otto_products, _otto_variationTree)
 
