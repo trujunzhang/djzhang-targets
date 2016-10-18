@@ -42,16 +42,11 @@ class OttoParse(BaseParser):
         _uniqueHtmlDetails = _otto_util.get_product_description()
         _title = _otto_util.get_title()
 
-        product = {
-            "parent": None,
-            "children": None
-        }
+        children = _otto_util.get_variations_products()
 
-        product["children"] = _otto_util.get_variations_products()
+        parent = Product.get_parent_product(url=url,
+                                            product_id=product_id,
+                                            title=_title,
+                                            _uniqueHtmlDetails=_uniqueHtmlDetails)
 
-        product["parent"] = Product.get_parent_product(url=url,
-                                                       product_id=product_id,
-                                                       title=_title,
-                                                       _uniqueHtmlDetails=_uniqueHtmlDetails)
-
-        return product
+        return {"parent": parent, "children": children}
