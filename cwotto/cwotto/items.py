@@ -33,8 +33,10 @@ class Product(scrapy.Item):
     price = scrapy.Field()
     oldPrice = scrapy.Field()
 
+    variationTree = scrapy.Field()
+
     @classmethod
-    def get_parent_product(cls, url, product_id, title, _uniqueHtmlDetails):
+    def get_parent_product(cls, url, product_id, title, _uniqueHtmlDetails, variationTree):
         return Product(
             product_id=product_id,
 
@@ -58,6 +60,7 @@ class Product(scrapy.Item):
             price=0,
             oldPrice=0,
 
+            variationTree=variationTree
         )
 
     @classmethod
@@ -87,4 +90,5 @@ class Product(scrapy.Item):
             price=price,
             oldPrice=0,
 
+            variationTree=""
         )
