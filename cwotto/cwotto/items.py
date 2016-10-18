@@ -10,10 +10,11 @@ from cwotto.utils.slugify import slugify
 
 
 class Product(scrapy.Item):
-    product_id = scrapy.Field()
+    sku = scrapy.Field()
     variable_id = scrapy.Field()
 
     is_parent = scrapy.Field()
+    product_id = scrapy.Field()
     product_parent = scrapy.Field()
     variable_index = scrapy.Field()
 
@@ -43,6 +44,7 @@ class Product(scrapy.Item):
             variable_id=0,
 
             is_parent=True,
+            sku=product_id,
             product_id=product_id,
             product_parent=0,
             variable_index=-1,
@@ -79,6 +81,7 @@ class Product(scrapy.Item):
             variable_id=variable_id,
 
             is_parent=False,
+            sku="{}{}".format(product_id, variable_index),
             product_id=product_id,
             product_parent=product_id,
             variable_index=variable_index,
