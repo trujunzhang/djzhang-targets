@@ -13,8 +13,8 @@ class Product(scrapy.Item):
     product_id = scrapy.Field()
     variable_id = scrapy.Field()
 
-    post_type = scrapy.Field()
-    post_parent = scrapy.Field()
+    product_type = scrapy.Field()
+    product_parent = scrapy.Field()
 
     post_status = scrapy.Field()
     menu_order = scrapy.Field()
@@ -41,8 +41,8 @@ class Product(scrapy.Item):
         return Product(
             product_id=product_id,
 
-            post_type="product",
-            post_parent=0,
+            product_type="product",
+            product_parent=0,
 
             post_status='publish',
             menu_order=0,
@@ -71,11 +71,11 @@ class Product(scrapy.Item):
                              featured_image, product_gallery,
                              attributes):
         return Product(
-            product_id=0,
+            product_id=product_id,
             variable_id=variable_id,
 
-            post_type="product_variation",
-            post_parent=product_id,
+            product_type="product_variation",
+            product_parent=product_id,
 
             post_status='publish',
             menu_order=0,
