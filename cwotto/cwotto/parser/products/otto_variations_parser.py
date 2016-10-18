@@ -9,7 +9,7 @@ class OttoVariationsParser(OttoBase):
         self.product_json = product_json
         self.product_id = product_id
 
-        self.available_attributes = []
+        self.available_attributes = {}
         super(OttoVariationsParser, self).__init__(product_json)
 
     def get_all_variations_products(self):
@@ -48,12 +48,20 @@ class OttoVariationsParser(OttoBase):
         dimension = variation['dimensions']['dimension']
         for attribute in dimension:
             if 'color' in attribute:
-                attributes['color'] = attribute['color']['value']
-                if not 'color' in self.available_attributes:
-                    self.available_attributes.append("color")
+                value = attribute['color']['value']
+                attributes['color'] = value
+                self._append_attribute_to_type("color", value)
             elif 'size' in attribute:
-                attributes['size'] = attribute['size']['value']
-                if not 'size' in self.available_attributes:
-                    self.available_attributes.append("size")
+                value = attribute['size']['value']
+                attributes['size'] = value
+                self._append_attribute_to_type("size", value)
 
         return json.dumps(attributes)
+
+    def _append_attribute_to_type(self, key, value):
+        av_keys = self.available_attributes.keys()
+        av_value = []
+        if key in av_keys:
+            av_value = self.available_attributes[key]
+
+        av_value.append(value)
