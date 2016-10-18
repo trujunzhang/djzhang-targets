@@ -1,0 +1,225 @@
+[
+  {
+    "id": "512770605",
+    "sku": "47475782-48",
+    "name": "Bruno Banani Blazer im Uniform-Look",
+    "retailPrice": 10399,
+    "links": [
+      {
+        "link": {
+          "rel": "alternate",
+          "type": "text#ft5_slash#html",
+          "href": "#ft5_slash#p#ft5_slash#bruno-banani-blazer-im-uniform-look-512770595#ft5_slash##variationId=512770605"
+        }
+      }
+    ],
+    "availability": {
+      "detail": "DELIVERYSTATEMENT_BETWEEN_2_AND_3_DAYS",
+      "limitation": null,
+      "delivery24H": false,
+      "value": "AVAILABLE",
+      "displayName": "vorrätig - in 2-4 Werktagen bei Ihnen"
+    },
+    "availableDeliveryServices": {
+      "deliveryService24": false,
+      "deliveryService24Spedition": false,
+      "deliveryServiceExpress": false,
+      "deliveryServicePaketShop": true,
+      "deliveryServiceHaengeversand": false,
+      "deliveryServiceSpedition": false,
+      "deliveryServiceSpeditionSchwerlast": false,
+      "deliveryServiceWishDate": false
+    },
+    "shippingDetail": {
+      "value": "PAKETSHOP",
+      "speditionCharge": false
+    },
+    "supplierId": 48015,
+    "normPrice": null,
+    "dimensions": {
+      "dimension": [
+        {
+          "color": {
+            "displayName": "Farbe",
+            "value": "navy-goldfarben",
+            "iconUrl": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16692069.jpg?$articlecolorthumbsmall$",
+            "colorHexCode": "24293e",
+            "baseColor": "blau",
+            "colorThumbType": "iconUrl"
+          }
+        },
+        {
+          "size": {
+            "displayName": "Größe",
+            "value": "48",
+            "normalizedSize": "48"
+          }
+        },
+        {
+          "unknown": {
+            "displayName": "Unknown",
+            "value": "Normalgrößen",
+            "name": "unknown"
+          }
+        }
+      ]
+    },
+    "articleNumber": "474757",
+    "promotionNumber": "82",
+    "skuSuffix": "48",
+    "retailer": {
+      "id": "0",
+      "name": "OTTO"
+    },
+    "serviceType": null,
+    "rankingModification": "NORMAL",
+    "patternSample": null,
+    "customDimensions": {
+      "dimension": []
+    },
+    "customMeasureType": null,
+    "assortmentCode": "141",
+    "articleNumberWithPromotion": "47475782",
+    "description": null,
+    "onlineDate": "05.04.2016",
+    "dealDate": null,
+    "characteristics": null,
+    "sellingPoints": {
+      "sellingPoint": [
+        "Designer-Blazer im angesagten Uniformstil",
+        "Robuste, feste Jersey-Qualität mit Elasthan",
+        "Leicht taillierte Form",
+        "Ärmel und Stehkragen mit Dekobändern",
+        "Zeitloser, Maritimer Evergreen"
+      ]
+    },
+    "oldPrice": null,
+    "suggestedRetailPrice": null,
+    "sale": false,
+    "businessValues": null,
+    "businessCategory": {
+      "value": "DOB",
+      "group": "FASHION_SPORT"
+    },
+    "companyId": 0,
+    "eanList": {
+      "value": "6927976570570"
+    },
+    "energyEfficiencyClass": null,
+    "season": {
+      "id": 134,
+      "year": 2016,
+      "value": "AUTUMN_WINTER"
+    },
+    "reductionClasses": null,
+    "tags": "Büromode,DOBAnlaesse,DOBInspiration,DOBTrends,Feminin,GG Büromode,Grosse Groessen Herbstmode,GrosseGroessenAnlaesse,Herbstmode,Musthavesdamen,Stilberatung,damenbritchic,damensportyspirits,klassische mode",
+    "largeSize": true,
+    "largeSizePlus": false,
+    "itemOptionCommKey": 512770605,
+    "buyingGroupCode": null,
+    "merchandiseGroupCode": null,
+    "dataSheet": null,
+    "downloadableDocuments": [],
+    "displayPrice": {
+      "comparativePriceDifference": null,
+      "comparativePriceAdvantage": null,
+      "showComparativePriceRelative": false,
+      "showComparativePriceAbsolute": false,
+      "hasSuggestedRetailPrice": false,
+      "comparativePriceAmount": null,
+      "priceAmount": "103,99",
+      "customMeasureType": null,
+      "priceDifferenceToFirstVariation": null,
+      "normPrice": null,
+      "installments": {
+        "amount": "9,35",
+        "count": 12
+      },
+      "hasMoreExpensiveAvailableVariation": true,
+      "showComparativePriceAbsoluteAndRelative": false
+    },
+    "productDetails": [
+      {
+        "type": "care",
+        "title": "Pflegehinweise",
+        "details": [
+          "#ft5_slash#product#ft5_slash#products#ft5_slash#details#ft5_slash#CARE#ft5_slash#REINIGUNG#ft5_slash#"
+        ]
+      }
+    ],
+    "isDealDateToday": false,
+    "campaigns": [],
+    "htmlDetails": "<table class=\"tmpArticleDetailTable\"><tr><td class=\"left\"><div>Materialzusammensetzung<#ft5_slash#div><#ft5_slash#td><td>Obermaterial: 85% Polyester, 10% Viskose, 5% Elasthan. Futter: 97% Polyester, 3% Elasthan<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Material<#ft5_slash#div><#ft5_slash#td><td>Materialmix<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Materialart<#ft5_slash#div><#ft5_slash#td><td>Milano Rib<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Materialeigenschaften<#ft5_slash#div><#ft5_slash#td><td>elastisch<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Optik<#ft5_slash#div><#ft5_slash#td><td>gepflegt, beschichtet<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Stil<#ft5_slash#div><#ft5_slash#td><td>feminin<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Kragen<#ft5_slash#div><#ft5_slash#td><td>Stehkragen<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Ausschnitt<#ft5_slash#div><#ft5_slash#td><td>hoch geschlossener Ausschnitt<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Ärmel<#ft5_slash#div><#ft5_slash#td><td>Langarm<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Ärmeldetails<#ft5_slash#div><#ft5_slash#td><td>mit Ärmelbesatz, Ärmel ohne Ärmelschlitz<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Ärmelabschlussdetails<#ft5_slash#div><#ft5_slash#td><td>kontrastfarben<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Rumpfabschluss<#ft5_slash#div><#ft5_slash#td><td>normaler Saum<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Passform<#ft5_slash#div><#ft5_slash#td><td>sehr figurbetont<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Schnittdetails<#ft5_slash#div><#ft5_slash#td><td>Schulterklappen<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Schnittform Länge<#ft5_slash#div><#ft5_slash#td><td>hüftlang<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Applikationen<#ft5_slash#div><#ft5_slash#td><td>Bordüren, Samtbänder, Knöpfe<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Taschen<#ft5_slash#div><#ft5_slash#td><td>Paspeltaschen<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Verschluss<#ft5_slash#div><#ft5_slash#td><td>Haken<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Besondere Merkmale<#ft5_slash#div><#ft5_slash#td><td>im Uniform-Look<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Rückenlänge<#ft5_slash#div><#ft5_slash#td><td>In Gr. 38 (S) ca. 64 cm<#ft5_slash#td><#ft5_slash#tr><tr><td class=\"left\"><div>Auslieferung<#ft5_slash#div><#ft5_slash#td><td>liegend<#ft5_slash#td><#ft5_slash#tr><#ft5_slash#table>",
+    "expertReviews": {
+      "review": null
+    },
+    "qualityDetails": null,
+    "consultingDetails": [],
+    "deal": null,
+    "images": {
+      "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16692830?${format}$",
+      "width": 672,
+      "height": 960
+    },
+    "alternativeImageList": {
+      "images": [
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16693199?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16693200?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16224418?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#17505394?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16693202?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16708619?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16708638?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#17015976?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#17505387?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16563194?${format}$",
+          "width": 672,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https:#ft5_slash##ft5_slash#i.otto.de#ft5_slash#i#ft5_slash#otto#ft5_slash#16685907?${format}$",
+          "width": 960,
+          "height": 760
+        }
+      ]
+    },
+    "energyEfficiencyImage": null
+  }
+]

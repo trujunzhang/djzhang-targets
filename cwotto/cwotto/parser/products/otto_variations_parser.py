@@ -46,8 +46,8 @@ class OttoVariationsParser(OttoBase):
 
     def _get_color_attribute(self, attribute):
         dict = attribute['color']
-        pass
+        return dict['value']
 
     def _get_size_attribute(self, attribute):
         dict = attribute['size']
-        pass
+        return dict['value']
