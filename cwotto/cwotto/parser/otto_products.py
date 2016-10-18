@@ -24,7 +24,9 @@ class OttoProducts(OttoBase):
     def get_available_attributes(self):
         attributes = self.child_products_parser.available_attributes
         for __key in attributes.keys():
+            # __value is array
             __value = attributes[__key]
+            # join __value by '|' to string
             __new_value = __value.join('|')
             attributes[__key] = __new_value
 
