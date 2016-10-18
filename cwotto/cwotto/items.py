@@ -33,6 +33,7 @@ class Product(scrapy.Item):
     price = scrapy.Field()
     oldPrice = scrapy.Field()
 
+    attributes = scrapy.Field()
     variationTree = scrapy.Field()
 
     @classmethod

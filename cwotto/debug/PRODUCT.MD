@@ -21,3 +21,13 @@ attribute:
 
 Gold | Roségold | Silber | Space Grau
 
+# boxspringbett-starlight
+
+root
+https://www.otto.de/p/boxspringbett-starlight-538202722/#variationId=538203077
+
+
+children
+
+https://www.otto.de/p/boxspringbett-starlight-538202722/#variationId=538203081
+

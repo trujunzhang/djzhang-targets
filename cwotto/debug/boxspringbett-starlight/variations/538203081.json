@@ -1,0 +1,238 @@
+[
+  {
+    "id": "538203081",
+    "sku": "37643773-2",
+    "name": "Boxspringbett »Rubene«, inkl. Bettkasten und Topper",
+    "retailPrice": 39999,
+    "links": [
+      {
+        "link": {
+          "rel": "alternate",
+          "type": "text/html",
+          "href": "/p/boxspringbett-starlight-538202722/#variationId=538203081"
+        }
+      }
+    ],
+    "availability": {
+      "detail": "DELIVERYSTATEMENT_4_WEEKS",
+      "limitation": null,
+      "delivery24H": false,
+      "value": "DELAYED",
+      "displayName": "lieferbar in 4 Wochen"
+    },
+    "availableDeliveryServices": {
+      "deliveryService24": false,
+      "deliveryService24Spedition": false,
+      "deliveryServiceExpress": false,
+      "deliveryServicePaketShop": false,
+      "deliveryServiceHaengeversand": false,
+      "deliveryServiceSpedition": true,
+      "deliveryServiceSpeditionSchwerlast": false,
+      "deliveryServiceWishDate": false
+    },
+    "shippingDetail": {
+      "value": "SPEDITION",
+      "speditionCharge": true
+    },
+    "supplierId": 40680,
+    "normPrice": null,
+    "dimensions": {
+      "dimension": [
+        {
+          "color": {
+            "displayName": "Farbe",
+            "value": "dunkelbraun/macciato",
+            "iconUrl": "https://i.otto.de/i/otto/16766718.jpg",
+            "colorHexCode": "4a3b38",
+            "baseColor": "braun",
+            "colorThumbType": "iconUrl"
+          }
+        },
+        {
+          "unknown": {
+            "displayName": "Unknown",
+            "value": "Bonnell-Federkernmatratze H2",
+            "name": "lyingSurface"
+          }
+        },
+        {
+          "version": {
+            "displayName": "Ausführung",
+            "value": "90/200 cm, Bettkasten links"
+          }
+        },
+        {
+          "unknown": {
+            "displayName": "Unknown",
+            "value": "ohne Aufbauservice",
+            "name": "unknown"
+          }
+        }
+      ]
+    },
+    "articleNumber": "376437",
+    "promotionNumber": "73",
+    "skuSuffix": "2",
+    "retailer": {
+      "id": "0",
+      "name": "OTTO"
+    },
+    "serviceType": null,
+    "rankingModification": "BOOST",
+    "patternSample": null,
+    "customDimensions": {
+      "dimension": []
+    },
+    "customMeasureType": null,
+    "assortmentCode": "790",
+    "articleNumberWithPromotion": "37643773",
+    "description": null,
+    "onlineDate": "23.05.2016",
+    "dealDate": null,
+    "characteristics": null,
+    "sellingPoints": {
+      "sellingPoint": [
+        "Komfortables Bett inkl. Topper",
+        "Inkl. Bettkasten",
+        "Kunstlederbezug in Kombination mit Strukturstoff",
+        "Komfortliegehöhe inkl. Topper 63 cm",
+        "Matratze auch mit Härtegrad 4 erhältlich"
+      ]
+    },
+    "oldPrice": 79999,
+    "suggestedRetailPrice": null,
+    "sale": true,
+    "businessValues": null,
+    "businessCategory": {
+      "value": "MOEBEL_HOMEAFFAIRE",
+      "group": "HARTWAREN"
+    },
+    "companyId": 0,
+    "eanList": null,
+    "energyEfficiencyClass": null,
+    "season": {
+      "id": 134,
+      "year": 2016,
+      "value": "AUTUMN_WINTER"
+    },
+    "reductionClasses": "30,40,50",
+    "tags": "Möbel Neuheiten,Möbel_Modern,Möbel_Schlafzimmer,Sale_Aktionen,Wohninspiration,topmarken_reduziert",
+    "largeSize": false,
+    "largeSizePlus": false,
+    "itemOptionCommKey": 538203081,
+    "buyingGroupCode": null,
+    "merchandiseGroupCode": null,
+    "dataSheet": null,
+    "downloadableDocuments": [],
+    "displayPrice": {
+      "comparativePriceDifference": "400,00",
+      "comparativePriceAdvantage": "50",
+      "showComparativePriceRelative": true,
+      "showComparativePriceAbsolute": true,
+      "hasSuggestedRetailPrice": false,
+      "comparativePriceAmount": "799,99",
+      "priceAmount": "399,99",
+      "customMeasureType": null,
+      "priceDifferenceToFirstVariation": null,
+      "normPrice": null,
+      "installments": {
+        "amount": "19,35",
+        "count": 24
+      },
+      "hasMoreExpensiveAvailableVariation": true,
+      "showComparativePriceAbsoluteAndRelative": true
+    },
+    "productDetails": [],
+    "isDealDateToday": false,
+    "campaigns": [],
+    "htmlDetails": null,
+    "expertReviews": {
+      "review": null
+    },
+    "qualityDetails": {
+      "displayName": "Qualitätshinweise",
+      "qualityDetails": [
+        {
+          "displayName": "GOODproduct - Nachhaltige Produkte bei OTTO",
+          "imageUrl": "https://i.otto.de/i/otto/qualityDetail.GOODPRODUCT.gif?$001ICON01$",
+          "name": "GOODPRODUCT",
+          "glossaryUrl": "/shoppages/quality_goodproduct"
+        },
+        {
+          "displayName": "FSC®",
+          "imageUrl": "https://i.otto.de/i/otto/qualityDetail.FSC.gif?$001ICON01$",
+          "name": "FSC",
+          "glossaryUrl": "/shoppages/quality_fsc"
+        },
+        {
+          "displayName": "Made in Europe",
+          "imageUrl": "https://i.otto.de/i/otto/qualityDetail.MADE_IN_EUROPE.gif?$001ICON01$",
+          "name": "MADE_IN_EUROPE",
+          "glossaryUrl": "/shoppages/quality_made_in_europe"
+        }
+      ]
+    },
+    "consultingDetails": [],
+    "deal": null,
+    "images": {
+      "uriTemplate": "https://i.otto.de/i/otto/16744222",
+      "width": 960,
+      "height": 659
+    },
+    "alternativeImageList": {
+      "images": [
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16744172",
+          "width": 960,
+          "height": 658
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16766987",
+          "width": 960,
+          "height": 801
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16766703",
+          "width": 755,
+          "height": 960
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16766687",
+          "width": 960,
+          "height": 802
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16766706",
+          "width": 960,
+          "height": 531
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16766712",
+          "width": 960,
+          "height": 854
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16766709",
+          "width": 960,
+          "height": 649
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16766715",
+          "width": 960,
+          "height": 640
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16571282",
+          "width": 960,
+          "height": 639
+        },
+        {
+          "uriTemplate": "https://i.otto.de/i/otto/16787282",
+          "width": 960,
+          "height": 802
+        }
+      ]
+    },
+    "energyEfficiencyImage": null
+  }
+]
