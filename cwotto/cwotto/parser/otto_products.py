@@ -27,7 +27,7 @@ class OttoProducts(OttoBase):
             # __value is array
             __value = attributes[__key]
             # join __value by '|' to string
-            __new_value = __value.join('|')
+            __new_value = '|'.join(__value)
             attributes[__key] = __new_value
 
         return attributes
