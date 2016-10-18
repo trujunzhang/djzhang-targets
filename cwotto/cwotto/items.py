@@ -83,8 +83,8 @@ class Product(scrapy.Item):
             post_content="",
             post_excerpt="",
 
-            regular_price=0,
-            price=0,
+            regular_price=regular_price,
+            price=price,
             oldPrice=0,
 
         )
