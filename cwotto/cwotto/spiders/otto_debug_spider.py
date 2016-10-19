@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
-
 class OttoDebugSpider(scrapy.Spider):
     name = "otto_debug"
 
@@ -45,20 +44,18 @@ class OttoDebugSpider(scrapy.Spider):
 
     def parse(self, response):
         url = response.request.url
-        split = url.split("#")
-        if len(split) == 2:
-            para = split[1]
-            s = para.split('=')
-            if len(s) == 2:
-                variation_id = s[1]
 
-                product = self._crawl_parser.parse_item(url, response, variation_id)
+        from cwotto.utils.crawl_utils import CrawlUtils
+        variation_id = CrawlUtils.get_variation_id(url)
+        if variation_id:
 
-                if product:
-                    parent = product["parent"]
-                    if parent:
-                        yield parent
+            product = self._crawl_parser.parse_item(url, response, variation_id)
 
-                        children = product["children"]
-                        for __child in children:
-                            yield __child
+            if product:
+                parent = product["parent"]
+                if parent:
+                    yield parent
+
+                    children = product["children"]
+                    for __child in children:
+                        yield __child
