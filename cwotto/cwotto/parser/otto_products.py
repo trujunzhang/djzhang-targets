@@ -25,7 +25,9 @@ class OttoProducts(OttoBase):
                                                        product_id=product_id,
                                                        default_variation_id=default_variation_id)
 
-        Product.convert_to_parent(__item)
+        __uniqueHtmlDetails = self.get_product_description(hxs)
+
+        Product.convert_to_parent(__item, __uniqueHtmlDetails)
 
     def get_product_with_variables(self, hxs, url, product_json, product_id, default_variation_id):
         """
