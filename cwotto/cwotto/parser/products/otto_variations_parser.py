@@ -16,16 +16,16 @@ class OttoVariationsParser(OttoBase):
         count = 1
         for variation_id in __variations:
             variation = __variations[variation_id]
-            __item = self.__parse_product(variation=variation, count=count,
-                                          product_id=product_id,
-                                          default_variation_id=default_variation_id)
+            __item = self.parse_product(variation=variation, count=count,
+                                        product_id=product_id,
+                                        default_variation_id=default_variation_id)
             items.append(__item)
 
             count += 1
 
         return items
 
-    def __parse_product(self, variation, count, product_id, default_variation_id):
+    def parse_product(self, variation, count, product_id, default_variation_id):
         url = self.get_child_link(variation)
         variable_id = variation['id']
         title = variation['name']

@@ -18,7 +18,23 @@ class OttoProducts(OttoBase):
 
         return True
 
+    def get_single_product(self, hxs, url, product_json, product_id, default_variation_id):
+        __child_products_parser = OttoVariationsParser()
+        __variation = product_json['variations'][default_variation_id]
+        __item = __child_products_parser.parse_product(variation=__variation, count=1,
+                                                         product_id=product_id,
+                                                         default_variation_id=default_variation_id)
+
     def get_product_with_variables(self, hxs, url, product_json, product_id, default_variation_id):
+        """
+        Get product with variables.
+        :param hxs:
+        :param url:
+        :param product_json:
+        :param product_id:
+        :param default_variation_id:
+        :return:
+        """
         # child products
         __child_products_parser = OttoVariationsParser()
         children = __child_products_parser.get_all_variations_products(product_json, product_id, default_variation_id)

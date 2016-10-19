@@ -40,7 +40,8 @@ class OttoParse(BaseParser):
 
         product = {}
         if _is_single_product:
-            product = _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variationId)
+            __product = _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variationId)
+            x = 0
         else:
             product = _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variationId)
 
