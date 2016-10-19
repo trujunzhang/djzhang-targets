@@ -12,12 +12,12 @@ class OttoProducts(OttoBase):
         self.product_id = product_id
         self.default_variation_id = default_variation_id
 
-        self.child_products_parser = OttoVariationsParser(self.product_json, self.product_id, self.default_variation_id)
+        self.child_products_parser = OttoVariationsParser(self.product_json, self.product_id)
         super(OttoProducts, self).__init__(product_json, default_variation_id)
 
     def get_variations_products(self):
         # Step 1: parse all variations as product items.
-        children = self.child_products_parser.get_all_variations_products()
+        children = self.child_products_parser.get_all_variations_products(self.default_variation_id)
 
         return children
 
