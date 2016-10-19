@@ -40,5 +40,11 @@ class OttoSpider(scrapy.Spider):
             if len(s) == 2:
                 variationId = s[1]
 
-                item = self._crawl_parser.parse_item(url, response, variationId)
-                yield item
+                product = self._crawl_parser.parse_item(url, response, variationId)
+
+                parent = product["parent"]
+                yield parent
+
+                children = product["children"]
+                for __child in children:
+                    yield __child
