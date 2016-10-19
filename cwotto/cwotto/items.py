@@ -14,7 +14,7 @@ class Product(scrapy.Item):
     variable_id = scrapy.Field()
 
     is_parent = scrapy.Field()
-    is_default_variable = scrapy.Field()
+    default_variable = scrapy.Field()
     product_id = scrapy.Field()
     product_parent = scrapy.Field()
     variable_index = scrapy.Field()
@@ -46,7 +46,7 @@ class Product(scrapy.Item):
             variable_id=0,
 
             is_parent=True,
-            is_default_variable=False,
+            default_variable=False,
             product_id=product_id,
             product_parent=0,
             variable_index=-1,
@@ -83,7 +83,7 @@ class Product(scrapy.Item):
             variable_id=variable_id,
 
             is_parent=False,
-            is_default_variable=(variable_id == default_variation_id),
+            default_variable=(variable_id == default_variation_id),
             product_id=product_id,
             product_parent=product_id,
             variable_index=variable_index,
