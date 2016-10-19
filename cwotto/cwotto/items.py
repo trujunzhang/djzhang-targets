@@ -7,6 +7,7 @@
 
 import scrapy
 from datetime import datetime
+
 from cwotto.utils.slugify import slugify
 
 
@@ -77,6 +78,9 @@ class Product(scrapy.Item):
 
     @classmethod
     def get_parent_product(cls, url, product_id, title, uniqueHtmlDetails, available_attributes):
+        from cwotto.database.history_db import HistoryDatabase
+        title = HistoryDatabase().get_title()
+
         return Product(
             sku=product_id,
             variable_id=0,

@@ -56,6 +56,6 @@ class OttoDebugSpider(scrapy.Spider):
                 if parent:
                     yield parent
 
-                    children = product["children"]
-                    for __child in children:
-                        yield __child
+                    # children = product["children"]
+                    # for __child in children:
+                    #     yield __child
