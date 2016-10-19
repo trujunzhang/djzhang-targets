@@ -5,9 +5,11 @@ from cwotto.parser.products.otto_base import OttoBase
 
 
 class OttoVariationsParser(OttoBase):
-    def __init__(self, product_json, product_id):
+    def __init__(self, product_json, product_id, default_variation_id):
         self.product_json = product_json
         self.product_id = product_id
+
+        self.default_variation_id = default_variation_id
 
         self.available_attributes = {}
         super(OttoVariationsParser, self).__init__(product_json)

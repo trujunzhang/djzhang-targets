@@ -5,15 +5,15 @@ from cwotto.parser.products.otto_variations_parser import OttoVariationsParser
 
 
 class OttoProducts(OttoBase):
-    def __init__(self, hxs, url, product_json, product_id, default_variationId):
+    def __init__(self, hxs, url, product_json, product_id, default_variation_id):
         self.hxs = hxs
         self.url = url
         self.product_json = product_json
         self.product_id = product_id
-        self.default_variationId = default_variationId
+        self.default_variation_id = default_variation_id
 
-        self.child_products_parser = OttoVariationsParser(self.product_json, self.product_id)
-        super(OttoProducts, self).__init__(product_json, default_variationId)
+        self.child_products_parser = OttoVariationsParser(self.product_json, self.product_id, self.default_variation_id)
+        super(OttoProducts, self).__init__(product_json, default_variation_id)
 
     def get_variations_products(self):
         # Step 1: parse all variations as product items.
