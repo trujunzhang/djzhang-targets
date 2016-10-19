@@ -18,10 +18,13 @@ class HistoryDatabase(BaseDatabase):
         :return:
         """
         product_id = CrawlUtils.get_product_id(href)
-        history = ParsePy.ParseQuery("History").get(product_id)
-        
-        return history
+        query = ParsePy.ParseQuery("History")
+        query = query.eq("product_id", product_id)
+        list = query.fetch()
+
+        return len(list) > 0
 
     def save_history(self, item):
         history = ParsePy.ParseObject("History")
+        history
         history.save()
