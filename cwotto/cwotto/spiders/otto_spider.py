@@ -38,13 +38,15 @@ class OttoSpider(scrapy.Spider):
             para = split[1]
             s = para.split('=')
             if len(s) == 2:
-                variationId = s[1]
+                variation_id = s[1]
 
-                product = self._crawl_parser.parse_item(url, response, variationId)
+                product = self._crawl_parser.parse_item(url, response, variation_id)
 
-                parent = product["parent"]
-                yield parent
+                if product:
+                    parent = product["parent"]
+                    if parent:
+                        yield parent
 
-                children = product["children"]
-                for __child in children:
-                    yield __child
+                        children = product["children"]
+                        for __child in children:
+                            yield __child

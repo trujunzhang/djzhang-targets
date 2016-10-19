@@ -23,7 +23,7 @@ class OttoParse(BaseParser):
 
         return product_links
 
-    def parse_item(self, url, hxs, variationId):
+    def parse_item(self, url, hxs, variation_id):
         productScript = self.extract_by_query(hxs, "//script[@id='productDataJson']").replace("</script>", "").replace(
             '<script id="productDataJson" type="application/json">', "")
 
@@ -40,8 +40,8 @@ class OttoParse(BaseParser):
 
         product = {}
         if _is_single_product:
-            product = _otto_products.get_single_product(hxs, url, product_json, product_id, variationId)
+            product = _otto_products.get_single_product(hxs, url, product_json, product_id, variation_id)
         else:
-            product = _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variationId)
+            product = _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variation_id)
 
         return product
