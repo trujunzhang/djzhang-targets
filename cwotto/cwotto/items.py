@@ -108,3 +108,38 @@ class Product(scrapy.Item):
             attributes=attributes,
             available_attributes=[]
         )
+
+    @classmethod
+    def convert_to_parent(cls, variable_product, uniqueHtmlDetails):
+        __product_id = variable_product['product_id']
+        __title = variable_product['post_title']
+        return Product(
+            sku=__product_id,
+            variable_id=0,
+
+            is_parent=True,
+            default_variable=False,
+            product_id=__product_id,
+            product_parent=0,
+            variable_index=-1,
+
+            post_status='publish',
+            menu_order=0,
+
+            featured_image=variable_product['featured_image'],
+            product_gallery=variable_product['product_gallery'],
+
+            url=variable_product['url'],
+
+            post_title=__title,
+            post_name=slugify(__title),
+            post_content=uniqueHtmlDetails,
+            post_excerpt=uniqueHtmlDetails,
+
+            regular_price=variable_product['regular_price'],
+            price=variable_product['price'],
+            oldPrice=variable_product['oldPrice'],
+
+            attributes=[],
+            available_attributes=[]
+        )

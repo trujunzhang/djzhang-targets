@@ -22,8 +22,10 @@ class OttoProducts(OttoBase):
         __child_products_parser = OttoVariationsParser()
         __variation = product_json['variations'][default_variation_id]
         __item = __child_products_parser.parse_product(variation=__variation, count=1,
-                                                         product_id=product_id,
-                                                         default_variation_id=default_variation_id)
+                                                       product_id=product_id,
+                                                       default_variation_id=default_variation_id)
+
+        Product.convert_to_parent(__item)
 
     def get_product_with_variables(self, hxs, url, product_json, product_id, default_variation_id):
         """
