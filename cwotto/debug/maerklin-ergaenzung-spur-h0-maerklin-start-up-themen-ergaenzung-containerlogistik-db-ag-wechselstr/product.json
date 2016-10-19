@@ -1,0 +1,179 @@
+{
+  "id": "547077850",
+  "uniqueDescription": null,
+  "uniqueHtmlDetails": "Märklin Ergänzungsset, Spur H0, »Märklin Start up, Themen Ergänzungspaket Containerlogistik, DB AG, Wechselstrom«.<br />Container sind nicht nur im Güterverkehr ein wichtiger Transportgegenstand, sondern dürfen auch auf keiner Modelleisenbahnanlage fehlen. Ausgestattet mit einem Containertragwagen mit stirnseitigen Boardwänden, welcher mit 2 Tankcontainern beladen ist, 3 weitere Container und ein Logistik-Fahrzeug sowie Gleismaterial für den Ausbau der C-Gleis-Anlage, ist dieses Set genau das Richtige, um für den perfekten Spielspaß auf der Strecke zu sorgen.<br /><br /> <b>Details:</b><ul><li>Spur: H0</li><li>Bahnverwaltung: Deutsche Bahn AG</li><li>Stromsystem: Wechselstrom</li><li>Länge über Puffer: ca. 16 cm</li></ul><b>Inhalt:</b> <ul><li>Containertragwagen mit 2 20 ft. Containern</li><li>3 weitere Container</li><li>Logistik-Fahrzeug</li><li>5 gerade C-Gleise (ca. 19 cm)</li><li>4 gerade C-Gleise (ca. 17 cm)</li><li>1 gebogenes Gleis</li><li>1 Weiche rechts</li><li>1 Prellblock</li></ul>Altersempfehlung ab 6 Jahren<br /><br /> <b>Warnhinweise:</b> <ul><li>ACHTUNG: Nicht geeignet für Kinder unter 3 Jahren. Funktionsbedingte scharfe Kanten und Spitzen. Erstickungsgefahr wegen abbrech- und verschluck barer Kleinteile. Verpackung aufbewahren</li></ul>",
+  "articleServices": [],
+  "variations": {
+    "547077851": {
+      "id": "547077851",
+      "sku": "86095495-0",
+      "name": "Märklin Ergänzung Spur H0, »Märklin Start up Themen Ergänzung Containerlogistik DB AG, Wechselstr.«",
+      "retailPrice": 8999,
+      "links": [
+        {
+          "link": {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "/p/maerklin-ergaenzung-spur-h0-maerklin-start-up-themen-ergaenzung-containerlogistik-db-ag-wechselstr-547077850/#variationId=547077851"
+          }
+        }
+      ],
+      "availability": {
+        "detail": "DELIVERYSTATEMENT_1_WEEK",
+        "limitation": null,
+        "delivery24H": false,
+        "value": "AVAILABLE",
+        "displayName": "vorrätig - in 5-6 Werktagen bei Ihnen"
+      },
+      "availableDeliveryServices": {
+        "deliveryService24": false,
+        "deliveryService24Spedition": false,
+        "deliveryServiceExpress": false,
+        "deliveryServicePaketShop": false,
+        "deliveryServiceHaengeversand": false,
+        "deliveryServiceSpedition": false,
+        "deliveryServiceSpeditionSchwerlast": false,
+        "deliveryServiceWishDate": false
+      },
+      "shippingDetail": {
+        "value": "",
+        "speditionCharge": false
+      },
+      "supplierId": 83826,
+      "normPrice": null,
+      "dimensions": {
+        "dimension": []
+      },
+      "articleNumber": "860954",
+      "promotionNumber": "95",
+      "skuSuffix": "0",
+      "retailer": {
+        "id": "0",
+        "name": "OTTO"
+      },
+      "serviceType": null,
+      "rankingModification": "NORMAL",
+      "patternSample": null,
+      "customDimensions": {
+        "dimension": []
+      },
+      "customMeasureType": null,
+      "assortmentCode": "964",
+      "articleNumberWithPromotion": "86095495",
+      "description": null,
+      "onlineDate": "05.10.2016",
+      "dealDate": null,
+      "characteristics": null,
+      "sellingPoints": {
+        "sellingPoint": [
+          "Erweiterungsset »Containerlogistik« für Modellbahnen Spur H0",
+          "Ab 6 Jahren",
+          "Mit Containertragwagen und dazugehörigen Container",
+          "Inklusive Logistik-Fahrzeug",
+          "Mit Gleismaterial zum Ausbau der C-Gleis-Anlage"
+        ]
+      },
+      "oldPrice": null,
+      "suggestedRetailPrice": 8999,
+      "sale": false,
+      "businessValues": null,
+      "businessCategory": {
+        "value": "HOME_BEAUTY",
+        "group": "HARTWAREN"
+      },
+      "companyId": 0,
+      "eanList": {
+        "value": "4001883784526"
+      },
+      "energyEfficiencyClass": null,
+      "season": {
+        "id": 134,
+        "year": 2016,
+        "value": "AUTUMN_WINTER"
+      },
+      "reductionClasses": null,
+      "tags": "neuheitenspielwaren,spielzeugneuheiten",
+      "largeSize": false,
+      "largeSizePlus": false,
+      "itemOptionCommKey": 547077851,
+      "buyingGroupCode": null,
+      "merchandiseGroupCode": null,
+      "dataSheet": null,
+      "downloadableDocuments": [],
+      "displayPrice": {
+        "comparativePriceDifference": null,
+        "comparativePriceAdvantage": null,
+        "showComparativePriceRelative": false,
+        "showComparativePriceAbsolute": false,
+        "hasSuggestedRetailPrice": false,
+        "comparativePriceAmount": null,
+        "priceAmount": "89,99",
+        "customMeasureType": null,
+        "priceDifferenceToFirstVariation": null,
+        "normPrice": null,
+        "installments": {
+          "amount": "8,10",
+          "count": 12
+        },
+        "hasMoreExpensiveAvailableVariation": false,
+        "showComparativePriceAbsoluteAndRelative": false
+      },
+      "productDetails": [
+        {
+          "type": "consultingdetail",
+          "title": null,
+          "details": [
+            "/product/products/details/CONSULTINGDETAIL/DISPOSALNOTE/"
+          ]
+        }
+      ],
+      "isDealDateToday": false,
+      "campaigns": [],
+      "htmlDetails": null,
+      "expertReviews": {
+        "review": null
+      },
+      "qualityDetails": {
+        "displayName": "Qualitätshinweise",
+        "qualityDetails": [
+          {
+            "displayName": "Nicht für Kinder unter 3 Jahren",
+            "imageUrl": "https://i.otto.de/i/otto/qualityDetail.0BIS3.gif?$001ICON01$",
+            "name": "0BIS3",
+            "glossaryUrl": "/shoppages/quality_0bis3"
+          }
+        ]
+      },
+      "consultingDetails": [
+        {
+          "displayName": "Entsorgungshinweis",
+          "name": "DISPOSALNOTE",
+          "contentUrl": "/shoppages/consultingdetail_disposalnote"
+        }
+      ],
+      "deal": null,
+      "images": {
+        "uriTemplate": "https://i.otto.de/i/otto/17484146",
+        "width": 960,
+        "height": 669
+      },
+      "alternativeImageList": {
+        "images": [
+          {
+            "uriTemplate": "https://i.otto.de/i/otto/17484188",
+            "width": 960,
+            "height": 538
+          }
+        ]
+      },
+      "energyEfficiencyImage": null
+    }
+  },
+  "sortedVariationIds": [
+    "547077851"
+  ],
+  "distinctDimensions": [],
+  "variationTree": null,
+  "campaigns": {},
+  "videoInformation": null
+}
