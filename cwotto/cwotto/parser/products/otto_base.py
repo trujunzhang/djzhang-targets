@@ -28,8 +28,11 @@ class OttoBase(object):
 
     def get_product_gallery(self, variation):
         result = []
-        _images = variation['alternativeImageList']['images']
-        for image in _images:
-            result.append(image['uriTemplate'])
+        alternative_image_list_ = variation['alternativeImageList']
+        if alternative_image_list_:
+            _images = alternative_image_list_['images']
+            if _images:
+                for image in _images:
+                    result.append(image['uriTemplate'])
 
         return result
