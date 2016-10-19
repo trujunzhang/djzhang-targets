@@ -35,24 +35,6 @@ class OttoParse(BaseParser):
 
         product_id = product_json['id']
 
-        _otto_products = OttoProducts(hxs, url, product_json, product_id, variationId)
+        _otto_products = OttoProducts()
 
-        return self._parse_common(hxs,url, product_id, _otto_products)
-
-    def _parse_common(self, hxs,url, product_id, _otto_products):
-
-        # child products
-        children = _otto_products.get_variations_products()
-
-        # Some product only have size or color.
-        # So we need to get available attributes from children
-        available_attributes = _otto_products.get_available_attributes_json_string()
-
-        # Parent product
-        parent = Product.get_parent_product(url=url,
-                                            product_id=product_id,
-                                            title=_otto_products.get_title(),
-                                            uniqueHtmlDetails=_otto_products.get_product_description(hxs),
-                                            available_attributes=available_attributes)
-
-        return {"parent": parent, "children": children}
+        return _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variationId)

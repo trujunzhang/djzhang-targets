@@ -4,17 +4,15 @@ from cwotto.parser.base_parser import BaseParser
 
 
 class OttoBase(object):
-    def __init__(self, product_json, default_variation_id=None):
-        self.product_json = product_json
-        self.default_variation_id = default_variation_id
+    def __init__(self):
         super(OttoBase, self).__init__()
 
     def get_product_description(self, hxs):
         return BaseParser.extract_by_query(hxs, '//*[@class="article-properties-body"]')
         # return "description"
 
-    def get_title(self):
-        __variation = self.product_json["variations"][self.default_variation_id]
+    def get_title(self, product_json, default_variation_id):
+        __variation = product_json["variations"][default_variation_id]
         _title = __variation['name']
         return _title
 

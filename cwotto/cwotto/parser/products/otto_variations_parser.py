@@ -5,27 +5,27 @@ from cwotto.parser.products.otto_base import OttoBase
 
 
 class OttoVariationsParser(OttoBase):
-    def __init__(self, product_json, product_id):
-        self.product_json = product_json
-        self.product_id = product_id
-
+    def __init__(self):
         self.available_attributes = {}
-        super(OttoVariationsParser, self).__init__(product_json)
+        super(OttoVariationsParser, self).__init__()
 
-    def get_all_variations_products(self, default_variation_id):
+    def get_all_variations_products(self, product_json, product_id, default_variation_id):
         items = []
-        __variations = self.product_json['variations']
+        __variations = product_json['variations']
+
         count = 1
         for variation_id in __variations:
             variation = __variations[variation_id]
-            __item = self.__parse_product(variation=variation, count=count, default_variation_id=default_variation_id)
+            __item = self.__parse_product(variation=variation, count=count,
+                                          product_id=product_id,
+                                          default_variation_id=default_variation_id)
             items.append(__item)
 
             count += 1
 
         return items
 
-    def __parse_product(self, variation, count, default_variation_id):
+    def __parse_product(self, variation, count, product_id, default_variation_id):
         url = self.get_child_link(variation)
         variable_id = variation['id']
         title = variation['name']
@@ -45,7 +45,7 @@ class OttoVariationsParser(OttoBase):
         attributes = self._get_product_attributes(variation=variation)
 
         return Product.get_variable_product(url, default_variation_id, count,
-                                            self.product_id, variable_id,
+                                            product_id, variable_id,
                                             title, regular_price, price,
                                             featured_image, product_gallery,
                                             attributes)
