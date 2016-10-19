@@ -14,6 +14,7 @@ class Product(scrapy.Item):
     variable_id = scrapy.Field()
 
     is_parent = scrapy.Field()
+    is_default_variable = scrapy.Field()
     product_id = scrapy.Field()
     product_parent = scrapy.Field()
     variable_index = scrapy.Field()
@@ -41,10 +42,11 @@ class Product(scrapy.Item):
     @classmethod
     def get_parent_product(cls, url, product_id, title, uniqueHtmlDetails, available_attributes):
         return Product(
+            sku=product_id,
             variable_id=0,
 
             is_parent=True,
-            sku=product_id,
+            is_default_variable=False,
             product_id=product_id,
             product_parent=0,
             variable_index=-1,
@@ -77,11 +79,11 @@ class Product(scrapy.Item):
                              featured_image, product_gallery,
                              attributes):
         return Product(
-
+            sku="{}{}".format(product_id, variable_index),
             variable_id=variable_id,
 
             is_parent=False,
-            sku="{}{}".format(product_id, variable_index),
+            is_default_variable=(variable_id == default_variation_id),
             product_id=product_id,
             product_parent=product_id,
             variable_index=variable_index,
