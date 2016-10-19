@@ -36,7 +36,7 @@ class CrawlUtils(object):
     @classmethod
     def get_variation_id(cls, url):
         """
-        href="/p/ajc-kurzblazer-552791036/#variationId=552791094">
+        href="https://www.otto.de/p/bruno-banani-blazer-im-uniform-look-512770595#variationId=512770597">
         :param url:
         :return:
         """
