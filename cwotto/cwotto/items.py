@@ -25,12 +25,12 @@ class CategoryItem(scrapy.Item):
 
 
 class CacheItem(scrapy.Item):
-    product_id = scrapy.Field()
+    url = scrapy.Field()
 
     @classmethod
-    def get_default(cls, product_id):
+    def get_default(cls, url):
         return CacheItem(
-            product_id=product_id,
+            url=url,
         )
 
 

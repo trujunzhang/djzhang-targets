@@ -3,7 +3,7 @@ import urlparse
 
 from cwotto.database.cache_db import CacheDatabase
 from cwotto.database.history_db import HistoryDatabase
-from cwotto.items import Product
+from cwotto.items import Product, CacheItem
 from cwotto.parser.base_parser import BaseParser
 from cwotto.parser.otto_products import OttoProducts
 
@@ -11,6 +11,7 @@ from cwotto.parser.otto_products import OttoProducts
 class OttoParse(BaseParser):
     def __init__(self):
         self.history_db = HistoryDatabase()
+        self.cache_db = CacheDatabase()
 
         super(OttoParse, self).__init__()
 
@@ -24,7 +25,7 @@ class OttoParse(BaseParser):
             appLink = urlparse.urljoin(url, link.strip())
 
             if not self.history_db.check_history_exist(link.strip()):  # ignore it, If the link already exist
-                product_links.append(appLink)
+                self.cache_db.save_cache(CacheItem.get_default(url=appLink))
 
         return product_links
 
