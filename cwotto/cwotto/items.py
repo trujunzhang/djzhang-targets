@@ -6,7 +6,28 @@
 # http://doc.scrapy.org/en/latest/topics/items.html
 
 import scrapy
+from datetime import datetime
 from cwotto.utils.slugify import slugify
+
+
+class CacheItem(scrapy.Item):
+    product_id = scrapy.Field()
+
+    @classmethod
+    def get_default(cls, product_id):
+        return CacheItem(
+            product_id=product_id,
+        )
+
+
+class HistoryItem(scrapy.Item):
+    product_id = scrapy.Field()
+
+    @classmethod
+    def get_default(cls, product_id):
+        return HistoryItem(
+            product_id=product_id
+        )
 
 
 class Product(scrapy.Item):

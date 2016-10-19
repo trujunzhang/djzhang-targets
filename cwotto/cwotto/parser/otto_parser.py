@@ -1,6 +1,8 @@
 import json
 import urlparse
 
+from cwotto.database.cache_db import CacheDatabase
+from cwotto.database.history_db import HistoryDatabase
 from cwotto.items import Product
 from cwotto.parser.base_parser import BaseParser
 from cwotto.parser.otto_products import OttoProducts
@@ -8,18 +10,20 @@ from cwotto.parser.otto_products import OttoProducts
 
 class OttoParse(BaseParser):
     def __init__(self):
+        self.history_db = HistoryDatabase()
+
         super(OttoParse, self).__init__()
 
     def parse_paginate(self, url, hxs):
+
         product_links = []
         links = hxs.xpath('//*[@class="product small"]/a/@href').extract()
-        count = 0
+
         for link in links:
-            if count >= 10:
-                break
-            count = count + 1
             appLink = urlparse.urljoin(url, link.strip())
-            product_links.append(appLink)
+
+            if not self.history_db.check_history_exist(appLink):  # ignore it, If the link already exist
+                product_links.append(appLink)
 
         return product_links
 
