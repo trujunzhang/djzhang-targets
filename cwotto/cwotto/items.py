@@ -10,6 +10,20 @@ from datetime import datetime
 from cwotto.utils.slugify import slugify
 
 
+class CategoryItem(scrapy.Item):
+    # Url is the category's link.
+    url = scrapy.Field()
+    # Page number is the current scraped pagination number.
+    page_number = scrapy.Field()
+
+    @classmethod
+    def get_default(cls, url, page_number):
+        return CategoryItem(
+            url=url,
+            page_number=page_number
+        )
+
+
 class CacheItem(scrapy.Item):
     product_id = scrapy.Field()
 

@@ -5,11 +5,16 @@ from scrapy.exceptions import DropItem
 from datetime import datetime
 
 from cwotto.utils.crawl_utils import CrawlUtils
+from cwotto.extensions import ParsePy
 
 
-class PaginationDatabase(BaseDatabase):
+class CategoriesPaginationDatabase(BaseDatabase):
     def __init__(self):
-        super(PaginationDatabase, self).__init__()
+        super(CategoriesPaginationDatabase, self).__init__()
+
+    def get_validate_categories_urls(self):
+        query = ParsePy.ParseQuery("Categories")
+        categories = query.fetch()
 
     def get_last_page_number(self):
         pass
