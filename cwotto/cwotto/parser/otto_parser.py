@@ -36,5 +36,12 @@ class OttoParse(BaseParser):
         product_id = product_json['id']
 
         _otto_products = OttoProducts()
+        _is_single_product = _otto_products.check_single_product_without_variables(product_json)
 
-        return _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variationId)
+        product = {}
+        if _is_single_product:
+            product = _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variationId)
+        else:
+            product = _otto_products.get_product_with_variables(hxs, url, product_json, product_id, variationId)
+
+        return product
