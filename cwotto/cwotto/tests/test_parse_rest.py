@@ -3,6 +3,7 @@
 import unittest
 
 from cwotto.extensions import ParsePy
+from cwotto.utils.crawl_utils import CrawlUtils
 
 
 class ParseRestTest(unittest.TestCase):
@@ -23,7 +24,12 @@ class ParseRestTest(unittest.TestCase):
 
         self.assertNotEqual(id, None)
 
-    def test_query(self):
+    def xxxtest_query(self):
         gameScore = ParsePy.ParseQuery("GameScore").get("LWzpWzHOfr")
 
         x = 0
+
+    def test_get_product_id(self):
+        product_id = CrawlUtils.get_product_id("/p/ajc-kurzblazer-552791036/#variationId=552791094")
+        self.assertEqual(product_id, '552791036')
+
