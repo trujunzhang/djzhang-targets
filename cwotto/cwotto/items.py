@@ -14,6 +14,7 @@ class Product(scrapy.Item):
     variable_id = scrapy.Field()
 
     is_parent = scrapy.Field()
+    is_single = scrapy.Field()  # True means type is single product, False means type is variable product.
     default_variable = scrapy.Field()
     product_id = scrapy.Field()
     product_parent = scrapy.Field()
@@ -46,6 +47,7 @@ class Product(scrapy.Item):
             variable_id=0,
 
             is_parent=True,
+            is_single=False,  # False means type is variable product.
             default_variable=False,
             product_id=product_id,
             product_parent=0,
@@ -83,6 +85,7 @@ class Product(scrapy.Item):
             variable_id=variable_id,
 
             is_parent=False,
+            is_single=False,  # False means type is variable product.
             default_variable=(variable_id == default_variation_id),
             product_id=product_id,
             product_parent=product_id,
@@ -118,6 +121,7 @@ class Product(scrapy.Item):
             variable_id=0,
 
             is_parent=True,
+            is_single=True,  # True means type is single product
             default_variable=False,
             product_id=__product_id,
             product_parent=0,
