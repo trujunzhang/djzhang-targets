@@ -37,9 +37,9 @@ class OttoParse(BaseParser):
 
         _otto_products = OttoProducts(hxs, url, product_json, product_id, variationId)
 
-        return self._parse_common(url, product_id, _otto_products)
+        return self._parse_common(hxs,url, product_id, _otto_products)
 
-    def _parse_common(self, url, product_id, _otto_products):
+    def _parse_common(self, hxs,url, product_id, _otto_products):
 
         # child products
         children = _otto_products.get_variations_products()
@@ -52,7 +52,7 @@ class OttoParse(BaseParser):
         parent = Product.get_parent_product(url=url,
                                             product_id=product_id,
                                             title=_otto_products.get_title(),
-                                            uniqueHtmlDetails=_otto_products.get_product_description(),
+                                            uniqueHtmlDetails=_otto_products.get_product_description(hxs),
                                             available_attributes=available_attributes)
 
         return {"parent": parent, "children": children}

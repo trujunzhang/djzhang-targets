@@ -9,9 +9,9 @@ class OttoBase(object):
         self.default_variation_id = default_variation_id
         super(OttoBase, self).__init__()
 
-    def get_product_description(self):
-        # return BaseParser.extract_by_query(self.hxs, '//*[@class="article-properties-body"]')
-        return "description"
+    def get_product_description(self, hxs):
+        return BaseParser.extract_by_query(hxs, '//*[@class="article-properties-body"]')
+        # return "description"
 
     def get_title(self):
         __variation = self.product_json["variations"][self.default_variation_id]
