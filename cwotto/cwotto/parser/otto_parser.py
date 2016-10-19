@@ -19,10 +19,11 @@ class OttoParse(BaseParser):
         product_links = []
         links = hxs.xpath('//*[@class="product small"]/a/@href').extract()
 
+        # linke is like href="/p/ajc-kurzblazer-552791036/#variationId=552791094">
         for link in links:
             appLink = urlparse.urljoin(url, link.strip())
 
-            if not self.history_db.check_history_exist(appLink):  # ignore it, If the link already exist
+            if not self.history_db.check_history_exist(link.strip()):  # ignore it, If the link already exist
                 product_links.append(appLink)
 
         return product_links

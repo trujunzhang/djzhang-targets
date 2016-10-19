@@ -12,7 +12,15 @@ class HistoryDatabase(BaseDatabase):
         super(HistoryDatabase, self).__init__()
 
     def check_history_exist(self, href):
-        history = ParsePy.ParseQuery("History").get("xxwXx9eOec")
+        """
+        # href is like href="/p/ajc-kurzblazer-552791036/#variationId=552791094">
+        :param href:
+        :return:
+        """
+        product_id = CrawlUtils.get_product_id(href)
+        history = ParsePy.ParseQuery("History").get(product_id)
+        
+        return history
 
     def save_history(self, item):
         history = ParsePy.ParseObject("History")
