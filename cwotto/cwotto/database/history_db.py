@@ -29,11 +29,3 @@ class HistoryDatabase(BaseDatabase):
         history = ParsePy.ParseObject("History")
         history.product_id = item['product_id']
         history.save()
-
-    def get_title(self):
-        ParsePy.APPLICATION_ID = "bAWPW8Ap8Sbk6prAu8hflEoDZ5uCvjTvY5nLpB7X"
-        ParsePy.MASTER_KEY = "BxBCs6KP0rk6Q2sR4XW5CnsEWK4mj4vdIHsEw7nB"
-
-        gameScore = ParsePy.ParseQuery("GameScore").get("LWzpWzHOfr")
-
-        return gameScore.playerName
