@@ -26,5 +26,5 @@ class HistoryDatabase(BaseDatabase):
 
     def save_history(self, item):
         history = ParsePy.ParseObject("History")
-        history
+        history.product_id = item['product_id']
         history.save()
