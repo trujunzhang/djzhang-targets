@@ -71,8 +71,8 @@ class Product(scrapy.Item):
         )
 
     @classmethod
-    def get_variable_product(cls, url,
-                             variable_index, product_id, variable_id,
+    def get_variable_product(cls, url, default_variation_id, variable_index,
+                             product_id, variable_id,
                              title, regular_price, price,
                              featured_image, product_gallery,
                              attributes):

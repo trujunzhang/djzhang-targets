@@ -46,7 +46,8 @@ class OttoVariationsParser(OttoBase):
 
         attributes = self._get_product_attributes(variation=variation)
 
-        return Product.get_variable_product(url, count, self.product_id, variable_id,
+        return Product.get_variable_product(url, self.default_variation_id, count,
+                                            self.product_id, variable_id,
                                             title, regular_price, price,
                                             featured_image, product_gallery,
                                             attributes)
