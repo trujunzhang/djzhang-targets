@@ -17,7 +17,7 @@ class DatabaseFactory:
 
         from cwotto.database.cache_db import CacheDatabase
         from cwotto.database.history_db import HistoryDatabase
-        from cwotto.database.item_db import ItemDatabase
+        from cwotto.database.pagination_db import ItemDatabase
 
         if DatabaseTypes.cache == dbType:
             database = CacheDatabase(uri, db + "_cache", "_cache_" + collection)
