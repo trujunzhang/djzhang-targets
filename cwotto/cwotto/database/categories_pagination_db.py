@@ -17,7 +17,7 @@ class CategoriesPaginationDatabase(BaseDatabase):
         categories = query.fetch()
 
     def get_last_page_number(self):
-        pass
+        category = ParsePy.ParseObject("Categories")
 
     def save_page_number(self, category, number):
         pass
