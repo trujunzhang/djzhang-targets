@@ -24,7 +24,7 @@ class OttoParse(BaseParser):
         count = 0
         # linke is like href="/p/ajc-kurzblazer-552791036/#variationId=552791094">
         for link in links:
-            if count > page_number:
+            if count >= page_number:
                 break
 
             count += 1

@@ -30,7 +30,8 @@ class CacheDatabase(BaseDatabase):
 
     def get_oldest_row_url(self, last_url):
         # Step01:remove it.
-        self.remove_last_cache(last_url)
+        if last_url:
+            self.remove_last_cache(last_url)
 
         # Step02: query the last cache.
         query = ParsePy.ParseQuery("Caches")

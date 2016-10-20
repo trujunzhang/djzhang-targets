@@ -4,6 +4,7 @@ from random import Random
 
 import scrapy
 
+from cwotto.database.cache_db import CacheDatabase
 from cwotto.database.categories_pagination_db import CategoriesPaginationDatabase
 from cwotto.extensions import ParsePy
 from cwotto.items import Product
@@ -30,6 +31,8 @@ class OttoSpider(scrapy.Spider):
         ParsePy.APPLICATION_ID = "bAWPW8Ap8Sbk6prAu8hflEoDZ5uCvjTvY5nLpB7X"
         ParsePy.MASTER_KEY = "BxBCs6KP0rk6Q2sR4XW5CnsEWK4mj4vdIHsEw7nB"
 
+        self.cache_db = CacheDatabase()
+
         self.categories_db = CategoriesPaginationDatabase()
 
         link = self.categories_db.get_current_category_url()
@@ -54,20 +57,28 @@ class OttoSpider(scrapy.Spider):
         if link:
             yield scrapy.Request(link, self.parse, dont_filter=True)
 
-    # def parse_item(self, response):
-    #     url = response.request.url
-    #
-    #     from cwotto.utils.crawl_utils import CrawlUtils
-    #     variation_id = CrawlUtils.get_variation_id(url)
-    #     if variation_id:
-    #
-    #         product = self._crawl_parser.parse_item(url, response, variation_id)
-    #
-    #         if product:
-    #             parent = product["parent"]
-    #             if parent:
-    #                 yield parent
-    #
-    #                 children = product["children"]
-    #                 for __child in children:
-    #                     yield __child
+        last_url = self.cache_db.get_oldest_row_url(None)
+        if last_url:
+            yield scrapy.Request(last_url, self.parse_item, dont_filter=True)
+
+    def parse_item(self, response):
+        url = response.request.url
+
+        from cwotto.utils.crawl_utils import CrawlUtils
+        variation_id = CrawlUtils.get_variation_id(url)
+        if variation_id:
+
+            product = self._crawl_parser.parse_item(url, response, variation_id)
+
+            if product:
+                parent = product["parent"]
+                if parent:
+                    yield parent
+
+                    children = product["children"]
+                    for __child in children:
+                        yield __child
+
+        last_url = self.cache_db.get_oldest_row_url(url)
+        if last_url:
+            yield scrapy.Request(last_url, self.parse_item, dont_filter=True)
