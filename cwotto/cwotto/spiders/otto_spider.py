@@ -6,6 +6,7 @@ import scrapy
 
 from cwotto.database.cache_db import CacheDatabase
 from cwotto.database.categories_pagination_db import CategoriesPaginationDatabase
+from cwotto.database.history_db import HistoryDatabase
 from cwotto.extensions import ParsePy
 from cwotto.items import Product
 
@@ -32,6 +33,7 @@ class OttoSpider(scrapy.Spider):
         ParsePy.MASTER_KEY = "BxBCs6KP0rk6Q2sR4XW5CnsEWK4mj4vdIHsEw7nB"
 
         self.cache_db = CacheDatabase()
+        self.history_db = HistoryDatabase()
 
         self.categories_db = CategoriesPaginationDatabase()
 
@@ -56,8 +58,8 @@ class OttoSpider(scrapy.Spider):
 
         # step02: next pagination.
         link = self.categories_db.get_current_category_url()
-        if link:
-            yield scrapy.Request(link, self.parse, dont_filter=True)
+        # if link:
+        #     yield scrapy.Request(link, self.parse, dont_filter=True)
 
         # step03: scraping the product page.
         last_url = self.cache_db.get_oldest_row_url(None)
@@ -81,6 +83,8 @@ class OttoSpider(scrapy.Spider):
                     children = product["children"]
                     for __child in children:
                         yield __child
+
+        self.history_db.save_history(url)
 
         last_url = self.cache_db.get_oldest_row_url(url)
         if last_url:

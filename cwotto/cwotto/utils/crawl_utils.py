@@ -25,7 +25,7 @@ class CrawlUtils(object):
             para = split[0]
             s = para.split('/')
             if len(s) == 4:
-                slug = s[2]
+                slug = s[(len(s) - 2)]
                 v = slug.split('-')
                 if len(v) > 0:
                     product_id = v[len(v) - 1]

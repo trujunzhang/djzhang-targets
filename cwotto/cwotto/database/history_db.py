@@ -25,7 +25,14 @@ class HistoryDatabase(BaseDatabase):
 
         return len(list) > 0
 
-    def save_history(self, item):
+    def save_history(self, url):
+        """
+        product_id: like ''
+        :param product_id:
+        :return:
+        """
+        product_id = CrawlUtils.get_product_id(url)
+
         history = ParsePy.ParseObject("History")
-        history.product_id = item['product_id']
+        history.product_id = product_id
         history.save()
