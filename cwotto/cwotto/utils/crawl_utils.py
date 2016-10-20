@@ -19,13 +19,17 @@ class CrawlUtils(object):
         :param url:
         :return:
         """
+
+        url = url.replace('https://www.otto.de','')
+        url = url.replace('/#',"#")
+
         split = url.split("#")
         if len(split) == 2:
             # para=/p/ajc-kurzblazer-552791036/
             para = split[0]
             s = para.split('/')
-            if len(s) == 4:
-                slug = s[(len(s) - 2)]
+            if len(s) >= 3:
+                slug = s[(len(s) - 1)]
                 v = slug.split('-')
                 if len(v) > 0:
                     product_id = v[len(v) - 1]
