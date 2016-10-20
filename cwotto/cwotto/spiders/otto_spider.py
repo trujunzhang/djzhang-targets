@@ -45,27 +45,29 @@ class OttoSpider(scrapy.Spider):
         url = response.request.url
 
         page_number = self.categories_db.get_current_total_pages()
+
         scraped_count = self._crawl_parser.parse_paginate(url, response, page_number)
+
         self.categories_db.save_page_number(scraped_count)
 
         link = self.categories_db.get_current_category_url()
         if link:
             yield scrapy.Request(link, self.parse, dont_filter=True)
 
-    def parse_item(self, response):
-        url = response.request.url
-
-        from cwotto.utils.crawl_utils import CrawlUtils
-        variation_id = CrawlUtils.get_variation_id(url)
-        if variation_id:
-
-            product = self._crawl_parser.parse_item(url, response, variation_id)
-
-            if product:
-                parent = product["parent"]
-                if parent:
-                    yield parent
-
-                    children = product["children"]
-                    for __child in children:
-                        yield __child
+    # def parse_item(self, response):
+    #     url = response.request.url
+    #
+    #     from cwotto.utils.crawl_utils import CrawlUtils
+    #     variation_id = CrawlUtils.get_variation_id(url)
+    #     if variation_id:
+    #
+    #         product = self._crawl_parser.parse_item(url, response, variation_id)
+    #
+    #         if product:
+    #             parent = product["parent"]
+    #             if parent:
+    #                 yield parent
+    #
+    #                 children = product["children"]
+    #                 for __child in children:
+    #                     yield __child
