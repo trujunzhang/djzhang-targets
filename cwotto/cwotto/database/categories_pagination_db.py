@@ -20,24 +20,25 @@ class CategoriesPaginationDatabase(BaseDatabase):
         return categories
 
     def get_current_category_url(self):
-        if self.step < (self.categories):
-            url = self.categories[self.step]['url']
-            pagination_url = "{}/?p={}&ps=72".format(url, 1)
-            return pagination_url
+        if self.categories:
+            if self.step < len(self.categories):
+                url = self.categories[self.step].url
+                pagination_url = "{}/?p={}&ps=72".format(url, 1)
+                return pagination_url
 
         return None
 
     def get_current_total_pages(self):
-        count = self.categories[self.step]['totalNumber']
+        count = self.categories[self.step].totalNumber
         return count
 
     def save_page_number(self, scraped_count):
-        count = self.categories[self.step]['totalNumber']
+        count = self.categories[self.step].totalNumber
         number = count - scraped_count
         if number <= 0:
             self.step += 1
         else:
-            self.categories[self.step]['totalNumber'] = number
+            self.categories[self.step].totalNumber = number
 
     def get_validate_categories_urls(self):
         query = ParsePy.ParseQuery("Categories")
