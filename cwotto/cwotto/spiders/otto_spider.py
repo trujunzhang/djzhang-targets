@@ -62,9 +62,9 @@ class OttoSpider(scrapy.Spider):
             yield scrapy.Request(link, self.parse, dont_filter=True)
 
         # step03: scraping the product page.
-        # last_url = self.cache_db.get_oldest_row_url(None)
-        # if last_url:
-        #     yield scrapy.Request(last_url, self.parse_item, dont_filter=True)
+        last_url = self.cache_db.get_oldest_row_url(None)
+        if last_url:
+            yield scrapy.Request(last_url, self.parse_item, dont_filter=True)
 
     def parse_item(self, response):
         url = response.request.url
