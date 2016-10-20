@@ -17,6 +17,17 @@ class CacheDatabase(BaseDatabase):
         cache.score = item['url']
         cache.save()
 
+    def check_cache_exist(self, href):
+        """
+        :param href:
+        :return:
+        """
+        query = ParsePy.ParseQuery("Cache")
+        query = query.eq("url", href)
+        list = query.fetch()
+
+        return len(list) > 0
+
     def get_oldest_row_url(self, last_url):
         # Step01:remove it.
         self.remove_last_cache(last_url)

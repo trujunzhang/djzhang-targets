@@ -15,19 +15,27 @@ class OttoParse(BaseParser):
 
         super(OttoParse, self).__init__()
 
-    def parse_paginate(self, url, hxs):
+    def parse_paginate(self, url, hxs, page_number):
+        scraped_count = 0
 
         product_links = []
         links = hxs.xpath('//*[@class="product small"]/a/@href').extract()
 
+        count = 0
         # linke is like href="/p/ajc-kurzblazer-552791036/#variationId=552791094">
         for link in links:
+            if count > page_number:
+                break
+
+            count += 1
             appLink = urlparse.urljoin(url, link.strip())
 
             if not self.history_db.check_history_exist(link.strip()):  # ignore it, If the link already exist
-                self.cache_db.save_cache(CacheItem.get_default(url=appLink))
+                if not self.cache_db.check_cache_exist(link.strip()):  # ignore it, If the link already exist
+                    self.cache_db.save_cache(CacheItem.get_default(url=appLink))
+                    scraped_count += 1
 
-        return product_links
+        return scraped_count
 
     def parse_item(self, url, hxs, variation_id):
         productScript = self.extract_by_query(hxs, "//script[@id='productDataJson']").replace("</script>", "").replace(
