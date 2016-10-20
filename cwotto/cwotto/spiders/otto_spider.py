@@ -69,6 +69,7 @@ class OttoSpider(scrapy.Spider):
     def parse_item(self, response):
         url = response.request.url
 
+        # step01: scraping the product page.
         from cwotto.utils.crawl_utils import CrawlUtils
         variation_id = CrawlUtils.get_variation_id(url)
         if variation_id:
@@ -84,8 +85,10 @@ class OttoSpider(scrapy.Spider):
                     for __child in children:
                         yield __child
 
+        # step02: save to history
         self.history_db.save_history(url)
 
+        # step03: scraping the next product page.
         last_url = self.cache_db.get_oldest_row_url(url)
         if last_url:
             yield scrapy.Request(last_url, self.parse_item, dont_filter=True)
