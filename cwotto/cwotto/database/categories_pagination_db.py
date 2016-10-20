@@ -39,10 +39,3 @@ class CategoriesPaginationDatabase(BaseDatabase):
             self.step += 1
         else:
             self.categories[self.step].totalNumber = number
-
-    def get_validate_categories_urls(self):
-        query = ParsePy.ParseQuery("Categories")
-        categories = query.fetch()
-
-    def get_last_page_number(self):
-        category = ParsePy.ParseObject("Categories")
