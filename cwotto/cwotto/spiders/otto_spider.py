@@ -58,8 +58,8 @@ class OttoSpider(scrapy.Spider):
 
         # step02: next pagination.
         link = self.categories_db.get_current_category_url()
-        # if link:
-        #     yield scrapy.Request(link, self.parse, dont_filter=True)
+        if link:
+            yield scrapy.Request(link, self.parse, dont_filter=True)
 
         # step03: scraping the product page.
         last_url = self.cache_db.get_oldest_row_url(None)
