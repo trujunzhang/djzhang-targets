@@ -13,19 +13,18 @@ class ParseRestTest(unittest.TestCase):
         ParsePy.MASTER_KEY = "BxBCs6KP0rk6Q2sR4XW5CnsEWK4mj4vdIHsEw7nB"
 
     def xxtest_save_to_parse(self):
-        gameScore = ParsePy.ParseObject("GameScore")
-        gameScore.score = 1337
-        gameScore.playerName = "Sean Plott"
-        gameScore.cheatMode = False
+        product = ParsePy.ParseObject("Product")
+        product.playerName = "Sean Plott"
+        product.cheatMode = False
 
-        gameScore.save()
+        product.save()
 
-        id = gameScore.objectId()
+        id = product.objectId()
 
         self.assertNotEqual(id, None)
 
     def xxxtest_query(self):
-        gameScore = ParsePy.ParseQuery("GameScore").get("LWzpWzHOfr")
+        gameScore = ParsePy.ParseQuery("Product").get("LWzpWzHOfr")
 
         x = 0
 

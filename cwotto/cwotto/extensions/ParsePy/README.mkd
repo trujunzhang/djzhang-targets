@@ -18,7 +18,6 @@ To create a new object of the Parse class _GameScore_:
 
 ~~~~~ {python}
 >>> gameScore = ParsePy.ParseObject("GameScore")
->>> gameScore.score = 1337
 >>> gameScore.playerName = "Sean Plott"
 >>> gameScore.cheatMode = False
 ~~~~~
@@ -34,7 +33,6 @@ To save our new object, just call the save() method:
 If we want to make an update, just call save() again after modifying an attribute to send the changes to the server:
 
 ~~~~~ {python}
->>> gameScore.score = 2061
 >>> gameScore.save()
 ~~~~~
 
@@ -93,7 +91,6 @@ We can also run more complex queries to retrieve a range of objects. For example
 
 ~~~~~ {python}
 >>> query = ParsePy.ParseQuery("GameScore")
->>> query = query.gte("score", 1000).lt("score", 2000).order("playerName")
 >>> GameScores = query.fetch()
 ~~~~~
 
