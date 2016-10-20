@@ -26,6 +26,9 @@ class HistoryDatabase(BaseDatabase):
         return len(list) > 0
 
     def save_history(self, url):
+        if self.check_history_exist(url):
+            return
+
         """
         product_id: like ''
         :param product_id:
