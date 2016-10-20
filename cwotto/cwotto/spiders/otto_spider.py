@@ -47,16 +47,19 @@ class OttoSpider(scrapy.Spider):
     def parse(self, response):
         url = response.request.url
 
+        # step01: parse pagination.
         page_number = self.categories_db.get_current_total_pages()
 
         scraped_count = self._crawl_parser.parse_paginate(url, response, page_number)
 
         self.categories_db.save_page_number(scraped_count)
 
+        # step02: next pagination.
         link = self.categories_db.get_current_category_url()
         if link:
             yield scrapy.Request(link, self.parse, dont_filter=True)
 
+        # step03: scraping the product page.
         last_url = self.cache_db.get_oldest_row_url(None)
         if last_url:
             yield scrapy.Request(last_url, self.parse_item, dont_filter=True)
