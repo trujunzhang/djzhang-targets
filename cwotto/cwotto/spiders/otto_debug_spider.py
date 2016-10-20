@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 import scrapy
 
+from cwotto.database.categories_pagination_db import CategoriesPaginationDatabase
+from cwotto.extensions import ParsePy
+
+
 class OttoDebugSpider(scrapy.Spider):
     name = "otto_debug"
 
@@ -10,7 +14,7 @@ class OttoDebugSpider(scrapy.Spider):
         # 'https://www.otto.de/'
         # the same first page
         # 'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche'
-        # 'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?1=2&ps=72'
+        # 'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?p=2&ps=72'
         # second page
         # 'https://www.otto.de/waesche-bademode/herrenwaesche/nachtwaesche/?p=2&ps=72'
         # Pagination
@@ -39,6 +43,12 @@ class OttoDebugSpider(scrapy.Spider):
     def __init__(self, name=None, **kwargs):
         from cwotto.parser.otto_parser import OttoParse
         self._crawl_parser = OttoParse()
+
+        Parse_Application_name = "otto-products"
+        ParsePy.APPLICATION_ID = "bAWPW8Ap8Sbk6prAu8hflEoDZ5uCvjTvY5nLpB7X"
+        ParsePy.MASTER_KEY = "BxBCs6KP0rk6Q2sR4XW5CnsEWK4mj4vdIHsEw7nB"
+
+        self.categories_db = CategoriesPaginationDatabase()
 
         super(OttoDebugSpider, self).__init__(name, **kwargs)
 
