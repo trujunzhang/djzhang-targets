@@ -12,6 +12,7 @@ class CategoriesPaginationDatabase(BaseDatabase):
     def __init__(self):
         self.categories = self.__get_scraped_categories()
         self.step = 0
+        self.pagination = 0
         super(CategoriesPaginationDatabase, self).__init__()
 
     def __get_scraped_categories(self):
@@ -36,6 +37,8 @@ class CategoriesPaginationDatabase(BaseDatabase):
         count = self.categories[self.step].totalNumber
         number = count - scraped_count
         if number <= 0:
+            self.pagination = 0
             self.step += 1
         else:
+            self.pagination += 1
             self.categories[self.step].totalNumber = number
