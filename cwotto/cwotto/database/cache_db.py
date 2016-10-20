@@ -14,7 +14,7 @@ class CacheDatabase(BaseDatabase):
 
     def save_cache(self, item):
         cache = ParsePy.ParseObject("Caches")
-        cache.score = item['url']
+        cache.url = item['url']
         cache.save()
 
     def check_cache_exist(self, href):
