@@ -26,14 +26,16 @@ class HistoryDatabase(BaseDatabase):
         return len(list) > 0
 
     def save_history(self, url):
-        if self.check_history_exist(url):
-            return
 
         """
-        product_id: like ''
+        product_id: like 'https://www.otto.de/p/sit-sideboard-corsica-breite-150-cm-562203065#variationId=562204027'
         :param product_id:
         :return:
         """
+        if self.check_history_exist(url):
+            return
+
+
         product_id = CrawlUtils.get_product_id(url)
 
         history = ParsePy.ParseObject("History")
