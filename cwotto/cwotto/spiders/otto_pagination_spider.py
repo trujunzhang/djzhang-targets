@@ -11,8 +11,8 @@ from cwotto.extensions import ParsePy
 from cwotto.items import Product
 
 
-class OttoSpider(scrapy.Spider):
-    name = "otto"
+class OttoPaginationSpider(scrapy.Spider):
+    name = "otto_pagination"
     allowed_domains = ["oto.com"]
 
     # start_urls = [
@@ -35,38 +35,28 @@ class OttoSpider(scrapy.Spider):
         self.cache_db = CacheDatabase()
         self.history_db = HistoryDatabase()
 
-        link = self.cache_db.get_oldest_row_url(None)
+        self.categories_db = CategoriesPaginationDatabase()
+
+        link = self.categories_db.get_current_category_url()
         if link:
             self.start_urls = [link]
         else:
             self.start_urls = []
             logging.debug("Not found the caches currently, the schedulared task end!")
 
-        super(OttoSpider, self).__init__(name, **kwargs)
+        super(OttoPaginationSpider, self).__init__(name, **kwargs)
 
     def parse(self, response):
         url = response.request.url
 
-        # step01: scraping the product page.
-        from cwotto.utils.crawl_utils import CrawlUtils
-        variation_id = CrawlUtils.get_variation_id(url)
-        if variation_id:
+        # step01: parse pagination.
+        page_number = self.categories_db.get_current_total_pages()
 
-            product = self._crawl_parser.parse_item(url, response, variation_id)
+        scraped_count = self._crawl_parser.parse_paginate(url, response, page_number)
 
-            if product:
-                parent = product["parent"]
-                if parent:
-                    yield parent
+        self.categories_db.save_page_number(scraped_count)
 
-                    children = product["children"]
-                    for __child in children:
-                        yield __child
-
-        # step02: save to history
-        self.history_db.save_history(url)
-
-        # step03: scraping the next product page.
-        last_url = self.cache_db.get_oldest_row_url(url)
-        if last_url:
-            yield scrapy.Request(last_url, self.parse, dont_filter=True)
+        # step02: next pagination.
+        link = self.categories_db.get_current_category_url()
+        if link:
+            yield scrapy.Request(link, self.parse, dont_filter=True)
