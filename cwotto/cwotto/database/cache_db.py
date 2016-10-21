@@ -1,9 +1,6 @@
 from cwotto.database.base_db import BaseDatabase
 
 import logging
-from datetime import datetime
-
-from cwotto.utils.crawl_utils import CrawlUtils
 
 from cwotto.extensions import ParsePy
 
