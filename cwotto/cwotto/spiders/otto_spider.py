@@ -37,6 +37,7 @@ class OttoSpider(scrapy.Spider):
 
         self.categories_db = CategoriesPaginationDatabase()
 
+        self.is_run_parse_item = False
         link = self.categories_db.get_current_category_url()
         if link:
             self.start_urls = [link]
@@ -62,7 +63,8 @@ class OttoSpider(scrapy.Spider):
             yield scrapy.Request(link, self.parse, dont_filter=True)
 
         # step03: scraping the product page.
-        if self.categories_db.check_run_parse_item():
+        if not self.is_run_parse_item:
+            self.is_run_parse_item = True
             last_url = self.cache_db.get_oldest_row_url(None)
             if last_url:
                 yield scrapy.Request(last_url, self.parse_item, dont_filter=True)
