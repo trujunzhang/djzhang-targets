@@ -32,8 +32,8 @@ class HistoryDatabase(BaseDatabase):
         :param product_id:
         :return:
         """
-        if self.check_history_exist(url):
-            return
+        # if self.check_history_exist(url):
+        #     return
 
 
         product_id = CrawlUtils.get_product_id(url)

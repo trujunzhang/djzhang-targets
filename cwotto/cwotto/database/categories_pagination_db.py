@@ -29,6 +29,9 @@ class CategoriesPaginationDatabase(BaseDatabase):
 
         return None
 
+    def check_run_parse_item(self):
+        return self.step == 0
+
     def get_current_total_pages(self):
         count = self.categories[self.step].totalNumber
         return count
