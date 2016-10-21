@@ -48,5 +48,5 @@ class CacheDatabase(BaseDatabase):
         query = query.eq("url", last_url)
         caches = query.fetch()
 
-        if len(caches) == 1:
+        if len(caches) >= 1:
             caches[0].delete()
