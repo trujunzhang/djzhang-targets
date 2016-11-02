@@ -24,8 +24,10 @@ class Crawler:
 def main():
     utils = Crawler()
     utils.prepare()
-    utils.execute("otto")
+    # utils.execute("otto")
     # utils.execute("otto_debug")
+    utils.execute("easyjet")
+
 
 
 if __name__ == '__main__':
