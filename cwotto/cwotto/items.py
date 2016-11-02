@@ -182,3 +182,9 @@ class Product(scrapy.Item):
             attributes=[],
             available_attributes=[]
         )
+
+
+class EasyJet(scrapy.Item):
+    url = scrapy.Field()
+
+    title = scrapy.Field()
