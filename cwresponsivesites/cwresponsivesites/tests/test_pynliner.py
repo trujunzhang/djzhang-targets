@@ -39,11 +39,31 @@ class pynlinerTest(unittest.TestCase):
         rules = stylesheet.rules
 
     def test_css_util(self):
-        s = ''
+        css = ''
         filename = '/tmp/producthunt-iphone.css'
         if os.path.isfile(filename):
             f = open(filename, 'r')
-            s = f.read()
+            css = f.read()
             f.close()
+
+        css = '@media(max-width: 1199px) {    .secondaryContent_3sS7J {        display: none;    }}'
+
+        import cssutils
+        sheet = cssutils.parseString(css)
+
+        for rule in sheet:
+            if rule.type == rule.MEDIA_RULE:
+                pass
+
+            if rule.type == rule.STYLE_RULE:
+                pass
+                # find property
+                # for property in rule.style:
+                #     if property.name == 'color':
+                #         property.value = 'green'
+                #         property.priority = 'IMPORTANT'
+                #         break
+                # or simply:
+                # rule.style['margin'] = '01.0eM'  # or: ('1em', 'important')
 
         x = 0
