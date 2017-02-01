@@ -4,6 +4,10 @@ https://github.com/rennat/pynliner
 
 pip install pynliner
 
+https://pypi.python.org/pypi/cssutils/
+https://github.com/Kozea/tinycss
+pip install tinycss
+
 # responsive html
 
 
