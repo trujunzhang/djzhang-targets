@@ -17,4 +17,9 @@ class pynlinerTest(unittest.TestCase):
                 'https://www.producthunt.com/')
         )
 
+        if len(result) == 2:
+            if result[0] == 0 and result[1] == '':
+                # it means that run successfully.
+                pass
+
         x = 0
