@@ -25,7 +25,7 @@ class pynlinerTest(unittest.TestCase):
 
         x = 0
 
-    def test_parse_css(self):
+    def xxxtest_parse_css(self):
         s = ''
         filename = '/tmp/producthunt-iphone.css'
         if os.path.isfile(filename):
@@ -37,5 +37,13 @@ class pynlinerTest(unittest.TestCase):
         stylesheet = tinycss.make_parser().parse_stylesheet(s)
 
         rules = stylesheet.rules
+
+    def test_css_util(self):
+        s = ''
+        filename = '/tmp/producthunt-iphone.css'
+        if os.path.isfile(filename):
+            f = open(filename, 'r')
+            s = f.read()
+            f.close()
 
         x = 0
