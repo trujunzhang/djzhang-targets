@@ -2,6 +2,7 @@
 https://github.com/drdk/dr-css-inliner
 https://github.com/rennat/pynliner
 
+pip install pynliner
 
 # responsive html
 
