@@ -1,3 +1,8 @@
+# libraries
+https://github.com/drdk/dr-css-inliner
+https://github.com/rennat/pynliner
+
+
 # responsive html
 
 
