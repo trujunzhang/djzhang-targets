@@ -8,6 +8,9 @@ https://pypi.python.org/pypi/cssutils/
 https://github.com/Kozea/tinycss
 pip install tinycss
 
+# documents
+https://pythonhosted.org/cssutils/docs/parse.html#cssparser
+
 # responsive html
 
 
