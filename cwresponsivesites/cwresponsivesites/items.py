@@ -151,7 +151,7 @@ class MongoPost(scrapy.Item):
     cloudinaryId = scrapy.Field()
 
     @classmethod
-    def convert(cls, item, topic_ids):
+    def convert(cls, item):
         title = item['title'].strip()
         content = item['content']
 
