@@ -14,7 +14,7 @@ class StyleParser(object):
     def __get_json_out_path(self):
         return CrawlUtils.get_tmp_file('{}.json'.format(CrawlUtils.get_guid(self.url)))
 
-    def get_style_from_url(self):
+    def get_style_object_from_url(self):
         json_out_path = self.__get_json_out_path()
         import commands
         cmd = 'cssstats {} {} '.format(
