@@ -12,7 +12,6 @@ import logging
 
 from cwresponsivesites.utils.date_utils import DateUtils
 from cwresponsivesites.utils.slugify import slugify
-from cwresponsivesites.utils.tags_utils import TagsUtils
 
 
 class CacheItem(scrapy.Item):
