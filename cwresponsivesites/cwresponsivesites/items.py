@@ -79,16 +79,17 @@ class WDPost(scrapy.Item):
     url = scrapy.Field()
     title = scrapy.Field()
     image_src = scrapy.Field()
-    image_uuid = scrapy.Field()
 
     url_from = scrapy.Field()
+
+    styles = scrapy.Field()
+    meta = scrapy.Field()
 
     # cloudianry images
     cloudinaryId = scrapy.Field()
 
     @classmethod
-    def get_default(cls, url, url_from, title, image_src):
-        image_uuid = None
+    def get_default(cls, url, url_from, title, image_src, styles, meta):
         if image_src:
             # Some image url contains empty or special charactor,need to encode it.
             from twisted.python._url import URL
@@ -100,15 +101,11 @@ class WDPost(scrapy.Item):
             except Exception as e:
                 pass
 
-            from cwresponsivesites.utils.crawl_utils import CrawlUtils
-            image_uuid = CrawlUtils.get_guid(image_src)
-
         return WDPost(
             url=url,
             url_from=url_from,
             title=title,
-            image_src=image_src,
-            image_uuid=image_uuid
+            image_src=image_src
         )
 
 
