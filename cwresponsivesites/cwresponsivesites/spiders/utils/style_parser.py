@@ -26,6 +26,7 @@ class StyleParser(object):
         callback = commands.getstatusoutput(cmd)
 
         if self.__check_json_result(json_out_path):
+            # convert json to object.
             return self.__parse_json_as_obj()
 
     def __parse_json_as_obj(self):
