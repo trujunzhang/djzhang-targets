@@ -18,7 +18,7 @@ class CacheDatabase(object):
     def save_cache(self, item):
         self.db[self.collection_name].update_one({'url': item['url']}, {'$set': dict(item)}, True)
 
-    def get_oldest_row(self, _last, url_from):
+    def get_oldest_row(self, _last):
         logging.debug("Get the oldest row")
 
         if _last:

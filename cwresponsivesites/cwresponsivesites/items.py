@@ -124,24 +124,6 @@ class PostMeta(scrapy.Item):
         )
 
 
-class PostStatus(Enum):
-    # Posts.config.STATUS_PENDING = 1;
-    # Posts.config.STATUS_APPROVED = 2; // it means that the posts are published.
-    # Posts.config.STATUS_REJECTED = 3;
-    # Posts.config.STATUS_SPAM = 4; // it means that the posts are moved to trash, the same as STATUS_DRAFT.
-    # Posts.config.STATUS_DELETED = 5;
-    # Posts.config.STATUS_FLAGGED = 6; // Can you make a new status = Flagged? which status of the posts is set from the flag on the detail page?
-    publish = 'publish'
-    draft = 'draft'
-
-    @classmethod
-    def get_post_status(cls, type):
-        if type == PostStatus.publish.value:
-            return 2  # Posts.config.STATUS_APPROVED = 2; // it means that the posts are published.
-
-        return 4  # Posts.config.STATUS_SPAM = 4; // it means that the posts are moved to trash, the same as STATUS_DRAFT.
-
-
 class WDPost(scrapy.Item):
     url = scrapy.Field()
     title = scrapy.Field()
@@ -151,21 +133,11 @@ class WDPost(scrapy.Item):
 
     url_from = scrapy.Field()
 
-    # tags list['Unicode']
-    topicsName = scrapy.Field()
-
-    post_status = scrapy.Field()
-
-    # temp varaible
-    have_tags = scrapy.Field()
-
     # cloudianry images
     cloudinaryId = scrapy.Field()
 
     @classmethod
-    def get_default(cls, url, url_from, title, image_src, thumbnail_url, content, topicsName,
-                    post_status=PostStatus.publish,
-                    have_tags=True):
+    def get_default(cls, url, url_from, title, image_src, thumbnail_url, content, topicsName, have_tags=True):
         if not image_src:
             image_src = thumbnail_url
 
@@ -190,10 +162,7 @@ class WDPost(scrapy.Item):
             title=title,
             image_src=image_src,
             image_uuid=image_uuid,
-            content=content,
-            topicsName=TagsUtils(topicsName).fix_tags(),
-            post_status=post_status.value,
-            have_tags=have_tags
+            content=content
         )
 
 
@@ -241,7 +210,6 @@ class MongoPost(scrapy.Item):
     _id = scrapy.Field()
     createdAt = scrapy.Field()
     author = scrapy.Field()
-    status = scrapy.Field()
     postedAt = scrapy.Field()
     body = scrapy.Field()
     title = scrapy.Field()
@@ -261,16 +229,9 @@ class MongoPost(scrapy.Item):
     baseScore = scrapy.Field()
     score = scrapy.Field()
     htmlBody = scrapy.Field()
-    excerpt = scrapy.Field()
-    upvoters = scrapy.Field()
-    lastCommentedAt = scrapy.Field()
-    commenters = scrapy.Field()
-    categories = scrapy.Field()
 
     sourceFrom = scrapy.Field()
 
-    # Special fields
-    topics = scrapy.Field()
     # cloudianry images
     cloudinaryId = scrapy.Field()
 
@@ -284,18 +245,13 @@ class MongoPost(scrapy.Item):
         dummySlug = slugify(title)
         slug = dummySlug
 
-        sourceFrom = CrawlUtils.get_domain(item['url'], url_from=item['url_from'])
-        item_status = item['post_status']
-        _status = PostStatus.get_post_status(item_status)
-
-        logging.debug("Source From :{}, item_status: {}, post_status: {}".format(sourceFrom, item_status, _status))
+        sourceFrom = CrawlUtils.get_domain(item['url'])
 
         return MongoPost(
             url=item['url'],
             _id=CrawlUtils.get_guid(item['url']),
             createdAt=DateUtils.get_utc_date(),
             author=item['url_from'],
-            status=_status,
             postedAt=DateUtils.get_utc_date(),
             body=item['content'],
             title=title,
@@ -315,12 +271,6 @@ class MongoPost(scrapy.Item):
             baseScore=0,
             score=0,
             htmlBody=content,
-            excerpt=content,
-            upvoters=[],
-            lastCommentedAt=DateUtils.get_utc_date(),
-            commenters=[],
-            categories=[],
-            topics=topic_ids,
             cloudinaryId=item['cloudinaryId'],
             sourceFrom=sourceFrom
         )

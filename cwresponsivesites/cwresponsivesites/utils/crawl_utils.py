@@ -46,7 +46,7 @@ class CrawlUtils(object):
             logging.debug("Sorry, I can not remove {} file.".format(path))
 
     @classmethod
-    def get_domain(cls, url, url_from=None):
+    def get_domain(cls, url):
         from cwresponsivesites.utils import domain_parser
         parse_domain = domain_parser.parse_domain(url)
 
