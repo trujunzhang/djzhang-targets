@@ -21,7 +21,7 @@ class DatabaseFactory(object):
         if CollectionTypes.posts == collection_type:
             # Caches
             from cwresponsivesites.database.mongo.posts_mg import PostsDatabase
-            database = PostsDatabase(self.mg_host, self.mg_collection, collection_name="posts", topics_filter_keys="")
+            database = PostsDatabase(self.mg_host, self.mg_collection, collection_name="posts")
             database.open_spider()
             return database
         elif CollectionTypes.cache == collection_type:

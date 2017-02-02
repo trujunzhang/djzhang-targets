@@ -8,10 +8,6 @@ from os.path import expanduser
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
-#
-#     http://doc.scrapy.org/en/latest/topics/settings.html
-#     http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#     http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 
 BOT_NAME = 'cwresponsivesites'
 
@@ -25,7 +21,6 @@ NEWSPIDER_MODULE = 'cwresponsivesites.spiders'
 CONCURRENT_REQUESTS = 4
 
 # Configure a delay for requests for the same website (default: 0)
-# See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
 DOWNLOAD_DELAY = 2
 
@@ -42,13 +37,11 @@ COOKIES_ENABLED = False
 # }
 
 # Enable or disable spider middlewares
-# See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 # SPIDER_MIDDLEWARES = {
 #    'cwresponsivesites.middlewares.MyCustomSpiderMiddleware': 543,
 # }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
-# See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 # NOTE: AutoThrottle will honour the standard settings for concurrency and delay
 AUTOTHROTTLE_ENABLED = True
 # The initial download delay
@@ -59,7 +52,6 @@ AUTOTHROTTLE_MAX_DELAY = 60
 AUTOTHROTTLE_DEBUG = True
 
 # Enable and configure HTTP caching (disabled by default)
-# See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
 # HTTPCACHE_ENABLED=True
 # HTTPCACHE_EXPIRATION_SECS=0
 # HTTPCACHE_DIR='httpcache'
@@ -80,8 +72,6 @@ with open('{}/{}'.format(expanduser("~"), '.newspoliticl')) as data_file:
 MG_HOST = data['MG_HOST']  # 'localhost:3001'  # data['PWD_HOST']
 MG_COLLECTION = data['MG_COLLECTION']  # 'meteor'  # data['PWD_URL']
 MAX_COUNT_PER_TIME = data['MAX_COUNT_PER_TIME']
-
-TOPICS_FILTER_KEYS = data['TOPICS_FILTER_KEYS']
 
 if not 'CLOUDINARY_IMAGE_HOST' in data['CLOUDINARY'].keys():
     cloudinary_image_name = data['CLOUDINARY']['CLOUDINARY_IMAGE_NAME']

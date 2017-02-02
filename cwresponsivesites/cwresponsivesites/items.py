@@ -3,8 +3,6 @@
 # Define here the models for your scraped items
 #
 # See documentation in:
-# http://doc.scrapy.org/en/latest/topics/items.html
-
 
 from enum import Enum
 import scrapy
@@ -85,7 +83,6 @@ class WDPost(scrapy.Item):
     title = scrapy.Field()
     image_src = scrapy.Field()
     image_uuid = scrapy.Field()
-    content = scrapy.Field()
 
     url_from = scrapy.Field()
 
@@ -93,7 +90,7 @@ class WDPost(scrapy.Item):
     cloudinaryId = scrapy.Field()
 
     @classmethod
-    def get_default(cls, url, url_from, title, image_src, thumbnail_url, content, topicsName, have_tags=True):
+    def get_default(cls, url, url_from, title, image_src):
         image_uuid = None
         if image_src:
             # Some image url contains empty or special charactor,need to encode it.
@@ -114,8 +111,7 @@ class WDPost(scrapy.Item):
             url_from=url_from,
             title=title,
             image_src=image_src,
-            image_uuid=image_uuid,
-            content=content
+            image_uuid=image_uuid
         )
 
 
