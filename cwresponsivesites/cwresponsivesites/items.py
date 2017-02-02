@@ -80,49 +80,6 @@ class LogsItem(scrapy.Item):
         )
 
 
-class PageItem(scrapy.Item):
-    """
-    When scraping the whole pages for a website,
-    We imagine that the website have 1000 pages, scrape 10 pages per time from the newest to the oldest.
-
-    page_index variable record the index of the pages currently. Next time page_index will be (page_index + 10)
-    """
-    url_from = scrapy.Field()
-    # Record the current page index
-    page_index = scrapy.Field()
-    created_at = scrapy.Field()
-
-    @classmethod
-    def get_empty_item(cls, url_from):
-        return PageItem(
-            url_from=url_from,
-            page_index=1,
-            created_at=DateUtils.get_utc_date().replace(microsecond=0).isoformat(' '),
-        )
-
-    @classmethod
-    def get_default(cls, url_from, page_index):
-        return PageItem(
-            url_from=url_from,
-            page_index=page_index,
-            created_at=DateUtils.get_utc_date().replace(microsecond=0).isoformat(' '),
-        )
-
-
-class PostMeta(scrapy.Item):
-    _id = scrapy.Field()
-    url = scrapy.Field()
-    value = scrapy.Field()
-
-    @classmethod
-    def get_default(cls, id, url, image_meta):
-        return PostMeta(
-            _id=id,
-            url=url,
-            value=image_meta
-        )
-
-
 class WDPost(scrapy.Item):
     url = scrapy.Field()
     title = scrapy.Field()
@@ -137,9 +94,6 @@ class WDPost(scrapy.Item):
 
     @classmethod
     def get_default(cls, url, url_from, title, image_src, thumbnail_url, content, topicsName, have_tags=True):
-        if not image_src:
-            image_src = thumbnail_url
-
         image_uuid = None
         if image_src:
             # Some image url contains empty or special charactor,need to encode it.
@@ -162,44 +116,6 @@ class WDPost(scrapy.Item):
             image_src=image_src,
             image_uuid=image_uuid,
             content=content
-        )
-
-
-class TopicItem(scrapy.Item):
-    _id = scrapy.Field()
-    name = scrapy.Field()
-    slug = scrapy.Field()
-
-    # Topics.config.STATUS_APPROVED = 1;
-    # Topics.config.STATUS_DELETED = 2;
-    status = scrapy.Field()
-    is_ignore = scrapy.Field()
-
-    statistic = scrapy.Field()
-
-    @classmethod
-    def __filter_topics_keys(self, topics_filter_keys, name):
-        topics_keys = topics_filter_keys.lower().strip().split(',')
-        for key in topics_keys:
-            if key in name.lower():
-                return True
-
-        return False
-
-    @classmethod
-    def get_default(cls, topics_filter_keys, name):
-        name = name.strip()
-
-        from cwresponsivesites.utils.crawl_utils import CrawlUtils
-
-        guid = CrawlUtils.get_guid(name.lower())
-        return TopicItem(
-            _id=guid,
-            name=name,
-            slug=slugify(name),
-            status=1,
-            is_ignore=TopicItem.__filter_topics_keys(topics_filter_keys, name=name),
-            statistic={"postCount": 1}
         )
 
 
