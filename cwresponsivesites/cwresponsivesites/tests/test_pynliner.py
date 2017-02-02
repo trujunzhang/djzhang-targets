@@ -7,6 +7,7 @@ import tinycss2
 from cssutils import CSSParser
 
 from cwresponsivesites.spiders.utils.style_checker import StyleChecker
+from cwresponsivesites.spiders.utils.style_parser import StyleParser
 
 
 class pynlinerTest(unittest.TestCase):
@@ -89,6 +90,15 @@ class pynlinerTest(unittest.TestCase):
 
         x = 0
 
-    def test_tinycss2(self):
+    def xxxtest_tinycss2(self):
         check = StyleChecker()
         check.get_style_from_url('https://www.producthunt.com/')
+
+    def test_style_json(self):
+        parser = StyleParser(
+            '/Users/djzhang/Desktop/upwork-projects/selenium/dr-css-inliner/producthunt.css',
+            'https://www.producthunt.com/'
+        )
+        object = parser.get_style_object_from_url()
+
+        x = 0

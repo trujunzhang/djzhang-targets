@@ -31,9 +31,9 @@ class StyleParser(object):
 
     def __parse_json_as_obj(self):
         json_out_path = self.__get_json_out_path()
-        data = json.load(json_out_path)
-
-        return data
+        with open(json_out_path) as data_file:
+            data = json.load(data_file)
+            return data
 
     def __check_json_result(self, json_out_path):
         if os.path.exists(json_out_path):
