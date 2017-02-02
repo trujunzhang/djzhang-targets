@@ -56,9 +56,9 @@ class KaismhSpider(scrapy.Spider):
         driver.set_window_size(240, 480)
         driver.get(response.url)
 
-        driver.save_screenshot('/tmp/screen.png')
+        # driver.save_screenshot('/tmp/screen.png')
         # And than you can keep working from here
-        # cart_style = driver.find_element_by_id('secondary').get_attribute('style')
+        cart_style = driver.find_element_by_id('secondary').get_attribute('style')
 
         driver.quit()
 
