@@ -1,7 +1,7 @@
 import logging
 import os
 
-Cache_Folder = 'politicl'
+Cache_Folder = 'responsivechecker'
 
 
 class CrawlUtils(object):
