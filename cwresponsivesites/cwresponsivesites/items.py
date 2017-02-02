@@ -105,7 +105,9 @@ class WDPost(scrapy.Item):
             url=url,
             url_from=url_from,
             title=title,
-            image_src=image_src
+            image_src=image_src,
+            styles=styles,
+            meta=meta
         )
 
 
