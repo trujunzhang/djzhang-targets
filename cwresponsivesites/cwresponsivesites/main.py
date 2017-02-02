@@ -1,5 +1,7 @@
 from scrapy import cmdline
 
+from cwresponsivesites.scraped_websites import get_crawler_name
+
 
 class Crawler:
     def execute(self, module):
@@ -12,7 +14,7 @@ class Crawler:
 def main():
     utils = Crawler()
 
-    utils.execute('kaismh')
+    utils.execute(get_crawler_name()['name'])
 
 
 if __name__ == '__main__':
