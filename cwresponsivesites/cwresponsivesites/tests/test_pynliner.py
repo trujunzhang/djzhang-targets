@@ -2,12 +2,15 @@
 import os
 import unittest
 
-
 # Todo: Have uninstalled Pynliner.
+import tinycss2
+from cssutils import CSSParser
+
+from cwresponsivesites.spiders.utils.style_checker import StyleChecker
+
 
 class pynlinerTest(unittest.TestCase):
     def xxxtest_convert_to_inline_css(self):
-        url = 'http://www.futurecrew.com/skaven/song_files/mp3/razorback.mp3'
         # filename = wget.download(url)
         import commands
         result = commands.getstatusoutput(
@@ -38,7 +41,7 @@ class pynlinerTest(unittest.TestCase):
 
         rules = stylesheet.rules
 
-    def test_css_util(self):
+    def xxxtest_css_util(self):
         css = ''
         filename = '/tmp/producthunt-iphone.css'
         if os.path.isfile(filename):
@@ -67,3 +70,25 @@ class pynlinerTest(unittest.TestCase):
                 # rule.style['margin'] = '01.0eM'  # or: ('1em', 'important')
 
         x = 0
+
+    def xxtest_cssutil(self):
+        css = '@media(max-width: 1199px) {    .secondaryContent_3sS7J {        display: none;    }}'
+
+        parser = CSSParser()
+        # optionally
+        # parser.setFetcher(fetcher)
+        sheet = parser.parseString(cssText=css)
+        print sheet.cssText
+
+        for rule in sheet:
+            if rule.type == rule.MEDIA_RULE:
+                # find property
+                for property in rule.media:
+                    if property.name == 'color':
+                        m = 0
+
+        x = 0
+
+    def test_tinycss2(self):
+        check = StyleChecker()
+        check.get_style_from_url('https://www.producthunt.com/')
