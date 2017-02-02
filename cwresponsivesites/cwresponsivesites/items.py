@@ -52,9 +52,6 @@ class LogsItemTypes(Enum):
     content = 'content'  # empty
     image = 'image'  # empty
     title = 'title'  # empty
-    tags = 'tags'  # empty
-    newpost = 'newpost'  # exception
-    image_downloader = 'image downloader'  # exception
     response_status404 = 'response_status_404'
     repeated_scraped_url = 'repeated_scraped_url'
     no_author_id = 'no_author_id'
