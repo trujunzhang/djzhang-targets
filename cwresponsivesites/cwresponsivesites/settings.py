@@ -66,7 +66,7 @@ DOWNLOADER_MIDDLEWARES = {
 # table_name
 SQL_COLLECTION_NAME = 'politicl'
 
-with open('{}/{}'.format(expanduser("~"), '.newspoliticl')) as data_file:
+with open('{}/{}'.format(expanduser("~"), '.responsivechecking')) as data_file:
     data = json.load(data_file)
 
 MG_HOST = data['MG_HOST']  # 'localhost:3001'  # data['PWD_HOST']
