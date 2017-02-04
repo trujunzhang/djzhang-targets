@@ -11,3 +11,5 @@ project *[[[https://github.com/yareda/selenium-testing]]]
 [[[nosetests -vv]]]
  
 [[[nosetests --with-xunit -vv]]]
+
+[[[nosetests github_search_test.py]]]
