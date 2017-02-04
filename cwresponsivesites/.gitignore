@@ -106,3 +106,4 @@ pip-selfcheck.json
 
 .idea/
 
+cwresponsivesites/tests/phantomjs/*.png
