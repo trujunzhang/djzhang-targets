@@ -12,7 +12,7 @@ class GithubSearchTest(unittest.TestCase):
         self.driver.set_window_size(1280, 1024)
         self.base_url = "https://github.com"
 
-    def xxxtest_python_org_search(self):
+    def test_python_org_search(self):
         driver = self.driver
         driver.get("http://www.python.org")
         assert "Python" in driver.title
